@@ -1,0 +1,111 @@
+<diagram program="umletino" version="14.3.0"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>427</x><y>0</y><w>230</w><h>140</h></coordinates><panel_attributes>Χρήστης
+--
+- όνομα : String
+- επώνυμο : String
+- ημερομηνίαΓέννησης : java.util.Date
+- email : String
+- δεδομέναEισόδου : Credentials
+- τηλέφωνο: Int
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>837</x><y>30</y><w>170</w><h>70</h></coordinates><panel_attributes>Credentials
+--
+- username : String
+- password : String
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>327</x><y>240</y><w>180</w><h>70</h></coordinates><panel_attributes>Διοργανωτής
+--
+- τίτλοςΔιοργανωτή : String
+- τύποςΑθλήματος: Άθλημα
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>577</x><y>220</y><w>200</w><h>90</h></coordinates><panel_attributes>Παίκτης
+--
+- αριθμόςΣυμμετοχών : Int
+- ανοιχτόςΣεΑιτήματα : Boolean
+- αγαπημέναΑθλήματα : Άθλημα [ ]
+- περιοχή : String
+
+
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>127</x><y>530</y><w>250</w><h>150</h></coordinates><panel_attributes>Διοργάνωση
+--
+- τίτλοςΔιοργάνωσης : String
+- τύποςΑθλήματος: Άθλημα
+- κατηγορία : ΗλικιακήΚατηγορία
+- περιοχή : String
+- αριθμός Ομάδων: Int
+- αριθμός Γυρών : Int
+- περιγραφή : String 
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1037</x><y>340</y><w>160</w><h>130</h></coordinates><panel_attributes>&lt;&lt;enumeration&gt;&gt;
+ΗλικακήΚατηγορία
+--
+ΠΑΜΠΑΙΔΙΚΟ
+ΠΑΙΔΙΚΟ
+ΕΦΗΒΙΚΟ
+ΝΕΟΙ
+ΕΝΗΛΙΚΩΝ
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>847</x><y>550</y><w>210</w><h>130</h></coordinates><panel_attributes>Ομάδα
+--
+- όνομα : String
+- χρώματα : String
+- τύποςΑθλήματος: Άθλημα
+- κατηγορία : ΗλικιακήΚατηγορία
+- αριθμόςΠαικτών : Int
+
+
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>397</x><y>130</y><w>150</w><h>130</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>130;10;10;110</additional_attributes></element><element><id>Relation</id><coordinates><x>537</x><y>130</y><w>150</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;130;90</additional_attributes></element><element><id>Relation</id><coordinates><x>217</x><y>300</y><w>220</w><h>250</h></coordinates><panel_attributes>lt=-
+m1=  0..*
+m2=1
+διοργανώνει </panel_attributes><additional_attributes>10;230;200;10</additional_attributes></element><element><id>Relation</id><coordinates><x>697</x><y>300</y><w>280</w><h>270</h></coordinates><panel_attributes>lt=-
+m1=0..*
+m2=   1..*
+συμμετέχει </panel_attributes><additional_attributes>250;250;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>477</x><y>590</y><w>230</w><h>70</h></coordinates><panel_attributes>Συμμετοχή
+--
+- ημερομηνίαΈναρξης : java.util.Date
+- ημερομηνίαΛήξης : java.util.Date
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>697</x><y>600</y><w>170</w><h>50</h></coordinates><panel_attributes>lt=-
+m1=0..*
+m2=1
+πραγματοποιεί</panel_attributes><additional_attributes>10;20;150;20</additional_attributes></element><element><id>Relation</id><coordinates><x>367</x><y>600</y><w>130</w><h>50</h></coordinates><panel_attributes>lt=-
+m1=1
+m2=0..*
+αφορά</panel_attributes><additional_attributes>10;20;110;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>127</x><y>800</y><w>240</w><h>110</h></coordinates><panel_attributes>Γύρος
+--
+- αριθμόςΟμάδων : Int
+- σύνολοΑγώνων : Int
+- ημερομηνίαΈναρξης : java.util.Date
+- ημερομηνίαΛήξης : java.util.Date</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>240</x><y>670</y><w>30</w><h>150</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;130</additional_attributes></element><element><id>Text</id><coordinates><x>210</x><y>770</y><w>40</w><h>30</h></coordinates><panel_attributes>1..*</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>847</x><y>790</y><w>210</w><h>120</h></coordinates><panel_attributes>Αγώνας
+--
+- γήπεδο : String
+- ημερομηνία : java.util.Date
+- ώρα : java.util.Time
+- αποτέλεσμα : String
+- ομάδαΑ : Ομάδα
+- ομάδαΒ : Ομάδα
+- σκορΑ : Int
+- σκορΒ : Int
+
+
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>950</x><y>670</y><w>90</w><h>140</h></coordinates><panel_attributes>lt=-
+m1=0..*
+m2=2
+συμμετέχει</panel_attributes><additional_attributes>10;120;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>360</x><y>850</y><w>500</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;480;10</additional_attributes></element><element><id>Text</id><coordinates><x>800</x><y>830</y><w>40</w><h>30</h></coordinates><panel_attributes>1..*</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>837</x><y>150</y><w>210</w><h>110</h></coordinates><panel_attributes>Άθλημα
+--
+- όνομα : String
+- ελάχιστοιΠαίκτες : Int
+- διάρκειαΑγώνα : java.util.Time
+
+
+
+
+</panel_attributes><additional_attributes></additional_attributes></element></diagram>
