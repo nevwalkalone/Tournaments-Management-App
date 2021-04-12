@@ -11,7 +11,7 @@
       <h>40</h>
     </coordinates>
     <panel_attributes>Συμπλήρωση στοιχείων
-Παίκτη</panel_attributes>
+Διοργανωτή</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -145,7 +145,7 @@
       <h>40</h>
     </coordinates>
     <panel_attributes>Αποθήκευση νέου
-Παίκτη</panel_attributes>
+Διοργανωτή</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -178,7 +178,7 @@
       <w>100</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>Παίκτες</panel_attributes>
+    <panel_attributes>Διοργανωτές</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
