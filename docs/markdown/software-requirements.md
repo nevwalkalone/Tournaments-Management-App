@@ -57,7 +57,7 @@
 
 #### [ΠΧ1. Προβολή πληροφοριών διοργάνωσης](uc1-view-tournament-info.md)
 
-#### [ΠΧ2. Εγγραφή](uc2-registration.md)
+#### [ΠΧ2. Διαχείριση Λογαριασμού Χρήστη ](uc2-user-account-management.md)
 
 #### [ΠΧ3. Ταυτοποίηση Χρήστη](uc3-user-verification.md)
 
