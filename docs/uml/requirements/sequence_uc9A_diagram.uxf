@@ -4,8 +4,8 @@
   <element>
     <id>UMLActor</id>
     <coordinates>
-      <x>150</x>
-      <y>40</y>
+      <x>120</x>
+      <y>80</y>
       <w>120</w>
       <h>110</h>
     </coordinates>
@@ -15,8 +15,8 @@
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>450</x>
-      <y>70</y>
+      <x>420</x>
+      <y>110</y>
       <w>130</w>
       <h>40</h>
     </coordinates>
@@ -26,8 +26,8 @@
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>670</x>
-      <y>70</y>
+      <x>640</x>
+      <y>110</y>
       <w>180</w>
       <h>40</h>
     </coordinates>
@@ -37,19 +37,19 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>200</x>
-      <y>130</y>
+      <x>170</x>
+      <y>170</y>
       <w>30</w>
-      <h>50</h>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;30.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>200</x>
-      <y>160</y>
+      <x>170</x>
+      <y>220</y>
       <w>20</w>
       <h>510</h>
     </coordinates>
@@ -59,8 +59,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>210</x>
-      <y>170</y>
+      <x>180</x>
+      <y>230</y>
       <w>310</w>
       <h>30</h>
     </coordinates>
@@ -70,19 +70,19 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>500</x>
-      <y>100</y>
+      <x>470</x>
+      <y>140</y>
       <w>30</w>
-      <h>80</h>
+      <h>110</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>500</x>
-      <y>160</y>
+      <x>470</x>
+      <y>230</y>
       <w>20</w>
       <h>440</h>
     </coordinates>
@@ -92,109 +92,32 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>760</x>
-      <y>100</y>
+      <x>730</x>
+      <y>140</y>
       <w>30</w>
-      <h>110</h>
+      <h>170</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;150.0</additional_attributes>
   </element>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>280</x>
-      <y>150</y>
-      <w>140</w>
-      <h>30</h>
-    </coordinates>
-    <panel_attributes>Επιλογή Αθλήματος</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>510</x>
-      <y>200</y>
-      <w>270</w>
-      <h>30</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>250.0;10.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>760</x>
-      <y>190</y>
-      <w>20</w>
-      <h>60</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Text</id>
-    <coordinates>
-      <x>570</x>
-      <y>170</y>
+      <x>220</x>
+      <y>580</y>
       <w>150</w>
-      <h>30</h>
+      <h>40</h>
     </coordinates>
-    <panel_attributes>setSport(userGame)</panel_attributes>
+    <panel_attributes>Αναζήτηση παίκτη</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <id>Relation</id>
+    <id>UMLGeneric</id>
     <coordinates>
-      <x>210</x>
-      <y>260</y>
-      <w>310</w>
-      <h>30</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>290.0;10.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Text</id>
-    <coordinates>
-      <x>290</x>
-      <y>240</y>
-      <w>140</w>
-      <h>30</h>
-    </coordinates>
-    <panel_attributes>Επιλογή χρώματος</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>510</x>
+      <x>730</x>
       <y>290</y>
-      <w>270</w>
-      <h>30</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>250.0;10.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Text</id>
-    <coordinates>
-      <x>540</x>
-      <y>370</y>
-      <w>200</w>
-      <h>30</h>
-    </coordinates>
-    <panel_attributes>setTeamΝame(teamName)</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>760</x>
-      <y>280</y>
       <w>20</w>
-      <h>60</h>
+      <h>410</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -202,107 +125,31 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>760</x>
-      <y>240</y>
-      <w>30</w>
-      <h>60</h>
-    </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>210</x>
-      <y>360</y>
-      <w>310</w>
-      <h>30</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>290.0;10.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Text</id>
-    <coordinates>
-      <x>280</x>
+      <x>740</x>
       <y>340</y>
-      <w>170</w>
-      <h>30</h>
-    </coordinates>
-    <panel_attributes>Επιλογή ονόματος ομάδας</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>510</x>
-      <y>390</y>
-      <w>270</w>
-      <h>30</h>
+      <w>110</w>
+      <h>90</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>250.0;10.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>760</x>
-      <y>390</y>
-      <w>20</w>
-      <h>210</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>760</x>
-      <y>330</y>
-      <w>30</w>
-      <h>80</h>
-    </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+    <additional_attributes>10.0;70.0;90.0;70.0;90.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>550</x>
-      <y>260</y>
-      <w>190</w>
-      <h>30</h>
+      <x>840</x>
+      <y>310</y>
+      <w>250</w>
+      <h>70</h>
     </coordinates>
-    <panel_attributes>setTeamColors(userColors)</panel_attributes>
+    <panel_attributes>checkTeamDataAvailability(name,
+colors,sport,ages)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>770</x>
-      <y>400</y>
-      <w>100</w>
-      <h>60</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;40.0;80.0;40.0;80.0;10.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Text</id>
-    <coordinates>
-      <x>800</x>
-      <y>380</y>
-      <w>240</w>
-      <h>30</h>
-    </coordinates>
-    <panel_attributes>checkNameAvailabilty(teamName)</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>770</x>
-      <y>490</y>
+      <x>740</x>
+      <y>530</y>
       <w>200</w>
       <h>30</h>
     </coordinates>
@@ -312,8 +159,8 @@
   <element>
     <id>Text</id>
     <coordinates>
-      <x>820</x>
-      <y>470</y>
+      <x>790</x>
+      <y>510</y>
       <w>90</w>
       <h>30</h>
     </coordinates>
@@ -323,8 +170,8 @@
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>950</x>
-      <y>480</y>
+      <x>920</x>
+      <y>520</y>
       <w>100</w>
       <h>30</h>
     </coordinates>
@@ -334,19 +181,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>210</x>
-      <y>550</y>
-      <w>310</w>
-      <h>30</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>290.0;10.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>510</x>
-      <y>560</y>
+      <x>480</x>
+      <y>630</y>
       <w>270</w>
       <h>30</h>
     </coordinates>
@@ -356,8 +192,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>990</x>
-      <y>500</y>
+      <x>960</x>
+      <y>540</y>
       <w>30</w>
       <h>240</h>
     </coordinates>
@@ -367,8 +203,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>770</x>
-      <y>570</y>
+      <x>740</x>
+      <y>650</y>
       <w>420</w>
       <h>30</h>
     </coordinates>
@@ -378,8 +214,8 @@
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1110</x>
-      <y>520</y>
+      <x>1080</x>
+      <y>580</y>
       <w>130</w>
       <h>30</h>
     </coordinates>
@@ -389,41 +225,19 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>200</x>
+      <x>170</x>
+      <y>720</y>
+      <w>30</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>470</x>
       <y>660</y>
-      <w>30</w>
-      <h>80</h>
-    </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>500</x>
-      <y>590</y>
-      <w>30</w>
-      <h>80</h>
-    </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>760</x>
-      <y>590</y>
-      <w>30</w>
-      <h>80</h>
-    </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>1170</x>
-      <y>540</y>
       <w>30</w>
       <h>50</h>
     </coordinates>
@@ -431,12 +245,23 @@
     <additional_attributes>10.0;10.0;10.0;30.0</additional_attributes>
   </element>
   <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1140</x>
+      <y>600</y>
+      <w>30</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1170</x>
-      <y>570</y>
+      <x>1140</x>
+      <y>650</y>
       <w>20</w>
-      <h>160</h>
+      <h>80</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -444,19 +269,8 @@
   <element>
     <id>Text</id>
     <coordinates>
-      <x>270</x>
-      <y>530</y>
-      <w>170</w>
-      <h>30</h>
-    </coordinates>
-    <panel_attributes>Επιλογή παικτών</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Text</id>
-    <coordinates>
-      <x>550</x>
-      <y>540</y>
+      <x>520</x>
+      <y>600</y>
       <w>180</w>
       <h>30</h>
     </coordinates>
@@ -466,12 +280,59 @@
   <element>
     <id>Text</id>
     <coordinates>
-      <x>800</x>
-      <y>550</y>
+      <x>760</x>
+      <y>620</y>
       <w>200</w>
       <h>30</h>
     </coordinates>
     <panel_attributes>searchPlayer(playerName)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>480</x>
+      <y>300</y>
+      <w>270</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>250.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>500</x>
+      <y>250</y>
+      <w>240</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>setTeamData(name,colors,sport
+,ages)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>180</x>
+      <y>610</y>
+      <w>310</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>290.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>240</x>
+      <y>170</y>
+      <w>210</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Εισαγωγή ονόματος ομάδας,
+χρώματα, άθλημα, 
+ηλικιακή κατηγορία</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>
