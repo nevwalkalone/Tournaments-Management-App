@@ -67,7 +67,7 @@
 
 #### [ΠΧ6. Αποδοχή αιτήματος ομάδας](uc6-accept-team-invite.md)
 
-#### [ΠΧ7. Δήλωση ενδιαφέροντος για ομάδα](uc7-show-interest-for-a-team.md)
+#### [ΠΧ7. Διαχείριση διαθεσιμότητας](uc7-show-interest-for-a-team.md)
 
 #### [ΠΧ8. Δήλωση συμμετοχής σε διοργάνωση](uc8-join-tournament.md)
 
