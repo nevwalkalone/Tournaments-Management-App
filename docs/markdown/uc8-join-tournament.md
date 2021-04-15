@@ -71,3 +71,4 @@
 
 ![Διάγραμμα δραστηριοτήτων σενάριο χρήσης 8Α](uml/requirements/uc8_sequence.png)
 
+
