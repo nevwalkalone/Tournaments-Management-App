@@ -4,19 +4,26 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>585</x>
-      <y>63</y>
-      <w>270</w>
-      <h>126</h>
+      <x>540</x>
+      <y>0</y>
+      <w>324</w>
+      <h>216</h>
     </coordinates>
-    <panel_attributes>Χρήστης
+    <panel_attributes>User
 --
-- όνομα : String
-- επώνυμο : String
-- ημερομηνίαΓέννησης : java.util.Date
+- name : String
+- surname : String
+- birthDate : java.util.Date
 - email : String
-- δεδομέναEισόδου : Credentials
-- τηλέφωνο: Int
+- credentials : Credentials
+- phoneNumber : Int
+--
++ signUp() : void
++ login() : void
++ logout() : void
++ deleteAccount() : void
++ editAccount() : void
++ searchTournaments() : ArrayList&lt;Tournament&gt;
 
 </panel_attributes>
     <additional_attributes/>
@@ -25,7 +32,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>990</x>
-      <y>99</y>
+      <y>144</y>
       <w>153</w>
       <h>63</h>
     </coordinates>
@@ -40,15 +47,22 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>198</x>
-      <y>306</y>
-      <w>216</w>
-      <h>63</h>
+      <x>117</x>
+      <y>423</y>
+      <w>279</w>
+      <h>162</h>
     </coordinates>
-    <panel_attributes>Διοργανωτής
+    <panel_attributes>Organizer
 --
-- τίτλοςΔιοργανωτή : String
-- τύποςΑθλήματος: Άθλημα
+- title : String
+- sportType : Sport
+--
++ createTournament() : void
++ deleteTournamnt(Tournament tour) : void
++ createRounds(Tournament tour) : void
++ setDates(Tournamtent tour) : void
++ editTournamentData(Tournament tour) : void
++ uploadResults(Tournament tour) : void
 
 
 </panel_attributes>
@@ -57,18 +71,31 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>999</x>
-      <y>297</y>
-      <w>261</w>
-      <h>81</h>
+      <x>1080</x>
+      <y>414</y>
+      <w>351</w>
+      <h>279</h>
     </coordinates>
-    <panel_attributes>Παίκτης
+    <panel_attributes>Player
 --
-- αριθμόςΣυμμετοχών : Int
-- ανοιχτόςΣεΑιτήματα : Boolean
-- αγαπημέναΑθλήματα : Άθλημα [ ]
-- περιοχή : String
-
+- appearances : Int
+- availability : Boolean
+- favoriteGames : Sport [ ]
+- location : String
+- teamsJoined : Team [ ]
+- teamsCreated : Team [ ]
+- isCaptain : Boolean
+--
++ setAvailability(Boolean avail) : void
++ manageRequests(Team team, Boolean choice) : void
++ leaveTeam(Team team) : void
++ createTeam() : void
++ deleteTeam(Team team) : void
++ manageTeam(Team team) : void
++ searchPlayers() : ArrayList&lt;Player&gt;
++ invitePlayer(Player player, Team team) : void
++ joinTournament(Tournament tour, Team team) : void
++ leaveTournament(Tournament tour, Team team) : void
 
 
 
@@ -78,20 +105,23 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>189</x>
-      <y>531</y>
-      <w>225</w>
-      <h>135</h>
+      <x>108</x>
+      <y>747</y>
+      <w>342</w>
+      <h>180</h>
     </coordinates>
-    <panel_attributes>Διοργάνωση
+    <panel_attributes>Tournament
 --
-- τίτλοςΔιοργάνωσης : String
-- τύποςΑθλήματος: Άθλημα
-- κατηγορία : ΗλικιακήΚατηγορία
-- περιοχή : String
-- αριθμός Ομάδων: Int
-- αριθμός Γυρών : Int
-- περιγραφή : String 
+- title : String
+- sportType: Sport
+- ageDivision : AgeDivision
+- location : String
+- maxTeamsNumber: Int
+- teams : Team [ ]
+- roundsNumber : Int
+- description : String
+--
++ manageRequests(Team team, Boolean accept) : void
 
 
 </panel_attributes>
@@ -101,12 +131,12 @@
     <id>UMLClass</id>
     <coordinates>
       <x>1170</x>
-      <y>81</y>
+      <y>126</y>
       <w>144</w>
       <h>117</h>
     </coordinates>
     <panel_attributes>&lt;&lt;enumeration&gt;&gt;
-ΗλικακήΚατηγορία
+AgeDivision
 --
 ΠΑΜΠΑΙΔΙΚΟ
 ΠΑΙΔΙΚΟ
@@ -121,19 +151,19 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1026</x>
-      <y>549</y>
+      <x>1080</x>
+      <y>792</y>
       <w>252</w>
       <h>126</h>
     </coordinates>
-    <panel_attributes>Ομάδα
+    <panel_attributes>Team
 --
-- όνομα : String
-- χρώματα : String
-- τύποςΑθλήματος: Άθλημα
-- κατηγορία : ΗλικιακήΚατηγορία
-- αριθμόςΠαικτών : Int
-- αντιπρόσωπος : Παίκτης
+- name : String
+- colors : String
+- sportType: Sport
+- ageDivision : AgeDivision
+- playersNumber : Int
+- captain : Player
 
 
 
@@ -143,30 +173,30 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>315</x>
-      <y>180</y>
-      <w>405</w>
-      <h>144</h>
+      <x>234</x>
+      <y>207</y>
+      <w>459</w>
+      <h>234</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>430.0;10.0;10.0;140.0</additional_attributes>
+    <additional_attributes>490.0;10.0;10.0;240.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>720</x>
-      <y>180</y>
-      <w>378</w>
-      <h>135</h>
+      <x>693</x>
+      <y>207</y>
+      <w>441</w>
+      <h>225</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;400.0;130.0</additional_attributes>
+    <additional_attributes>10.0;10.0;470.0;230.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>270</x>
-      <y>360</y>
+      <x>189</x>
+      <y>576</y>
       <w>90</w>
       <h>189</h>
     </coordinates>
@@ -179,29 +209,29 @@ m2=1
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1107</x>
-      <y>369</y>
+      <x>1161</x>
+      <y>684</y>
       <w>81</w>
-      <h>198</h>
+      <h>126</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=0..*
 m2=   1..*
 συμμετέχει </panel_attributes>
-    <additional_attributes>10.0;200.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;120.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>585</x>
-      <y>675</y>
+      <y>909</y>
       <w>252</w>
       <h>63</h>
     </coordinates>
-    <panel_attributes>Συμμετοχή
+    <panel_attributes>Participation
 --
-- ημερομηνίαΈναρξης : java.util.Date
-- ημερομηνίαΛήξης : java.util.Date
+- startDate : java.util.Date
+- finishDate : java.util.Date
 
 </panel_attributes>
     <additional_attributes/>
@@ -209,51 +239,51 @@ m2=   1..*
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>405</x>
-      <y>594</y>
-      <w>639</w>
-      <h>45</h>
+      <x>441</x>
+      <y>819</y>
+      <w>657</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=0..*
 m2=0..*
 συμμετέχει</panel_attributes>
-    <additional_attributes>10.0;20.0;690.0;20.0</additional_attributes>
+    <additional_attributes>10.0;10.0;710.0;40.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>153</x>
-      <y>792</y>
+      <x>72</x>
+      <y>1017</y>
       <w>252</w>
       <h>99</h>
     </coordinates>
-    <panel_attributes>Γύρος
+    <panel_attributes>Round
 --
-- αριθμόςΟμάδων : Int
-- σύνολοΑγώνων : Int
-- ημερομηνίαΈναρξης : java.util.Date
-- ημερομηνίαΛήξης : java.util.Date</panel_attributes>
+- teamsNumber : Int
+- gamesNumber : Int
+- startDate : java.util.Date
+- finishDate : java.util.Date</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1026</x>
-      <y>783</y>
+      <x>1080</x>
+      <y>999</y>
       <w>216</w>
       <h>153</h>
     </coordinates>
-    <panel_attributes>Αγώνας
+    <panel_attributes>Game
 --
-- γήπεδο : String
-- ημερομηνία : java.util.Date
-- ώρα : java.util.Time
-- αποτέλεσμα : String
-- ομάδαΑ : Ομάδα
-- ομάδαΒ : Ομάδα
-- σκορΑ : Int
-- σκορΒ : Int
+- arena : String
+- date : java.util.Date
+- time : java.util.Time
+- result : String
+- teamA : Team
+- teamB : Team
+- scoreA : Int
+- scoreB : Int
 
 
 
@@ -264,30 +294,30 @@ m2=0..*
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1125</x>
-      <y>666</y>
+      <x>1179</x>
+      <y>909</y>
       <w>81</w>
-      <h>135</h>
+      <h>108</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=0..*
 m2=2
 συμμετέχει</panel_attributes>
-    <additional_attributes>10.0;130.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;100.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>585</x>
-      <y>288</y>
+      <x>594</x>
+      <y>405</y>
       <w>243</w>
       <h>81</h>
     </coordinates>
-    <panel_attributes>Άθλημα
+    <panel_attributes>Sport
 --
-- όνομα : String
-- ελάχιστοιΠαίκτες : Int
-- διάρκειαΑγώνα : java.util.Time
+- name : String
+- minimumPlayers : Int
+- gameDuration : java.util.Time
 
 
 
@@ -298,37 +328,37 @@ m2=2
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>396</x>
-      <y>819</y>
-      <w>648</w>
+      <x>315</x>
+      <y>1044</y>
+      <w>783</w>
       <h>45</h>
     </coordinates>
     <panel_attributes>περιλαμβάνει
 m1=1
 m2=1..*
 </panel_attributes>
-    <additional_attributes>10.0;20.0;700.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;850.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>270</x>
-      <y>657</y>
+      <x>189</x>
+      <y>918</y>
       <w>90</w>
-      <h>153</h>
+      <h>117</h>
     </coordinates>
     <panel_attributes>m1=0..n
 m2=1
 περιλαμβάει</panel_attributes>
-    <additional_attributes>10.0;150.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;110.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>693</x>
-      <y>360</y>
-      <w>360</w>
-      <h>207</h>
+      <x>702</x>
+      <y>477</y>
+      <w>396</w>
+      <h>333</h>
     </coordinates>
     <panel_attributes>   αφορά
 m1=       1
@@ -339,59 +369,59 @@ m2=
 
                                      0..*
 </panel_attributes>
-    <additional_attributes>10.0;10.0;380.0;210.0</additional_attributes>
+    <additional_attributes>10.0;10.0;420.0;350.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>405</x>
-      <y>360</y>
-      <w>306</w>
-      <h>207</h>
+      <x>441</x>
+      <y>477</y>
+      <w>279</w>
+      <h>306</h>
     </coordinates>
     <panel_attributes>αφορά
 m1=0..*
 m2=  1
 </panel_attributes>
-    <additional_attributes>10.0;210.0;320.0;10.0</additional_attributes>
+    <additional_attributes>10.0;320.0;290.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>405</x>
-      <y>315</y>
-      <w>198</w>
+      <x>387</x>
+      <y>432</y>
+      <w>225</w>
       <h>45</h>
     </coordinates>
     <panel_attributes>αφορά
 m1=1
 m2=0..*
 </panel_attributes>
-    <additional_attributes>200.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>230.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>819</x>
-      <y>315</y>
-      <w>198</w>
+      <x>828</x>
+      <y>432</y>
+      <w>270</w>
       <h>45</h>
     </coordinates>
     <panel_attributes>αφορά
 m1=0..*
 m2=0..*
 </panel_attributes>
-    <additional_attributes>10.0;20.0;200.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;280.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>702</x>
-      <y>603</y>
+      <y>828</y>
       <w>27</w>
-      <h>90</h>
+      <h>99</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
   </element>
 </diagram>
