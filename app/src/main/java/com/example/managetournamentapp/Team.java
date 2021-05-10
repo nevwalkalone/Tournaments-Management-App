@@ -75,4 +75,16 @@ public class Team {
                 ", playersNumber=" + playersNumber +
                 '}';
     }
+
+
+    public boolean equals(Object other){
+        boolean equal = false;
+        if ( other instanceof Team ){
+            Team otherTeam = (Team) other;
+            if ( name.equals(otherTeam.name) && sportType.equals(otherTeam.sportType) )
+                equal = true;
+        }
+        return equal;
+    }
+
 }

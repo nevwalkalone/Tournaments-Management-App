@@ -28,6 +28,30 @@ public class Player {
         this.favoriteSports = favoriteSports;
     }
 
+    public void addJoinedTeam(Team team){
+        teamsJoined.add(team);
+    }
+
+    public void removeJoinedTeam(Team team){
+        teamsJoined.remove(team);
+    }
+
+    public void addCreatedTeam(Team team){
+        teamsCreated.add(team);
+    }
+
+    public void removeCreatedTeam(Team team){
+        teamsCreated.remove(team);
+    }
+
+    public void addFavoriteSport(Sport sport){
+        favoriteSports.add(sport);
+    }
+
+    public void removeFavoriteSport(Sport sport){
+        favoriteSports.remove(sport);
+    }
+
 
     public int getAppearances() {
         return appearances;

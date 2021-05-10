@@ -22,6 +22,12 @@ public class Game {
         this.time = time;
     }
 
+    public Team getWinner(){
+        if (scoreA>scoreB)
+            return teamA;
+        return teamB;
+    }
+
     public String getArea() {
         return area;
     }

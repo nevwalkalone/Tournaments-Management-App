@@ -32,4 +32,17 @@ public class Credentials {
                 ", password='" + password + '\'' +
                 '}';
     }
+
+
+    public boolean equals(Object other){
+        boolean equal = false;
+        if ( other instanceof Credentials ){
+            Credentials otherCred = (Credentials) other;
+            if ( username.equals(otherCred.username) && password.equals(otherCred.password) )
+                equal = true;
+        }
+        return equal;
+    }
+
+
 }

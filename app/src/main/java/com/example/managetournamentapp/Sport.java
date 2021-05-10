@@ -44,4 +44,16 @@ public class Sport {
                 ", gameDuration=" + gameDuration +
                 '}';
     }
+
+
+    public boolean equals(Object other){
+        boolean equal = false;
+        if ( other instanceof Sport ){
+            Sport otherSport = (Sport) other;
+            if ( name.equals(otherSport.name) )
+                equal = true;
+        }
+        return equal;
+    }
+
 }

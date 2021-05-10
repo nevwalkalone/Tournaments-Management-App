@@ -21,6 +21,14 @@ public class Tournament {
         this.ageDivision = ageDivision;
     }
 
+    public void addTeam(Team team){
+        teams.add(team);
+    }
+
+    public void removeTeam(Team team){
+        teams.remove(team);
+    }
+
     public String getTitle() {
         return title;
     }
