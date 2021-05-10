@@ -144,7 +144,7 @@ Actors |  Περιγραφή
 
 ## Μοντέλο πεδίου
 
-![Μοντέλο πεδίου](uml/requirements/domain_model_diagram.png)
+![Μοντέλο πεδίου](uml/requirements/class_diagram.png)
 
 
 

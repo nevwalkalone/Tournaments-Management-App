@@ -4,7 +4,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>540</x>
+      <x>468</x>
       <y>0</y>
       <w>324</w>
       <h>216</h>
@@ -16,7 +16,7 @@
 - birthDate : java.util.Date
 - email : String
 - credentials : Credentials
-- phoneNumber : Int
+- phoneNumber : String
 --
 + signUp() : void
 + login() : void
@@ -31,7 +31,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>990</x>
+      <x>918</x>
       <y>144</y>
       <w>153</w>
       <h>63</h>
@@ -47,7 +47,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>117</x>
+      <x>45</x>
       <y>423</y>
       <w>279</w>
       <h>162</h>
@@ -71,7 +71,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1080</x>
+      <x>1008</x>
       <y>414</y>
       <w>351</w>
       <h>279</h>
@@ -80,10 +80,10 @@
 --
 - appearances : Int
 - availability : Boolean
-- favoriteGames : Sport [ ]
+- favoriteSports : ArrayList&lt;Sport&gt;
 - location : String
-- teamsJoined : Team [ ]
-- teamsCreated : Team [ ]
+- teamsJoined : ArrayList&lt;Team&gt;
+- teamsCreated : ArrayList&lt;Team&gt; 
 - isCaptain : Boolean
 --
 + setAvailability(Boolean avail) : void
@@ -105,7 +105,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>108</x>
+      <x>36</x>
       <y>747</y>
       <w>342</w>
       <h>180</h>
@@ -117,7 +117,7 @@
 - ageDivision : AgeDivision
 - location : String
 - maxTeamsNumber: Int
-- teams : Team [ ]
+- teams : ArrayList&lt;Team&gt; s
 - roundsNumber : Int
 - description : String
 --
@@ -130,7 +130,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1170</x>
+      <x>1098</x>
       <y>126</y>
       <w>144</w>
       <h>117</h>
@@ -151,7 +151,7 @@ AgeDivision
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1080</x>
+      <x>1008</x>
       <y>792</y>
       <w>252</w>
       <h>126</h>
@@ -173,7 +173,7 @@ AgeDivision
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>234</x>
+      <x>162</x>
       <y>207</y>
       <w>459</w>
       <h>234</h>
@@ -184,7 +184,7 @@ AgeDivision
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>693</x>
+      <x>621</x>
       <y>207</y>
       <w>441</w>
       <h>225</h>
@@ -195,7 +195,7 @@ AgeDivision
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>189</x>
+      <x>117</x>
       <y>576</y>
       <w>90</w>
       <h>189</h>
@@ -209,7 +209,7 @@ m2=1
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1161</x>
+      <x>1089</x>
       <y>684</y>
       <w>81</w>
       <h>126</h>
@@ -223,7 +223,7 @@ m2=   1..*
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>585</x>
+      <x>513</x>
       <y>909</y>
       <w>252</w>
       <h>63</h>
@@ -239,7 +239,7 @@ m2=   1..*
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>441</x>
+      <x>369</x>
       <y>819</y>
       <w>657</w>
       <h>63</h>
@@ -253,7 +253,7 @@ m2=0..*
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>72</x>
+      <x>0</x>
       <y>1017</y>
       <w>252</w>
       <h>99</h>
@@ -269,7 +269,7 @@ m2=0..*
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1080</x>
+      <x>1008</x>
       <y>999</y>
       <w>216</w>
       <h>153</h>
@@ -294,7 +294,7 @@ m2=0..*
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1179</x>
+      <x>1107</x>
       <y>909</y>
       <w>81</w>
       <h>108</h>
@@ -308,7 +308,7 @@ m2=2
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>594</x>
+      <x>522</x>
       <y>405</y>
       <w>243</w>
       <h>81</h>
@@ -328,7 +328,7 @@ m2=2
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>315</x>
+      <x>243</x>
       <y>1044</y>
       <w>783</w>
       <h>45</h>
@@ -342,7 +342,7 @@ m2=1..*
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>189</x>
+      <x>117</x>
       <y>918</y>
       <w>90</w>
       <h>117</h>
@@ -355,7 +355,7 @@ m2=1
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>702</x>
+      <x>630</x>
       <y>477</y>
       <w>396</w>
       <h>333</h>
@@ -374,7 +374,7 @@ m2=
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>441</x>
+      <x>369</x>
       <y>477</y>
       <w>279</w>
       <h>306</h>
@@ -388,7 +388,7 @@ m2=  1
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>387</x>
+      <x>315</x>
       <y>432</y>
       <w>225</w>
       <h>45</h>
@@ -402,7 +402,7 @@ m2=0..*
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>828</x>
+      <x>756</x>
       <y>432</y>
       <w>270</w>
       <h>45</h>
@@ -416,7 +416,7 @@ m2=0..*
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>702</x>
+      <x>630</x>
       <y>828</y>
       <w>27</w>
       <h>99</h>
