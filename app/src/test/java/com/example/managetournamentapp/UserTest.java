@@ -11,18 +11,20 @@ import static org.junit.Assert.*;
 public class UserTest {
     Date date = new Date();
     Credentials cred = new Credentials("jeo", "4567");
-
+    private User user;
     @Before
     public void setUp() throws Exception {
 
-        User user = new User("jeo", "jiou", "697", "hh", date, cred);
+         user = new User("jeo", "jiou", "697", "hh", date, cred);
     }
 
     @Test
     public void testgetter(){
 
-        Assert.assertEquals(user.getPassword(),user.getLoginData().getPassword());
-        Assert.assertEquals(user.getUsername(),user.getLoginData().getUsername());
+        User user2 = new User("jeo", "jiou", "697", "hh", date, cred);
+
+        Assert.assertEquals(user.getSurname(), user2.getSurname());
+
 
 
 
