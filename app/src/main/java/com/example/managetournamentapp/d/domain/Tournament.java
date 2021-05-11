@@ -1,8 +1,4 @@
-package com.example.managetournamentapp.domain;
-
-import com.example.managetournamentapp.domain.AgeDivision;
-import com.example.managetournamentapp.domain.Sport;
-import com.example.managetournamentapp.domain.Team;
+package com.example.managetournamentapp.d.domain;
 
 import java.util.ArrayList;
 

@@ -1,7 +1,6 @@
-package com.example.managetournamentapp.domain;
+package com.example.managetournamentapp.d.domain;
 
-import com.example.managetournamentapp.domain.Team;
-
+import java.time.LocalDate;
 import java.util.*;
 import java.time.LocalDateTime;
 
@@ -10,10 +9,10 @@ public class Game {
     private String area, result;
     private int scoreA, scoreB;
     private Team teamA, teamB;
-    private Date date;
+    private LocalDate date;
     private LocalDateTime time;
 
-    public Game(String area, String result, int scoreA, int scoreB, Team teamA, Team teamB, Date date, LocalDateTime time) {
+    public Game(String area, String result, int scoreA, int scoreB, Team teamA, Team teamB, LocalDate date, LocalDateTime time) {
         this.area = area;
         this.result = result;
         this.scoreA = scoreA;
@@ -78,11 +77,11 @@ public class Game {
         this.teamB = teamB;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
