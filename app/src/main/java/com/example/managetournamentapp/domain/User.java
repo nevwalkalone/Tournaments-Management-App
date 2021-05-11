@@ -1,4 +1,7 @@
-package com.example.managetournamentapp;
+package com.example.managetournamentapp.domain;
+
+import com.example.managetournamentapp.domain.Credentials;
+import com.example.managetournamentapp.domain.Tournament;
 
 import java.util.*;
 

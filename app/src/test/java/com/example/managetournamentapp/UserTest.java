@@ -1,12 +1,13 @@
 package com.example.managetournamentapp;
 
+import com.example.managetournamentapp.domain.Credentials;
+import com.example.managetournamentapp.domain.User;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Date;
-
-import static org.junit.Assert.*;
 
 public class UserTest {
     Date date = new Date();
