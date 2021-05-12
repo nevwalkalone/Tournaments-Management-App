@@ -1,6 +1,6 @@
 package com.example.managetournamentapp.domain;
 
-public class Organizer {
+public class Organizer extends User{
 
     private String title, sportType;
 

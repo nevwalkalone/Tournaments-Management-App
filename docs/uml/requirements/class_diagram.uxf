@@ -1,4 +1,15 @@
-<diagram program="umletino" version="14.3.0"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>520</x><y>0</y><w>360</w><h>320</h></coordinates><panel_attributes>User
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>590</x>
+      <y>40</y>
+      <w>360</w>
+      <h>320</h>
+    </coordinates>
+    <panel_attributes>User
 --
 - name : String
 - surname : String
@@ -21,30 +32,62 @@
 + setCredentials(Credentials credentials) : void
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1020</x><y>160</y><w>170</w><h>70</h></coordinates><panel_attributes>Credentials
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1000</x>
+      <y>160</y>
+      <w>310</w>
+      <h>220</h>
+    </coordinates>
+    <panel_attributes>Credentials
 --
 - username : String
 - password : String
+--
++ getUsername(): String
++ setUsername(String username) : void
++ getPassword() : String
++ setPassword(String password) : void
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>50</x><y>470</y><w>310</w><h>240</h></coordinates><panel_attributes>Organizer
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>70</x>
+      <y>510</y>
+      <w>370</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>Organizer
 --
 - title : String
-- sportType : Sport
 - createdTournaments : ArrayList&lt;Tournament&gt;
 --
 + getTitle() : String
-+ getSportType() : Sport
 + getCreatedTournaments() : ArrayList &lt;Tournament&gt;
 + addTournament(Tournament tour) : void
 + deleteTournament(Tournament tour) : void
-+ createRounds(Tournament tour) : void
-+ deleteRounds(Tournament tour) : void
-+ setDates(Tournamtent tour) : void
-+ editTournamentData(Tournament tour) : void
-+ uploadResults(Tournament tour) : void
++ setTitle(String title): void
 
-
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1120</x><y>460</y><w>390</w><h>310</h></coordinates><panel_attributes>Player
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1190</x>
+      <y>500</y>
+      <w>390</w>
+      <h>320</h>
+    </coordinates>
+    <panel_attributes>Player
 --
 - appearances : Int
 - availability : Boolean
@@ -67,7 +110,18 @@
 
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>40</x><y>840</y><w>380</w><h>440</h></coordinates><panel_attributes>Tournament
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>110</x>
+      <y>880</y>
+      <w>380</w>
+      <h>470</h>
+    </coordinates>
+    <panel_attributes>Tournament
 --
 - title : String
 - sportType: Sport
@@ -94,10 +148,22 @@
 + addRounds(Round round) : void
 + removeRounds(Round round) : void
 + getTeams() : ArrayList&lt;Team&gt;
-+ setTeams(ArrayList&lt;Team&gt; teams) : void
++ addTeam(Team team) : void
++ removeTeam(Team team) : void
 + manageRequests(Team team, Boolean accept) : void
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1220</x><y>140</y><w>160</w><h>130</h></coordinates><panel_attributes>&lt;&lt;enumeration&gt;&gt;
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1320</x>
+      <y>0</y>
+      <w>160</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;enumeration&gt;&gt;
 AgeDivision
 --
 ΠΑΜΠΑΙΔΙΚΟ
@@ -107,7 +173,18 @@ AgeDivision
 ΕΝΗΛΙΚΩΝ
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1120</x><y>880</y><w>280</w><h>390</h></coordinates><panel_attributes>Team
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1190</x>
+      <y>920</y>
+      <w>330</w>
+      <h>420</h>
+    </coordinates>
+    <panel_attributes>Team
 --
 - name : String
 - colors : String
@@ -138,21 +215,109 @@ AgeDivision
 
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>180</x><y>310</y><w>510</w><h>180</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>490;10;10;160</additional_attributes></element><element><id>Relation</id><coordinates><x>690</x><y>310</y><w>490</w><h>170</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;470;150</additional_attributes></element><element><id>Relation</id><coordinates><x>130</x><y>700</y><w>100</w><h>160</h></coordinates><panel_attributes>lt=-
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>200</x>
+      <y>350</y>
+      <w>560</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>540.0;10.0;10.0;160.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>760</x>
+      <y>350</y>
+      <w>490</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;470.0;150.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>200</x>
+      <y>680</y>
+      <w>100</w>
+      <h>220</h>
+    </coordinates>
+    <panel_attributes>lt=-
 m1=  0..*
 m2=1
-διοργανώνει </panel_attributes><additional_attributes>10;140;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1210</x><y>760</y><w>90</w><h>140</h></coordinates><panel_attributes>lt=-
+διοργανώνει </panel_attributes>
+    <additional_attributes>10.0;200.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1280</x>
+      <y>810</y>
+      <w>90</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=-
 m1=0..*
 m2=   1..*
-συμμετέχει </panel_attributes><additional_attributes>10;120;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>570</x><y>1010</y><w>280</w><h>80</h></coordinates><panel_attributes>Participation
+συμμετέχει </panel_attributes>
+    <additional_attributes>10.0;110.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>590</x>
+      <y>1050</y>
+      <w>340</w>
+      <h>240</h>
+    </coordinates>
+    <panel_attributes>Participation
 --
-- startDate : java.util.Date
-- finishDate : java.util.Date
+- startDate : LocalDate
+- finishDate : LocalDate
 - tournament : Tournament
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>410</x><y>930</y><w>730</w><h>50</h></coordinates><panel_attributes>lt=-
+- team : Team
+--
++ getTournament() : Tournament
++ getTeam() : Team
++ getStartDate() : LocalDate
++ getFinishDate() : LocalDate
++ setStartDate(LocalDate startDate) : void
++ setFinishDate(LocalDate finishDate) : void
++ setTournament(Tournament tournament) : void
++ setTeam(Team team) : void
+        
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>480</x>
+      <y>970</y>
+      <w>730</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=-
 m1=0..*
 m2=0..*
-συμμετέχει</panel_attributes><additional_attributes>10;20;710;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>1430</y><w>280</w><h>280</h></coordinates><panel_attributes>Round
+συμμετέχει</panel_attributes>
+    <additional_attributes>10.0;20.0;710.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>70</x>
+      <y>1470</y>
+      <w>350</w>
+      <h>310</h>
+    </coordinates>
+    <panel_attributes>Round
 --
 - teamsNumber : Int
 - games : ArrayList &lt;Game&gt;
@@ -171,21 +336,31 @@ m2=0..*
 + setFinishDate(Date finishDate) : void
 + setRanking(Team team, int rank) : void
 + getRankings() : Map&lt;Team, int&gt;
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1120</x><y>1410</y><w>240</w><h>400</h></coordinates><panel_attributes>Game
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1190</x>
+      <y>1450</y>
+      <w>270</w>
+      <h>430</h>
+    </coordinates>
+    <panel_attributes>Game
 --
 - arena : String
 - date : java.util.Date
 - time : java.util.Time
-- result : String
 - teamA : Team
 - teamB : Team
 - scoreA : Int
 - scoreB : Int
 --
-+ getArea() : String
-+ setArea(String area) : void
++ findResult : int
++ getArena() : String
++ setArena(String area) : void
 + getResult() : String
-+ setResult(String result) : void
 + getScoreA() : int
 + setScoreA(int scoreA) : void
 + getScoreB() : int
@@ -195,16 +370,38 @@ m2=0..*
 + getTeamB() : Team
 + setTeamB(Team teamB) : void
 + getDate() : Date
-+ setDate(Date date) : void
++ setDate(LocalDate date) : void
 + getTime() : LocalDateTime 
 + setTime(LocalDateTime time) : void
 
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1230</x><y>1260</y><w>90</w><h>170</h></coordinates><panel_attributes>lt=-
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1300</x>
+      <y>1330</y>
+      <w>90</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>lt=-
 m1=0..*
 m2=2
-συμμετέχει</panel_attributes><additional_attributes>10;150;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>580</x><y>450</y><w>270</w><h>130</h></coordinates><panel_attributes>Sport
+συμμετέχει</panel_attributes>
+    <additional_attributes>10.0;120.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>660</x>
+      <y>620</y>
+      <w>270</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>Sport
 --
 - name : String
 - minimumPlayers : Int
@@ -218,12 +415,45 @@ m2=2
 
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>270</x><y>1460</y><w>870</w><h>50</h></coordinates><panel_attributes>περιλαμβάνει
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>410</x>
+      <y>1500</y>
+      <w>800</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>περιλαμβάνει
 m1=1
 m2=1..*
-</panel_attributes><additional_attributes>10;20;850;20</additional_attributes></element><element><id>Relation</id><coordinates><x>130</x><y>1270</y><w>90</w><h>180</h></coordinates><panel_attributes>m1=0..n
+</panel_attributes>
+    <additional_attributes>10.0;20.0;780.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>200</x>
+      <y>1340</y>
+      <w>100</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>m1=0..*
 m2=1
-περιλαμβάει</panel_attributes><additional_attributes>10;160;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>770</x><y>570</y><w>370</w><h>330</h></coordinates><panel_attributes>   αφορά
+περιλαμβάει</panel_attributes>
+    <additional_attributes>10.0;130.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>850</x>
+      <y>740</y>
+      <w>360</w>
+      <h>200</h>
+    </coordinates>
+    <panel_attributes>   αφορά
 m1=       1
 m2=
 
@@ -231,13 +461,46 @@ m2=
 
 
                                      0..*
-</panel_attributes><additional_attributes>10;10;350;310</additional_attributes></element><element><id>Relation</id><coordinates><x>410</x><y>570</y><w>190</w><h>290</h></coordinates><panel_attributes>αφορά
+</panel_attributes>
+    <additional_attributes>10.0;10.0;340.0;180.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>480</x>
+      <y>740</y>
+      <w>200</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>αφορά
 m1=0..*
 m2=  1
-</panel_attributes><additional_attributes>10;270;170;10</additional_attributes></element><element><id>Relation</id><coordinates><x>350</x><y>480</y><w>250</w><h>50</h></coordinates><panel_attributes>αφορά
-m1=1
-m2=0..*
-</panel_attributes><additional_attributes>230;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>840</x><y>480</y><w>300</w><h>50</h></coordinates><panel_attributes>αφορά
+</panel_attributes>
+    <additional_attributes>10.0;140.0;180.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>920</x>
+      <y>530</y>
+      <w>290</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>αφορά
 m1=0..*
 m2=0..*
-</panel_attributes><additional_attributes>10;20;280;20</additional_attributes></element><element><id>Relation</id><coordinates><x>700</x><y>940</y><w>30</w><h>90</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;70</additional_attributes></element></diagram>
+</panel_attributes>
+    <additional_attributes>10.0;140.0;270.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>770</x>
+      <y>980</y>
+      <w>30</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+</diagram>

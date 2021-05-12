@@ -1,31 +1,54 @@
 package com.example.managetournamentapp.domain;
 
+import java.time.LocalDate;
 import java.util.*;
 
 public class Participation {
-    private Date startDate, finishDate;
+    private LocalDate startDate, finishDate;
+    private Tournament tournament;
+    private Team team;
 
-    public Participation(Date startDate, Date finishDate) {
+
+
+    public Participation(LocalDate startDate, LocalDate finishDate) {
         this.startDate = startDate;
         this.finishDate = finishDate;
     }
 
-    public Date getStartDate() {
+
+    public Tournament getTournament() {
+        return tournament;
+    }
+
+
+    public Team getTeam() {
+        return team;
+    }
+
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
-    }
-
-    public Date getFinishDate() {
+    public LocalDate getFinishDate() {
         return finishDate;
     }
 
-    public void setFinishDate(Date finishDate) {
+
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
+    }
+
+    public void setFinishDate(LocalDate finishDate) {
         this.finishDate = finishDate;
     }
 
+    public void setTournament(Tournament tournament) {
+        this.tournament = tournament;
+    }
+
+    public void setTeam(Team team) {
+        this.team = team;
+    }
     @Override
     public String toString() {
         return "Participation{" +

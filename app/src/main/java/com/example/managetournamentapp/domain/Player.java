@@ -2,7 +2,7 @@ package com.example.managetournamentapp.domain;
 
 import java.util.ArrayList;
 
-public class Player {
+public class Player extends User {
 
     private int appearances;
     private String location;
@@ -11,6 +11,7 @@ public class Player {
     private ArrayList<Team> teamsJoined, teamsCreated;
 
     public Player(int appearances, String location, boolean availability, boolean isCaptain, ArrayList<Sport> favoriteSports, ArrayList<Team> teamsJoined, ArrayList<Team> teamsCreated) {
+        super();
         this.appearances = appearances;
         this.location = location;
         this.availability = availability;
@@ -21,6 +22,7 @@ public class Player {
     }
 
     public Player(int appearances, String location, boolean availability, boolean isCaptain, ArrayList<Sport> favoriteSports) {
+        super();
         this.appearances = appearances;
         this.location = location;
         this.availability = availability;

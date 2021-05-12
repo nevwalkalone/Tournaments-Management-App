@@ -6,15 +6,15 @@ import java.time.LocalDateTime;
 
 public class Game {
 
-    private String area, result;
+    private String arena;
     private int scoreA, scoreB;
     private Team teamA, teamB;
     private LocalDate date;
     private LocalDateTime time;
 
-    public Game(String area, String result, int scoreA, int scoreB, Team teamA, Team teamB, LocalDate date, LocalDateTime time) {
-        this.area = area;
-        this.result = result;
+
+    public Game(String arena, Team teamA, Team teamB, LocalDate date, LocalDateTime time) {
+        this.arena = arena;
         this.scoreA = scoreA;
         this.scoreB = scoreB;
         this.teamA = teamA;
@@ -23,27 +23,27 @@ public class Game {
         this.time = time;
     }
 
-    public Team getWinner(){
-        if (scoreA>scoreB)
-            return teamA;
-        return teamB;
+    //constructor initialized before the tournament starts
+    public Game(LocalDate date, LocalDateTime time) {
+        this.date = date;
+        this.time = time;
     }
 
-    public String getArea() {
-        return area;
+    public int findResult(){
+        return Integer.compare(scoreA, scoreB);
     }
 
-    public void setArea(String area) {
-        this.area = area;
+
+    public String getArena() {
+        return arena;
     }
 
-    public String getResult() {
-        return result;
+    public void setArena(String area) {
+        this.arena = area;
     }
 
-    public void setResult(String result) {
-        this.result = result;
-    }
+
+
 
     public int getScoreA() {
         return scoreA;
@@ -96,8 +96,8 @@ public class Game {
     @Override
     public String toString() {
         return "Game{" +
-                "area='" + area + '\'' +
-                ", result='" + result + '\'' +
+                "area='" + arena + '\'' +
+                ", result='" + '\'' +
                 ", scoreA=" + scoreA +
                 ", scoreB=" + scoreB +
                 ", teamA=" + teamA +
