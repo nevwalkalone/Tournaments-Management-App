@@ -13,7 +13,9 @@ public class Game {
     private LocalDateTime time;
     private boolean isFinished;
 
+    public Game(){
 
+    }
     public Game(String arena, Team teamA, Team teamB, LocalDate date, LocalDateTime time) {
         this.arena = arena;
         this.teamA = teamA;
