@@ -1,11 +1,14 @@
 package com.example.managetournamentapp.domain;
 
+import java.util.ArrayList;
+
 public class Team {
     private String name,colors;
     private Sport sportType;
     private AgeDivision ageDivision;
     private Player captain;
     private int playersNumber;
+    private ArrayList<Participation> participations = new ArrayList<>();
 
     public Team(String name, String colors, Sport sportType, AgeDivision ageDivision, Player captain, int playersNumber) {
         this.name = name;
@@ -63,6 +66,28 @@ public class Team {
     public void setPlayersNumber(int playersNumber) {
         this.playersNumber = playersNumber;
     }
+
+    public void addParticipation(Participation participation){
+
+    }
+
+    public void removeParticipation(Participation participation){
+
+    }
+
+    public ArrayList<Participation> getParticipations(){
+        return participations;
+    }
+
+    public ArrayList<Participation> getRunningParticipations(){
+        ArrayList<Participation> runningParticipations = new ArrayList<>();
+        for (Participation p: participations){
+            if (! p.isPast())
+                runningParticipations.add(p);
+        }
+        return  runningParticipations;
+    }
+
 
     @Override
     public String toString() {

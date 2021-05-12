@@ -116,6 +116,32 @@ public class Player extends User {
 
     }
 
+    public boolean canJoin(Team team){
+        if (team == null)
+            return false;
+        if ( !favoriteSports.contains(team.getSportType()) )
+            return false;
+        ////if age!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        for (Participation teamPart : team.getRunningParticipations()){
+            for (Participation playerPart : getRunningParticipations()){
+                if (teamPart.isSimultaneous(playerPart))
+                    return false;
+            }
+        }
+        return true;
+    }
+
+
+    public ArrayList<Participation> getRunningParticipations(){
+        ArrayList<Participation> runningParticipations = new ArrayList<>();
+        for (Team team : teamsJoined){
+            runningParticipations.addAll( team.getParticipations() );
+        }
+        return runningParticipations;
+    }
+
+
+
     public void leaveTeam(Team team) {
 
     }

@@ -33,6 +33,9 @@ public class Participation {
         return finishDate;
     }
 
+    public boolean isPast(){
+        return finishDate.isBefore(LocalDate.now()) ;
+    }
 
     public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
@@ -49,6 +52,17 @@ public class Participation {
     public void setTeam(Team team) {
         this.team = team;
     }
+
+    public boolean isSimultaneous(Participation other){
+        if (other == null)
+            return false;
+
+        if ( startDate.equals(other.startDate) && tournament.equals(other.tournament) )
+            return true;
+
+        return  false;
+    }
+
     @Override
     public String toString() {
         return "Participation{" +
