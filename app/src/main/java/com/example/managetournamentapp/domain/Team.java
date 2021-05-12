@@ -1,4 +1,4 @@
-package com.example.managetournamentapp.d.domain;
+package com.example.managetournamentapp.domain;
 
 public class Team {
     private String name,colors;

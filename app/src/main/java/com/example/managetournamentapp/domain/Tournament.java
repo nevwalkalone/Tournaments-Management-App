@@ -1,4 +1,4 @@
-package com.example.managetournamentapp.d.domain;
+package com.example.managetournamentapp.domain;
 
 import java.util.ArrayList;
 

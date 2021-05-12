@@ -1,9 +1,7 @@
-package com.example.managetournamentapp.d.domain;
+package com.example.managetournamentapp.domain;
 
-import com.example.managetournamentapp.d.domain.Credentials;
-import com.example.managetournamentapp.d.domain.Tournament;
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
 
 public class User {
 
