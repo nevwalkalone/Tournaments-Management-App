@@ -5,12 +5,25 @@ public class Round {
 
     private int teamsNumber, gamesNumber;
     private Date startDate, finishDate;
+    private ArrayList<Game> games = new ArrayList<>();
+
 
     public Round(int teamsNumber, int gamesNumber, Date startDate, Date finishDate) {
-        this.teamsNumber = teamsNumber;
-        this.gamesNumber = gamesNumber;
-        this.startDate = startDate;
-        this.finishDate = finishDate;
+        setTeamsNumber(teamsNumber);
+        setGamesNumber(gamesNumber);
+        setStartDate(startDate);
+        setFinishDate(finishDate);
+    }
+
+    public ArrayList<Game> getGames() {
+        return games;
+    }
+
+    public void addGame(Game game) {
+        games.add(game);
+    }
+    public void removeGame(Game game){
+        games.remove(game);
     }
 
     public int getTeamsNumber() {

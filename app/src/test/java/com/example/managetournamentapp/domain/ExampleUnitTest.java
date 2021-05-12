@@ -1,4 +1,4 @@
-package com.example.managetournamentapp;
+package com.example.managetournamentapp.domain;
 
 import org.junit.Test;
 

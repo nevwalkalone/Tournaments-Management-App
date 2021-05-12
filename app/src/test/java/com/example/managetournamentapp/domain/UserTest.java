@@ -1,7 +1,7 @@
-package com.example.managetournamentapp;
+package com.example.managetournamentapp.domain;
 
-import com.example.managetournamentapp.d.domain.Credentials;
-import com.example.managetournamentapp.d.domain.User;
+import com.example.managetournamentapp.domain.Credentials;
+import com.example.managetournamentapp.domain.User;
 
 import org.junit.Assert;
 import org.junit.Before;
