@@ -1,10 +1,13 @@
 package com.example.managetournamentapp.domain;
 
-public class Organizer extends User{
+import java.util.Date;
+
+public class Organizer extends User {
 
     private String title, sportType;
 
-    public Organizer(String title, String sportType) {
+    public Organizer(String name, String surname, String phoneNumber, String email, Date birthDate, Credentials credentials, String title, String sportType) {
+        super(name, surname, phoneNumber, email, birthDate, credentials);
         this.title = title;
         this.sportType = sportType;
     }
@@ -26,27 +29,27 @@ public class Organizer extends User{
     }
 
 
-    public void createTournament(){
+    public void createTournament() {
 
     }
 
-    public void deleteTournament(Tournament tour){
+    public void deleteTournament(Tournament tour) {
 
     }
 
-    public void createRounds(Tournament tour){
+    public void createRounds(Tournament tour) {
 
     }
 
-    public void setDates(Tournament tour){
+    public void setDates(Tournament tour) {
 
     }
 
-    public void editTournamentData(Tournament tour){
+    public void editTournamentData(Tournament tour) {
 
     }
 
-    public void uploadResults(Tournament tour){
+    public void uploadResults(Tournament tour) {
 
     }
 

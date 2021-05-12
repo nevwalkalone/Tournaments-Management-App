@@ -1,6 +1,7 @@
 package com.example.managetournamentapp.domain;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Player extends User {
 
@@ -10,8 +11,8 @@ public class Player extends User {
     private ArrayList<Sport> favoriteSports;
     private ArrayList<Team> teamsJoined, teamsCreated;
 
-    public Player(int appearances, String location, boolean availability, boolean isCaptain, ArrayList<Sport> favoriteSports, ArrayList<Team> teamsJoined, ArrayList<Team> teamsCreated) {
-        super();
+    public Player(String name, String surname, String phoneNumber, String email, Date birthDate, Credentials credentials, int appearances, String location, boolean availability, boolean isCaptain, ArrayList<Sport> favoriteSports, ArrayList<Team> teamsJoined, ArrayList<Team> teamsCreated) {
+        super(name, surname, phoneNumber, email, birthDate, credentials);
         this.appearances = appearances;
         this.location = location;
         this.availability = availability;
@@ -21,8 +22,8 @@ public class Player extends User {
         this.teamsCreated = teamsCreated;
     }
 
-    public Player(int appearances, String location, boolean availability, boolean isCaptain, ArrayList<Sport> favoriteSports) {
-        super();
+    public Player(String name, String surname, String phoneNumber, String email, Date birthDate, Credentials credentials, int appearances, String location, boolean availability, boolean isCaptain, ArrayList<Sport> favoriteSports) {
+        super(name, surname, phoneNumber, email, birthDate, credentials);
         this.appearances = appearances;
         this.location = location;
         this.availability = availability;
@@ -30,27 +31,27 @@ public class Player extends User {
         this.favoriteSports = favoriteSports;
     }
 
-    public void addJoinedTeam(Team team){
+    public void addJoinedTeam(Team team) {
         teamsJoined.add(team);
     }
 
-    public void removeJoinedTeam(Team team){
+    public void removeJoinedTeam(Team team) {
         teamsJoined.remove(team);
     }
 
-    public void addCreatedTeam(Team team){
+    public void addCreatedTeam(Team team) {
         teamsCreated.add(team);
     }
 
-    public void removeCreatedTeam(Team team){
+    public void removeCreatedTeam(Team team) {
         teamsCreated.remove(team);
     }
 
-    public void addFavoriteSport(Sport sport){
+    public void addFavoriteSport(Sport sport) {
         favoriteSports.add(sport);
     }
 
-    public void removeFavoriteSport(Sport sport){
+    public void removeFavoriteSport(Sport sport) {
         favoriteSports.remove(sport);
     }
 
@@ -111,37 +112,39 @@ public class Player extends User {
         this.teamsCreated = teamsCreated;
     }
 
-    public void manageRequests(Team team, boolean choice){
+    public void manageRequests(Team team, boolean choice) {
 
     }
 
-    public void leaveTeam(Team team){
-
-    }
-    public void createTeam(){
+    public void leaveTeam(Team team) {
 
     }
 
-    public void deleteTeam(Team team){
-
-    }
-    public void manageTeam(Team team){
+    public void createTeam() {
 
     }
 
-    public ArrayList<Player> searchPlayers(){
+    public void deleteTeam(Team team) {
+
+    }
+
+    public void manageTeam(Team team) {
+
+    }
+
+    public ArrayList<Player> searchPlayers() {
         return null;
     }
 
-    public void invitePlayer(Player player, Team team){
+    public void invitePlayer(Player player, Team team) {
 
     }
 
-    public void joinTournament(Tournament tour, Team team){
+    public void joinTournament(Tournament tour, Team team) {
 
     }
 
-    public void leaveTournament(Tournament tour, Team team){
+    public void leaveTournament(Tournament tour, Team team) {
 
     }
 

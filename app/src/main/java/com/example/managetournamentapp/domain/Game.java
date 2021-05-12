@@ -11,25 +11,26 @@ public class Game {
     private Team teamA, teamB;
     private LocalDate date;
     private LocalDateTime time;
+    private boolean isFinished;
 
 
     public Game(String arena, Team teamA, Team teamB, LocalDate date, LocalDateTime time) {
         this.arena = arena;
-        this.scoreA = scoreA;
-        this.scoreB = scoreB;
         this.teamA = teamA;
         this.teamB = teamB;
         this.date = date;
         this.time = time;
+        isFinished = false;
     }
 
     //constructor initialized before the tournament starts
     public Game(LocalDate date, LocalDateTime time) {
         this.date = date;
         this.time = time;
+        isFinished = false;
     }
 
-    public int findResult(){
+    public int findResult() {
         return Integer.compare(scoreA, scoreB);
     }
 
@@ -43,7 +44,13 @@ public class Game {
     }
 
 
+    public boolean isFinished() {
+        return isFinished;
+    }
 
+    public void setFinished(boolean finished) {
+        isFinished = finished;
+    }
 
     public int getScoreA() {
         return scoreA;
