@@ -9,7 +9,7 @@ public class Group {
     private int groupSize;
     private int gamesNumber;
     private ArrayList<Game> games = new ArrayList<>();
-    private Map <Team, Integer> ranking = new HashMap();
+    private Map <Team, Integer> rankings = new HashMap();
 
     public Group(boolean isKnockout) {
         this.isKnockout =isKnockout;
@@ -28,42 +28,44 @@ public class Group {
         if (team == null){
             return;
         }
-        if (ranking.keySet().size()==groupSize){
+        if (rankings.keySet().size()==groupSize){
             return;
         }
-        if ( ranking.containsKey(team) )
+        if ( rankings.containsKey(team) )
             return;
-        ranking.put(team, 0);
+        rankings.put(team, 0);
     }
 
     public void removeTeam(Team team){
         if (team == null){
             return;
         }
-        if ( !ranking.containsKey(team) ) {
+        if ( !rankings.containsKey(team) ) {
             return;
         }
-        ranking.remove(team);
+        rankings.remove(team);
     }
+
+
 
     public int getTeamRanking(Team team){
         if (team == null){
             return -1;
         }
-        if ( !ranking.containsKey(team) ) {
+        if ( !rankings.containsKey(team) ) {
             return -1;
         }
-        return ranking.get(team);
+        return rankings.get(team);
     }
 
     public void setTeamRanking(Team team , int rank){
         if (team == null || rank<0 ){
             return ;
         }
-        if ( !ranking.containsKey(team) ) {
+        if ( !rankings.containsKey(team) ) {
             return ;
         }
-        ranking.put(team, rank);
+        rankings.put(team, rank);
     }
 
 
@@ -100,11 +102,8 @@ public class Group {
         games.remove(game);
     }
 
-    public Map<Team, Integer> getRanking() {
-        return ranking;
+    public Map<Team, Integer> getRankings() {
+        return rankings;
     }
 
-    public void setRanking(Map<Team, Integer> ranking) {
-        this.ranking = ranking;
-    }
 }
