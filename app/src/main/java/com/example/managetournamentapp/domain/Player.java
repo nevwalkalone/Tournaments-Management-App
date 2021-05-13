@@ -186,4 +186,7 @@ public class Player extends User {
                 ", teamsCreated=" + teamsCreated +
                 '}';
     }
+    public static void main (String[] args){
+        System.out.println("gamw");
+    }
 }

@@ -34,6 +34,7 @@ public class Participation {
     }
 
     public boolean isPast(){
+
         return finishDate.isBefore(LocalDate.now()) ;
     }
 

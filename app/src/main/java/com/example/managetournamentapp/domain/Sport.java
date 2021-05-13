@@ -39,7 +39,6 @@ public class Sport {
             case "Volleyball3v3":
             case "Basketball3v3":
                 if (minimumPlayers == 6){
-                    this.minimumPlayers =6;
                     return true;
                 }
             case "Basketball2v2":
