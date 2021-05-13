@@ -16,7 +16,6 @@ public class Group {
     private ArrayList<Game> games = new ArrayList<>();
     private Map<Team, Integer> rankings = new HashMap<>();
 
-    //TODO CHECK BASKET OR FOOTBALL!!!
 
     public Group(boolean isKnockout) {
         this.isKnockout = isKnockout;
@@ -24,7 +23,7 @@ public class Group {
             groupSize = 2;
             gamesNumber = 1;
         } else {
-            //TODO IF PERITOS ARITHMOS
+            //TODO IF PERITTOS ARITHMOS
             groupSize = 4;
             gamesNumber = 6;
         }
@@ -105,7 +104,10 @@ public class Group {
         }
         if (!games.contains(game))
             return;
-        //TODO CHECK IF GAME IS FINISHED!!!!
+
+        if (game.isFinished())
+            return;
+
         games.remove(game);
     }
 
@@ -122,7 +124,7 @@ public class Group {
         return gamesNumber >= counter;
     }
 
-    // TODO CHANGE NAME FOR THIS METHOD!!!
+
     // function to sort hashmap by values
     public static Map<Team, Integer> sortByValue(Map<Team, Integer> hm) {
         // Create a list from elements of HashMap
