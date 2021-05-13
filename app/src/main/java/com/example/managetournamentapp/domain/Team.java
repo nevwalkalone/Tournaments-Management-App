@@ -3,7 +3,7 @@ package com.example.managetournamentapp.domain;
 import java.util.ArrayList;
 
 public class Team {
-    private String name,colors;
+    private String name, colors;
     private Sport sportType;
     private AgeDivision ageDivision;
     private Player captain;
@@ -67,25 +67,25 @@ public class Team {
         this.playersNumber = playersNumber;
     }
 
-    public void addParticipation(Participation participation){
+    public void addParticipation(Participation participation) {
 
     }
 
-    public void removeParticipation(Participation participation){
+    public void removeParticipation(Participation participation) {
 
     }
 
-    public ArrayList<Participation> getParticipations(){
+    public ArrayList<Participation> getParticipations() {
         return participations;
     }
 
-    public ArrayList<Participation> getRunningParticipations(){
+    public ArrayList<Participation> getRunningParticipations() {
         ArrayList<Participation> runningParticipations = new ArrayList<>();
-        for (Participation p: participations){
-            if (! p.isPast())
+        for (Participation p : participations) {
+            if (!p.isPast())
                 runningParticipations.add(p);
         }
-        return  runningParticipations;
+        return runningParticipations;
     }
 
 
@@ -102,11 +102,11 @@ public class Team {
     }
 
 
-    public boolean equals(Object other){
+    public boolean equals(Object other) {
         boolean equal = false;
-        if ( other instanceof Team ){
+        if (other instanceof Team) {
             Team otherTeam = (Team) other;
-            if ( name.equals(otherTeam.name) && sportType.equals(otherTeam.sportType) )
+            if (name.equals(otherTeam.name) && sportType.equals(otherTeam.sportType))
                 equal = true;
         }
         return equal;

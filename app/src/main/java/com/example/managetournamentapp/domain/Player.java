@@ -121,7 +121,7 @@ public class Player extends User {
             return false;
         if (!sportsInterested.contains(team.getSportType()))
             return false;
-        //TODO if age!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
         for (Participation teamPart : team.getRunningParticipations()) {
             for (Participation playerPart : getRunningParticipations()) {
                 if (teamPart.isSimultaneous(playerPart))
