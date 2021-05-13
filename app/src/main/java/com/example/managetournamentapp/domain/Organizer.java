@@ -1,11 +1,12 @@
 package com.example.managetournamentapp.domain;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Organizer extends User {
 
     private String title, sportType;
-
+    private ArrayList<Tournament> tournaments = new ArrayList<>();
     public Organizer(String name, String surname, String phoneNumber, String email, Date birthDate, Credentials credentials, String title, String sportType) {
         super(name, surname, phoneNumber, email, birthDate, credentials);
         this.title = title;

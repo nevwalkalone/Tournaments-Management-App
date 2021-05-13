@@ -5,8 +5,12 @@ public class Round {
 
     private int teamsNumber, gamesNumber;
     private Date startDate, finishDate;
-    private ArrayList<Game> games = new ArrayList<>();
+    private ArrayList<Group> groups = new ArrayList<>();
 
+
+    public Round(){
+
+    }
 
     public Round(int teamsNumber, int gamesNumber, Date startDate, Date finishDate) {
         setTeamsNumber(teamsNumber);
@@ -15,15 +19,16 @@ public class Round {
         setFinishDate(finishDate);
     }
 
-    public ArrayList<Game> getGames() {
-        return games;
+    public ArrayList<Group> getGroups() {
+        return groups;
     }
 
-    public void addGame(Game game) {
-        games.add(game);
+    public void addGroup(Group group) {
+       groups.add(group);
     }
-    public void removeGame(Game game){
-        games.remove(game);
+
+    public void removeGame(Group group){
+        groups.remove(group);
     }
 
     public int getTeamsNumber() {

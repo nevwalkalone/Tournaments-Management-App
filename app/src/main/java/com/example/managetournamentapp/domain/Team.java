@@ -5,18 +5,35 @@ import java.util.ArrayList;
 public class Team {
     private String name, colors;
     private Sport sportType;
+    private boolean isOccupied = false;
     private AgeDivision ageDivision;
     private Player captain;
-    private int playersNumber;
+    private  ArrayList<Player> players = new ArrayList<>();
     private ArrayList<Participation> participations = new ArrayList<>();
+
+    public Team(){
+
+    }
 
     public Team(String name, String colors, Sport sportType, AgeDivision ageDivision, Player captain, int playersNumber) {
         this.name = name;
-        this.colors = colors;
         this.sportType = sportType;
         this.ageDivision = ageDivision;
         this.captain = captain;
-        this.playersNumber = playersNumber;
+        //add captain to the team
+        this.players.add(captain);
+    }
+
+    public ArrayList<Player> getPlayers() {
+        return players;
+    }
+
+    public void setPlayers(ArrayList<Player> players) {
+        this.players = players;
+    }
+
+    public void setParticipations(ArrayList<Participation> participations) {
+        this.participations = participations;
     }
 
     public String getName() {
@@ -59,20 +76,84 @@ public class Team {
         this.captain = captain;
     }
 
-    public int getPlayersNumber() {
-        return playersNumber;
+
+    public void addPlayer(Player player) {
+        if (player == null){
+            return;
+        }
+        //TODO check if team is occupied
+        if (isOccupied){
+            return;
+        }
+        if (players.contains(player)){
+            return;
+        }
+
+        if (player.canJoin(this)){
+            //if (getCaptain().equals(player)){
+               // captainInTeams.add(team);
+           // }
+            //add player to the team
+            players.add(player);
+
+            //add team to the player
+            player.addJoinedTeam(this);
+
+        }
+
+
+
     }
 
-    public void setPlayersNumber(int playersNumber) {
-        this.playersNumber = playersNumber;
-    }
 
     public void addParticipation(Participation participation) {
+        if (participation == null){
+            return;
+        }
+        if (participations.contains(participation)){
+            return;
+        }
 
+        if (canParticipate(participation)){
+            participations.add(participation);
+        }
     }
 
     public void removeParticipation(Participation participation) {
 
+    }
+
+
+    public boolean canParticipate(Participation participation) {
+        Tournament tournToJoin = participation.getTournament();
+
+        if (!getAgeDivision().equals(tournToJoin.getAgeDivision())) {
+
+            return false;
+        }
+
+        if (!tournToJoin.getSportType().equals(sportType)) {
+            return false;
+        }
+
+        if (tournToJoin.isFull()){
+            return false;
+        }
+
+        if (players.size() < ( sportType.getMinimumPlayers()/2)){
+            return false;
+        }
+
+        for (Player player : players){
+            for (Participation playerPart : player.getRunningParticipations()) {
+                if (playerPart.isSimultaneous(participation)){
+                    return false;
+                }
+            }
+        }
+
+
+        return true;
     }
 
     public ArrayList<Participation> getParticipations() {
@@ -97,12 +178,13 @@ public class Team {
                 ", sportType=" + sportType +
                 ", ageDivision=" + ageDivision +
                 ", captain=" + captain +
-                ", playersNumber=" + playersNumber +
+                ", playersNumber=" +
                 '}';
     }
 
 
     public boolean equals(Object other) {
+
         boolean equal = false;
         if (other instanceof Team) {
             Team otherTeam = (Team) other;

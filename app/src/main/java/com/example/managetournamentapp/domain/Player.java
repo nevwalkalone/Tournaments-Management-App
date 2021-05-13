@@ -3,49 +3,52 @@ package com.example.managetournamentapp.domain;
 import java.util.ArrayList;
 import java.util.Date;
 
+import javax.crypto.spec.PSource;
+
 public class Player extends User {
 
-    private int appearances;
     private String location;
-    private boolean availability, isCaptain;
-    private ArrayList<Sport> sportsInterested;
-    private ArrayList<Team> teamsJoined, teamsCreated;
+    private ArrayList<Sport> sportsInterested = new ArrayList<>();
 
-    public Player(String name, String surname, String phoneNumber, String email, Date birthDate, Credentials credentials, int appearances, String location, boolean availability, boolean isCaptain, ArrayList<Sport> sportsInterested, ArrayList<Team> teamsJoined, ArrayList<Team> teamsCreated) {
-        super(name, surname, phoneNumber, email, birthDate, credentials);
-        this.appearances = appearances;
-        this.location = location;
-        this.availability = availability;
-        this.isCaptain = isCaptain;
-        this.sportsInterested = sportsInterested;
-        this.teamsJoined = teamsJoined;
-        this.teamsCreated = teamsCreated;
+    //teams that I participate as or as a captain
+    private ArrayList<Team> teamsJoined = new ArrayList<>();
+
+    //teams that the player is a captain
+    private ArrayList<Team> captainInTeams = new ArrayList<>();
+
+
+    public Player(){
+
     }
 
-    public Player(String name, String surname, String phoneNumber, String email, Date birthDate, Credentials credentials, int appearances, String location, boolean availability, boolean isCaptain, ArrayList<Sport> sportsInterested) {
+    public Player(String name, String surname, String phoneNumber, String email, Date birthDate, Credentials credentials) {
         super(name, surname, phoneNumber, email, birthDate, credentials);
-        this.appearances = appearances;
-        this.location = location;
-        this.availability = availability;
-        this.isCaptain = isCaptain;
-        this.sportsInterested = sportsInterested;
     }
+
+
 
     public void addJoinedTeam(Team team) {
+
+        if (team == null){
+            return;
+        }
+
+        /*if (teamsJoined.contains(team)){
+            return;
+        }*/
+
+        if (team.getCaptain().equals(this)){
+            captainInTeams.add(team);
+        }
         teamsJoined.add(team);
+
     }
 
     public void removeJoinedTeam(Team team) {
+        LocalDate.now() < tournament.startDat
         teamsJoined.remove(team);
     }
 
-    public void addCreatedTeam(Team team) {
-        teamsCreated.add(team);
-    }
-
-    public void removeCreatedTeam(Team team) {
-        teamsCreated.remove(team);
-    }
 
     public void addSportInterested(Sport sport) {
         sportsInterested.add(sport);
@@ -72,56 +75,31 @@ public class Player extends User {
         this.location = location;
     }
 
-    public boolean isAvailability() {
-        return availability;
-    }
-
-    public void setAvailability(boolean availability) {
-        this.availability = availability;
-    }
-
-    public boolean isCaptain() {
-        return isCaptain;
-    }
-
-    public void setCaptain(boolean captain) {
-        isCaptain = captain;
-    }
 
     public ArrayList<Sport> getSportsInterested() {
         return sportsInterested;
     }
 
-    public void setSportsInterested(ArrayList<Sport> sportsInterested) {
-        this.sportsInterested = sportsInterested;
-    }
 
     public ArrayList<Team> getTeamsJoined() {
         return teamsJoined;
     }
 
-    public void setTeamsJoined(ArrayList<Team> teamsJoined) {
-        this.teamsJoined = teamsJoined;
-    }
 
-    public ArrayList<Team> getTeamsCreated() {
-        return teamsCreated;
-    }
-
-    public void setTeamsCreated(ArrayList<Team> teamsCreated) {
-        this.teamsCreated = teamsCreated;
-    }
 
     public void manageRequests(Team team, boolean choice) {
 
     }
 
+
+    //TODO check player age
     public boolean canJoin(Team team) {
-        if (team == null)
-            return false;
+
         if (!sportsInterested.contains(team.getSportType()))
             return false;
 
+        //if player has joined this tournament
+        //with another team, he can't join
         for (Participation teamPart : team.getRunningParticipations()) {
             for (Participation playerPart : getRunningParticipations()) {
                 if (teamPart.isSimultaneous(playerPart))
@@ -131,11 +109,20 @@ public class Player extends User {
         return true;
     }
 
+    public boolean alreadyParticipates (Tournament tournament){
+        for (Participation playerPart : getRunningParticipations()) {
+            if (tournament.isSimultaneous(playerPart))
+                return false;
+        }
+        return true;
+    }
 
+
+    //all player's participations
     public ArrayList<Participation> getRunningParticipations() {
         ArrayList<Participation> runningParticipations = new ArrayList<>();
         for (Team team : teamsJoined) {
-            runningParticipations.addAll(team.getParticipations());
+            runningParticipations.addAll(team.getRunningParticipations());
         }
         return runningParticipations;
     }
@@ -176,16 +163,14 @@ public class Player extends User {
     @Override
     public String toString() {
         return "Player{" +
-                "appearances=" + appearances +
+                "appearances=" +
                 ", location='" + location + '\'' +
-                ", availability=" + availability +
-                ", isCaptain=" + isCaptain +
+                ", availability=" +
+                ", isCaptain=" +
                 ", sportsInterested=" + sportsInterested +
                 ", teamsJoined=" + teamsJoined +
-                ", teamsCreated=" + teamsCreated +
+                ", teamsCreated=" +
                 '}';
     }
-    public static void main (String[] args){
-        System.out.println("gamw");
-    }
+
 }

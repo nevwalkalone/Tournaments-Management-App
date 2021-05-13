@@ -8,17 +8,22 @@ import java.time.LocalDate;
 import java.util.*;
 
 public class Participation {
+
     private LocalDate startDate, finishDate;
     private Tournament tournament;
     private Team team;
 
 
+    public Participation(){
 
-    public Participation(LocalDate startDate, LocalDate finishDate) {
-        this.startDate = startDate;
-        this.finishDate = finishDate;
     }
 
+    public Participation(Tournament tournament, Team team) {
+            this.tournament = tournament;
+            this.team = team;
+            this.startDate = tournament.getStartDate();
+
+    }
 
     public Tournament getTournament() {
         return tournament;
@@ -38,9 +43,9 @@ public class Participation {
     }
 
 
-    public boolean isPast(){
+    public boolean isPast() {
 
-        return finishDate.isBefore(LocalDate.now()) ;
+        return finishDate.isBefore(LocalDate.now());
     }
 
     public void setStartDate(LocalDate startDate) {
@@ -59,14 +64,12 @@ public class Participation {
         this.team = team;
     }
 
-    public boolean isSimultaneous(Participation other){
+    public boolean isSimultaneous(Participation other) {
         if (other == null)
             return false;
 
-        if ( startDate.equals(other.startDate) && tournament.equals(other.tournament) )
-            return true;
+        return tournament.equals(other.tournament);
 
-        return  false;
     }
 
     @Override

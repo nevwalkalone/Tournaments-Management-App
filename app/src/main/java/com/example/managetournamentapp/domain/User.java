@@ -1,6 +1,5 @@
 package com.example.managetournamentapp.domain;
 
-import java.util.ArrayList;
 import java.util.Date;
 
 public class User {
@@ -8,6 +7,10 @@ public class User {
     private String name, surname, phoneNumber, email;
     private Date birthDate;
     private Credentials credentials;
+
+    public User(){
+
+    }
 
     public User(String name, String surname, String phoneNumber, String email, Date birthDate, Credentials credentials) {
         this.name = name;
@@ -66,30 +69,6 @@ public class User {
         this.credentials = credentials;
     }
 
-    public void signUp() {
-
-    }
-
-    public void login() {
-
-    }
-
-    public void logout() {
-
-    }
-
-    public void deleteAccount() {
-
-    }
-
-    public void editAccount() {
-
-    }
-
-    public ArrayList<Tournament> searchTournament() {
-        ArrayList<Tournament> tournaments = new ArrayList<>();
-        return tournaments;
-    }
 
     @Override
     public String toString() {

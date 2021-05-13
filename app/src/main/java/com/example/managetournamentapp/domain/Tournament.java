@@ -1,29 +1,46 @@
 package com.example.managetournamentapp.domain;
 
+import android.provider.Telephony;
+
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Tournament {
 
+    private final int MAXTEAMSNUMBER;
     private String title, location, description;
     private Sport sportType;
-    private int maxTeamsNumber, roundsNumber;
-    private ArrayList<Team> teams;
+    private ArrayList<Round> rounds = new ArrayList<>();
+    private ArrayList<Participation> participations;
     private AgeDivision ageDivision;
+    private LocalDate startDate;
 
-    public Tournament(String title, String location, String description, Sport sportType, int maxTeamsNumber, int roundsNumber, ArrayList<Team> teams, AgeDivision ageDivision) {
+    private LocalDate finishDate;
+
+    public Tournament(){
+        MAXTEAMSNUMBER = 32;
+    }
+
+    public Tournament(String title, String location, String description, Sport sportType, int maxTeamsNumber, AgeDivision ageDivision) {
         this.title = title;
         this.location = location;
         this.description = description;
         this.sportType = sportType;
-        this.maxTeamsNumber = maxTeamsNumber;
-        this.roundsNumber = roundsNumber;
-        this.teams = teams;
+        this.MAXTEAMSNUMBER = maxTeamsNumber;
         this.ageDivision = ageDivision;
     }
 
-    public void addTeam(Team team){
-        teams.add(team);
+    public void addParticipation(Participation participation){
+
+        participations.add(participation);
     }
+
+    //check if tournament is full of teams
+    public boolean isFull(){
+        return participations.size() == MAXTEAMSNUMBER;
+    }
+
+
 
     public void removeTeam(Team team){
         teams.remove(team);
@@ -69,13 +86,22 @@ public class Tournament {
         this.maxTeamsNumber = maxTeamsNumber;
     }
 
-    public int getRoundsNumber() {
-        return roundsNumber;
+    public LocalDate getStartDate() {
+        return startDate;
     }
 
-    public void setRoundsNumber(int roundsNumber) {
-        this.roundsNumber = roundsNumber;
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
     }
+
+    public LocalDate getFinishDate() {
+        return finishDate;
+    }
+
+    public void setFinishDate(LocalDate finishDate) {
+        this.finishDate = finishDate;
+    }
+
 
     public ArrayList<Team> getTeams() {
         return teams;
@@ -105,7 +131,7 @@ public class Tournament {
                 ", description='" + description + '\'' +
                 ", sportType=" + sportType +
                 ", maxTeamsNumber=" + maxTeamsNumber +
-                ", roundsNumber=" + roundsNumber +
+                ", roundsNumber=" +
                 ", teams=" + teams +
                 ", ageDivision=" + ageDivision +
                 '}';
