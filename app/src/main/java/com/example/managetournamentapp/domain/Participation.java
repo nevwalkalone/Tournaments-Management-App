@@ -42,7 +42,6 @@ public class Participation {
 
 
     public boolean isPast() {
-
         return finishDate.isBefore(LocalDate.now());
     }
 
@@ -78,7 +77,7 @@ public class Participation {
         return true;
     }
 
-    public boolean isCurrent() {
+    public boolean isRunning() {
         if (finishDate == null) {
             return startDate.isBefore(LocalDate.now());
         } else {

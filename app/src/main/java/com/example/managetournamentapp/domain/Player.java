@@ -211,7 +211,7 @@ public class Player extends User {
                 player.getTeamsJoined().remove(team);
             }
 
-            ArrayList<Participation> participations = team.getRunningParticipations();
+            ArrayList<Participation> participations = team.getUndoneParticipations();
             for (Participation part : participations){
 
                 Tournament tournament = part.getTournament();
@@ -287,14 +287,13 @@ public class Player extends User {
 
 
     //all player's participations
-    public ArrayList<Participation> getRunningParticipations() {
+    public ArrayList<Participation> getUndoneParticipations() {
         ArrayList<Participation> runningParticipations = new ArrayList<>();
         for (Team team : teamsJoined) {
-            runningParticipations.addAll(team.getRunningParticipations());
+            runningParticipations.addAll(team.getUndoneParticipations());
         }
         return runningParticipations;
     }
-
 
 
     @Override

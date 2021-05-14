@@ -1,5 +1,6 @@
 package com.example.managetournamentapp.domain;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -15,10 +16,12 @@ public class Group {
     private int gamesNumber;
     private ArrayList<Game> games = new ArrayList<>();
     private Map<Team, Integer> rankings = new HashMap<>();
+    private List<LocalDate> dates;
 
 
-    public Group(boolean isKnockout) {
+    public Group(boolean isKnockout ,List<LocalDate> dates ) {
         this.isKnockout = isKnockout;
+        this.dates = dates;
         if (isKnockout) {
             groupSize = 2;
             gamesNumber = 1;

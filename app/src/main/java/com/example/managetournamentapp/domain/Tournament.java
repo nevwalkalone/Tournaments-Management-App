@@ -2,6 +2,7 @@ package com.example.managetournamentapp.domain;
 
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class Tournament {
@@ -11,6 +12,7 @@ public class Tournament {
     private String title, location, description;
     private Sport sportType;
     private ArrayList<Round> rounds = new ArrayList<>();
+    private ArrayList<LocalDate> dates;
     private ArrayList<Participation> participations = new ArrayList<>();
     private AgeDivision ageDivision;
 
@@ -19,7 +21,7 @@ public class Tournament {
         MAX_TEAMS_NUMBER = 32;
     }
 
-    public Tournament(String title, LocalDate startDate, LocalDate finishDate, String location, Sport sportType, int maxTeamsNumber, AgeDivision ageDivision) {
+    public Tournament(String title, LocalDate startDate, LocalDate finishDate, String location, Sport sportType, int maxTeamsNumber, AgeDivision ageDivision , ArrayList<LocalDate> dates) {
         this.title = title;
         this.startDate = startDate;
         this.finishDate = finishDate;
@@ -27,12 +29,25 @@ public class Tournament {
         this.sportType = sportType;
         this.MAX_TEAMS_NUMBER = maxTeamsNumber;
         this.ageDivision = ageDivision;
+        initRounds(dates);
+    }
+
+    public void initRounds(ArrayList<LocalDate> dates ){      //TODO dates = 2*maxteams - 1
+        int teamsNumber = MAX_TEAMS_NUMBER;
+        int firstIndex = 0;
+        int lastIndex = MAX_TEAMS_NUMBER/4 * 6;
+        rounds.add( new Round(MAX_TEAMS_NUMBER, false, dates.subList(firstIndex,lastIndex) ));
+        for( int i=0 ; i < log2(MAX_TEAMS_NUMBER)-1; i++ ){
+            teamsNumber = teamsNumber/2;
+            firstIndex = lastIndex;
+            lastIndex = firstIndex+ teamsNumber/2;
+            rounds.add( new Round(teamsNumber, true, dates.subList(firstIndex,lastIndex) ));
+        }
     }
 
     public void addParticipation(Participation participation) {
         participations.add(participation);
     }
-
 
     public void removeParticipation(Participation participation) {
         participations.remove(participation);
@@ -142,4 +157,25 @@ public class Tournament {
                 ", ageDivision=" + ageDivision +
                 '}';
     }
+
+    public static int log2(int x){
+        return (int) ( Math.log(x) / Math.log(2)  );
+    }
+
+
+    public static void main(String[] args) {
+        int MAX_TEAMS_NUMBER = 32;
+        int teamsNumber = MAX_TEAMS_NUMBER;
+        int firstIndex = 0;
+        int lastIndex = MAX_TEAMS_NUMBER/4 * 6;
+        System.out.println(firstIndex + " " +lastIndex );
+        for( int i=0 ; i < log2(MAX_TEAMS_NUMBER)-1; i++ ){
+            teamsNumber = teamsNumber/2;
+            firstIndex = lastIndex;
+            lastIndex = firstIndex+ teamsNumber/2;
+            System.out.println(firstIndex + " " + lastIndex);
+        }
+
+    }
+
 }

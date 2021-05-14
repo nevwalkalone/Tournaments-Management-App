@@ -10,25 +10,22 @@ public class Game {
     private int scoreA, scoreB;
     private Team teamA, teamB;
     private LocalDate date;
-    private LocalDateTime time;
     private boolean isFinished;
 
     public Game(){
-
     }
+
     public Game(String arena, Team teamA, Team teamB, LocalDate date, LocalDateTime time) {
         this.arena = arena;
         this.teamA = teamA;
         this.teamB = teamB;
         this.date = date;
-        this.time = time;
         isFinished = false;
     }
 
     //constructor initialized before the tournament starts
-    public Game(LocalDate date, LocalDateTime time) {
+    public Game(LocalDate date) {
         this.date = date;
-        this.time = time;
         isFinished = false;
     }
 
@@ -99,14 +96,6 @@ public class Game {
         this.date = date;
     }
 
-    public LocalDateTime getTime() {
-        return time;
-    }
-
-    public void setTime(LocalDateTime time) {
-        this.time = time;
-    }
-
     @Override
     public String toString() {
         return "Game{" +
@@ -117,7 +106,6 @@ public class Game {
                 ", teamA=" + teamA +
                 ", teamB=" + teamB +
                 ", date=" + date +
-                ", time=" + time +
                 '}';
     }
 

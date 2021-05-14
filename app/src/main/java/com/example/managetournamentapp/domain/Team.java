@@ -55,31 +55,18 @@ public class Team {
     }
 
 
-
     //removes player from the team
     public boolean hasAnyActivePart(){
 
         //check if there is any running participation
-        boolean flag = false;
-        for (Participation part : participations){
-            if (!canLeaveTournament(part)){
-                flag = true;
-                break;
+        for (Participation participation : participations){
+            if (participation.isRunning()){
+                return true;
             }
         }
         //player can be successfully removed
         //because there is no active tournament
         //for his team
-        return flag;
-    }
-
-//TODO CHECK
-    public boolean hasAnyActivePart2(){
-        for (Participation participation : participations){
-            if (participation.isCurrent()){
-                return true;
-            }
-        }
         return false;
     }
 
@@ -102,24 +89,23 @@ public class Team {
     //we need the tournament to remove the appropriate participation
     //linked with the tournament
     public void removeParticipation(Participation participation) {
-        if (participation.isCurrent()){
+        if (!participation.isRunning()){
             //successfully left the tournament
             participations.remove(participation);
-
             //remove the specific participation from the tournament
             participation.getTournament().removeParticipation(participation);
         }
     }
 
-    private boolean canLeaveTournament(Participation participation){
-        LocalDate now = LocalDate.now();
-
-        if(participation.getTournament().getStartDate().compareTo(now)<0
-                && participation.getTournament().getFinishDate().compareTo(now)>0){
-            return false;
-        }
-        return true;
-    }
+//    private boolean canLeaveTournament(Participation participation){
+//        LocalDate now = LocalDate.now();
+//
+//        if(participation.getTournament().getStartDate().compareTo(now)<0
+//                && participation.getTournament().getFinishDate().compareTo(now)>0){
+//            return false;
+//        }
+//        return true;
+//    }
 
     //if all criterias are met, then this team
     //can join the specific tournament TODO CHECK
@@ -145,7 +131,7 @@ public class Team {
         //if there is a player that participates in the specific tournament
         //with another team, then this team can't join the tournament
         for (Player player : players){
-            for (Participation playerPart : player.getRunningParticipations()) {
+            for (Participation playerPart : player.getUndoneParticipations()) {
                 if (playerPart.inSameTournament(participation)){
                     return false;
                 }
@@ -169,7 +155,7 @@ public class Team {
         return participations;
     }
 
-    public ArrayList<Participation> getRunningParticipations() {
+    public ArrayList<Participation> getUndoneParticipations() {
         ArrayList<Participation> runningParticipations = new ArrayList<>();
         for (Participation p : participations) {
             if (!p.isPast())
@@ -202,7 +188,7 @@ public class Team {
         if (sportType == null){
             return;
         }
-        if (getRunningParticipations().isEmpty()){
+        if (getUndoneParticipations().isEmpty()){
             this.sportType = sportType;
         }
     }

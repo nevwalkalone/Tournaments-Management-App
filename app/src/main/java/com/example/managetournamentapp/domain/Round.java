@@ -1,22 +1,33 @@
 package com.example.managetournamentapp.domain;
 
+import java.time.LocalDate;
 import java.util.*;
 public class Round {
 
-    private int teamsNumber, gamesNumber;
-    private Date startDate, finishDate;
+    private int teamsNumber;
     private ArrayList<Group> groups = new ArrayList<>();
-
+    private boolean isKnockout;
+    private List<LocalDate> dates;
 
     public Round(){
-
     }
 
-    public Round(int teamsNumber, int gamesNumber, Date startDate, Date finishDate) {
+    public Round(int teamsNumber, boolean isKnockout , List<LocalDate> dates) {
         setTeamsNumber(teamsNumber);
-        setGamesNumber(gamesNumber);
-        setStartDate(startDate);
-        setFinishDate(finishDate);
+        this.isKnockout = isKnockout;
+        this.dates = dates;
+        initGroups();
+    }
+
+    public void initGroups(){
+        int teamsPerGroup = 4;
+        if (isKnockout){
+            teamsPerGroup = 2;
+        }
+        int groupMatches = teamsPerGroup/teamsNumber;
+        for (int i=0; i< groupMatches ; i++){
+            groups.add(new Group(isKnockout, dates.subList(i, i+groupMatches ) ));
+        }
     }
 
     public ArrayList<Group> getGroups() {
@@ -39,38 +50,11 @@ public class Round {
         this.teamsNumber = teamsNumber;
     }
 
-    public int getGamesNumber() {
-        return gamesNumber;
-    }
-
-    public void setGamesNumber(int gamesNumber) {
-        this.gamesNumber = gamesNumber;
-    }
-
-    public Date getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
-    }
-
-    public Date getFinishDate() {
-        return finishDate;
-    }
-
-    public void setFinishDate(Date finishDate) {
-        this.finishDate = finishDate;
-    }
-    
 
     @Override
     public String toString() {
         return "Round{" +
                 "teamsNumber=" + teamsNumber +
-                ", gamesNumber=" + gamesNumber +
-                ", startDate=" + startDate +
-                ", finishDate=" + finishDate +
                 '}';
     }
 }
