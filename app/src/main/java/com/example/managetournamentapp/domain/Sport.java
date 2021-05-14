@@ -4,21 +4,17 @@ package com.example.managetournamentapp.domain;
 public class Sport {
 
     private String name;
-    private int minimumPlayers, gameDuration;
+    private int minimumPlayers;
 
-    public Sport(String name, int minimumPlayers, int gameDuration) {
+    public Sport(String name, int minimumPlayers) {
         boolean flag = checkSportName(name);
         if (flag){
            flag = checkMinPlayers(minimumPlayers,name);
-        }
-        if (flag) {
-            flag = checkGameDuration(gameDuration,name);
         }
 
         if (flag){
             this.name = name;
             this.minimumPlayers = minimumPlayers;
-            this.gameDuration = gameDuration;
         }
         else{
             System.out.println("Wrong settings for the specific sport type selection.");
@@ -104,7 +100,6 @@ public class Sport {
         if (flag){
             this.name = name;
             this.minimumPlayers = minimumPlayers;
-            this.gameDuration = gameDuration;
         }
         else{
             System.out.println("Wrong settings for the specific sport type selection.");
@@ -124,9 +119,6 @@ public class Sport {
         return minimumPlayers;
     }
 
-    public int getGameDuration() {
-        return gameDuration;
-    }
 
     /**
      * Used for printing purposes
@@ -136,7 +128,6 @@ public class Sport {
         return "Sport{" +
                 "name='" + name + '\'' +
                 ", minimumPlayers=" + minimumPlayers +
-                ", gameDuration=" + gameDuration +
                 '}';
     }
 
@@ -162,10 +153,6 @@ public class Sport {
         }
 
         if (!(minimumPlayers == check.getMinimumPlayers())){
-            return false;
-        }
-
-        if (!(gameDuration == check.getGameDuration())) {
             return false;
         }
 

@@ -15,7 +15,7 @@ public class Game {
     public Game(){
     }
 
-    public Game(String arena, Team teamA, Team teamB, LocalDate date, LocalDateTime time) {
+    public Game(String arena, Team teamA, Team teamB, LocalDate date) {
         this.arena = arena;
         this.teamA = teamA;
         this.teamB = teamB;
@@ -30,11 +30,9 @@ public class Game {
     }
 
     public int findWinner() {
-
         if(!isFinished())
             return 2;       // random number ( different from Integer.compare method -1, 0, 1 ) 
                             // in order to handle the state of the game.
-
         return Integer.compare(scoreA, scoreB);
     }
 
@@ -53,6 +51,7 @@ public class Game {
     }
 
     public void setFinished(boolean finished) {
+//        if (scoreA)
         isFinished = finished;
     }
 
@@ -96,6 +95,32 @@ public class Game {
         this.date = date;
     }
 
+
+    public boolean equals(Object other) {
+        boolean equal = false;
+        if (other instanceof Game) {
+            Game otherGame = (Game) other;
+            if (teamA.equals(otherGame.teamA) && teamB.equals(otherGame.teamB) && scoreA==otherGame.scoreA
+                    && scoreB==otherGame.scoreB && arena.equals(otherGame.arena)
+                        && isFinished==otherGame.isFinished && date==otherGame.getDate() )
+                equal = true;
+        }
+        return equal;
+    }
+
+
+    @Override
+    public int hashCode() {
+        int result = arena != null ? arena.hashCode() : 0;
+        result = 31 * result + scoreA;
+        result = 31 * result + scoreB;
+        result = 31 * result + (teamA != null ? teamA.hashCode() : 0);
+        result = 31 * result + (teamB != null ? teamB.hashCode() : 0);
+        result = 31 * result + (date != null ? date.hashCode() : 0);
+        result = 31 * result + (isFinished ? 1 : 0);
+        return result;
+    }
+
     @Override
     public String toString() {
         return "Game{" +
@@ -109,9 +134,5 @@ public class Game {
                 '}';
     }
 
-    public static void main(String[] args) {
-        int a = 5;
-        int b = 2;
-        System.out.println(Integer.compare(b,a));
-    }
+
 }
