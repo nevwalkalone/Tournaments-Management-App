@@ -1,6 +1,5 @@
 package com.example.managetournamentapp.domain;
 
-import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.temporal.ChronoUnit;
@@ -63,6 +62,9 @@ public class Player extends User {
     //team constructor
     public void addJoinedTeam(Team team) {
         teamsJoined.add(team);
+        if (team.getCaptain().equals(this)){
+            captainInTeams.add(team);
+        }
 
     }
 
@@ -155,7 +157,7 @@ public class Player extends User {
         }
         //tsekarei sthn ousia ola
         //ta running participations
-        if(!team.hassAnyActivePart()){
+        if(!team.hasAnyActivePart()){
             this.teamsJoined.remove(team);
             this.captainInTeams.remove(team);
             ArrayList<Player> players = team.getPlayers();
@@ -170,6 +172,31 @@ public class Player extends User {
                 Tournament tournament = part.getTournament();
                 tournament.removeParticipation(part);
             }
+        }
+    }
+
+
+    public void deleteJoinedTeam(Team team){
+        if (team == null){
+            return;
+        }
+        if (!teamsJoined.contains(team)){
+            return;
+        }
+        if (team.hasAnyActivePart()){
+            return;
+        }
+        this.teamsJoined.remove(team);
+        if (team.getCaptain().equals(this)){
+            captainInTeams.remove(team);
+            for (Player player : team.getPlayers()){
+                player.getTeamsJoined().remove(team);
+            }
+            for (Participation part : team.getParticipations()){ //TODO GETRUNNINGPART..
+                Tournament tournament = part.getTournament();
+                tournament.removeParticipation(part);
+            }
+
         }
     }
 
@@ -222,7 +249,6 @@ public class Player extends User {
         this.location = location;
     }
 
-
     public ArrayList<Sport> getSportsInterested() {
         return sportsInterested;
     }
@@ -234,8 +260,6 @@ public class Player extends User {
     public ArrayList<Team> getTeamsJoined() {
         return teamsJoined;
     }
-
-
 
     public ArrayList<Team> getCaptainInTeams() {
         return captainInTeams;

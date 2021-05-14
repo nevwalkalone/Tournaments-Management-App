@@ -61,13 +61,30 @@ public class Participation {
         this.team = team;
     }
 
-    public boolean isSimultaneous(Participation other) {
+    public boolean inSameTournament(Participation other) {  // may need a check for dates
         if (other == null)
             return false;
-
         return tournament.equals(other.tournament);
-
     }
+
+    public boolean isSimultaneous(Participation other) {  // check for null finish dates TODO
+        if (startDate.isBefore(other.getStartDate()) && finishDate.isBefore(other.getFinishDate())) {
+            return true;
+        }
+        if (startDate.isAfter(other.getStartDate()) && finishDate.isAfter(other.getFinishDate())) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isCurrent(){
+        if (finishDate == null){
+            return startDate.isBefore(LocalDate.now());
+        }else{
+            return startDate.isBefore(LocalDate.now()) && finishDate.isAfter(LocalDate.now()) ;
+        }
+    }
+
 
     @Override
     public String toString() {

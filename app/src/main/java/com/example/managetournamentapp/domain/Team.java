@@ -24,12 +24,8 @@ public class Team {
         this.captain = captain;
 
         //add captain to the team
-        this.players.add(captain);
+        addPlayer(captain);
 
-        //add this team to the teams that he is a captain
-        //and to the joined teams
-        captain.getCaptainInTeams().add(this);
-        captain.getTeamsJoined().add(this);
     }
 
     public ArrayList<Player> getPlayers() {
@@ -40,23 +36,35 @@ public class Team {
 
     //checks are made on player class
     public void addPlayer(Player player) {
-        players.add(player);
+        if (player == null){
+            return;
+        }
+        if (players.contains(player)){
+            return;
+        }
+        if (hasAnyActivePart())
+            return;
+        if (ageDivision.equals(player.getAgeDivision())){
+            return ;
+        }
 
+        players.add(player);
         //add team to the player
         player.addJoinedTeam(this);
-
     }
 
     public boolean removePlayer(Player player){
-        if (!hassAnyActivePart()){
+        if (!hasAnyActivePart()){
             players.remove(player);
             return true;
         }
         return false;
     }
 
+
+
     //removes player from the team
-    public boolean hassAnyActivePart(){
+    public boolean hasAnyActivePart(){
 
         //check if there is any running participation
         boolean flag = false;
@@ -72,12 +80,25 @@ public class Team {
         return flag;
     }
 
+//TODO CHECK
+    public boolean hasAnyActivePart2(){
+        for (Participation participation : participations){
+            if (participation.isCurrent()){
+                return true;
+            }
+        }
+        return false;
+    }
+
 
     public void addParticipation(Participation participation) {
-
+        if (participation == null ){
+            return;
+        }
         if (participations.contains(participation)){
             return;
         }
+        // TODO if( hasAnyActivePart()  ) return
 
         if (canParticipate(participation)){
             participations.add(participation);
@@ -85,7 +106,7 @@ public class Team {
         }
     }
 
-    //we need the tournament to remove the aprropriate participation
+    //we need the tournament to remove the appropriate participation
     //linked with the tournament
     public void removeParticipation(Participation participation) {
         if (canLeaveTournament(participation)){
@@ -108,12 +129,11 @@ public class Team {
     }
 
     //if all criterias are met, then this team
-    //can join the specific tournament
+    //can join the specific tournament TODO CHECK
     private boolean canParticipate(Participation participation) {
         Tournament tournToJoin = participation.getTournament();
 
         if (!getAgeDivision().equals(tournToJoin.getAgeDivision())) {
-
             return false;
         }
 
@@ -133,7 +153,7 @@ public class Team {
         //with another team, then this team can't join the tournament
         for (Player player : players){
             for (Participation playerPart : player.getRunningParticipations()) {
-                if (playerPart.isSimultaneous(participation)){
+                if (playerPart.inSameTournament(participation)){
                     return false;
                 }
             }
@@ -145,10 +165,8 @@ public class Team {
         LocalDate finishDate = participation.getFinishDate();
 
         for (Participation part : participations){
-           LocalDate startDateToCompare = part.getStartDate();
-           if (finishDate.compareTo(startDateToCompare) > 0){
-               return false;
-           }
+            if ( participation.isSimultaneous(part) )
+                return  false;
         }
         return true;
     }
