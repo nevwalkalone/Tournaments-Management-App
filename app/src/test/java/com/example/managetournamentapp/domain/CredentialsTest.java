@@ -7,29 +7,59 @@ import org.junit.Test;
 
 public class CredentialsTest {
     private Credentials credentials;
+
     @Before
     public void setUp() throws Exception {
-        credentials = new Credentials("Nondas","123456");
+        credentials = new Credentials("Nondas", "123456");
     }
 
     @Test
-    public void getUsernameTest(){
-        Assert.assertEquals("Nondas",credentials.getUsername());
+    public void testEquals() {
+
+        Credentials credentials4 = new Credentials("Nondas", "123456");
+        Assert.assertEquals(credentials4, credentials);
+
     }
 
     @Test
-    public void getPasswordTest(){
-        Assert.assertEquals("123456",credentials.getPassword());
+    public void testNotEquals() {
+
+        Credentials credentials2 = new Credentials("Giannis", "123456");
+        Credentials credentials3 = new Credentials("Giannis", "GioGio");
+        Credentials credentials5 = new Credentials();
+        Assert.assertNotEquals(credentials2, credentials);
+        Assert.assertNotEquals(credentials3, credentials);
+        Assert.assertNotEquals(credentials5, credentials);
+
+    }
+
+    // testers for Getters and Setter
+
+    @Test
+    public void getUsernameTest() {
+        Assert.assertEquals("Nondas", credentials.getUsername());
     }
 
     @Test
-    public void checkPrinting(){
-        credentials.setUsername("Giorgos");
-        credentials.setPassword("54321");
-        String print_check = credentials.toString();
-        Assert.assertEquals("Credentials{" +
-                "username='" + "Giorgos"+ '\'' +
-                ", password='" + "54321" + '\'' +
-                '}',print_check);
+    public void getPasswordTest() {
+        Assert.assertEquals("123456", credentials.getPassword());
+    }
+
+    @Test
+    public void testSetterGetterUsername() {
+
+        String newName = "Giorgos";
+        credentials.setUsername(newName);
+        Assert.assertEquals(newName, credentials.getUsername());
+
+    }
+
+    @Test
+    public void testSetterGetterPassword() {
+
+        String newPassword = "456789";
+        credentials.setPassword(newPassword);
+        Assert.assertEquals(newPassword, credentials.getPassword());
+
     }
 }
