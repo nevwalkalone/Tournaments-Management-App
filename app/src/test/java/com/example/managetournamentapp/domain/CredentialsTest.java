@@ -7,10 +7,18 @@ import org.junit.Test;
 
 public class CredentialsTest {
     private Credentials credentials;
+    private Credentials credentials2 = new Credentials("Giannis", "123456");
+    private Credentials credentials3 = new Credentials("Giannis", "GioGio");
+    private Credentials credentials4 = new Credentials("Nondas", "123456");
+    private Credentials credentials5 = new Credentials();
 
     @Before
     public void setUp() throws Exception {
         credentials = new Credentials("Nondas", "123456");
+        credentials2 = new Credentials("Giannis", "123456");
+        credentials3 = new Credentials("Giannis", "GioGio");
+        credentials4 = new Credentials("Nondas", "123456");
+        credentials5 = new Credentials();
     }
 
     @Test
@@ -24,9 +32,6 @@ public class CredentialsTest {
     @Test
     public void testNotEquals() {
 
-        Credentials credentials2 = new Credentials("Giannis", "123456");
-        Credentials credentials3 = new Credentials("Giannis", "GioGio");
-        Credentials credentials5 = new Credentials();
         Assert.assertNotEquals(credentials2, credentials);
         Assert.assertNotEquals(credentials3, credentials);
         Assert.assertNotEquals(credentials5, credentials);
@@ -37,7 +42,7 @@ public class CredentialsTest {
     @Test
     public void testPrinting() {
 
-        Credentials credentials4 = new Credentials("Nondas", "123456");
+
         Assert.assertEquals(credentials4.toString(), credentials.toString());
 
     }

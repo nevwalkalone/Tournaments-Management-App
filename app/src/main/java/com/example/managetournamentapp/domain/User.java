@@ -9,7 +9,13 @@ public class User {
     private LocalDate birthDate;
     private Credentials credentials;
 
-    public User(){
+    public User() {
+        this.name = "";
+        this.surname = "";
+        this.phoneNumber = "";
+        this.email = "";
+        this.birthDate = null;
+        this.credentials = null;
 
     }
 
@@ -81,6 +87,17 @@ public class User {
                 ", birthDate=" + birthDate +
                 ", credentials=" + credentials +
                 '}';
+    }
+
+    public boolean equals(Object other) {
+        boolean equal = false;
+        if (other instanceof User) {
+            User otherUser = (User) other;
+            if (name.equals(otherUser.name) && surname.equals(otherUser.surname) && phoneNumber.equals(otherUser.phoneNumber)
+                    && birthDate.equals(otherUser.birthDate) && credentials.equals(otherUser.credentials))
+                equal = true;
+        }
+        return equal;
     }
 
 

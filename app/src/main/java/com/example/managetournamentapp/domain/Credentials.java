@@ -6,8 +6,8 @@ public class Credentials {
 
     // Default Constructor
     public Credentials() {
-        username = "";
-        password = "";
+        this.username = "";
+        this.password = "";
 
     }
 
