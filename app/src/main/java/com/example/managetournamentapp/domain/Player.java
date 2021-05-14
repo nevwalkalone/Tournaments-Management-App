@@ -145,6 +145,51 @@ public class Player extends User {
 
     }
 
+    public void changeCaptain(Team team, Player player){
+        if (team == null || player == null ){
+            return;
+        }
+        if (!team.getCaptain().equals(this)){
+            return;
+        }
+        if (!team.getPlayers().contains(player)){
+            return;
+        }
+        team.setCaptain(player);
+    }
+
+    public void changeName(Team team, String name){
+        if (team == null || name == null ){
+            return;
+        }
+        if (!team.getCaptain().equals(this)){
+            return;
+        }
+        team.setName(name);
+    }
+
+    public void changeColors(Team team, String colors){
+        if (team == null || colors == null ){
+            return;
+        }
+        if (!team.getCaptain().equals(this)){
+            return;
+        }
+        team.setColors(colors);
+    }
+
+
+    public void changeSport(Team team, Sport sportType){
+        if (team == null || sportType == null ){
+            return;
+        }
+        if (!team.getCaptain().equals(this)){
+            return;
+        }
+        team.setSportType(sportType);
+    }
+
+
     //captain only
     //TODO na th doume auth
     public void deleteTeam(Team team) {

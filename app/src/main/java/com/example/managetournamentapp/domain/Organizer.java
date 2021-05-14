@@ -37,14 +37,15 @@ public class Organizer extends User {
         if (tour == null){
             return;
         }
+        if (!tournaments.contains(tour)){
+            return;
+        }
 
-        if (tour.isFinished()){
+        if (!tour.isRunning()){
             ArrayList<Participation> participations = tour.getParticipations();
             for (Participation part : participations){
-                participations.remove(part);
                 Team team = part.getTeam();
-                ArrayList<Participation> teamParts = team.getParticipations();
-                teamParts.remove(part);
+                team.removeParticipation(part);
             }
         }
     }

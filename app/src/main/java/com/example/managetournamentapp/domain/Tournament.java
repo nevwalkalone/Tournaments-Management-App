@@ -11,9 +11,7 @@ public class Tournament {
     private String title, location, description;
     private Sport sportType;
     private ArrayList<Round> rounds = new ArrayList<>();
-
-
-    private ArrayList<Participation> participations;
+    private ArrayList<Participation> participations = new ArrayList<>();
     private AgeDivision ageDivision;
 
 
@@ -32,9 +30,9 @@ public class Tournament {
     }
 
     public void addParticipation(Participation participation) {
-
         participations.add(participation);
     }
+
 
     public void removeParticipation(Participation participation) {
         participations.remove(participation);
@@ -43,6 +41,11 @@ public class Tournament {
     //check if tournament is full of teams
     public boolean isFull() {
         return participations.size() == MAX_TEAMS_NUMBER;
+    }
+
+    public boolean isRunning(){
+        LocalDate now = LocalDate.now();
+        return !(now.isBefore(startDate)) && !(now.isAfter(finishDate));
     }
 
     public boolean isFinished() {

@@ -29,9 +29,10 @@ public class Team {
     }
 
     public ArrayList<Player> getPlayers() {
-
         return players;
     }
+
+
 
 
     //checks are made on player class
@@ -101,7 +102,7 @@ public class Team {
     //we need the tournament to remove the appropriate participation
     //linked with the tournament
     public void removeParticipation(Participation participation) {
-        if (canLeaveTournament(participation)){
+        if (participation.isCurrent()){
             //successfully left the tournament
             participations.remove(participation);
 
@@ -198,16 +199,18 @@ public class Team {
     }
 
     public void setSportType(Sport sportType) {
-        this.sportType = sportType;
+        if (sportType == null){
+            return;
+        }
+        if (getRunningParticipations().isEmpty()){
+            this.sportType = sportType;
+        }
     }
 
     public AgeDivision getAgeDivision() {
         return ageDivision;
     }
 
-    public void setAgeDivision(AgeDivision ageDivision) {
-        this.ageDivision = ageDivision;
-    }
 
     public Player getCaptain() {
         return captain;
