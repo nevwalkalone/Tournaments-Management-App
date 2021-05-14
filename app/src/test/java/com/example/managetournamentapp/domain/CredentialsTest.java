@@ -33,6 +33,15 @@ public class CredentialsTest {
 
     }
 
+    // Tester for toString()
+    @Test
+    public void testPrinting() {
+
+        Credentials credentials4 = new Credentials("Nondas", "123456");
+        Assert.assertEquals(credentials4.toString(), credentials.toString());
+
+    }
+
     // testers for Getters and Setter
 
     @Test

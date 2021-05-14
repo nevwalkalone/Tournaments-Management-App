@@ -4,7 +4,10 @@ public class Credentials {
 
     private String username, password;
 
-    public Credentials(){
+    // Default Constructor
+    public Credentials() {
+        username = "";
+        password = "";
 
     }
 
@@ -38,11 +41,11 @@ public class Credentials {
     }
 
 
-    public boolean equals(Object other){
+    public boolean equals(Object other) {
         boolean equal = false;
-        if ( other instanceof Credentials ){
+        if (other instanceof Credentials) {
             Credentials otherCred = (Credentials) other;
-            if ( username.equals(otherCred.username) && password.equals(otherCred.password) )
+            if (username.equals(otherCred.username) && password.equals(otherCred.password))
                 equal = true;
         }
         return equal;
