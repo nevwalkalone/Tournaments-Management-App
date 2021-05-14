@@ -32,7 +32,12 @@ public class Game {
         isFinished = false;
     }
 
-    public int findResult() {
+    public int findWinner() {
+
+        if(!isFinished())
+            return 2;       // random number ( different from Integer.compare method -1, 0, 1 ) 
+                            // in order to handle the state of the game.
+
         return Integer.compare(scoreA, scoreB);
     }
 
@@ -114,5 +119,11 @@ public class Game {
                 ", date=" + date +
                 ", time=" + time +
                 '}';
+    }
+
+    public static void main(String[] args) {
+        int a = 5;
+        int b = 2;
+        System.out.println(Integer.compare(b,a));
     }
 }

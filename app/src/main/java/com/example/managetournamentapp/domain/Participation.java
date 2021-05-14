@@ -11,14 +11,15 @@ public class Participation {
     private Team team;
 
 
-    public Participation(){
+    public Participation() {
 
     }
 
     public Participation(Tournament tournament, Team team) {
-            this.tournament = tournament;
-            this.team = team;
-            this.startDate = tournament.getStartDate();
+        this.tournament = tournament;
+        this.team = team;
+        this.startDate = tournament.getStartDate();
+        this.finishDate = tournament.getFinishDate();           // First initialization. We don't know when our team will finish.
 
     }
 
@@ -68,20 +69,20 @@ public class Participation {
     }
 
     public boolean isSimultaneous(Participation other) {  // check for null finish dates TODO
-        if (startDate.isBefore(other.getStartDate()) && finishDate.isBefore(other.getFinishDate())) {
-            return true;
+        if (startDate.isBefore(other.getStartDate()) && finishDate.isBefore(other.getStartDate())) {
+            return false;
         }
-        if (startDate.isAfter(other.getStartDate()) && finishDate.isAfter(other.getFinishDate())) {
-            return true;
+        if (startDate.isAfter(other.getFinishDate()) && finishDate.isAfter(other.getFinishDate())) {
+            return false;
         }
-        return false;
+        return true;
     }
 
-    public boolean isCurrent(){
-        if (finishDate == null){
+    public boolean isCurrent() {
+        if (finishDate == null) {
             return startDate.isBefore(LocalDate.now());
-        }else{
-            return startDate.isBefore(LocalDate.now()) && finishDate.isAfter(LocalDate.now()) ;
+        } else {
+            return startDate.isBefore(LocalDate.now()) && finishDate.isAfter(LocalDate.now());
         }
     }
 

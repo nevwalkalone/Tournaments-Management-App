@@ -6,51 +6,55 @@ import java.util.ArrayList;
 
 public class Tournament {
 
-    private final int MAXTEAMSNUMBER;
+    private final int MAX_TEAMS_NUMBER;
+    private LocalDate startDate, finishDate;
     private String title, location, description;
     private Sport sportType;
     private ArrayList<Round> rounds = new ArrayList<>();
 
 
-
     private ArrayList<Participation> participations;
     private AgeDivision ageDivision;
-    private LocalDate startDate;
 
-    private LocalDate finishDate;
 
-    public Tournament(){
-        MAXTEAMSNUMBER = 32;
+    public Tournament() {
+        MAX_TEAMS_NUMBER = 32;
     }
 
-    public Tournament(String title, String location, String description, Sport sportType, int maxTeamsNumber, AgeDivision ageDivision) {
+    public Tournament(String title, LocalDate startDate, LocalDate finishDate, String location, Sport sportType, int maxTeamsNumber, AgeDivision ageDivision) {
         this.title = title;
+        this.startDate = startDate;
+        this.finishDate = finishDate;
         this.location = location;
-        this.description = description;
         this.sportType = sportType;
-        this.MAXTEAMSNUMBER = maxTeamsNumber;
+        this.MAX_TEAMS_NUMBER = maxTeamsNumber;
         this.ageDivision = ageDivision;
     }
 
-    public void addParticipation(Participation participation){
+    public void addParticipation(Participation participation) {
 
         participations.add(participation);
     }
-    public void removeParticipation(Participation participation){
+
+    public void removeParticipation(Participation participation) {
         participations.remove(participation);
     }
 
     //check if tournament is full of teams
-    public boolean isFull(){
-        return participations.size() == MAXTEAMSNUMBER;
+    public boolean isFull() {
+        return participations.size() == MAX_TEAMS_NUMBER;
     }
 
-    public boolean isFinished(){
+    public boolean isFinished() {
         LocalDate now = LocalDate.now();
-        if(now.compareTo(finishDate)>0){
+        if (now.compareTo(getFinishDate()) > 0) {
             return true;
         }
         return false;
+    }
+
+    public ArrayList<Round> getRounds() {
+        return rounds;
     }
 
     public ArrayList<Participation> getParticipations() {
@@ -60,6 +64,7 @@ public class Tournament {
     public void setParticipations(ArrayList<Participation> participations) {
         this.participations = participations;
     }
+
     public String getTitle() {
         return title;
     }
@@ -117,7 +122,7 @@ public class Tournament {
         this.ageDivision = ageDivision;
     }
 
-    public void manageRequests(Team team, boolean accept){
+    public void manageRequests(Team team, boolean accept) {
 
     }
 
