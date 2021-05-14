@@ -1,6 +1,5 @@
 package com.example.managetournamentapp.domain;
 
-import android.provider.Telephony;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -11,6 +10,9 @@ public class Tournament {
     private String title, location, description;
     private Sport sportType;
     private ArrayList<Round> rounds = new ArrayList<>();
+
+
+
     private ArrayList<Participation> participations;
     private AgeDivision ageDivision;
     private LocalDate startDate;
@@ -34,18 +36,30 @@ public class Tournament {
 
         participations.add(participation);
     }
+    public void removeParticipation(Participation participation){
+        participations.remove(participation);
+    }
 
     //check if tournament is full of teams
     public boolean isFull(){
         return participations.size() == MAXTEAMSNUMBER;
     }
 
-
-
-    public void removeTeam(Team team){
-        teams.remove(team);
+    public boolean isFinished(){
+        LocalDate now = LocalDate.now();
+        if(now.compareTo(finishDate)>0){
+            return true;
+        }
+        return false;
     }
 
+    public ArrayList<Participation> getParticipations() {
+        return participations;
+    }
+
+    public void setParticipations(ArrayList<Participation> participations) {
+        this.participations = participations;
+    }
     public String getTitle() {
         return title;
     }
@@ -78,14 +92,6 @@ public class Tournament {
         this.sportType = sportType;
     }
 
-    public int getMaxTeamsNumber() {
-        return maxTeamsNumber;
-    }
-
-    public void setMaxTeamsNumber(int maxTeamsNumber) {
-        this.maxTeamsNumber = maxTeamsNumber;
-    }
-
     public LocalDate getStartDate() {
         return startDate;
     }
@@ -102,14 +108,6 @@ public class Tournament {
         this.finishDate = finishDate;
     }
 
-
-    public ArrayList<Team> getTeams() {
-        return teams;
-    }
-
-    public void setTeams(ArrayList<Team> teams) {
-        this.teams = teams;
-    }
 
     public AgeDivision getAgeDivision() {
         return ageDivision;
@@ -130,9 +128,9 @@ public class Tournament {
                 ", location='" + location + '\'' +
                 ", description='" + description + '\'' +
                 ", sportType=" + sportType +
-                ", maxTeamsNumber=" + maxTeamsNumber +
+                ", maxTeamsNumber=" +
                 ", roundsNumber=" +
-                ", teams=" + teams +
+                ", teams=" +
                 ", ageDivision=" + ageDivision +
                 '}';
     }

@@ -4,6 +4,10 @@ public class Credentials {
 
     private String username, password;
 
+    public Credentials(){
+
+    }
+
     public Credentials(String username, String password) {
         this.username = username;
         this.password = password;

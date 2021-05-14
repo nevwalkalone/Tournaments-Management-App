@@ -1,16 +1,17 @@
 package com.example.managetournamentapp.domain;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
 public class Organizer extends User {
 
-    private String title, sportType;
+    private String title;
     private ArrayList<Tournament> tournaments = new ArrayList<>();
-    public Organizer(String name, String surname, String phoneNumber, String email, Date birthDate, Credentials credentials, String title, String sportType) {
+    public Organizer(String name, String surname, String phoneNumber, String email, LocalDate birthDate, Credentials credentials, String title) {
         super(name, surname, phoneNumber, email, birthDate, credentials);
         this.title = title;
-        this.sportType = sportType;
+
     }
 
     public String getTitle() {
@@ -21,45 +22,40 @@ public class Organizer extends User {
         this.title = title;
     }
 
-    public String getSportType() {
-        return sportType;
-    }
-
-    public void setSportType(String sportType) {
-        this.sportType = sportType;
-    }
 
 
-    public void createTournament() {
-
+    public void addTournament(Tournament tour) {
+        if (tour == null){
+            return;
+        }
+        if (!tournaments.contains(tour)){
+            tournaments.add(tour);
+        }
     }
 
     public void deleteTournament(Tournament tour) {
+        if (tour == null){
+            return;
+        }
 
+        if (tour.isFinished()){
+            ArrayList<Participation> participations = tour.getParticipations();
+            for (Participation part : participations){
+                participations.remove(part);
+                Team team = part.getTeam();
+                ArrayList<Participation> teamParts = team.getParticipations();
+                teamParts.remove(part);
+            }
+        }
     }
 
-    public void createRounds(Tournament tour) {
-
-    }
-
-    public void setDates(Tournament tour) {
-
-    }
-
-    public void editTournamentData(Tournament tour) {
-
-    }
-
-    public void uploadResults(Tournament tour) {
-
-    }
 
 
     @Override
     public String toString() {
         return "Organizer{" +
                 "title='" + title + '\'' +
-                ", sportType='" + sportType + '\'' +
+                ", sportType='" + '\'' +
                 '}';
     }
 }

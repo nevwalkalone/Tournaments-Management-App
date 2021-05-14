@@ -1,18 +1,19 @@
 package com.example.managetournamentapp.domain;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class User {
 
     private String name, surname, phoneNumber, email;
-    private Date birthDate;
+    private LocalDate birthDate;
     private Credentials credentials;
 
     public User(){
 
     }
 
-    public User(String name, String surname, String phoneNumber, String email, Date birthDate, Credentials credentials) {
+    public User(String name, String surname, String phoneNumber, String email, LocalDate birthDate, Credentials credentials) {
         this.name = name;
         this.surname = surname;
         this.phoneNumber = phoneNumber;
@@ -53,11 +54,11 @@ public class User {
         this.email = email;
     }
 
-    public Date getBirthDate() {
+    public LocalDate getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(Date birthDate) {
+    public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }
 
