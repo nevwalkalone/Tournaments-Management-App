@@ -36,17 +36,9 @@ public class Team {
 
     //checks are made on player class
     public void addPlayer(Player player) {
-        if (player == null){
-            return;
-        }
-        if (players.contains(player)){
-            return;
-        }
+
         if (hasAnyActivePart())
             return;
-        if (ageDivision.equals(player.getAgeDivision())){
-            return ;
-        }
 
         players.add(player);
         //add team to the player

@@ -32,14 +32,13 @@ public class Player extends User {
     public Player(String name, String surname, String phoneNumber, String email, LocalDate birthDate, Credentials credentials) {
         super(name, surname, phoneNumber, email, birthDate, credentials);
         LocalDate now = LocalDate.now();
-        long diff = this.getBirthDate().until(now, ChronoUnit.DAYS);
+        int diff = (int) this.getBirthDate().until(now, ChronoUnit.YEARS);
         initAgeDivision(diff);
     }
 
 
-    public void initAgeDivision(long daysSinceBirthDate){
+    public void initAgeDivision(int age){
 
-        int age = (int) daysSinceBirthDate/365;
 
         if (age<=12){
             ageDivision = AgeDivision.valueOf("K12");
@@ -167,36 +166,12 @@ public class Player extends User {
                 player.getTeamsJoined().remove(team);
             }
 
-            ArrayList<Participation> participations = team.getParticipations();
+            ArrayList<Participation> participations = team.getRunningParticipations();
             for (Participation part : participations){
+
                 Tournament tournament = part.getTournament();
                 tournament.removeParticipation(part);
             }
-        }
-    }
-
-
-    public void deleteJoinedTeam(Team team){
-        if (team == null){
-            return;
-        }
-        if (!teamsJoined.contains(team)){
-            return;
-        }
-        if (team.hasAnyActivePart()){
-            return;
-        }
-        this.teamsJoined.remove(team);
-        if (team.getCaptain().equals(this)){
-            captainInTeams.remove(team);
-            for (Player player : team.getPlayers()){
-                player.getTeamsJoined().remove(team);
-            }
-            for (Participation part : team.getParticipations()){ //TODO GETRUNNINGPART..
-                Tournament tournament = part.getTournament();
-                tournament.removeParticipation(part);
-            }
-
         }
     }
 
@@ -266,32 +241,6 @@ public class Player extends User {
     }
 
 
-  /*  //TODO check player age
-    public boolean canJoin(Team team) {
-
-        if (!sportsInterested.contains(team.getSportType()))
-            return false;
-
-        //if player has joined this tournament
-        //with another team, he can't join
-        for (Participation teamPart : team.getRunningParticipations()) {
-            for (Participation playerPart : getRunningParticipations()) {
-                if (teamPart.isSimultaneous(playerPart))
-                    return false;
-            }
-        }
-        return true;
-    }*/
-
-   /* public boolean alreadyParticipates (Tournament tournament){
-        for (Participation playerPart : getRunningParticipations()) {
-            if (tournament.isSimultaneous(playerPart))
-                return false;
-        }
-        return true;
-    }*/
-
-
     //all player's participations
     public ArrayList<Participation> getRunningParticipations() {
         ArrayList<Participation> runningParticipations = new ArrayList<>();
@@ -318,7 +267,8 @@ public class Player extends User {
 
     public static void main (String [] args){
         Credentials credentials = new Credentials();
-        LocalDate birthDate = LocalDate.of(1990, Month.APRIL,4);
+        LocalDate birthDate = LocalDate.of(2002, Month.NOVEMBER,4);
         Player player = new Player ("g","","","",birthDate,credentials);
+        System.out.println(player.getAgeDivision());
     }
 }
