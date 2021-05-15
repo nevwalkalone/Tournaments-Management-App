@@ -6,8 +6,6 @@ import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
 
-
-
 public class Player extends User {
 
     private String location;

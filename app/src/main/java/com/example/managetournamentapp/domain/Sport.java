@@ -6,17 +6,13 @@ public class Sport {
     private String name;
     private int minimumPlayers;
 
-    public Sport(String name, int minimumPlayers) {
+    public Sport(String name) {
         boolean flag = checkSportName(name);
         if (flag){
-           flag = checkMinPlayers(minimumPlayers,name);
-        }
-
-        if (flag){
             this.name = name;
-            this.minimumPlayers = minimumPlayers;
-        }
-        else{
+            setMinPlayers(minimumPlayers,name);
+
+        }else{
             System.out.println("Wrong settings for the specific sport type selection.");
         }
     }
@@ -30,78 +26,38 @@ public class Sport {
         return false;
     }
 
-    public boolean checkMinPlayers(int minimumPlayers, String name){
+    public void setMinPlayers(int minimumPlayers, String name){
         switch(name){
             case "Volleyball3v3":
             case "Basketball3v3":
-                if (minimumPlayers == 6){
-                    return true;
-                }
+                minimumPlayers = 6;
+
             case "Basketball2v2":
-                if (minimumPlayers == 4){
-                    return true;
-                }
+                minimumPlayers = 4;
+
             case "Football5v5":
             case "Basketball5v5":
-                if (minimumPlayers == 10){
-                    return true;
-                }
-            case "Football7v7":
-                if (minimumPlayers == 14){
-                    return true;
-                }
-            case "Volleyball6v6":
-                if (minimumPlayers == 12) {
-                    return true;
-            }
-        }
-        return false;
-    }
+                minimumPlayers = 10;
 
-    public boolean checkGameDuration(int gameDuration, String name){
-        switch(name){
-            case "Volleyball3v3":
-            case "Volleyball6v6":
-                if (gameDuration == 0 ){
-                    return true;
-                }
-            case "Basketball2v2":
-            case "Basketball3v3":
-                if (gameDuration == 20){
-                    return true;
-                }
-
-            case "Basketball5v5":
-                if (gameDuration == 40){
-                    return true;
-                }
-            case "Football5v5":
             case "Football7v7":
-                if (gameDuration == 70){
-                    return true;
-                }
+                minimumPlayers = 14;
+
+            case "Volleyball6v6":
+                minimumPlayers = 12;
         }
-        return false;
+
     }
 
     /**
      * Change sport selection
      */
-    public void changeSetup(String name, int minimumPlayers, int gameDuration){
+    public void changeSetup(String name){
 
         boolean flag = checkSportName(name);
         if (flag){
-            flag = checkMinPlayers(minimumPlayers,name);
-        }
-        if (flag) {
-            flag = checkGameDuration(gameDuration,name);
-        }
-
-        if (flag){
             this.name = name;
-            this.minimumPlayers = minimumPlayers;
-        }
-        else{
+            setMinPlayers(minimumPlayers,name);
+        }else{
             System.out.println("Wrong settings for the specific sport type selection.");
         }
     }

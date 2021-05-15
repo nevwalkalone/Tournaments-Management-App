@@ -31,6 +31,7 @@ public class Group {
             groupSize = 4;
             gamesNumber = 6;
         }
+
     }
 
 

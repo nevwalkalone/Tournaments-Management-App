@@ -16,7 +16,6 @@ public class Tournament {
     private ArrayList<Participation> participations = new ArrayList<>();
     private AgeDivision ageDivision;
 
-
     public Tournament() {
         MAX_TEAMS_NUMBER = 32;
     }
