@@ -125,11 +125,6 @@ public class Team {
             }
         }
 
-        //if the date of the specific participation interferes with
-        //dates of other participations, then this team can't join the tournament
-        LocalDate startDate = participation.getStartDate();
-        LocalDate finishDate = participation.getFinishDate();
-
         for (Participation part : participations){
             if ( participation.isSimultaneous(part) )
                 return  false;
@@ -198,11 +193,8 @@ public class Team {
     public String toString() {
         return "Team{" +
                 "name='" + name + '\'' +
-                ", colors='" + colors + '\'' +
                 ", sportType=" + sportType +
                 ", ageDivision=" + ageDivision +
-                ", captain=" + captain +
-                ", playersNumber=" +
                 '}';
     }
 
