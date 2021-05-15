@@ -21,7 +21,7 @@ public class Tournament {
         MAX_TEAMS_NUMBER = 32;
     }
 
-    public Tournament(String title, LocalDate startDate, LocalDate finishDate, String location, Sport sportType, int maxTeamsNumber, AgeDivision ageDivision, ArrayList<LocalDate> dates) {
+    public Tournament(String title, LocalDate startDate, LocalDate finishDate, String location, Sport sportType, int maxTeamsNumber, AgeDivision ageDivision , ArrayList<LocalDate> dates) {
         this.title = title;
         this.startDate = startDate;
         this.finishDate = finishDate;
@@ -32,16 +32,16 @@ public class Tournament {
         initRounds(dates);
     }
 
-    public void initRounds(ArrayList<LocalDate> dates) {      //TODO dates = 2*maxteams - 1
+    public void initRounds(ArrayList<LocalDate> dates ){      //TODO dates = 2*maxteams - 1
         int teamsNumber = MAX_TEAMS_NUMBER;
         int firstIndex = 0;
-        int lastIndex = MAX_TEAMS_NUMBER / 4 * 6;
-        rounds.add(new Round(MAX_TEAMS_NUMBER, false, dates.subList(firstIndex, lastIndex)));
-        for (int i = 0; i < log2(MAX_TEAMS_NUMBER) - 1; i++) {
-            teamsNumber = teamsNumber / 2;
+        int lastIndex = MAX_TEAMS_NUMBER/4 * 6;
+        rounds.add( new Round(MAX_TEAMS_NUMBER, false, dates.subList(firstIndex,lastIndex) ));
+        for( int i=0 ; i < log2(MAX_TEAMS_NUMBER)-1; i++ ){
+            teamsNumber = teamsNumber/2;
             firstIndex = lastIndex;
-            lastIndex = firstIndex + teamsNumber / 2;
-            rounds.add(new Round(teamsNumber, true, dates.subList(firstIndex, lastIndex)));
+            lastIndex = firstIndex+ teamsNumber/2;
+            rounds.add( new Round(teamsNumber, true, dates.subList(firstIndex,lastIndex) ));
         }
     }
 
@@ -58,17 +58,9 @@ public class Tournament {
         return participations.size() == MAX_TEAMS_NUMBER;
     }
 
-    public boolean isRunning() {
+    public boolean isRunning(){
         LocalDate now = LocalDate.now();
         return !(now.isBefore(startDate)) && !(now.isAfter(finishDate));
-    }
-
-    public boolean isFinished() {
-        LocalDate now = LocalDate.now();
-        if (now.compareTo(getFinishDate()) > 0) {
-            return true;
-        }
-        return false;
     }
 
     public ArrayList<Round> getRounds() {
@@ -77,10 +69,6 @@ public class Tournament {
 
     public ArrayList<Participation> getParticipations() {
         return participations;
-    }
-
-    public void setParticipations(ArrayList<Participation> participations) {
-        this.participations = participations;
     }
 
     public String getTitle() {
@@ -144,10 +132,6 @@ public class Tournament {
 
     }
 
-    public int getMAX_TEAMS_NUMBER() {
-        return MAX_TEAMS_NUMBER;
-    }
-
     @Override
     public String toString() {
         return "Tournament{" +
@@ -162,34 +146,8 @@ public class Tournament {
                 '}';
     }
 
-    public boolean equals(Object other) {
-
-        if (this == other)
-            return true;
-
-        if (other == null || getClass() != other.getClass())
-            return false;
-
-        boolean equal = false;
-        if (other instanceof Tournament) {
-            Tournament otherTour = (Tournament) other;
-
-            if ((title.equals(otherTour.title) && otherTour.title != null) &&
-                    (startDate.equals(otherTour.startDate) && otherTour.startDate != null) &&
-                    (finishDate.equals(otherTour.finishDate) && otherTour.finishDate != null) &&
-                    (location.equals(otherTour.location) && otherTour.location != null) &&
-                    (sportType.equals(otherTour.sportType) && otherTour.sportType != null) &&
-                    (ageDivision.equals(otherTour.ageDivision) && otherTour.ageDivision != null) &&
-                    (dates.equals(otherTour.dates) && otherTour.dates != null) &&
-                    getMAX_TEAMS_NUMBER() == otherTour.getMAX_TEAMS_NUMBER())
-
-                equal = true;
-        }
-        return equal;
-    }
-
-    public static int log2(int x) {
-        return (int) (Math.log(x) / Math.log(2));
+    public static int log2(int x){
+        return (int) ( Math.log(x) / Math.log(2)  );
     }
 
 
