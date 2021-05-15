@@ -7,8 +7,6 @@ import org.junit.Test;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-import static org.junit.Assert.*;
-
 public class OrganizerTest {
 
     private Organizer organizer;
@@ -40,7 +38,7 @@ public class OrganizerTest {
         for (int i = 0; i < 64; i++) {
             dates.add(LocalDate.now());
         }
-        tournament = new Tournament("TOURNOUA1", LocalDate.parse("2021-08-01"), LocalDate.parse("2021-08-25"), "ATHENS", (new Sport("Basketball3v3", 6)),
+        tournament = new Tournament("TOURNOUA1", LocalDate.parse("2021-08-01"), LocalDate.parse("2021-08-25"), "ATHENS", (new Sport("Basketball3v3")),
                 32, AgeDivision.K15, dates);
 
     }
@@ -185,7 +183,7 @@ public class OrganizerTest {
     @Test
     public void testChangeTournamentSport() {
 
-        Sport newSport = new Sport("Volleyball6v6", 12);
+        Sport newSport = new Sport("Volleyball6v6");
 
         // test before add
         organizer.changeTournamentSport(tournament, newSport);

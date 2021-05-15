@@ -9,8 +9,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.Assert.*;
-
 public class GroupTest {
     ArrayList<LocalDate> dates;
     Team teamA , teamB;
@@ -26,8 +24,8 @@ public class GroupTest {
         group = new Group(true, dates);
         player = new Player( "sakis", "rouvas" , "69000000" , "aa@aa.aa", LocalDate.parse("2000-01-01") , credentials);
         date = LocalDate.parse("2022-01-01");
-        teamA = new Team("Celtic", new Sport("Volleyball3v3",6), AgeDivision.K12 ,player );
-        teamB = new Team("Barca", new Sport("Volleyball3v3",6), AgeDivision.K12 ,player );
+        teamA = new Team("Celtic", new Sport("Volleyball3v3"), AgeDivision.K12 ,player );
+        teamB = new Team("Barca", new Sport("Volleyball3v3"), AgeDivision.K12 ,player );
         game = new Game("Oaka", teamA , teamB, date );
     }
 
