@@ -42,6 +42,7 @@ public class Player extends User {
 
         if (age<=12){
             ageDivision = AgeDivision.valueOf("K12");
+
         }
         else if (age<=15){
             ageDivision = AgeDivision.valueOf("K15");
