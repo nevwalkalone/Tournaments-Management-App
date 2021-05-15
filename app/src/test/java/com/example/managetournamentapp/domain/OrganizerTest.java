@@ -126,187 +126,187 @@ public class OrganizerTest {
 
     }
 
-    /**
-     * Tester for change tournaments title ( before and after adding the tournament ).
-     */
-    @Test
-    public void testChangeTournamentTitle() {
-
-        Tournament tournamentTest = null;
-        organizer.changeTournamentTitle(tournamentTest, "KATI");
-
-        organizer.changeTournamentTitle(tournament, "ESKANA2");
-        organizer.addTournament(tournament);
-        organizer.changeTournamentTitle(tournament, "EPSA_1");
-        Assert.assertEquals("EPSA_1", organizer.getTournaments().get(0).getTitle());
-
-    }
-
-    /**
-     * Tester for change tournaments location ( before and after adding the tournament ).
-     */
-    @Test
-    public void testChangeTournamentLocation() {
-
-        Tournament tournamentTest = null;
-        organizer.changeTournamentLocation(tournamentTest, "KATI");
-
-        // test before add
-        organizer.changeTournamentLocation(tournament, "THESSALONIKI");
-        organizer.addTournament(tournament);
-
-        //test after add but without Participation
-        organizer.changeTournamentLocation(tournament, "THESSALONIKI");
-
-        // test after all
-        tournament.addParticipation(new Participation(tournament, new Team()));
-        organizer.changeTournamentLocation(tournament, "THESSALONIKI");
-
-        Assert.assertEquals("THESSALONIKI", organizer.getTournaments().get(0).getLocation());
-
-    }
-
-    /**
-     * Tester for change tournaments description ( before and after adding the tournament ).
-     */
-    @Test
-    public void testChangeTournamentDescription() {
-
-        Tournament tournamentTest = null;
-        organizer.changeTournamentDescription(tournamentTest, "KATI");
-
-        // test before add
-        organizer.changeTournamentDescription(tournament, "BEST 3V3 LET'S GO");
-        organizer.addTournament(tournament);
-
-        //test after add
-        organizer.changeTournamentDescription(tournament, "BEST 3V3 LET'S GO");
-
-        Assert.assertEquals("BEST 3V3 LET'S GO", organizer.getTournaments().get(0).getDescription());
-
-    }
-
-    /**
-     * Tester for setting tournaments.
-     */
-    @Test
-    public void testSetTournaments() {
-
-        ArrayList<Tournament> tournaments = new ArrayList<>();
-        tournaments.add(new Tournament());
-        tournaments.add(new Tournament());
-
-        organizer.setTournaments(tournaments);
-
-        Assert.assertEquals(tournaments, organizer.getTournaments());
-
-    }
-
-    /**
-     * Tester for change tournaments sport ( before and after adding the tournament ).
-     */
-    @Test
-    public void testChangeTournamentSport() {
-
-        Sport newSport = new Sport("Volleyball6v6");
-
-        Tournament tournamentTest = null;
-        organizer.changeTournamentSport(tournamentTest, newSport);
-
-        // test before add
-        organizer.changeTournamentSport(tournament, newSport);
-        organizer.addTournament(tournament);
-
-        //test after add but without Participation
-        organizer.changeTournamentSport(tournament, newSport);
-
-        // test after all
-        tournament.addParticipation(new Participation(tournament, new Team()));
-        organizer.changeTournamentSport(tournament, newSport);
-
-        Assert.assertEquals(newSport, organizer.getTournaments().get(0).getSportType());
-
-
-    }
-
-    /**
-     * Tester for change tournaments AgeDivision ( before and after adding the tournament ).
-     */
-    @Test
-    public void testChangeTournamentAgeDivision() {
-
-        Tournament tournamentTest = null;
-        organizer.changeTournamentAgeDivision(tournamentTest, AgeDivision.K12);
-
-        // test before add
-        organizer.changeTournamentAgeDivision(tournament, AgeDivision.K12);
-        organizer.addTournament(tournament);
-
-        //test after add but without Participation
-        organizer.changeTournamentAgeDivision(tournament, AgeDivision.K12);
-
-        // test after all
-        tournament.addParticipation(new Participation(tournament, new Team()));
-        organizer.changeTournamentAgeDivision(tournament, AgeDivision.K12);
-
-        Assert.assertEquals(AgeDivision.K12, organizer.getTournaments().get(0).getAgeDivision());
-
-
-    }
-
-    /**
-     * Tester for change tournaments start date ( before and after adding the tournament ).
-     */
-    @Test
-    public void testChangeStartDate() {
-
-        LocalDate newStartDate = LocalDate.parse("2021-08-05");
-
-        Tournament tournamentTest = null;
-        organizer.changeStartDate(tournamentTest, newStartDate);
-
-        // test before add
-        organizer.changeStartDate(tournament, newStartDate);
-        organizer.addTournament(tournament);
-
-        //test after add but without Participation
-        organizer.changeStartDate(tournament, newStartDate);
-
-        // test after all
-        tournament.addParticipation(new Participation(tournament, new Team()));
-        organizer.changeStartDate(tournament, newStartDate);
-
-        Assert.assertEquals(newStartDate, organizer.getTournaments().get(0).getStartDate());
-
-
-    }
-
-    /**
-     * Tester for change tournaments finish date ( before and after adding the tournament ).
-     */
-    @Test
-    public void testChangeFinishDate() {
-
-        LocalDate newFinishDate = LocalDate.parse("2021-08-10");
-
-        Tournament tournamentTest = null;
-        organizer.changeFinishDate(tournamentTest, newFinishDate);
-
-        // test before add
-        organizer.changeFinishDate(tournament, newFinishDate);
-        organizer.addTournament(tournament);
-
-        //test after add but without Participation
-        organizer.changeFinishDate(tournament, newFinishDate);
-
-        // test after all
-        tournament.addParticipation(new Participation(tournament, new Team()));
-        organizer.changeFinishDate(tournament, newFinishDate);
-
-        Assert.assertEquals(newFinishDate, organizer.getTournaments().get(0).getFinishDate());
-
-
-    }
+//    /**
+//     * Tester for change tournaments title ( before and after adding the tournament ).
+//     */
+//    @Test
+//    public void testChangeTournamentTitle() {
+//
+//        Tournament tournamentTest = null;
+//        organizer.changeTournamentTitle(tournamentTest, "KATI");
+//
+//        organizer.changeTournamentTitle(tournament, "ESKANA2");
+//        organizer.addTournament(tournament);
+//        organizer.changeTournamentTitle(tournament, "EPSA_1");
+//        Assert.assertEquals("EPSA_1", organizer.getTournaments().get(0).getTitle());
+//
+//    }
+//
+//    /**
+//     * Tester for change tournaments location ( before and after adding the tournament ).
+//     */
+//    @Test
+//    public void testChangeTournamentLocation() {
+//
+//        Tournament tournamentTest = null;
+//        organizer.changeTournamentLocation(tournamentTest, "KATI");
+//
+//        // test before add
+//        organizer.changeTournamentLocation(tournament, "THESSALONIKI");
+//        organizer.addTournament(tournament);
+//
+//        //test after add but without Participation
+//        organizer.changeTournamentLocation(tournament, "THESSALONIKI");
+//
+//        // test after all
+//        tournament.addParticipation(new Participation(tournament, new Team()));
+//        organizer.changeTournamentLocation(tournament, "THESSALONIKI");
+//
+//        Assert.assertEquals("THESSALONIKI", organizer.getTournaments().get(0).getLocation());
+//
+//    }
+//
+//    /**
+//     * Tester for change tournaments description ( before and after adding the tournament ).
+//     */
+//    @Test
+//    public void testChangeTournamentDescription() {
+//
+//        Tournament tournamentTest = null;
+//        organizer.changeTournamentDescription(tournamentTest, "KATI");
+//
+//        // test before add
+//        organizer.changeTournamentDescription(tournament, "BEST 3V3 LET'S GO");
+//        organizer.addTournament(tournament);
+//
+//        //test after add
+//        organizer.changeTournamentDescription(tournament, "BEST 3V3 LET'S GO");
+//
+//        Assert.assertEquals("BEST 3V3 LET'S GO", organizer.getTournaments().get(0).getDescription());
+//
+//    }
+//
+//    /**
+//     * Tester for setting tournaments.
+//     */
+//    @Test
+//    public void testSetTournaments() {
+//
+//        ArrayList<Tournament> tournaments = new ArrayList<>();
+//        tournaments.add(new Tournament());
+//        tournaments.add(new Tournament());
+//
+//        organizer.setTournaments(tournaments);
+//
+//        Assert.assertEquals(tournaments, organizer.getTournaments());
+//
+//    }
+//
+//    /**
+//     * Tester for change tournaments sport ( before and after adding the tournament ).
+//     */
+//    @Test
+//    public void testChangeTournamentSport() {
+//
+//        Sport newSport = new Sport("Volleyball6v6");
+//
+//        Tournament tournamentTest = null;
+//        organizer.changeTournamentSport(tournamentTest, newSport);
+//
+//        // test before add
+//        organizer.changeTournamentSport(tournament, newSport);
+//        organizer.addTournament(tournament);
+//
+//        //test after add but without Participation
+//        organizer.changeTournamentSport(tournament, newSport);
+//
+//        // test after all
+//        tournament.addParticipation(new Participation(tournament, new Team()));
+//        organizer.changeTournamentSport(tournament, newSport);
+//
+//        Assert.assertEquals(newSport, organizer.getTournaments().get(0).getSportType());
+//
+//
+//    }
+//
+//    /**
+//     * Tester for change tournaments AgeDivision ( before and after adding the tournament ).
+//     */
+//    @Test
+//    public void testChangeTournamentAgeDivision() {
+//
+//        Tournament tournamentTest = null;
+//        organizer.changeTournamentAgeDivision(tournamentTest, AgeDivision.K12);
+//
+//        // test before add
+//        organizer.changeTournamentAgeDivision(tournament, AgeDivision.K12);
+//        organizer.addTournament(tournament);
+//
+//        //test after add but without Participation
+//        organizer.changeTournamentAgeDivision(tournament, AgeDivision.K12);
+//
+//        // test after all
+//        tournament.addParticipation(new Participation(tournament, new Team()));
+//        organizer.changeTournamentAgeDivision(tournament, AgeDivision.K12);
+//
+//        Assert.assertEquals(AgeDivision.K12, organizer.getTournaments().get(0).getAgeDivision());
+//
+//
+//    }
+//
+//    /**
+//     * Tester for change tournaments start date ( before and after adding the tournament ).
+//     */
+//    @Test
+//    public void testChangeStartDate() {
+//
+//        LocalDate newStartDate = LocalDate.parse("2021-08-05");
+//
+//        Tournament tournamentTest = null;
+//        organizer.changeStartDate(tournamentTest, newStartDate);
+//
+//        // test before add
+//        organizer.changeStartDate(tournament, newStartDate);
+//        organizer.addTournament(tournament);
+//
+//        //test after add but without Participation
+//        organizer.changeStartDate(tournament, newStartDate);
+//
+//        // test after all
+//        tournament.addParticipation(new Participation(tournament, new Team()));
+//        organizer.changeStartDate(tournament, newStartDate);
+//
+//        Assert.assertEquals(newStartDate, organizer.getTournaments().get(0).getStartDate());
+//
+//
+//    }
+//
+//    /**
+//     * Tester for change tournaments finish date ( before and after adding the tournament ).
+//     */
+//    @Test
+//    public void testChangeFinishDate() {
+//
+//        LocalDate newFinishDate = LocalDate.parse("2021-08-10");
+//
+//        Tournament tournamentTest = null;
+//        organizer.changeFinishDate(tournamentTest, newFinishDate);
+//
+//        // test before add
+//        organizer.changeFinishDate(tournament, newFinishDate);
+//        organizer.addTournament(tournament);
+//
+//        //test after add but without Participation
+//        organizer.changeFinishDate(tournament, newFinishDate);
+//
+//        // test after all
+//        tournament.addParticipation(new Participation(tournament, new Team()));
+//        organizer.changeFinishDate(tournament, newFinishDate);
+//
+//        Assert.assertEquals(newFinishDate, organizer.getTournaments().get(0).getFinishDate());
+//
+//
+//    }
 
 
 }

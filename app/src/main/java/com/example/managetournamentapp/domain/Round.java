@@ -72,6 +72,20 @@ public class Round {
         return teamsNumber;
     }
 
+    public boolean equals(Object other) {
+
+        boolean equal = false;
+        if (other instanceof Round) {
+            Round otherRound = (Round) other;
+            if (teamsNumber == otherRound.teamsNumber && teamsPerGroup == otherRound.teamsPerGroup
+                    && groups.equals(otherRound.groups) && isKnockout == otherRound.isKnockout
+                        && dates.equals(otherRound.dates))
+                equal = true;
+        }
+        return equal;
+    }
+
+
 
     @Override
     public String toString() {

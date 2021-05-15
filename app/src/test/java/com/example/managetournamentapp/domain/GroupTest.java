@@ -12,7 +12,7 @@ import java.util.Map;
 public class GroupTest {
     ArrayList<LocalDate> dates;
     Team teamA , teamB;
-    Group group;
+    Group group, groupB;
     Game game;
     Player player;
     LocalDate date;
@@ -33,6 +33,10 @@ public class GroupTest {
     @Test
     public void addAndRemoveTeams()  {
         group.addTeam(teamA);
+        group.addTeam(null);
+        Assert.assertEquals(group.getTeams().size() , 1);
+        group.addTeam(teamA);
+        Assert.assertEquals(group.getTeams().size() , 1);
         group.addTeam(teamB);
         Assert.assertEquals(group.getTeams().size() , 2);
         group.addTeam(new Team());
@@ -44,7 +48,11 @@ public class GroupTest {
 
     @Test
     public void addAndRemoveGames()  {
+        group.addGame(null);
+        Assert.assertEquals(group.getGames().size() , 0);
         game.setFinished(true);
+        group.addGame(game);
+        Assert.assertEquals(group.getGames().size() , 1);
         group.addGame(game);
         Assert.assertEquals(group.getGames().size() , 1);
         Assert.assertTrue(group.allGamesFinished());
@@ -74,6 +82,12 @@ public class GroupTest {
 
         Assert.assertEquals(group.getTeamRanking(teamA) , 3);
         Assert.assertEquals(group.getTeamRanking(teamB) , 0);
+    }
+
+    @Test
+    public void testEquals()  {
+        groupB = new Group(true, dates);
+        Assert.assertTrue(group.equals(groupB));
     }
 
 
