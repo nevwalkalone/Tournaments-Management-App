@@ -63,24 +63,12 @@ public class Tournament {
         return !(now.isBefore(startDate)) && !(now.isAfter(finishDate));
     }
 
-    public boolean isFinished() {
-        LocalDate now = LocalDate.now();
-        if (now.compareTo(getFinishDate()) > 0) {
-            return true;
-        }
-        return false;
-    }
-
     public ArrayList<Round> getRounds() {
         return rounds;
     }
 
     public ArrayList<Participation> getParticipations() {
         return participations;
-    }
-
-    public void setParticipations(ArrayList<Participation> participations) {
-        this.participations = participations;
     }
 
     public String getTitle() {
@@ -162,20 +150,5 @@ public class Tournament {
         return (int) ( Math.log(x) / Math.log(2)  );
     }
 
-
-    public static void main(String[] args) {
-        int MAX_TEAMS_NUMBER = 32;
-        int teamsNumber = MAX_TEAMS_NUMBER;
-        int firstIndex = 0;
-        int lastIndex = MAX_TEAMS_NUMBER/4 * 6;
-        System.out.println(firstIndex + " " +lastIndex );
-        for( int i=0 ; i < log2(MAX_TEAMS_NUMBER)-1; i++ ){
-            teamsNumber = teamsNumber/2;
-            firstIndex = lastIndex;
-            lastIndex = firstIndex+ teamsNumber/2;
-            System.out.println(firstIndex + " " + lastIndex);
-        }
-
-    }
 
 }

@@ -13,9 +13,7 @@ public class Team {
     private  ArrayList<Player> players = new ArrayList<>();
     private ArrayList<Participation> participations = new ArrayList<>();
 
-    public Team(){
-
-    }
+    public Team(){}
 
     public Team(String name, Sport sportType, AgeDivision ageDivision, Player captain) {
         this.name = name;
@@ -31,8 +29,6 @@ public class Team {
     public ArrayList<Player> getPlayers() {
         return players;
     }
-
-
 
 
     //checks are made on player class
@@ -97,15 +93,6 @@ public class Team {
         }
     }
 
-//    private boolean canLeaveTournament(Participation participation){
-//        LocalDate now = LocalDate.now();
-//
-//        if(participation.getTournament().getStartDate().compareTo(now)<0
-//                && participation.getTournament().getFinishDate().compareTo(now)>0){
-//            return false;
-//        }
-//        return true;
-//    }
 
     //if all criterias are met, then this team
     //can join the specific tournament TODO CHECK
@@ -225,7 +212,9 @@ public class Team {
         boolean equal = false;
         if (other instanceof Team) {
             Team otherTeam = (Team) other;
-            if (name.equals(otherTeam.name) && sportType.equals(otherTeam.sportType))
+            if (name.equals(otherTeam.name) && sportType.equals(otherTeam.sportType) && colors.equals(otherTeam.colors)
+                    && players.equals(otherTeam.players) && ageDivision.equals(otherTeam.getAgeDivision())
+                        && captain.equals(otherTeam.captain)&& participations.equals(otherTeam.participations))
                 equal = true;
         }
         return equal;
