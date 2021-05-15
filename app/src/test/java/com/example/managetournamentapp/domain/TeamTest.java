@@ -4,12 +4,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
-
-import static org.junit.Assert.*;
 
 public class TeamTest {
     Player player,player2,player3;
@@ -23,7 +19,7 @@ public class TeamTest {
         player = new Player( "sakis", "rouvas" , "69000000" , "aa@aa.aa", LocalDate.parse("2000-01-01") , credentials);
         player2 = new Player( "john", "koukos" , "69000000" , "aa@aa.aa", LocalDate.parse("2000-01-01") , credentials);
         player3 =  new Player( "patrick", "starman" , "69000000" , "aa@aa.aa", LocalDate.parse("2000-01-01") , credentials);
-        team = new Team("Celtic", new Sport("Volleyball3v3"), AgeDivision.K100 ,player );
+        team = new Team("Celtic", new Sport("Volleyball3v3"), AgeDivision.K100 ,player, "green" );
         tournament = new Tournament();
     }
 
