@@ -48,6 +48,7 @@ public class TeamTest {
 
     @Test
     public void testParticipations(){
+
         Assert.assertFalse(team.hasAnyActivePart());
         team.addPlayer(player2);
         team.addPlayer(player3);
