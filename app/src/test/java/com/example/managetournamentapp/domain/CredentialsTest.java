@@ -26,6 +26,9 @@ public class CredentialsTest {
 
         Credentials credentials4 = new Credentials("Nondas", "123456");
         Assert.assertEquals(credentials4, credentials);
+        Assert.assertEquals(credentials, credentials);
+
+
 
     }
 
@@ -35,6 +38,8 @@ public class CredentialsTest {
         Assert.assertNotEquals(credentials2, credentials);
         Assert.assertNotEquals(credentials3, credentials);
         Assert.assertNotEquals(credentials5, credentials);
+        Credentials credTest = null;
+        Assert.assertNotEquals(credTest, credentials);
 
     }
 
