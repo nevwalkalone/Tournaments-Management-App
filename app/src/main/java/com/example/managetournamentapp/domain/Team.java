@@ -1,6 +1,5 @@
 package com.example.managetournamentapp.domain;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 
@@ -15,12 +14,12 @@ public class Team {
 
     public Team(){}
 
-    public Team(String name, Sport sportType, AgeDivision ageDivision, Player captain) {
+    public Team(String name, Sport sportType, AgeDivision ageDivision, Player captain, String colors) {
         this.name = name;
         this.sportType = sportType;
         this.ageDivision = ageDivision;
         this.captain = captain;
-
+        this.colors = colors;
         //add captain to the team
         addPlayer(captain);
 
@@ -204,9 +203,13 @@ public class Team {
         boolean equal = false;
         if (other instanceof Team) {
             Team otherTeam = (Team) other;
-            if (name.equals(otherTeam.name) && sportType.equals(otherTeam.sportType) && colors.equals(otherTeam.colors)
-                    && players.equals(otherTeam.players) && ageDivision.equals(otherTeam.getAgeDivision())
-                        && captain.equals(otherTeam.captain)&& participations.equals(otherTeam.participations))
+            if (name.equals(otherTeam.name) &&
+                    sportType.equals(otherTeam.sportType)
+                    && colors.equals(otherTeam.colors)
+                    && players.equals(otherTeam.players)
+                    && ageDivision.equals(otherTeam.getAgeDivision())
+                        && captain.equals(otherTeam.captain)
+                    && participations.equals(otherTeam.participations))
                 equal = true;
         }
         return equal;
