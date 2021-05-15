@@ -1,5 +1,6 @@
 package com.example.managetournamentapp.domain;
 
+import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -11,9 +12,9 @@ import java.util.List;
 import java.util.Map;
 
 public class Group {
-    private boolean isKnockout;
-    private int groupSize;
-    private int gamesNumber;
+    private final boolean isKnockout;
+    private final int groupSize;
+    private final int gamesNumber;
     private ArrayList<Game> games = new ArrayList<>();
     private Map<Team, Integer> rankings = new HashMap<>();
     private List<LocalDate> dates;
@@ -81,10 +82,6 @@ public class Group {
         return isKnockout;
     }
 
-    public void setKnockout(boolean knockout) {
-        isKnockout = knockout;
-    }
-
     public ArrayList<Game> getGames() {
         return games;
     }
@@ -118,13 +115,16 @@ public class Group {
         return rankings;
     }
 
-    public boolean groupGamesFinished() {
-        int counter = 0;
+    public ArrayList<Team> getTeams() {
+        return new ArrayList<Team>(rankings.keySet());
+    }
+
+    public boolean allGamesFinished() {
         for (Game game : games) {
-            if (game.isFinished())
-                counter++;
+            if (!game.isFinished())
+                return false;
         }
-        return gamesNumber >= counter;
+        return true;
     }
 
 
@@ -152,28 +152,24 @@ public class Group {
 
 
     public ArrayList<Team> getGroupWinners() {
-        if (!groupGamesFinished())
+        if (!allGamesFinished())
             return null;
 
         Map<Team, Integer> sortedRankings = sortByValue(rankings);
         ArrayList<Team> winners = new ArrayList<>();
-
-        ArrayList<Team> teams = new ArrayList<>();
+        ArrayList<Team> teams = new ArrayList<>(sortedRankings.keySet());
         // pick 1 winner
         if (isKnockout()) {
-            teams.addAll(sortedRankings.keySet());
-            winners.add(teams.get(teams.size() - 1));
-
-
+            winners.add(teams.get(1));
         }
         // pick 2 winners
         else {
-            teams.addAll(sortedRankings.keySet());
-            winners.add(teams.get(teams.size() - 1));
-            winners.add(teams.get(teams.size() - 2));
+            winners.add(teams.get(3));
+            winners.add(teams.get(2));
         }
         return winners;
     }
+
 
 
 }

@@ -1,25 +1,32 @@
 package com.example.managetournamentapp.domain;
 
+import android.media.AudioTrack;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.sql.SQLOutput;
 import java.time.LocalDate;
 
 import static org.junit.Assert.*;
 
 public class GameTest {
+    Credentials credentials = new Credentials("sakis7","123");
+    Player player;
     Game game;
-    Team teamA = new Team("Celtic", new Sport("Volleyball3v3",6), AgeDivision.K12 , new Player() );
-    Team teamB = new Team("Barca", new Sport("Volleyball3v3",6), AgeDivision.K12 , new Player() );
+    Team teamA ;
+    Team teamB ;
     LocalDate date;
 
     @Before
     public void setUp() throws Exception {
+        player = new Player( "sakis", "rouvas" , "69000000" , "aa@aa.aa", LocalDate.parse("2000-01-01") , credentials);
         date = LocalDate.parse("2022-01-01");
-        teamA = new Team();
-        teamB = new Team();
+        teamA = new Team("Celtic", new Sport("Volleyball3v3",6), AgeDivision.K12 ,player );
+        teamB = new Team("Barca", new Sport("Volleyball3v3",6), AgeDivision.K12 ,player );
         game = new Game("Oaka", teamA , teamB, date );
+        System.out.println(game);
 
     }
 
@@ -44,14 +51,20 @@ public class GameTest {
         Assert.assertEquals(game.getTeamB(),teamB);
         Assert.assertEquals(game.getArena(),"Oaka");
         Assert.assertEquals(game.getDate(),date  );
-
-
+        Assert.assertEquals(game.toString(), "Game{" +
+                                            "arena='" + "Oaka" + '\'' +
+                                            ", scoreA=" + 0 +
+                                            ", scoreB=" + 0 +
+//                                            ", teamA=" + teamA +
+//                                            ", teamB=" + teamB +
+                                            ", date=" + date +
+                                            ", isFinished=" + false +
+                                            '}' );
     }
+
     @Test
     public void equalsTest() {
         LocalDate date = LocalDate.parse("2022-01-01");
-        Team teamA = new Team();
-        Team teamB = new Team();
         Game game = new Game( date );
         game.setTeamA(teamA);
         game.setTeamB(teamB);

@@ -51,7 +51,6 @@ public class Game {
     }
 
     public void setFinished(boolean finished) {
-//        if (scoreA)
         isFinished = finished;
     }
 
@@ -110,29 +109,15 @@ public class Game {
 
 
     @Override
-    public int hashCode() {
-        int result = arena != null ? arena.hashCode() : 0;
-        result = 31 * result + scoreA;
-        result = 31 * result + scoreB;
-        result = 31 * result + (teamA != null ? teamA.hashCode() : 0);
-        result = 31 * result + (teamB != null ? teamB.hashCode() : 0);
-        result = 31 * result + (date != null ? date.hashCode() : 0);
-        result = 31 * result + (isFinished ? 1 : 0);
-        return result;
-    }
-
-    @Override
     public String toString() {
         return "Game{" +
-                "area='" + arena + '\'' +
-                ", result='" + '\'' +
+                "arena='" + arena + '\'' +
                 ", scoreA=" + scoreA +
                 ", scoreB=" + scoreB +
-                ", teamA=" + teamA +
-                ", teamB=" + teamB +
+//                ", teamA=" + teamA +
+//                ", teamB=" + teamB +
                 ", date=" + date +
+                ", isFinished=" + isFinished +
                 '}';
     }
-
-
 }

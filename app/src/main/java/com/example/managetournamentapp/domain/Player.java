@@ -42,7 +42,6 @@ public class Player extends User {
 
         if (age<=12){
             ageDivision = AgeDivision.valueOf("K12");
-
         }
         else if (age<=15){
             ageDivision = AgeDivision.valueOf("K15");
@@ -310,10 +309,5 @@ public class Player extends User {
                 '}';
     }
 
-    public static void main (String [] args){
-        Credentials credentials = new Credentials();
-        LocalDate birthDate = LocalDate.of(2002, Month.NOVEMBER,4);
-        Player player = new Player ("g","","","",birthDate,credentials);
-        System.out.println(player.getAgeDivision());
-    }
+
 }

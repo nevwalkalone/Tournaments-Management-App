@@ -9,11 +9,8 @@ public class Round {
     private boolean isKnockout;
     private List<LocalDate> dates;
 
-    public Round(){
-    }
-
     public Round(int teamsNumber, boolean isKnockout , List<LocalDate> dates) {
-        setTeamsNumber(teamsNumber);
+        this.teamsNumber = teamsNumber;
         this.isKnockout = isKnockout;
         this.dates = dates;
         initGroups();
@@ -24,9 +21,14 @@ public class Round {
         if (isKnockout){
             teamsPerGroup = 2;
         }
-        int groupMatches = teamsPerGroup/teamsNumber;
-        for (int i=0; i< groupMatches ; i++){
-            groups.add(new Group(isKnockout, dates.subList(i, i+groupMatches ) ));
+        int groupsNumber = teamsNumber / teamsPerGroup;
+        int groupMatches = dates.size()/groupsNumber;
+        int firstIndex = 0;
+        int lastIndex = groupMatches;
+        for (int i=0; i< groupsNumber ; i++){
+            groups.add(new Group(isKnockout, dates.subList(firstIndex, lastIndex ) ));
+            firstIndex = lastIndex;
+            lastIndex += groupMatches;
         }
     }
 
@@ -34,20 +36,8 @@ public class Round {
         return groups;
     }
 
-    public void addGroup(Group group) {
-       groups.add(group);
-    }
-
-    public void removeGame(Group group){
-        groups.remove(group);
-    }
-
     public int getTeamsNumber() {
         return teamsNumber;
-    }
-
-    public void setTeamsNumber(int teamsNumber) {
-        this.teamsNumber = teamsNumber;
     }
 
 
@@ -57,4 +47,6 @@ public class Round {
                 "teamsNumber=" + teamsNumber +
                 '}';
     }
+
+
 }
