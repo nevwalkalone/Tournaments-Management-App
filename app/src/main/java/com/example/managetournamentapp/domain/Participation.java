@@ -93,4 +93,33 @@ public class Participation {
                 ", finishDate=" + finishDate +
                 '}';
     }
+
+
+    /**
+     * Checking if the fields between
+     * the two objects are equal
+     */
+    public boolean equals(Object other){
+
+        if (other == null) {
+            return false;
+        }
+        if (!(other instanceof Participation)) {
+            return false;
+        }
+        if (this == other) {
+            return true;
+        }
+        Participation check = (Participation) other;
+
+        if (!(startDate == null ? check.getStartDate() == null : startDate.equals(check.getStartDate())) &&!(finishDate == null ?
+                check.getFinishDate() == null : finishDate.equals(check.getFinishDate())) && !(tournament == null ? check.getTournament() == null : tournament.equals(check.getTournament()))
+                && !(team == null ? check.getTeam() == null : team.equals(check.getTeam())))
+        {
+            return false;
+        }
+
+        return true;
+
+    }
 }

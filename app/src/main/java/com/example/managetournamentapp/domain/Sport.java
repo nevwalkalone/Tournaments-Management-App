@@ -31,19 +31,24 @@ public class Sport {
             case "Volleyball3v3":
             case "Basketball3v3":
                 minimumPlayers = 6;
+                break;
 
             case "Basketball2v2":
                 minimumPlayers = 4;
+                break;
 
             case "Football5v5":
             case "Basketball5v5":
                 minimumPlayers = 10;
+                break;
 
             case "Football7v7":
                 minimumPlayers = 14;
+                break;
 
             case "Volleyball6v6":
                 minimumPlayers = 12;
+                break;
         }
 
     }
