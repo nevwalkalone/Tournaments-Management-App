@@ -32,8 +32,9 @@ public class Team {
 
     //checks are made on player class
     public void addPlayer(Player player) {
-
         if (hasAnyActivePart())
+            return;
+        if (!player.canJoin(this))
             return;
 
         players.add(player);
