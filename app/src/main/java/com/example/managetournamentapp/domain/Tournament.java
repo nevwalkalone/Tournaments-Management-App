@@ -85,6 +85,9 @@ public class Tournament {
     }
 
     public void setTitle(String title) {
+        if (title == null || !getParticipations().isEmpty()) {
+            return;
+        }
         this.title = title;
     }
 
@@ -93,6 +96,9 @@ public class Tournament {
     }
 
     public void setLocation(String location) {
+        if (location == null || !getParticipations().isEmpty()) {
+            return;
+        }
         this.location = location;
     }
 
@@ -101,6 +107,9 @@ public class Tournament {
     }
 
     public void setDescription(String description) {
+        if (description == null || !getParticipations().isEmpty()) {
+            return;
+        }
         this.description = description;
     }
 
@@ -109,6 +118,9 @@ public class Tournament {
     }
 
     public void setSportType(Sport sportType) {
+        if (sportType == null || !getParticipations().isEmpty()) {
+            return;
+        }
         this.sportType = sportType;
     }
 
@@ -117,6 +129,9 @@ public class Tournament {
     }
 
     public void setStartDate(LocalDate startDate) {
+        if (startDate == null || !getParticipations().isEmpty()) {
+            return;
+        }
         this.startDate = startDate;
     }
 
@@ -125,6 +140,9 @@ public class Tournament {
     }
 
     public void setFinishDate(LocalDate finishDate) {
+        if (finishDate == null || !getParticipations().isEmpty()) {
+            return;
+        }
         this.finishDate = finishDate;
     }
 
@@ -134,6 +152,9 @@ public class Tournament {
     }
 
     public void setAgeDivision(AgeDivision ageDivision) {
+        if (ageDivision == null || !getParticipations().isEmpty()) {
+            return;
+        }
         this.ageDivision = ageDivision;
     }
 

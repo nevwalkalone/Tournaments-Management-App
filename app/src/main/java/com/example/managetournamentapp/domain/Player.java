@@ -59,6 +59,9 @@ public class Player extends User {
     //for the captain it is called in the
     //team constructor
     public void addJoinedTeam(Team team) {
+        if (team == null){
+            return;
+        }
         teamsJoined.add(team);
         if (team.getCaptain().equals(this)){
             captainInTeams.add(team);
@@ -82,27 +85,6 @@ public class Player extends User {
     }
 
 
-    //captain only
-    public void invitePlayer(Team team, Player player){
-
-        if(player == null || team == null || player.equals(this)){
-            return;
-        }
-        //check if the one who invites is the captain
-        if (!team.getCaptain().equals(this)){
-            return;
-        }
-
-        //invite from the team comes to the player
-//        if (player.manageRequest(team, true)){
-//            team.addPlayer(player);
-//        }
-        if (canJoin(team))
-            player.addInvite( new Invitation(team) );
-
-    }
-
-
     public boolean canJoin(Team team){
         // check if player belongs in the same
         // age group
@@ -113,86 +95,11 @@ public class Player extends User {
         if (team.getPlayers().contains(this)){
             return false;
         }
-
         //check if this player is available for the specific sport
         if (!getSportsInterested().contains(team.getSportType())){
             return false;
         }
         return true;
-    }
-
-    //captain only
-    public void joinTournament(Tournament tournament, Team team) {
-        if (team == null || tournament == null){
-            return;
-        }
-        if (!team.getCaptain().equals(this)){
-            return;
-        }
-        Participation participation = new Participation(tournament,team);
-        team.addParticipation(participation);
-    }
-
-    //captain only
-    public void leaveTournament(Tournament tournament, Team team) {
-        if (team == null || tournament == null){
-            return;
-        }
-        if (!team.getCaptain().equals(this)){
-            return;
-        }
-        ArrayList<Participation> tempParts = team.getParticipations();
-        for (Participation part : tempParts){
-            if(part.getTournament().equals(tournament)){
-                team.removeParticipation(part);
-                break;
-            }
-        }
-
-    }
-
-    public void changeCaptain(Team team, Player player){
-        if (team == null || player == null ){
-            return;
-        }
-        if (!team.getCaptain().equals(this)){
-            return;
-        }
-        if (!team.getPlayers().contains(player)){
-            return;
-        }
-        team.setCaptain(player);
-    }
-
-    public void changeName(Team team, String name){
-        if (team == null || name == null ){
-            return;
-        }
-        if (!team.getCaptain().equals(this)){
-            return;
-        }
-        team.setName(name);
-    }
-
-    public void changeColors(Team team, String colors){
-        if (team == null || colors == null ){
-            return;
-        }
-        if (!team.getCaptain().equals(this)){
-            return;
-        }
-        team.setColors(colors);
-    }
-
-
-    public void changeSport(Team team, Sport sportType){
-        if (team == null || sportType == null ){
-            return;
-        }
-        if (!team.getCaptain().equals(this)){
-            return;
-        }
-        team.setSportType(sportType);
     }
 
 

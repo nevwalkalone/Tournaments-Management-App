@@ -28,104 +28,10 @@ public class Organizer extends User {
         this.title = title;
     }
 
-    public void changeTournamentTitle(Tournament tournament, String title) {
-        if (tournament == null || title == null) {
-            return;
-        }
-        if (!tournaments.contains(tournament)) {
-            return;
-        }
-        if (tournament.isRunning()) {
-            return;
-        }
-        tournament.setTitle(title);
-    }
-
-    public void changeTournamentLocation(Tournament tournament, String location) {
-        if (tournament == null || location == null) {
-            return;
-        }
-        if (!tournaments.contains(tournament)) {
-            return;
-        }
-        if (tournament.getParticipations().isEmpty()) {
-            return;
-        }
-        tournament.setLocation(location);
-    }
-
-    public void changeTournamentDescription(Tournament tournament, String description) {
-        if (tournament == null || description == null) {
-            return;
-        }
-        if (!tournaments.contains(tournament)) {
-            return;
-        }
-        if (tournament.isRunning()) {
-            return;
-        }
-        tournament.setDescription(description);
-    }
-
     public ArrayList<Tournament> getTournaments() {
         return tournaments;
     }
 
-    public void setTournaments(ArrayList<Tournament> tournaments) {
-        this.tournaments = tournaments;
-    }
-
-    public void changeTournamentSport(Tournament tournament, Sport sportType) {
-        if (tournament == null || sportType == null) {
-            return;
-        }
-        if (!tournaments.contains(tournament)) {
-            return;
-        }
-        if (tournament.getParticipations().isEmpty()) {
-            return;
-        }
-        tournament.setSportType(sportType);
-    }
-
-    public void changeTournamentAgeDivision(Tournament tournament, AgeDivision ageDivision) {
-        if (tournament == null || ageDivision == null) {
-            return;
-        }
-        if (!tournaments.contains(tournament)) {
-            return;
-        }
-        if (tournament.getParticipations().isEmpty()) {
-            return;
-        }
-        tournament.setAgeDivision(ageDivision);
-    }
-
-    public void changeStartDate(Tournament tournament, LocalDate startDate) {
-        if (tournament == null || startDate == null) {
-            return;
-        }
-        if (!tournaments.contains(tournament)) {
-            return;
-        }
-        if (tournament.getParticipations().isEmpty()) {
-            return;
-        }
-        tournament.setStartDate(startDate);
-    }
-
-    public void changeFinishDate(Tournament tournament, LocalDate startDate) {
-        if (tournament == null || startDate == null) {
-            return;
-        }
-        if (!tournaments.contains(tournament)) {
-            return;
-        }
-        if (tournament.getParticipations().isEmpty()) {
-            return;
-        }
-        tournament.setFinishDate(startDate);
-    }
 
     public void addTournament(Tournament tour) {
         if (tour == null) {

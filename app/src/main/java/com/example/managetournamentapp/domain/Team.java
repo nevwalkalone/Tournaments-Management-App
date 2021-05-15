@@ -67,6 +67,19 @@ public class Team {
     }
 
 
+    public void invitePlayer(Player player){
+        if (player==null || players.contains(player)){
+            return;
+        }
+        if (!player.canJoin(this)){
+            return;
+        }
+        player.addInvite( new Invitation(this) );
+    }
+
+
+
+
     public void addParticipation(Participation participation) {
         if (participation == null ){
             return;
@@ -85,12 +98,11 @@ public class Team {
     //we need the tournament to remove the appropriate participation
     //linked with the tournament
     public void removeParticipation(Participation participation) {
-        if (!participation.isRunning()){
-            //successfully left the tournament
-            participations.remove(participation);
-            //remove the specific participation from the tournament
-            participation.getTournament().removeParticipation(participation);
+        if (participation == null || participation.isRunning()){
+            return;
         }
+        participations.remove(participation);
+        participation.getTournament().removeParticipation(participation);
     }
 
 
@@ -151,6 +163,9 @@ public class Team {
     }
 
     public void setName(String name) {
+        if (name == null || !getUndoneParticipations().isEmpty() ){
+            return ;
+        }
         this.name = name;
     }
 
@@ -159,6 +174,9 @@ public class Team {
     }
 
     public void setColors(String colors) {
+        if (colors == null || !getUndoneParticipations().isEmpty() ){
+            return ;
+        }
         this.colors = colors;
     }
 
@@ -166,14 +184,6 @@ public class Team {
         return sportType;
     }
 
-    public void setSportType(Sport sportType) {
-        if (sportType == null){
-            return;
-        }
-        if (getUndoneParticipations().isEmpty()){
-            this.sportType = sportType;
-        }
-    }
 
     public AgeDivision getAgeDivision() {
         return ageDivision;
@@ -184,8 +194,15 @@ public class Team {
         return captain;
     }
 
-    public void setCaptain(Player captain) {
-        this.captain = captain;
+    public void setCaptain(Player player) {
+        if (player == null ){
+            return;
+        }
+        if (!getPlayers().contains(player)){
+            return;
+        }
+        //TODO remove captain.captainINteams entry
+        captain = player;
     }
 
 
