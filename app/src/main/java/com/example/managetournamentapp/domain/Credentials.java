@@ -42,10 +42,16 @@ public class Credentials {
 
 
     public boolean equals(Object other) {
+        if (other == this)
+            return true;
+        if (other == null || getClass() != other.getClass())
+            return false;
+
         boolean equal = false;
         if (other instanceof Credentials) {
             Credentials otherCred = (Credentials) other;
-            if (username.equals(otherCred.username) && password.equals(otherCred.password))
+            if ((username.equals(otherCred.username) && otherCred.username != null)
+                    && (password.equals(otherCred.password) && otherCred.password != null))
                 equal = true;
         }
         return equal;

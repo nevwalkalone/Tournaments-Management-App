@@ -67,6 +67,14 @@ public class Organizer extends User {
         tournament.setDescription(description);
     }
 
+    public ArrayList<Tournament> getTournaments() {
+        return tournaments;
+    }
+
+    public void setTournaments(ArrayList<Tournament> tournaments) {
+        this.tournaments = tournaments;
+    }
+
     public void changeTournamentSport(Tournament tournament, Sport sportType) {
         if (tournament == null || sportType == null) {
             return;
@@ -158,10 +166,15 @@ public class Organizer extends User {
     }
 
     public boolean equals(Object other) {
+        if (other == this)
+            return true;
+        if (other == null)
+            return false;
+
         boolean equal = false;
         if (other instanceof Organizer) {
             Organizer otherOrganizer = (Organizer) other;
-            if (title.equals(otherOrganizer.title))         // each Organizer has a unique Title. EK15!
+            if (title.equals(otherOrganizer.title) && otherOrganizer.title != null)         // each Organizer has a unique Title. EK15!
                 equal = true;
         }
         return equal;
