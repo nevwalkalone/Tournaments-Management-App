@@ -172,5 +172,18 @@ public class Group {
     }
 
 
+    public boolean equals(Object other) {
+
+        boolean equal = false;
+        if (other instanceof Group) {
+            Group otherGroup = (Group) other;
+            if (gamesNumber == otherGroup.gamesNumber && isKnockout == otherGroup.isKnockout
+                    && groupSize == otherGroup.groupSize && rankings.equals(otherGroup.rankings)
+                    && games.equals(otherGroup.games) && dates.equals(otherGroup.dates))
+                equal = true;
+        }
+        return equal;
+    }
+
 
 }

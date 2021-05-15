@@ -72,7 +72,6 @@ public class TournamentTest {
     @Test
     public void testGetMAX_TEAMS_NUMBER() {
 
-
         Assert.assertEquals(tournament2.getMAX_TEAMS_NUMBER(), tournament.getMAX_TEAMS_NUMBER());
 
     }

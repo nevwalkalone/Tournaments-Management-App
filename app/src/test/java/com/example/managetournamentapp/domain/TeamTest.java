@@ -71,7 +71,6 @@ public class TeamTest {
         Assert.assertEquals(team.getColors(), "blue");
         Assert.assertEquals(team.getCaptain(), player);
         Assert.assertEquals(team.getAgeDivision(), AgeDivision.K100);
-        team.setSportType(new Sport("Volleyball6v6"));
         Assert.assertEquals(team.getSportType(), new Sport("Volleyball6v6"));
 
         Assert.assertEquals(team.toString(), "Team{" +
