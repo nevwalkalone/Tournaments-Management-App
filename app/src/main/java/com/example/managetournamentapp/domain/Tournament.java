@@ -132,6 +132,10 @@ public class Tournament {
 
     }
 
+    public int getMAX_TEAMS_NUMBER() {
+        return MAX_TEAMS_NUMBER;
+    }
+
     @Override
     public String toString() {
         return "Tournament{" +
@@ -150,5 +154,30 @@ public class Tournament {
         return (int) ( Math.log(x) / Math.log(2)  );
     }
 
+    public boolean equals(Object other) {
+
+        if (this == other)
+            return true;
+
+        if (other == null || getClass() != other.getClass())
+            return false;
+
+        boolean equal = false;
+        if (other instanceof Tournament) {
+            Tournament otherTour = (Tournament) other;
+
+            if ((title.equals(otherTour.title) && otherTour.title != null) &&
+                    (startDate.equals(otherTour.startDate) && otherTour.startDate != null) &&
+                    (finishDate.equals(otherTour.finishDate) && otherTour.finishDate != null) &&
+                    (location.equals(otherTour.location) && otherTour.location != null) &&
+                    (sportType.equals(otherTour.sportType) && otherTour.sportType != null) &&
+                    (ageDivision.equals(otherTour.ageDivision) && otherTour.ageDivision != null) &&
+                    (dates.equals(otherTour.dates) && otherTour.dates != null) &&
+                    getMAX_TEAMS_NUMBER() == otherTour.getMAX_TEAMS_NUMBER())
+
+                equal = true;
+        }
+        return equal;
+    }
 
 }
