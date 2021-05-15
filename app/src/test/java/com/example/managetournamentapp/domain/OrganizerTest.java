@@ -106,6 +106,15 @@ public class OrganizerTest {
     public void testDeleteTournament() {
 
         organizer.deleteTournament(tournament);
+
+
+        organizer.addTournament(tournament);
+        organizer.deleteTournament(tournament);
+
+//        organizer.addTournament(tournament);
+//        tournament.addParticipation(new Participation(tournament, new Team()));
+//        organizer.deleteTournament(tournament);
+
         Assert.assertEquals(0, organizer.getTournaments().size());
         Assert.assertFalse(organizer.getTournaments().contains(tournament));
 

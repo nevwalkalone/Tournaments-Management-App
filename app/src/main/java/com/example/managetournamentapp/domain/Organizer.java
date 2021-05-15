@@ -149,7 +149,9 @@ public class Organizer extends User {
         }
 
         ArrayList<Participation> participations = tour.getParticipations();
+        //TODO CONCURRENT MODIFICATION
         for (Participation participation : participations) {
+
             Team team = participation.getTeam();
             team.removeParticipation(participation);
         }

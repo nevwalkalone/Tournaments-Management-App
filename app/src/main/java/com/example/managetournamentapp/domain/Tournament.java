@@ -17,10 +17,18 @@ public class Tournament {
     private AgeDivision ageDivision;
 
     public Tournament() {
+        title = "";
+        startDate = null;
+        finishDate = null;
+        location = "";
+        description = "";
+        sportType = null;
+        dates = null;
+        ageDivision = null;
         MAX_TEAMS_NUMBER = 32;
     }
 
-    public Tournament(String title, LocalDate startDate, LocalDate finishDate, String location, Sport sportType, int maxTeamsNumber, AgeDivision ageDivision , ArrayList<LocalDate> dates) {
+    public Tournament(String title, LocalDate startDate, LocalDate finishDate, String location, Sport sportType, int maxTeamsNumber, AgeDivision ageDivision, ArrayList<LocalDate> dates) {
         this.title = title;
         this.startDate = startDate;
         this.finishDate = finishDate;
@@ -31,16 +39,16 @@ public class Tournament {
         initRounds(dates);
     }
 
-    public void initRounds(ArrayList<LocalDate> dates ){      //TODO dates = 2*maxteams - 1
+    public void initRounds(ArrayList<LocalDate> dates) {      //TODO dates = 2*maxteams - 1
         int teamsNumber = MAX_TEAMS_NUMBER;
         int firstIndex = 0;
-        int lastIndex = MAX_TEAMS_NUMBER/4 * 6;
-        rounds.add( new Round(MAX_TEAMS_NUMBER, false, dates.subList(firstIndex,lastIndex) ));
-        for( int i=0 ; i < log2(MAX_TEAMS_NUMBER)-1; i++ ){
-            teamsNumber = teamsNumber/2;
+        int lastIndex = MAX_TEAMS_NUMBER / 4 * 6;
+        rounds.add(new Round(MAX_TEAMS_NUMBER, false, dates.subList(firstIndex, lastIndex)));
+        for (int i = 0; i < log2(MAX_TEAMS_NUMBER) - 1; i++) {
+            teamsNumber = teamsNumber / 2;
             firstIndex = lastIndex;
-            lastIndex = firstIndex+ teamsNumber/2;
-            rounds.add( new Round(teamsNumber, true, dates.subList(firstIndex,lastIndex) ));
+            lastIndex = firstIndex + teamsNumber / 2;
+            rounds.add(new Round(teamsNumber, true, dates.subList(firstIndex, lastIndex)));
         }
     }
 
@@ -54,10 +62,12 @@ public class Tournament {
 
     //check if tournament is full of teams
     public boolean isFull() {
+        if (participations == null)
+            return false;
         return participations.size() == MAX_TEAMS_NUMBER;
     }
 
-    public boolean isRunning(){
+    public boolean isRunning() {
         LocalDate now = LocalDate.now();
         return !(now.isBefore(startDate)) && !(now.isAfter(finishDate));
     }
@@ -127,9 +137,6 @@ public class Tournament {
         this.ageDivision = ageDivision;
     }
 
-    public void manageRequests(Team team, boolean accept) {
-
-    }
 
     public int getMAX_TEAMS_NUMBER() {
         return MAX_TEAMS_NUMBER;
@@ -142,15 +149,15 @@ public class Tournament {
                 ", location='" + location + '\'' +
                 ", description='" + description + '\'' +
                 ", sportType=" + sportType +
-                ", maxTeamsNumber=" +
-                ", roundsNumber=" +
-                ", teams=" +
+                ", maxTeamsNumber=" + MAX_TEAMS_NUMBER +
+                ", roundsNumber=" + rounds.size() +
+                ", teams=" + MAX_TEAMS_NUMBER +
                 ", ageDivision=" + ageDivision +
                 '}';
     }
 
-    public static int log2(int x){
-        return (int) ( Math.log(x) / Math.log(2)  );
+    public static int log2(int x) {
+        return (int) (Math.log(x) / Math.log(2));
     }
 
     public boolean equals(Object other) {
@@ -171,7 +178,9 @@ public class Tournament {
                     (location.equals(otherTour.location) && otherTour.location != null) &&
                     (sportType.equals(otherTour.sportType) && otherTour.sportType != null) &&
                     (ageDivision.equals(otherTour.ageDivision) && otherTour.ageDivision != null) &&
-                    (dates.equals(otherTour.dates) && otherTour.dates != null) &&
+                    (otherTour.dates != null && dates.equals(otherTour.dates)) &&
+                    (participations.equals(otherTour.participations) && otherTour.participations != null) &&
+                    (rounds.equals(otherTour.rounds) && otherTour.rounds != null) &&
                     getMAX_TEAMS_NUMBER() == otherTour.getMAX_TEAMS_NUMBER())
 
                 equal = true;
