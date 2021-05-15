@@ -17,20 +17,20 @@ public class SportTest {
         Assert.assertEquals(null,sport.getName());
 
         //wrong number of players
-        sport.changeSetup("Volleyball6v6",5,0);
+        sport.changeSetup("Volleyball6v6");
         Assert.assertEquals(0,sport.getMinimumPlayers());
 
         //wrong game duration
-        sport.changeSetup("Basketball2v2",4,10);
+        sport.changeSetup("Basketball2v2");
 
 
         //testing football 7v7 and volleyball 6v6
-        sport.changeSetup("Football7v7",14,70);
+        sport.changeSetup("Football7v7");
         Assert.assertEquals("Football7v7",sport.getName());
         Assert.assertEquals(14,sport.getMinimumPlayers());
 
 
-        sport.changeSetup("Volleyball6v6", 12,0);
+        sport.changeSetup("Volleyball6v6");
         Assert.assertEquals("Volleyball6v6",sport.getName());
         Assert.assertEquals(12,sport.getMinimumPlayers());
 
@@ -55,7 +55,7 @@ public class SportTest {
         Assert.assertEquals(sport1,sport1);
         Sport sport2 = new Sport("Basketball3v3");
         Assert.assertEquals(sport1,sport2);
-        sport2.changeSetup("Basketball5v5",10,40);
+        sport2.changeSetup("Basketball5v5");
         Assert.assertFalse(sport1.equals(sport2));
         sport2 = null;
         Assert.assertFalse(sport1.equals(sport2));
