@@ -15,6 +15,7 @@ public class Player extends User {
     //teams that the specific player has joined
     private ArrayList<Team> teamsJoined = new ArrayList<>();
 
+    private ArrayList<Invitation> invitesReceived = new ArrayList<>();
 
     private AgeDivision ageDivision;
 
@@ -58,6 +59,9 @@ public class Player extends User {
     //for the captain it is called in the
     //team constructor
     public void addJoinedTeam(Team team) {
+        if (team == null){
+            return;
+        }
         teamsJoined.add(team);
         if (team.getCaptain().equals(this)){
             captainInTeams.add(team);
@@ -81,110 +85,21 @@ public class Player extends User {
     }
 
 
-    //captain only
-    public void invitePlayer(Team team, Player player){
-
-        if(player == null || team == null || player.equals(this)){
-            return;
-        }
-        //check if the one who invites is the captain
-        if (!team.getCaptain().equals(this)){
-            return;
-        }
+    public boolean canJoin(Team team){
         // check if player belongs in the same
         // age group
-        if (!player.getAgeDivision().equals(team.getAgeDivision())) {
-            return;
+        if (!getAgeDivision().equals(team.getAgeDivision())) {
+            return false;
         }
         //if the player is already in the team, no need to join again
-        if (team.getPlayers().contains(player)){
-            return;
+        if (team.getPlayers().contains(this)){
+            return false;
         }
-
         //check if this player is available for the specific sport
-        if (!player.getSportsInterested().contains(team.getSportType())){
-            return;
+        if (!getSportsInterested().contains(team.getSportType())){
+            return false;
         }
-
-        //invite from the team comes to the player
-        if (player.manageRequest(team, true)){
-            team.addPlayer(player);
-        }
-
-    }
-
-    //captain only
-    public void joinTournament(Tournament tournament, Team team) {
-        if (team == null || tournament == null){
-            return;
-        }
-        if (!team.getCaptain().equals(this)){
-            return;
-        }
-        Participation participation = new Participation(tournament,team);
-        team.addParticipation(participation);
-    }
-
-    //captain only
-    public void leaveTournament(Tournament tournament, Team team) {
-        if (team == null || tournament == null){
-            return;
-        }
-        if (!team.getCaptain().equals(this)){
-            return;
-        }
-        ArrayList<Participation> tempParts = team.getParticipations();
-        for (Participation part : tempParts){
-            if(part.getTournament().equals(tournament)){
-                team.removeParticipation(part);
-                break;
-            }
-        }
-
-    }
-
-    public void changeCaptain(Team team, Player player){
-        if (team == null || player == null ){
-            return;
-        }
-        if (!team.getCaptain().equals(this)){
-            return;
-        }
-        if (!team.getPlayers().contains(player)){
-            return;
-        }
-        team.setCaptain(player);
-    }
-
-    public void changeName(Team team, String name){
-        if (team == null || name == null ){
-            return;
-        }
-        if (!team.getCaptain().equals(this)){
-            return;
-        }
-        team.setName(name);
-    }
-
-    public void changeColors(Team team, String colors){
-        if (team == null || colors == null ){
-            return;
-        }
-        if (!team.getCaptain().equals(this)){
-            return;
-        }
-        team.setColors(colors);
-    }
-
-
-    public void changeSport(Team team, Sport sportType){
-        if (team == null || sportType == null ){
-            return;
-        }
-        if (!team.getCaptain().equals(this)){
-            return;
-        }
-        team.setSportType(sportType);
+        return true;
     }
 
 
@@ -226,14 +141,19 @@ public class Player extends User {
     // to xw valei twra
     //TODO thelei check
     //for every player
-    public boolean manageRequest(Team team, boolean flagTest){
-        System.out.println("Request made from team: "+team.getName());
-        if (flagTest) {
-            System.out.println("Accepted");
-            return true;
+    public void replyToInvitation(Invitation invite , boolean accept){
+        if (invite==null)
+            return;
+        if (invitesReceived.contains(invite))
+            return;
+        if (!invite.getPending())
+            return;
+        if (accept) {
+            invite.setAccepted(true);
+            invite.getTeam().addPlayer(this);
+        }else{
+            invite.setAccepted(false);
         }
-        System.out.println("Rejected");
-        return false;
     }
 
 
@@ -258,6 +178,24 @@ public class Player extends User {
         }
 
     }
+
+    public void addInvite(Invitation invite){
+        if (invite==null){
+            return;
+        }
+        invitesReceived.add(invite);
+    }
+
+    public void removeInvite(Invitation invite){
+        if (invite==null){
+            return;
+        }
+        if (!invitesReceived.contains(invite)){
+            return;
+        }
+        invite.getTeam().addPlayer(this);
+    }
+
 
     public String getLocation() {
         return location;

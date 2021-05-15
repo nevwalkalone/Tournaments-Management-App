@@ -35,6 +35,7 @@ public class UserTest {
 
         User userTest = new User("Nondas", "Ioannou", "69xxxxxxx", "nondas@gmail.com", date, credentials);
         Assert.assertEquals(userTest, user);
+        Assert.assertEquals(user, user);
 
     }
 

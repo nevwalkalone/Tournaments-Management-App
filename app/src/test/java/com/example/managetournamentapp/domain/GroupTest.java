@@ -24,8 +24,8 @@ public class GroupTest {
         group = new Group(true, dates);
         player = new Player( "sakis", "rouvas" , "69000000" , "aa@aa.aa", LocalDate.parse("2000-01-01") , credentials);
         date = LocalDate.parse("2022-01-01");
-        teamA = new Team("Celtic", new Sport("Volleyball3v3"), AgeDivision.K12 ,player );
-        teamB = new Team("Barca", new Sport("Volleyball3v3"), AgeDivision.K12 ,player );
+        teamA = new Team("Celtic", new Sport("Volleyball3v3"), AgeDivision.K12 ,player,"green" );
+        teamB = new Team("Barca", new Sport("Volleyball3v3"), AgeDivision.K12 ,player, "red");
         game = new Game("Oaka", teamA , teamB, date );
     }
 

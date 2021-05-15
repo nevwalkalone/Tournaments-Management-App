@@ -48,6 +48,7 @@ public class OrganizerTest {
     public void testEquals() {
 
         Assert.assertEquals(organizer2, organizer);
+        Assert.assertEquals(organizer, organizer);
 
     }
 
@@ -91,6 +92,8 @@ public class OrganizerTest {
     @Test
     public void testAddTournament() {
 
+        Tournament tournamentTest = null;
+        organizer.addTournament(tournamentTest);
 
         organizer.addTournament(tournament);
         Assert.assertEquals(1, organizer.getTournaments().size());
@@ -105,7 +108,19 @@ public class OrganizerTest {
     @Test
     public void testDeleteTournament() {
 
+        Tournament tournamentTest = null;
+        organizer.deleteTournament(tournamentTest);
+
         organizer.deleteTournament(tournament);
+
+
+        organizer.addTournament(tournament);
+        organizer.deleteTournament(tournament);
+
+//        organizer.addTournament(tournament);
+//        tournament.addParticipation(new Participation(tournament, new Team()));
+//        organizer.deleteTournament(tournament);
+
         Assert.assertEquals(0, organizer.getTournaments().size());
         Assert.assertFalse(organizer.getTournaments().contains(tournament));
 
@@ -116,6 +131,9 @@ public class OrganizerTest {
      */
     @Test
     public void testChangeTournamentTitle() {
+
+        Tournament tournamentTest = null;
+        organizer.changeTournamentTitle(tournamentTest, "KATI");
 
         organizer.changeTournamentTitle(tournament, "ESKANA2");
         organizer.addTournament(tournament);
@@ -129,6 +147,9 @@ public class OrganizerTest {
      */
     @Test
     public void testChangeTournamentLocation() {
+
+        Tournament tournamentTest = null;
+        organizer.changeTournamentLocation(tournamentTest, "KATI");
 
         // test before add
         organizer.changeTournamentLocation(tournament, "THESSALONIKI");
@@ -151,6 +172,9 @@ public class OrganizerTest {
     @Test
     public void testChangeTournamentDescription() {
 
+        Tournament tournamentTest = null;
+        organizer.changeTournamentDescription(tournamentTest, "KATI");
+
         // test before add
         organizer.changeTournamentDescription(tournament, "BEST 3V3 LET'S GO");
         organizer.addTournament(tournament);
@@ -171,6 +195,7 @@ public class OrganizerTest {
         ArrayList<Tournament> tournaments = new ArrayList<>();
         tournaments.add(new Tournament());
         tournaments.add(new Tournament());
+
         organizer.setTournaments(tournaments);
 
         Assert.assertEquals(tournaments, organizer.getTournaments());
@@ -184,6 +209,9 @@ public class OrganizerTest {
     public void testChangeTournamentSport() {
 
         Sport newSport = new Sport("Volleyball6v6");
+
+        Tournament tournamentTest = null;
+        organizer.changeTournamentSport(tournamentTest, newSport);
 
         // test before add
         organizer.changeTournamentSport(tournament, newSport);
@@ -206,6 +234,9 @@ public class OrganizerTest {
      */
     @Test
     public void testChangeTournamentAgeDivision() {
+
+        Tournament tournamentTest = null;
+        organizer.changeTournamentAgeDivision(tournamentTest, AgeDivision.K12);
 
         // test before add
         organizer.changeTournamentAgeDivision(tournament, AgeDivision.K12);
@@ -231,6 +262,9 @@ public class OrganizerTest {
 
         LocalDate newStartDate = LocalDate.parse("2021-08-05");
 
+        Tournament tournamentTest = null;
+        organizer.changeStartDate(tournamentTest, newStartDate);
+
         // test before add
         organizer.changeStartDate(tournament, newStartDate);
         organizer.addTournament(tournament);
@@ -254,6 +288,9 @@ public class OrganizerTest {
     public void testChangeFinishDate() {
 
         LocalDate newFinishDate = LocalDate.parse("2021-08-10");
+
+        Tournament tournamentTest = null;
+        organizer.changeFinishDate(tournamentTest, newFinishDate);
 
         // test before add
         organizer.changeFinishDate(tournament, newFinishDate);

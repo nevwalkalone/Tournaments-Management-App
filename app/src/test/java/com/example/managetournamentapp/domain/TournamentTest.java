@@ -11,19 +11,102 @@ import static org.junit.Assert.*;
 
 public class TournamentTest {
 
+    private Tournament tournament;
+    private Tournament tournament2;
+    private Tournament tournament3;
+    private Tournament tournament4;
+    ArrayList<LocalDate> dates;
+    ArrayList<LocalDate> dates2;
+
     @Before
     public void setUp() throws Exception {
+        dates = new ArrayList<>();
+        dates2 = new ArrayList<>();
+        for (int i = 1; i < 64; i++) {
+            dates.add(LocalDate.now());
+        }
+        for (int i = 1; i < 64; i++) {
+            dates2.add(LocalDate.now());
+        }
+
+
+        tournament = new Tournament("TOURNOUA1", LocalDate.parse("2021-08-01"), LocalDate.parse("2021-08-31"), "ATHENS", (new Sport("Basketball3v3")),
+                32, AgeDivision.K15, dates);
+        tournament2 = new Tournament("TOURNOUA1", LocalDate.parse("2021-08-01"), LocalDate.parse("2021-08-31"), "ATHENS", (new Sport("Basketball3v3")),
+                32, AgeDivision.K15, dates);
+        tournament3 = new Tournament("TOURNOUA2", LocalDate.parse("2021-07-01"), LocalDate.parse("2021-07-31"), "NAUPLIO", (new Sport("Basketball3v3")),
+                32, AgeDivision.K18, dates2);
+        tournament4 = new Tournament();
+
+
     }
 
 
     @Test
-    public void testParticipations(){
+    public void testPrint() {
+
+        Assert.assertEquals(tournament2.toString(), tournament.toString());
+
+    }
+
+    @Test
+    public void testEquals() {
 
 
-        ArrayList<LocalDate> dates = new ArrayList<>();
-        for (int i=10 ; i<25 ; i++){
-            dates.add(LocalDate.parse("2021-10-"+i));
+        tournament.setDescription("TOURNOUA1111");
+        tournament2.setDescription("TOURNOUA1111");
+        Assert.assertEquals(tournament2, tournament);
+
+    }
+
+    @Test
+    public void testNotEquals() {
+
+        Assert.assertNotEquals(tournament2, tournament3);
+        Assert.assertNotEquals(tournament3, tournament);
+        Assert.assertNotEquals(tournament4, tournament);
+
+    }
+
+    // Tester Getters and Setters
+    @Test
+    public void testGetMAX_TEAMS_NUMBER() {
+
+
+        Assert.assertEquals(tournament2.getMAX_TEAMS_NUMBER(), tournament.getMAX_TEAMS_NUMBER());
+
+    }
+
+    @Test
+    public void testInitRounds() {
+
+        Assert.assertEquals(tournament2.getRounds(), tournament.getRounds());
+
+    }
+
+    @Test
+    public void testIsRunning() {
+
+        //TODO IF TODAY DOES NOT RUN
+//        Assert.assertTrue(tournament.isRunning());
+
+        tournament.setStartDate(LocalDate.parse("2030-06-02"));
+        tournament.setFinishDate(LocalDate.parse("2030-06-30"));
+        Assert.assertFalse(tournament.isRunning());
+
+
+    }
+
+    @Test
+    public void testIsFull() {
+
+        Assert.assertFalse(tournament4.isFull());
+
+        for (int i = 0; i < 32; i++) {
+            tournament4.addParticipation(new Participation(tournament4, new Team()));
         }
+        Assert.assertTrue(tournament4.isFull());
+
 
     }
 

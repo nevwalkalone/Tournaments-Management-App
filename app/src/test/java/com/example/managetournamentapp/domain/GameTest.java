@@ -19,8 +19,8 @@ public class GameTest {
     public void setUp() throws Exception {
         player = new Player( "sakis", "rouvas" , "69000000" , "aa@aa.aa", LocalDate.parse("2000-01-01") , credentials);
         date = LocalDate.parse("2022-01-01");
-        teamA = new Team("Celtic", new Sport("Volleyball3v3"), AgeDivision.K12 ,player );
-        teamB = new Team("Barca", new Sport("Volleyball3v3"), AgeDivision.K12 ,player );
+        teamA = new Team("Celtic", new Sport("Volleyball3v3"), AgeDivision.K12 ,player, "red");
+        teamB = new Team("Barca", new Sport("Volleyball3v3"), AgeDivision.K12 ,player, "blue" );
         game = new Game("Oaka", teamA , teamB, date );
 
     }
@@ -40,10 +40,9 @@ public class GameTest {
         Assert.assertTrue(game.isFinished());
         Assert.assertEquals(game.findWinner(),1);
     }
+
     @Test
     public void basicTests(){
-        System.out.println(teamA);
-        System.out.println(game.getTeamA());
         Assert.assertEquals(game.getTeamA(),teamA);
         Assert.assertEquals(game.getTeamB(),teamB);
         Assert.assertEquals(game.getArena(),"Oaka");
