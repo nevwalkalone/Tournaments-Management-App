@@ -90,11 +90,21 @@ public class User {
     }
 
     public boolean equals(Object other) {
+
+        if (this == other)
+            return true;
+
+        if (other == null || getClass() != other.getClass())
+            return false;
+
         boolean equal = false;
         if (other instanceof User) {
             User otherUser = (User) other;
-            if (name.equals(otherUser.name) && surname.equals(otherUser.surname) && phoneNumber.equals(otherUser.phoneNumber)
-                    && birthDate.equals(otherUser.birthDate) && credentials.equals(otherUser.credentials))
+
+            if ((name.equals(otherUser.name) && otherUser.name != null) && (surname.equals(otherUser.surname) && otherUser.surname != null)
+                    && (phoneNumber.equals(otherUser.phoneNumber) && otherUser.phoneNumber != null)
+                    && (birthDate.equals(otherUser.birthDate) && otherUser.birthDate != null)
+                    && (credentials.equals(otherUser.credentials) && otherUser.credentials != null))
                 equal = true;
         }
         return equal;
