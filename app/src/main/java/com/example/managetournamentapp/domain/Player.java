@@ -62,6 +62,12 @@ public class Player extends User {
         if (team == null){
             return;
         }
+        if (team.hasAnyActivePart())
+            return;
+        if (! canJoin(team))
+            return;
+
+        team.getPlayers().add(this);
         teamsJoined.add(team);
         if (team.getCaptain().equals(this)){
             captainInTeams.add(team);
@@ -79,9 +85,11 @@ public class Player extends User {
         if(team.getCaptain().equals(this)){
             return;
         }
-        if (team.removePlayer(this)){
-            teamsJoined.remove(team);
+        if (team.hasAnyActivePart()){
+            return;
         }
+        teamsJoined.remove(team);
+        team.getPlayers().remove(this);
     }
 
 

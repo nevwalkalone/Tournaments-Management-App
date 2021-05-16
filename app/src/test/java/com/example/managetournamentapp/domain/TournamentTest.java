@@ -15,6 +15,8 @@ public class TournamentTest {
     private Tournament tournament2;
     private Tournament tournament3;
     private Tournament tournament4;
+    private Team team;
+    private  Player player;
     ArrayList<LocalDate> dates;
     ArrayList<LocalDate> dates2;
 
@@ -28,8 +30,9 @@ public class TournamentTest {
         for (int i = 1; i < 64; i++) {
             dates2.add(LocalDate.now());
         }
-
-
+        Credentials credentials = new Credentials("sakis7","123");
+        player = new Player( "sakis", "rouvas" , "69000000" , "aa@aa.aa", LocalDate.parse("2000-01-01") , credentials);
+        team = new Team("Celtic", new Sport("Volleyball3v3"), AgeDivision.K100 ,player, "green" );
         tournament = new Tournament("TOURNOUA1", LocalDate.parse("2021-08-01"), LocalDate.parse("2021-08-31"), "ATHENS", (new Sport("Basketball3v3")),
                 32, AgeDivision.K15, dates);
         tournament2 = new Tournament("TOURNOUA1", LocalDate.parse("2021-08-01"), LocalDate.parse("2021-08-31"), "ATHENS", (new Sport("Basketball3v3")),
@@ -102,7 +105,7 @@ public class TournamentTest {
         Assert.assertFalse(tournament4.isFull());
 
         for (int i = 0; i < 32; i++) {
-            tournament4.addParticipation(new Participation(tournament4, new Team()));
+            tournament4.addParticipation(new Participation(tournament4, team));
         }
         Assert.assertTrue(tournament4.isFull());
 

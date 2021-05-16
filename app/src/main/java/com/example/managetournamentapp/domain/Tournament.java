@@ -52,11 +52,17 @@ public class Tournament {
     }
 
     public void addParticipation(Participation participation) {
-        participations.add(participation);
+        if (participation==null){
+            return;
+        }
+        participation.getTeam().addParticipation(participation);
     }
 
     public void removeParticipation(Participation participation) {
-        participations.remove(participation);
+        if (participation==null){
+            return;
+        }
+        participation.getTeam().removeParticipation(participation);
     }
 
     //check if tournament is full of teams

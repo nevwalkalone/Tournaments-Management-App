@@ -18,9 +18,8 @@ public class Team {
         this.name = name;
         this.sportType = sportType;
         this.ageDivision = ageDivision;
-        this.captain = captain;
         this.colors = colors;
-        //add captain to the team
+        this.captain = captain;
         addPlayer(captain);
 
     }
@@ -32,22 +31,17 @@ public class Team {
 
     //checks are made on player class
     public void addPlayer(Player player) {
-        if (hasAnyActivePart())
+        if (player==null){
             return;
-        if (!player.canJoin(this))
-            return;
-
-        players.add(player);
-        //add team to the player
+        }
         player.addJoinedTeam(this);
     }
 
-    public boolean removePlayer(Player player){
-        if (!hasAnyActivePart()){
-            players.remove(player);
-            return true;
+    public void removePlayer(Player player){
+        if (player==null){
+            return;
         }
-        return false;
+        player.leaveTeam(this);
     }
 
 
@@ -87,22 +81,23 @@ public class Team {
         if (participations.contains(participation)){
             return;
         }
-        // TODO if( hasAnyActivePart()  ) return
-
         if (canParticipate(participation)){
             participations.add(participation);
-            participation.getTournament().addParticipation(participation);
+            participation.getTournament().getParticipations().add(participation);
         }
     }
 
     //we need the tournament to remove the appropriate participation
     //linked with the tournament
     public void removeParticipation(Participation participation) {
-        if (participation == null || participation.isRunning()){
+        if (participation == null ){
+            return;
+        }
+        if (!participations.contains(participation)){
             return;
         }
         participations.remove(participation);
-        participation.getTournament().removeParticipation(participation);
+        participation.getTournament().getParticipations().remove(participation);
     }
 
 
@@ -114,6 +109,9 @@ public class Team {
         if (!getAgeDivision().equals(tournToJoin.getAgeDivision())) {
             return false;
         }
+        if (hasAnyActivePart()){
+            return false;
+        }
 
         if (!tournToJoin.getSportType().equals(sportType)) {
             return false;
@@ -122,6 +120,7 @@ public class Team {
         if (tournToJoin.isFull()){
             return false;
         }
+
 
         if (players.size() < ( sportType.getMinimumPlayers()/2)){
             return false;
@@ -201,8 +200,10 @@ public class Team {
         if (!getPlayers().contains(player)){
             return;
         }
-        //TODO remove captain.captainINteams entry
+        Player oldCaptain = captain;
         captain = player;
+        oldCaptain.getCaptainInTeams().remove(this);
+        captain.getCaptainInTeams().add(this);
     }
 
 

@@ -17,15 +17,17 @@ public class TeamTest {
     public void setUp() throws Exception {
         credentials = new Credentials("sakis7","123");
         player = new Player( "sakis", "rouvas" , "69000000" , "aa@aa.aa", LocalDate.parse("2000-01-01") , credentials);
+        player.addSportInterested(new Sport("Volleyball3v3"));
         player2 = new Player( "john", "koukos" , "69000000" , "aa@aa.aa", LocalDate.parse("2000-01-01") , credentials);
+        player2.addSportInterested(new Sport("Volleyball3v3"));
         player3 =  new Player( "patrick", "starman" , "69000000" , "aa@aa.aa", LocalDate.parse("2000-01-01") , credentials);
+        player3.addSportInterested(new Sport("Volleyball3v3"));
         team = new Team("Celtic", new Sport("Volleyball3v3"), AgeDivision.K100 ,player, "green" );
         tournament = new Tournament();
     }
 
     @Test
     public void testAddPlayers()  {
-        Player player2 = new Player( "john", "koukos" , "69000000" , "aa@aa.aa", LocalDate.parse("2000-01-01") , credentials);
         team.addPlayer(player2);
         Assert.assertEquals(team.getCaptain(), player);
         Assert.assertEquals(team.getPlayers().size(), 2);
@@ -43,7 +45,7 @@ public class TeamTest {
     }
 
     @Test
-    public void testParticipations(){
+    public void testTournamentParticipations(){
         Assert.assertFalse(team.hasAnyActivePart());
         team.addPlayer(player2);
         team.addPlayer(player3);
@@ -60,7 +62,6 @@ public class TeamTest {
         Assert.assertTrue(team.getUndoneParticipations().contains(participation));
         team.removeParticipation( participation );
         Assert.assertFalse(team.getParticipations().contains(participation));
-
     }
 
     @Test
@@ -69,17 +70,18 @@ public class TeamTest {
         Assert.assertEquals(team.getName(), "Barca");
         team.setColors("blue");
         Assert.assertEquals(team.getColors(), "blue");
-        Assert.assertEquals(team.getCaptain(), player);
+        team.addPlayer(player2);
+        team.setCaptain(player2);
+        Assert.assertEquals(team.getCaptain(), player2);
         Assert.assertEquals(team.getAgeDivision(), AgeDivision.K100);
-        Assert.assertEquals(team.getSportType(), new Sport("Volleyball6v6"));
+        Assert.assertEquals(team.getSportType(), new Sport("Volleyball3v3"));
 
         Assert.assertEquals(team.toString(), "Team{" +
                                                 "name='" + "Barca" + '\'' +
-                                                ", sportType=" + new Sport("Volleyball6v6") +
+                                                ", sportType=" + new Sport("Volleyball3v3") +
                                                 ", ageDivision=" +  AgeDivision.K100 +
                                                 '}');
     }
-
 
 
 }
