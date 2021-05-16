@@ -47,6 +47,31 @@ public class Group {
         rankings.put(team, 0);
     }
 
+    public void addTeams(List<Team> teams) {
+        for (Team team: teams){
+            addTeam(team);
+        }
+        setupGames(teams);
+    }
+
+    public void setupGames(List<Team> teams){
+        games.get(0).setTeamA(teams.get(0));        //match 1
+        games.get(0).setTeamB(teams.get(1));
+        if (isKnockout)
+            return;
+        games.get(1).setTeamA(teams.get(0));        //match 2
+        games.get(1).setTeamB(teams.get(2));
+        games.get(2).setTeamA(teams.get(0));        //match 3
+        games.get(2).setTeamB(teams.get(3));
+        games.get(3).setTeamA(teams.get(1));        //match 4
+        games.get(3).setTeamB(teams.get(2));
+        games.get(3).setTeamA(teams.get(1));        //match 5
+        games.get(3).setTeamB(teams.get(3));
+        games.get(3).setTeamA(teams.get(2));        //match 6
+        games.get(3).setTeamB(teams.get(3));
+
+    }
+
     public void removeTeam(Team team) {
         if (team == null) {
             return;
@@ -77,7 +102,6 @@ public class Group {
         }
         rankings.put(team, rankings.get(team) + points);
     }
-
 
     public boolean isKnockout() {
         return isKnockout;

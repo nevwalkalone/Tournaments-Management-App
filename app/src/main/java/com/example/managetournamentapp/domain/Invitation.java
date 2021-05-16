@@ -9,7 +9,7 @@ public class Invitation {
 
     public Invitation(Team team){
         this.team = team;
-        this.pending = false;
+        this.pending = true;
         date = LocalDate.now();
     }
 

@@ -64,6 +64,20 @@ public class Round {
         return qualifiedTeams;
     }
 
+    public void setupRound(ArrayList<Team> teams){
+        int firstIndex = 0;
+        int lastIndex = teamsPerGroup;
+        for (int i=0; i< groups.size() ; i++){
+            groups.get(i).addTeams(teams.subList(firstIndex,lastIndex));
+            firstIndex = lastIndex;
+            lastIndex += teamsPerGroup;
+        }
+    }
+
+    public void passWinnersToNext(Round round){
+        round.setupRound(getRoundWinners() );
+    }
+
     public ArrayList<Group> getGroups() {
         return groups;
     }
@@ -93,6 +107,5 @@ public class Round {
                 "teamsNumber=" + teamsNumber +
                 '}';
     }
-
 
 }

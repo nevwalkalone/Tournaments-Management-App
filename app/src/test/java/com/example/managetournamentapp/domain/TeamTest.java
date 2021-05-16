@@ -29,10 +29,13 @@ public class TeamTest {
     @Test
     public void testAddPlayers()  {
         team.addPlayer(player2);
+        team.invitePlayer(player3);
+        player3.replyToInvitation(player3.getInvitesReceived().get(0),true);
         Assert.assertEquals(team.getCaptain(), player);
-        Assert.assertEquals(team.getPlayers().size(), 2);
+        Assert.assertEquals(team.getPlayers().size(), 3);
         Assert.assertTrue(team.getPlayers().contains(player));
         Assert.assertTrue(team.getPlayers().contains(player2));
+        Assert.assertTrue(team.getPlayers().contains(player3));
     }
 
     @Test
@@ -75,6 +78,7 @@ public class TeamTest {
         Assert.assertEquals(team.getCaptain(), player2);
         Assert.assertEquals(team.getAgeDivision(), AgeDivision.K100);
         Assert.assertEquals(team.getSportType(), new Sport("Volleyball3v3"));
+        Assert.assertFalse(team.hasAnyActivePart());
 
         Assert.assertEquals(team.toString(), "Team{" +
                                                 "name='" + "Barca" + '\'' +

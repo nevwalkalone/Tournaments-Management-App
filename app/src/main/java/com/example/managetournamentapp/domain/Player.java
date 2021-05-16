@@ -152,7 +152,7 @@ public class Player extends User {
     public void replyToInvitation(Invitation invite , boolean accept){
         if (invite==null)
             return;
-        if (invitesReceived.contains(invite))
+        if (!invitesReceived.contains(invite))
             return;
         if (!invite.getPending())
             return;
@@ -162,6 +162,10 @@ public class Player extends User {
         }else{
             invite.setAccepted(false);
         }
+    }
+
+    public ArrayList<Invitation> getInvitesReceived(){
+        return invitesReceived;
     }
 
 
