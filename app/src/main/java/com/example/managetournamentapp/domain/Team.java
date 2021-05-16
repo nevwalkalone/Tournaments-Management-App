@@ -46,7 +46,7 @@ public class Team {
     }
 
 
-    //removes player from the team
+
     public boolean hasAnyActivePart() {
         //check if there is any running participation
         for (Participation participation : participations) {
@@ -112,7 +112,7 @@ public class Team {
 
     //if all criterias are met, then this team
     //can join the specific tournament TODO CHECK
-    private boolean canParticipate(Participation participation) {
+    public boolean canParticipate(Participation participation) {
         Tournament tournToJoin = participation.getTournament();
 
         if (!getAgeDivision().equals(tournToJoin.getAgeDivision())) {

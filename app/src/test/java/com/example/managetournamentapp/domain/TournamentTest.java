@@ -20,8 +20,8 @@ public class TournamentTest {
     private Tournament tournament4;
     private Team team;
     private Player player;
-    ArrayList<LocalDate> dates;
-    ArrayList<LocalDate> dates2;
+    private ArrayList<LocalDate> dates;
+    private ArrayList<LocalDate> dates2;
 
     @Before
     public void setUp() throws Exception {

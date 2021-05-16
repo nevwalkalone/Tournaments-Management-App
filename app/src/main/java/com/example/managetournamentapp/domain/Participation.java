@@ -71,16 +71,13 @@ public class Participation {
         if (finishDate.isBefore(other.getStartDate()) || other.getFinishDate().isBefore(startDate)) {
             return false;
         }
-
         return true;
     }
 
     public boolean isRunning() {
-        if (finishDate == null) {
-            return startDate.isBefore(LocalDate.now());
-        } else {
-            return startDate.isBefore(LocalDate.now()) && finishDate.isAfter(LocalDate.now());
-        }
+
+        return startDate.isBefore(LocalDate.now());
+
     }
 
 
