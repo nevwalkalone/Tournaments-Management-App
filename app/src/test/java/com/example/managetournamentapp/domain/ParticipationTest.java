@@ -14,10 +14,10 @@ public class ParticipationTest {
     private Player player,player2,player3;
     private Team team,team2;
     private Tournament tournament,tournament2,tournament3,tournament4;
-    private Participation participation,participation2,participation3,participation4,participation5,participation6,participation7;
+    private Participation participation,participation2,participation3,participation4,participation5,participation6,participation7,participation8;
 
-    ArrayList<LocalDate> dates;
-    ArrayList<LocalDate> dates2;
+    private ArrayList<LocalDate> dates;
+    private ArrayList<LocalDate> dates2;
 
 
     @Before
@@ -60,6 +60,7 @@ public class ParticipationTest {
         participation5 = new Participation(tournament4,team);
         participation6 = null;
         participation7 = new Participation();
+        participation8 = participation;
 
     }
 
@@ -75,6 +76,7 @@ public class ParticipationTest {
     public void isSimultaneousTest(){
         Assert.assertTrue(participation3.isSimultaneous(participation4));
         Assert.assertFalse(participation.isSimultaneous(participation4));
+
 
     }
 
@@ -118,6 +120,23 @@ public class ParticipationTest {
                 "startDate=" + participation.getStartDate() +
                 ", finishDate=" + participation.getFinishDate() +
                 '}');
+    }
+
+    @Test
+    public void testEquals(){
+        Assert.assertEquals(participation, participation8);
+        participation2.setTeam(team);
+        Assert.assertEquals(participation,participation2);
+        participation4.setTeam(team);
+        participation4.setTournament(tournament);
+        Assert.assertEquals(participation,participation4);
+    }
+
+    @Test
+    public void testNotEquals(){
+        Assert.assertNotEquals(participation,participation2);
+        Assert.assertNotEquals(participation5,participation);
+        Assert.assertNotEquals(participation3,participation6);
     }
 
 }

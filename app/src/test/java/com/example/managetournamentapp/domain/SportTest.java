@@ -38,8 +38,7 @@ public class SportTest {
     public void testEquals(){
           Assert.assertEquals(sport3, sport1);
           Assert.assertEquals(sport1,sport4);
-          Assert.assertNotEquals(sport1,sport9);
-          Assert.assertNotEquals(sport1,tournament);
+
 
     }
     @Test
@@ -47,6 +46,8 @@ public class SportTest {
           Assert.assertNotEquals(sport1,sport5);
           Assert.assertNotEquals(sport2,sport5);
           Assert.assertNotEquals(sport6,sport7);
+          Assert.assertNotEquals(sport1,sport9);
+          Assert.assertNotEquals(sport1,tournament);
     }
     @Test
     public void getNameTest(){

@@ -68,12 +68,10 @@ public class Participation {
     }
 
     public boolean isSimultaneous(Participation other) {  // check for null finish dates TODO
-        if (startDate.isBefore(other.getStartDate()) && finishDate.isBefore(other.getStartDate())) {
+        if (finishDate.isBefore(other.getStartDate()) || other.getFinishDate().isBefore(startDate)) {
             return false;
         }
-        if (startDate.isAfter(other.getFinishDate()) && finishDate.isAfter(other.getFinishDate())) {
-            return false;
-        }
+
         return true;
     }
 
@@ -95,7 +93,7 @@ public class Participation {
     }
 
 
-    //TODO PREPEI NA THN KSANADW KATI LATHOS EXEI PAIXTEI
+
     public boolean equals(Object other){
 
         if (other == null) {
@@ -109,12 +107,16 @@ public class Participation {
         }
         Participation check = (Participation) other;
 
-        if (!(startDate == null ? check.getStartDate() == null : startDate.equals(check.getStartDate())) &&!(finishDate == null ?
-                check.getFinishDate() == null : finishDate.equals(check.getFinishDate())) && !(tournament == null ? check.getTournament() == null : tournament.equals(check.getTournament()))
-                && !(team == null ? check.getTeam() == null : team.equals(check.getTeam())))
-        {
+        if (!(team == null ? check.getTeam()
+                == null : team.equals(check.getTeam()))) {
             return false;
         }
+
+        if (!(tournament == null ? check.getTournament()
+                == null : tournament.equals(check.getTournament()))) {
+            return false;
+        }
+
 
         return true;
 
