@@ -54,14 +54,14 @@ public class Round {
 //    }
 
     public ArrayList<Team> getRoundWinners(){
-        ArrayList<Team> qualifiedTeams = new ArrayList<>();
+        ArrayList<Team> winners = new ArrayList<>();
         if (!allGamesFinished()){
-            return qualifiedTeams;
+            return winners;
         }
         for (Group group : groups) {
-            qualifiedTeams.addAll( group.getGroupWinners() );
+            winners.addAll( group.getGroupWinners() );
         }
-        return qualifiedTeams;
+        return winners;
     }
 
     public void setupRound(ArrayList<Team> teams){
@@ -87,7 +87,6 @@ public class Round {
     }
 
     public boolean equals(Object other) {
-
         boolean equal = false;
         if (other instanceof Round) {
             Round otherRound = (Round) other;

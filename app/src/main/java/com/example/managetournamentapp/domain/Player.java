@@ -72,42 +72,25 @@ public class Player extends User {
         if (team.getCaptain().equals(this)){
             captainInTeams.add(team);
         }
-
     }
 
-    //for every player
-    public void leaveTeam(Team team) {
+
+    public void removeJoinedTeam(Team team) {
         if (team == null){
             return;
         }
-        //this action can be completed
-        //only from players
-        if(team.getCaptain().equals(this)){
+        if (team.hasAnyActivePart())
+            return;
+        if (! teamsJoined.contains(team)){
             return;
         }
-        if (team.hasAnyActivePart()){
+        if (! team.getPlayers().contains(this))
             return;
-        }
-        teamsJoined.remove(team);
         team.getPlayers().remove(this);
-    }
-
-
-    public boolean canJoin(Team team){
-        // check if player belongs in the same
-        // age group
-        if (!getAgeDivision().equals(team.getAgeDivision())) {
-            return false;
+        teamsJoined.remove(team);
+        if (team.getCaptain().equals(this)){
+            deleteTeam(team);
         }
-        //if the player is already in the team, no need to join again
-        if (team.getPlayers().contains(this)){
-            return false;
-        }
-        //check if this player is available for the specific sport
-        if (!getSportsInterested().contains(team.getSportType())){
-            return false;
-        }
-        return true;
     }
 
 
@@ -141,6 +124,58 @@ public class Player extends User {
         }
     }
 
+
+    public void addCaptainInTeams(Team team) {
+        if (team == null){
+            return;
+        }
+        if (team.hasAnyActivePart())
+            return;
+        if (! canJoin(team))
+            return;
+        if (!team.getPlayers().contains(this)){
+            return;
+        }
+        team.getPlayers().add(this);
+        captainInTeams.add(team);
+    }
+
+
+    public void removeCaptainInTeams(Team team) {
+        if (team == null){
+            return;
+        }
+        if (team.hasAnyActivePart())
+            return;
+        if (!team.getPlayers().contains(this)){
+            return;
+        }
+        if (!captainInTeams.contains(team)){
+            return;
+        }
+        captainInTeams.remove(team);
+    }
+
+
+
+
+
+    public boolean canJoin(Team team){
+        // check if player belongs in the same
+        // age group
+        if (!getAgeDivision().equals(team.getAgeDivision())) {
+            return false;
+        }
+        //if the player is already in the team, no need to join again
+        if (team.getPlayers().contains(this)){
+            return false;
+        }
+        //check if this player is available for the specific sport
+        if (!getSportsInterested().contains(team.getSportType())){
+            return false;
+        }
+        return true;
+    }
 
 
     //TODO Check accept reject

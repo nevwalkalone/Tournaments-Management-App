@@ -41,25 +41,36 @@ public class Team {
         if (player==null){
             return;
         }
-        player.leaveTeam(this);
+        player.removeJoinedTeam(this);
     }
 
 
     //removes player from the team
     public boolean hasAnyActivePart(){
-
         //check if there is any running participation
         for (Participation participation : participations){
             if (participation.isRunning()){
                 return true;
             }
         }
-        //player can be successfully removed
-        //because there is no active tournament
-        //for his team
-        return false;
+        return false;                       //player can be successfully removed
+    }                                       //because there is no active tournament
+                                            //for his team
+
+
+
+    public void setCaptain(Player player) {
+        if (player == null ){
+            return;
+        }
+        captain.removeCaptainInTeams(this);
+        player.addCaptainInTeams(this);
+        captain = player;
     }
 
+    public Player getCaptain() {
+        return captain;
+    }
 
     public void invitePlayer(Player player){
         if (player==null || players.contains(player)){
@@ -70,8 +81,6 @@ public class Team {
         }
         player.addInvite( new Invitation(this) );
     }
-
-
 
 
     public void addParticipation(Participation participation) {
@@ -120,7 +129,6 @@ public class Team {
         if (tournToJoin.isFull()){
             return false;
         }
-
 
         if (players.size() < ( sportType.getMinimumPlayers()/2)){
             return false;
@@ -187,25 +195,6 @@ public class Team {
     public AgeDivision getAgeDivision() {
         return ageDivision;
     }
-
-
-    public Player getCaptain() {
-        return captain;
-    }
-
-    public void setCaptain(Player player) {
-        if (player == null ){
-            return;
-        }
-        if (!getPlayers().contains(player)){
-            return;
-        }
-        Player oldCaptain = captain;
-        captain = player;
-        oldCaptain.getCaptainInTeams().remove(this);
-        captain.getCaptainInTeams().add(this);
-    }
-
 
     @Override
     public String toString() {

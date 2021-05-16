@@ -72,6 +72,7 @@ public class Group {
 
     }
 
+    //TODO DELETE
     public void removeTeam(Team team) {
         if (team == null) {
             return;
@@ -123,6 +124,7 @@ public class Group {
         games.add(game);
     }
 
+    //TODO DELETE
     public void removeGame(Game game) {
         if (game == null) {
             return;
@@ -197,7 +199,6 @@ public class Group {
 
 
     public boolean equals(Object other) {
-
         boolean equal = false;
         if (other instanceof Group) {
             Group otherGroup = (Group) other;
