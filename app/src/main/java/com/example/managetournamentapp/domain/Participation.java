@@ -76,7 +76,7 @@ public class Participation {
 
     public boolean isRunning() {
 
-        return startDate.isBefore(LocalDate.now());
+        return ( ( startDate.isBefore(LocalDate.now())&& finishDate.isAfter(LocalDate.now()) ) || (startDate.isAfter(LocalDate.now())) );
 
     }
 

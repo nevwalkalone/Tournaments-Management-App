@@ -1,5 +1,6 @@
 package com.example.managetournamentapp.domain;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 
@@ -50,7 +51,7 @@ public class Team {
     public boolean hasAnyActivePart() {
         //check if there is any running participation
         for (Participation participation : participations) {
-            if (participation.isRunning()) {
+            if (participation.getStartDate().isAfter(LocalDate.now()) && participation.getFinishDate().isBefore(LocalDate.now())) {
                 return true;
             }
         }

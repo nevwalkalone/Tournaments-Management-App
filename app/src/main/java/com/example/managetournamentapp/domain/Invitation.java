@@ -21,6 +21,8 @@ public class Invitation {
         return accepted;
     }
 
+
+    //TODO mallon leipei h metavlhth team
     public void setAccepted(boolean accepted) {
         if (pending){
             this.team = team;

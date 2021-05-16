@@ -92,7 +92,7 @@ public class TeamTest {
         team.removeParticipation( participation );
         Assert.assertFalse(team.getParticipations().contains(participation));
         team.addParticipation(participationTemp);
-        Assert.assertTrue(team.hasAnyActivePart());
+        Assert.assertFalse(team.hasAnyActivePart());
         team.addParticipation(participationTemp);
 
         //already contains the participation, can't be added for the 2nd time
