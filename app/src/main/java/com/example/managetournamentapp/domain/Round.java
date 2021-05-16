@@ -8,6 +8,8 @@ public class Round {
     private ArrayList<Group> groups = new ArrayList<>();
     private boolean isKnockout;
     private List<LocalDate> dates;
+    private ArrayList<Team> teams;
+
 
     public Round(int teamsNumber, boolean isKnockout , List<LocalDate> dates) {
         this.teamsNumber = teamsNumber;
@@ -40,18 +42,9 @@ public class Round {
         return true;
     }
 
-//
-//    public void enterTeams(ArrayList<Team> teams){
-//        int groupsNumber = teamsNumber / teamsPerGroup;
-//        int groupMatches = dates.size()/groupsNumber;
-//        int firstIndex = 0;
-//        int lastIndex = groupMatches;
-//        for (int i=0; i< groupsNumber ; i++) {
-//            groups.add(new Group(isKnockout, dates.subList(firstIndex, lastIndex)));
-//            firstIndex = lastIndex;
-//            lastIndex += groupMatches;
-//        }
-//    }
+    public ArrayList<Team> getTeams() {
+        return teams;
+    }
 
     public ArrayList<Team> getRoundWinners(){
         ArrayList<Team> winners = new ArrayList<>();
@@ -59,12 +52,14 @@ public class Round {
             return winners;
         }
         for (Group group : groups) {
+            group.refreshRankings();
             winners.addAll( group.getGroupWinners() );
         }
         return winners;
     }
 
-    public void setupRound(ArrayList<Team> teams){
+    public void setup(ArrayList<Team> teams){
+        this.teams = teams;
         int firstIndex = 0;
         int lastIndex = teamsPerGroup;
         for (int i=0; i< groups.size() ; i++){
@@ -72,10 +67,6 @@ public class Round {
             firstIndex = lastIndex;
             lastIndex += teamsPerGroup;
         }
-    }
-
-    public void passWinnersToNext(Round round){
-        round.setupRound(getRoundWinners() );
     }
 
     public ArrayList<Group> getGroups() {

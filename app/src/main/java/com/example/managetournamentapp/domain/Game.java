@@ -101,7 +101,7 @@ public class Game {
             Game otherGame = (Game) other;
             if (teamA.equals(otherGame.teamA) && teamB.equals(otherGame.teamB) && scoreA==otherGame.scoreA
                     && scoreB==otherGame.scoreB && arena.equals(otherGame.arena)
-                        && isFinished==otherGame.isFinished && date==otherGame.getDate() )
+                        && isFinished==otherGame.isFinished && date.equals(otherGame.getDate()) )
                 equal = true;
         }
         return equal;

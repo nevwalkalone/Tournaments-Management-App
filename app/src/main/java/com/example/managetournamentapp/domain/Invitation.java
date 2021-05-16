@@ -29,7 +29,7 @@ public class Invitation {
         }
     }
 
-    public LocalDate detDate() {
+     public LocalDate getDate() {
         return date;
     }
 
@@ -40,7 +40,6 @@ public class Invitation {
     public void setTeam(Team team) {
         this.team = team;
     }
-
 
     public boolean equals(Object other) {
         boolean equal = false;

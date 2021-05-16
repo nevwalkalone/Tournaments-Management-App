@@ -24,14 +24,14 @@ public class GroupTest {
         group = new Group(true, dates);
         player = new Player( "sakis", "rouvas" , "69000000" , "aa@aa.aa", LocalDate.parse("2000-01-01") , credentials);
         date = LocalDate.parse("2022-01-01");
-        teamA = new Team("Celtic", new Sport("Volleyball3v3"), AgeDivision.K12 ,player,"green" );
-        teamB = new Team("Barca", new Sport("Volleyball3v3"), AgeDivision.K12 ,player, "red");
+        teamA = new Team("Celtic", new Sport("Volleyball3v3"), AgeDivision.K100 ,player,"green" );
+        teamB = new Team("Barca", new Sport("Volleyball3v3"), AgeDivision.K100 ,player, "red");
         game = new Game("Oaka", teamA , teamB, date );
     }
 
 
     @Test
-    public void addAndRemoveTeams()  {
+    public void addTeams()  {
         group.addTeam(teamA);
         group.addTeam(null);
         Assert.assertEquals(group.getTeams().size() , 1);
@@ -41,13 +41,11 @@ public class GroupTest {
         Assert.assertEquals(group.getTeams().size() , 2);
         group.addTeam(new Team());
         Assert.assertEquals(group.getTeams().size() , 2);
-        group.removeTeam(teamA);
-        group.removeTeam(teamB);
-        Assert.assertEquals(group.getTeams().size() , 0);
+
     }
 
     @Test
-    public void addAndRemoveGames()  {
+    public void addGames()  {
         group.addGame(null);
         Assert.assertEquals(group.getGames().size() , 0);
         game.setFinished(true);
@@ -59,8 +57,7 @@ public class GroupTest {
 
         game.setFinished(false);
         Assert.assertFalse(group.allGamesFinished());
-        group.removeGame(game);
-        Assert.assertEquals(group.getGames().size() , 0);
+
     }
 
 
@@ -71,7 +68,7 @@ public class GroupTest {
         game.setFinished(true);
         group.addTeam(teamA);
         group.addTeam(teamB);
-        group.updateTeamRanking(teamA,3);
+        group.increaseTeamRanking(teamA,3);
         group.addGame(game);
         Assert.assertEquals(group.getGroupWinners().get(0) , teamA);
 
@@ -88,6 +85,31 @@ public class GroupTest {
     public void testEquals()  {
         groupB = new Group(true, dates);
         Assert.assertTrue(group.equals(groupB));
+    }
+
+    @Test
+    public void setupTest(){
+        Team teamC = new Team("Osfp", new Sport("Volleyball3v3"), AgeDivision.K100 ,player,"green" );
+        Team teamD = new Team("Aek", new Sport("Volleyball3v3"), AgeDivision.K100 ,player, "red");
+        ArrayList<Team> teams = new ArrayList<>();
+        teams.add(teamA);
+        teams.add(teamB);
+        teams.add(teamC);
+        teams.add(teamD);
+
+        dates = new ArrayList<>();
+        for (int i = 0; i <6 ; i++) {
+            dates.add(LocalDate.parse("2020-01-01") );
+        }
+        group = new Group(false,dates);
+        group.addTeams(teams);
+
+        Assert.assertEquals(group.getGames().get(0), new Game("",teamA,teamB,LocalDate.parse("2020-01-01")));
+        Assert.assertEquals(group.getGames().get(1),  new Game("",teamA,teamC,LocalDate.parse("2020-01-01")));
+        Assert.assertEquals(group.getGames().get(2),  new Game("",teamA,teamD,LocalDate.parse("2020-01-01")));
+        Assert.assertEquals(group.getGames().get(3),  new Game("",teamB,teamC,LocalDate.parse("2020-01-01")));
+        Assert.assertEquals(group.getGames().get(4),  new Game("",teamB,teamD,LocalDate.parse("2020-01-01")));
+        Assert.assertEquals(group.getGames().get(5),  new Game("",teamC,teamD,LocalDate.parse("2020-01-01")));
     }
 
 

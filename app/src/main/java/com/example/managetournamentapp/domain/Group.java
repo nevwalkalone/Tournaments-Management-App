@@ -31,9 +31,7 @@ public class Group {
             groupSize = 4;
             gamesNumber = 6;
         }
-
     }
-
 
     public void addTeam(Team team) {
         if (team == null) {
@@ -55,32 +53,14 @@ public class Group {
     }
 
     public void setupGames(List<Team> teams){
-        games.get(0).setTeamA(teams.get(0));        //match 1
-        games.get(0).setTeamB(teams.get(1));
+        games.add( new Game("",teams.get(0),teams.get(1),dates.get(0)  ));
         if (isKnockout)
             return;
-        games.get(1).setTeamA(teams.get(0));        //match 2
-        games.get(1).setTeamB(teams.get(2));
-        games.get(2).setTeamA(teams.get(0));        //match 3
-        games.get(2).setTeamB(teams.get(3));
-        games.get(3).setTeamA(teams.get(1));        //match 4
-        games.get(3).setTeamB(teams.get(2));
-        games.get(3).setTeamA(teams.get(1));        //match 5
-        games.get(3).setTeamB(teams.get(3));
-        games.get(3).setTeamA(teams.get(2));        //match 6
-        games.get(3).setTeamB(teams.get(3));
-
-    }
-
-    //TODO DELETE
-    public void removeTeam(Team team) {
-        if (team == null) {
-            return;
-        }
-        if (!rankings.containsKey(team)) {
-            return;
-        }
-        rankings.remove(team);
+        games.add( new Game("",teams.get(0),teams.get(2),dates.get(1)  ));
+        games.add( new Game("",teams.get(0),teams.get(3),dates.get(2)  ));
+        games.add( new Game("",teams.get(1),teams.get(2),dates.get(3)  ));
+        games.add( new Game("",teams.get(1),teams.get(3),dates.get(4)  ));
+        games.add( new Game("",teams.get(2),teams.get(3),dates.get(5)  ));
     }
 
 
@@ -94,7 +74,7 @@ public class Group {
         return rankings.get(team);
     }
 
-    public void updateTeamRanking(Team team, int points) {
+    public void increaseTeamRanking(Team team, int points) {
         if (team == null || points < 0) {
             return;
         }
@@ -103,6 +83,29 @@ public class Group {
         }
         rankings.put(team, rankings.get(team) + points);
     }
+
+    public void setRankingsToZero(){
+        for (Map.Entry<Team, Integer> entry : rankings.entrySet()) {
+            rankings.put(entry.getKey(), 0);
+        }
+    }
+
+    public void refreshRankings(){
+        setRankingsToZero();
+        for (Game game : games){
+            if (game.isFinished()){
+                if (game.findWinner()>0){
+                    increaseTeamRanking(game.getTeamA(),3);
+                }else if (game.findWinner()<0){
+                    increaseTeamRanking(game.getTeamB(),3);
+                }else{
+                    increaseTeamRanking(game.getTeamA(),1);
+                    increaseTeamRanking(game.getTeamB(),1);
+                }
+            }
+        }
+    }
+
 
     public boolean isKnockout() {
         return isKnockout;
@@ -124,20 +127,6 @@ public class Group {
         games.add(game);
     }
 
-    //TODO DELETE
-    public void removeGame(Game game) {
-        if (game == null) {
-            return;
-        }
-        if (!games.contains(game))
-            return;
-
-        if (game.isFinished())
-            return;
-
-        games.remove(game);
-    }
-
     public Map<Team, Integer> getRankings() {
         return rankings;
     }
@@ -147,6 +136,8 @@ public class Group {
     }
 
     public boolean allGamesFinished() {
+        if (games.isEmpty())
+            return false;
         for (Game game : games) {
             if (!game.isFinished())
                 return false;
