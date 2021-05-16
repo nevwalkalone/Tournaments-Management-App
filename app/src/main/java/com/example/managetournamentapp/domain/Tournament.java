@@ -11,7 +11,7 @@ public class Tournament {
     private String title, location, description;
     private Sport sportType;
     private ArrayList<Round> rounds = new ArrayList<>();
-    private ArrayList<LocalDate> dates;
+    private ArrayList<LocalDate> dates = new ArrayList<>();
     private ArrayList<Participation> participations = new ArrayList<>();
     private AgeDivision ageDivision;
 
@@ -52,14 +52,14 @@ public class Tournament {
     }
 
     public void addParticipation(Participation participation) {
-        if (participation==null){
+        if (participation == null) {
             return;
         }
         participation.getTeam().addParticipation(participation);
     }
 
     public void removeParticipation(Participation participation) {
-        if (participation==null){
+        if (participation == null) {
             return;
         }
         participation.getTeam().removeParticipation(participation);
@@ -69,6 +69,7 @@ public class Tournament {
     public boolean isFull() {
         if (participations == null)
             return false;
+
         return participations.size() == MAX_TEAMS_NUMBER;
     }
 
@@ -188,6 +189,7 @@ public class Tournament {
 
     public boolean equals(Object other) {
 
+
         if (this == other)
             return true;
 
@@ -197,7 +199,6 @@ public class Tournament {
         boolean equal = false;
         if (other instanceof Tournament) {
             Tournament otherTour = (Tournament) other;
-
             if ((title.equals(otherTour.title) && otherTour.title != null) &&
                     (startDate.equals(otherTour.startDate) && otherTour.startDate != null) &&
                     (finishDate.equals(otherTour.finishDate) && otherTour.finishDate != null) &&

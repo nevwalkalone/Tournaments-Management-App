@@ -9,10 +9,11 @@ public class Team {
     private Sport sportType;
     private AgeDivision ageDivision;
     private Player captain;
-    private  ArrayList<Player> players = new ArrayList<>();
+    private ArrayList<Player> players = new ArrayList<>();
     private ArrayList<Participation> participations = new ArrayList<>();
 
-    public Team(){}
+    public Team() {
+    }
 
     public Team(String name, Sport sportType, AgeDivision ageDivision, Player captain, String colors) {
         this.name = name;
@@ -31,14 +32,14 @@ public class Team {
 
     //checks are made on player class
     public void addPlayer(Player player) {
-        if (player==null){
+        if (player == null) {
             return;
         }
         player.addJoinedTeam(this);
     }
 
-    public void removePlayer(Player player){
-        if (player==null){
+    public void removePlayer(Player player) {
+        if (player == null) {
             return;
         }
         player.removeJoinedTeam(this);
@@ -46,21 +47,20 @@ public class Team {
 
 
     //removes player from the team
-    public boolean hasAnyActivePart(){
+    public boolean hasAnyActivePart() {
         //check if there is any running participation
-        for (Participation participation : participations){
-            if (participation.isRunning()){
+        for (Participation participation : participations) {
+            if (participation.isRunning()) {
                 return true;
             }
         }
         return false;                       //player can be successfully removed
     }                                       //because there is no active tournament
-                                            //for his team
-
+    //for his team
 
 
     public void setCaptain(Player player) {
-        if (player == null ){
+        if (player == null) {
             return;
         }
         captain.removeCaptainInTeams(this);
@@ -72,25 +72,25 @@ public class Team {
         return captain;
     }
 
-    public void invitePlayer(Player player){
-        if (player==null || players.contains(player)){
+    public void invitePlayer(Player player) {
+        if (player == null || players.contains(player)) {
             return;
         }
-        if (!player.canJoin(this)){
+        if (!player.canJoin(this)) {
             return;
         }
-        player.addInvite( new Invitation(this) );
+        player.addInvite(new Invitation(this));
     }
 
 
     public void addParticipation(Participation participation) {
-        if (participation == null ){
+        if (participation == null) {
             return;
         }
-        if (participations.contains(participation)){
+        if (participations.contains(participation)) {
             return;
         }
-        if (canParticipate(participation)){
+        if (canParticipate(participation)) {
             participations.add(participation);
             participation.getTournament().getParticipations().add(participation);
         }
@@ -99,10 +99,10 @@ public class Team {
     //we need the tournament to remove the appropriate participation
     //linked with the tournament
     public void removeParticipation(Participation participation) {
-        if (participation == null ){
+        if (participation == null) {
             return;
         }
-        if (!participations.contains(participation)){
+        if (!participations.contains(participation)) {
             return;
         }
         participations.remove(participation);
@@ -118,7 +118,7 @@ public class Team {
         if (!getAgeDivision().equals(tournToJoin.getAgeDivision())) {
             return false;
         }
-        if (hasAnyActivePart()){
+        if (hasAnyActivePart()) {
             return false;
         }
 
@@ -126,27 +126,28 @@ public class Team {
             return false;
         }
 
-        if (tournToJoin.isFull()){
+        if (tournToJoin.isFull()) {
             return false;
         }
 
-        if (players.size() < ( sportType.getMinimumPlayers()/2)){
+
+        if (players.size() < (sportType.getMinimumPlayers() / 2)) {
             return false;
         }
 
         //if there is a player that participates in the specific tournament
         //with another team, then this team can't join the tournament
-        for (Player player : players){
+        for (Player player : players) {
             for (Participation playerPart : player.getUndoneParticipations()) {
-                if (playerPart.inSameTournament(participation)){
+                if (playerPart.inSameTournament(participation)) {
                     return false;
                 }
             }
         }
 
-        for (Participation part : participations){
-            if ( participation.isSimultaneous(part) )
-                return  false;
+        for (Participation part : participations) {
+            if (participation.isSimultaneous(part))
+                return false;
         }
         return true;
     }
@@ -170,8 +171,8 @@ public class Team {
     }
 
     public void setName(String name) {
-        if (name == null || !getUndoneParticipations().isEmpty() ){
-            return ;
+        if (name == null || !getUndoneParticipations().isEmpty()) {
+            return;
         }
         this.name = name;
     }
@@ -181,8 +182,8 @@ public class Team {
     }
 
     public void setColors(String colors) {
-        if (colors == null || !getUndoneParticipations().isEmpty() ){
-            return ;
+        if (colors == null || !getUndoneParticipations().isEmpty()) {
+            return;
         }
         this.colors = colors;
     }
@@ -216,7 +217,7 @@ public class Team {
                     && colors.equals(otherTeam.colors)
                     && players.equals(otherTeam.players)
                     && ageDivision.equals(otherTeam.getAgeDivision())
-                        && captain.equals(otherTeam.captain)
+                    && captain.equals(otherTeam.captain)
                     && participations.equals(otherTeam.participations))
                 equal = true;
         }

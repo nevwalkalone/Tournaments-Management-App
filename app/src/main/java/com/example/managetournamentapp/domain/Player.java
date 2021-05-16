@@ -24,7 +24,9 @@ public class Player extends User {
 
 
     //Default Constructor
-    public Player(){
+    public Player() {
+        location = "";
+        ageDivision = null;
 
     }
 
@@ -36,19 +38,16 @@ public class Player extends User {
     }
 
 
-    public void initAgeDivision(int age){
+    public void initAgeDivision(int age) {
 
 
-        if (age<=12){
+        if (age <= 12) {
             ageDivision = AgeDivision.valueOf("K12");
-        }
-        else if (age<=15){
+        } else if (age <= 15) {
             ageDivision = AgeDivision.valueOf("K15");
-        }
-        else if (age<=18){
+        } else if (age <= 18) {
             ageDivision = AgeDivision.valueOf("K18");
-        }
-        else{
+        } else {
             ageDivision = AgeDivision.valueOf("K100");
         }
     }
@@ -59,36 +58,36 @@ public class Player extends User {
     //for the captain it is called in the
     //team constructor
     public void addJoinedTeam(Team team) {
-        if (team == null){
+        if (team == null) {
             return;
         }
         if (team.hasAnyActivePart())
             return;
-        if (! canJoin(team))
+        if (!canJoin(team))
             return;
 
         team.getPlayers().add(this);
         teamsJoined.add(team);
-        if (team.getCaptain().equals(this)){
+        if (team.getCaptain().equals(this)) {
             captainInTeams.add(team);
         }
     }
 
 
     public void removeJoinedTeam(Team team) {
-        if (team == null){
+        if (team == null) {
             return;
         }
         if (team.hasAnyActivePart())
             return;
-        if (! teamsJoined.contains(team)){
+        if (!teamsJoined.contains(team)) {
             return;
         }
-        if (! team.getPlayers().contains(this))
+        if (!team.getPlayers().contains(this))
             return;
         team.getPlayers().remove(this);
         teamsJoined.remove(team);
-        if (team.getCaptain().equals(this)){
+        if (team.getCaptain().equals(this)) {
             deleteTeam(team);
         }
     }
@@ -97,26 +96,26 @@ public class Player extends User {
     //captain only
     //TODO na th doume auth
     public void deleteTeam(Team team) {
-        if (team == null){
+        if (team == null) {
             return;
         }
-        if (!team.getCaptain().equals(this)){
+        if (!team.getCaptain().equals(this)) {
             return;
         }
         //tsekarei sthn ousia ola
         //ta running participations
-        if(!team.hasAnyActivePart()){
+        if (!team.hasAnyActivePart()) {
             this.teamsJoined.remove(team);
             this.captainInTeams.remove(team);
             ArrayList<Player> players = team.getPlayers();
             //removing from each player the specific team
             //since it was just deleted by the captain
-            for (Player player : players){
+            for (Player player : players) {
                 player.getTeamsJoined().remove(team);
             }
 
             ArrayList<Participation> participations = team.getUndoneParticipations();
-            for (Participation part : participations){
+            for (Participation part : participations) {
 
                 Tournament tournament = part.getTournament();
                 tournament.removeParticipation(part);
@@ -126,14 +125,14 @@ public class Player extends User {
 
 
     public void addCaptainInTeams(Team team) {
-        if (team == null){
+        if (team == null) {
             return;
         }
         if (team.hasAnyActivePart())
             return;
-        if (! canJoin(team))
+        if (!canJoin(team))
             return;
-        if (!team.getPlayers().contains(this)){
+        if (!team.getPlayers().contains(this)) {
             return;
         }
         team.getPlayers().add(this);
@@ -142,36 +141,33 @@ public class Player extends User {
 
 
     public void removeCaptainInTeams(Team team) {
-        if (team == null){
+        if (team == null) {
             return;
         }
         if (team.hasAnyActivePart())
             return;
-        if (!team.getPlayers().contains(this)){
+        if (!team.getPlayers().contains(this)) {
             return;
         }
-        if (!captainInTeams.contains(team)){
+        if (!captainInTeams.contains(team)) {
             return;
         }
         captainInTeams.remove(team);
     }
 
 
-
-
-
-    public boolean canJoin(Team team){
+    public boolean canJoin(Team team) {
         // check if player belongs in the same
         // age group
         if (!getAgeDivision().equals(team.getAgeDivision())) {
             return false;
         }
         //if the player is already in the team, no need to join again
-        if (team.getPlayers().contains(this)){
+        if (team.getPlayers().contains(this)) {
             return false;
         }
         //check if this player is available for the specific sport
-        if (!getSportsInterested().contains(team.getSportType())){
+        if (!getSportsInterested().contains(team.getSportType())) {
             return false;
         }
         return true;
@@ -184,8 +180,8 @@ public class Player extends User {
     // to xw valei twra
     //TODO thelei check
     //for every player
-    public void replyToInvitation(Invitation invite , boolean accept){
-        if (invite==null)
+    public void replyToInvitation(Invitation invite, boolean accept) {
+        if (invite == null)
             return;
         if (!invitesReceived.contains(invite))
             return;
@@ -194,22 +190,22 @@ public class Player extends User {
         if (accept) {
             invite.setAccepted(true);
             invite.getTeam().addPlayer(this);
-        }else{
+        } else {
             invite.setAccepted(false);
         }
     }
 
-    public ArrayList<Invitation> getInvitesReceived(){
+    public ArrayList<Invitation> getInvitesReceived() {
         return invitesReceived;
     }
 
 
     //for every player
     public void addSportInterested(Sport sport) {
-        if (sport == null){
+        if (sport == null) {
             return;
         }
-        if (sportsInterested.contains(sport)){
+        if (sportsInterested.contains(sport)) {
             return;
         }
         sportsInterested.add(sport);
@@ -217,27 +213,27 @@ public class Player extends User {
 
     //for every player
     public void removeSportInterested(Sport sport) {
-        if (sport == null){
+        if (sport == null) {
             return;
         }
-        if (sportsInterested.contains(sport)){
+        if (sportsInterested.contains(sport)) {
             sportsInterested.remove(sport);
         }
 
     }
 
-    public void addInvite(Invitation invite){
-        if (invite==null){
+    public void addInvite(Invitation invite) {
+        if (invite == null) {
             return;
         }
         invitesReceived.add(invite);
     }
 
-    public void removeInvite(Invitation invite){
-        if (invite==null){
+    public void removeInvite(Invitation invite) {
+        if (invite == null) {
             return;
         }
-        if (!invitesReceived.contains(invite)){
+        if (!invitesReceived.contains(invite)) {
             return;
         }
         invite.getTeam().addPlayer(this);
