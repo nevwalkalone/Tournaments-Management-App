@@ -95,10 +95,7 @@ public class Participation {
     }
 
 
-    /**
-     * Checking if the fields between
-     * the two objects are equal
-     */
+    //TODO PREPEI NA THN KSANADW KATI LATHOS EXEI PAIXTEI
     public boolean equals(Object other){
 
         if (other == null) {

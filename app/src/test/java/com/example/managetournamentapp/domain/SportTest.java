@@ -1,75 +1,79 @@
 package com.example.managetournamentapp.domain;
 
+
+
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 
 public class SportTest {
+    private Sport sport1;
+    private Sport sport2;
+    private Sport sport3;
+    private Sport sport4;
+    private Sport sport5;
+    private Sport sport6;
+    private Sport sport7;
+    private Sport sport8;
+    private Sport sport9;
+    private Tournament tournament;
 
-  //  @Before
+    @Before
     public void setUp() throws Exception {
-    }
-
-    @Test
-    public void wrongSportSettingsTest(){
+        sport1 = new Sport("Basketball3v3");
+        sport2 = new Sport("Football5v5");
+        sport3 = sport1;
+        sport4 = new Sport("Basketball3v3");
+        sport5 = new Sport("Football7v7");
+        sport6 = new Sport("Volleyball6v6");
+        sport7 = new Sport("Basketball2v2");
         //wrong name
-        Sport sport = new Sport("Basketball5v5fff");
-        Assert.assertEquals(null,sport.getName());
-
-        //wrong number of players
-        sport.changeSetup("Volleyball6v6");
-        Assert.assertEquals(0,sport.getMinimumPlayers());
-
-        //wrong game duration
-        sport.changeSetup("Basketball2v2");
+        sport8 = new Sport("Footbal5x5");
+        tournament = new Tournament();
+    }
 
 
-        //testing football 7v7 and volleyball 6v6
-        sport.changeSetup("Football7v7");
-        Assert.assertEquals("Football7v7",sport.getName());
-        Assert.assertEquals(14,sport.getMinimumPlayers());
+    @Test
+    public void testEquals(){
+          Assert.assertEquals(sport3, sport1);
+          Assert.assertEquals(sport1,sport4);
+          Assert.assertNotEquals(sport1,sport9);
+          Assert.assertNotEquals(sport1,tournament);
 
-
-        sport.changeSetup("Volleyball6v6");
-        Assert.assertEquals("Volleyball6v6",sport.getName());
-        Assert.assertEquals(12,sport.getMinimumPlayers());
-
+    }
+    @Test
+    public void testNotEquals(){
+          Assert.assertNotEquals(sport1,sport5);
+          Assert.assertNotEquals(sport2,sport5);
+          Assert.assertNotEquals(sport6,sport7);
+    }
+    @Test
+    public void getNameTest(){
+          Assert.assertNull(sport8.getName());
+          Assert.assertEquals("Basketball3v3",sport3.getName());
+          Assert.assertEquals("Volleyball6v6",sport6.getName());
     }
 
     @Test
-    public void printTest(){
-        Sport sport1 = new Sport("Basketball2v2");
-        String string = sport1.toString();
-        Assert.assertEquals("Sport{" +
-                "name='" + sport1.getName()+ '\'' +
-                ", minimumPlayers=" + sport1.getMinimumPlayers() +
-                '}',string);
+    public void getMinimumPlayersTest(){
+        Assert.assertEquals(6,sport1.getMinimumPlayers());
+        Assert.assertEquals(10,sport2.getMinimumPlayers());
+        Assert.assertEquals(12,sport6.getMinimumPlayers());
     }
 
-    /**
-     * This method checks the equals method.
-     */
     @Test
-    public void testEqualsObject(){
-        Sport sport1 = new Sport("Basketball3v3");
-        Assert.assertEquals(sport1,sport1);
-        Sport sport2 = new Sport("Basketball3v3");
-        Assert.assertEquals(sport1,sport2);
-        sport2.changeSetup("Basketball5v5");
-        Assert.assertFalse(sport1.equals(sport2));
-        sport2 = null;
-        Assert.assertFalse(sport1.equals(sport2));
-
-        Game temp = new Game();
-        Assert.assertFalse(sport1.equals(temp));
-
-        Sport sport3 = new Sport("Basketball3v3");
-
-        Assert.assertFalse(sport1.equals(sport3));
-
-        Sport sport4 = new Sport("Basketball3v3");
-
-        Assert.assertFalse(sport1.equals(sport4));
-
+    public void changeSetupTest(){
+        sport1.changeSetup("Basketball5v5");
+        Assert.assertEquals("Basketball5v5",sport1.getName());
     }
+
+    @Test
+    public void toStringTest(){
+        Assert.assertEquals(sport1.toString(),sport4.toString());
+    }
+
+
+
+
 }

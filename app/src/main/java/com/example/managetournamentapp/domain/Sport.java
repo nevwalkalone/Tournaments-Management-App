@@ -10,7 +10,7 @@ public class Sport {
         boolean flag = checkSportName(name);
         if (flag){
             this.name = name;
-            setMinPlayers(minimumPlayers,name);
+            setMinPlayers(name);
 
         }else{
             System.out.println("Wrong settings for the specific sport type selection.");
@@ -26,7 +26,7 @@ public class Sport {
         return false;
     }
 
-    public void setMinPlayers(int minimumPlayers, String name){
+    public void setMinPlayers( String name){
         switch(name){
             case "Volleyball3v3":
             case "Basketball3v3":
@@ -61,7 +61,7 @@ public class Sport {
         boolean flag = checkSportName(name);
         if (flag){
             this.name = name;
-            setMinPlayers(minimumPlayers,name);
+            setMinPlayers(name);
         }else{
             System.out.println("Wrong settings for the specific sport type selection.");
         }
@@ -112,11 +112,6 @@ public class Sport {
         if (!(name == null ? check.getName() == null : name.equals( check.getName()))){
             return false;
         }
-
-        if (!(minimumPlayers == check.getMinimumPlayers())){
-            return false;
-        }
-
         return true;
 
     }
