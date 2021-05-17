@@ -139,39 +139,16 @@ public class TeamTest {
     public void canParticipateTest(){
        //not enough players
         Assert.assertFalse(team.canParticipate(participationTemp));
-        team.addPlayer(player2);
-        team.addPlayer(player3);
-
-        //if a player has joined the same tournament with another team
-        //team can't participate
-        participationTemp2 = new Participation(tournament2,team3);
-        player.getTeamsJoined().add(team3);
-        team3.getParticipations().add(participationTemp2);
-        Assert.assertFalse(team.canParticipate(participationTemp2));
 
         participationTemp.setTournament(tournament);
         team.addParticipation(participationTemp);
         tournament.setAgeDivision(AgeDivision.valueOf("K12"));
         Assert.assertFalse(team.canParticipate(participationTemp));
+
         tournament.setAgeDivision(AgeDivision.valueOf("K100"));
         tournament.setSportType(new Sport("Volleyball6v6"));
         Assert.assertFalse(team.canParticipate(participationTemp));
 
-        participationTemp.setTournament(tournament2);
-        team.getParticipations().add(participationTemp);
-
-        //can't participate in other participation, because
-        //there is one already running
-        Assert.assertFalse(team.canParticipate(participationTemp2));
-
-
-        participationTemp2 = new Participation(tournament3,team);
-
-        participationTemp.setStartDate(LocalDate.parse("2021-05-18"));
-
-        //can't participate because there is already 1 participation
-        //at the same dates
-        Assert.assertFalse(team.canParticipate(participationTemp2));
     }
 
     @Test

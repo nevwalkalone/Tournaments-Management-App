@@ -23,13 +23,15 @@ public class Team {
         this.colors = colors;
         this.captain = captain;
         addPlayer(captain);
-
     }
 
     public ArrayList<Player> getPlayers() {
-        return players;
+        return new ArrayList<>(players);
     }
 
+    protected ArrayList<Player> friendGetPlayers(){
+        return players;
+    }
 
     //checks are made on player class
     public void addPlayer(Player player) {
@@ -94,6 +96,7 @@ public class Team {
         if (canParticipate(participation)) {
             participations.add(participation);
             participation.getTournament().getParticipations().add(participation);
+            participation.getTournament().friendGetParticipations().add(participation);
         }
     }
 
@@ -107,7 +110,7 @@ public class Team {
             return;
         }
         participations.remove(participation);
-        participation.getTournament().getParticipations().remove(participation);
+        participation.getTournament().friendGetParticipations().remove(participation);
     }
 
 
@@ -155,7 +158,7 @@ public class Team {
 
 
     public ArrayList<Participation> getParticipations() {
-        return participations;
+        return new ArrayList<>(participations);
     }
 
     public ArrayList<Participation> getUndoneParticipations() {

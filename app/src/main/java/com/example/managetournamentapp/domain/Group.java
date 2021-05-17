@@ -112,7 +112,7 @@ public class Group {
     }
 
     public ArrayList<Game> getGames() {
-        return games;
+        return new ArrayList<>(games);
     }
 
     public void addGame(Game game) {
@@ -128,7 +128,7 @@ public class Group {
     }
 
     public Map<Team, Integer> getRankings() {
-        return rankings;
+        return new HashMap<>(rankings);
     }
 
     public ArrayList<Team> getTeams() {

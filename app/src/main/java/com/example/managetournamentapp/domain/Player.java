@@ -58,7 +58,7 @@ public class Player extends User {
         if (!canJoin(team))
             return;
 
-        team.getPlayers().add(this);
+        team.friendGetPlayers().add(this);
         teamsJoined.add(team);
         if (team.getCaptain().equals(this)) {
             captainInTeams.add(team);
@@ -75,7 +75,8 @@ public class Player extends User {
         if (!teamsJoined.contains(team)) {
             return;
         }
-        team.getPlayers().remove(this);
+
+        team.friendGetPlayers().remove(this);
         teamsJoined.remove(team);
         if (team.getCaptain().equals(this)) {
             deleteTeam(team);
@@ -83,7 +84,7 @@ public class Player extends User {
     }
 
     public ArrayList<Team> getTeamsJoined() {
-        return teamsJoined;
+        return new ArrayList<>(teamsJoined);
     }
 
     //captain only
@@ -99,11 +100,12 @@ public class Player extends User {
         if (!team.hasAnyActivePart()) {
             this.teamsJoined.remove(team);
             this.captainInTeams.remove(team);
-            ArrayList<Player> players = team.getPlayers();
+
             //removing from each player the specific team
             //since it was just deleted by the captain
-            for (Player player : players) {
+            for (Player player : team.friendGetPlayers()) {
                 player.getTeamsJoined().remove(team);
+                player.teamsJoined.remove(team);
             }
 
             ArrayList<Participation> participations = team.getUndoneParticipations();
@@ -125,7 +127,7 @@ public class Player extends User {
         if (!team.getPlayers().contains(this)) {
             return;
         }
-        team.getPlayers().add(this);
+        team.friendGetPlayers().add(this);;
         captainInTeams.add(team);
     }
 
@@ -143,7 +145,7 @@ public class Player extends User {
     }
 
     public ArrayList<Team> getCaptainInTeams() {
-        return captainInTeams;
+        return new ArrayList<>(captainInTeams);
     }
 
 
@@ -183,7 +185,7 @@ public class Player extends User {
     }
 
     public ArrayList<Invitation> getInvitesReceived() {
-        return invitesReceived;
+        return new ArrayList<>(invitesReceived);
     }
 
 
@@ -210,7 +212,7 @@ public class Player extends User {
     }
 
     public ArrayList<Sport> getSportsInterested() {
-        return sportsInterested;
+        return new ArrayList<>(sportsInterested);
     }
 
     public void addInvite(Invitation invite) {
@@ -246,7 +248,7 @@ public class Player extends User {
     }
 
 
-    //all player's participations
+    //all player's present or future participations
     public ArrayList<Participation> getUndoneParticipations() {
         ArrayList<Participation> runningParticipations = new ArrayList<>();
         for (Team team : teamsJoined) {

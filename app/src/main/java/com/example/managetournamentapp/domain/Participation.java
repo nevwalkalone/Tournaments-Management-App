@@ -20,7 +20,6 @@ public class Participation {
         this.team = team;
         this.startDate = tournament.getStartDate();
         this.finishDate = tournament.getFinishDate();           // First initialization. We don't know when our team will finish.
-
     }
 
     public Tournament getTournament() {
@@ -75,9 +74,8 @@ public class Participation {
     }
 
     public boolean isRunning() {
-
-        return ( ( startDate.isBefore(LocalDate.now())&& finishDate.isAfter(LocalDate.now()) ) || (startDate.isAfter(LocalDate.now())) );
-
+        LocalDate now = LocalDate.now();
+        return !(now.isBefore(startDate)) && !(now.isAfter(finishDate));
     }
 
 

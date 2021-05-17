@@ -73,11 +73,11 @@ public class Round {
     }
 
     public ArrayList<LocalDate> getDates() {
-        return dates;
+        return new ArrayList<>(dates);
     }
 
     public ArrayList<Group> getGroups() {
-        return groups;
+        return new ArrayList<>(groups);
     }
 
     public int getTeamsNumber() {
@@ -87,7 +87,6 @@ public class Round {
     public int getTeamsPerGroup() {
         return teamsPerGroup;
     }
-
 
 
     public boolean equals(Object other) {

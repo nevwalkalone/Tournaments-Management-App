@@ -11,9 +11,6 @@ public class Sport {
         if (flag){
             this.name = name;
             setMinPlayers(name);
-
-        }else{
-            System.out.println("Wrong settings for the specific sport type selection.");
         }
     }
 

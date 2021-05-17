@@ -29,7 +29,7 @@ public class Organizer extends User {
     }
 
     public ArrayList<Tournament> getTournaments() {
-        return tournaments;
+        return new ArrayList<>(tournaments);
     }
 
 
@@ -54,10 +54,8 @@ public class Organizer extends User {
             return;
         }
 
-        ArrayList<Participation> participations = tour.getParticipations();
         //TODO CONCURRENT MODIFICATION
-        for (Participation participation : participations) {
-
+        for (Participation participation : tour.friendGetParticipations()) {
             Team team = participation.getTeam();
             team.removeParticipation(participation);
         }
