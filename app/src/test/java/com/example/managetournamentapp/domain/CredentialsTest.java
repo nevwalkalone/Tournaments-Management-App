@@ -7,10 +7,10 @@ import org.junit.Test;
 
 public class CredentialsTest {
     private Credentials credentials;
-    private Credentials credentials2 = new Credentials("Giannis", "123456");
-    private Credentials credentials3 = new Credentials("Giannis", "GioGio");
-    private Credentials credentials4 = new Credentials("Nondas", "123456");
-    private Credentials credentials5 = new Credentials();
+    private Credentials credentials2;
+    private Credentials credentials3;
+    private Credentials credentials4;
+    private Credentials credentials5;
 
     @Before
     public void setUp() throws Exception {

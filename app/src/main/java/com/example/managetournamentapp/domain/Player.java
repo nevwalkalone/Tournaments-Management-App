@@ -1,7 +1,6 @@
 package com.example.managetournamentapp.domain;
 
 import java.time.LocalDate;
-import java.time.Month;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
@@ -76,8 +75,6 @@ public class Player extends User {
         if (!teamsJoined.contains(team)) {
             return;
         }
-        if (!team.getPlayers().contains(this))
-            return;
         team.getPlayers().remove(this);
         teamsJoined.remove(team);
         if (team.getCaptain().equals(this)) {
@@ -90,7 +87,6 @@ public class Player extends User {
     }
 
     //captain only
-    //TODO na th doume auth
     public void deleteTeam(Team team) {
         if (team == null) {
             return;
@@ -126,8 +122,6 @@ public class Player extends User {
         }
         if (team.hasAnyActivePart())
             return;
-        if (!canJoin(team))
-            return;
         if (!team.getPlayers().contains(this)) {
             return;
         }
@@ -145,15 +139,13 @@ public class Player extends User {
         if (!team.getPlayers().contains(this)) {
             return;
         }
-        if (!captainInTeams.contains(team)) {
-            return;
-        }
         captainInTeams.remove(team);
     }
 
     public ArrayList<Team> getCaptainInTeams() {
         return captainInTeams;
     }
+
 
     public boolean canJoin(Team team) {
         // check if player belongs in the same
@@ -173,11 +165,7 @@ public class Player extends User {
     }
 
 
-    //TODO Check accept reject
-    // tha tou rxontai sxetika aithmata mono
-    // an exei valei ta antistoixa sports?
-    // to xw valei twra
-    //TODO thelei check
+
     //for every player
     public void replyToInvitation(Invitation invite, boolean accept) {
         if (invite == null)
@@ -239,7 +227,7 @@ public class Player extends User {
         if (!invitesReceived.contains(invite)) {
             return;
         }
-        invite.getTeam().addPlayer(this);
+        invitesReceived.remove(invite);
     }
 
 
@@ -270,33 +258,21 @@ public class Player extends User {
 
     @Override
     public String toString() {
-        return "Player{" +
-                "appearances=" +
-                ", location='" + location + '\'' +
-                ", availability=" +
-                ", isCaptain=" +
-                ", sportsInterested=" + sportsInterested +
-                ", teamsJoined=" + teamsJoined +
-                ", teamsCreated=" +
-                '}';
+        return super.toString() + "Location: " +getLocation()+" Age group: "+getAgeDivision();
     }
 
     public boolean equals(Object other) {
 
+        if (!super.equals(other)){
+            return false;
+        }
+
         if (this == other){
             return true;
         }
-        if (other instanceof Team) {
-            Team otherTeam = (Team) other;
-            if (name.equals(otherTeam.name) &&
-                    sportType.equals(otherTeam.sportType)
-                    && colors.equals(otherTeam.colors)
-                    && players.equals(otherTeam.players)
-                    && ageDivision.equals(otherTeam.getAgeDivision())
-                    && captain.equals(otherTeam.captain)
-                    && participations.equals(otherTeam.participations))
-                return true;
-        }
+
+
+
         return false;
     }
 
