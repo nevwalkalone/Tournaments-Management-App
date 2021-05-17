@@ -213,6 +213,21 @@ public class PlayerTest {
     }
 
 
+    @Test
+    public void testEquals(){
+        player1.setLocation("Athens");
+        player = player1;
+        Assert.assertEquals(player,player1);
+       // player1.addSportInterested(new Sport("Volleyball3v3"));
+
+
+        Player player4 = new Player("Nondas", "Ioannou", "69xxxxxxx", "nondas@gmail.com", date, credentials);
+        player4.setLocation("Athens");
+
+        Team team6 = new Team("Boston", new Sport("Volleyball3v3"), AgeDivision.K100 ,player4, "white" );
+
+        Assert.assertEquals(player1,player4);
+    }
 
     @Test
     public void toStringTest(){

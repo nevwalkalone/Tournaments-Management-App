@@ -271,6 +271,16 @@ public class Player extends User {
             return true;
         }
 
+        if (other instanceof Player) {
+            Player otherPlayer = (Player) other;
+            if (location.equals(otherPlayer.getLocation())
+                    && ageDivision.equals(otherPlayer.getAgeDivision())
+                    && teamsJoined.equals(otherPlayer.getTeamsJoined())
+                    && captainInTeams.equals(otherPlayer.getCaptainInTeams())
+                    && invitesReceived.equals(otherPlayer.getInvitesReceived())
+                    && sportsInterested.equals(((Player) other).getSportsInterested()))
+                return true;
+        }
 
 
         return false;
