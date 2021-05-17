@@ -22,7 +22,7 @@ public class GroupTest {
         dates = new ArrayList<>();
         dates.add(LocalDate.parse("2020-10-10"));
         group = new Group(true, dates);
-        player = new Player( "sakis", "rouvas" , "69000000" , "aa@aa.aa", LocalDate.parse("2000-01-01") , credentials);
+        player = new Player( "sakis", "rouvas" ,"Athens",  "69000000" , "aa@aa.aa", LocalDate.parse("2000-01-01") , credentials);
         date = LocalDate.parse("2022-01-01");
         teamA = new Team("Celtic", new Sport("Volleyball3v3"), AgeDivision.K100 ,player,"green" );
         teamB = new Team("Barca", new Sport("Volleyball3v3"), AgeDivision.K100 ,player, "red");

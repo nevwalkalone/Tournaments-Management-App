@@ -35,7 +35,7 @@ public class TournamentTest {
         }
 
         Credentials credentials = new Credentials("sakis7", "123");
-        player = new Player("sakis", "rouvas", "69000000", "aa@aa.aa", LocalDate.parse("2007-01-01"), credentials);
+        player = new Player("sakis", "rouvas","Athens",  "69000000", "aa@aa.aa", LocalDate.parse("2007-01-01"), credentials);
         team = new Team("Celtic", (new Sport("Basketball3v3")), AgeDivision.K15, player, "green");
         tournament = new Tournament("TOURNOUA1", LocalDate.parse("2030-05-10"), LocalDate.parse("2030-05-29"), "ATHENS", (new Sport("Basketball3v3")),
                 32, AgeDivision.K15, dates);
@@ -139,7 +139,7 @@ public class TournamentTest {
             int randomEmail = random.nextInt(emails.length);
 
 
-            Player p = new Player(names[randomName], surnames[randomSurname], phones[randomPhone], emails[randomEmail], LocalDate.parse("2007-01-01"), (new Credentials(names[randomName], phones[randomPhone])));
+            Player p = new Player(names[randomName], surnames[randomSurname], "Athens", phones[randomPhone], emails[randomEmail], LocalDate.parse("2007-01-01"), (new Credentials(names[randomName], phones[randomPhone])));
             p.setBirthDate(LocalDate.parse("2007-01-01"));
             p.addSportInterested(new Sport("Basketball3v3"));
             Team testTeam = new Team(names[randomName], (new Sport("Basketball3v3")), AgeDivision.K15, p, "green");
@@ -151,7 +151,7 @@ public class TournamentTest {
                 randomEmail = random.nextInt(emails.length);
 
 
-                Player playerTest = new Player(names[randomName], surnames[randomSurname], phones[randomPhone], emails[randomEmail], LocalDate.parse("2007-01-01"), (new Credentials(names[randomName], phones[randomPhone])));
+                Player playerTest = new Player(names[randomName], surnames[randomSurname],"Athens",  phones[randomPhone], emails[randomEmail], LocalDate.parse("2007-01-01"), (new Credentials(names[randomName], phones[randomPhone])));
                 playerTest.setBirthDate(LocalDate.parse("2007-01-01"));
                 playerTest.addSportInterested(new Sport("Basketball3v3"));
                 testTeam.addPlayer(playerTest);

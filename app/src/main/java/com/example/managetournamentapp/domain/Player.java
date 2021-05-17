@@ -24,8 +24,9 @@ public class Player extends User {
 
     }
 
-    public Player(String name, String surname, String phoneNumber, String email, LocalDate birthDate, Credentials credentials) {
+    public Player(String name, String surname, String location, String phoneNumber, String email, LocalDate birthDate, Credentials credentials) {
         super(name, surname, phoneNumber, email, birthDate, credentials);
+        this.location = location;
         LocalDate now = LocalDate.now();
         int diff = (int) this.getBirthDate().until(now, ChronoUnit.YEARS);
         initAgeDivision(diff);
@@ -264,15 +265,15 @@ public class Player extends User {
     }
 
     public boolean equals(Object other) {
-
+        if (other == null){
+            return false;
+        }
         if (!super.equals(other)){
             return false;
         }
-
         if (this == other){
             return true;
         }
-
         if (other instanceof Player) {
             Player otherPlayer = (Player) other;
             if (location.equals(otherPlayer.getLocation())
@@ -280,7 +281,7 @@ public class Player extends User {
                     && teamsJoined.equals(otherPlayer.getTeamsJoined())
                     && captainInTeams.equals(otherPlayer.getCaptainInTeams())
                     && invitesReceived.equals(otherPlayer.getInvitesReceived())
-                    && sportsInterested.equals(((Player) other).getSportsInterested()))
+                    && sportsInterested.equals(otherPlayer.getSportsInterested()))
                 return true;
         }
 

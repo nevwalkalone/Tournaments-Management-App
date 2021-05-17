@@ -25,9 +25,9 @@ public class ParticipationTest {
         credentials = new Credentials("sakis7", "123");
         credentials2 = new Credentials("johnny","1222");
         credentials3 = new Credentials("patpat","1222");
-        player = new Player("sakis", "rouvas", "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), credentials);
-        player2 = new Player("john", "koukos", "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), credentials2);
-        player3 = new Player("patrick", "starman", "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), credentials3);
+        player = new Player("sakis", "rouvas","Athens",  "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), credentials);
+        player2 = new Player("john", "koukos","Athens",  "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), credentials2);
+        player3 = new Player("patrick", "starman", "Athens", "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), credentials3);
 
         dates = new ArrayList<>();
         dates2 = new ArrayList<>();

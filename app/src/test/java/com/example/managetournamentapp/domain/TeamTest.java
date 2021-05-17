@@ -23,11 +23,11 @@ public class TeamTest {
         }
 
         credentials = new Credentials("sakis7","123");
-        player = new Player( "sakis", "rouvas" , "69000000" , "aa@aa.aa", LocalDate.parse("2000-01-01") , credentials);
+        player = new Player( "sakis", "rouvas" , "Athens", "69000000" , "aa@aa.aa", LocalDate.parse("2000-01-01") , credentials);
         player.addSportInterested(new Sport("Volleyball3v3"));
-        player2 = new Player( "john", "koukos" , "69000000" , "aa@aa.aa", LocalDate.parse("2000-01-01") , credentials);
+        player2 = new Player( "john", "koukos" ,"Athens",  "69000000" , "aa@aa.aa", LocalDate.parse("2000-01-01") , credentials);
         player2.addSportInterested(new Sport("Volleyball3v3"));
-        player3 =  new Player( "patrick", "starman" , "69000000" , "aa@aa.aa", LocalDate.parse("2000-01-01") , credentials);
+        player3 =  new Player( "patrick", "starman" ,"Athens",  "69000000" , "aa@aa.aa", LocalDate.parse("2000-01-01") , credentials);
         player3.addSportInterested(new Sport("Volleyball3v3"));
         team = new Team("Celtic", new Sport("Volleyball3v3"), AgeDivision.K100 ,player, "green" );
 

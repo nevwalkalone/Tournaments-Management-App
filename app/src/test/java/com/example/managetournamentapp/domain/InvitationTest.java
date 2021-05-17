@@ -15,7 +15,7 @@ public class InvitationTest {
     @Before
     public void setUp() throws Exception {
         Credentials credentials = new Credentials("sakis7","123");
-        player = new Player( "sakis", "rouvas" , "69000000" , "aa@aa.aa", LocalDate.parse("2000-01-01") , credentials);
+        player = new Player( "sakis", "rouvas" ,"Athens",  "69000000" , "aa@aa.aa", LocalDate.parse("2000-01-01") , credentials);
         team = new Team("Celtic", (new Sport("Basketball3v3")), AgeDivision.K15, player, "green");
         invitation = new Invitation(team);
     }

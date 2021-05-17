@@ -36,7 +36,7 @@ public class RoundTest {
     @Test
     public void winnersTests() {
         Credentials credentials = new Credentials("sakis7","123");
-        Player player = new Player( "sakis", "rouvas" , "69000000" , "aa@aa.aa", LocalDate.parse("2000-01-01") , credentials);
+        Player player = new Player( "sakis", "rouvas" ,"Athens",  "69000000" , "aa@aa.aa", LocalDate.parse("2000-01-01") , credentials);
         ArrayList<Team> teams = new ArrayList<>();
         for (int i=0; i< 4 ; i++) {
             teams.add( new Team("Osfp"+i, new Sport("Volleyball3v3"), AgeDivision.K100 ,player,"green" )  );
@@ -64,7 +64,7 @@ public class RoundTest {
         }
 
         Credentials credentials = new Credentials("sakis7","123");
-        Player player = new Player( "sakis", "rouvas" , "69000000" , "aa@aa.aa", LocalDate.parse("2000-01-01") , credentials);
+        Player player = new Player( "sakis", "rouvas" ,"Athens",  "69000000" , "aa@aa.aa", LocalDate.parse("2000-01-01") , credentials);
         ArrayList<Team> teams = new ArrayList<>();
         for (int i=0; i< 8 ; i++) {
             teams.add( new Team("Osfp"+i, new Sport("Volleyball3v3"), AgeDivision.K100 ,player,"green" )  );
@@ -84,7 +84,7 @@ public class RoundTest {
             dates.add(LocalDate.parse("2020-01-01") );
         }
         Credentials credentials = new Credentials("sakis7","123");
-        Player player = new Player( "sakis", "rouvas" , "69000000" , "aa@aa.aa", LocalDate.parse("2000-01-01") , credentials);
+        Player player = new Player( "sakis", "rouvas" ,"Athens",  "69000000" , "aa@aa.aa", LocalDate.parse("2000-01-01") , credentials);
         ArrayList<Team> teams = new ArrayList<>();
         for (int i=0; i< 8 ; i++) {
             teams.add( new Team("Osfp"+i, new Sport("Volleyball3v3"), AgeDivision.K100 ,player,"green" )  );

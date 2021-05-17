@@ -17,7 +17,7 @@ public class GameTest {
 
     @Before
     public void setUp() throws Exception {
-        player = new Player( "sakis", "rouvas" , "69000000" , "aa@aa.aa", LocalDate.parse("2000-01-01") , credentials);
+        player = new Player( "sakis", "rouvas" ,"Athens",  "69000000" , "aa@aa.aa", LocalDate.parse("2000-01-01") , credentials);
         date = LocalDate.parse("2022-01-01");
         teamA = new Team("Celtic", new Sport("Volleyball3v3"), AgeDivision.K12 ,player, "red");
         teamB = new Team("Barca", new Sport("Volleyball3v3"), AgeDivision.K12 ,player, "blue" );
