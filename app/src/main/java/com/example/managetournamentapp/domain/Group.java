@@ -17,10 +17,10 @@ public class Group {
     private final int gamesNumber;
     private ArrayList<Game> games = new ArrayList<>();
     private Map<Team, Integer> rankings = new HashMap<>();
-    private List<LocalDate> dates;
+    private ArrayList<LocalDate> dates;
 
 
-    public Group(boolean isKnockout ,List<LocalDate> dates ) {
+    public Group(boolean isKnockout , ArrayList<LocalDate> dates ) {
         this.isKnockout = isKnockout;
         this.dates = dates;
         if (isKnockout) {
@@ -45,7 +45,7 @@ public class Group {
         rankings.put(team, 0);
     }
 
-    public void addTeams(List<Team> teams) {
+    public void addTeams(ArrayList<Team> teams) {
         for (Team team: teams){
             addTeam(team);
         }
@@ -146,28 +146,6 @@ public class Group {
     }
 
 
-    // function to sort hashmap by values
-    public static Map<Team, Integer> sortByValue(Map<Team, Integer> hm) {
-        // Create a list from elements of HashMap
-        List<Map.Entry<Team, Integer>> list =
-                new LinkedList<Map.Entry<Team, Integer>>(hm.entrySet());
-
-        // Sort the list
-        Collections.sort(list, new Comparator<Map.Entry<Team, Integer>>() {
-            public int compare(Map.Entry<Team, Integer> o1,
-                               Map.Entry<Team, Integer> o2) {
-                return (o1.getValue()).compareTo(o2.getValue());
-            }
-        });
-
-        // put data from sorted list to hashmap
-        HashMap<Team, Integer> temp = new LinkedHashMap<Team, Integer>();
-        for (Map.Entry<Team, Integer> aa : list) {
-            temp.put(aa.getKey(), aa.getValue());
-        }
-        return temp;
-    }
-
 
     public ArrayList<Team> getGroupWinners() {
         if (!allGamesFinished())
@@ -189,16 +167,44 @@ public class Group {
     }
 
 
+
+    // function to sort hashmap by values
+    private static Map<Team, Integer> sortByValue(Map<Team, Integer> hm) {
+        // Create a list from elements of HashMap
+        List<Map.Entry<Team, Integer>> list =
+                new LinkedList<Map.Entry<Team, Integer>>(hm.entrySet());
+
+        // Sort the list
+        Collections.sort(list, new Comparator<Map.Entry<Team, Integer>>() {
+            public int compare(Map.Entry<Team, Integer> o1,
+                               Map.Entry<Team, Integer> o2) {
+                return (o1.getValue()).compareTo(o2.getValue());
+            }
+        });
+
+        // put data from sorted list to hashmap
+        HashMap<Team, Integer> temp = new LinkedHashMap<Team, Integer>();
+        for (Map.Entry<Team, Integer> aa : list) {
+            temp.put(aa.getKey(), aa.getValue());
+        }
+        return temp;
+    }
+
+
+
+
     public boolean equals(Object other) {
-        boolean equal = false;
+        if (this == other){
+            return true;
+        }
         if (other instanceof Group) {
             Group otherGroup = (Group) other;
             if (gamesNumber == otherGroup.gamesNumber && isKnockout == otherGroup.isKnockout
                     && groupSize == otherGroup.groupSize && rankings.equals(otherGroup.rankings)
                     && games.equals(otherGroup.games) && dates.equals(otherGroup.dates))
-                equal = true;
+                return true;
         }
-        return equal;
+        return false;
     }
 
 

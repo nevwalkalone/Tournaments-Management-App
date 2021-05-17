@@ -1,17 +1,18 @@
 package com.example.managetournamentapp.domain;
 
+import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.util.*;
 public class Round {
 
     private int teamsNumber,teamsPerGroup;
-    private ArrayList<Group> groups = new ArrayList<>();
     private boolean isKnockout;
-    private List<LocalDate> dates;
+    private ArrayList<Group> groups = new ArrayList<>();
+    private ArrayList<LocalDate> dates;
     private ArrayList<Team> teams;
 
 
-    public Round(int teamsNumber, boolean isKnockout , List<LocalDate> dates) {
+    public Round(int teamsNumber, boolean isKnockout , ArrayList<LocalDate> dates) {
         this.teamsNumber = teamsNumber;
         this.isKnockout = isKnockout;
         this.dates = dates;
@@ -28,11 +29,24 @@ public class Round {
         int firstIndex = 0;
         int lastIndex = groupMatches;
         for (int i=0; i< groupsNumber ; i++){
-            groups.add(new Group(isKnockout, dates.subList(firstIndex, lastIndex ) ));
+            groups.add(new Group(isKnockout, new ArrayList<>(dates.subList(firstIndex, lastIndex)) ));
             firstIndex = lastIndex;
             lastIndex += groupMatches;
         }
     }
+
+
+    public void setup(ArrayList<Team> teams){
+        this.teams = teams;
+        int firstIndex = 0;
+        int lastIndex = teamsPerGroup;
+        for (int i=0; i< groups.size() ; i++){
+            groups.get(i).addTeams( new ArrayList<>(teams.subList(firstIndex,lastIndex)) );
+            firstIndex = lastIndex;
+            lastIndex += teamsPerGroup;
+        }
+    }
+
 
     public boolean allGamesFinished() {
         for (Group group : groups) {
@@ -58,15 +72,8 @@ public class Round {
         return winners;
     }
 
-    public void setup(ArrayList<Team> teams){
-        this.teams = teams;
-        int firstIndex = 0;
-        int lastIndex = teamsPerGroup;
-        for (int i=0; i< groups.size() ; i++){
-            groups.get(i).addTeams(teams.subList(firstIndex,lastIndex));
-            firstIndex = lastIndex;
-            lastIndex += teamsPerGroup;
-        }
+    public ArrayList<LocalDate> getDates() {
+        return dates;
     }
 
     public ArrayList<Group> getGroups() {
@@ -77,16 +84,24 @@ public class Round {
         return teamsNumber;
     }
 
+    public int getTeamsPerGroup() {
+        return teamsPerGroup;
+    }
+
+
+
     public boolean equals(Object other) {
-        boolean equal = false;
+        if (this == other){
+            return true;
+        }
         if (other instanceof Round) {
             Round otherRound = (Round) other;
             if (teamsNumber == otherRound.teamsNumber && teamsPerGroup == otherRound.teamsPerGroup
                     && groups.equals(otherRound.groups) && isKnockout == otherRound.isKnockout
                         && dates.equals(otherRound.dates))
-                equal = true;
+                return true;
         }
-        return equal;
+        return false;
     }
 
 

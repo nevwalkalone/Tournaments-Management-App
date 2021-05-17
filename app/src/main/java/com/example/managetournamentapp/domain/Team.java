@@ -98,7 +98,7 @@ public class Team {
     }
 
     //we need the tournament to remove the appropriate participation
-    //linked with the tournament
+    //linked with the tournament TODO IF TOURN IS RUNNING
     public void removeParticipation(Participation participation) {
         if (participation == null) {
             return;
@@ -209,8 +209,9 @@ public class Team {
 
 
     public boolean equals(Object other) {
-
-        boolean equal = false;
+        if (this == other){
+            return true;
+        }
         if (other instanceof Team) {
             Team otherTeam = (Team) other;
             if (name.equals(otherTeam.name) &&
@@ -220,9 +221,9 @@ public class Team {
                     && ageDivision.equals(otherTeam.getAgeDivision())
                     && captain.equals(otherTeam.captain)
                     && participations.equals(otherTeam.participations))
-                equal = true;
+                return true;
         }
-        return equal;
+        return false;
     }
 
 }

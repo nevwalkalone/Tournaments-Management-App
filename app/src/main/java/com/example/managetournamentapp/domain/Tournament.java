@@ -10,10 +10,11 @@ public class Tournament {
     private LocalDate startDate, finishDate;
     private String title, location, description;
     private Sport sportType;
+    private AgeDivision ageDivision;
     private ArrayList<Round> rounds = new ArrayList<>();
     private ArrayList<LocalDate> dates = new ArrayList<>();
     private ArrayList<Participation> participations = new ArrayList<>();
-    private AgeDivision ageDivision;
+
 
     public Tournament() {
         title = "";
@@ -35,6 +36,7 @@ public class Tournament {
         this.sportType = sportType;
         this.MAX_TEAMS_NUMBER = maxTeamsNumber;
         this.ageDivision = ageDivision;
+        this.dates = dates;
         initRounds(dates);
     }
 
@@ -42,12 +44,12 @@ public class Tournament {
         int teamsNumber = MAX_TEAMS_NUMBER;
         int firstIndex = 0;
         int lastIndex = MAX_TEAMS_NUMBER / 4 * 6;
-        rounds.add(new Round(MAX_TEAMS_NUMBER, false, dates.subList(firstIndex, lastIndex)));
+        rounds.add(new Round(MAX_TEAMS_NUMBER, false,  new ArrayList<>(dates.subList(firstIndex, lastIndex)) ));
         for (int i = 0; i < log2(MAX_TEAMS_NUMBER) - 1; i++) {
             teamsNumber = teamsNumber / 2;
             firstIndex = lastIndex;
             lastIndex = firstIndex + teamsNumber / 2;
-            rounds.add(new Round(teamsNumber, true, dates.subList(firstIndex, lastIndex)));
+            rounds.add(new Round(teamsNumber, true, new ArrayList<>(dates.subList(firstIndex, lastIndex)) ));
         }
     }
 
@@ -63,6 +65,10 @@ public class Tournament {
             return;
         }
         participation.getTeam().removeParticipation(participation);
+    }
+
+    public ArrayList<Participation> getParticipations() {
+        return participations;
     }
 
     //check if tournament is full of teams
@@ -82,9 +88,6 @@ public class Tournament {
         return rounds;
     }
 
-    public ArrayList<Participation> getParticipations() {
-        return participations;
-    }
 
     public String getTitle() {
         return title;
@@ -169,6 +172,10 @@ public class Tournament {
         return MAX_TEAMS_NUMBER;
     }
 
+    public int log2(int x) {
+        return (int) (Math.log(x) / Math.log(2));
+    }
+
     @Override
     public String toString() {
         return "Tournament{" +
@@ -183,12 +190,9 @@ public class Tournament {
                 '}';
     }
 
-    public static int log2(int x) {
-        return (int) (Math.log(x) / Math.log(2));
-    }
+
 
     public boolean equals(Object other) {
-
 
         if (this == other)
             return true;
@@ -196,7 +200,6 @@ public class Tournament {
         if (other == null || getClass() != other.getClass())
             return false;
 
-        boolean equal = false;
         if (other instanceof Tournament) {
             Tournament otherTour = (Tournament) other;
             if ((title.equals(otherTour.title) && otherTour.title != null) &&
@@ -210,9 +213,9 @@ public class Tournament {
                     (rounds.equals(otherTour.rounds) && otherTour.rounds != null) &&
                     getMAX_TEAMS_NUMBER() == otherTour.getMAX_TEAMS_NUMBER())
 
-                equal = true;
+                return true;
         }
-        return equal;
+        return false;
     }
 
 }

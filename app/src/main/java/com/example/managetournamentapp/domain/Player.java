@@ -9,18 +9,13 @@ import java.util.ArrayList;
 public class Player extends User {
 
     private String location;
-
+    private AgeDivision ageDivision;
     private ArrayList<Sport> sportsInterested = new ArrayList<>();
-
     //teams that the specific player has joined
     private ArrayList<Team> teamsJoined = new ArrayList<>();
-
-    private ArrayList<Invitation> invitesReceived = new ArrayList<>();
-
-    private AgeDivision ageDivision;
-
     //teams that the player is a captain of
     private ArrayList<Team> captainInTeams = new ArrayList<>();
+    private ArrayList<Invitation> invitesReceived = new ArrayList<>();
 
 
     //Default Constructor
@@ -39,8 +34,6 @@ public class Player extends User {
 
 
     public void initAgeDivision(int age) {
-
-
         if (age <= 12) {
             ageDivision = AgeDivision.valueOf("K12");
         } else if (age <= 15) {
@@ -92,6 +85,9 @@ public class Player extends User {
         }
     }
 
+    public ArrayList<Team> getTeamsJoined() {
+        return teamsJoined;
+    }
 
     //captain only
     //TODO na th doume auth
@@ -155,6 +151,9 @@ public class Player extends User {
         captainInTeams.remove(team);
     }
 
+    public ArrayList<Team> getCaptainInTeams() {
+        return captainInTeams;
+    }
 
     public boolean canJoin(Team team) {
         // check if player belongs in the same
@@ -222,6 +221,10 @@ public class Player extends User {
 
     }
 
+    public ArrayList<Sport> getSportsInterested() {
+        return sportsInterested;
+    }
+
     public void addInvite(Invitation invite) {
         if (invite == null) {
             return;
@@ -248,20 +251,10 @@ public class Player extends User {
         this.location = location;
     }
 
-    public ArrayList<Sport> getSportsInterested() {
-        return sportsInterested;
-    }
+
 
     public AgeDivision getAgeDivision() {
         return ageDivision;
-    }
-
-    public ArrayList<Team> getTeamsJoined() {
-        return teamsJoined;
-    }
-
-    public ArrayList<Team> getCaptainInTeams() {
-        return captainInTeams;
     }
 
 

@@ -14,10 +14,12 @@ public class Invitation {
     }
 
     public boolean getPending() {
+
         return pending;
     }
 
     public Boolean getAccepted() {
+
         return accepted;
     }
 
@@ -25,7 +27,6 @@ public class Invitation {
     //TODO mallon leipei h metavlhth team
     public void setAccepted(boolean accepted) {
         if (pending){
-            this.team = team;
             this.accepted = accepted;
             pending = false;
         }
@@ -44,14 +45,16 @@ public class Invitation {
     }
 
     public boolean equals(Object other) {
-        boolean equal = false;
+        if (this == other){
+            return true;
+        }
         if (other instanceof Invitation) {
             Invitation otherInvite = (Invitation) other;
             if (team.equals(otherInvite.team) && date.equals(otherInvite.date)) {
-                equal = true;
+                return true;
             }
         }
-        return equal;
+        return false;
     }
 
 

@@ -96,15 +96,17 @@ public class Game {
 
 
     public boolean equals(Object other) {
-        boolean equal = false;
+        if (this == other){
+            return true;
+        }
         if (other instanceof Game) {
             Game otherGame = (Game) other;
             if (teamA.equals(otherGame.teamA) && teamB.equals(otherGame.teamB) && scoreA==otherGame.scoreA
                     && scoreB==otherGame.scoreB && arena.equals(otherGame.arena)
                         && isFinished==otherGame.isFinished && date.equals(otherGame.getDate()) )
-                equal = true;
+                return true;
         }
-        return equal;
+        return false;
     }
 
 

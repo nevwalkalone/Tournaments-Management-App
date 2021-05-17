@@ -78,13 +78,11 @@ public class Organizer extends User {
             return true;
         if (other == null)
             return false;
-
-        boolean equal = false;
         if (other instanceof Organizer) {
             Organizer otherOrganizer = (Organizer) other;
             if (title.equals(otherOrganizer.title) && otherOrganizer.title != null)         // each Organizer has a unique Title. EK15!
-                equal = true;
+                return true;
         }
-        return equal;
+        return false;
     }
 }

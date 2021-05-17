@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +12,7 @@ import java.util.List;
 
 public class RoundTest {
     Round round;
-    List<LocalDate> dates ;
+    ArrayList<LocalDate> dates ;
 
     @Before
     public void setUp() throws Exception {
@@ -23,8 +24,10 @@ public class RoundTest {
 
     @Test
     public void basicTests() {
+        Assert.assertEquals(round.getDates() , dates);
         Assert.assertEquals(round.getGroups().size(), 2);
         Assert.assertEquals(round.getTeamsNumber(), 4);
+        Assert.assertEquals(round.getTeamsPerGroup(), 2);
         Assert.assertEquals(round.toString(), "Round{" +
                                                     "teamsNumber=" + 4 +
                                                     '}');
