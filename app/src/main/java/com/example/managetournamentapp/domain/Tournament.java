@@ -68,6 +68,10 @@ public class Tournament {
     }
 
     public ArrayList<Participation> getParticipations() {
+        return new ArrayList<>(participations);
+    }
+
+    protected ArrayList<Participation> friendGetParticipations() {
         return participations;
     }
 
@@ -85,7 +89,7 @@ public class Tournament {
     }
 
     public ArrayList<Round> getRounds() {
-        return rounds;
+        return new ArrayList<>(rounds);
     }
 
 
