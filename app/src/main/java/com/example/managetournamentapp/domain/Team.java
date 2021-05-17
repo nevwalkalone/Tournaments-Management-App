@@ -51,7 +51,7 @@ public class Team {
     public boolean hasAnyActivePart() {
         //check if there is any running participation
         for (Participation participation : participations) {
-            if (participation.getStartDate().isAfter(LocalDate.now()) && participation.getFinishDate().isBefore(LocalDate.now())) {
+            if (participation.getStartDate().isBefore(LocalDate.now()) && participation.getFinishDate().isAfter(LocalDate.now())) {
                 return true;
             }
         }

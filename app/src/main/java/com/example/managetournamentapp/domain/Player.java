@@ -281,5 +281,25 @@ public class Player extends User {
                 '}';
     }
 
+    public boolean equals(Object other) {
+
+        if (this == other){
+            return true;
+        }
+        if (other instanceof Team) {
+            Team otherTeam = (Team) other;
+            if (name.equals(otherTeam.name) &&
+                    sportType.equals(otherTeam.sportType)
+                    && colors.equals(otherTeam.colors)
+                    && players.equals(otherTeam.players)
+                    && ageDivision.equals(otherTeam.getAgeDivision())
+                    && captain.equals(otherTeam.captain)
+                    && participations.equals(otherTeam.participations))
+                return true;
+        }
+        return false;
+    }
+
+
 
 }

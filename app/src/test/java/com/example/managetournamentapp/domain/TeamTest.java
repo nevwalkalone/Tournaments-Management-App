@@ -92,7 +92,7 @@ public class TeamTest {
         team.removeParticipation( participation );
         Assert.assertFalse(team.getParticipations().contains(participation));
         team.addParticipation(participationTemp);
-        Assert.assertFalse(team.hasAnyActivePart());
+        Assert.assertTrue(team.hasAnyActivePart());
         team.addParticipation(participationTemp);
 
         //already contains the participation, can't be added for the 2nd time
@@ -174,4 +174,22 @@ public class TeamTest {
         Assert.assertFalse(team.canParticipate(participationTemp2));
     }
 
+    @Test
+    public void testEquals(){
+        team3.setName("Celtic");
+        team3.setColors("green");
+        Assert.assertEquals(team,team3);
+
+        team3 = team;
+        //same object
+        Assert.assertEquals(team,team3);
+    }
+
+    @Test
+    public void testNotEquals(){
+        team3.setName("Celtic");
+
+        //not the same colors
+        Assert.assertNotEquals(team,team3);
+    }
 }
