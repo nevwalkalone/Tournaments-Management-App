@@ -31,5 +31,8 @@ public class InvitationTest {
         Assert.assertTrue(invitation.getDate().equals(LocalDate.now()));
     }
 
-
+    @Test
+    public void equalTest() {
+        Assert.assertEquals(invitation, new Invitation(team));
+    }
 }
