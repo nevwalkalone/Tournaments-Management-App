@@ -66,7 +66,7 @@ public class Participation {
         return tournament.equals(other.tournament);
     }
 
-    public boolean isSimultaneous(Participation other) {  // check for null finish dates TODO
+    public boolean isSimultaneous(Participation other) {  // check for null finish dates
         if (finishDate.isBefore(other.getStartDate()) || other.getFinishDate().isBefore(startDate)) {
             return false;
         }
