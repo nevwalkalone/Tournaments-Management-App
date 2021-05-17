@@ -37,7 +37,7 @@ public class Tournament {
         this.MAX_TEAMS_NUMBER = maxTeamsNumber;
         this.ageDivision = ageDivision;
         this.dates = dates;
-        initRounds(dates);
+
     }
 
     public void initRounds(ArrayList<LocalDate> dates) {      //TODO dates = 2*maxteams - 1
