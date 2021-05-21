@@ -1,4 +1,15 @@
-<diagram program="umletino" version="14.3.0"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>927</x><y>10</y><w>360</w><h>320</h></coordinates><panel_attributes>User
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>850</x>
+      <y>10</y>
+      <w>360</w>
+      <h>350</h>
+    </coordinates>
+    <panel_attributes>User
 --
 - name : String
 - surname : String
@@ -21,7 +32,18 @@
 + setCredentials(Credentials credentials) : void
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1397</x><y>190</y><w>310</w><h>130</h></coordinates><panel_attributes>Credentials
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1320</x>
+      <y>190</y>
+      <w>310</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>Credentials
 --
 - username : String
 - password : String
@@ -32,7 +54,18 @@
 + setPassword(String password) : void
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>407</x><y>480</y><w>370</w><h>180</h></coordinates><panel_attributes>Organizer
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>330</x>
+      <y>480</y>
+      <w>370</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>Organizer
 --
 - title : String
 - tournaments : ArrayList&lt;Tournament&gt;
@@ -43,7 +76,18 @@
 + deleteTournament(Tournament tour) : void
 + getTournaments() : ArrayList &lt;Tournament&gt;
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1527</x><y>470</y><w>390</w><h>420</h></coordinates><panel_attributes>Player
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1450</x>
+      <y>470</y>
+      <w>390</w>
+      <h>420</h>
+    </coordinates>
+    <panel_attributes>Player
 --
 - location : String
 - ageDivision : AgeDivision
@@ -72,7 +116,18 @@
 + getUndoneParticipations() : ArrayList&lt;Participation&gt;
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>447</x><y>980</y><w>380</w><h>550</h></coordinates><panel_attributes>Tournament
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>370</x>
+      <y>980</y>
+      <w>380</w>
+      <h>600</h>
+    </coordinates>
+    <panel_attributes>Tournament
 --
 - MAX_TEAMS_NUMBER: Int
 - startDate : LocalDate
@@ -111,7 +166,18 @@
 + log2(int x): int
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1437</x><y>0</y><w>160</w><h>130</h></coordinates><panel_attributes>&lt;&lt;enumeration&gt;&gt;
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1360</x>
+      <y>0</y>
+      <w>160</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;enumeration&gt;&gt;
 AgeDivision
 --
 ΠΑΜΠΑΙΔΙΚΟ
@@ -121,7 +187,18 @@ AgeDivision
 ΕΝΗΛΙΚΩΝ
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1527</x><y>1010</y><w>330</w><h>420</h></coordinates><panel_attributes>Team
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1450</x>
+      <y>1010</y>
+      <w>330</w>
+      <h>420</h>
+    </coordinates>
+    <panel_attributes>Team
 --
 - name : String
 - colors : String
@@ -152,13 +229,68 @@ AgeDivision
 
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>537</x><y>320</y><w>560</w><h>180</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>540;10;10;160</additional_attributes></element><element><id>Relation</id><coordinates><x>1097</x><y>320</y><w>490</w><h>170</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;470;150</additional_attributes></element><element><id>Relation</id><coordinates><x>537</x><y>650</y><w>100</w><h>350</h></coordinates><panel_attributes>lt=-
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>460</x>
+      <y>350</y>
+      <w>560</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>540.0;10.0;10.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1020</x>
+      <y>350</y>
+      <w>490</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;470.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>460</x>
+      <y>650</y>
+      <w>100</w>
+      <h>350</h>
+    </coordinates>
+    <panel_attributes>lt=-
 m1=  0..*
 m2=1
-διοργανώνει </panel_attributes><additional_attributes>10;330;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1617</x><y>880</y><w>90</w><h>150</h></coordinates><panel_attributes>lt=-
+διοργανώνει </panel_attributes>
+    <additional_attributes>10.0;330.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1540</x>
+      <y>880</y>
+      <w>90</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>lt=-
 m1=0..*
 m2=   1..*
-συμμετέχει </panel_attributes><additional_attributes>10;130;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>937</x><y>1170</y><w>340</w><h>240</h></coordinates><panel_attributes>Participation
+συμμετέχει </panel_attributes>
+    <additional_attributes>10.0;130.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>860</x>
+      <y>1170</y>
+      <w>340</w>
+      <h>240</h>
+    </coordinates>
+    <panel_attributes>Participation
 --
 - startDate : LocalDate
 - finishDate : LocalDate
@@ -174,10 +306,32 @@ m2=   1..*
 + setTournament(Tournament tournament) : void
 + setTeam(Team team) : void
         
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>817</x><y>1060</y><w>730</w><h>60</h></coordinates><panel_attributes>lt=-
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>740</x>
+      <y>1060</y>
+      <w>730</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=-
 m1=0..*
 m2=0..*
-συμμετέχει</panel_attributes><additional_attributes>10;30;710;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>407</x><y>1720</y><w>350</w><h>260</h></coordinates><panel_attributes>Round
+συμμετέχει</panel_attributes>
+    <additional_attributes>10.0;20.0;710.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>330</x>
+      <y>1720</y>
+      <w>350</w>
+      <h>310</h>
+    </coordinates>
+    <panel_attributes>Round
 --
 - teamsNumber : int
 - teamsPerGroup : int
@@ -196,7 +350,18 @@ m2=0..*
 + getTeamsNumber() : int
 + getTeamsPerGroup() : int
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1527</x><y>1700</y><w>270</w><h>400</h></coordinates><panel_attributes>Game
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1450</x>
+      <y>1700</y>
+      <w>270</w>
+      <h>420</h>
+    </coordinates>
+    <panel_attributes>Game
 --
 - arena : String
 - date : java.util.Date
@@ -226,10 +391,32 @@ m2=0..*
 
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1637</x><y>1420</y><w>90</w><h>300</h></coordinates><panel_attributes>lt=-
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1560</x>
+      <y>1420</y>
+      <w>90</w>
+      <h>300</h>
+    </coordinates>
+    <panel_attributes>lt=-
 m1=0..*
 m2=2
-συμμετέχει</panel_attributes><additional_attributes>10;280;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>997</x><y>590</y><w>270</w><h>130</h></coordinates><panel_attributes>Sport
+συμμετέχει</panel_attributes>
+    <additional_attributes>10.0;280.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>920</x>
+      <y>590</y>
+      <w>270</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>Sport
 --
 - name : String
 - minimumPlayers : Int
@@ -243,12 +430,45 @@ m2=2
 
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>747</x><y>1750</y><w>250</w><h>50</h></coordinates><panel_attributes>περιλαμβάνει
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>670</x>
+      <y>1750</y>
+      <w>220</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>περιλαμβάνει
 m1=1
 m2=1..*
-</panel_attributes><additional_attributes>10;20;230;20</additional_attributes></element><element><id>Relation</id><coordinates><x>537</x><y>1520</y><w>90</w><h>220</h></coordinates><panel_attributes>m1=0..*
+</panel_attributes>
+    <additional_attributes>10.0;20.0;200.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>460</x>
+      <y>1570</y>
+      <w>100</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>m1=0..*
 m2=1
-περιλαμβάει</panel_attributes><additional_attributes>10;200;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1187</x><y>710</y><w>360</w><h>320</h></coordinates><panel_attributes>   αφορά
+περιλαμβάει</panel_attributes>
+    <additional_attributes>10.0;150.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1110</x>
+      <y>710</y>
+      <w>360</w>
+      <h>320</h>
+    </coordinates>
+    <panel_attributes>   αφορά
 m1=       1
 m2=
 
@@ -256,13 +476,57 @@ m2=
 
 
                                      0..*
-</panel_attributes><additional_attributes>10;10;340;300</additional_attributes></element><element><id>Relation</id><coordinates><x>817</x><y>710</y><w>200</w><h>290</h></coordinates><panel_attributes>αφορά
+</panel_attributes>
+    <additional_attributes>10.0;10.0;340.0;300.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>740</x>
+      <y>710</y>
+      <w>200</w>
+      <h>290</h>
+    </coordinates>
+    <panel_attributes>αφορά
 m1=0..*
 m2=  1
-</panel_attributes><additional_attributes>10;270;180;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1257</x><y>500</y><w>290</w><h>160</h></coordinates><panel_attributes>αφορά
+</panel_attributes>
+    <additional_attributes>10.0;270.0;180.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1180</x>
+      <y>500</y>
+      <w>290</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>αφορά
 m1=0..*
 m2=0..*
-</panel_attributes><additional_attributes>10;140;270;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1117</x><y>1080</y><w>30</w><h>110</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>UMLClass</id><coordinates><x>977</x><y>1730</y><w>350</w><h>380</h></coordinates><panel_attributes>Group
+</panel_attributes>
+    <additional_attributes>10.0;140.0;270.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1040</x>
+      <y>1070</y>
+      <w>30</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>870</x>
+      <y>1730</y>
+      <w>410</w>
+      <h>380</h>
+    </coordinates>
+    <panel_attributes>Group
 --
 - isKnockout : boolean
 - groupSize : int
@@ -288,7 +552,21 @@ m2=0..*
 - sortByValue(Map&lt;Team, Integer&gt; hm) : Map&lt;Team, Integer&gt;
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1317</x><y>1750</y><w>230</w><h>50</h></coordinates><panel_attributes>περιλαμβάνει
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1270</x>
+      <y>1750</y>
+      <w>200</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>περιλαμβάνει
 m1=1
 m2=1..*
-</panel_attributes><additional_attributes>10;20;210;20</additional_attributes></element></diagram>
+</panel_attributes>
+    <additional_attributes>10.0;20.0;180.0;20.0</additional_attributes>
+  </element>
+</diagram>
