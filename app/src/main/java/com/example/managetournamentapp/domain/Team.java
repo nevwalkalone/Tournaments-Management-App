@@ -101,7 +101,7 @@ public class Team {
     }
 
     //we need the tournament to remove the appropriate participation
-    //linked with the tournament TODO IF TOURN IS RUNNING
+    //linked with the tournament
     public void removeParticipation(Participation participation) {
         if (participation == null) {
             return;
@@ -115,7 +115,7 @@ public class Team {
 
 
     //if all criterias are met, then this team
-    //can join the specific tournament TODO CHECK
+    //can join the specific tournament
     public boolean canParticipate(Participation participation) {
         Tournament tournToJoin = participation.getTournament();
 
