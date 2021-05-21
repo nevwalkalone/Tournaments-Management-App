@@ -95,7 +95,6 @@ public class Team {
         }
         if (canParticipate(participation)) {
             participations.add(participation);
-            participation.getTournament().getParticipations().add(participation);
             participation.getTournament().friendGetParticipations().add(participation);
         }
     }
