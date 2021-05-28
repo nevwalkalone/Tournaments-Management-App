@@ -49,7 +49,6 @@ public class Team {
     }
 
 
-
     public boolean hasAnyActivePart() {
         //check if there is any running participation
         for (Participation participation : participations) {
