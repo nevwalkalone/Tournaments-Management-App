@@ -1,9 +1,6 @@
 package com.example.managetournamentapp.view.Organizer.CreatedTournaments;
 import androidx.lifecycle.ViewModel;
-
-
 import com.example.managetournamentapp.memoryDao.TournamentDAOMemory;
-
 
 public class CreatedTournamentsViewModel extends ViewModel {
     CreatedTournamentsPresenter presenter;

@@ -32,7 +32,11 @@ public class OrganizerDAOMemory implements OrganizerDAO {
     }
 
     @Override
-    public Organizer find(String name) {
+    public Organizer find(String title) {
+        for (Organizer o : entities){
+            if (o.getTitle().equals(title))
+                return o;
+        }
         return null;
     }
 }

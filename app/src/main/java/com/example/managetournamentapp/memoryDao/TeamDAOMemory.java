@@ -2,6 +2,7 @@ package com.example.managetournamentapp.memoryDao;
 
 import com.example.managetournamentapp.dao.TeamDAO;
 import com.example.managetournamentapp.domain.Invitation;
+import com.example.managetournamentapp.domain.Participation;
 import com.example.managetournamentapp.domain.Team;
 import com.example.managetournamentapp.domain.Tournament;
 
@@ -33,4 +34,17 @@ public class TeamDAOMemory implements TeamDAO {
         }
         return null;
     }
+
+    @Override
+    public ArrayList<Team> findByTournament(Tournament tournament) {
+        ArrayList<Team> results = new ArrayList<>();
+        for (Team t : entities){
+            for (Participation p : t.getParticipations()){
+                if (p.getTournament().getTitle().equals(tournament))
+                    results.add(t);
+            }
+        }
+        return results;
+    }
+
 }

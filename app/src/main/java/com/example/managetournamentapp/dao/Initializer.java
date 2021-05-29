@@ -41,7 +41,7 @@ public abstract class Initializer {
         Tournament tour1 =  new Tournament("TOURNOUA1", LocalDate.parse("2030-05-10"), LocalDate.parse("2030-05-29"), "ATHENS", (new Sport("Basketball3v3")),
                 32, AgeDivision.K100, dates);
         tournamentDAO.save(tour1);
-        organizerDAO.find("nikos").addTournament(tour1);
+        organizerDAO.find("ESKA").addTournament(tour1);
 
         teamDAO.save(  new Team("Celtic", (new Sport("Basketball3v3")), AgeDivision.K100, playerDAO.find("tom") , "green") );
 

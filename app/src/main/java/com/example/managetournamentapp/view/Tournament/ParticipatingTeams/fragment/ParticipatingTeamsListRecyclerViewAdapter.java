@@ -1,4 +1,4 @@
-package com.example.managetournamentapp.view.Organizer.CreatedTournaments.fragment;
+package com.example.managetournamentapp.view.Tournament.ParticipatingTeams.fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -6,20 +6,19 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
-import com.example.managetournamentapp.R;
-import com.example.managetournamentapp.domain.Tournament;
-import com.example.managetournamentapp.view.Organizer.CreatedTournaments.fragment.TournamentListFragment.OnListFragmentInteractionListener;
 
+import com.example.managetournamentapp.domain.Team;
 
 import java.util.ArrayList;
 
-public class TournamentListRecyclerViewAdapter extends RecyclerView.Adapter<TournamentListRecyclerViewAdapter.ViewHolder>  {
 
-    private final ArrayList<Tournament> mValues;
+public class ParticipatingTeamsListRecyclerViewAdapter extends RecyclerView.Adapter<ParticipatingTeamsListRecyclerViewAdapter.ViewHolder> {
+
+    private final ArrayList<Team> mValues;
     private final OnListFragmentInteractionListener mListener;
 
 
-    public TournamentListRecyclerViewAdapter(ArrayList<Tournament> items, OnListFragmentInteractionListener listener){
+    public ParticipatingTeamsListRecyclerViewAdapter(ArrayList<Team> items, OnListFragmentInteractionListener listener){
         mValues = items;
         mListener = listener;
     }
@@ -27,15 +26,15 @@ public class TournamentListRecyclerViewAdapter extends RecyclerView.Adapter<Tour
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_created_tournaments_list_item, parent, false);
+                .inflate(R.layout.fragment_participating_teams_list_item, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, int position) {
-        Tournament currentTournament = mValues.get(position);
-        holder.mItem = currentTournament;
-        holder.txtTournamentTitle.setText(currentTournament.getTitle());
+    public void onBindViewHolder(final ParticipatingTeamsListRecyclerViewAdapter.ViewHolder holder, int position) {
+        Team currentTeam= mValues.get(position);
+        holder.mItem = currentTeam;
+        holder.txtTeamTitle.setText(currentTeam.getName());
 
         holder.btnSelect.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,21 +56,27 @@ public class TournamentListRecyclerViewAdapter extends RecyclerView.Adapter<Tour
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
-        public final TextView txtTournamentTitle;
+        public final TextView txtTeamTitle;
         public final ImageButton btnSelect;
-        public Tournament mItem;
+        public Team mItem;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            txtTournamentTitle = view.findViewById(R.id.txt_tournament_title);
-            btnSelect = view.findViewById(R.id.btn_select_tournament);
+            txtTeamTitle = view.findViewById(R.id.txt_team_name);
+            btnSelect = view.findViewById(R.id.btn_select_team);
         }
 
         @Override
         public String toString() {
-            return super.toString() + " '" + txtTournamentTitle.getText() + "'";
+            return super.toString() + " '" + txtTeamTitle.getText() + "'";
         }
     }
+
+
+
+
+
+
 
 }

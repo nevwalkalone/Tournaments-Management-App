@@ -1,4 +1,4 @@
-package com.example.managetournamentapp.view.Organizer.CreatedTournaments.fragment;
+package com.example.managetournamentapp.view.Tournament.ParticipatingTeams.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -13,22 +13,23 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.managetournamentapp.R;
-import com.example.managetournamentapp.domain.Tournament;
+import com.example.managetournamentapp.domain.Team;
 
 import java.util.ArrayList;
 
-public class TournamentListFragment extends Fragment {
+
+public class ParticipatingTeamsListFragment extends Fragment{
 
     private static final String ARG_COLUMN_COUNT = "column-count";
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
 
-    public TournamentListFragment() {
+    public ParticipatingTeamsListFragment() {
     }
 
     @SuppressWarnings("unused")
-    public static TournamentListFragment newInstance(int columnCount) {
-        TournamentListFragment fragment = new TournamentListFragment();
+    public static ParticipatingTeamsListFragment newInstance(int columnCount) {
+        ParticipatingTeamsListFragment fragment = new ParticipatingTeamsListFragment();
 //        Bundle args = new Bundle();
 //        args.putInt(ARG_COLUMN_COUNT, columnCount);
 //        fragment.setArguments(args);
@@ -44,12 +45,13 @@ public class TournamentListFragment extends Fragment {
 //        }
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_created_tournaments_list, container, false);
 
-        ArrayList<Tournament> tournamentList = mListener.getTournamentList();
-        Log.d("TournamentListFragment", "Found " + tournamentList.size() + " tournaments");
+        ArrayList<Team> teamsList = mListener.getTeamsList();
+        Log.d("Particip..TeamsListFr..", "Found " + teamsList.size() + " teams");
 
         // Set the adapter
         if (view instanceof RecyclerView) {
@@ -60,10 +62,12 @@ public class TournamentListFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new TournamentListRecyclerViewAdapter(new ArrayList<Tournament>(tournamentList), mListener));
+            recyclerView.setAdapter(new ParticipatingTeamsListRecyclerViewAdapter(new ArrayList<Team>(teamsList), mListener));
         }
         return view;
     }
+
+
 
     @Override
     public void onAttach(Context context) {
@@ -85,10 +89,11 @@ public class TournamentListFragment extends Fragment {
 
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onListFragmentInteraction(Tournament item);
+        void onListFragmentInteraction(Team item);
 
-        ArrayList<Tournament> getTournamentList();
+        ArrayList<Team> getTeamsList();
     }
+
 
 
 }

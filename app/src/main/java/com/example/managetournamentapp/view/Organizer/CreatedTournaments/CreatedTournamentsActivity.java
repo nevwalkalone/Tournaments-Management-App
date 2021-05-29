@@ -43,7 +43,7 @@ public class CreatedTournamentsActivity extends AppCompatActivity implements Tou
                 return;
             }
 
-            viewModel.getPresenter().findCreatedTournaments( (new OrganizerDAOMemory()).find("nikos")  );
+            viewModel.getPresenter().findCreatedTournaments( (new OrganizerDAOMemory()).find("ESKA")  );
 
             TournamentListFragment tournamentListFragment = TournamentListFragment.newInstance(1);
             getSupportFragmentManager().beginTransaction()
