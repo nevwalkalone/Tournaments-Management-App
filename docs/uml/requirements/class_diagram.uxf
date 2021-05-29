@@ -1,4 +1,4 @@
-<diagram program="umletino" version="14.3.0"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>570</x><y>10</y><w>360</w><h>350</h></coordinates><panel_attributes>User
+<diagram program="umletino" version="14.3.0"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>1180</x><y>10</y><w>360</w><h>350</h></coordinates><panel_attributes>User
 --
 - name : String
 - surname : String
@@ -21,7 +21,7 @@
 + setCredentials(Credentials credentials) : void
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1040</x><y>190</y><w>310</w><h>130</h></coordinates><panel_attributes>Credentials
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1650</x><y>190</y><w>310</w><h>130</h></coordinates><panel_attributes>Credentials
 --
 - username : String
 - password : String
@@ -32,7 +32,7 @@
 + setPassword(String password) : void
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>50</x><y>480</y><w>370</w><h>180</h></coordinates><panel_attributes>Organizer
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>660</x><y>480</y><w>370</w><h>180</h></coordinates><panel_attributes>Organizer
 --
 - title : String
 --
@@ -42,7 +42,7 @@
 + deleteTournament(Tournament tour) : void
 + getTournaments() : ArrayList &lt;Tournament&gt;
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1170</x><y>470</y><w>390</w><h>400</h></coordinates><panel_attributes>Player
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1780</x><y>470</y><w>430</w><h>400</h></coordinates><panel_attributes>Player
 --
 - location : String
 - ageDivision : AgeDivision
@@ -68,7 +68,7 @@
 + getUndoneParticipations() : ArrayList&lt;Participation&gt;
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>40</x><y>1020</y><w>380</w><h>560</h></coordinates><panel_attributes>Tournament
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>570</x><y>1020</y><w>460</w><h>560</h></coordinates><panel_attributes>Tournament
 --
 - MAX_TEAMS_NUMBER: Int
 - startDate : LocalDate
@@ -105,7 +105,7 @@
 + log2(int x): int
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1080</x><y>0</y><w>160</w><h>130</h></coordinates><panel_attributes>&lt;&lt;enumeration&gt;&gt;
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1690</x><y>0</y><w>160</w><h>130</h></coordinates><panel_attributes>&lt;&lt;enumeration&gt;&gt;
 AgeDivision
 --
 ΠΑΜΠΑΙΔΙΚΟ
@@ -115,7 +115,7 @@ AgeDivision
 ΕΝΗΛΙΚΩΝ
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1250</x><y>1050</y><w>330</w><h>420</h></coordinates><panel_attributes>Team
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1860</x><y>1050</y><w>450</w><h>420</h></coordinates><panel_attributes>Team
 --
 - name : String
 - colors : String
@@ -145,10 +145,10 @@ AgeDivision
 
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>180</x><y>350</y><w>560</w><h>150</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>540;10;10;130</additional_attributes></element><element><id>Relation</id><coordinates><x>740</x><y>350</y><w>490</w><h>140</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;470;120</additional_attributes></element><element><id>Relation</id><coordinates><x>1340</x><y>860</y><w>90</w><h>210</h></coordinates><panel_attributes>lt=-
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>790</x><y>350</y><w>560</w><h>150</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>540;10;10;130</additional_attributes></element><element><id>Relation</id><coordinates><x>1350</x><y>350</y><w>490</w><h>140</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;470;120</additional_attributes></element><element><id>Relation</id><coordinates><x>1950</x><y>860</y><w>90</w><h>210</h></coordinates><panel_attributes>lt=-
 m1=0..*
 m2=   1..*
-συμμετέχει </panel_attributes><additional_attributes>10;190;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>630</x><y>1150</y><w>340</w><h>240</h></coordinates><panel_attributes>Participation
+συμμετέχει </panel_attributes><additional_attributes>10;190;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1240</x><y>1150</y><w>340</w><h>240</h></coordinates><panel_attributes>Participation
 --
 - startDate : LocalDate
 - finishDate : LocalDate
@@ -164,12 +164,11 @@ m2=   1..*
 + setTournament(Tournament tournament) : void
 + setTeam(Team team) : void
         
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>1740</y><w>350</w><h>310</h></coordinates><panel_attributes>Round
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>560</x><y>1740</y><w>360</w><h>310</h></coordinates><panel_attributes>Round
 --
 - teamsNumber : int
 - teamsPerGroup : int
 - isKnockout : boolean
-- groups : ArrayList &lt;Groups&gt;
 - dates : ArrayList &lt;LocalDate&gt;
 - teams : ArrayList &lt;Team&gt;
 --
@@ -183,7 +182,7 @@ m2=   1..*
 + getTeamsNumber() : int
 + getTeamsPerGroup() : int
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1250</x><y>1720</y><w>270</w><h>420</h></coordinates><panel_attributes>Game
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1860</x><y>1720</y><w>370</w><h>420</h></coordinates><panel_attributes>Game
 --
 - arena : String
 - date : java.util.Date
@@ -213,7 +212,7 @@ m2=   1..*
 
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>630</x><y>680</y><w>270</w><h>130</h></coordinates><panel_attributes>Sport
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1240</x><y>680</y><w>270</w><h>130</h></coordinates><panel_attributes>Sport
 --
 - name : String
 - minimumPlayers : Int
@@ -227,14 +226,11 @@ m2=   1..*
 
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>130</x><y>1570</y><w>90</w><h>190</h></coordinates><panel_attributes>m1=0..*
-m2=1
-περιλαμβάει</panel_attributes><additional_attributes>10;170;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>610</x><y>1750</y><w>410</w><h>400</h></coordinates><panel_attributes>Group
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1160</x><y>1750</y><w>480</w><h>400</h></coordinates><panel_attributes>Group
 --
 - isKnockout : boolean
 - groupSize : int
 - gamesNumber : int
-- games :  ArrayList&lt;Game&gt;
 - rankings : Map &lt;Team, int&gt;
 --
 + addTeam(Team team): void
@@ -255,10 +251,10 @@ m2=1
 - sortByValue(Map&lt;Team, Integer&gt; hm) : Map&lt;Team, Integer&gt;
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>960</x><y>1250</y><w>310</w><h>50</h></coordinates><panel_attributes>lt=-
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1570</x><y>1250</y><w>310</w><h>50</h></coordinates><panel_attributes>lt=-
 m1=0..*
 m2=1
-συμμετέχει</panel_attributes><additional_attributes>10;20;290;20</additional_attributes></element><element><id>Relation</id><coordinates><x>410</x><y>1240</y><w>240</w><h>50</h></coordinates><panel_attributes>lt=-
+συμμετέχει</panel_attributes><additional_attributes>10;20;290;20</additional_attributes></element><element><id>Relation</id><coordinates><x>1020</x><y>1240</y><w>240</w><h>50</h></coordinates><panel_attributes>lt=-
 m1=1
 m2=0..*
-συμμετέχει</panel_attributes><additional_attributes>10;20;220;20</additional_attributes></element><element><id>Relation</id><coordinates><x>1010</x><y>1810</y><w>260</w><h>30</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>240;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1340</x><y>1460</y><w>30</w><h>280</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;10;260</additional_attributes></element><element><id>Relation</id><coordinates><x>210</x><y>650</y><w>30</w><h>390</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;370;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>410</x><y>800</y><w>240</w><h>240</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>220;10;10;220</additional_attributes></element><element><id>Relation</id><coordinates><x>890</x><y>640</y><w>300</w><h>60</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;40;280;10</additional_attributes></element><element><id>Relation</id><coordinates><x>890</x><y>800</y><w>380</w><h>270</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;360;250</additional_attributes></element><element><id>Text</id><coordinates><x>990</x><y>640</y><w>100</w><h>70</h></coordinates><panel_attributes>αφορά</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>1090</x><y>630</y><w>100</w><h>70</h></coordinates><panel_attributes>0..*</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>910</x><y>650</y><w>100</w><h>40</h></coordinates><panel_attributes>0..*</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>570</x><y>820</y><w>100</w><h>70</h></coordinates><panel_attributes>1</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>490</x><y>880</y><w>100</w><h>70</h></coordinates><panel_attributes>αφορά</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>230</x><y>670</y><w>100</w><h>70</h></coordinates><panel_attributes>1</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>400</x><y>980</y><w>100</w><h>40</h></coordinates><panel_attributes>0..*</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>230</x><y>980</y><w>100</w><h>40</h></coordinates><panel_attributes>0..*</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>1070</x><y>900</y><w>100</w><h>70</h></coordinates><panel_attributes>αφορά</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>920</x><y>800</y><w>100</w><h>70</h></coordinates><panel_attributes>1</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>1360</x><y>1480</y><w>100</w><h>40</h></coordinates><panel_attributes>2</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>1220</x><y>1000</y><w>100</w><h>40</h></coordinates><panel_attributes>0..*</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>1350</x><y>1680</y><w>100</w><h>40</h></coordinates><panel_attributes>0..*</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>1030</x><y>1830</y><w>100</w><h>40</h></coordinates><panel_attributes>1</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>1200</x><y>1830</y><w>30</w><h>40</h></coordinates><panel_attributes>1..*</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>1080</x><y>1790</y><w>150</w><h>70</h></coordinates><panel_attributes>περιλαμβάνει</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>360</x><y>1830</y><w>100</w><h>40</h></coordinates><panel_attributes>1</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>340</x><y>1810</y><w>290</w><h>30</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>270;10;10;10</additional_attributes></element><element><id>Text</id><coordinates><x>420</x><y>1790</y><w>150</w><h>70</h></coordinates><panel_attributes>περιλαμβάνει</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>560</x><y>1830</y><w>30</w><h>40</h></coordinates><panel_attributes>1..*</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>230</x><y>810</y><w>100</w><h>70</h></coordinates><panel_attributes>διοργανώνει</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>1360</x><y>1590</y><w>130</w><h>70</h></coordinates><panel_attributes>συμμετέχει</panel_attributes><additional_attributes></additional_attributes></element></diagram>
+συμμετέχει</panel_attributes><additional_attributes>10;20;220;20</additional_attributes></element><element><id>Relation</id><coordinates><x>1630</x><y>1810</y><w>250</w><h>30</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>230;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1950</x><y>1460</y><w>30</w><h>280</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;10;260</additional_attributes></element><element><id>Relation</id><coordinates><x>820</x><y>650</y><w>30</w><h>390</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;370;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1020</x><y>800</y><w>240</w><h>240</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>220;10;10;220</additional_attributes></element><element><id>Relation</id><coordinates><x>1500</x><y>640</y><w>300</w><h>60</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;40;280;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1500</x><y>800</y><w>380</w><h>270</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;360;250</additional_attributes></element><element><id>Text</id><coordinates><x>1600</x><y>640</y><w>100</w><h>70</h></coordinates><panel_attributes>αφορά</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>1700</x><y>630</y><w>100</w><h>70</h></coordinates><panel_attributes>0..*</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>1520</x><y>650</y><w>100</w><h>40</h></coordinates><panel_attributes>0..*</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>1180</x><y>820</y><w>100</w><h>70</h></coordinates><panel_attributes>1</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>1100</x><y>880</y><w>100</w><h>70</h></coordinates><panel_attributes>αφορά</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>840</x><y>670</y><w>100</w><h>70</h></coordinates><panel_attributes>1</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>1010</x><y>980</y><w>100</w><h>40</h></coordinates><panel_attributes>0..*</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>840</x><y>980</y><w>100</w><h>40</h></coordinates><panel_attributes>0..*</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>1680</x><y>900</y><w>100</w><h>70</h></coordinates><panel_attributes>αφορά</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>1530</x><y>800</y><w>100</w><h>70</h></coordinates><panel_attributes>1</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>1970</x><y>1480</y><w>100</w><h>40</h></coordinates><panel_attributes>2</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>1830</x><y>1000</y><w>100</w><h>40</h></coordinates><panel_attributes>0..*</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>1960</x><y>1680</y><w>100</w><h>40</h></coordinates><panel_attributes>0..*</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>1660</x><y>1830</y><w>100</w><h>40</h></coordinates><panel_attributes>1</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>1810</x><y>1830</y><w>30</w><h>40</h></coordinates><panel_attributes>1..*</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>1690</x><y>1790</y><w>150</w><h>70</h></coordinates><panel_attributes>περιλαμβάνει</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>970</x><y>1830</y><w>100</w><h>40</h></coordinates><panel_attributes>1</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>910</x><y>1810</y><w>270</w><h>30</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>250;10;10;10</additional_attributes></element><element><id>Text</id><coordinates><x>980</x><y>1790</y><w>150</w><h>70</h></coordinates><panel_attributes>περιλαμβάνει</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>840</x><y>810</y><w>100</w><h>70</h></coordinates><panel_attributes>διοργανώνει</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>1970</x><y>1590</y><w>130</w><h>70</h></coordinates><panel_attributes>συμμετέχει</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>750</x><y>1570</y><w>30</w><h>190</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;170;10;10</additional_attributes></element><element><id>Text</id><coordinates><x>760</x><y>1650</y><w>150</w><h>70</h></coordinates><panel_attributes>περιλαμβάνει</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>770</x><y>1590</y><w>100</w><h>40</h></coordinates><panel_attributes>1</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>770</x><y>1700</y><w>100</w><h>40</h></coordinates><panel_attributes>0..*</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>1110</x><y>1830</y><w>30</w><h>40</h></coordinates><panel_attributes>1..*</panel_attributes><additional_attributes></additional_attributes></element></diagram>
