@@ -8,6 +8,18 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.ManageTournamentApp" />
+        android:theme="@style/Theme.ManageTournamentApp">
+        <activity
+            android:name=".view.Organizer.CreatedTournaments.CreatedTournamentsActivity"
+            android:label="@string/created_tournaments"
+            android:theme="@style/Theme.ManageTournamentApp.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+
+    </application>
 </manifest>

@@ -25,7 +25,6 @@ public class MemoryInitializer extends Initializer {
         getRoundDAO().deleteAll();
         getTeamDAO().deleteAll();
         getTournamentDAO().deleteAll();
-
     }
 
     @Override
@@ -65,10 +64,8 @@ public class MemoryInitializer extends Initializer {
     }
 
     @Override
-    public TeamDAO getTeamDAO() {
-        return new TeamDAOMemory() {
-        };
-    }
+    public TeamDAO getTeamDAO() {  return new TeamDAOMemory(); }
+
 
     @Override
     public TournamentDAO getTournamentDAO() {

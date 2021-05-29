@@ -32,7 +32,11 @@ public class PlayerDAOMemory implements PlayerDAO {
     }
 
     @Override
-    public Player find(String userName) {
+    public Player find(String userName){
+        for (Player p : entities){
+            if (p.getCredentials().getUsername().equals(userName))
+                return p;
+        }
         return null;
     }
 }

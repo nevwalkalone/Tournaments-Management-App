@@ -36,7 +36,6 @@ public class Game {
         return Integer.compare(scoreA, scoreB);
     }
 
-
     public String getArena() {
         return arena;
     }
@@ -44,7 +43,6 @@ public class Game {
     public void setArena(String area) {
         this.arena = area;
     }
-
 
     public boolean isFinished() {
         return isFinished;
@@ -93,7 +91,6 @@ public class Game {
     public void setDate(LocalDate date) {
         this.date = date;
     }
-
 
     public boolean equals(Object other) {
         if (this == other){
