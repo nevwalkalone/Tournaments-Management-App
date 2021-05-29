@@ -9,4 +9,5 @@ public interface RoundDAO {
 
     void delete(Round entity);
 
+    void deleteAll();
 }

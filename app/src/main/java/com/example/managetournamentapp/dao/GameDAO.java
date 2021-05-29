@@ -11,5 +11,7 @@ public interface GameDAO {
 
     void delete(Game entity);
 
+    void deleteAll();
+
     Game find(String nameTeamA, String nameTeamB, LocalDate matchDate);
 }

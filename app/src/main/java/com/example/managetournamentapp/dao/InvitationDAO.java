@@ -10,6 +10,8 @@ public interface InvitationDAO {
 
     void delete(Invitation entity);
 
+    void deleteAll();
+
     // todo
     void find(String teamName, LocalDate dateSent);
 

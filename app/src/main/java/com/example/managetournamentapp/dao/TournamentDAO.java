@@ -8,6 +8,8 @@ public interface TournamentDAO {
 
     void delete(Tournament entity);
 
+    void deleteAll();
+
     Tournament find(String tournamentName);
 
 }

@@ -8,6 +8,8 @@ public interface GroupDAO {
 
     void delete(Group entity);
 
+    void deleteAll();
+
     // todo
     Group find();
 

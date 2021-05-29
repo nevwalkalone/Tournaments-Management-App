@@ -8,6 +8,8 @@ public interface TeamDAO {
 
     void delete(Team entity);
 
+    void deleteAll();
+
     Team find(String teamName);
 
 }

@@ -9,6 +9,8 @@ public interface ParticipationDAO {
 
     void delete(Participation entity);
 
+    void deleteAll();
+
     Participation find(String teamName, String tournamentName);
 
 }
