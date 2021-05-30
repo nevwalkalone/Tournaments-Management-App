@@ -28,6 +28,16 @@
             android:exported="true"
             android:label="@string/participating_teams"
             android:theme="@style/Theme.ManageTournamentApp.NoActionBar" />
+        <activity
+            android:name=".view.Player.JoinedTeams.JoinedTeamsActivity"
+            android:exported="true"
+            android:label="@string/joined_teams"
+            android:theme="@style/Theme.ManageTournamentApp.NoActionBar" />
+        <activity
+            android:name=".view.Team.ParticipatingTournaments.ParticipatingTournamentsActivity"
+            android:exported="true"
+            android:label="@string/participating_tournaments"
+            android:theme="@style/Theme.ManageTournamentApp.NoActionBar" />
     </application>
 
 </manifest>

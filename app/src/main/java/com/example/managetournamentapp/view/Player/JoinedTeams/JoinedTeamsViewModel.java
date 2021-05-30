@@ -1,18 +1,18 @@
-package com.example.managetournamentapp.view.Tournament.ParticipatingTeams;
+package com.example.managetournamentapp.view.Player.JoinedTeams;
 
 import androidx.lifecycle.ViewModel;
 import com.example.managetournamentapp.memoryDao.TeamDAOMemory;
 
-public class ParticipatingTeamsViewModel extends ViewModel{
-    ParticipatingTeamsPresenter presenter;
+public class JoinedTeamsViewModel extends ViewModel{
+    JoinedTeamsPresenter presenter;
 
-    public ParticipatingTeamsViewModel() {
-        presenter = new ParticipatingTeamsPresenter();
+    public JoinedTeamsViewModel() {
+        presenter = new JoinedTeamsPresenter();
         TeamDAOMemory teamDAOMemory = new TeamDAOMemory();
         presenter.setTeamDAO(teamDAOMemory);
     }
 
-    public ParticipatingTeamsPresenter getPresenter() {
+    public JoinedTeamsPresenter getPresenter() {
         return presenter;
     }
 
@@ -22,5 +22,5 @@ public class ParticipatingTeamsViewModel extends ViewModel{
         presenter.clearView();
     }
 
-
 }
+

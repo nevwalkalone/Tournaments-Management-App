@@ -3,6 +3,8 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="created_tournaments">CreatedTournaments</string>
     <string name="participating_teams">ParticipatingTeams</string>
+    <string name="joined_teams">JoinedTeams</string>
+    <string name="participating_tournaments">ParticipatingTournaments</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>

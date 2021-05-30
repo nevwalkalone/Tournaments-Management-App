@@ -1,24 +1,24 @@
-package com.example.managetournamentapp.view.Tournament.ParticipatingTeams;
+package com.example.managetournamentapp.view.Player.JoinedTeams;
 
 import com.example.managetournamentapp.dao.TeamDAO;
 import com.example.managetournamentapp.domain.Participation;
+import com.example.managetournamentapp.domain.Player;
 import com.example.managetournamentapp.domain.Team;
 import com.example.managetournamentapp.domain.Tournament;
 import com.example.managetournamentapp.memoryDao.TournamentDAOMemory;
 import java.util.ArrayList;
 
-public class ParticipatingTeamsPresenter {
-    private ParticipatingTeamsView view;
+public class JoinedTeamsPresenter {
+    private JoinedTeamsView view;
     private TeamDAO teamDAO;
     private ArrayList<Team> results = new ArrayList<>();
 
-    public ParticipatingTeamsPresenter(){}
+    public JoinedTeamsPresenter(){}
 
-    public void findParticipatingTeams(Tournament tournament){
-        if (tournament!= null){
+    public void findJoinedTeams(Player player){
+        if (player!= null){
             results.clear();
-            for (Participation participation : tournament.getParticipations())
-                results.add( participation.getTeam()  );
+            results.addAll(player.getTeamsJoined());
         }
     }
 
@@ -30,7 +30,7 @@ public class ParticipatingTeamsPresenter {
         // todo
     }
 
-    public void setView(ParticipatingTeamsView view) {
+    public void setView(JoinedTeamsView view) {
         this.view = view;
     }
 

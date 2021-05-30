@@ -1,4 +1,4 @@
-package com.example.managetournamentapp.view.Tournament.ParticipatingTeams;
+package com.example.managetournamentapp.view.Player.JoinedTeams;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,14 +7,15 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.domain.Team;
 import com.example.managetournamentapp.memoryDao.MemoryInitializer;
-import com.example.managetournamentapp.memoryDao.TournamentDAOMemory;
+import com.example.managetournamentapp.memoryDao.PlayerDAOMemory;
 import com.example.managetournamentapp.view.Tournament.ParticipatingTeams.fragment.ParticipatingTeamsListFragment;
 import java.util.ArrayList;
 
-public class ParticipatingTeamsActivity extends AppCompatActivity implements ParticipatingTeamsListFragment.OnListFragmentInteractionListener {
+public class JoinedTeamsActivity extends AppCompatActivity implements ParticipatingTeamsListFragment.OnListFragmentInteractionListener {
+//todo add to fragment
 
     public static final String TEAM_NAME_EXTRA = "team_name_extra";
-    ParticipatingTeamsViewModel viewModel;
+    JoinedTeamsViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,14 +23,14 @@ public class ParticipatingTeamsActivity extends AppCompatActivity implements Par
         new MemoryInitializer().prepareData();
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_participating_teams);
+        setContentView(R.layout.activity_joined_teams);
         Intent intent = getIntent();
 
 //
 //        Log.d("BookSearchActivity", "Search criteria: " + titleCriterion
 //                + " " + authorCriterion);
 
-        viewModel = new ViewModelProvider(this).get(ParticipatingTeamsViewModel.class);
+        viewModel = new ViewModelProvider(this).get(JoinedTeamsViewModel.class);
 
         if (findViewById(R.id.fragment_container) != null){
 
@@ -38,8 +39,8 @@ public class ParticipatingTeamsActivity extends AppCompatActivity implements Par
                 return;
             }
 
-            viewModel.getPresenter().findParticipatingTeams( (new TournamentDAOMemory()).find("TOURNOUA1")  );
-//
+            viewModel.getPresenter().findJoinedTeams( (new PlayerDAOMemory()).find("tom")  );
+
             ParticipatingTeamsListFragment teamsListFragment = ParticipatingTeamsListFragment.newInstance(1);
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.fragment_container, teamsListFragment)
@@ -64,3 +65,4 @@ public class ParticipatingTeamsActivity extends AppCompatActivity implements Par
 
 
 }
+

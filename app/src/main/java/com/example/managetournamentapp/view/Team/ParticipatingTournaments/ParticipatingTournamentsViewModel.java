@@ -1,18 +1,18 @@
-package com.example.managetournamentapp.view.Organizer.CreatedTournaments;
+package com.example.managetournamentapp.view.Team.ParticipatingTournaments;
 import androidx.lifecycle.ViewModel;
 import com.example.managetournamentapp.memoryDao.TournamentDAOMemory;
 
 
-public class CreatedTournamentsViewModel extends ViewModel {
-    CreatedTournamentsPresenter presenter;
+public class ParticipatingTournamentsViewModel extends ViewModel {
+    ParticipatingTournamentsPresenter presenter;
 
-    public CreatedTournamentsViewModel() {
-        presenter = new CreatedTournamentsPresenter();
+    public ParticipatingTournamentsViewModel() {
+        presenter = new ParticipatingTournamentsPresenter();
         TournamentDAOMemory tournamentDAOMemory = new TournamentDAOMemory();
         presenter.setTournamentDAO(tournamentDAOMemory);
     }
 
-    public CreatedTournamentsPresenter getPresenter() {
+    public ParticipatingTournamentsPresenter getPresenter() {
         return presenter;
     }
 
