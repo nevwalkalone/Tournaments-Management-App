@@ -42,7 +42,7 @@ public class ParticipatingTeamsActivity extends AppCompatActivity implements Par
             }
 
             viewModel.getPresenter().findParticipatingTeams( (new TournamentDAOMemory()).find("TOURNOUA1")  );
-
+//
             ParticipatingTeamsListFragment teamsListFragment = ParticipatingTeamsListFragment.newInstance(1);
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.fragment_container, teamsListFragment)

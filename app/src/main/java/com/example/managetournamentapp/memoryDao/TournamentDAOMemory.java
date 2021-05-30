@@ -28,14 +28,20 @@ public class TournamentDAOMemory implements TournamentDAO {
 
     @Override
     public Tournament find(String tournamentTitle) {
-        for (Tournament t : entities){
-            if ( t.getTitle().equals(tournamentTitle) )
+        for (Tournament t : entities) {
+            if (t.getTitle().equals(tournamentTitle))
                 return t;
         }
         return null;
     }
 
-    public ArrayList<Tournament> findByOrganizer(Organizer organizer){
+    @Override
+    public ArrayList<Tournament> findAll() {
+
+        return entities;
+    }
+
+    public ArrayList<Tournament> findByOrganizer(Organizer organizer) {
         if (organizer == null)
             return new ArrayList<Tournament>();
 

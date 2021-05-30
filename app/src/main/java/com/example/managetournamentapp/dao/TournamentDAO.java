@@ -16,6 +16,8 @@ public interface TournamentDAO {
 
     Tournament find(String tournamentName);
 
+    ArrayList<Tournament> findAll();
+
     ArrayList<Tournament> findByOrganizer(Organizer organizer);
 
 }

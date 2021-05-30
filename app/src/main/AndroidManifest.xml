@@ -9,16 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ManageTournamentApp">
-        <activity
-            android:name=".view.HomePage.HomeActivity"
-            android:label="@string/title_activity_home"
-            android:theme="@style/Theme.ManageTournamentApp.NoActionBar">
+        <activity android:name=".view.HomePage.HomePageActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".view.User.Register.RegisterActivity" />
+        <activity android:name=".view.User.Login.LoginActivity" />
+
         <activity
             android:name=".view.Organizer.CreatedTournaments.CreatedTournamentsActivity"
             android:exported="true"
