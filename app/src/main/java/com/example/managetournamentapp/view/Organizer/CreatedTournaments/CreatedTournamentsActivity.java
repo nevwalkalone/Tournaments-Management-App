@@ -12,9 +12,7 @@ import com.example.managetournamentapp.domain.Tournament;
 import com.example.managetournamentapp.memoryDao.MemoryInitializer;
 import com.example.managetournamentapp.memoryDao.OrganizerDAOMemory;
 import com.example.managetournamentapp.view.Organizer.CreatedTournaments.fragment.TournamentListFragment;
-
 import java.util.ArrayList;
-
 
 public class CreatedTournamentsActivity extends AppCompatActivity implements TournamentListFragment.OnListFragmentInteractionListener {
 
@@ -23,6 +21,7 @@ public class CreatedTournamentsActivity extends AppCompatActivity implements Tou
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //todo erase
         new MemoryInitializer().prepareData();
 
         super.onCreate(savedInstanceState);

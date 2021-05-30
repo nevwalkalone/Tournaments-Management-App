@@ -1,5 +1,7 @@
 package com.example.managetournamentapp.dao;
 
+import android.util.Log;
+
 import com.example.managetournamentapp.domain.AgeDivision;
 import com.example.managetournamentapp.domain.Credentials;
 import com.example.managetournamentapp.domain.Organizer;
@@ -29,8 +31,11 @@ public abstract class Initializer {
         TournamentDAO tournamentDAO = getTournamentDAO();
 
         playerDAO.save( new Player("tom", "jerry","Athens",  "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("tom", "123")));
-        playerDAO.save( new Player("tom2", "jerry","Athens",  "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("tom1", "123")));
-        playerDAO.save( new Player("tom3", "jerry","Athens",  "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("tom2", "123")));
+        playerDAO.save( new Player("tom2", "jerry","Athens",  "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("tom2", "123")));
+        playerDAO.save( new Player("tom3", "jerry","Athens",  "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("tom3", "123")));
+        playerDAO.find("tom").addSportInterested(new Sport("Basketball3v3"));
+        playerDAO.find("tom2").addSportInterested(new Sport("Basketball3v3"));
+        playerDAO.find("tom3").addSportInterested(new Sport("Basketball3v3"));
 
         ArrayList<LocalDate> dates = new ArrayList<>();
         for (int i = 1; i < 64; i++) {
@@ -44,10 +49,13 @@ public abstract class Initializer {
         organizerDAO.find("ESKA").addTournament(tour1);
 
         teamDAO.save(  new Team("Celtic", (new Sport("Basketball3v3")), AgeDivision.K100, playerDAO.find("tom") , "green") );
+        teamDAO.find( "Celtic" ).addPlayer( playerDAO.find("tom2")  );
+        teamDAO.find( "Celtic" ).addPlayer( playerDAO.find("tom3") );
 
         Participation part = new Participation( tour1, teamDAO.find("Celtic") );
         participationDAO.save( part);
         teamDAO.find( "Celtic" ).addParticipation(part);
+
     }
 
     public abstract GameDAO getGameDAO();

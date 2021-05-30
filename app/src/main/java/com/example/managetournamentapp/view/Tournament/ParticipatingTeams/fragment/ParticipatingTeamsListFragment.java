@@ -30,29 +30,26 @@ public class ParticipatingTeamsListFragment extends Fragment{
     @SuppressWarnings("unused")
     public static ParticipatingTeamsListFragment newInstance(int columnCount) {
         ParticipatingTeamsListFragment fragment = new ParticipatingTeamsListFragment();
-//        Bundle args = new Bundle();
-//        args.putInt(ARG_COLUMN_COUNT, columnCount);
-//        fragment.setArguments(args);
+        Bundle args = new Bundle();
+        args.putInt(ARG_COLUMN_COUNT, columnCount);
+        fragment.setArguments(args);
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-//        if (getArguments() != null) {
-//            mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
-//        }
+        if (getArguments() != null) {
+            mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
+        }
     }
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_created_tournaments_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_participating_teams_list, container, false);
 
         ArrayList<Team> teamsList = mListener.getTeamsList();
-        Log.d("Particip..TeamsListFr..", "Found " + teamsList.size() + " teams");
-
         // Set the adapter
         if (view instanceof RecyclerView) {
             Context context = view.getContext();

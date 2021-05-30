@@ -29,9 +29,9 @@ public class TournamentListFragment extends Fragment {
     @SuppressWarnings("unused")
     public static TournamentListFragment newInstance(int columnCount) {
         TournamentListFragment fragment = new TournamentListFragment();
-//        Bundle args = new Bundle();
-//        args.putInt(ARG_COLUMN_COUNT, columnCount);
-//        fragment.setArguments(args);
+        Bundle args = new Bundle();
+        args.putInt(ARG_COLUMN_COUNT, columnCount);
+        fragment.setArguments(args);
         return fragment;
     }
 
@@ -39,9 +39,9 @@ public class TournamentListFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-//        if (getArguments() != null) {
-//            mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
-//        }
+        if (getArguments() != null) {
+            mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
+        }
     }
 
     @Override

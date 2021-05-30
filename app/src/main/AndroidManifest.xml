@@ -9,21 +9,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ManageTournamentApp">
-        <activity android:name=".view.HomePage.HomeActivity">
+        <activity
+            android:name=".view.HomePage.HomeActivity"
+            android:label="@string/title_activity_home"
+            android:theme="@style/Theme.ManageTournamentApp.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
         <activity
             android:name=".view.Organizer.CreatedTournaments.CreatedTournamentsActivity"
+            android:exported="true"
             android:label="@string/created_tournaments"
-            android:theme="@style/Theme.ManageTournamentApp.NoActionBar"
-            android:exported="true">
-        </activity>
-
+            android:theme="@style/Theme.ManageTournamentApp.NoActionBar" />
+        <activity
+            android:name=".view.Tournament.ParticipatingTeams.ParticipatingTeamsActivity"
+            android:exported="true"
+            android:label="@string/participating_teams"
+            android:theme="@style/Theme.ManageTournamentApp.NoActionBar" />
     </application>
 
 </manifest>

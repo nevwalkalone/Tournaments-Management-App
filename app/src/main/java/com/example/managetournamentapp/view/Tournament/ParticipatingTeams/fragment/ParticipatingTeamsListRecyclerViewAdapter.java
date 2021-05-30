@@ -6,9 +6,9 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
-
+import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.domain.Team;
-
+import com.example.managetournamentapp.view.Tournament.ParticipatingTeams.fragment.ParticipatingTeamsListFragment.OnListFragmentInteractionListener;
 import java.util.ArrayList;
 
 
@@ -31,7 +31,7 @@ public class ParticipatingTeamsListRecyclerViewAdapter extends RecyclerView.Adap
     }
 
     @Override
-    public void onBindViewHolder(final ParticipatingTeamsListRecyclerViewAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, int position) {
         Team currentTeam= mValues.get(position);
         holder.mItem = currentTeam;
         holder.txtTeamTitle.setText(currentTeam.getName());
@@ -72,11 +72,5 @@ public class ParticipatingTeamsListRecyclerViewAdapter extends RecyclerView.Adap
             return super.toString() + " '" + txtTeamTitle.getText() + "'";
         }
     }
-
-
-
-
-
-
 
 }
