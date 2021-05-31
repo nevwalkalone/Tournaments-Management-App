@@ -18,7 +18,7 @@ public class RegisterPlayerViewModel extends ViewModel {
     public RegisterPlayerViewModel(Intent intent, RegisterPlayerViewModel view) {
         this.activity = intent;
         PlayerDAOMemory playersDAOMemory = new PlayerDAOMemory();
-        presenter = new RegisterPlayerPresenter(view, playersDAOMemory);
+        presenter = new RegisterPlayerPresenter();
 
     }
 
