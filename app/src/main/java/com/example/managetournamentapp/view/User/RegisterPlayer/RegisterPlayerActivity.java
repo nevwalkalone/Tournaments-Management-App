@@ -91,7 +91,7 @@ public class RegisterPlayerActivity extends AppCompatActivity implements Registe
     @Override
     public String getBirthDate() {
         EditText BIRTHDATE = (EditText) findViewById(R.id.birthdate);
-        return BIRTHDATE.getText().toString();
+        return BIRTHDATE.getText().toString();      //
     }
 
     @Override
