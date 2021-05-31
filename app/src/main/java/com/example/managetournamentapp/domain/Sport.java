@@ -30,10 +30,6 @@ public class Sport {
                 minimumPlayers = 6;
                 break;
 
-            case "Basketball2v2":
-                minimumPlayers = 4;
-                break;
-
             case "Football5v5":
             case "Basketball5v5":
                 minimumPlayers = 10;

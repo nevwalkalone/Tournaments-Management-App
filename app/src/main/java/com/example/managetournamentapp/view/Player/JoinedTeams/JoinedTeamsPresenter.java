@@ -5,6 +5,7 @@ import com.example.managetournamentapp.domain.Participation;
 import com.example.managetournamentapp.domain.Player;
 import com.example.managetournamentapp.domain.Team;
 import com.example.managetournamentapp.domain.Tournament;
+import com.example.managetournamentapp.domain.User;
 import com.example.managetournamentapp.memoryDao.TournamentDAOMemory;
 import java.util.ArrayList;
 
@@ -15,11 +16,15 @@ public class JoinedTeamsPresenter {
 
     public JoinedTeamsPresenter(){}
 
-    public void findJoinedTeams(Player player){
-        if (player!= null){
-            results.clear();
-            results.addAll(player.getTeamsJoined());
-        }
+    public void findJoinedTeams(User user){
+        if (user == null)
+            return;
+        if ( !(user instanceof Player) )
+            return;
+
+        Player player = (Player) user;
+        results.clear();
+        results.addAll(player.getTeamsJoined());
     }
 
     public ArrayList<Team> getResults() {

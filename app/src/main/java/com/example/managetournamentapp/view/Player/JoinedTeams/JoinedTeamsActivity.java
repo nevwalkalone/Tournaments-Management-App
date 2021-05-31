@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.domain.Team;
 import com.example.managetournamentapp.memoryDao.MemoryInitializer;
+import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
 import com.example.managetournamentapp.memoryDao.PlayerDAOMemory;
 import com.example.managetournamentapp.view.Tournament.ParticipatingTeams.fragment.ParticipatingTeamsListFragment;
 import java.util.ArrayList;
@@ -39,7 +40,7 @@ public class JoinedTeamsActivity extends AppCompatActivity implements Participat
                 return;
             }
 
-            viewModel.getPresenter().findJoinedTeams( (new PlayerDAOMemory()).find("tom")  );
+            viewModel.getPresenter().findJoinedTeams( (new MemoryLoggedInUser()).getUser()  );
 
             ParticipatingTeamsListFragment teamsListFragment = ParticipatingTeamsListFragment.newInstance(1);
             getSupportFragmentManager().beginTransaction()

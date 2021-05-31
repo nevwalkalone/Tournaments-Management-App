@@ -7,7 +7,7 @@ public class MemoryLoggedInUser implements LoggedInUser
 {
     private static User user;
 
-    private MemoryLoggedInUser(){}
+    public MemoryLoggedInUser(){}
 
     public void setUser(User user){
         this.user = user;
