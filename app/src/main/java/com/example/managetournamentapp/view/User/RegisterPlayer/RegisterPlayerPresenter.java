@@ -4,26 +4,33 @@ import com.example.managetournamentapp.dao.LoggedInUserDAO;
 import com.example.managetournamentapp.dao.LoggedInUserDAO;
 import com.example.managetournamentapp.dao.PlayerDAO;
 import com.example.managetournamentapp.domain.Player;
+import com.example.managetournamentapp.view.Player.PlayerPage.PlayerPageView;
 
 public class RegisterPlayerPresenter {
 
-    private RegisterPlayerViewModel view;
-    private PlayerDAO players;
+    private RegisterPlayerView view;
+    private PlayerDAO playerDAO;
     private Player player;
 
-    public RegisterPlayerPresenter(RegisterPlayerViewModel view, PlayerDAO players) {
+    public RegisterPlayerPresenter() {
+
+    }
+
+    public void onSavePlayer(){
+        view.getDetails();
+        //todo
+    }
+
+    public void setView(RegisterPlayerView view) {
         this.view = view;
-        this.players = players;
-
-        String playerUser = view.getPlayerUniqueUsername();
-        if (playerUser != null) {
-            player = players.find(playerUser);
-        }
-
     }
 
     public void clearView() {
         this.view = null;
+    }
+
+    public void setPlayerDAO(PlayerDAO playerDAO) {
+        this.playerDAO = playerDAO;
     }
 
 }

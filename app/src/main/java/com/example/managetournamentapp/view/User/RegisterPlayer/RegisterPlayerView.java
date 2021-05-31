@@ -5,23 +5,24 @@ import com.example.managetournamentapp.domain.Credentials;
 
 public interface RegisterPlayerView {
 
-    String getPlayerUniqueUsername();
-
-    String getName();
-
-    String getSurname();
-
-    String getPhoneNumber();
-
-    String getEmail();
-
-    String getBirthDate();
-
-    Credentials getCredentials();
-
-    String getLocation();
-
-    AgeDivision getAgeDivision();
+    String getDetails();
+//    String getPlayerUniqueUsername();
+//
+//    String getName();
+//
+//    String getSurname();
+//
+//    String getPhoneNumber();
+//
+//    String getEmail();
+//
+//    String getBirthDate();
+//
+//    Credentials getCredentials();
+//
+//    String getLocation();
+//
+//    AgeDivision getAgeDivision();
 
 
 }

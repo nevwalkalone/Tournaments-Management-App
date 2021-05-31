@@ -13,22 +13,28 @@ import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.memoryDao.PlayerDAOMemory;
 import com.example.managetournamentapp.view.HomePage.HomePageViewModel;
 import com.example.managetournamentapp.view.Organizer.CreatedTournaments.fragment.TournamentListFragment;
+import com.example.managetournamentapp.view.Player.PlayerPage.PlayerPageViewModel;
 
-public class RegisterPlayerActivity extends AppCompatActivity implements  View.OnClickListener {
+public class RegisterPlayerActivity extends AppCompatActivity implements  RegisterPlayerView, View.OnClickListener {
 
     RegisterPlayerViewModel viewModel;
     public static final String PLAYER_USERNAME = "PLAYER_USERNAME";
     private Button saveBtn;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_player);
 
-        final RegisterPlayerPresenter presenter = new RegisterPlayerPresenter(viewModel, new PlayerDAOMemory());
+        viewModel = new ViewModelProvider(this).get(RegisterPlayerViewModel.class);
+        viewModel.getPresenter().setView(this);
+
+        final RegisterPlayerPresenter presenter = new RegisterPlayerPresenter();
         saveBtn = (Button) findViewById(R.id.savePlayerBtn);
         saveBtn.setOnClickListener(this);
-
 
     }
 
@@ -46,15 +52,12 @@ public class RegisterPlayerActivity extends AppCompatActivity implements  View.O
         System.out.println(details);
         return details;
 
-
     }
 
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.savePlayerBtn) {
-            Intent intent = this.getIntent();
-            intent.putExtra(PLAYER_USERNAME, getDetails());
-            viewModel = new RegisterPlayerViewModel(intent, viewModel);
+            viewModel.getPresenter().onSavePlayer();
         }
 
     }
