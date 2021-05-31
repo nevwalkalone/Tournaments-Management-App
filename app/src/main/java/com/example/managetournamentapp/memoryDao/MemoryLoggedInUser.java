@@ -5,7 +5,7 @@ import com.example.managetournamentapp.domain.User;
 
 public class MemoryLoggedInUser implements LoggedInUserDAO
 {
-    private static User user;
+    private static User user = (new PlayerDAOMemory()).find("tom");
 
     public MemoryLoggedInUser(){}
 
