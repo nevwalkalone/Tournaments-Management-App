@@ -52,7 +52,6 @@ public class PlayerPageActivity extends AppCompatActivity implements  PlayerPage
 
     }
 
-
     public void toPlayerAccount(){
 //        Intent intent = new Intent(PlayerPageActivity.this, PlayerAccountActivity.class);
 //        startActivity(intent);
