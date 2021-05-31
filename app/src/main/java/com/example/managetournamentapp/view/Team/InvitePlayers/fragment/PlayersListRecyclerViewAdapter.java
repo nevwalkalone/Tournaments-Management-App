@@ -5,7 +5,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.domain.Player;
 import com.example.managetournamentapp.view.Team.InvitePlayers.fragment.PlayersListFragment.OnListFragmentInteractionListener;
@@ -13,13 +15,13 @@ import com.example.managetournamentapp.view.Team.InvitePlayers.fragment.PlayersL
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class PlayersListRecyclerViewAdapter extends RecyclerView.Adapter<PlayersListRecyclerViewAdapter.ViewHolder>  {
+public class PlayersListRecyclerViewAdapter extends RecyclerView.Adapter<PlayersListRecyclerViewAdapter.ViewHolder> {
 
     private final ArrayList<Player> mValues;
     private final OnListFragmentInteractionListener mListener;
 
 
-    public PlayersListRecyclerViewAdapter(ArrayList<Player> items, OnListFragmentInteractionListener listener){
+    public PlayersListRecyclerViewAdapter(ArrayList<Player> items, OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
@@ -36,10 +38,9 @@ public class PlayersListRecyclerViewAdapter extends RecyclerView.Adapter<Players
         Player currentPlayer = mValues.get(position);
         holder.mItem = currentPlayer;
         holder.txtPlayerName.setText(currentPlayer.getName());
-        holder.txtPlayerSurname.setText(currentPlayer.getName());
-        holder.txtPlayerDOB.setText( String.valueOf( currentPlayer.getBirthDate().getYear()) );
+        holder.txtPlayerSurname.setText(currentPlayer.getSurname());
+        holder.txtPlayerDOB.setText(String.valueOf(currentPlayer.getBirthDate().getYear()));
         holder.txtPlayerArea.setText(currentPlayer.getLocation());
-
 
 
         holder.btnSelect.setOnClickListener(new View.OnClickListener() {
@@ -69,6 +70,7 @@ public class PlayersListRecyclerViewAdapter extends RecyclerView.Adapter<Players
         public final TextView txtPlayerArea;
         public final ImageButton btnSelect;
         public Player mItem;
+        boolean run = true;
 
         public ViewHolder(View view) {
             super(view);
@@ -78,6 +80,11 @@ public class PlayersListRecyclerViewAdapter extends RecyclerView.Adapter<Players
             txtPlayerDOB = view.findViewById(R.id.txt_player_DOB);
             txtPlayerArea = view.findViewById(R.id.txt_player_area);
             btnSelect = view.findViewById(R.id.btn_select_player);
+
+            //TODO: PLAYER IS CAPTAIN
+            if(!run){
+                btnSelect.setVisibility(View.GONE);
+            }
         }
 
         @Override
@@ -85,8 +92,6 @@ public class PlayersListRecyclerViewAdapter extends RecyclerView.Adapter<Players
             return super.toString() + " '" + txtPlayerName.getText() + "'";
         }
     }
-
-
 
 
 }

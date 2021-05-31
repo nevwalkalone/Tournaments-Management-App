@@ -30,7 +30,7 @@ public abstract class Initializer {
         TeamDAO teamDAO = getTeamDAO();
         TournamentDAO tournamentDAO = getTournamentDAO();
 
-        playerDAO.save( new Player("tom", "jerry","Athens",  "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("tom", "123")));
+        playerDAO.save( new Player("tomtomtom", "jerry","Athens",  "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("tom", "123")));
         playerDAO.save( new Player("tom2", "jerry","Athens",  "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("tom2", "123")));
         playerDAO.save( new Player("tom3", "jerry","Athens",  "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("tom3", "123")));
         playerDAO.find("tom").addSportInterested(new Sport("Basketball3v3"));
