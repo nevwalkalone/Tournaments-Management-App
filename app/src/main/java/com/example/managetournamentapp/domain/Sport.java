@@ -8,7 +8,7 @@ public class Sport {
 
     public Sport(String name) {
         boolean flag = checkSportName(name);
-        if (flag){
+        if (flag) {
             this.name = name;
             setMinPlayers(name);
         }
@@ -23,8 +23,8 @@ public class Sport {
         return false;
     }
 
-    public void setMinPlayers( String name){
-        switch(name){
+    public void setMinPlayers(String name) {
+        switch (name) {
             case "Volleyball3v3":
             case "Basketball3v3":
                 minimumPlayers = 6;
@@ -49,13 +49,13 @@ public class Sport {
     /**
      * Change sport selection
      */
-    public void changeSetup(String name){
+    public void changeSetup(String name) {
 
         boolean flag = checkSportName(name);
-        if (flag){
+        if (flag) {
             this.name = name;
             setMinPlayers(name);
-        }else{
+        } else {
             System.out.println("Wrong settings for the specific sport type selection.");
         }
     }
@@ -89,7 +89,7 @@ public class Sport {
      * Checking if the fields between
      * the two objects are equal
      */
-    public boolean equals(Object other){
+    public boolean equals(Object other) {
 
         if (other == null) {
             return false;
@@ -102,7 +102,7 @@ public class Sport {
         }
         Sport check = (Sport) other;
 
-        if (!(name == null ? check.getName() == null : name.equals( check.getName()))){
+        if (!(name == null ? check.getName() == null : name.equals(check.getName()))) {
             return false;
         }
         return true;

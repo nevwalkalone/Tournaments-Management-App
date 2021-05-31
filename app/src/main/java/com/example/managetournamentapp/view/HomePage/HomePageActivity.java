@@ -20,7 +20,7 @@ import com.example.managetournamentapp.memoryDao.OrganizerDAOMemory;
 import com.example.managetournamentapp.view.Organizer.CreatedTournaments.CreatedTournamentsViewModel;
 import com.example.managetournamentapp.view.Organizer.CreatedTournaments.fragment.TournamentListFragment;
 import com.example.managetournamentapp.view.User.Login.LoginActivity;
-import com.example.managetournamentapp.view.User.Register.RegisterActivity;
+import com.example.managetournamentapp.view.User.RegisterPlayer.RegisterPlayerActivity;
 
 import java.util.ArrayList;
 
@@ -115,12 +115,15 @@ public class HomePageActivity extends AppCompatActivity implements TournamentLis
                     Toast.LENGTH_SHORT)
                     .show();
 
+
         }
         if (v.getId() == R.id.player_register) {
             Toast.makeText(this,
                     "PLAYER",
                     Toast.LENGTH_SHORT)
                     .show();
+            Intent intent = new Intent(this, RegisterPlayerActivity.class);
+            startActivity(intent);
 
         }
     }
