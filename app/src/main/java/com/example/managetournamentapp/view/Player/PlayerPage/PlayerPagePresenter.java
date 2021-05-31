@@ -8,15 +8,15 @@ public class PlayerPagePresenter {
 
 
     public void onPlayerAccount(){
-        // todo
+        view.toPlayerAccount();
     }
 
     public void onPlayerTeams(){
-        // todo
+        view.toPlayerTeams();
     }
 
     public void onPlayerInvites(){
-        // todo
+        view.toPlayerInvites();
     }
 
     public void setView(PlayerPageView view) {

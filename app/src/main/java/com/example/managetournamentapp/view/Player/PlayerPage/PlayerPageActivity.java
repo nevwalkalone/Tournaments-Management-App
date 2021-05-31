@@ -13,6 +13,7 @@ import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.domain.Player;
 import com.example.managetournamentapp.memoryDao.MemoryInitializer;
 import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
+import com.example.managetournamentapp.view.Player.JoinedTeams.JoinedTeamsActivity;
 import com.example.managetournamentapp.view.Player.JoinedTeams.JoinedTeamsViewModel;
 import com.example.managetournamentapp.view.Tournament.ParticipatingTeams.fragment.ParticipatingTeamsListFragment;
 
@@ -52,6 +53,20 @@ public class PlayerPageActivity extends AppCompatActivity implements  PlayerPage
     }
 
 
+    public void toPlayerAccount(){
+//        Intent intent = new Intent(PlayerPageActivity.this, PlayerAccountActivity.class);
+//        startActivity(intent);
+    }
+
+    public void toPlayerTeams(){
+        Intent intent = new Intent(PlayerPageActivity.this, JoinedTeamsActivity.class);
+        startActivity(intent);
+    }
+
+    public void toPlayerInvites(){
+//        Intent intent = new Intent(PlayerPageActivity.this, PlayerInvitedActivity.class);
+//        startActivity(intent);
+    }
 
 
 
