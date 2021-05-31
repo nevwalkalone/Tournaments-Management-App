@@ -1,22 +1,25 @@
 package com.example.managetournamentapp.view.User.RegisterPlayer;
 
 import android.content.Intent;
+import android.view.View;
 
 import androidx.lifecycle.ViewModel;
 
-import com.example.managetournamentapp.memoryDao.TournamentDAOMemory;
-import com.example.managetournamentapp.view.HomePage.HomePagePresenter;
+import com.example.managetournamentapp.dao.PlayerDAO;
+import com.example.managetournamentapp.memoryDao.LoggenInUserDAOMemory;
+import com.example.managetournamentapp.memoryDao.PlayerDAOMemory;
+
 
 public class RegisterPlayerViewModel extends ViewModel {
 
     RegisterPlayerPresenter presenter;
     private Intent activity;
 
-    public RegisterPlayerViewModel(Intent intent) {
+    public RegisterPlayerViewModel(Intent intent, RegisterPlayerViewModel view) {
         this.activity = intent;
-        presenter = new RegisterPlayerPresenter();
-        TournamentDAOMemory tournamentDAOMemory = new TournamentDAOMemory();
-        presenter.setTournamentDAO(tournamentDAOMemory);
+        PlayerDAOMemory playersDAOMemory = new PlayerDAOMemory();
+        presenter = new RegisterPlayerPresenter(view, playersDAOMemory);
+
     }
 
     public RegisterPlayerPresenter getPresenter() {
@@ -29,10 +32,10 @@ public class RegisterPlayerViewModel extends ViewModel {
         presenter.clearView();
     }
 
-    public int getPlayerID() {
-        if (activity.hasExtra("PLAYER_ID"))
-            return activity.getExtras
+    public String getPlayerUniqueUsername() {
+        if (activity.hasExtra("PLAYER_USERNAME"))
+            return activity.getExtras().getString("PLAYER_USERNAME");
 
-        return this.getIntent().getExtras().getInt("borrower_id") : null;
+        return null;
     }
 }

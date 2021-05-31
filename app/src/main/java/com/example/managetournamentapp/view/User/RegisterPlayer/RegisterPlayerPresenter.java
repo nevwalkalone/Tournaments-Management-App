@@ -1,20 +1,29 @@
 package com.example.managetournamentapp.view.User.RegisterPlayer;
 
-import com.example.managetournamentapp.dao.LoggedInUser;
 import com.example.managetournamentapp.dao.LoggedInUserDAO;
+import com.example.managetournamentapp.dao.LoggedInUserDAO;
+import com.example.managetournamentapp.dao.PlayerDAO;
 import com.example.managetournamentapp.domain.Player;
 
 public class RegisterPlayerPresenter {
 
-    private RegisterPlayerView view;
-    private LoggedInUserDAO users;
+    private RegisterPlayerViewModel view;
+    private PlayerDAO players;
     private Player player;
 
-    public RegisterPlayerPresenter(RegisterPlayerView view, LoggedInUserDAO users) {
+    public RegisterPlayerPresenter(RegisterPlayerViewModel view, PlayerDAO players) {
         this.view = view;
-        this.users = users;
+        this.players = players;
 
         String playerUser = view.getPlayerUniqueUsername();
+        if (playerUser != null) {
+            player = players.find(playerUser);
+        }
+
+    }
+
+    public void clearView() {
+        this.view = null;
     }
 
 }

@@ -7,4 +7,6 @@ public interface LoggedInUserDAO {
     void setUser(User user);
 
     User getUser();
+
+
 }

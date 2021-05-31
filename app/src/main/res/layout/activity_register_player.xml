@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/appColor"
     android:orientation="vertical"
-    tools:context=".view.User.Register.RegisterActivity">
+    tools:context=".view.User.RegisterPlayer.RegisterPlayerActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -45,7 +45,7 @@
                 android:textSize="18sp" />
 
             <EditText
-
+                android:id="@+id/username"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -75,7 +75,7 @@
                 android:textSize="18sp" />
 
             <EditText
-
+                android:id="@+id/password"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -105,7 +105,7 @@
                 android:textSize="18sp" />
 
             <EditText
-
+                android:id="@+id/name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -135,7 +135,7 @@
                 android:textSize="18sp" />
 
             <EditText
-
+                android:id="@+id/surname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -165,7 +165,7 @@
                 android:textSize="18sp" />
 
             <EditText
-
+                android:id="@+id/phone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -195,7 +195,7 @@
                 android:textSize="18sp" />
 
             <EditText
-
+                android:id="@+id/email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -225,7 +225,7 @@
                 android:textSize="18sp" />
 
             <EditText
-
+                android:id="@+id/location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -255,7 +255,7 @@
                 android:textSize="18sp" />
 
             <EditText
-
+                android:id="@+id/birthdate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -348,7 +348,7 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/savePlayerBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="SAVE" />
