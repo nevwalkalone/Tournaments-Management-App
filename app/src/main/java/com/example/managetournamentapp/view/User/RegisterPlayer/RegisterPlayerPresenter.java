@@ -10,14 +10,14 @@ public class RegisterPlayerPresenter {
 
     private RegisterPlayerView view;
     private PlayerDAO playerDAO;
-    private Player player;
+    private Player connectedPlayer;
 
     public RegisterPlayerPresenter() {
 
     }
 
     public void onSavePlayer(){
-        view.getDetails();
+
         //todo
     }
 

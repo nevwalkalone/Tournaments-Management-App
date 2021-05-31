@@ -10,24 +10,25 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.managetournamentapp.R;
+import com.example.managetournamentapp.domain.AgeDivision;
+import com.example.managetournamentapp.domain.Credentials;
 import com.example.managetournamentapp.memoryDao.PlayerDAOMemory;
 import com.example.managetournamentapp.view.HomePage.HomePageViewModel;
 import com.example.managetournamentapp.view.Organizer.CreatedTournaments.fragment.TournamentListFragment;
 import com.example.managetournamentapp.view.Player.PlayerPage.PlayerPageViewModel;
 
-public class RegisterPlayerActivity extends AppCompatActivity implements  RegisterPlayerView, View.OnClickListener {
+public class RegisterPlayerActivity extends AppCompatActivity implements RegisterPlayerView, View.OnClickListener {
 
     RegisterPlayerViewModel viewModel;
     public static final String PLAYER_USERNAME = "PLAYER_USERNAME";
     private Button saveBtn;
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_player);
+
 
         viewModel = new ViewModelProvider(this).get(RegisterPlayerViewModel.class);
         viewModel.getPresenter().setView(this);
@@ -38,20 +39,9 @@ public class RegisterPlayerActivity extends AppCompatActivity implements  Regist
 
     }
 
-    public String getDetails() {
-        EditText USERNAME = (EditText) findViewById(R.id.username);
-        EditText PASSWORD = (EditText) findViewById(R.id.password);
-        EditText NAME = (EditText) findViewById(R.id.name);
-        EditText SURNAME = (EditText) findViewById(R.id.surname);
-        EditText PHONE = (EditText) findViewById(R.id.phone);
-        EditText EMAIL = (EditText) findViewById(R.id.email);
-        EditText LOCATION = (EditText) findViewById(R.id.location);
-        EditText BIRTHDATE = (EditText) findViewById(R.id.birthdate);
 
-        String details = USERNAME + " " + PASSWORD + " " + NAME + " " + SURNAME + " " + PHONE + " " + EMAIL + " " + LOCATION + " " + BIRTHDATE;
-        System.out.println(details);
-        return details;
-
+    public String getConnectedPlayerUsername() {
+        return this.getIntent().hasExtra("PLAYER_USERNAME") ? this.getIntent().getExtras().getString("PLAYER_USERNAME") : null;
     }
 
     @Override
@@ -59,6 +49,114 @@ public class RegisterPlayerActivity extends AppCompatActivity implements  Regist
         if (v.getId() == R.id.savePlayerBtn) {
             viewModel.getPresenter().onSavePlayer();
         }
+
+    }
+
+    @Override
+    public String getUsername() {
+        EditText USERNAME = (EditText) findViewById(R.id.username);
+        return USERNAME.getText().toString();
+    }
+
+    @Override
+    public String getPassword() {
+        EditText PASSWORD = (EditText) findViewById(R.id.password);
+        return PASSWORD.getText().toString();
+    }
+
+    @Override
+    public String getName() {
+        EditText NAME = (EditText) findViewById(R.id.name);
+        return NAME.getText().toString();
+    }
+
+    @Override
+    public String getSurname() {
+        EditText SURNAME = (EditText) findViewById(R.id.surname);
+        return SURNAME.getText().toString();
+    }
+
+    @Override
+    public String getPhoneNumber() {
+        EditText PHONE = (EditText) findViewById(R.id.phone);
+        return PHONE.getText().toString();
+    }
+
+    @Override
+    public String getEmail() {
+        EditText EMAIL = (EditText) findViewById(R.id.email);
+        return EMAIL.getText().toString();
+    }
+
+    @Override
+    public String getBirthDate() {
+        EditText BIRTHDATE = (EditText) findViewById(R.id.birthdate);
+        return BIRTHDATE.getText().toString();      //
+    }
+
+    @Override
+    public Credentials getCredentials() {
+        return null;
+    }
+
+    @Override
+    public String getLocation() {
+        EditText LOCATION = (EditText) findViewById(R.id.location);
+        return LOCATION.getText().toString();
+    }
+
+    @Override
+    public AgeDivision getAgeDivision() {
+        return null;
+    }
+
+    @Override
+    public void setUsername(String username) {
+
+    }
+
+    @Override
+    public void setPassword(String password) {
+
+    }
+
+    @Override
+    public void setName(String name) {
+
+    }
+
+    @Override
+    public void setSurname(String surname) {
+
+    }
+
+    @Override
+    public void setPhoneNumber(String phoneNumber) {
+
+    }
+
+    @Override
+    public void setEmail(String email) {
+
+    }
+
+    @Override
+    public void setBirthdate(String birthdate) {
+
+    }
+
+    @Override
+    public void setCredentials(Credentials credentials) {
+
+    }
+
+    @Override
+    public void setLocation(String location) {
+
+    }
+
+    @Override
+    public void setAgeDivision(AgeDivision ageDivision) {
 
     }
 }

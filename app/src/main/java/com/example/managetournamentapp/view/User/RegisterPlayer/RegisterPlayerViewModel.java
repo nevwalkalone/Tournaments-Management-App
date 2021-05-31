@@ -13,9 +13,10 @@ import com.example.managetournamentapp.memoryDao.PlayerDAOMemory;
 public class RegisterPlayerViewModel extends ViewModel {
 
     RegisterPlayerPresenter presenter;
-    private Intent activity;
+
 
     public RegisterPlayerViewModel() {
+
         presenter = new RegisterPlayerPresenter();
     }
 
@@ -29,10 +30,4 @@ public class RegisterPlayerViewModel extends ViewModel {
         presenter.clearView();
     }
 
-    public String getPlayerUniqueUsername() {
-        if (activity.hasExtra("PLAYER_USERNAME"))
-            return activity.getExtras().getString("PLAYER_USERNAME");
-
-        return null;
-    }
 }
