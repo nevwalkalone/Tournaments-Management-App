@@ -32,6 +32,11 @@ public class PlayerDAOMemory implements PlayerDAO {
     }
 
     @Override
+    public ArrayList<Player> findAll() {
+        return new ArrayList<>(entities);
+    }
+
+    @Override
     public Player find(String userName){
         for (Player p : entities){
             if (p.getCredentials().getUsername().equals(userName))
@@ -39,4 +44,5 @@ public class PlayerDAOMemory implements PlayerDAO {
         }
         return null;
     }
+
 }

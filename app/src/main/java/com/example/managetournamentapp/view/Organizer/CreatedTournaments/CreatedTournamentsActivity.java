@@ -2,7 +2,6 @@ package com.example.managetournamentapp.view.Organizer.CreatedTournaments;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;

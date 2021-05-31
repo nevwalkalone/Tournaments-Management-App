@@ -38,6 +38,11 @@
             android:exported="true"
             android:label="@string/participating_tournaments"
             android:theme="@style/Theme.ManageTournamentApp.NoActionBar" />
+        <activity
+            android:name=".view.Team.InvitePlayers.InvitePlayersActivity"
+            android:exported="true"
+            android:label="@string/participating_tournaments"
+            android:theme="@style/Theme.ManageTournamentApp.NoActionBar" />
     </application>
 
 </manifest>
