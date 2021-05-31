@@ -20,7 +20,7 @@ import java.util.ArrayList;
 public class PlayersListFragment extends Fragment {
 
     private static final String ARG_COLUMN_COUNT = "column-count";
-    private int mColumnCount = 1;
+    private int mColumnCount = 4;
     private OnListFragmentInteractionListener mListener;
 
     public PlayersListFragment() {

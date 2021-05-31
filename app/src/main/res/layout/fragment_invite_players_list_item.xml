@@ -14,6 +14,32 @@
         android:text="Όνομα παίκτη"
         android:textAppearance="?attr/textAppearanceListItem" />
 
+    <TextView
+        android:id="@+id/txt_player_surname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/text_margin"
+        android:layout_weight="1"
+        android:text="Επίθετο παίκτη"
+        android:textAppearance="?attr/textAppearanceListItem" />
+    <TextView
+        android:id="@+id/txt_player_DOB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/text_margin"
+        android:layout_weight="1"
+        android:text="Ημ. γέννησης παίκτη"
+        android:textAppearance="?attr/textAppearanceListItem" />
+
+    <TextView
+        android:id="@+id/txt_player_area"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/text_margin"
+        android:layout_weight="1"
+        android:text="Περιοχή παίκτη"
+        android:textAppearance="?attr/textAppearanceListItem" />
+
     <ImageButton
         android:id="@+id/btn_select_player"
         android:layout_width="wrap_content"
