@@ -9,8 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ManageTournamentApp">
-        <activity android:name=".view.HomePage.HomePageActivity">
+        <activity android:name=".view.HomePage.HomePageActivity"
+            android:theme="@style/Theme.ManageTournamentApp.NoActionBar">   
             <intent-filter>
+
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
