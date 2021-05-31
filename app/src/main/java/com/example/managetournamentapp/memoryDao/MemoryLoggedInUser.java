@@ -1,9 +1,9 @@
 package com.example.managetournamentapp.memoryDao;
 
-import com.example.managetournamentapp.dao.LoggedInUser;
+import com.example.managetournamentapp.dao.LoggedInUserDAO;
 import com.example.managetournamentapp.domain.User;
 
-public class MemoryLoggedInUser implements LoggedInUser
+public class MemoryLoggedInUser implements LoggedInUserDAO
 {
     private static User user;
 

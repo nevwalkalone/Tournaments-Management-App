@@ -17,4 +17,5 @@
     <string name="title_activity_home">HomeActivity</string>
     <string name="app_title_name">Manage Tournament App</string>
     <string name="diorganoseis">Διοργανώσεις</string>
+    <string name="title_activity_front_page">FrontPageActivity</string>
 </resources>

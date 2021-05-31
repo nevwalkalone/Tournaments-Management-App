@@ -10,11 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ManageTournamentApp">
         <activity
+            android:name=".view.Organizer.CreatedTournaments.FrontPage.FrontPageActivity"
+            android:label="@string/title_activity_front_page"
+            android:theme="@style/Theme.ManageTournamentApp.NoActionBar"></activity>
+        <activity
             android:name=".view.HomePage.HomePageActivity"
             android:theme="@style/Theme.ManageTournamentApp.NoActionBar">
             <intent-filter>
-
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -22,7 +26,6 @@
             android:name=".view.User.RegisterPlayer.RegisterPlayerActivity"
             android:theme="@style/Theme.ManageTournamentApp.NoActionBar" />
         <activity android:name=".view.User.Login.LoginActivity" />
-
         <activity
             android:name=".view.Organizer.CreatedTournaments.CreatedTournamentsActivity"
             android:exported="true"
