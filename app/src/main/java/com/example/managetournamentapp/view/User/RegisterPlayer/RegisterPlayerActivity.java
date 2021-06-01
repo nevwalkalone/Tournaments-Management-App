@@ -11,6 +11,8 @@ import android.widget.EditText;
 import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.domain.AgeDivision;
 import com.example.managetournamentapp.domain.Credentials;
+import com.example.managetournamentapp.domain.Player;
+import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
 
 public class RegisterPlayerActivity extends AppCompatActivity implements RegisterPlayerView, View.OnClickListener {
 
@@ -35,8 +37,13 @@ public class RegisterPlayerActivity extends AppCompatActivity implements Registe
     }
 
 
-    public String getConnectedPlayerUsername() {
-        return this.getIntent().hasExtra("PLAYER_USERNAME") ? this.getIntent().getExtras().getString("PLAYER_USERNAME") : null;
+    public Player getConnectedPlayer() {
+        if (this.getIntent().hasExtra("IS_EDIT") ){
+            return (Player)(new MemoryLoggedInUser()).getUser();
+        }else{
+            return null;
+        }
+//        return this.getIntent().hasExtra("IS_EDIT") ? this.getIntent().getExtras().getString("PLAYER_USERNAME") : null;
     }
 
     @Override

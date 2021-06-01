@@ -15,6 +15,7 @@ import com.example.managetournamentapp.memoryDao.MemoryInitializer;
 import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
 import com.example.managetournamentapp.view.Player.JoinedTeams.JoinedTeamsActivity;
 import com.example.managetournamentapp.view.Player.JoinedTeams.JoinedTeamsViewModel;
+import com.example.managetournamentapp.view.Player.PlayerInfo.PlayerInfoActivity;
 import com.example.managetournamentapp.view.Tournament.ParticipatingTeams.fragment.ParticipatingTeamsListFragment;
 
 public class PlayerPageActivity extends AppCompatActivity implements  PlayerPageView{
@@ -53,8 +54,8 @@ public class PlayerPageActivity extends AppCompatActivity implements  PlayerPage
     }
 
     public void toPlayerAccount(){
-//        Intent intent = new Intent(PlayerPageActivity.this, PlayerAccountActivity.class);
-//        startActivity(intent);
+        Intent intent = new Intent(PlayerPageActivity.this, PlayerInfoActivity.class);
+        startActivity(intent);
     }
 
     public void toPlayerTeams(){

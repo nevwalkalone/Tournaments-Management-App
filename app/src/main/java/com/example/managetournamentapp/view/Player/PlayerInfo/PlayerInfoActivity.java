@@ -1,5 +1,6 @@
 package com.example.managetournamentapp.view.Player.PlayerInfo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
@@ -12,6 +13,8 @@ import com.example.managetournamentapp.domain.Player;
 import com.example.managetournamentapp.memoryDao.MemoryInitializer;
 import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
 import com.example.managetournamentapp.memoryDao.PlayerDAOMemory;
+import com.example.managetournamentapp.view.Player.PlayerPage.PlayerPageActivity;
+import com.example.managetournamentapp.view.User.RegisterPlayer.RegisterPlayerActivity;
 
 
 public class PlayerInfoActivity extends AppCompatActivity implements PlayerInfoView {
@@ -42,7 +45,6 @@ public class PlayerInfoActivity extends AppCompatActivity implements PlayerInfoV
         btnDeletePlayer.setOnClickListener(v -> viewModel.getPresenter().onDeletePlayer());
 
     }
-
 
     public void setUsername(String username){
         ((TextView)findViewById(R.id.text_username)).setText(username);
@@ -78,7 +80,9 @@ public class PlayerInfoActivity extends AppCompatActivity implements PlayerInfoV
 
 
     public void startEditPlayer(Player player){
-
+        Intent intent = new Intent(PlayerInfoActivity.this, RegisterPlayerActivity.class);
+        intent.putExtra("IS_EDIT", "1");
+        startActivity(intent);
     }
 
     public void startDeletePlayer(Player player){
