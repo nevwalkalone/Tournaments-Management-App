@@ -1,5 +1,6 @@
 package com.example.managetournamentapp.view.User.RegisterPlayer;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -7,12 +8,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.domain.AgeDivision;
 import com.example.managetournamentapp.domain.Credentials;
 import com.example.managetournamentapp.domain.Player;
 import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
+
+import org.w3c.dom.Text;
 
 public class RegisterPlayerActivity extends AppCompatActivity implements RegisterPlayerView, View.OnClickListener {
 
@@ -36,20 +40,31 @@ public class RegisterPlayerActivity extends AppCompatActivity implements Registe
 
     }
 
+    public void showPopUp(RegisterPlayerView view, String msg) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        View customLayout = getLayoutInflater().inflate(R.layout.wrong_input_popup, null);
+        builder.setView(customLayout);
+        AlertDialog dialog = builder.create();
+        Button OKbtn = (Button) customLayout.findViewById(R.id.OK_popup);
+        TextView errorMsg = (TextView) customLayout.findViewById(R.id.error_messsage);      // display message we want.
+        errorMsg.setText(msg);
+        OKbtn.setOnClickListener(v -> dialog.dismiss());
+        dialog.show();
+    }
+
 
     public Player getConnectedPlayer() {
-        if (this.getIntent().hasExtra("IS_EDIT") ){
-            return (Player)(new MemoryLoggedInUser()).getUser();
-        }else{
+        if (this.getIntent().hasExtra("IS_EDIT")) {
+            return (Player) (new MemoryLoggedInUser()).getUser();
+        } else {
             return null;
         }
-//        return this.getIntent().hasExtra("IS_EDIT") ? this.getIntent().getExtras().getString("PLAYER_USERNAME") : null;
     }
 
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.savePlayerBtn) {
-            viewModel.getPresenter().onSavePlayer();
+            viewModel.getPresenter().handlePlayerData();
         }
 
     }
@@ -98,7 +113,10 @@ public class RegisterPlayerActivity extends AppCompatActivity implements Registe
 
     @Override
     public Credentials getCredentials() {
-        return null;
+
+        EditText USERNAME = (EditText) findViewById(R.id.username);
+        EditText PASSWORD = (EditText) findViewById(R.id.password);
+        return new Credentials(USERNAME.getText().toString(), PASSWORD.getText().toString());
     }
 
     @Override
@@ -109,56 +127,67 @@ public class RegisterPlayerActivity extends AppCompatActivity implements Registe
 
     @Override
     public AgeDivision getAgeDivision() {
-        return null;
+        //TODO Change Birthdate edit text and add here
+        return AgeDivision.K15;
     }
 
     @Override
     public void setUsername(String username) {
-
+        EditText USERNAME = (EditText) findViewById(R.id.username);
+        USERNAME.setText(username);
     }
 
     @Override
     public void setPassword(String password) {
-
+        EditText PASSWORD = (EditText) findViewById(R.id.password);
+        PASSWORD.setText(password);
     }
 
     @Override
     public void setName(String name) {
-
+        EditText NAME = (EditText) findViewById(R.id.name);
+        NAME.setText(name);
     }
 
     @Override
     public void setSurname(String surname) {
-
+        EditText SURNAME = (EditText) findViewById(R.id.surname);
+        SURNAME.setText(surname);
     }
 
     @Override
     public void setPhoneNumber(String phoneNumber) {
-
+        EditText PHONE = (EditText) findViewById(R.id.phone);
+        PHONE.setText(phoneNumber);
     }
 
     @Override
     public void setEmail(String email) {
-
+        EditText EMAIL = (EditText) findViewById(R.id.email);
+        EMAIL.setText(email);
     }
 
     @Override
     public void setBirthdate(String birthdate) {
-
+        EditText BIRTHDATE = (EditText) findViewById(R.id.birthdate);
+        BIRTHDATE.setText(birthdate);
     }
 
     @Override
     public void setCredentials(Credentials credentials) {
+        //TODO
 
     }
 
     @Override
     public void setLocation(String location) {
-
+        EditText LOCATION = (EditText) findViewById(R.id.location);
+        LOCATION.setText(location);
     }
 
     @Override
     public void setAgeDivision(AgeDivision ageDivision) {
+        //TODO
 
     }
 }

@@ -1,5 +1,7 @@
 package com.example.managetournamentapp.view.User.RegisterPlayer;
 
+import android.view.View;
+
 import com.example.managetournamentapp.domain.AgeDivision;
 import com.example.managetournamentapp.domain.Credentials;
 
@@ -44,5 +46,7 @@ public interface RegisterPlayerView {
     void setLocation(String location);
 
     void setAgeDivision(AgeDivision ageDivision);
+
+    void showPopUp(RegisterPlayerView view, String msg);
 
 }
