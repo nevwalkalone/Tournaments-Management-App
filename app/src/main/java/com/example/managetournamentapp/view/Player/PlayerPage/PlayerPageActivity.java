@@ -53,8 +53,8 @@ public class PlayerPageActivity extends AppCompatActivity implements  PlayerPage
     }
 
     public void toPlayerAccount(){
-//        Intent intent = new Intent(PlayerPageActivity.this, PlayerAccountActivity.class);
-//        startActivity(intent);
+       // Intent intent = new Intent(PlayerPageActivity.this, PlayerAccountActivity.class);
+      //  startActivity(intent);
     }
 
     public void toPlayerTeams(){
@@ -63,8 +63,8 @@ public class PlayerPageActivity extends AppCompatActivity implements  PlayerPage
     }
 
     public void toPlayerInvites(){
-//        Intent intent = new Intent(PlayerPageActivity.this, PlayerInvitedActivity.class);
-//        startActivity(intent);
+      // Intent intent = new Intent(PlayerPageActivity.this, PlayerInvitedActivity.class);
+     //  startActivity(intent);
     }
 
 

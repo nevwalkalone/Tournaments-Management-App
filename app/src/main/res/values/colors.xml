@@ -13,4 +13,8 @@
     <color name="colorSemiWhite">#CACACA</color><!-- secondary text color, used a ton next to primary -->
     <color name="colorPrimary">#e84d3c</color><!-- buttons and header color -->
     <color name="topBar">#111111</color><!-- top android bar color, usually black -->
+    <!-- bellow are colors of small images -->
+    <color name="colorSmallBlue">#0067b4</color>
+    <color name="colorSmallGreen">#1EA33E</color>
+    <color name="colorSmallOrange">#f8a100</color>
 </resources>
