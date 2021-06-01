@@ -32,7 +32,7 @@ public class RegisterOrganizerPresenter {
         String phoneNumber = view.getPhoneNumber();
         String email = view.getEmail();
         String birthDate = view.getBirthDate();
-        String title = view.getTitle();
+        String title = view.getOrganizerTitle();
 
         // validate user data
         if (usename.length() < 5 || usename.length() > 20)

@@ -71,7 +71,7 @@ public class OrganizerInfoActivity extends AppCompatActivity implements Organize
 
     @Override
     public void setTitle(String title) {
-        ((TextView)findViewById(R.id.text_organizer_title)).setText("gam");
+        ((TextView)findViewById(R.id.text_organizer_title)).setText(title);
     }
 
     @Override

@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.view.Organizer.CreatedTournaments.CreatedTournamentsActivity;
+import com.example.managetournamentapp.view.Organizer.OrganizerInfo.OrganizerInfoActivity;
 
 public class OrganizerPageActivity extends AppCompatActivity implements OrganizerPageView {
     private OrganizerPageViewModel viewModel;
@@ -47,8 +48,8 @@ public class OrganizerPageActivity extends AppCompatActivity implements Organize
      * Stars Organizer's Account Activity
      */
     public void toOrganizerAccount(){
-//        Intent intent = new Intent(PlayerPageActivity.this, PlayerAccountActivity.class);
-//        startActivity(intent);
+        Intent intent = new Intent(OrganizerPageActivity.this, OrganizerInfoActivity.class);
+        startActivity(intent);
     }
 
     /**
