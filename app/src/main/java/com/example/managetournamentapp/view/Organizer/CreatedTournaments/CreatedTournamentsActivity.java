@@ -11,6 +11,8 @@ import com.example.managetournamentapp.domain.Tournament;
 import com.example.managetournamentapp.memoryDao.MemoryInitializer;
 import com.example.managetournamentapp.memoryDao.OrganizerDAOMemory;
 import com.example.managetournamentapp.view.Organizer.CreatedTournaments.fragment.TournamentListFragment;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.util.ArrayList;
 
 
@@ -18,6 +20,7 @@ public class CreatedTournamentsActivity extends AppCompatActivity implements Tou
 
     public static final String TOURNAMENT_TITLE_EXTRA = "tournament_title_extra";
     CreatedTournamentsViewModel viewModel;
+    private FloatingActionButton addBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +29,7 @@ public class CreatedTournamentsActivity extends AppCompatActivity implements Tou
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_created_tournaments);
-
+        addBtn = findViewById(R.id.create_team_button);
         Intent intent = getIntent();
 
 //

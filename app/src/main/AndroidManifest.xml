@@ -10,11 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ManageTournamentApp">
         <activity
-            android:name=".view.Organizer.OrganizerPage.OrganizerPageActivity"
-            android:exported="true"
-            android:label="@string/title_activity_organizer_page"
-            android:theme="@style/Theme.ManageTournamentApp.NoActionBar"></activity>
-        <activity
             android:name=".view.HomePage.HomePageActivity"
             android:theme="@style/Theme.ManageTournamentApp.NoActionBar">
             <intent-filter>
@@ -32,6 +27,10 @@
             android:exported="true"
             android:label="@string/created_tournaments"
             android:theme="@style/Theme.ManageTournamentApp.NoActionBar" />
+        <activity android:name=".view.Organizer.OrganizerPage.OrganizerPageActivity"
+            android:exported="true"
+            android:label="@string/title_activity_organizer_page"
+            android:theme="@style/Theme.ManageTournamentApp.NoActionBar"/>
         <activity
             android:name=".view.Tournament.ParticipatingTeams.ParticipatingTeamsActivity"
             android:exported="true"
@@ -62,11 +61,12 @@
             android:exported="true"
             android:label="@string/participating_tournaments"
             android:theme="@style/Theme.ManageTournamentApp.NoActionBar" />
-        <activity android:name=".view.Organizer.ManageTournaments.ManageTournamentsActivity"
+        <activity
+            android:name=".view.Organizer.OrganizerInfo.OrganizerInfoActivity"
             android:exported="true"
             android:label="@string/diorganoseis"
-            android:screenOrientation="portrait"
-            android:theme="@style/SecondaryTheme" />
+            android:theme="@style/Theme.ManageTournamentApp.NoActionBar" />
+
 
     </application>
 

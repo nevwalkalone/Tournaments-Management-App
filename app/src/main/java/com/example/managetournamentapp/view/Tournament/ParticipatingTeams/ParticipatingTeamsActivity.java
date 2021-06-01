@@ -45,7 +45,6 @@ public class ParticipatingTeamsActivity extends AppCompatActivity implements Par
                     .add(R.id.fragment_container, teamsListFragment)
                     .commit();
         }
-
     }
 
     @Override

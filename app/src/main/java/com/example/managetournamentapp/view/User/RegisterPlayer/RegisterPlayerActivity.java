@@ -26,7 +26,6 @@ public class RegisterPlayerActivity extends AppCompatActivity implements Registe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_player);
 
-
         viewModel = new ViewModelProvider(this).get(RegisterPlayerViewModel.class);
         viewModel.getPresenter().setView(this);
 
