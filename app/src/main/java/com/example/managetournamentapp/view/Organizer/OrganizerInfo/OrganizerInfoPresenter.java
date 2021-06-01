@@ -9,10 +9,10 @@ public class OrganizerInfoPresenter {
     private OrganizerInfoView view;
     private Organizer organizer;
 
-    public void findOrganizerInfo(User user){
+    public void findOrganizerInfo(User user) {
         if (user == null)
             return;
-        if ( !(user instanceof Organizer) )
+        if (!(user instanceof Organizer))
             return;
 
         organizer = (Organizer) user;
@@ -24,16 +24,15 @@ public class OrganizerInfoPresenter {
         view.setPhone(organizer.getPhoneNumber());
         view.setEmail(organizer.getEmail());
         view.setBirthDate(organizer.getBirthDate().toString());
-        //System.out.println(organizer.getTitle());
         view.setTitle(organizer.getTitle());
     }
 
-    public void onEditOrganizer(){
-        view.startEditOrganizer( organizer );
+    public void onEditOrganizer() {
+        view.startEditOrganizer(organizer);
     }
 
-    public void onDeletePlayer(){
-        view.startDeleteOrganizer( organizer );
+    public void onDeleteOrganizer() {
+        view.startDeleteOrganizer(organizer);
     }
 
 
@@ -41,7 +40,7 @@ public class OrganizerInfoPresenter {
         this.view = view;
     }
 
-    public void clearView(){
+    public void clearView() {
         this.view = null;
     }
 }

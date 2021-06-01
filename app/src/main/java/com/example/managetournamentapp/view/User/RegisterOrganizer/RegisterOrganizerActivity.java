@@ -37,8 +37,7 @@ public class RegisterOrganizerActivity extends AppCompatActivity implements Regi
 
         viewModel = new ViewModelProvider(this).get(RegisterOrganizerViewModel.class);
         viewModel.getPresenter().setView(this);
-
-        final RegisterOrganizerPresenter presenter = new RegisterOrganizerPresenter();
+        viewModel.getPresenter().showPreviousInfo();
         saveBtn = (Button) findViewById(R.id.saveOrganizerBtn);
         saveBtn.setOnClickListener(this);
 
@@ -58,7 +57,7 @@ public class RegisterOrganizerActivity extends AppCompatActivity implements Regi
 
 
     public Organizer getConnectedOrganizer() {
-        if (this.getIntent().hasExtra("IS_EDIT")) {
+        if (this.getIntent().getStringExtra("IS_EDIT").equals("1")) {
             return (Organizer) (new MemoryLoggedInUser()).getUser();
         } else {
             return null;

@@ -24,6 +24,23 @@ public class RegisterOrganizerPresenter {
 
     }
 
+    public void showPreviousInfo() {
+        this.connectedOrganizer = view.getConnectedOrganizer();
+        if (connectedOrganizer != null)//edit mode
+        {
+
+            view.setName(connectedOrganizer.getName());
+            view.setSurname(connectedOrganizer.getSurname());
+            view.setUsername(connectedOrganizer.getCredentials().getUsername());
+            view.setPassword(connectedOrganizer.getCredentials().getPassword());
+            view.setPhoneNumber(connectedOrganizer.getPhoneNumber());
+            view.setEmail(connectedOrganizer.getEmail());
+            view.setBirthdate(connectedOrganizer.getBirthDate().toString());
+            view.setTitle(connectedOrganizer.getTitle());
+        }
+    }
+
+
     public boolean handleOrganizerData() {
         String usename = view.getUsername();
         String password = view.getPassword();
@@ -58,9 +75,18 @@ public class RegisterOrganizerPresenter {
             (new MemoryLoggedInUser()).setUser(organizer);
             return true;
 
-        }
+        } else {
+            connectedOrganizer.setName(name);
+            connectedOrganizer.setSurname(surname);
+            connectedOrganizer.setCredentials(new Credentials(usename, password));
+            connectedOrganizer.setBirthDate(LocalDate.parse(birthDate));
+            connectedOrganizer.setTitle(title);
+            connectedOrganizer.setPhoneNumber(phoneNumber);
+            connectedOrganizer.setEmail(email);
+            return true;
 
-        return false;
+
+        }
 
     }
 

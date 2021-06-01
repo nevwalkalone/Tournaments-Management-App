@@ -23,6 +23,23 @@ public class RegisterPlayerPresenter {
 
     public RegisterPlayerPresenter() {
 
+
+    }
+
+    public void showPreviousInfo() {
+        this.connectedPlayer = view.getConnectedPlayer();
+        if (connectedPlayer != null)//edit mode
+        {
+
+            view.setName(connectedPlayer.getName());
+            view.setSurname(connectedPlayer.getSurname());
+            view.setUsername(connectedPlayer.getCredentials().getUsername());
+            view.setPassword(connectedPlayer.getCredentials().getPassword());
+            view.setPhoneNumber(connectedPlayer.getPhoneNumber());
+            view.setEmail(connectedPlayer.getEmail());
+            view.setBirthdate(connectedPlayer.getBirthDate().toString());
+            view.setLocation(connectedPlayer.getLocation());
+        }
     }
 
     public boolean handlePlayerData() {
@@ -50,21 +67,32 @@ public class RegisterPlayerPresenter {
             view.showPopUp(view, "Not valid email!");
         else if (location.length() < 2 || !validateName(location))
             view.showPopUp(view, "Location must be at least 2 chars and only alphabetical chars!");
+        else {
+            // IF USER IS NEW!
+            if (view.getConnectedPlayer() == null) {
+                birthDate = birthDate.replace("/", "-");
+                Player player = new Player(name, surname, location, phoneNumber, email, LocalDate.parse(birthDate), new Credentials(usename, password));
+                playerDAO = new PlayerDAOMemory();
+                playerDAO.save(player);
+                (new MemoryLoggedInUser()).setUser(player);
 
-        // IF USER IS NEW!
-        if (view.getConnectedPlayer() == null) {
-            birthDate = birthDate.replace("/", "-");
-            Player player = new Player(name, surname, location, phoneNumber, email, LocalDate.parse(birthDate), new Credentials(usename, password));
-            playerDAO = new PlayerDAOMemory();
-            playerDAO.save(player);
-            (new MemoryLoggedInUser()).setUser(player);
+
+            } else {
+                connectedPlayer.setName(name);
+                connectedPlayer.setSurname(surname);
+                connectedPlayer.setCredentials(new Credentials(usename, password));
+                connectedPlayer.setBirthDate(LocalDate.parse(birthDate));
+                connectedPlayer.setLocation(location);
+                connectedPlayer.setPhoneNumber(phoneNumber);
+                connectedPlayer.setEmail(email);
+
+
+            }
             return true;
-
         }
-
         return false;
-
     }
+
 
     /**
      * @param emailToCheck the email we want to check if it's valid.

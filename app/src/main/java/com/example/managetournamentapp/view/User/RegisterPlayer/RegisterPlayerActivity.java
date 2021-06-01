@@ -36,8 +36,7 @@ public class RegisterPlayerActivity extends AppCompatActivity implements Registe
 
         viewModel = new ViewModelProvider(this).get(RegisterPlayerViewModel.class);
         viewModel.getPresenter().setView(this);
-
-        final RegisterPlayerPresenter presenter = new RegisterPlayerPresenter();
+        viewModel.getPresenter().showPreviousInfo();
         saveBtn = (Button) findViewById(R.id.savePlayerBtn);
         saveBtn.setOnClickListener(this);
 
@@ -57,7 +56,8 @@ public class RegisterPlayerActivity extends AppCompatActivity implements Registe
 
 
     public Player getConnectedPlayer() {
-        if (this.getIntent().hasExtra("IS_EDIT")) {
+
+        if (this.getIntent().getStringExtra("IS_EDIT").equals("1")) {
             return (Player) (new MemoryLoggedInUser()).getUser();
         } else {
             return null;
