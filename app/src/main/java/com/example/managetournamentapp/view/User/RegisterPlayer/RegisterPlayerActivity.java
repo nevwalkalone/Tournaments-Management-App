@@ -3,7 +3,6 @@ package com.example.managetournamentapp.view.User.RegisterPlayer;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,10 +11,6 @@ import android.widget.EditText;
 import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.domain.AgeDivision;
 import com.example.managetournamentapp.domain.Credentials;
-import com.example.managetournamentapp.memoryDao.PlayerDAOMemory;
-import com.example.managetournamentapp.view.HomePage.HomePageViewModel;
-import com.example.managetournamentapp.view.Organizer.CreatedTournaments.fragment.TournamentListFragment;
-import com.example.managetournamentapp.view.Player.PlayerPage.PlayerPageViewModel;
 
 public class RegisterPlayerActivity extends AppCompatActivity implements RegisterPlayerView, View.OnClickListener {
 

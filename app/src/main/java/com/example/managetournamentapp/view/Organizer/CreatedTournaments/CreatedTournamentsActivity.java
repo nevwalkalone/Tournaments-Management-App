@@ -13,6 +13,7 @@ import com.example.managetournamentapp.memoryDao.OrganizerDAOMemory;
 import com.example.managetournamentapp.view.Organizer.CreatedTournaments.fragment.TournamentListFragment;
 import java.util.ArrayList;
 
+
 public class CreatedTournamentsActivity extends AppCompatActivity implements TournamentListFragment.OnListFragmentInteractionListener {
 
     public static final String TOURNAMENT_TITLE_EXTRA = "tournament_title_extra";

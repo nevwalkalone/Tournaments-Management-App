@@ -21,6 +21,6 @@ public class RoundDAOMemory implements RoundDAO {
 
     @Override
     public void deleteAll() {
-
+        entities = new ArrayList<>();
     }
 }

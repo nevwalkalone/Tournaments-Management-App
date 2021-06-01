@@ -1,24 +1,23 @@
-package com.example.managetournamentapp.view.Organizer.CreatedTournaments.OrganizerPage;
+package com.example.managetournamentapp.view.Organizer.OrganizerPage;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.managetournamentapp.domain.Player;
 import com.example.managetournamentapp.memoryDao.MemoryInitializer;
 import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.view.View;
+
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.managetournamentapp.R;
+import com.example.managetournamentapp.view.Organizer.CreatedTournaments.CreatedTournamentsActivity;
 
-public class OrganizerPageActivity extends AppCompatActivity implements View.OnClickListener, OrganizerPageView {
+public class OrganizerPageActivity extends AppCompatActivity implements OrganizerPageView {
     private OrganizerPageViewModel viewModel;
     private TextView txtOrganizerName;
     private Button btnOrganizerAccount;
@@ -34,14 +33,32 @@ public class OrganizerPageActivity extends AppCompatActivity implements View.OnC
         viewModel.getPresenter().setView(this);
 
         txtOrganizerName = findViewById(R.id.title_organizer_name);
-
+        btnOrganizerAccount = findViewById(R.id.organizer_account);
+        btnOrganizerTournaments = findViewById(R.id.organizer_tournaments);
 
         txtOrganizerName.setText( ((Player) (new MemoryLoggedInUser()).getUser()).getName());
 
-    }
-
-    @Override
-    public void onClick(View v) {
+        btnOrganizerAccount.setOnClickListener(v -> viewModel.getPresenter().onOrganizerAccount());
+        btnOrganizerTournaments.setOnClickListener(v -> viewModel.getPresenter().onOrganizerTournaments());
 
     }
+
+    /**
+     * Stars Organizer's Account Activity
+     */
+    public void toOrganizerAccount(){
+//        Intent intent = new Intent(PlayerPageActivity.this, PlayerAccountActivity.class);
+//        startActivity(intent);
+    }
+
+    /**
+     * Starts CreatedTournaments Activity
+     */
+    public void toOrganizerTournaments(){
+        Intent intent = new Intent(OrganizerPageActivity.this, CreatedTournamentsActivity.class);
+        startActivity(intent);
+
+   }
+
+
 }

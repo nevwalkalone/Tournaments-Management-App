@@ -1,6 +1,5 @@
 package com.example.managetournamentapp.domain;
 
-import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.util.*;
 public class Round {
@@ -10,7 +9,6 @@ public class Round {
     private ArrayList<Group> groups = new ArrayList<>();
     private ArrayList<LocalDate> dates;
     private ArrayList<Team> teams;
-
 
     public Round(int teamsNumber, boolean isKnockout , ArrayList<LocalDate> dates) {
         this.teamsNumber = teamsNumber;
@@ -46,7 +44,6 @@ public class Round {
             lastIndex += teamsPerGroup;
         }
     }
-
 
     public boolean allGamesFinished() {
         for (Group group : groups) {
@@ -102,8 +99,6 @@ public class Round {
         }
         return false;
     }
-
-
 
     @Override
     public String toString() {

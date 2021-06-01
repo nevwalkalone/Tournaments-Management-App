@@ -2,6 +2,7 @@ package com.example.managetournamentapp.memoryDao;
 
 import com.example.managetournamentapp.dao.PlayerDAO;
 import com.example.managetournamentapp.domain.Credentials;
+import com.example.managetournamentapp.domain.Game;
 import com.example.managetournamentapp.domain.Invitation;
 import com.example.managetournamentapp.domain.Player;
 
@@ -28,12 +29,15 @@ public class PlayerDAOMemory implements PlayerDAO {
 
     @Override
     public void deleteAll() {
-
+        entities = new ArrayList<>();
     }
 
     @Override
     public ArrayList<Player> findAll() {
-        return new ArrayList<>(entities);
+        ArrayList<Player> result = new ArrayList<>();
+        result.addAll(entities);
+        return result;
+
     }
 
     @Override

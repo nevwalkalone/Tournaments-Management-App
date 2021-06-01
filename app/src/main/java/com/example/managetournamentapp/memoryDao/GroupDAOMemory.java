@@ -5,6 +5,7 @@ import com.example.managetournamentapp.domain.Game;
 import com.example.managetournamentapp.domain.Group;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class GroupDAOMemory implements GroupDAO {
     protected static ArrayList<Group> entities = new ArrayList<>();
@@ -22,11 +23,18 @@ public class GroupDAOMemory implements GroupDAO {
 
     @Override
     public void deleteAll() {
-
+        entities = new ArrayList<>();
     }
 
     @Override
     public Group find() {
         return null;
+    }
+
+    @Override
+    public ArrayList<Group> findAll() {
+        ArrayList<Group> result = new ArrayList<>();
+        result.addAll(entities);
+        return result;
     }
 }

@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ManageTournamentApp">
         <activity
-            android:name=".view.Organizer.CreatedTournaments.OrganizerPage.OrganizerPageActivity"
+            android:name=".view.Organizer.OrganizerPage.OrganizerPageActivity"
             android:exported="true"
             android:label="@string/title_activity_organizer_page"
             android:theme="@style/Theme.ManageTournamentApp.NoActionBar"></activity>
@@ -57,6 +57,12 @@
             android:exported="true"
             android:label="@string/participating_tournaments"
             android:theme="@style/Theme.ManageTournamentApp.NoActionBar" />
+        <activity android:name=".view.Organizer.ManageTournaments.ManageTournamentsActivity"
+            android:exported="true"
+            android:label="@string/diorganoseis"
+            android:screenOrientation="portrait"
+            android:theme="@style/SecondaryTheme" />
+
     </application>
 
 </manifest>

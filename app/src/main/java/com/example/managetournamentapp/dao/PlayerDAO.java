@@ -2,9 +2,7 @@ package com.example.managetournamentapp.dao;
 
 
 import com.example.managetournamentapp.domain.Credentials;
-import com.example.managetournamentapp.domain.Organizer;
 import com.example.managetournamentapp.domain.Player;
-import com.example.managetournamentapp.domain.User;
 
 import java.util.ArrayList;
 
@@ -12,14 +10,38 @@ public interface PlayerDAO {
 
     Player verify(Credentials credentials);
 
+    /**
+     * Saves a specific player.
+     * @param entity Player to be saved.
+     */
     void save(Player entity);
 
-    void delete(Player entity);
+    /**
+     * Finds a specific player.
+     * @param userName Player username.
+     * @return Player with the specific username.
+     */
+    Player find(String userName);
 
-    void deleteAll();
-
+    /**
+     * Finds all players.
+     * @return All players.
+     */
     ArrayList<Player> findAll();
 
-    Player find(String userName);
+    /**
+     * Deletes a specific player.
+     * @param entity Player to be deleted.
+     */
+    void delete(Player entity);
+
+    /**
+     * Deletes all players.
+     */
+    void deleteAll();
+
+
+
+
 
 }

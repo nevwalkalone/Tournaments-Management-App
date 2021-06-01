@@ -9,5 +9,5 @@
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
     app:layoutManager="LinearLayoutManager"
-    tools:context=".view.Organizer.CreatedTournaments.fragment.TournamentListFragment"
+    tools:context=".view.Organizer.CreatedTournaments.CreatedTournaments1.fragment.TournamentListFragment"
     tools:listitem="@layout/fragment_created_tournaments_list_item" />

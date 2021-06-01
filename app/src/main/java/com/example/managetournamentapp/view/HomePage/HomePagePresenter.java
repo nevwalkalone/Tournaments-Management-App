@@ -1,10 +1,8 @@
 package com.example.managetournamentapp.view.HomePage;
 
 import com.example.managetournamentapp.dao.TournamentDAO;
-import com.example.managetournamentapp.domain.Organizer;
 import com.example.managetournamentapp.domain.Tournament;
 import com.example.managetournamentapp.memoryDao.TournamentDAOMemory;
-import com.example.managetournamentapp.view.Organizer.CreatedTournaments.CreatedTournamentsView;
 
 import java.util.ArrayList;
 

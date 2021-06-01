@@ -8,4 +8,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="appColor">#87baab</color>
+    <color name="colorDarkBG">#393939</color><!-- background color -->
+    <color name="colorWhite">#FFFFFF</color><!-- primary text color, used a ton on text views and titles -->
+    <color name="colorSemiWhite">#CACACA</color><!-- secondary text color, used a ton next to primary -->
+    <color name="colorPrimary">#e84d3c</color><!-- buttons and header color -->
+    <color name="topBar">#111111</color><!-- top android bar color, usually black -->
 </resources>

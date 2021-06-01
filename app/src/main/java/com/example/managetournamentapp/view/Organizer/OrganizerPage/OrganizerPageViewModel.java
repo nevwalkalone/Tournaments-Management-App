@@ -1,9 +1,9 @@
-package com.example.managetournamentapp.view.Organizer.CreatedTournaments.OrganizerPage;
+package com.example.managetournamentapp.view.Organizer.OrganizerPage;
 
 import androidx.lifecycle.ViewModel;
 
 import com.example.managetournamentapp.domain.Organizer;
-import com.example.managetournamentapp.view.Organizer.CreatedTournaments.OrganizerPage.OrganizerPagePresenter;
+//import com.example.managetournamentapp.view.Organizer.CreatedTournaments.OrganizerPage.OrganizerPagePresenter;
 
 
 

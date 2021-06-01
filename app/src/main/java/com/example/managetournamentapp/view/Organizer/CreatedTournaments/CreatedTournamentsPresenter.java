@@ -3,6 +3,7 @@ package com.example.managetournamentapp.view.Organizer.CreatedTournaments;
 import com.example.managetournamentapp.dao.TournamentDAO;
 import com.example.managetournamentapp.domain.Organizer;
 import com.example.managetournamentapp.domain.Tournament;
+
 import java.util.ArrayList;
 
 public class CreatedTournamentsPresenter {

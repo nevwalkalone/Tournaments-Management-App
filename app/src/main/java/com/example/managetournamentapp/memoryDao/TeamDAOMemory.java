@@ -1,12 +1,13 @@
 package com.example.managetournamentapp.memoryDao;
 
 import com.example.managetournamentapp.dao.TeamDAO;
-import com.example.managetournamentapp.domain.Invitation;
+import com.example.managetournamentapp.domain.Game;
 import com.example.managetournamentapp.domain.Participation;
 import com.example.managetournamentapp.domain.Team;
 import com.example.managetournamentapp.domain.Tournament;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class TeamDAOMemory implements TeamDAO {
     protected static ArrayList<Team> entities = new ArrayList<>();
@@ -23,7 +24,7 @@ public class TeamDAOMemory implements TeamDAO {
 
     @Override
     public void deleteAll() {
-
+        entities = new ArrayList<>();
     }
 
     @Override
@@ -33,6 +34,13 @@ public class TeamDAOMemory implements TeamDAO {
                 return t;
         }
         return null;
+    }
+
+    @Override
+    public ArrayList<Team> findAll() {
+        ArrayList<Team> result = new ArrayList<>();
+        result.addAll(entities);
+        return result;
     }
 
     @Override

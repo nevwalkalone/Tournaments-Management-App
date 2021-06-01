@@ -3,7 +3,6 @@ package com.example.managetournamentapp.view.HomePage;
 import androidx.lifecycle.ViewModel;
 
 import com.example.managetournamentapp.memoryDao.TournamentDAOMemory;
-import com.example.managetournamentapp.view.Organizer.CreatedTournaments.CreatedTournamentsPresenter;
 
 public class HomePageViewModel extends ViewModel {
     // TODO: Implement the ViewModel

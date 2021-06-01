@@ -2,11 +2,11 @@ package com.example.managetournamentapp.memoryDao;
 
 import com.example.managetournamentapp.dao.OrganizerDAO;
 import com.example.managetournamentapp.domain.Credentials;
-import com.example.managetournamentapp.domain.Invitation;
 import com.example.managetournamentapp.domain.Organizer;
 import com.example.managetournamentapp.domain.Player;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class OrganizerDAOMemory implements OrganizerDAO {
     protected static ArrayList<Organizer> entities = new ArrayList<>();
@@ -28,7 +28,7 @@ public class OrganizerDAOMemory implements OrganizerDAO {
 
     @Override
     public void deleteAll() {
-
+        entities = new ArrayList<>();
     }
 
     @Override
@@ -38,5 +38,12 @@ public class OrganizerDAOMemory implements OrganizerDAO {
                 return o;
         }
         return null;
+    }
+
+    @Override
+    public ArrayList<Organizer> findAll() {
+        ArrayList<Organizer> result = new ArrayList<>();
+        result.addAll(entities);
+        return result;
     }
 }

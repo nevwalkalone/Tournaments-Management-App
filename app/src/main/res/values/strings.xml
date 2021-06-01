@@ -11,11 +11,13 @@
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
+    <string name="add_new_item">Προσθήκη</string>
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="title_activity_home">HomeActivity</string>
+    <string name="search">Αναζήτηση</string>
     <string name="app_title_name">Manage Tournament App</string>
-    <string name="diorganoseis">Διοργανώσεις</string>
+    <string name="diorganoseis">Οι Διοργανώσεις Μου</string>
     <string name="title_activity_organizer_page">OrganizerPageActivity</string>
 </resources>
