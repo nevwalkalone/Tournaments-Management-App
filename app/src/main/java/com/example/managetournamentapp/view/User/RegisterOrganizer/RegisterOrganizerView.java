@@ -4,6 +4,7 @@ import android.view.View;
 
 import com.example.managetournamentapp.domain.AgeDivision;
 import com.example.managetournamentapp.domain.Credentials;
+import com.example.managetournamentapp.domain.Organizer;
 import com.example.managetournamentapp.domain.Player;
 
 public interface RegisterOrganizerView {
@@ -24,9 +25,7 @@ public interface RegisterOrganizerView {
 
     Credentials getCredentials();
 
-    String getLocation();
-
-    AgeDivision getAgeDivision();
+    String getOrganizerTitle();
 
     void setUsername(String username);
 
@@ -44,12 +43,10 @@ public interface RegisterOrganizerView {
 
     void setCredentials(Credentials credentials);
 
-    void setLocation(String location);
-
-    void setAgeDivision(AgeDivision ageDivision);
+    void setTitle(String title);
 
     void showPopUp(RegisterOrganizerView view, String msg);
 
-    Player getConnectedPlayer();
+    Organizer getConnectedOrganizer();
 
 }

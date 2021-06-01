@@ -14,32 +14,32 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.managetournamentapp.R;
-import com.example.managetournamentapp.domain.AgeDivision;
 import com.example.managetournamentapp.domain.Credentials;
-import com.example.managetournamentapp.domain.Player;
+import com.example.managetournamentapp.domain.Organizer;
 import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
-import com.example.managetournamentapp.view.Player.PlayerPage.PlayerPageActivity;
+import com.example.managetournamentapp.view.Organizer.OrganizerPage.OrganizerPageActivity;
+
 
 import org.w3c.dom.Text;
 
 public class RegisterOrganizerActivity extends AppCompatActivity implements RegisterOrganizerView, View.OnClickListener {
 
     RegisterOrganizerViewModel viewModel;
-    public static final String PLAYER_USERNAME = "PLAYER_USERNAME";
+    public static final String ORGANIZER_USERNAME = "ORGANIZER_USERNAME";
     private Button saveBtn;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register_player);
+        setContentView(R.layout.activity_register_organizer);
 
 
         viewModel = new ViewModelProvider(this).get(RegisterOrganizerViewModel.class);
         viewModel.getPresenter().setView(this);
 
         final RegisterOrganizerPresenter presenter = new RegisterOrganizerPresenter();
-        saveBtn = (Button) findViewById(R.id.savePlayerBtn);
+        saveBtn = (Button) findViewById(R.id.saveOrganizerBtn);
         saveBtn.setOnClickListener(this);
 
     }
@@ -57,9 +57,9 @@ public class RegisterOrganizerActivity extends AppCompatActivity implements Regi
     }
 
 
-    public Player getConnectedPlayer() {
+    public Organizer getConnectedOrganizer() {
         if (this.getIntent().hasExtra("IS_EDIT")) {
-            return (Player) (new MemoryLoggedInUser()).getUser();
+            return (Organizer) (new MemoryLoggedInUser()).getUser();
         } else {
             return null;
         }
@@ -67,9 +67,9 @@ public class RegisterOrganizerActivity extends AppCompatActivity implements Regi
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.savePlayerBtn) {
-            if (viewModel.getPresenter().handlePlayerData()) {
-                Intent intent = new Intent(this, PlayerPageActivity.class);
+        if (v.getId() == R.id.saveOrganizerBtn) {
+            if (viewModel.getPresenter().handleOrganizerData()) {
+                Intent intent = new Intent(this, OrganizerPageActivity.class);
                 startActivity(intent);
             }
         }
@@ -127,15 +127,9 @@ public class RegisterOrganizerActivity extends AppCompatActivity implements Regi
     }
 
     @Override
-    public String getLocation() {
-        EditText LOCATION = (EditText) findViewById(R.id.location);
-        return LOCATION.getText().toString();
-    }
-
-    @Override
-    public AgeDivision getAgeDivision() {
-        //TODO Change Birthdate edit text and add here
-        return AgeDivision.K15;
+    public String getOrganizerTitle() {
+        EditText TITLE = (EditText) findViewById(R.id.organizer_title);
+        return TITLE.getText().toString();
     }
 
     @Override
@@ -187,14 +181,10 @@ public class RegisterOrganizerActivity extends AppCompatActivity implements Regi
     }
 
     @Override
-    public void setLocation(String location) {
-        EditText LOCATION = (EditText) findViewById(R.id.location);
-        LOCATION.setText(location);
+    public void setTitle(String title) {
+        EditText TITLE = (EditText) findViewById(R.id.organizer_title);
+        TITLE.setText(title);
     }
 
-    @Override
-    public void setAgeDivision(AgeDivision ageDivision) {
-        //TODO
 
-    }
 }

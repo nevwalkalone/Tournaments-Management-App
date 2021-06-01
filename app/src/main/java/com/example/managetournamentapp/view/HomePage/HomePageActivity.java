@@ -15,6 +15,7 @@ import com.example.managetournamentapp.domain.Tournament;
 import com.example.managetournamentapp.memoryDao.MemoryInitializer;
 import com.example.managetournamentapp.view.Organizer.CreatedTournaments.fragment.TournamentListFragment;
 import com.example.managetournamentapp.view.User.Login.LoginActivity;
+import com.example.managetournamentapp.view.User.RegisterOrganizer.RegisterOrganizerActivity;
 import com.example.managetournamentapp.view.User.RegisterPlayer.RegisterPlayerActivity;
 
 import java.util.ArrayList;
@@ -109,6 +110,8 @@ public class HomePageActivity extends AppCompatActivity implements TournamentLis
                     "ORGANIZER",
                     Toast.LENGTH_SHORT)
                     .show();
+            Intent intent = new Intent(this, RegisterOrganizerActivity.class);
+            startActivity(intent);
 
 
         }

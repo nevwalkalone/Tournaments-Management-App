@@ -4,12 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.widget.Toast;
 
-import com.example.managetournamentapp.dao.PlayerDAO;
+import com.example.managetournamentapp.dao.OrganizerDAO;
 import com.example.managetournamentapp.domain.Credentials;
-import com.example.managetournamentapp.domain.Player;
+import com.example.managetournamentapp.domain.Organizer;
 import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
-import com.example.managetournamentapp.memoryDao.PlayerDAOMemory;
-import com.example.managetournamentapp.view.Player.PlayerPage.PlayerPageActivity;
+import com.example.managetournamentapp.memoryDao.OrganizerDAOMemory;
 
 import java.time.LocalDate;
 import java.util.regex.Matcher;
@@ -18,14 +17,14 @@ import java.util.regex.Pattern;
 public class RegisterOrganizerPresenter {
 
     private RegisterOrganizerView view;
-    private PlayerDAO playerDAO;
-    private Player connectedPlayer;
+    private OrganizerDAO organizerDAO;
+    private Organizer connectedOrganizer;
 
     public RegisterOrganizerPresenter() {
 
     }
 
-    public boolean handlePlayerData() {
+    public boolean handleOrganizerData() {
         String usename = view.getUsername();
         String password = view.getPassword();
         String name = view.getName();
@@ -33,7 +32,7 @@ public class RegisterOrganizerPresenter {
         String phoneNumber = view.getPhoneNumber();
         String email = view.getEmail();
         String birthDate = view.getBirthDate();
-        String location = view.getLocation();
+        String title = view.getTitle();
 
         // validate user data
         if (usename.length() < 5 || usename.length() > 20)
@@ -48,16 +47,15 @@ public class RegisterOrganizerPresenter {
             view.showPopUp(view, "Phone number must contain 10 numbers!");
         else if (email.length() < 2 || !checkEmail(email))
             view.showPopUp(view, "Not valid email!");
-        else if (location.length() < 2 || !validateName(location))
-            view.showPopUp(view, "Location must be at least 2 chars and only alphabetical chars!");
+
 
         // IF USER IS NEW!
-        if (view.getConnectedPlayer() == null) {
+        if (view.getConnectedOrganizer() == null) {
             birthDate = birthDate.replace("/", "-");
-            Player player = new Player(name, surname, location, phoneNumber, email, LocalDate.parse(birthDate), new Credentials(usename, password));
-            playerDAO = new PlayerDAOMemory();
-            playerDAO.save(player);
-            (new MemoryLoggedInUser()).setUser(player);
+            Organizer organizer = new Organizer(name, surname, phoneNumber, email, LocalDate.parse(birthDate), new Credentials(usename, password), title);
+            organizerDAO = new OrganizerDAOMemory();
+            organizerDAO.save(organizer);
+            (new MemoryLoggedInUser()).setUser(organizer);
             return true;
 
         }
@@ -92,8 +90,8 @@ public class RegisterOrganizerPresenter {
         this.view = null;
     }
 
-    public void setPlayerDAO(PlayerDAO playerDAO) {
-        this.playerDAO = playerDAO;
+    public void setOrganizerDAO(OrganizerDAO organizerDAO) {
+        this.organizerDAO = organizerDAO;
     }
 
 }
