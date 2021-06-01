@@ -40,7 +40,7 @@
             android:name=".view.Player.JoinedTeams.JoinedTeamsActivity"
             android:exported="true"
             android:label="@string/joined_teams"
-            android:theme="@style/Theme.ManageTournamentApp.NoActionBar" />
+            android:theme="@style/SecondaryTheme" />
         <activity
             android:name=".view.Team.ParticipatingTournaments.ParticipatingTournamentsActivity"
             android:exported="true"
@@ -68,9 +68,14 @@
             android:theme="@style/SecondaryTheme" />
         <activity android:name=".view.Team.TeamPage.TeamPageActivity"
             android:exported="true"
-            android:label="@string/diorganoseis"
+            android:label="@string/prof_omadas"
             android:screenOrientation="portrait"
             android:theme="@style/SecondaryTheme" />
+        <activity
+            android:name=".view.Organizer.OrganizerInfo.OrganizerInfoActivity"
+            android:exported="true"
+            android:label="@string/diorganoseis"
+            android:theme="@style/Theme.ManageTournamentApp.NoActionBar" />
 
     </application>
 
