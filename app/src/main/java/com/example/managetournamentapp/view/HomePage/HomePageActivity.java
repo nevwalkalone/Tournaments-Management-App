@@ -21,7 +21,7 @@ import com.example.managetournamentapp.view.User.RegisterPlayer.RegisterPlayerAc
 import java.util.ArrayList;
 
 
-public class HomePageActivity extends AppCompatActivity implements TournamentListFragment.OnListFragmentInteractionListener, View.OnClickListener {
+public class HomePageActivity extends AppCompatActivity implements HomePageView, TournamentListFragment.OnListFragmentInteractionListener, View.OnClickListener {
 
     public static final String TOURNAMENT_TITLE_EXTRA = "tournament_title_extra";
     private Button btn;
@@ -38,6 +38,7 @@ public class HomePageActivity extends AppCompatActivity implements TournamentLis
 
 
         btn.setOnClickListener(this);
+
 
 
         viewModel = new ViewModelProvider(this).get(HomePageViewModel.class);
@@ -124,5 +125,20 @@ public class HomePageActivity extends AppCompatActivity implements TournamentLis
             startActivity(intent);
 
         }
+    }
+
+    @Override
+    public void connectAction() {
+
+    }
+
+    @Override
+    public void teamOnBrowsingSelection() {
+
+    }
+
+    @Override
+    public void returnSearchResult(int id) {
+
     }
 }

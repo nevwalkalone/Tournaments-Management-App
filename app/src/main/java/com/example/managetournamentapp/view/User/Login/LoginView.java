@@ -1,17 +1,13 @@
 package com.example.managetournamentapp.view.User.Login;
 
+import com.example.managetournamentapp.view.User.RegisterPlayer.RegisterPlayerView;
+
 public interface LoginView {
 
-    /**
-     * When app user clicks on Connect Button,
-     * the app redirects the user to the ConnectActivity
-     */
-    void connectAction();
+    String getUsername();
 
-    /**
-     * When app user clicks on any team, on the browsing list,
-     * the app redirects the user to the TeamPageActivity
-     */
-    void teamOnBrowsingSelection();
+    String getPassword();
+
+    void showPopUp(RegisterPlayerView view, String msg);
 
 }

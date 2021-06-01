@@ -25,7 +25,9 @@
             android:name=".view.User.RegisterOrganizer.RegisterOrganizerActivity"
             android:exported="true"
             android:theme="@style/Theme.ManageTournamentApp.NoActionBar" />
-        <activity android:name=".view.User.Login.LoginActivity" />
+        <activity
+            android:name=".view.User.Login.LoginActivity"
+            android:exported="true" />
         <activity
             android:name=".view.Organizer.CreatedTournaments.CreatedTournamentsActivity"
             android:exported="true"
