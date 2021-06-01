@@ -2,7 +2,6 @@ package com.example.managetournamentapp.view.User.Login;
 
 import androidx.lifecycle.ViewModel;
 
-import com.example.managetournamentapp.view.User.RegisterPlayer.RegisterPlayerPresenter;
 
 public class LoginViewModel extends ViewModel {
     LoginPresenter presenter;
@@ -20,6 +19,6 @@ public class LoginViewModel extends ViewModel {
     @Override
     protected void onCleared() {
         super.onCleared();
-//        presenter.clearView();
+        presenter.clearView();
     }
 }

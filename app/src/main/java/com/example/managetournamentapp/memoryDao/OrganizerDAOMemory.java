@@ -12,8 +12,11 @@ public class OrganizerDAOMemory implements OrganizerDAO {
     protected static ArrayList<Organizer> entities = new ArrayList<>();
 
     @Override
-    public Player verify(Credentials credentials) {
-        return null;
+    public boolean verify(Credentials credentials) {
+        boolean valid = false;
+        if(exist(credentials))
+            valid = true;
+        return valid;
     }
 
     @Override
@@ -32,12 +35,30 @@ public class OrganizerDAOMemory implements OrganizerDAO {
     }
 
     @Override
-    public Organizer find(String title) {
-        for (Organizer o : entities){
+    public Organizer findByTitle(String title) {
+        for (Organizer o : entities) {
             if (o.getTitle().equals(title))
                 return o;
         }
         return null;
+    }
+
+    @Override
+    public Organizer findByCredentials(Credentials credentials) {
+        for (Organizer o : entities) {
+            if (o.getCredentials().equals(credentials))
+                return o;
+        }
+        return null;
+    }
+
+    @Override
+    public boolean exist(Credentials credentials) {
+        for (Organizer o : entities) {
+            if (o.getCredentials().equals(credentials))
+                return true;
+        }
+        return false;
     }
 
     @Override

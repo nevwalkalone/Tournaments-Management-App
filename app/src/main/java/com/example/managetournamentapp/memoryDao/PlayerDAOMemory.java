@@ -4,6 +4,7 @@ import com.example.managetournamentapp.dao.PlayerDAO;
 import com.example.managetournamentapp.domain.Credentials;
 import com.example.managetournamentapp.domain.Game;
 import com.example.managetournamentapp.domain.Invitation;
+import com.example.managetournamentapp.domain.Organizer;
 import com.example.managetournamentapp.domain.Player;
 
 import java.util.ArrayList;
@@ -13,8 +14,11 @@ public class PlayerDAOMemory implements PlayerDAO {
 
 
     @Override
-    public Player verify(Credentials credentials) {
-        return null;
+    public boolean verify(Credentials credentials) {
+        boolean valid = false;
+        if (exist(credentials))
+            valid = true;
+        return valid;
     }
 
     @Override
@@ -41,12 +45,21 @@ public class PlayerDAOMemory implements PlayerDAO {
     }
 
     @Override
-    public Player find(String userName){
-        for (Player p : entities){
+    public Player find(String userName) {
+        for (Player p : entities) {
             if (p.getCredentials().getUsername().equals(userName))
                 return p;
         }
         return null;
+    }
+
+    @Override
+    public boolean exist(Credentials credentials) {
+        for (Player o : entities) {
+            if (o.getCredentials().equals(credentials))
+                return true;
+        }
+        return false;
     }
 
 }

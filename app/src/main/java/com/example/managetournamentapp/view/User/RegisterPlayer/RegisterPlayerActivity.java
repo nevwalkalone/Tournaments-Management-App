@@ -57,7 +57,7 @@ public class RegisterPlayerActivity extends AppCompatActivity implements Registe
 
     public Player getConnectedPlayer() {
 
-        if (this.getIntent().getStringExtra("IS_EDIT").equals("1")) {
+        if (("1").equals(this.getIntent().getStringExtra("IS_EDIT"))) {
             return (Player) (new MemoryLoggedInUser()).getUser();
         } else {
             return null;

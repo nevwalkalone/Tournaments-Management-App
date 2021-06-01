@@ -16,7 +16,7 @@ public class ManageTournamentsPresenter {
     private OrganizerDAO organizers;
     private String orgName;
 
-    public ManageTournamentsPresenter(ManageTournamentsView view, TournamentDAO tournaments, OrganizerDAO organizers, String orgName){
+    public ManageTournamentsPresenter(ManageTournamentsView view, TournamentDAO tournaments, OrganizerDAO organizers, String orgName) {
         this.view = view;
         this.tournaments = tournaments;
         this.organizers = organizers;
@@ -25,18 +25,18 @@ public class ManageTournamentsPresenter {
         onLoadSource();
     }
 
-    private ArrayList<Quadruple> createDataSource(ArrayList<Tournament> tournaments){
+    private ArrayList<Quadruple> createDataSource(ArrayList<Tournament> tournaments) {
         ArrayList<Quadruple> triplets = new ArrayList<>();
-       // for (Tournament tournaments: tournaments){
+        // for (Tournament tournaments: tournaments){
 
         //}
         return null;
     }
+
     /**
      * Ξεκινάει το activity AddEditBookActivity
      */
-    void onStartAddNew()
-    {
+    void onStartAddNew() {
         view.startAddNew();
     }
 
@@ -45,9 +45,9 @@ public class ManageTournamentsPresenter {
     }
 
 
-    void onLoadSource(){
+    void onLoadSource() {
         ArrayList<Tournament> new_tourns;
-        Organizer organizer = organizers.find(orgName);
+        Organizer organizer = organizers.findByTitle(orgName);
         new_tourns = new ArrayList<>(organizer.getTournaments());
 
         view.loadSource(createDataSource(new_tourns));

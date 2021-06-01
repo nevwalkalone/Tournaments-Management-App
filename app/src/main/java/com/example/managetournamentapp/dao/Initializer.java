@@ -31,10 +31,10 @@ public abstract class Initializer {
         TournamentDAO tournamentDAO = getTournamentDAO();
 
         playerDAO.save( new Player("tomtomtom", "jerry","Athens",  "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("tom", "123")));
-        playerDAO.save( new Player("tom2", "jerry","Athens",  "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("tom2", "123")));
+        playerDAO.save( new Player("tom2", "jerry","Athens",  "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("tom23", "12345")));
         playerDAO.save( new Player("tom3", "jerry","Athens",  "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("tom3", "123")));
         playerDAO.find("tom").addSportInterested(new Sport("Basketball3v3"));
-        playerDAO.find("tom2").addSportInterested(new Sport("Basketball3v3"));
+        playerDAO.find("tom23").addSportInterested(new Sport("Basketball3v3"));
         playerDAO.find("tom3").addSportInterested(new Sport("Basketball3v3"));
 
         ArrayList<LocalDate> dates = new ArrayList<>();
@@ -42,11 +42,11 @@ public abstract class Initializer {
             dates.add(LocalDate.now());
         }
 
-        organizerDAO.save( new Organizer("Nikos", "Nikopoulos", "69xxxxxxxx", "nikosnik@gmail.com",  LocalDate.parse("2000-01-01"), new Credentials("nikos", "123"), "ESKA"));
+        organizerDAO.save( new Organizer("Nikos", "Nikopoulos", "69xxxxxxxx", "nikosnik@gmail.com",  LocalDate.parse("2000-01-01"), new Credentials("nikos", "12345"), "ESKA"));
         Tournament tour1 =  new Tournament("TOURNOUA1", LocalDate.parse("2030-05-10"), LocalDate.parse("2030-05-29"), "ATHENS", (new Sport("Basketball3v3")),
                 32, AgeDivision.K100, dates);
         tournamentDAO.save(tour1);
-        organizerDAO.find("ESKA").addTournament(tour1);
+        organizerDAO.findByTitle("ESKA").addTournament(tour1);
 
         teamDAO.save(  new Team("Celtic", (new Sport("Basketball3v3")), AgeDivision.K100, playerDAO.find("tom") , "green") );
         teamDAO.find( "Celtic" ).addPlayer( playerDAO.find("tom2")  );

@@ -2,13 +2,14 @@ package com.example.managetournamentapp.dao;
 
 
 import com.example.managetournamentapp.domain.Credentials;
+import com.example.managetournamentapp.domain.Organizer;
 import com.example.managetournamentapp.domain.Player;
 
 import java.util.ArrayList;
 
 public interface PlayerDAO {
 
-    Player verify(Credentials credentials);
+    boolean verify(Credentials credentials);
 
     /**
      * Saves a specific player.
@@ -40,6 +41,12 @@ public interface PlayerDAO {
      */
     void deleteAll();
 
+    /**
+     *  Check if user who tries login exist in DAO.
+     * @param credentials User input credentials
+     * @return true if User exists in DAO
+     */
+    boolean exist(Credentials credentials);
 
 
 

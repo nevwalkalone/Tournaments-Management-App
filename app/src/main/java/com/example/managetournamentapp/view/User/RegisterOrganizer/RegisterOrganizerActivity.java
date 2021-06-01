@@ -57,7 +57,7 @@ public class RegisterOrganizerActivity extends AppCompatActivity implements Regi
 
 
     public Organizer getConnectedOrganizer() {
-        if (this.getIntent().getStringExtra("IS_EDIT").equals("1")) {
+        if (("1").equals(this.getIntent().getStringExtra("IS_EDIT"))) {
             return (Organizer) (new MemoryLoggedInUser()).getUser();
         } else {
             return null;

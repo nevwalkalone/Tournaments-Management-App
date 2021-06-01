@@ -8,29 +8,41 @@ import java.util.ArrayList;
 
 public interface OrganizerDAO {
 
-    Player verify(Credentials credentials);
+    boolean verify(Credentials credentials);
 
     /**
      * Saves a specific organizer.
+     *
      * @param entity Organizer to be saved.
      */
     void save(Organizer entity);
 
     /**
      * Finds a specific organizer.
-     * @param name Name of the organizer.
+     *
+     * @param title Title of the organizer.
      * @return Organizer with the name specified.
      */
-    Organizer find(String name);
+    Organizer findByTitle(String title);
+
+    /**
+     * Finds a specific organizer.
+     *
+     * @param credentials credentials of the organizer.
+     * @return Organizer with the name specified.
+     */
+    Organizer findByCredentials(Credentials credentials);
 
     /**
      * Finds all organizers.
+     *
      * @return All organizers.
      */
     ArrayList<Organizer> findAll();
 
     /**
      * Deletes a specific organizer.
+     *
      * @param entity Organizer to be deleted.
      */
     void delete(Organizer entity);
@@ -39,6 +51,15 @@ public interface OrganizerDAO {
      * Deletes all organizers.
      */
     void deleteAll();
+
+
+    /**
+     * Check if user who tries login exist in DAO.
+     *
+     * @param credentials User input credentials
+     * @return true if User exists in DAO
+     */
+    boolean exist(Credentials credentials);
 
 
 }
