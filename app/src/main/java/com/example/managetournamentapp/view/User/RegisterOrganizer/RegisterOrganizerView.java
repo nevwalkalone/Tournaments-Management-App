@@ -1,4 +1,4 @@
-package com.example.managetournamentapp.view.User.RegisterPlayer;
+package com.example.managetournamentapp.view.User.RegisterOrganizer;
 
 import android.view.View;
 
@@ -6,7 +6,7 @@ import com.example.managetournamentapp.domain.AgeDivision;
 import com.example.managetournamentapp.domain.Credentials;
 import com.example.managetournamentapp.domain.Player;
 
-public interface RegisterPlayerView {
+public interface RegisterOrganizerView {
 
     String getUsername();
 
@@ -48,7 +48,7 @@ public interface RegisterPlayerView {
 
     void setAgeDivision(AgeDivision ageDivision);
 
-    void showPopUp(RegisterPlayerView view, String msg);
+    void showPopUp(RegisterOrganizerView view, String msg);
 
     Player getConnectedPlayer();
 

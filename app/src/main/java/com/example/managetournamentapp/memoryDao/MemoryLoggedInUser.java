@@ -3,21 +3,21 @@ package com.example.managetournamentapp.memoryDao;
 import com.example.managetournamentapp.dao.LoggedInUser;
 import com.example.managetournamentapp.domain.User;
 
-public class MemoryLoggedInUser implements LoggedInUser
-{
-    private static User user = (new PlayerDAOMemory()).find("tom");
+public class MemoryLoggedInUser implements LoggedInUser {
+    private static User user=null;//            = (new PlayerDAOMemory()).find("tom");
 
-    public MemoryLoggedInUser(){}
+    public MemoryLoggedInUser() {
+    }
 
-    public void setUser(User user){
+    public void setUser(User user) {
         this.user = user;
     }
 
-    public User getUser(){
+    public User getUser() {
         return user;
     }
 
-    public void clear(){
+    public void clear() {
         user = null;
     }
 

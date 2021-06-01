@@ -1,4 +1,4 @@
-package com.example.managetournamentapp.view.User.RegisterPlayer;
+package com.example.managetournamentapp.view.User.RegisterOrganizer;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,9 +22,9 @@ import com.example.managetournamentapp.view.Player.PlayerPage.PlayerPageActivity
 
 import org.w3c.dom.Text;
 
-public class RegisterPlayerActivity extends AppCompatActivity implements RegisterPlayerView, View.OnClickListener {
+public class RegisterOrganizerActivity extends AppCompatActivity implements RegisterOrganizerView, View.OnClickListener {
 
-    RegisterPlayerViewModel viewModel;
+    RegisterOrganizerViewModel viewModel;
     public static final String PLAYER_USERNAME = "PLAYER_USERNAME";
     private Button saveBtn;
 
@@ -34,16 +34,17 @@ public class RegisterPlayerActivity extends AppCompatActivity implements Registe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_player);
 
-        viewModel = new ViewModelProvider(this).get(RegisterPlayerViewModel.class);
+
+        viewModel = new ViewModelProvider(this).get(RegisterOrganizerViewModel.class);
         viewModel.getPresenter().setView(this);
 
-        final RegisterPlayerPresenter presenter = new RegisterPlayerPresenter();
+        final RegisterOrganizerPresenter presenter = new RegisterOrganizerPresenter();
         saveBtn = (Button) findViewById(R.id.savePlayerBtn);
         saveBtn.setOnClickListener(this);
 
     }
 
-    public void showPopUp(RegisterPlayerView view, String msg) {
+    public void showPopUp(RegisterOrganizerView view, String msg) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         View customLayout = getLayoutInflater().inflate(R.layout.wrong_input_popup, null);
         builder.setView(customLayout);

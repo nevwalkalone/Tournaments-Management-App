@@ -49,7 +49,7 @@ public class ParticipatingTeamsActivity extends AppCompatActivity implements Par
 
     @Override
     public void onListFragmentInteraction(Team item) {
-        Intent intent = new Intent();
+        Intent intent = new Intent( );
         intent.putExtra(TEAM_NAME_EXTRA, item.getName());
         setResult(RESULT_OK, intent);
         onBackPressed();

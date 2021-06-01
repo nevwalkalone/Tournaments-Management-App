@@ -1,4 +1,4 @@
-package com.example.managetournamentapp.view.User.RegisterPlayer;
+package com.example.managetournamentapp.view.User.RegisterOrganizer;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,13 +15,13 @@ import java.time.LocalDate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class RegisterPlayerPresenter {
+public class RegisterOrganizerPresenter {
 
-    private RegisterPlayerView view;
+    private RegisterOrganizerView view;
     private PlayerDAO playerDAO;
     private Player connectedPlayer;
 
-    public RegisterPlayerPresenter() {
+    public RegisterOrganizerPresenter() {
 
     }
 
@@ -84,7 +84,7 @@ public class RegisterPlayerPresenter {
         return matcher.matches();
     }
 
-    public void setView(RegisterPlayerView view) {
+    public void setView(RegisterOrganizerView view) {
         this.view = view;
     }
 

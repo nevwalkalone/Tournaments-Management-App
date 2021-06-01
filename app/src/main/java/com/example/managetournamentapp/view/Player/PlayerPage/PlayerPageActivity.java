@@ -34,9 +34,7 @@ public class PlayerPageActivity extends AppCompatActivity implements  PlayerPage
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player_page);
 
-//
-//        Log.d("BookSearchActivity", "Search criteria: " + titleCriterion
-//                + " " + authorCriterion);
+
 
         viewModel = new ViewModelProvider(this).get(PlayerPageViewModel.class);
         viewModel.getPresenter().setView(this);
