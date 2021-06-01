@@ -3,6 +3,7 @@ package com.example.managetournamentapp.view.Organizer.OrganizerPage;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.managetournamentapp.domain.Organizer;
 import com.example.managetournamentapp.domain.Player;
 import com.example.managetournamentapp.memoryDao.MemoryInitializer;
 import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
@@ -37,7 +38,7 @@ public class OrganizerPageActivity extends AppCompatActivity implements Organize
         btnOrganizerAccount = findViewById(R.id.organizer_account);
         btnOrganizerTournaments = findViewById(R.id.organizer_tournaments);
 
-        txtOrganizerName.setText( ((Player) (new MemoryLoggedInUser()).getUser()).getName());
+        txtOrganizerName.setText(((Organizer) (new MemoryLoggedInUser()).getUser()).getTitle());
 
         btnOrganizerAccount.setOnClickListener(v -> viewModel.getPresenter().onOrganizerAccount());
         btnOrganizerTournaments.setOnClickListener(v -> viewModel.getPresenter().onOrganizerTournaments());
@@ -47,7 +48,7 @@ public class OrganizerPageActivity extends AppCompatActivity implements Organize
     /**
      * Stars Organizer's Account Activity
      */
-    public void toOrganizerAccount(){
+    public void toOrganizerAccount() {
         Intent intent = new Intent(OrganizerPageActivity.this, OrganizerInfoActivity.class);
         startActivity(intent);
     }
@@ -55,11 +56,11 @@ public class OrganizerPageActivity extends AppCompatActivity implements Organize
     /**
      * Starts CreatedTournaments Activity
      */
-    public void toOrganizerTournaments(){
+    public void toOrganizerTournaments() {
         Intent intent = new Intent(OrganizerPageActivity.this, CreatedTournamentsActivity.class);
         startActivity(intent);
 
-   }
+    }
 
 
 }
