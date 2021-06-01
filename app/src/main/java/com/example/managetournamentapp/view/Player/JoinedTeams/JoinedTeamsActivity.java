@@ -2,6 +2,7 @@ package com.example.managetournamentapp.view.Player.JoinedTeams;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +12,8 @@ import com.example.managetournamentapp.domain.Team;
 import com.example.managetournamentapp.memoryDao.MemoryInitializer;
 import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
 import com.example.managetournamentapp.memoryDao.PlayerDAOMemory;
+import com.example.managetournamentapp.view.Player.PlayerPage.PlayerPageActivity;
+import com.example.managetournamentapp.view.Team.TeamPage.TeamPageActivity;
 import com.example.managetournamentapp.view.Tournament.ParticipatingTeams.fragment.ParticipatingTeamsListFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -53,15 +56,14 @@ public class JoinedTeamsActivity extends AppCompatActivity implements Participat
                     .add(R.id.fragment_container, teamsListFragment)
                     .commit();
         }
-
     }
 
     @Override
     public void onListFragmentInteraction(Team item) {
-        Intent intent = new Intent();
+        Log.wtf("sent", item.getName());
+        Intent intent = new Intent(JoinedTeamsActivity.this, TeamPageActivity.class);
         intent.putExtra(TEAM_NAME_EXTRA, item.getName());
-        setResult(RESULT_OK, intent);
-        onBackPressed();
+        startActivity(intent);
     }
 
     @Override

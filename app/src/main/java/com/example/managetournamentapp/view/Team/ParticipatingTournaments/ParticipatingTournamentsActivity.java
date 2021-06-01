@@ -14,14 +14,16 @@ import com.example.managetournamentapp.view.Organizer.CreatedTournaments.fragmen
 import java.util.ArrayList;
 
 public class ParticipatingTournamentsActivity extends AppCompatActivity implements TournamentListFragment.OnListFragmentInteractionListener {
-
+    public static final String TEAM_NAME_EXTRA = "team_name_extra";
     public static final String TOURNAMENT_TITLE_EXTRA = "tournament_title_extra";
+    String teamName;
     ParticipatingTournamentsViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //todo erase
         new MemoryInitializer().prepareData();
+        teamName =  this.getIntent().getStringExtra(TEAM_NAME_EXTRA);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_created_tournaments);
@@ -41,14 +43,13 @@ public class ParticipatingTournamentsActivity extends AppCompatActivity implemen
                 return;
             }
 
-            viewModel.getPresenter().findParticipatingTournaments( (new TeamDAOMemory()).find("Celtic")  );
+            viewModel.getPresenter().findParticipatingTournaments( (new TeamDAOMemory()).find(teamName)  );
 
             TournamentListFragment tournamentListFragment = TournamentListFragment.newInstance(1);
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.fragment_container, tournamentListFragment)
                     .commit();
         }
-
     }
 
     @Override
