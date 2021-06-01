@@ -40,10 +40,10 @@ public class PlayerPageActivity extends AppCompatActivity implements  PlayerPage
         viewModel = new ViewModelProvider(this).get(PlayerPageViewModel.class);
         viewModel.getPresenter().setView(this);
 
-        txtPlayerName = findViewById(R.id.title_player_name);
-        btnPlayerAccount = findViewById(R.id.player_account);
-        btnPlayerTeams = findViewById(R.id.player_teams);
-        btnPlayerInvites = findViewById(R.id.player_invites);
+        txtPlayerName = findViewById(R.id.text_player_name);
+        btnPlayerAccount = findViewById(R.id.player_account_button);
+        btnPlayerTeams = findViewById(R.id.player_teams_button);
+        btnPlayerInvites = findViewById(R.id.player_invites_button);
 
         txtPlayerName.setText( ((Player) (new MemoryLoggedInUser()).getUser()).getName() );
         btnPlayerAccount.setOnClickListener(v -> viewModel.getPresenter().onPlayerAccount());

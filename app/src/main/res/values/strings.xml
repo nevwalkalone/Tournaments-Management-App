@@ -6,7 +6,11 @@
     <string name="joined_teams">JoinedTeams</string>
     <string name="participating_tournaments">ParticipatingTournaments</string>
     <string name="invite_players">InvitePlayers</string>
+
     <!-- Strings used for fragments for navigation -->
+    <string name="player_info">Account Information</string>
+    <string name="edit_player">Edit</string>
+    <string name="delete_player">Delete</string>
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>

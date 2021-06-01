@@ -57,6 +57,11 @@
             android:exported="true"
             android:label="@string/participating_tournaments"
             android:theme="@style/Theme.ManageTournamentApp.NoActionBar" />
+        <activity
+            android:name=".view.Player.PlayerInfo.PlayerInfoActivity"
+            android:exported="true"
+            android:label="@string/participating_tournaments"
+            android:theme="@style/Theme.ManageTournamentApp.NoActionBar" />
         <activity android:name=".view.Organizer.ManageTournaments.ManageTournamentsActivity"
             android:exported="true"
             android:label="@string/diorganoseis"

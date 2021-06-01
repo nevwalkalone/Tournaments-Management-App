@@ -7,7 +7,7 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/title_player_name"
+        android:id="@+id/text_player_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="NAME"
@@ -26,7 +26,7 @@
         android:padding="5dp">
 
         <Button
-            android:id="@+id/player_account"
+            android:id="@+id/player_account_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
@@ -35,7 +35,7 @@
         </Button>
 
         <Button
-            android:id="@+id/player_teams"
+            android:id="@+id/player_teams_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
@@ -44,7 +44,7 @@
         </Button>
 
         <Button
-            android:id="@+id/player_invites"
+            android:id="@+id/player_invites_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
