@@ -3,7 +3,7 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="created_tournaments">CreatedTournaments</string>
     <string name="participating_teams">ParticipatingTeams</string>
-    <string name="joined_teams">JoinedTeams</string>
+    <string name="joined_teams">Joined Teams</string>
     <string name="participating_tournaments">ParticipatingTournaments</string>
     <string name="invite_players">InvitePlayers</string>
 
@@ -17,7 +17,9 @@
     <string name="previous">Previous</string>
     <string name="add_new_item">Add</string>
 
-
+    <string name="organizer_info">Account Information</string>
+    <string name="delete_organizer">Delete</string>
+    <string name="edit_organizer">Edit</string>
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
@@ -26,4 +28,5 @@
     <string name="app_title_name">Manage Tournament App</string>
     <string name="diorganoseis">Οι Διοργανώσεις Μου</string>
     <string name="title_activity_organizer_page">OrganizerPageActivity</string>
+    <string name="prof_omadas">Προφίλ Ομάδας</string>
 </resources>

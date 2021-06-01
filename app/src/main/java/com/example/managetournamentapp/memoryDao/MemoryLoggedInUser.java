@@ -4,7 +4,7 @@ import com.example.managetournamentapp.dao.LoggedInUser;
 import com.example.managetournamentapp.domain.User;
 
 public class MemoryLoggedInUser implements LoggedInUser {
-    private static User user=null;//            = (new PlayerDAOMemory()).find("tom");
+    private static User user        = (new PlayerDAOMemory()).find("tom");
 
     public MemoryLoggedInUser() {
     }

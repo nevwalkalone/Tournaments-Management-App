@@ -10,11 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ManageTournamentApp">
         <activity
-            android:name=".view.Organizer.OrganizerPage.OrganizerPageActivity"
-            android:exported="true"
-            android:label="@string/title_activity_organizer_page"
-            android:theme="@style/Theme.ManageTournamentApp.NoActionBar"></activity>
-        <activity
             android:name=".view.HomePage.HomePageActivity"
             android:theme="@style/Theme.ManageTournamentApp.NoActionBar">
             <intent-filter>
@@ -32,6 +27,10 @@
             android:exported="true"
             android:label="@string/created_tournaments"
             android:theme="@style/Theme.ManageTournamentApp.NoActionBar" />
+        <activity android:name=".view.Organizer.OrganizerPage.OrganizerPageActivity"
+            android:exported="true"
+            android:label="@string/title_activity_organizer_page"
+            android:theme="@style/Theme.ManageTournamentApp.NoActionBar"/>
         <activity
             android:name=".view.Tournament.ParticipatingTeams.ParticipatingTeamsActivity"
             android:exported="true"
@@ -41,7 +40,7 @@
             android:name=".view.Player.JoinedTeams.JoinedTeamsActivity"
             android:exported="true"
             android:label="@string/joined_teams"
-            android:theme="@style/Theme.ManageTournamentApp.NoActionBar" />
+            android:theme="@style/SecondaryTheme" />
         <activity
             android:name=".view.Team.ParticipatingTournaments.ParticipatingTournamentsActivity"
             android:exported="true"
@@ -69,9 +68,14 @@
             android:theme="@style/SecondaryTheme" />
         <activity android:name=".view.Team.TeamPage.TeamPageActivity"
             android:exported="true"
-            android:label="@string/diorganoseis"
+            android:label="@string/prof_omadas"
             android:screenOrientation="portrait"
             android:theme="@style/SecondaryTheme" />
+        <activity
+            android:name=".view.Organizer.OrganizerInfo.OrganizerInfoActivity"
+            android:exported="true"
+            android:label="@string/diorganoseis"
+            android:theme="@style/Theme.ManageTournamentApp.NoActionBar" />
 
     </application>
 
