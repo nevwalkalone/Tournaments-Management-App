@@ -58,6 +58,8 @@ public class RegisterPlayerActivity extends AppCompatActivity implements Registe
     public Player getConnectedPlayer() {
 
         if (("1").equals(this.getIntent().getStringExtra("IS_EDIT"))) {
+            TextView title = (TextView)findViewById(R.id.player_info);
+            title.setText("Player Info");
             return (Player) (new MemoryLoggedInUser()).getUser();
         } else {
             return null;
