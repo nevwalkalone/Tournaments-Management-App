@@ -75,7 +75,7 @@ public class CreateTeamActivity extends AppCompatActivity implements CreateTeamV
 
     @Override
     public int getSportType() {
-        return spinner.getSelectedItemPosition()+1;
+        return spinner.getSelectedItemPosition();
     }
 
     @Override

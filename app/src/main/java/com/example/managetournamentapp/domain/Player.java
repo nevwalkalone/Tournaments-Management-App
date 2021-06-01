@@ -54,14 +54,21 @@ public class Player extends User {
         if (team == null) {
             return;
         }
-        if (team.hasAnyActivePart())
+        if (team.hasAnyActivePart()) {
             return;
-        if (!canJoin(team))
+        }
+
+        if (!canJoin(team)) {
+
             return;
+        }
+
 
         team.friendGetPlayers().add(this);
         teamsJoined.add(team);
         if (team.getCaptain().equals(this)) {
+
+
             captainInTeams.add(team);
         }
     }
@@ -128,7 +135,8 @@ public class Player extends User {
         if (!team.getPlayers().contains(this)) {
             return;
         }
-        team.friendGetPlayers().add(this);;
+        team.friendGetPlayers().add(this);
+        ;
         captainInTeams.add(team);
     }
 
@@ -164,9 +172,9 @@ public class Player extends User {
         if (!getSportsInterested().contains(team.getSportType())) {
             return false;
         }
+
         return true;
     }
-
 
 
     //for every player
@@ -243,7 +251,6 @@ public class Player extends User {
     }
 
 
-
     public AgeDivision getAgeDivision() {
         return ageDivision;
     }
@@ -261,17 +268,17 @@ public class Player extends User {
 
     @Override
     public String toString() {
-        return super.toString() + "Location: " +getLocation()+" Age group: "+getAgeDivision();
+        return super.toString() + "Location: " + getLocation() + " Age group: " + getAgeDivision();
     }
 
     public boolean equals(Object other) {
-        if (other == null){
+        if (other == null) {
             return false;
         }
-        if (!super.equals(other)){
+        if (!super.equals(other)) {
             return false;
         }
-        if (this == other){
+        if (this == other) {
             return true;
         }
         if (other instanceof Player) {
@@ -288,7 +295,6 @@ public class Player extends User {
 
         return false;
     }
-
 
 
 }

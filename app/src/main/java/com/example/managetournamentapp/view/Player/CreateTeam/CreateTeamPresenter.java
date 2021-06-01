@@ -41,6 +41,7 @@ public class CreateTeamPresenter {
         String colors = view.getTeamColors();
         String sportType = sportTypes.get( view.getSportType() );
 
+
         if (name.length() < 5 || name.length() > 20) {
 
         }else if (colors.length() < 3 || colors.length() > 20) {
@@ -51,6 +52,7 @@ public class CreateTeamPresenter {
                 Player player = ( (Player) (new MemoryLoggedInUser()).getUser() );
                 Team team = new Team( name, new Sport(sportType) , player.getAgeDivision(), player , colors );
                 (new TeamDAOMemory() ).save(team);
+
 
             } else {
                 connectedTeam.setName(name);
