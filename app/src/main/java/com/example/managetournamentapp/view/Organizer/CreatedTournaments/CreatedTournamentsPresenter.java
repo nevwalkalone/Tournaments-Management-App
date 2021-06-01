@@ -24,8 +24,8 @@ public class CreatedTournamentsPresenter {
         return results;
     }
 
-    public void onTournamentSelected(Tournament t){
-        // todo
+    public void onAddTournament(){
+        view.startAddTournament();
     }
 
     public void setView(CreatedTournamentsView view) {

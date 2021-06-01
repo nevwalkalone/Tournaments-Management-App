@@ -3,7 +3,6 @@ package com.example.managetournamentapp.view.Player.PlayerPage;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -16,11 +15,9 @@ import com.example.managetournamentapp.memoryDao.MemoryInitializer;
 import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
 import com.example.managetournamentapp.memoryDao.TeamDAOMemory;
 import com.example.managetournamentapp.view.Player.JoinedTeams.JoinedTeamsActivity;
-import com.example.managetournamentapp.view.Player.JoinedTeams.JoinedTeamsViewModel;
 import com.example.managetournamentapp.view.Player.PlayerInfo.PlayerInfoActivity;
-import com.example.managetournamentapp.view.Tournament.ParticipatingTeams.fragment.ParticipatingTeamsListFragment;
 
-public class PlayerPageActivity extends AppCompatActivity implements  PlayerPageView{
+public class PlayerPageActivity extends AppCompatActivity implements PlayerPageView{
     private PlayerPageViewModel viewModel;
     TextView txtPlayerName;
     Button btnPlayerAccount;
