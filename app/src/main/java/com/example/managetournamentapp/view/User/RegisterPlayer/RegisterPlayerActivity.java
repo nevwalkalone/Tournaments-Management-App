@@ -18,6 +18,7 @@ import com.example.managetournamentapp.domain.AgeDivision;
 import com.example.managetournamentapp.domain.Credentials;
 import com.example.managetournamentapp.domain.Player;
 import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
+import com.example.managetournamentapp.view.HomePage.HomePageActivity;
 import com.example.managetournamentapp.view.Player.PlayerPage.PlayerPageActivity;
 
 import org.w3c.dom.Text;
@@ -42,6 +43,14 @@ public class RegisterPlayerActivity extends AppCompatActivity implements Registe
 
     }
 
+    // TODO OVERRIDE BACK PRESS
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(this, HomePageActivity.class);
+        startActivity(intent);
+    }
+
     public void showPopUp(RegisterPlayerView view, String msg) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         View customLayout = getLayoutInflater().inflate(R.layout.wrong_input_popup, null);
@@ -58,7 +67,7 @@ public class RegisterPlayerActivity extends AppCompatActivity implements Registe
     public Player getConnectedPlayer() {
 
         if (("1").equals(this.getIntent().getStringExtra("IS_EDIT"))) {
-            TextView title = (TextView)findViewById(R.id.player_info);
+            TextView title = (TextView) findViewById(R.id.player_info);
             title.setText("Player Info");
             return (Player) (new MemoryLoggedInUser()).getUser();
         } else {
