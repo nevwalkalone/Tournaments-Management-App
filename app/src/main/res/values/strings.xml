@@ -16,6 +16,7 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
     <string name="add_new_item">Add</string>
+    <string name="create_team">Create a Team</string>
 
     <string name="organizer_info">Account Information</string>
     <string name="delete_organizer">Delete</string>

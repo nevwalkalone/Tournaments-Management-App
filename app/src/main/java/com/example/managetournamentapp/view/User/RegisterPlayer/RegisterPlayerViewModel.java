@@ -9,7 +9,6 @@ public class RegisterPlayerViewModel extends ViewModel {
 
 
     public RegisterPlayerViewModel() {
-
         presenter = new RegisterPlayerPresenter();
     }
 

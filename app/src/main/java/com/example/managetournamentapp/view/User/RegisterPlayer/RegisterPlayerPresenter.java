@@ -7,19 +7,24 @@ import android.widget.Toast;
 import com.example.managetournamentapp.dao.PlayerDAO;
 import com.example.managetournamentapp.domain.Credentials;
 import com.example.managetournamentapp.domain.Player;
+import com.example.managetournamentapp.domain.TournamentType;
 import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
 import com.example.managetournamentapp.memoryDao.PlayerDAOMemory;
 import com.example.managetournamentapp.view.Player.PlayerPage.PlayerPageActivity;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class RegisterPlayerPresenter {
 
     private RegisterPlayerView view;
     private PlayerDAO playerDAO;
     private Player connectedPlayer;
+
 
     public RegisterPlayerPresenter() {
 

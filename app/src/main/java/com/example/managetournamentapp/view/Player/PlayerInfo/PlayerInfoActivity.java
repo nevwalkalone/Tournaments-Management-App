@@ -25,7 +25,6 @@ public class PlayerInfoActivity extends AppCompatActivity implements PlayerInfoV
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //todo erase
-        new MemoryInitializer().prepareData();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player_info);

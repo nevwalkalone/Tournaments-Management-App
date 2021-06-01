@@ -13,6 +13,7 @@ import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.domain.Player;
 import com.example.managetournamentapp.memoryDao.MemoryInitializer;
 import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
+import com.example.managetournamentapp.view.Player.CreateTeam.CreateTeamActivity;
 import com.example.managetournamentapp.view.Player.PlayerInfo.PlayerInfoActivity;
 import com.example.managetournamentapp.view.Player.PlayerPage.PlayerPageActivity;
 import com.example.managetournamentapp.view.Player.PlayerPage.PlayerPageView;
@@ -30,8 +31,7 @@ public class TeamPageActivity extends AppCompatActivity implements TeamPageView 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        //todo erase
-        new MemoryInitializer().prepareData();
+
         teamName =  this.getIntent().getStringExtra(TEAM_NAME_EXTRA);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_team_page);
@@ -58,8 +58,9 @@ public class TeamPageActivity extends AppCompatActivity implements TeamPageView 
 
     @Override
     public void startTeamInfo() {
-//        Intent intent = new Intent(TeamPageActivity.this, PlayerInfoActivity.class);
-//        startActivity(intent);
+        Intent intent = new Intent(TeamPageActivity.this, CreateTeamActivity.class);
+        intent.putExtra(TEAM_NAME_EXTRA, teamName);
+        startActivity(intent);
     }
 
     @Override

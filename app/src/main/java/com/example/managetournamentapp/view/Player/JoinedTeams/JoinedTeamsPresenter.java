@@ -31,8 +31,8 @@ public class JoinedTeamsPresenter {
         return results;
     }
 
-    public void onTeamSelected(Team team){
-        // todo
+    public void onAddTeam(){
+        view.startAddTeam();
     }
 
     public void setView(JoinedTeamsView view) {

@@ -12,14 +12,17 @@ import com.example.managetournamentapp.domain.Team;
 import com.example.managetournamentapp.memoryDao.MemoryInitializer;
 import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
 import com.example.managetournamentapp.memoryDao.PlayerDAOMemory;
+import com.example.managetournamentapp.view.Player.CreateTeam.CreateTeamActivity;
+import com.example.managetournamentapp.view.Player.PlayerInfo.PlayerInfoActivity;
 import com.example.managetournamentapp.view.Player.PlayerPage.PlayerPageActivity;
 import com.example.managetournamentapp.view.Team.TeamPage.TeamPageActivity;
 import com.example.managetournamentapp.view.Tournament.ParticipatingTeams.fragment.ParticipatingTeamsListFragment;
+import com.example.managetournamentapp.view.User.RegisterPlayer.RegisterPlayerActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
-public class JoinedTeamsActivity extends AppCompatActivity implements ParticipatingTeamsListFragment.OnListFragmentInteractionListener {
+public class JoinedTeamsActivity extends AppCompatActivity implements JoinedTeamsView, ParticipatingTeamsListFragment.OnListFragmentInteractionListener {
 //todo add to fragment
 
     public static final String TEAM_NAME_EXTRA = "team_name_extra";
@@ -28,19 +31,15 @@ public class JoinedTeamsActivity extends AppCompatActivity implements Participat
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        //todo erase
-        new MemoryInitializer().prepareData();
+
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_joined_teams);
-        Intent intent = getIntent();
-
-//
-//        Log.d("BookSearchActivity", "Search criteria: " + titleCriterion
-//                + " " + authorCriterion);
 
         viewModel = new ViewModelProvider(this).get(JoinedTeamsViewModel.class);
+        viewModel.getPresenter().setView(this);
         addBtn = findViewById(R.id.create_team_button);
+        addBtn.setOnClickListener(v -> viewModel.getPresenter().onAddTeam());
 
         if (findViewById(R.id.fragment_container) != null){
 
@@ -60,7 +59,6 @@ public class JoinedTeamsActivity extends AppCompatActivity implements Participat
 
     @Override
     public void onListFragmentInteraction(Team item) {
-        Log.wtf("sent", item.getName());
         Intent intent = new Intent(JoinedTeamsActivity.this, TeamPageActivity.class);
         intent.putExtra(TEAM_NAME_EXTRA, item.getName());
         startActivity(intent);
@@ -72,6 +70,10 @@ public class JoinedTeamsActivity extends AppCompatActivity implements Participat
     }
 
 
-
+    @Override
+    public void startAddTeam() {
+        Intent intent = new Intent(JoinedTeamsActivity.this, CreateTeamActivity.class);
+        startActivity(intent);
+    }
 }
 

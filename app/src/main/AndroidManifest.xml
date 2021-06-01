@@ -85,6 +85,11 @@
             android:exported="true"
             android:label="@string/diorganoseis"
             android:theme="@style/Theme.ManageTournamentApp.NoActionBar" />
+        <activity
+            android:name=".view.Player.CreateTeam.CreateTeamActivity"
+            android:exported="true"
+            android:label="@string/diorganoseis"
+            android:theme="@style/Theme.ManageTournamentApp.NoActionBar" />
 
     </application>
 
