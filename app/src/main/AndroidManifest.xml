@@ -81,7 +81,7 @@
         <activity
             android:name=".view.Organizer.OrganizerInfo.OrganizerInfoActivity"
             android:exported="true"
-            android:label="@string/diorganoseis"
+            android:label="@string/account_Details"
             android:theme="@style/SecondaryTheme" />
         <activity
             android:name=".view.Player.CreateTeam.CreateTeamActivity"
@@ -103,7 +103,11 @@
             android:exported="true"
             android:label="@string/tournament_prof"
             android:theme="@style/SecondaryTheme" />
-
+        <activity
+            android:name=".view.Tournament.TournamentInfo.TournamentInfoActivity"
+            android:exported="true"
+            android:label="@string/tournament_info"
+            android:theme="@style/SecondaryTheme" />
 
     </application>
 

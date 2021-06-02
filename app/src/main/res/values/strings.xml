@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">manageTournamentApp</string>
     <string name="title_activity_main">MainActivity</string>
-    <string name="created_tournaments">CreatedTournaments</string>
-    <string name="participating_teams">ParticipatingTeams</string>
+    <string name="created_tournaments">My Tournaments</string>
+    <string name="participating_teams">Participating Teams</string>
     <string name="joined_teams">Joined Teams</string>
-    <string name="participating_tournaments">ParticipatingTournaments</string>
+    <string name="participating_tournaments">Participating Tournaments</string>
     <string name="invite_players">InvitePlayers</string>
 
     <!-- Strings used for fragments for navigation -->
@@ -28,9 +28,12 @@
     <string name="search">Αναζήτηση</string>
     <string name="app_title_name">Manage Tournament App</string>
     <string name="diorganoseis">Οι Διοργανώσεις Μου</string>
-    <string name="title_activity_organizer_page">OrganizerPageActivity</string>
+    <string name="title_activity_organizer_page">Organizer Profile</string>
     <string name="prof_omadas">Team Profile</string>
     <string name="player">Player</string>
     <string name="manageApp">Manage Tournament App</string>
     <string name="tournament_prof">Tournament Profile</string>
+    <string name="account">Account</string>
+    <string name="account_Details">Accout Details</string>
+    <string name="tournament_info">Tournament Info</string>
 </resources>
