@@ -2,11 +2,11 @@ package com.example.managetournamentapp.view.Player.PlayerPage;
 
 public interface PlayerPageView {
 
-    void toPlayerAccount();
+    void toPlayerAccount(String playerUsername);
 
-    void toPlayerTeams();
+    void toPlayerTeams(String playerUsername);
 
-    void toPlayerInvites();
+    void toPlayerInvites(String playerUsername);
 
     void changesOfAccess();
 

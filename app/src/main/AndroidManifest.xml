@@ -98,6 +98,13 @@
             android:exported="true"
             android:label="@string/tournament_prof"
             android:theme="@style/SecondaryTheme" />
+        <activity
+            android:name=".view.Team.TeamInfo.TeamInfoActivity"
+            android:exported="true"
+            android:label="@string/tournament_prof"
+            android:theme="@style/SecondaryTheme" />
+
+
     </application>
 
 </manifest>

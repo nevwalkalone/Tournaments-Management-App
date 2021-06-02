@@ -1,13 +1,9 @@
 package com.example.managetournamentapp.view.Player.PlayerInfo;
 
-
 import com.example.managetournamentapp.dao.LoggedInUser;
 import com.example.managetournamentapp.dao.PlayerDAO;
-import com.example.managetournamentapp.dao.TeamDAO;
 import com.example.managetournamentapp.domain.Player;
-import com.example.managetournamentapp.domain.User;
 import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
-import com.example.managetournamentapp.memoryDao.PlayerDAOMemory;
 
 public class PlayerInfoPresenter {
     private PlayerInfoView view;
@@ -15,10 +11,15 @@ public class PlayerInfoPresenter {
     private PlayerDAO playerDAO;
     private LoggedInUser loggedInUser;
 
-    public PlayerInfoPresenter(){
-    }
+    public PlayerInfoPresenter(){}
 
-    public void findPlayerInfo(){
+    public void findPlayerInfo(String playerUsername){
+        if (playerUsername==null)
+            return;
+        player = playerDAO.find(playerUsername);
+        if( player == null )
+            return;
+
         view.setUsername(player.getCredentials().getUsername());
         view.setPassword(player.getCredentials().getPassword());
         view.setName(player.getName());
@@ -45,15 +46,6 @@ public class PlayerInfoPresenter {
         playerDAO.delete(player);
         (new MemoryLoggedInUser()).clear();
         view.startDeletePlayer();
-    }
-
-    public void setPlayer(User user){
-        if (user == null)
-            return;
-        if ( !(user instanceof Player) )
-            return;
-
-        player = (Player) user;
     }
 
     public void setPlayerDAO(PlayerDAO playerDAO) {

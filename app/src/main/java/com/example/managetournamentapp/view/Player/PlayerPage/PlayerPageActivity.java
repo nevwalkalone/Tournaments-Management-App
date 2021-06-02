@@ -21,6 +21,7 @@ import com.example.managetournamentapp.view.Player.PlayerInfo.PlayerInfoActivity
 
 public class PlayerPageActivity extends AppCompatActivity implements PlayerPageView {
 
+    public static final String TEAM_NAME_EXTRA = "team_name_extra";
     private static final String PLAYER_USERNAME_EXTRA = "player_username_extra";
     private PlayerPageViewModel viewModel;
     TextView txtPlayerName;
@@ -58,25 +59,25 @@ public class PlayerPageActivity extends AppCompatActivity implements PlayerPageV
 
     }
 
-    public void toPlayerAccount() {
+    public void toPlayerAccount(String playerUsername) {
         Intent intent = new Intent(PlayerPageActivity.this, PlayerInfoActivity.class);
+        intent.putExtra(PLAYER_USERNAME_EXTRA, playerUsername);
         startActivity(intent);
     }
 
-    public void toPlayerTeams() {
+    public void toPlayerTeams(String playerUsername) {
         Intent intent = new Intent(PlayerPageActivity.this, JoinedTeamsActivity.class);
+        intent.putExtra(PLAYER_USERNAME_EXTRA, playerUsername);
         startActivity(intent);
     }
 
-    public void toPlayerInvites() {
+    public void toPlayerInvites(String playerUsername) {
         // Intent intent = new Intent(PlayerPageActivity.this, PlayerInvitedActivity.class);
         //  startActivity(intent);
     }
 
     public void changesOfAccess() {
-
         btnPlayerInvites.setVisibility(View.GONE);
-
     }
 
 

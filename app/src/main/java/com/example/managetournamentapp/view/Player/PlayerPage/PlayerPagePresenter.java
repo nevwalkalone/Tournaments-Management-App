@@ -11,57 +11,54 @@ public class PlayerPagePresenter {
     private PlayerDAO playerDAO;
 
 
-    public PlayerPagePresenter() {
-    }
+    public PlayerPagePresenter(){}
 
     public void setLoggedInUser(LoggedInUser loggedInUser) {
         this.loggedInUser = loggedInUser;
     }
 
-    public void findPlayerInfo(String playerUsername) {
-        if (playerUsername == null)
+    public void findPlayerInfo(String playerUsername){
+        if ( playerUsername == null )
             return;
         player = playerDAO.find(playerUsername);
     }
 
-    public void findAccess() {
-        System.out.println(player);
-        System.out.println((Player) loggedInUser.getUser());
-        if (loggedInUser.getUser() != null)
-            if (loggedInUser.getUser() instanceof Player)
-                if (((Player) loggedInUser.getUser()).equals(player))
+    public void findAccess(){
+        if ( loggedInUser.getUser() != null )
+            if (loggedInUser.getUser() instanceof  Player)
+                if ( ((Player)loggedInUser.getUser()).equals(player) )
                     return;
         view.changesOfAccess();
     }
 
-    public void setPlayerDAO(PlayerDAO playerDAO) {
+    public void setPlayerDAO(PlayerDAO playerDAO){
         this.playerDAO = playerDAO;
     }
 
-    public String getPlayerName() {
-        if (player == null)
+    public String getPlayerName(){
+        if (player==null)
             return "";
 
         return player.getName();
     }
 
-    public void onPlayerAccount() {
-        view.toPlayerAccount();
+    public void onPlayerAccount(){
+        view.toPlayerAccount(player.getCredentials().getUsername());
     }
 
-    public void onPlayerTeams() {
-        view.toPlayerTeams();
+    public void onPlayerTeams(){
+        view.toPlayerTeams(player.getCredentials().getUsername());
     }
 
-    public void onPlayerInvites() {
-        view.toPlayerInvites();
+    public void onPlayerInvites(){
+        view.toPlayerInvites(player.getCredentials().getUsername());
     }
 
     public void setView(PlayerPageView view) {
         this.view = view;
     }
 
-    public void clearView() {
+    public void clearView(){
         this.view = null;
     }
 

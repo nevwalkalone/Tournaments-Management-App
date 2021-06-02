@@ -8,21 +8,17 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
-
 import com.example.managetournamentapp.R;
-import com.example.managetournamentapp.domain.Player;
-import com.example.managetournamentapp.memoryDao.MemoryInitializer;
-import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
-import com.example.managetournamentapp.memoryDao.PlayerDAOMemory;
 import com.example.managetournamentapp.view.HomePage.HomePageActivity;
-import com.example.managetournamentapp.view.Player.PlayerPage.PlayerPageActivity;
 import com.example.managetournamentapp.view.User.RegisterPlayer.RegisterPlayerActivity;
 
 
 public class PlayerInfoActivity extends AppCompatActivity implements PlayerInfoView {
     private PlayerInfoViewModel viewModel;
+    private static final String PLAYER_USERNAME_EXTRA = "player_username_extra";
     Button btnEditPlayer;
     Button btnDeletePlayer;
+    String playerUsername;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,10 +26,11 @@ public class PlayerInfoActivity extends AppCompatActivity implements PlayerInfoV
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player_info);
 
+        playerUsername = this.getIntent().getStringExtra(PLAYER_USERNAME_EXTRA);
         viewModel = new ViewModelProvider(this).get(PlayerInfoViewModel.class);
         viewModel.getPresenter().setView(this);
-        viewModel.getPresenter().findPlayerInfo();
-        viewModel.getPresenter().findAccess();
+        viewModel.getPresenter().findPlayerInfo(playerUsername);
+
 
         btnEditPlayer = findViewById(R.id.edit_player_button);
         btnDeletePlayer = findViewById(R.id.delete_player_button);
@@ -41,6 +38,7 @@ public class PlayerInfoActivity extends AppCompatActivity implements PlayerInfoV
         btnEditPlayer.setOnClickListener(v -> viewModel.getPresenter().onEditPlayer());
         btnDeletePlayer.setOnClickListener(v -> viewModel.getPresenter().onDeletePlayer());
 
+        viewModel.getPresenter().findAccess();
     }
 
     public void setUsername(String username){
