@@ -23,4 +23,6 @@ public interface PlayerInfoView {
 
     void startDeletePlayer();
 
+    void changesOfAccess();
+
 }

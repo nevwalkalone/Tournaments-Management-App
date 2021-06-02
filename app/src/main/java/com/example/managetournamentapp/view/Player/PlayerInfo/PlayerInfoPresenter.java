@@ -1,6 +1,7 @@
 package com.example.managetournamentapp.view.Player.PlayerInfo;
 
 
+import com.example.managetournamentapp.dao.LoggedInUser;
 import com.example.managetournamentapp.dao.PlayerDAO;
 import com.example.managetournamentapp.dao.TeamDAO;
 import com.example.managetournamentapp.domain.Player;
@@ -12,6 +13,7 @@ public class PlayerInfoPresenter {
     private PlayerInfoView view;
     private Player player;
     private PlayerDAO playerDAO;
+    private LoggedInUser loggedInUser;
 
     public PlayerInfoPresenter(){
     }
@@ -25,6 +27,14 @@ public class PlayerInfoPresenter {
         view.setEmail(player.getEmail());
         view.setLocation(player.getLocation());
         view.setBirthDate(player.getBirthDate().toString());
+    }
+
+    public void findAccess(){
+        if ( loggedInUser.getUser() != null )
+            if (loggedInUser.getUser() instanceof  Player)
+                if ( ((Player)loggedInUser.getUser()).equals(player) )
+                    return;
+        view.changesOfAccess();
     }
 
     public void onEditPlayer(){
@@ -48,6 +58,10 @@ public class PlayerInfoPresenter {
 
     public void setPlayerDAO(PlayerDAO playerDAO) {
         this.playerDAO = playerDAO;
+    }
+
+    public void setLoggedInUser(LoggedInUser loggedInUser) {
+        this.loggedInUser = loggedInUser;
     }
 
     public void setView(PlayerInfoView view) {

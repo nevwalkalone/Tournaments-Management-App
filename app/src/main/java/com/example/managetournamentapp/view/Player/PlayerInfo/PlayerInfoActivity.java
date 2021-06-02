@@ -2,6 +2,7 @@ package com.example.managetournamentapp.view.Player.PlayerInfo;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -32,6 +33,7 @@ public class PlayerInfoActivity extends AppCompatActivity implements PlayerInfoV
         viewModel = new ViewModelProvider(this).get(PlayerInfoViewModel.class);
         viewModel.getPresenter().setView(this);
         viewModel.getPresenter().findPlayerInfo();
+        viewModel.getPresenter().findAccess();
 
         btnEditPlayer = findViewById(R.id.edit_player_button);
         btnDeletePlayer = findViewById(R.id.delete_player_button);
@@ -82,5 +84,10 @@ public class PlayerInfoActivity extends AppCompatActivity implements PlayerInfoV
     public void startDeletePlayer(){
         Intent intent = new Intent(PlayerInfoActivity.this, HomePageActivity.class);
         startActivity(intent);
+    }
+
+    public void changesOfAccess(){
+        btnEditPlayer.setVisibility(View.GONE);
+        btnDeletePlayer.setVisibility(View.GONE);
     }
 }

@@ -12,6 +12,7 @@ public class JoinedTeamsViewModel extends ViewModel{
         presenter = new JoinedTeamsPresenter();
         presenter.setTeamDAO( new TeamDAOMemory());
         presenter.setPlayer( (new MemoryLoggedInUser()).getUser()  );
+        presenter.setLoggedInUser( new MemoryLoggedInUser() );
     }
 
     public JoinedTeamsPresenter getPresenter() {

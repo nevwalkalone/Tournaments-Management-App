@@ -13,6 +13,7 @@ public class PlayerInfoViewModel extends ViewModel {
         presenter = new PlayerInfoPresenter();
         presenter.setPlayer( (new MemoryLoggedInUser()).getUser()  );
         presenter.setPlayerDAO(new PlayerDAOMemory());
+        presenter.setLoggedInUser( new MemoryLoggedInUser() );
     }
 
     public PlayerInfoPresenter getPresenter() {

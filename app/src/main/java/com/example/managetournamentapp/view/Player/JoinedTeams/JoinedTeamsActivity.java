@@ -2,6 +2,7 @@ package com.example.managetournamentapp.view.Player.JoinedTeams;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -11,7 +12,6 @@ import com.example.managetournamentapp.view.Player.CreateTeam.CreateTeamActivity
 import com.example.managetournamentapp.view.Team.TeamPage.TeamPageActivity;
 import com.example.managetournamentapp.view.Tournament.ParticipatingTeams.fragment.TeamsListFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
 import java.util.ArrayList;
 
 public class JoinedTeamsActivity extends AppCompatActivity implements JoinedTeamsView, TeamsListFragment.OnListFragmentInteractionListener {
@@ -35,12 +35,12 @@ public class JoinedTeamsActivity extends AppCompatActivity implements JoinedTeam
 
         if (findViewById(R.id.fragment_container) != null){
 
-            // Activity is recreated, do not add fragment twice
             if (savedInstanceState != null){
                 return;
             }
-
+            //todo insert player
             viewModel.getPresenter().findJoinedTeams();
+            viewModel.getPresenter().findAccess();
 
             TeamsListFragment teamsListFragment = TeamsListFragment.newInstance(1);
             getSupportFragmentManager().beginTransaction()
@@ -67,5 +67,10 @@ public class JoinedTeamsActivity extends AppCompatActivity implements JoinedTeam
         Intent intent = new Intent(JoinedTeamsActivity.this, CreateTeamActivity.class);
         startActivity(intent);
     }
+
+    public void changesOfAccess(){
+        addBtn.setVisibility(View.GONE);
+    }
+
 }
 

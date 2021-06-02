@@ -1,5 +1,6 @@
 package com.example.managetournamentapp.view.Player.JoinedTeams;
 
+import com.example.managetournamentapp.dao.LoggedInUser;
 import com.example.managetournamentapp.dao.TeamDAO;
 import com.example.managetournamentapp.domain.Participation;
 import com.example.managetournamentapp.domain.Player;
@@ -14,6 +15,7 @@ public class JoinedTeamsPresenter {
     private TeamDAO teamDAO;
     private Player player = null;
     private ArrayList<Team> results = new ArrayList<>();
+    private LoggedInUser loggedInUser;
 
     public JoinedTeamsPresenter(){}
 
@@ -24,6 +26,14 @@ public class JoinedTeamsPresenter {
 
     public ArrayList<Team> getResults() {
         return results;
+    }
+
+    public void findAccess(){
+        if ( loggedInUser.getUser() != null )
+            if (loggedInUser.getUser() instanceof  Player)
+                if ( ((Player)loggedInUser.getUser()).equals(player) )
+                    return;
+        view.changesOfAccess();
     }
 
     public void onAddTeam(){
@@ -41,6 +51,11 @@ public class JoinedTeamsPresenter {
     public void setTeamDAO(TeamDAO teamDAO) {
         this.teamDAO = teamDAO;
     }
+
+    public void setLoggedInUser(LoggedInUser loggedInUser) {
+        this.loggedInUser = loggedInUser;
+    }
+
 
     public void setPlayer(User user){
         if (user == null)

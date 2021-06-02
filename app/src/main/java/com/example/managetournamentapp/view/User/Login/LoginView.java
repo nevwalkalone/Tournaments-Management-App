@@ -13,7 +13,7 @@ public interface LoginView {
 
     void showPopUp(LoginView view, String msg);
 
-    void startPlayerPage();
+    void startPlayerPage(String username);
 
     void startOrganizerPage();
 

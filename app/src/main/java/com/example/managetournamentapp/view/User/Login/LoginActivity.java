@@ -22,6 +22,8 @@ import com.example.managetournamentapp.view.User.RegisterPlayer.RegisterPlayerVi
 
 public class LoginActivity extends AppCompatActivity implements LoginView, View.OnClickListener {
 
+    private static final String PLAYER_USERNAME_EXTRA = "player_username_extra" ;
+    private static final String ORGANIZER_USERNAME_EXTRA =  "organizer_username_extra" ;;
     private Button loginBtn;
     LoginViewModel viewModel;
 
@@ -35,7 +37,6 @@ public class LoginActivity extends AppCompatActivity implements LoginView, View.
         loginBtn.setOnClickListener(this);
     }
 
-
     @Override
     public String getUsername() {
         EditText USERNAME = (EditText) findViewById(R.id.login_input_username);
@@ -44,7 +45,6 @@ public class LoginActivity extends AppCompatActivity implements LoginView, View.
 
     @Override
     public String getPassword() {
-
         EditText PASSWORD = (EditText) findViewById(R.id.login_input_password);
         return PASSWORD.getText().toString();
     }
@@ -69,8 +69,9 @@ public class LoginActivity extends AppCompatActivity implements LoginView, View.
         }
    }
 
-    public void startPlayerPage(){
+    public void startPlayerPage(String username){
         Intent intent = new Intent(this, PlayerPageActivity.class);
+        intent.putExtra(PLAYER_USERNAME_EXTRA, username);
         startActivity(intent);
     }
 

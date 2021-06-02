@@ -35,7 +35,7 @@ public class LoginPresenter {
         } else if ( playerDAO.verify(credCheck)) {
             Player loggedInPlayer = playerDAO.find(credCheck.getUsername());                   // Try to find the Player in DAO and set it as current LoggedInUser
             loggedInUser.setUser(loggedInPlayer);
-            view.startPlayerPage();
+            view.startPlayerPage(username);
         }
     }
 

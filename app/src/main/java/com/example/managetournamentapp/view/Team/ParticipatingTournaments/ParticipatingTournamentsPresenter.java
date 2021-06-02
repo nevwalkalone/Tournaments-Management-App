@@ -2,9 +2,11 @@ package com.example.managetournamentapp.view.Team.ParticipatingTournaments;
 
 import android.util.Log;
 
+import com.example.managetournamentapp.dao.LoggedInUser;
 import com.example.managetournamentapp.dao.TeamDAO;
 import com.example.managetournamentapp.dao.TournamentDAO;
 import com.example.managetournamentapp.domain.Participation;
+import com.example.managetournamentapp.domain.Player;
 import com.example.managetournamentapp.domain.Team;
 import com.example.managetournamentapp.domain.Tournament;
 import java.util.ArrayList;
@@ -14,11 +16,13 @@ public class ParticipatingTournamentsPresenter {
     private TournamentDAO tournamentDAO;
     private TeamDAO teamDAO;
     private ArrayList<Tournament> results = new ArrayList<>();
+    private Team team;
+    private LoggedInUser loggedInUser;
 
     public ParticipatingTournamentsPresenter(){}
 
     public void findParticipatingTournaments(String teamName){
-        Team team = teamDAO.find(teamName);
+        team = teamDAO.find(teamName);
 
         if (team==null)
             return;
@@ -26,6 +30,14 @@ public class ParticipatingTournamentsPresenter {
         results.clear();
         for (Participation p : team.getParticipations())
             results.add( p.getTournament()  );
+    }
+
+    public void findAccess(){
+        if ( loggedInUser.getUser() != null )
+            if (loggedInUser.getUser() instanceof Player)
+                if ( ((Player)loggedInUser.getUser()).equals( team.getCaptain()) )
+                    return;
+        view.changesOfAccess();
     }
 
     public ArrayList<Tournament> getResults() {
@@ -38,6 +50,10 @@ public class ParticipatingTournamentsPresenter {
 
     public void clearView(){
         this.view = null;
+    }
+
+    public void setLoggedInUser(LoggedInUser loggedInUser) {
+        this.loggedInUser = loggedInUser;
     }
 
     public void setTournamentDAO(TournamentDAO tournamentDAO) {

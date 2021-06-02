@@ -2,6 +2,7 @@ package com.example.managetournamentapp.view.Team.ParticipatingTournaments;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -28,10 +29,9 @@ public class ParticipatingTournamentsActivity extends AppCompatActivity implemen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        teamName =  this.getIntent().getStringExtra(TEAM_NAME_EXTRA);
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_participating_tournaments);
+        teamName =  this.getIntent().getStringExtra(TEAM_NAME_EXTRA);
         viewModel = new ViewModelProvider(this).get(ParticipatingTournamentsViewModel.class);
         viewModel.getPresenter().setView(this);
 
@@ -46,6 +46,7 @@ public class ParticipatingTournamentsActivity extends AppCompatActivity implemen
             }
 
             viewModel.getPresenter().findParticipatingTournaments(teamName);
+            viewModel.getPresenter().findAccess();
 
             TournamentListFragment tournamentListFragment = TournamentListFragment.newInstance(1);
             getSupportFragmentManager().beginTransaction()
@@ -74,5 +75,8 @@ public class ParticipatingTournamentsActivity extends AppCompatActivity implemen
         startActivity(intent);
     }
 
+    public void changesOfAccess(){
+        addBtn.setVisibility(View.GONE);
+    }
 
 }

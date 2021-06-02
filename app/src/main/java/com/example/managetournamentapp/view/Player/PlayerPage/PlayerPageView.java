@@ -8,4 +8,6 @@ public interface PlayerPageView {
 
     void toPlayerInvites();
 
+    void changesOfAccess();
+
 }

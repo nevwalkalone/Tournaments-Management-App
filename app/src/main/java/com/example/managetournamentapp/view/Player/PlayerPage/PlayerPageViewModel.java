@@ -2,6 +2,7 @@ package com.example.managetournamentapp.view.Player.PlayerPage;
 
 import androidx.lifecycle.ViewModel;
 import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
+import com.example.managetournamentapp.memoryDao.PlayerDAOMemory;
 
 public class PlayerPageViewModel extends ViewModel {
 
@@ -11,6 +12,7 @@ public class PlayerPageViewModel extends ViewModel {
         super();
         presenter = new PlayerPagePresenter();
         presenter.setLoggedInUser( new MemoryLoggedInUser() );
+        presenter.setPlayerDAO( new PlayerDAOMemory());
     }
 
     public PlayerPagePresenter getPresenter() {
