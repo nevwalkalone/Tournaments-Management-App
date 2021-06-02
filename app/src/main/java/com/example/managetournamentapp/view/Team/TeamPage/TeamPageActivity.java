@@ -20,6 +20,7 @@ import com.example.managetournamentapp.view.Player.PlayerPage.PlayerPageView;
 import com.example.managetournamentapp.view.Player.PlayerPage.PlayerPageViewModel;
 import com.example.managetournamentapp.view.Team.JoinedPlayers.JoinedPlayersActivity;
 import com.example.managetournamentapp.view.Team.ParticipatingTournaments.ParticipatingTournamentsActivity;
+import com.example.managetournamentapp.view.Team.TeamInfo.TeamInfoActivity;
 
 public class TeamPageActivity extends AppCompatActivity implements TeamPageView {
     public static final String TEAM_NAME_EXTRA = "team_name_extra";
@@ -55,7 +56,7 @@ public class TeamPageActivity extends AppCompatActivity implements TeamPageView 
 
     @Override
     public void startTeamInfo() {
-        Intent intent = new Intent(TeamPageActivity.this, CreateTeamActivity.class);
+        Intent intent = new Intent(TeamPageActivity.this, TeamInfoActivity.class);
         intent.putExtra(TEAM_NAME_EXTRA, teamName);
         startActivity(intent);
     }
