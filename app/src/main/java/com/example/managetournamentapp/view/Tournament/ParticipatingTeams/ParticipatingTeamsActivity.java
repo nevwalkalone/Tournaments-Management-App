@@ -6,13 +6,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.domain.Team;
-import com.example.managetournamentapp.memoryDao.MemoryInitializer;
 import com.example.managetournamentapp.memoryDao.TournamentDAOMemory;
 import com.example.managetournamentapp.view.Team.TeamPage.TeamPageActivity;
-import com.example.managetournamentapp.view.Tournament.ParticipatingTeams.fragment.ParticipatingTeamsListFragment;
+import com.example.managetournamentapp.view.Tournament.ParticipatingTeams.fragment.TeamsListFragment;
 import java.util.ArrayList;
 
-public class ParticipatingTeamsActivity extends AppCompatActivity implements ParticipatingTeamsView, ParticipatingTeamsListFragment.OnListFragmentInteractionListener {
+public class ParticipatingTeamsActivity extends AppCompatActivity implements ParticipatingTeamsView, TeamsListFragment.OnListFragmentInteractionListener {
 
     public static final String TOURNAMENT_TITLE_EXTRA = "tournament_title_extra";
     public static final String TEAM_NAME_EXTRA = "team_name_extra";
@@ -39,7 +38,7 @@ public class ParticipatingTeamsActivity extends AppCompatActivity implements Par
             System.out.println(this.getIntent().getStringExtra(TOURNAMENT_TITLE_EXTRA));
             viewModel.getPresenter().findParticipatingTeams( (new TournamentDAOMemory()).find(this.getIntent().getStringExtra(TOURNAMENT_TITLE_EXTRA) ));
 //
-            ParticipatingTeamsListFragment teamsListFragment = ParticipatingTeamsListFragment.newInstance(1);
+            TeamsListFragment teamsListFragment = TeamsListFragment.newInstance(1);
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.fragment_container, teamsListFragment)
                     .commit();

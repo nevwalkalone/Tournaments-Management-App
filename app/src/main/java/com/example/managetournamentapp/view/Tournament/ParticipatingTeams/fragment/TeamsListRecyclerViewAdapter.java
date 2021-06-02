@@ -8,17 +8,17 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.domain.Team;
-import com.example.managetournamentapp.view.Tournament.ParticipatingTeams.fragment.ParticipatingTeamsListFragment.OnListFragmentInteractionListener;
+import com.example.managetournamentapp.view.Tournament.ParticipatingTeams.fragment.TeamsListFragment.OnListFragmentInteractionListener;
 import java.util.ArrayList;
 
 
-public class ParticipatingTeamsListRecyclerViewAdapter extends RecyclerView.Adapter<ParticipatingTeamsListRecyclerViewAdapter.ViewHolder> {
+public class TeamsListRecyclerViewAdapter extends RecyclerView.Adapter<TeamsListRecyclerViewAdapter.ViewHolder> {
 
     private final ArrayList<Team> mValues;
     private final OnListFragmentInteractionListener mListener;
 
 
-    public ParticipatingTeamsListRecyclerViewAdapter(ArrayList<Team> items, OnListFragmentInteractionListener listener){
+    public TeamsListRecyclerViewAdapter(ArrayList<Team> items, OnListFragmentInteractionListener listener){
         mValues = items;
         mListener = listener;
     }

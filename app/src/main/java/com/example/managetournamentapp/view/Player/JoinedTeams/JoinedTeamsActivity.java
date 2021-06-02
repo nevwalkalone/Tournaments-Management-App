@@ -10,12 +10,12 @@ import com.example.managetournamentapp.domain.Team;
 import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
 import com.example.managetournamentapp.view.Player.CreateTeam.CreateTeamActivity;
 import com.example.managetournamentapp.view.Team.TeamPage.TeamPageActivity;
-import com.example.managetournamentapp.view.Tournament.ParticipatingTeams.fragment.ParticipatingTeamsListFragment;
+import com.example.managetournamentapp.view.Tournament.ParticipatingTeams.fragment.TeamsListFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
-public class JoinedTeamsActivity extends AppCompatActivity implements JoinedTeamsView, ParticipatingTeamsListFragment.OnListFragmentInteractionListener {
+public class JoinedTeamsActivity extends AppCompatActivity implements JoinedTeamsView, TeamsListFragment.OnListFragmentInteractionListener {
 //todo add to fragment
 
     public static final String TEAM_NAME_EXTRA = "team_name_extra";
@@ -43,7 +43,7 @@ public class JoinedTeamsActivity extends AppCompatActivity implements JoinedTeam
 
             viewModel.getPresenter().findJoinedTeams( (new MemoryLoggedInUser()).getUser()  );
 
-            ParticipatingTeamsListFragment teamsListFragment = ParticipatingTeamsListFragment.newInstance(1);
+            TeamsListFragment teamsListFragment = TeamsListFragment.newInstance(1);
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.fragment_container, teamsListFragment)
                     .commit();

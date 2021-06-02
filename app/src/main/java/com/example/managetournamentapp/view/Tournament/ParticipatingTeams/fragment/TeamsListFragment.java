@@ -17,18 +17,18 @@ import com.example.managetournamentapp.domain.Team;
 import java.util.ArrayList;
 
 
-public class ParticipatingTeamsListFragment extends Fragment{
+public class TeamsListFragment extends Fragment{
 
     private static final String ARG_COLUMN_COUNT = "column-count";
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
 
-    public ParticipatingTeamsListFragment() {
+    public TeamsListFragment() {
     }
 
     @SuppressWarnings("unused")
-    public static ParticipatingTeamsListFragment newInstance(int columnCount) {
-        ParticipatingTeamsListFragment fragment = new ParticipatingTeamsListFragment();
+    public static TeamsListFragment newInstance(int columnCount) {
+        TeamsListFragment fragment = new TeamsListFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_COLUMN_COUNT, columnCount);
         fragment.setArguments(args);
@@ -58,7 +58,7 @@ public class ParticipatingTeamsListFragment extends Fragment{
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new ParticipatingTeamsListRecyclerViewAdapter(new ArrayList<Team>(teamsList), mListener));
+            recyclerView.setAdapter(new TeamsListRecyclerViewAdapter(new ArrayList<Team>(teamsList), mListener));
         }
         return view;
     }
