@@ -42,7 +42,7 @@ public class RegisterOrganizerPresenter {
     }
 
 
-    public boolean handleOrganizerData() {
+    public void handleOrganizerData() {
         String usename = view.getUsername();
         String password = view.getPassword();
         String name = view.getName();
@@ -74,8 +74,7 @@ public class RegisterOrganizerPresenter {
             organizerDAO = new OrganizerDAOMemory();
             organizerDAO.save(organizer);
             loggedInUser.setUser(organizer);
-            return true;
-
+            view.startOrganizerPage();
         } else {
             connectedOrganizer.setName(name);
             connectedOrganizer.setSurname(surname);
@@ -84,8 +83,7 @@ public class RegisterOrganizerPresenter {
             connectedOrganizer.setTitle(title);
             connectedOrganizer.setPhoneNumber(phoneNumber);
             connectedOrganizer.setEmail(email);
-            return true;
-
+            view.startOrganizerPage();
 
         }
 

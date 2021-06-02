@@ -67,12 +67,13 @@ public class RegisterOrganizerActivity extends AppCompatActivity implements Regi
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.saveOrganizerBtn) {
-            if (viewModel.getPresenter().handleOrganizerData()) {
-                Intent intent = new Intent(this, OrganizerPageActivity.class);
-                startActivity(intent);
-            }
+            viewModel.getPresenter().handleOrganizerData();
         }
+    }
 
+    public void startOrganizerPage(){
+        Intent intent = new Intent(this, OrganizerPageActivity.class);
+        startActivity(intent);
     }
 
     @Override

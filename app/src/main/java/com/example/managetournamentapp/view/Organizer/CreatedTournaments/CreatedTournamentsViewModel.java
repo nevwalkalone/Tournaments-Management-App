@@ -11,7 +11,7 @@ public class CreatedTournamentsViewModel extends ViewModel {
 
     public CreatedTournamentsViewModel() {
         presenter = new CreatedTournamentsPresenter();
-        presenter.setTournamentDAO(new TournamentDAOMemory());
+        presenter.setTournamentDAO( new TournamentDAOMemory() );
         presenter.setOrganizerDAO( new OrganizerDAOMemory() );
     }
 

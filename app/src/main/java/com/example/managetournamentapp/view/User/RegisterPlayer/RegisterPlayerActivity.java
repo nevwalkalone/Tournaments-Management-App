@@ -19,6 +19,7 @@ import com.example.managetournamentapp.domain.Credentials;
 import com.example.managetournamentapp.domain.Player;
 import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
 import com.example.managetournamentapp.view.HomePage.HomePageActivity;
+import com.example.managetournamentapp.view.Organizer.OrganizerPage.OrganizerPageActivity;
 import com.example.managetournamentapp.view.Player.PlayerPage.PlayerPageActivity;
 
 import org.w3c.dom.Text;
@@ -78,13 +79,15 @@ public class RegisterPlayerActivity extends AppCompatActivity implements Registe
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.savePlayerBtn) {
-            if (viewModel.getPresenter().handlePlayerData()) {
-                Intent intent = new Intent(this, PlayerPageActivity.class);
-                startActivity(intent);
-            }
+            viewModel.getPresenter().handlePlayerData();
         }
-
     }
+
+    public void startPlayerPage(){
+        Intent intent = new Intent(this, PlayerPageActivity.class);
+        startActivity(intent);
+    }
+
 
     @Override
     public String getUsername() {

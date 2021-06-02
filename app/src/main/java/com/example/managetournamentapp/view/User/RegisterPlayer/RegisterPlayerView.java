@@ -52,4 +52,6 @@ public interface RegisterPlayerView {
 
     Player getConnectedPlayer();
 
+    void startPlayerPage();
+
 }

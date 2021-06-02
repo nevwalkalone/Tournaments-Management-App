@@ -38,7 +38,6 @@ public class RegisterPlayerPresenter {
         this.connectedPlayer = view.getConnectedPlayer();
         if (connectedPlayer != null)//edit mode
         {
-
             view.setName(connectedPlayer.getName());
             view.setSurname(connectedPlayer.getSurname());
             view.setUsername(connectedPlayer.getCredentials().getUsername());
@@ -50,7 +49,7 @@ public class RegisterPlayerPresenter {
         }
     }
 
-    public boolean handlePlayerData() {
+    public void handlePlayerData() {
         String usename = view.getUsername();
         String password = view.getPassword();
         String name = view.getName();
@@ -84,7 +83,6 @@ public class RegisterPlayerPresenter {
                 playerDAO.save(player);
                 loggedInUser.setUser(player);
 
-
             } else {
                 connectedPlayer.setName(name);
                 connectedPlayer.setSurname(surname);
@@ -94,11 +92,9 @@ public class RegisterPlayerPresenter {
                 connectedPlayer.setPhoneNumber(phoneNumber);
                 connectedPlayer.setEmail(email);
 
-
             }
-            return true;
+            view.startPlayerPage();
         }
-        return false;
     }
 
 

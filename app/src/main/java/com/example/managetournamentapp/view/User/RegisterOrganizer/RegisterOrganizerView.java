@@ -49,4 +49,6 @@ public interface RegisterOrganizerView {
 
     Organizer getConnectedOrganizer();
 
+    void startOrganizerPage();
+
 }

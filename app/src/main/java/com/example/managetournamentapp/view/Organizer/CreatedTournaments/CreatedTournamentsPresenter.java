@@ -21,7 +21,6 @@ public class CreatedTournamentsPresenter {
             return;
         results.clear();
         results.addAll( organizer.getTournaments()  );
-
     }
 
     public ArrayList<Tournament> getResults() {

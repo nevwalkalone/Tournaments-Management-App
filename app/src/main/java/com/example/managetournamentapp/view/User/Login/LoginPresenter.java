@@ -26,22 +26,17 @@ public class LoginPresenter {
      * @param password user input
      * @return true, if User already exists at least in one DAO.
      */
-    public boolean checkInDAO(String username, String password) {
-        boolean found = false;
+    public void checkInDAO(String username, String password) {
         Credentials credCheck = new Credentials(username, password);
         if ( organizerDAO.verify(credCheck)) {
-            found = true;
             Organizer loggedInOrganizer = organizerDAO.findByCredentials(credCheck);           // Try to find the Organizer in DAO and set it as current LoggedInUser
             loggedInUser.setUser(loggedInOrganizer);
+            view.startOrganizerPage();
         } else if ( playerDAO.verify(credCheck)) {
-            found = true;
             Player loggedInPlayer = playerDAO.find(credCheck.getUsername());                   // Try to find the Player in DAO and set it as current LoggedInUser
             loggedInUser.setUser(loggedInPlayer);
+            view.startPlayerPage();
         }
-
-
-        return found;
-
     }
 
     public void setView(LoginView view) {
@@ -69,7 +64,7 @@ public class LoginPresenter {
      *  Check for input validation and existence of Credentials in DAOs.
      * @return true if user exists and input data are valid.
      */
-    public boolean validateCredentials() {
+    public void validateCredentials() {
         String usename = view.getUsername();
         String password = view.getPassword();
         if (usename.length() < 5 || usename.length() > 20)
@@ -77,8 +72,7 @@ public class LoginPresenter {
         else if (password.length() < 5)
             view.showPopUp(view, "Password must be at least 5 chars!");
         else {
-            return checkInDAO(usename, password);
+            checkInDAO(usename, password);
         }
-        return false;
     }
 }
