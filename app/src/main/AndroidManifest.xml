@@ -33,7 +33,7 @@
             android:name=".view.User.Login.LoginActivity"
             android:exported="true" />
         <activity
-            android:name=".view.Organizer.CreatedTournaments.CreatedTournamentsActivity"
+            android:name=".view.Organizer.OrganizerTournaments.OrganizerTournamentsActivity"
             android:exported="true"
             android:label="@string/created_tournaments"
             android:theme="@style/SecondaryTheme" />
@@ -86,7 +86,7 @@
         <activity
             android:name=".view.Player.CreateTeam.CreateTeamActivity"
             android:exported="true"
-            android:label="@string/diorganoseis"
+            android:label="@string/create_team"
             android:theme="@style/SecondaryTheme" />
         <activity
             android:name=".view.Tournament.TournamentPage.TournamentPageActivity"
@@ -101,12 +101,17 @@
         <activity
             android:name=".view.Team.TeamInfo.TeamInfoActivity"
             android:exported="true"
-            android:label="@string/tournament_prof"
+            android:label="@string/team_details"
             android:theme="@style/SecondaryTheme" />
         <activity
             android:name=".view.Tournament.TournamentInfo.TournamentInfoActivity"
             android:exported="true"
             android:label="@string/tournament_info"
+            android:theme="@style/SecondaryTheme" />
+        <activity
+            android:name=".view.Organizer.CreateTournament.CreateTournamentActivity"
+            android:exported="true"
+            android:label="@string/create_tournament"
             android:theme="@style/SecondaryTheme" />
 
     </application>

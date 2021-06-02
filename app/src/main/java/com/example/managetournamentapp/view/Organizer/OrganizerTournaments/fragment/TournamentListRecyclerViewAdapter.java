@@ -1,4 +1,4 @@
-package com.example.managetournamentapp.view.Organizer.CreatedTournaments.fragment;
+package com.example.managetournamentapp.view.Organizer.OrganizerTournaments.fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,7 +8,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.domain.Tournament;
-import com.example.managetournamentapp.view.Organizer.CreatedTournaments.fragment.TournamentListFragment.OnListFragmentInteractionListener;
+import com.example.managetournamentapp.view.Organizer.OrganizerTournaments.fragment.TournamentListFragment.OnListFragmentInteractionListener;
 
 
 import java.util.ArrayList;

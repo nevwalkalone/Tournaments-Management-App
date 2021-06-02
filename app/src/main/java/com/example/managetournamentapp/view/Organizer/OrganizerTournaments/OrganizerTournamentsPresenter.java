@@ -1,4 +1,4 @@
-package com.example.managetournamentapp.view.Organizer.CreatedTournaments;
+package com.example.managetournamentapp.view.Organizer.OrganizerTournaments;
 
 import com.example.managetournamentapp.dao.OrganizerDAO;
 import com.example.managetournamentapp.dao.TournamentDAO;
@@ -7,13 +7,13 @@ import com.example.managetournamentapp.domain.Tournament;
 
 import java.util.ArrayList;
 
-public class CreatedTournamentsPresenter {
-    private CreatedTournamentsView view;
+public class OrganizerTournamentsPresenter {
+    private OrganizerTournamentsView view;
     private TournamentDAO tournamentDAO;
     private OrganizerDAO organizerDAO;
     private ArrayList<Tournament> results = new ArrayList<>();
 
-    public CreatedTournamentsPresenter(){}
+    public OrganizerTournamentsPresenter(){}
 
     public void findCreatedTournaments(String organizerTitle){
         Organizer organizer = organizerDAO.findByTitle(organizerTitle);
@@ -28,10 +28,10 @@ public class CreatedTournamentsPresenter {
     }
 
     public void onAddTournament(){
-        view.startAddTournament();
+        view.startCreateTournament();
     }
 
-    public void setView(CreatedTournamentsView view) {
+    public void setView(OrganizerTournamentsView view) {
         this.view = view;
     }
 

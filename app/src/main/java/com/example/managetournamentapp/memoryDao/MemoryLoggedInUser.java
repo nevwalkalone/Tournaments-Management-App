@@ -8,7 +8,7 @@ public class MemoryLoggedInUser implements LoggedInUser {
     //private static User user = null;
 
 
-//    private static User user =(new PlayerDAOMemory()).find("tom");
+   //private static User user =(new PlayerDAOMemory()).find("tom");
 
 //    //random organizer
    private static User user = (new OrganizerDAOMemory().findByTitle("ESKA"));

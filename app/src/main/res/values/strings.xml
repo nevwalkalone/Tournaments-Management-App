@@ -16,7 +16,7 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
     <string name="add_new_item">Add</string>
-    <string name="create_team">Create a Team</string>
+    <string name="create_team">Create Team</string>
 
     <string name="organizer_info">Account Information</string>
     <string name="delete_organizer">Delete</string>
@@ -34,6 +34,8 @@
     <string name="manageApp">Manage Tournament App</string>
     <string name="tournament_prof">Tournament Profile</string>
     <string name="account">Account</string>
-    <string name="account_Details">Accout Details</string>
+    <string name="account_Details">Account Info</string>
     <string name="tournament_info">Tournament Info</string>
+    <string name="create_tournament">Create Tournament</string>
+    <string name="team_details">Team Info</string>
 </resources>

@@ -12,7 +12,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.managetournamentapp.R;
-import com.example.managetournamentapp.view.Organizer.CreatedTournaments.CreatedTournamentsActivity;
+import com.example.managetournamentapp.view.Organizer.OrganizerTournaments.OrganizerTournamentsActivity;
 import com.example.managetournamentapp.view.Organizer.OrganizerInfo.OrganizerInfoActivity;
 
 
@@ -54,7 +54,7 @@ public class OrganizerPageActivity extends AppCompatActivity implements Organize
      * Starts CreatedTournaments Activity
      */
     public void toOrganizerTournaments() {
-        Intent intent = new Intent(OrganizerPageActivity.this, CreatedTournamentsActivity.class);
+        Intent intent = new Intent(OrganizerPageActivity.this, OrganizerTournamentsActivity.class);
         startActivity(intent);
 
     }

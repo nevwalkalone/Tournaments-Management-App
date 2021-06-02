@@ -8,8 +8,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.domain.Tournament;
-import com.example.managetournamentapp.memoryDao.MemoryInitializer;
-import com.example.managetournamentapp.view.Organizer.CreatedTournaments.fragment.TournamentListFragment;
+import com.example.managetournamentapp.view.Organizer.OrganizerTournaments.fragment.TournamentListFragment;
 import com.example.managetournamentapp.view.Team.ParticipatingTournaments.ParticipatingTournamentsActivity;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package com.example.managetournamentapp.view.Organizer.CreatedTournaments.fragment;
+package com.example.managetournamentapp.view.Organizer.OrganizerTournaments.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
