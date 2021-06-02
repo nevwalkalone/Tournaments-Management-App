@@ -27,7 +27,7 @@ public class PlayerPageActivity extends AppCompatActivity implements PlayerPageV
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        //todo erase
+
         if (init){
             new MemoryInitializer().prepareData();
             init = false;

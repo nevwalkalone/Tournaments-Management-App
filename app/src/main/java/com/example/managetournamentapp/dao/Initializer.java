@@ -1,6 +1,5 @@
 package com.example.managetournamentapp.dao;
 
-import android.util.Log;
 
 import com.example.managetournamentapp.domain.AgeDivision;
 import com.example.managetournamentapp.domain.Credentials;
@@ -48,6 +47,7 @@ public abstract class Initializer {
         tournamentDAO.save(tour1);
         organizerDAO.findByTitle("ESKA").addTournament(tour1);
 
+
         teamDAO.save(  new Team("Celtic", (new Sport("Basketball3v3")), AgeDivision.K100, playerDAO.find("tom") , "green") );
         teamDAO.find( "Celtic" ).addPlayer( playerDAO.find("tom2")  );
         teamDAO.find( "Celtic" ).addPlayer( playerDAO.find("tom3") );
@@ -56,6 +56,10 @@ public abstract class Initializer {
         participationDAO.save( part);
         teamDAO.find( "Celtic" ).addParticipation(part);
 
+        //TODO CHECK ADDPARTICIPATION
+        //adding participation to tournament
+        Tournament temp = tournamentDAO.find(tour1.getTitle());
+        temp.friendGetParticipations().add(part);
     }
 
     public abstract GameDAO getGameDAO();

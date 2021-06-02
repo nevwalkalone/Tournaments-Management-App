@@ -76,7 +76,6 @@ public class ParticipatingTeamsListFragment extends Fragment{
         }
     }
 
-
     @Override
     public void onDetach() {
         super.onDetach();

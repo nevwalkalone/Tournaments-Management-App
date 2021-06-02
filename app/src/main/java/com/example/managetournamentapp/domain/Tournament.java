@@ -71,7 +71,7 @@ public class Tournament {
         return new ArrayList<>(participations);
     }
 
-    protected ArrayList<Participation> friendGetParticipations() {
+    public ArrayList<Participation> friendGetParticipations() {
         return participations;
     }
 

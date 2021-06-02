@@ -17,8 +17,10 @@ public class ParticipatingTeamsPresenter {
     public void findParticipatingTeams(Tournament tournament){
         if (tournament!= null){
             results.clear();
-            for (Participation participation : tournament.getParticipations())
-                results.add( participation.getTeam()  );
+            for (Participation participation : tournament.getParticipations()){
+                results.add( participation.getTeam());
+            }
+
         }
     }
 

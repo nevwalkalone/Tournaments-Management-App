@@ -29,5 +29,8 @@
     <string name="app_title_name">Manage Tournament App</string>
     <string name="diorganoseis">Οι Διοργανώσεις Μου</string>
     <string name="title_activity_organizer_page">OrganizerPageActivity</string>
-    <string name="prof_omadas">Προφίλ Ομάδας</string>
+    <string name="prof_omadas">Team Profile</string>
+    <string name="player">Player</string>
+    <string name="manageApp">Manage Tournament App</string>
+    <string name="tournament_prof">Tournament Profile</string>
 </resources>

@@ -8,10 +8,11 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.ManageTournamentApp">
+        android:theme="@style/SecondaryTheme">
         <activity
             android:name=".view.HomePage.HomePageActivity"
-            android:theme="@style/Theme.ManageTournamentApp.NoActionBar">
+            android:label="@string/manageApp"
+            android:theme="@style/SecondaryTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,11 +21,11 @@
         </activity>
         <activity
             android:name=".view.User.RegisterPlayer.RegisterPlayerActivity"
-            android:theme="@style/Theme.ManageTournamentApp.NoActionBar" />
+            android:theme="@style/SecondaryTheme" />
         <activity
             android:name=".view.User.RegisterOrganizer.RegisterOrganizerActivity"
             android:exported="true"
-            android:theme="@style/Theme.ManageTournamentApp.NoActionBar" />
+            android:theme="@style/SecondaryTheme" />
         <activity
             android:name=".view.User.Login.LoginActivity"
             android:exported="true" />
@@ -32,17 +33,17 @@
             android:name=".view.Organizer.CreatedTournaments.CreatedTournamentsActivity"
             android:exported="true"
             android:label="@string/created_tournaments"
-            android:theme="@style/Theme.ManageTournamentApp.NoActionBar" />
+            android:theme="@style/SecondaryTheme" />
         <activity
             android:name=".view.Organizer.OrganizerPage.OrganizerPageActivity"
             android:exported="true"
             android:label="@string/title_activity_organizer_page"
-            android:theme="@style/Theme.ManageTournamentApp.NoActionBar" />
+            android:theme="@style/SecondaryTheme" />
         <activity
             android:name=".view.Tournament.ParticipatingTeams.ParticipatingTeamsActivity"
             android:exported="true"
             android:label="@string/participating_teams"
-            android:theme="@style/Theme.ManageTournamentApp.NoActionBar" />
+            android:theme="@style/SecondaryTheme" />
         <activity
             android:name=".view.Player.JoinedTeams.JoinedTeamsActivity"
             android:exported="true"
@@ -52,22 +53,22 @@
             android:name=".view.Team.ParticipatingTournaments.ParticipatingTournamentsActivity"
             android:exported="true"
             android:label="@string/participating_tournaments"
-            android:theme="@style/Theme.ManageTournamentApp.NoActionBar" />
+            android:theme="@style/SecondaryTheme" />
         <activity
             android:name=".view.Team.InvitePlayers.InvitePlayersActivity"
             android:exported="true"
             android:label="@string/participating_tournaments"
-            android:theme="@style/Theme.ManageTournamentApp.NoActionBar" />
+            android:theme="@style/SecondaryTheme" />
         <activity
             android:name=".view.Player.PlayerPage.PlayerPageActivity"
             android:exported="true"
-            android:label="@string/participating_tournaments"
-            android:theme="@style/Theme.ManageTournamentApp.NoActionBar" />
+            android:label="@string/player"
+            android:theme="@style/SecondaryTheme" />
         <activity
             android:name=".view.Player.PlayerInfo.PlayerInfoActivity"
             android:exported="true"
             android:label="@string/participating_tournaments"
-            android:theme="@style/Theme.ManageTournamentApp.NoActionBar" />
+            android:theme="@style/SecondaryTheme" />
         <activity
             android:name=".view.Team.TeamPage.TeamPageActivity"
             android:exported="true"
@@ -78,12 +79,18 @@
             android:name=".view.Organizer.OrganizerInfo.OrganizerInfoActivity"
             android:exported="true"
             android:label="@string/diorganoseis"
-            android:theme="@style/Theme.ManageTournamentApp.NoActionBar" />
+            android:theme="@style/SecondaryTheme" />
         <activity
             android:name=".view.Player.CreateTeam.CreateTeamActivity"
             android:exported="true"
             android:label="@string/diorganoseis"
-            android:theme="@style/Theme.ManageTournamentApp.NoActionBar" />
+            android:theme="@style/SecondaryTheme" />
+        <activity
+            android:name=".view.Tournament.TournamentPage.TournamentPageActivity"
+            android:exported="true"
+            android:label="@string/tournament_prof"
+            android:theme="@style/SecondaryTheme" />
+
 
     </application>
 
