@@ -1,5 +1,7 @@
 package com.example.managetournamentapp.view.Organizer.CreatedTournaments;
 import androidx.lifecycle.ViewModel;
+
+import com.example.managetournamentapp.memoryDao.OrganizerDAOMemory;
 import com.example.managetournamentapp.memoryDao.TournamentDAOMemory;
 import com.example.managetournamentapp.view.Organizer.CreatedTournaments.CreatedTournamentsPresenter;
 
@@ -9,8 +11,8 @@ public class CreatedTournamentsViewModel extends ViewModel {
 
     public CreatedTournamentsViewModel() {
         presenter = new CreatedTournamentsPresenter();
-        TournamentDAOMemory tournamentDAOMemory = new TournamentDAOMemory();
-        presenter.setTournamentDAO(tournamentDAOMemory);
+        presenter.setTournamentDAO(new TournamentDAOMemory());
+        presenter.setOrganizerDAO( new OrganizerDAOMemory() );
     }
 
     public CreatedTournamentsPresenter getPresenter() {

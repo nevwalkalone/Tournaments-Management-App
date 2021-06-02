@@ -4,10 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.widget.Toast;
 
+import com.example.managetournamentapp.dao.LoggedInUser;
 import com.example.managetournamentapp.dao.OrganizerDAO;
 import com.example.managetournamentapp.domain.Credentials;
 import com.example.managetournamentapp.domain.Organizer;
-import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
 import com.example.managetournamentapp.memoryDao.OrganizerDAOMemory;
 
 import java.time.LocalDate;
@@ -19,6 +19,7 @@ public class RegisterOrganizerPresenter {
     private RegisterOrganizerView view;
     private OrganizerDAO organizerDAO;
     private Organizer connectedOrganizer;
+    private LoggedInUser loggedInUser;
 
     public RegisterOrganizerPresenter() {
 
@@ -72,7 +73,7 @@ public class RegisterOrganizerPresenter {
             Organizer organizer = new Organizer(name, surname, phoneNumber, email, LocalDate.parse(birthDate), new Credentials(usename, password), title);
             organizerDAO = new OrganizerDAOMemory();
             organizerDAO.save(organizer);
-            (new MemoryLoggedInUser()).setUser(organizer);
+            loggedInUser.setUser(organizer);
             return true;
 
         } else {
@@ -106,6 +107,14 @@ public class RegisterOrganizerPresenter {
         Pattern pattern = Pattern.compile(valid);
         Matcher matcher = pattern.matcher(name);
         return matcher.matches();
+    }
+
+    public LoggedInUser getLoggedInUser() {
+        return loggedInUser;
+    }
+
+    public void setLoggedInUser(LoggedInUser loggedInUser) {
+        this.loggedInUser = loggedInUser;
     }
 
     public void setView(RegisterOrganizerView view) {

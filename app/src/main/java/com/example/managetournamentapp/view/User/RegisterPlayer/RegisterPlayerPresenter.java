@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.widget.Toast;
 
+import com.example.managetournamentapp.dao.LoggedInUser;
 import com.example.managetournamentapp.dao.PlayerDAO;
 import com.example.managetournamentapp.domain.Credentials;
 import com.example.managetournamentapp.domain.Player;
@@ -24,6 +25,8 @@ public class RegisterPlayerPresenter {
     private RegisterPlayerView view;
     private PlayerDAO playerDAO;
     private Player connectedPlayer;
+
+    private LoggedInUser loggedInUser;
 
 
     public RegisterPlayerPresenter() {
@@ -79,7 +82,7 @@ public class RegisterPlayerPresenter {
                 Player player = new Player(name, surname, location, phoneNumber, email, LocalDate.parse(birthDate), new Credentials(usename, password));
                 playerDAO = new PlayerDAOMemory();
                 playerDAO.save(player);
-                (new MemoryLoggedInUser()).setUser(player);
+                loggedInUser.setUser(player);
 
 
             } else {
@@ -115,6 +118,14 @@ public class RegisterPlayerPresenter {
         Pattern pattern = Pattern.compile(valid);
         Matcher matcher = pattern.matcher(name);
         return matcher.matches();
+    }
+
+    public LoggedInUser getLoggedInUser() {
+        return loggedInUser;
+    }
+
+    public void setLoggedInUser(LoggedInUser loggedInUser) {
+        this.loggedInUser = loggedInUser;
     }
 
     public void setView(RegisterPlayerView view) {

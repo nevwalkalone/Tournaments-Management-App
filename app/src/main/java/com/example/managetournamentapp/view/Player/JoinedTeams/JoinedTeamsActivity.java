@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.domain.Team;
-import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
 import com.example.managetournamentapp.view.Player.CreateTeam.CreateTeamActivity;
 import com.example.managetournamentapp.view.Team.TeamPage.TeamPageActivity;
 import com.example.managetournamentapp.view.Tournament.ParticipatingTeams.fragment.TeamsListFragment;
@@ -41,7 +40,7 @@ public class JoinedTeamsActivity extends AppCompatActivity implements JoinedTeam
                 return;
             }
 
-            viewModel.getPresenter().findJoinedTeams( (new MemoryLoggedInUser()).getUser()  );
+            viewModel.getPresenter().findJoinedTeams();
 
             TeamsListFragment teamsListFragment = TeamsListFragment.newInstance(1);
             getSupportFragmentManager().beginTransaction()

@@ -7,16 +7,11 @@ import com.example.managetournamentapp.view.Player.PlayerInfo.PlayerInfoView;
 
 public class OrganizerInfoPresenter {
     private OrganizerInfoView view;
-    private Organizer organizer;
+    private Organizer organizer = null;
 
-    public void findOrganizerInfo(User user) {
-        if (user == null)
-            return;
-        if (!(user instanceof Organizer))
-            return;
+    public OrganizerInfoPresenter(){}
 
-        organizer = (Organizer) user;
-
+    public void findOrganizerInfo() {
         view.setUsername(organizer.getCredentials().getUsername());
         view.setPassword(organizer.getCredentials().getPassword());
         view.setName(organizer.getName());
@@ -35,6 +30,14 @@ public class OrganizerInfoPresenter {
         view.startDeleteOrganizer(organizer);
     }
 
+    public void setOrganizer(User user){
+        if (user == null)
+            return;
+        if (!(user instanceof Organizer))
+            return;
+        organizer = (Organizer) user;
+
+    }
 
     public void setView(OrganizerInfoView view) {
         this.view = view;

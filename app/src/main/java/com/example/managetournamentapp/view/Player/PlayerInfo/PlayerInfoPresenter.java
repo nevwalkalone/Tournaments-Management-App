@@ -1,24 +1,22 @@
 package com.example.managetournamentapp.view.Player.PlayerInfo;
 
 
+import com.example.managetournamentapp.dao.PlayerDAO;
+import com.example.managetournamentapp.dao.TeamDAO;
 import com.example.managetournamentapp.domain.Player;
 import com.example.managetournamentapp.domain.User;
+import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
+import com.example.managetournamentapp.memoryDao.PlayerDAOMemory;
 
 public class PlayerInfoPresenter {
     private PlayerInfoView view;
     private Player player;
+    private PlayerDAO playerDAO;
 
     public PlayerInfoPresenter(){
     }
 
-    public void findPlayerInfo(User user){
-        if (user == null)
-            return;
-        if ( !(user instanceof Player) )
-            return;
-
-        player = (Player) user;
-        System.out.println(player);
+    public void findPlayerInfo(){
         view.setUsername(player.getCredentials().getUsername());
         view.setPassword(player.getCredentials().getPassword());
         view.setName(player.getName());
@@ -27,17 +25,30 @@ public class PlayerInfoPresenter {
         view.setEmail(player.getEmail());
         view.setLocation(player.getLocation());
         view.setBirthDate(player.getBirthDate().toString());
-
     }
 
     public void onEditPlayer(){
-        view.startEditPlayer( player );
+        view.startEditPlayer();
     }
 
     public void onDeletePlayer(){
-        view.startDeletePlayer( player );
+        playerDAO.delete(player);
+        (new MemoryLoggedInUser()).clear();
+        view.startDeletePlayer();
     }
 
+    public void setPlayer(User user){
+        if (user == null)
+            return;
+        if ( !(user instanceof Player) )
+            return;
+
+        player = (Player) user;
+    }
+
+    public void setPlayerDAO(PlayerDAO playerDAO) {
+        this.playerDAO = playerDAO;
+    }
 
     public void setView(PlayerInfoView view) {
         this.view = view;

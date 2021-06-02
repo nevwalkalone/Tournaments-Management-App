@@ -2,6 +2,8 @@ package com.example.managetournamentapp.view.User.RegisterPlayer;
 
 import androidx.lifecycle.ViewModel;
 
+import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
+
 
 public class RegisterPlayerViewModel extends ViewModel {
 
@@ -10,6 +12,7 @@ public class RegisterPlayerViewModel extends ViewModel {
 
     public RegisterPlayerViewModel() {
         presenter = new RegisterPlayerPresenter();
+        presenter.setLoggedInUser( new MemoryLoggedInUser());
     }
 
     public RegisterPlayerPresenter getPresenter() {

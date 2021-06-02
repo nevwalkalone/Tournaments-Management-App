@@ -1,15 +1,12 @@
 package com.example.managetournamentapp.view.Player.CreateTeam;
 
-import com.example.managetournamentapp.domain.Credentials;
+import com.example.managetournamentapp.dao.TeamDAO;
 import com.example.managetournamentapp.domain.Player;
 import com.example.managetournamentapp.domain.Sport;
 import com.example.managetournamentapp.domain.Team;
 import com.example.managetournamentapp.domain.TournamentType;
-import com.example.managetournamentapp.memoryDao.MemoryInitializer;
 import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
-import com.example.managetournamentapp.memoryDao.PlayerDAOMemory;
-import com.example.managetournamentapp.memoryDao.TeamDAOMemory;
-import com.example.managetournamentapp.view.User.RegisterPlayer.RegisterPlayerView;
+
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -18,22 +15,28 @@ public class CreateTeamPresenter {
     private CreateTeamView view;
     private ArrayList<String> sportTypes;
     private Team connectedTeam;
+    private TeamDAO teamDAO;
 
     public CreateTeamPresenter() {
-
         sportTypes = findSportTypes();
     }
 
     public void showPreviousInfo() {
         if (view.getConnectedTeamName() != null)//edit mode
         {
-            connectedTeam = (new TeamDAOMemory()).find( view.getConnectedTeamName()  );
+            connectedTeam = teamDAO.find( view.getConnectedTeamName()  );
             view.setTeamName(connectedTeam.getName());
             view.setTeamColors(connectedTeam.getColors());
             view.setSportType( getTypeIndex(connectedTeam.getSportType().getName()) );
             view.lockSportType();
         }
     }
+
+
+    public void setTeamDAO(TeamDAO teamDAO){
+        this.teamDAO = teamDAO;
+    }
+
 
 
     public boolean onSaveTeam(){
@@ -51,7 +54,7 @@ public class CreateTeamPresenter {
             if ( connectedTeam == null) {
                 Player player = ( (Player) (new MemoryLoggedInUser()).getUser() );
                 Team team = new Team( name, new Sport(sportType) , player.getAgeDivision(), player , colors );
-                (new TeamDAOMemory() ).save(team);
+                teamDAO.save(team);
 
 
             } else {

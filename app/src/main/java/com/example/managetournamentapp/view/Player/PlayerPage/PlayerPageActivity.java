@@ -47,13 +47,10 @@ public class PlayerPageActivity extends AppCompatActivity implements PlayerPageV
         btnPlayerTeams = findViewById(R.id.player_teams_button);
         btnPlayerInvites = findViewById(R.id.player_invites_button);
 
-        txtPlayerName.setText( ((Player) (new MemoryLoggedInUser()).getUser()).getName() );
+        txtPlayerName.setText( viewModel.getPresenter().getPlayerName() );
         btnPlayerAccount.setOnClickListener(v -> viewModel.getPresenter().onPlayerAccount());
         btnPlayerTeams.setOnClickListener(v -> viewModel.getPresenter().onPlayerTeams());
         btnPlayerInvites.setOnClickListener(v -> viewModel.getPresenter().onPlayerInvites());
-
-        Log.wtf("pl page" , ((Player) (new MemoryLoggedInUser()).getUser()).getTeamsJoined().toString() );
-        Log.wtf("pl page" , (new TeamDAOMemory()).findAll().toString() );
 
 
     }

@@ -1,6 +1,7 @@
 package com.example.managetournamentapp.view.Tournament.ParticipatingTeams;
 
 import com.example.managetournamentapp.dao.TeamDAO;
+import com.example.managetournamentapp.dao.TournamentDAO;
 import com.example.managetournamentapp.domain.Participation;
 import com.example.managetournamentapp.domain.Team;
 import com.example.managetournamentapp.domain.Tournament;
@@ -10,18 +11,26 @@ import java.util.ArrayList;
 public class ParticipatingTeamsPresenter {
     private ParticipatingTeamsView view;
     private TeamDAO teamDAO;
+    private TournamentDAO tournamentDAO;
     private ArrayList<Team> results = new ArrayList<>();
+    private Tournament tournament;
 
     public ParticipatingTeamsPresenter(){}
 
-    public void findParticipatingTeams(Tournament tournament){
-        if (tournament!= null){
-            results.clear();
-            for (Participation participation : tournament.getParticipations()){
-                results.add( participation.getTeam());
-            }
+    public void findParticipatingTeams(String tournamentName){
+        tournament = tournamentDAO.find(tournamentName);
+        if (tournament== null){
+            return;
+        }
+        results.clear();
+        for (Participation participation : tournament.getParticipations()){
+            results.add( participation.getTeam());
 
         }
+    }
+
+    public void setTournamentDAO(TournamentDAO tournamentDAO) {
+        this.tournamentDAO = tournamentDAO;
     }
 
     public ArrayList<Team> getResults() {

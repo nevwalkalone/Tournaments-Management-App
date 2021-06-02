@@ -1,15 +1,17 @@
 package com.example.managetournamentapp.view.Player.JoinedTeams;
 
 import androidx.lifecycle.ViewModel;
+import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
 import com.example.managetournamentapp.memoryDao.TeamDAOMemory;
 
 public class JoinedTeamsViewModel extends ViewModel{
     JoinedTeamsPresenter presenter;
 
     public JoinedTeamsViewModel() {
+        super();
         presenter = new JoinedTeamsPresenter();
-        TeamDAOMemory teamDAOMemory = new TeamDAOMemory();
-        presenter.setTeamDAO(teamDAOMemory);
+        presenter.setTeamDAO( new TeamDAOMemory());
+        presenter.setPlayer( (new MemoryLoggedInUser()).getUser()  );
     }
 
     public JoinedTeamsPresenter getPresenter() {

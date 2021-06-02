@@ -41,7 +41,7 @@ public class InvitePlayersActivity extends AppCompatActivity implements PlayersL
                 return;
             }
 
-            viewModel.getPresenter().findPlayers( );
+            viewModel.getPresenter().findPlayers();
 
             PlayersListFragment playersListFragment = PlayersListFragment.newInstance(1);
             getSupportFragmentManager().beginTransaction()

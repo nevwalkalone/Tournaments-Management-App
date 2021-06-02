@@ -7,8 +7,7 @@ public class InvitePlayersViewModel extends ViewModel {
 
     public InvitePlayersViewModel() {
         presenter = new InvitePlayersPresenter();
-        PlayerDAOMemory playerDAOMemory = new PlayerDAOMemory ();
-        presenter.setPlayerDAO(playerDAOMemory);
+        presenter.setPlayerDAO( new PlayerDAOMemory ());
     }
 
     public InvitePlayersPresenter getPresenter() {

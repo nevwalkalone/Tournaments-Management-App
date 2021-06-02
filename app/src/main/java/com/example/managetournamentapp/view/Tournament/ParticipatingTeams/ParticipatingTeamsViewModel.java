@@ -2,6 +2,7 @@ package com.example.managetournamentapp.view.Tournament.ParticipatingTeams;
 
 import androidx.lifecycle.ViewModel;
 import com.example.managetournamentapp.memoryDao.TeamDAOMemory;
+import com.example.managetournamentapp.memoryDao.TournamentDAOMemory;
 
 
 public class ParticipatingTeamsViewModel extends ViewModel{
@@ -9,8 +10,8 @@ public class ParticipatingTeamsViewModel extends ViewModel{
 
     public ParticipatingTeamsViewModel() {
         presenter = new ParticipatingTeamsPresenter();
-        TeamDAOMemory teamDAOMemory = new TeamDAOMemory();
-        presenter.setTeamDAO(teamDAOMemory);
+        presenter.setTeamDAO(new TeamDAOMemory());
+        presenter.setTournamentDAO(new TournamentDAOMemory());
     }
 
     public ParticipatingTeamsPresenter getPresenter() {

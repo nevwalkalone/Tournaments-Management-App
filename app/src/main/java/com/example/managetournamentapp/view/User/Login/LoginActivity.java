@@ -66,7 +66,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView, View.
     public void onClick(View v) {
         if (v.getId() == R.id.complete_login) {
             if (viewModel.getPresenter().validateCredentials()) {                       // check if credentials are valid and if the user exists in DAOs.
-
+//todo put in presenter
                 // handle current instance of User and redirect it to the specific page.
                 if ((new MemoryLoggedInUser()).getUser() instanceof Player) {
                     Intent intent = new Intent(this, PlayerPageActivity.class);

@@ -12,17 +12,12 @@ import java.util.ArrayList;
 public class JoinedTeamsPresenter {
     private JoinedTeamsView view;
     private TeamDAO teamDAO;
+    private Player player = null;
     private ArrayList<Team> results = new ArrayList<>();
 
     public JoinedTeamsPresenter(){}
 
-    public void findJoinedTeams(User user){
-        if (user == null)
-            return;
-        if ( !(user instanceof Player) )
-            return;
-
-        Player player = (Player) user;
+    public void findJoinedTeams(){
         results.clear();
         results.addAll(player.getTeamsJoined());
     }
@@ -46,6 +41,16 @@ public class JoinedTeamsPresenter {
     public void setTeamDAO(TeamDAO teamDAO) {
         this.teamDAO = teamDAO;
     }
+
+    public void setPlayer(User user){
+        if (user == null)
+            return;
+        if ( !(user instanceof Player) )
+            return;
+
+        player = (Player) user;
+    }
+
 
 
 }

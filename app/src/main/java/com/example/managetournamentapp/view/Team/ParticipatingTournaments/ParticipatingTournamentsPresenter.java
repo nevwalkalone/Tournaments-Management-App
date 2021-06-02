@@ -24,7 +24,6 @@ public class ParticipatingTournamentsPresenter {
             return;
 
         results.clear();
-        Log.wtf("parts" ,  team.getParticipations().toString());
         for (Participation p : team.getParticipations())
             results.add( p.getTournament()  );
     }

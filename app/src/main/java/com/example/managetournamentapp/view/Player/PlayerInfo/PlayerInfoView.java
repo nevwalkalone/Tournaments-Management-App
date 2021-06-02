@@ -1,7 +1,5 @@
 package com.example.managetournamentapp.view.Player.PlayerInfo;
 
-import com.example.managetournamentapp.domain.Player;
-
 public interface PlayerInfoView {
 
 
@@ -21,8 +19,8 @@ public interface PlayerInfoView {
 
     void setBirthDate(String date);
 
-    void startEditPlayer(Player player);
+    void startEditPlayer();
 
-    void startDeletePlayer(Player player);
+    void startDeletePlayer();
 
 }

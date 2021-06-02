@@ -41,7 +41,7 @@ public class CreatedTournamentsActivity extends AppCompatActivity implements Cre
                 return;
             }
 
-            viewModel.getPresenter().findCreatedTournaments( (new OrganizerDAOMemory()).findByTitle("ESKA")  );
+            viewModel.getPresenter().findCreatedTournaments( "ESKA"  );
 
             TournamentListFragment tournamentListFragment = TournamentListFragment.newInstance(1);
             getSupportFragmentManager().beginTransaction()

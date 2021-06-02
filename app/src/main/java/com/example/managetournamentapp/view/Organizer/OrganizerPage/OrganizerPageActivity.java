@@ -2,15 +2,11 @@ package com.example.managetournamentapp.view.Organizer.OrganizerPage;
 
 import android.content.Intent;
 import android.os.Bundle;
-
 import com.example.managetournamentapp.domain.Organizer;
-import com.example.managetournamentapp.domain.Player;
 import com.example.managetournamentapp.memoryDao.MemoryInitializer;
 import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
-
 
 import android.widget.Button;
 import android.widget.TextView;
@@ -18,6 +14,7 @@ import android.widget.TextView;
 import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.view.Organizer.CreatedTournaments.CreatedTournamentsActivity;
 import com.example.managetournamentapp.view.Organizer.OrganizerInfo.OrganizerInfoActivity;
+
 
 public class OrganizerPageActivity extends AppCompatActivity implements OrganizerPageView {
     private OrganizerPageViewModel viewModel;

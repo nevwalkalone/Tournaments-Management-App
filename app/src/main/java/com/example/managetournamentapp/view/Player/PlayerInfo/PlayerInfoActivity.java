@@ -13,6 +13,7 @@ import com.example.managetournamentapp.domain.Player;
 import com.example.managetournamentapp.memoryDao.MemoryInitializer;
 import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
 import com.example.managetournamentapp.memoryDao.PlayerDAOMemory;
+import com.example.managetournamentapp.view.HomePage.HomePageActivity;
 import com.example.managetournamentapp.view.Player.PlayerPage.PlayerPageActivity;
 import com.example.managetournamentapp.view.User.RegisterPlayer.RegisterPlayerActivity;
 
@@ -28,13 +29,9 @@ public class PlayerInfoActivity extends AppCompatActivity implements PlayerInfoV
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player_info);
 
-//
-//        Log.d("BookSearchActivity", "Search criteria: " + titleCriterion
-//                + " " + authorCriterion);
-
         viewModel = new ViewModelProvider(this).get(PlayerInfoViewModel.class);
         viewModel.getPresenter().setView(this);
-        viewModel.getPresenter().findPlayerInfo( (new MemoryLoggedInUser()).getUser());
+        viewModel.getPresenter().findPlayerInfo();
 
         btnEditPlayer = findViewById(R.id.edit_player_button);
         btnDeletePlayer = findViewById(R.id.delete_player_button);
@@ -76,17 +73,14 @@ public class PlayerInfoActivity extends AppCompatActivity implements PlayerInfoV
         ((TextView)findViewById(R.id.text_birth_date)).setText(date);
     }
 
-
-    public void startEditPlayer(Player player){
+    public void startEditPlayer(){
         Intent intent = new Intent(PlayerInfoActivity.this, RegisterPlayerActivity.class);
         intent.putExtra("IS_EDIT", "1");
         startActivity(intent);
     }
 
-    public void startDeletePlayer(Player player){
-        //todo check
-        (new PlayerDAOMemory()).delete(player);
-        (new MemoryLoggedInUser()).clear();
-
+    public void startDeletePlayer(){
+        Intent intent = new Intent(PlayerInfoActivity.this, HomePageActivity.class);
+        startActivity(intent);
     }
 }

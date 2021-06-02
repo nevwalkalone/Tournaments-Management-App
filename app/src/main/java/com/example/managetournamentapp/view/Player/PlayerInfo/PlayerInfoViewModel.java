@@ -1,6 +1,8 @@
 package com.example.managetournamentapp.view.Player.PlayerInfo;
 
 import androidx.lifecycle.ViewModel;
+import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
+import com.example.managetournamentapp.memoryDao.PlayerDAOMemory;
 
 
 public class PlayerInfoViewModel extends ViewModel {
@@ -9,6 +11,8 @@ public class PlayerInfoViewModel extends ViewModel {
     public PlayerInfoViewModel() {
         super();
         presenter = new PlayerInfoPresenter();
+        presenter.setPlayer( (new MemoryLoggedInUser()).getUser()  );
+        presenter.setPlayerDAO(new PlayerDAOMemory());
     }
 
     public PlayerInfoPresenter getPresenter() {
@@ -18,7 +22,6 @@ public class PlayerInfoViewModel extends ViewModel {
     @Override
     protected void onCleared() {
         super.onCleared();
-        // avoid leaking activity for any reason
         presenter.clearView();
     }
 

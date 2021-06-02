@@ -28,7 +28,7 @@ public class OrganizerInfoActivity extends AppCompatActivity implements Organize
 
         viewModel = new ViewModelProvider(this).get(OrganizerInfoViewModel.class);
         viewModel.getPresenter().setView(this);
-        viewModel.getPresenter().findOrganizerInfo((new MemoryLoggedInUser()).getUser());
+        viewModel.getPresenter().findOrganizerInfo();
 
         btnEditOrganizer = findViewById(R.id.edit_organizer_button);
         btnDeleteOrganizer = findViewById(R.id.delete_organizer_button);

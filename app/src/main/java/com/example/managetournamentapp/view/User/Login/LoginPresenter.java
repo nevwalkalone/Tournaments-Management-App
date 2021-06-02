@@ -1,26 +1,24 @@
 package com.example.managetournamentapp.view.User.Login;
 
-import android.view.View;
 
+import com.example.managetournamentapp.dao.LoggedInUser;
 import com.example.managetournamentapp.dao.OrganizerDAO;
 import com.example.managetournamentapp.dao.PlayerDAO;
 import com.example.managetournamentapp.domain.Credentials;
 import com.example.managetournamentapp.domain.Organizer;
 import com.example.managetournamentapp.domain.Player;
-import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
-import com.example.managetournamentapp.memoryDao.OrganizerDAOMemory;
-import com.example.managetournamentapp.memoryDao.PlayerDAOMemory;
+
 
 public class LoginPresenter {
 
     private LoginView view;
     private PlayerDAO playerDAO;
     private OrganizerDAO organizerDAO;
+    private LoggedInUser loggedInUser;
 
     public LoginPresenter() {
 
     }
-
 
     /**
      * This method check in both PlayerDAO and OrganizerDAO via credentials.
@@ -30,17 +28,15 @@ public class LoginPresenter {
      */
     public boolean checkInDAO(String username, String password) {
         boolean found = false;
-        playerDAO = new PlayerDAOMemory();
-        organizerDAO = new OrganizerDAOMemory();
         Credentials credCheck = new Credentials(username, password);
-        if (getOrganizerDAO().verify(credCheck)) {
+        if ( organizerDAO.verify(credCheck)) {
             found = true;
-            Organizer loggedInOrganizer = getOrganizerDAO().findByCredentials(credCheck);           // Try to find the Organizer in DAO and set it as current LoggedInUser
-            (new MemoryLoggedInUser()).setUser(loggedInOrganizer);
-        } else if (getPlayerDAO().verify(credCheck)) {
+            Organizer loggedInOrganizer = organizerDAO.findByCredentials(credCheck);           // Try to find the Organizer in DAO and set it as current LoggedInUser
+            loggedInUser.setUser(loggedInOrganizer);
+        } else if ( playerDAO.verify(credCheck)) {
             found = true;
-            Player loggedInPlayer = getPlayerDAO().find(credCheck.getUsername());                   // Try to find the Player in DAO and set it as current LoggedInUser
-            (new MemoryLoggedInUser()).setUser(loggedInPlayer);
+            Player loggedInPlayer = playerDAO.find(credCheck.getUsername());                   // Try to find the Player in DAO and set it as current LoggedInUser
+            loggedInUser.setUser(loggedInPlayer);
         }
 
 
@@ -56,13 +52,18 @@ public class LoginPresenter {
         this.view = null;
     }
 
-    public PlayerDAO getPlayerDAO() {
-        return playerDAO;
+    public void setPlayerDAO(PlayerDAO playerDAO) {
+        this.playerDAO = playerDAO;
     }
 
-    public OrganizerDAO getOrganizerDAO() {
-        return organizerDAO;
+    public void setOrganizerDAO(OrganizerDAO organizerDAO) {
+        this.organizerDAO = organizerDAO;
     }
+
+    public void setLoggedInUser(LoggedInUser loggedInUser) {
+        this.loggedInUser = loggedInUser;
+    }
+
 
     /**
      *  Check for input validation and existence of Credentials in DAOs.
