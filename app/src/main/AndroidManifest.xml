@@ -90,6 +90,11 @@
             android:exported="true"
             android:label="@string/tournament_prof"
             android:theme="@style/SecondaryTheme" />
+        <activity
+            android:name=".view.Team.AddParticipation.AddParticipationActivity"
+            android:exported="true"
+            android:label="@string/tournament_prof"
+            android:theme="@style/SecondaryTheme" />
 
 
     </application>

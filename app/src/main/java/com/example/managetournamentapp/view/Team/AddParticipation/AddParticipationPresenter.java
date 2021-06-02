@@ -1,6 +1,4 @@
-package com.example.managetournamentapp.view.Team.ParticipatingTournaments;
-
-import android.util.Log;
+package com.example.managetournamentapp.view.Team.AddParticipation;
 
 import com.example.managetournamentapp.dao.TeamDAO;
 import com.example.managetournamentapp.dao.TournamentDAO;
@@ -9,31 +7,34 @@ import com.example.managetournamentapp.domain.Team;
 import com.example.managetournamentapp.domain.Tournament;
 import java.util.ArrayList;
 
-public class ParticipatingTournamentsPresenter {
-    private ParticipatingTournamentsView view;
+public class AddParticipationPresenter {
+    private AddParticipationView view;
     private TournamentDAO tournamentDAO;
     private TeamDAO teamDAO;
     private ArrayList<Tournament> results = new ArrayList<>();
+    private Team team;
 
-    public ParticipatingTournamentsPresenter(){}
+    public AddParticipationPresenter(){}
 
-    public void findParticipatingTournaments(String teamName){
-        Team team = teamDAO.find(teamName);
+    public void findTournaments(String teamName){
+        team = teamDAO.find(teamName);
 
         if (team==null)
             return;
 
         results.clear();
-        Log.wtf("parts" ,  team.getParticipations().toString());
-        for (Participation p : team.getParticipations())
-            results.add( p.getTournament()  );
+        for (Tournament tournament : tournamentDAO.findAll()){
+            Participation part = new Participation(tournament, team);
+            if ( team.canParticipate(part)  )
+                results.add(tournament);
+        }
     }
 
     public ArrayList<Tournament> getResults() {
         return results;
     }
 
-    public void setView(ParticipatingTournamentsView view) {
+    public void setView(AddParticipationView view) {
         this.view = view;
     }
 
@@ -45,13 +46,14 @@ public class ParticipatingTournamentsPresenter {
         this.tournamentDAO = tournamentDAO;
     }
 
-
     public void setTeamDAO(TeamDAO teamDAO) {
         this.teamDAO = teamDAO;
     }
 
-    public void onAddParticipation(){
-        view.startAddParticipation();
+    public void onAddParticipation(Tournament tournament){
+        Participation part = new Participation(tournament, team);
+        team.addParticipation(part);
+
     }
 
 }

@@ -25,18 +25,14 @@ public class CreatedTournamentsActivity extends AppCompatActivity implements Cre
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        //todo erase
-        new MemoryInitializer().prepareData();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_created_tournaments);
+        viewModel = new ViewModelProvider(this).get(CreatedTournamentsViewModel.class);
+        viewModel.getPresenter().setView(this);
+
         addBtn = findViewById(R.id.create_tournament_button);
         addBtn.setOnClickListener(v -> viewModel.getPresenter().onAddTournament());
-//
-//        Log.d("BookSearchActivity", "Search criteria: " + titleCriterion
-//                + " " + authorCriterion);
-
-        viewModel = new ViewModelProvider(this).get(CreatedTournamentsViewModel.class);
 
         if (findViewById(R.id.fragment_container) != null){
 
