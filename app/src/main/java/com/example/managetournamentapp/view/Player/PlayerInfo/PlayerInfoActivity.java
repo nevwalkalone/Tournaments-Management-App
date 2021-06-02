@@ -25,16 +25,14 @@ public class PlayerInfoActivity extends AppCompatActivity implements PlayerInfoV
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player_info);
-
         playerUsername = this.getIntent().getStringExtra(PLAYER_USERNAME_EXTRA);
+
         viewModel = new ViewModelProvider(this).get(PlayerInfoViewModel.class);
         viewModel.getPresenter().setView(this);
         viewModel.getPresenter().findPlayerInfo(playerUsername);
 
-
         btnEditPlayer = findViewById(R.id.edit_player_button);
         btnDeletePlayer = findViewById(R.id.delete_player_button);
-
         btnEditPlayer.setOnClickListener(v -> viewModel.getPresenter().onEditPlayer());
         btnDeletePlayer.setOnClickListener(v -> viewModel.getPresenter().onDeletePlayer());
 
@@ -75,7 +73,7 @@ public class PlayerInfoActivity extends AppCompatActivity implements PlayerInfoV
 
     public void startEditPlayer(){
         Intent intent = new Intent(PlayerInfoActivity.this, RegisterPlayerActivity.class);
-        intent.putExtra("IS_EDIT", "1");
+        intent.putExtra(PLAYER_USERNAME_EXTRA , playerUsername);
         startActivity(intent);
     }
 

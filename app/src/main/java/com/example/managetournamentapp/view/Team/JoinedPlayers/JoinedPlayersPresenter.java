@@ -15,7 +15,7 @@ public class JoinedPlayersPresenter {
     public JoinedPlayersPresenter() {
     }
 
-    public void findPlayers() {
+    public void findPlayers(String teamName) {
         results.clear();
         results = playerDAO.findAll();
     }

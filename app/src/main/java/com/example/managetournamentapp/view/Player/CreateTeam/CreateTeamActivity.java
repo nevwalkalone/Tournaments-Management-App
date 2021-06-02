@@ -27,8 +27,11 @@ public class CreateTeamActivity extends AppCompatActivity implements CreateTeamV
 
     CreateTeamViewModel viewModel;
     public static final String TEAM_NAME_EXTRA = "team_name_extra";
+    private static final String PLAYER_USERNAME_EXTRA = "player_username_extra";
     private Button saveBtn;
     private Spinner spinner;
+    String playerUsername;
+    String teamName;
 
 
     @Override
@@ -36,31 +39,31 @@ public class CreateTeamActivity extends AppCompatActivity implements CreateTeamV
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_team);
+
+        playerUsername = this.getIntent().getStringExtra(PLAYER_USERNAME_EXTRA);
+        teamName = this.getIntent().getStringExtra(PLAYER_USERNAME_EXTRA);
+
         viewModel = new ViewModelProvider(this).get(CreateTeamViewModel.class);
         viewModel.getPresenter().setView(this);
 
         spinner =  findViewById(R.id.sport_spinner);
         setSpinnerList( viewModel.getPresenter().getSportTypes() );
 
-        viewModel.getPresenter().showPreviousInfo();
+        viewModel.getPresenter().showPreviousInfo(playerUsername, teamName);
 
         saveBtn = findViewById(R.id.saveTeambtn);
         saveBtn.setOnClickListener(v -> viewModel.getPresenter().onSaveTeam());
 
         saveBtn.setOnClickListener(v -> {
-            if (viewModel.getPresenter().onSaveTeam()){
-                Log.wtf("creat page" , ((Player) (new MemoryLoggedInUser()).getUser()).getTeamsJoined().toString() );
-                Log.wtf("creat page" , (new TeamDAOMemory()).findAll().toString() );
-                Intent intent = new Intent(CreateTeamActivity.this, TeamPageActivity.class);
-                intent.putExtra(TEAM_NAME_EXTRA, getTeamName());
-                startActivity(intent);
-            }
+            viewModel.getPresenter().onSaveTeam();
         });
     }
 
     @Override
-    public void startSaveTeam() {
-
+    public void startSaveTeam(String userName) {
+        Intent intent = new Intent(CreateTeamActivity.this, JoinedTeamsActivity.class);
+        intent.putExtra(TEAM_NAME_EXTRA, getTeamName());
+        startActivity(intent);
     }
 
     @Override
@@ -76,17 +79,6 @@ public class CreateTeamActivity extends AppCompatActivity implements CreateTeamV
     @Override
     public int getSportType() {
         return spinner.getSelectedItemPosition();
-    }
-
-    @Override
-    public String getConnectedTeamName() {
-        if (this.getIntent().getStringExtra(TEAM_NAME_EXTRA)== null)  {
-            Log.wtf("got" ,"nulli");
-            return null;
-        } else {
-            Log.wtf("got" ,this.getIntent().getStringExtra(TEAM_NAME_EXTRA) );
-            return this.getIntent().getStringExtra(TEAM_NAME_EXTRA);
-        }
     }
 
     @Override

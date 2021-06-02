@@ -56,8 +56,6 @@ public interface RegisterPlayerView {
 
     void showPopUp(RegisterPlayerView view, String msg);
 
-    Player getConnectedPlayer();
-
     void startPlayerPage();
 
 }

@@ -1,57 +1,45 @@
 package com.example.managetournamentapp.view.User.RegisterPlayer;
 
-import android.content.Context;
-import android.content.Intent;
-import android.widget.Toast;
-
 import com.example.managetournamentapp.dao.LoggedInUser;
 import com.example.managetournamentapp.dao.PlayerDAO;
 import com.example.managetournamentapp.domain.Credentials;
 import com.example.managetournamentapp.domain.Player;
 import com.example.managetournamentapp.domain.Sport;
-import com.example.managetournamentapp.domain.TournamentType;
-import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
-import com.example.managetournamentapp.memoryDao.PlayerDAOMemory;
-import com.example.managetournamentapp.view.Player.PlayerPage.PlayerPageActivity;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+
 
 public class RegisterPlayerPresenter {
 
     private RegisterPlayerView view;
     private PlayerDAO playerDAO;
-    private Player connectedPlayer;
-
+    private Player connectedPlayer = null;
     private LoggedInUser loggedInUser;
 
 
     public RegisterPlayerPresenter() {
-
-
     }
 
-    public void showPreviousInfo() {
-        this.connectedPlayer = view.getConnectedPlayer();
+    public void showPreviousInfo(String playerUsername) {
+        if (playerUsername==null)
+            return;
+        connectedPlayer = playerDAO.find(playerUsername);
+        if( connectedPlayer == null )
+            return;
 
-        if (connectedPlayer != null)//edit mode
-        {
-            System.out.println(connectedPlayer.getSportsInterested());
-            view.setName(connectedPlayer.getName());
-            view.setSurname(connectedPlayer.getSurname());
-            view.setUsername(connectedPlayer.getCredentials().getUsername());
-            view.setPassword(connectedPlayer.getCredentials().getPassword());
-            view.setPhoneNumber(connectedPlayer.getPhoneNumber());
-            view.setEmail(connectedPlayer.getEmail());
-            view.setBirthdate(connectedPlayer.getBirthDate().toString());
-            view.setLocation(connectedPlayer.getLocation());
-            view.setSportsInterest(connectedPlayer.getSportsInterested());
-        }
+        view.setName(connectedPlayer.getName());
+        view.setSurname(connectedPlayer.getSurname());
+        view.setUsername(connectedPlayer.getCredentials().getUsername());
+        view.setPassword(connectedPlayer.getCredentials().getPassword());
+        view.setPhoneNumber(connectedPlayer.getPhoneNumber());
+        view.setEmail(connectedPlayer.getEmail());
+        view.setBirthdate(connectedPlayer.getBirthDate().toString());
+        view.setLocation(connectedPlayer.getLocation());
+        view.setSportsInterest(connectedPlayer.getSportsInterested());
     }
 
     public void handlePlayerData() {
@@ -83,14 +71,13 @@ public class RegisterPlayerPresenter {
             view.showPopUp(view, "Location must be at least 2 chars and only alphabetical chars!");
         else {
             // IF USER IS NEW!
-            if (view.getConnectedPlayer() == null) {
+            if (connectedPlayer == null) {
                 birthDate = birthDate.replace("/", "-");
                 String dateFormat = LocalDate.parse(birthDate, DateTimeFormatter.ofPattern("dd-MM-uuuu")).format(DateTimeFormatter.ofPattern("uuuu-MM-dd"));
 
                 Player player = new Player(name, surname, location, phoneNumber, email, LocalDate.parse(dateFormat), new Credentials(usename, password));
                 for (Sport sport : sportsInterest)
                     player.addSportInterested(sport);
-                playerDAO = new PlayerDAOMemory();
                 playerDAO.save(player);
                 loggedInUser.setUser(player);
 

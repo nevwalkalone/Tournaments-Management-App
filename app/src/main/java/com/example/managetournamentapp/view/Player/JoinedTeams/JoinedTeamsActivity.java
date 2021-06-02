@@ -18,8 +18,10 @@ public class JoinedTeamsActivity extends AppCompatActivity implements JoinedTeam
 //todo add to fragment
 
     public static final String TEAM_NAME_EXTRA = "team_name_extra";
+    private static final String PLAYER_USERNAME_EXTRA = "player_username_extra";
     JoinedTeamsViewModel viewModel;
     private FloatingActionButton addBtn;
+    private String playerUsername;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +29,7 @@ public class JoinedTeamsActivity extends AppCompatActivity implements JoinedTeam
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_joined_teams);
+        playerUsername = this.getIntent().getStringExtra(PLAYER_USERNAME_EXTRA);
 
         viewModel = new ViewModelProvider(this).get(JoinedTeamsViewModel.class);
         viewModel.getPresenter().setView(this);
@@ -38,15 +41,16 @@ public class JoinedTeamsActivity extends AppCompatActivity implements JoinedTeam
             if (savedInstanceState != null){
                 return;
             }
-            //todo insert player
-            viewModel.getPresenter().findJoinedTeams();
-            viewModel.getPresenter().findAccess();
+
+            viewModel.getPresenter().findJoinedTeams(playerUsername);
+
 
             TeamsListFragment teamsListFragment = TeamsListFragment.newInstance(1);
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.fragment_container, teamsListFragment)
                     .commit();
         }
+        viewModel.getPresenter().findAccess();
     }
 
     @Override
@@ -65,6 +69,7 @@ public class JoinedTeamsActivity extends AppCompatActivity implements JoinedTeam
     @Override
     public void startAddTeam() {
         Intent intent = new Intent(JoinedTeamsActivity.this, CreateTeamActivity.class);
+        intent.putExtra(PLAYER_USERNAME_EXTRA , playerUsername);
         startActivity(intent);
     }
 

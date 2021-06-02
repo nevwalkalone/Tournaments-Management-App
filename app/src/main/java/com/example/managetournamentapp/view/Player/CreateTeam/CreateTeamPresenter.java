@@ -1,5 +1,6 @@
 package com.example.managetournamentapp.view.Player.CreateTeam;
 
+import com.example.managetournamentapp.dao.PlayerDAO;
 import com.example.managetournamentapp.dao.TeamDAO;
 import com.example.managetournamentapp.domain.Player;
 import com.example.managetournamentapp.domain.Sport;
@@ -15,21 +16,33 @@ public class CreateTeamPresenter {
     private CreateTeamView view;
     private ArrayList<String> sportTypes;
     private Team connectedTeam;
+    private Player player = null;
+    private PlayerDAO playerDAO;
     private TeamDAO teamDAO;
+
 
     public CreateTeamPresenter() {
         sportTypes = findSportTypes();
     }
 
-    public void showPreviousInfo() {
-        if (view.getConnectedTeamName() != null)//edit mode
-        {
-            connectedTeam = teamDAO.find( view.getConnectedTeamName()  );
-            view.setTeamName(connectedTeam.getName());
-            view.setTeamColors(connectedTeam.getColors());
-            view.setSportType( getTypeIndex(connectedTeam.getSportType().getName()) );
-            view.lockSportType();
-        }
+    public void showPreviousInfo(String playerUsername , String teamName) {
+        if (playerUsername==null)
+            return;
+        player = playerDAO.find(playerUsername);
+        if( player == null )
+            return;
+
+        if (teamName==null)
+            return;
+        connectedTeam = teamDAO.find(teamName);
+        if( connectedTeam == null )
+            return;
+
+        view.setTeamName(connectedTeam.getName());
+        view.setTeamColors(connectedTeam.getColors());
+        view.setSportType( getTypeIndex(connectedTeam.getSportType().getName()) );
+        view.lockSportType();
+
     }
 
 
@@ -39,7 +52,7 @@ public class CreateTeamPresenter {
 
 
 
-    public boolean onSaveTeam(){
+    public void onSaveTeam(){
         String name = view.getTeamName();
         String colors = view.getTeamColors();
         String sportType = sportTypes.get( view.getSportType() );
@@ -55,16 +68,12 @@ public class CreateTeamPresenter {
                 Player player = ( (Player) (new MemoryLoggedInUser()).getUser() );
                 Team team = new Team( name, new Sport(sportType) , player.getAgeDivision(), player , colors );
                 teamDAO.save(team);
-
-
             } else {
                 connectedTeam.setName(name);
                 connectedTeam.setColors(colors);
-
             }
-            return true;
+            view.startSaveTeam(player.getCredentials().getUsername());
         }
-        return false;
     }
 
     public ArrayList<String>  getSportTypes(){
@@ -85,6 +94,10 @@ public class CreateTeamPresenter {
             sportTypes.add(TournamentType.values()[i].toString());
         }
         return  sportTypes;
+    }
+
+    public void setPlayerDAO(PlayerDAO playerDAO) {
+        this.playerDAO = playerDAO;
     }
 
     public void setView(CreateTeamView view) {

@@ -12,24 +12,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.TextView;
-import android.widget.Toast;
 
+import android.widget.TextView;
 import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.domain.AgeDivision;
 import com.example.managetournamentapp.domain.Credentials;
-import com.example.managetournamentapp.domain.Player;
 import com.example.managetournamentapp.domain.Sport;
-import com.example.managetournamentapp.domain.Tournament;
-import com.example.managetournamentapp.domain.TournamentType;
-import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
 import com.example.managetournamentapp.view.HomePage.HomePageActivity;
-import com.example.managetournamentapp.view.Organizer.OrganizerPage.OrganizerPageActivity;
 import com.example.managetournamentapp.view.Player.PlayerPage.PlayerPageActivity;
 
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -44,6 +35,7 @@ public class RegisterPlayerActivity extends AppCompatActivity implements Registe
     private CheckBox checkBox4;
     private CheckBox checkBox5;
     private CheckBox checkBox6;
+    String playerUsername;
 
     private ArrayList<Sport> sportsInterest = new ArrayList<>();
 
@@ -53,19 +45,21 @@ public class RegisterPlayerActivity extends AppCompatActivity implements Registe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_player);
         System.out.println("PLAYER REGISTRATION CURRENT PAGE");
+        playerUsername = this.getIntent().getStringExtra(PLAYER_USERNAME_EXTRA);
         viewModel = new ViewModelProvider(this).get(RegisterPlayerViewModel.class);
         viewModel.getPresenter().setView(this);
+
         saveBtn = (Button) findViewById(R.id.savePlayerBtn);
+        saveBtn.setOnClickListener(this);
+
         checkBox1 = (CheckBox) findViewById(R.id.radio_button_basketball3v3);
         checkBox2 = (CheckBox) findViewById(R.id.radio_button_basketball5v5);
         checkBox3 = (CheckBox) findViewById(R.id.radio_button_football5v5);
         checkBox4 = (CheckBox) findViewById(R.id.radio_button_football7v7);
         checkBox5 = (CheckBox) findViewById(R.id.radio_button_volleyball3v3);
         checkBox6 = (CheckBox) findViewById(R.id.radio_button_volleyball6v6);
-        viewModel.getPresenter().showPreviousInfo();
-        saveBtn.setOnClickListener(this);
 
-
+        viewModel.getPresenter().showPreviousInfo(playerUsername);
     }
 
     // TODO OVERRIDE BACK PRESS
@@ -86,18 +80,6 @@ public class RegisterPlayerActivity extends AppCompatActivity implements Registe
         errorMsg.setText(msg);
         OKbtn.setOnClickListener(v -> dialog.dismiss());
         dialog.show();
-    }
-
-
-    public Player getConnectedPlayer() {
-
-        if (("1").equals(this.getIntent().getStringExtra("IS_EDIT"))) {
-            TextView title = (TextView) findViewById(R.id.player_info);
-            title.setText("Player Info");
-            return (Player) (new MemoryLoggedInUser()).getUser();
-        } else {
-            return null;
-        }
     }
 
 

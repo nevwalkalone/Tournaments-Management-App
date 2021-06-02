@@ -13,22 +13,26 @@ public class PlayerPagePresenter {
 
     public PlayerPagePresenter(){}
 
-    public void setLoggedInUser(LoggedInUser loggedInUser) {
-        this.loggedInUser = loggedInUser;
-    }
-
     public void findPlayerInfo(String playerUsername){
         if ( playerUsername == null )
             return;
         player = playerDAO.find(playerUsername);
     }
 
-    public void findAccess(){
+    public void findAccess(String playerUsername){
+        if (playerUsername==null)
+            return;
+        player = playerDAO.find(playerUsername);
+
         if ( loggedInUser.getUser() != null )
             if (loggedInUser.getUser() instanceof  Player)
                 if ( ((Player)loggedInUser.getUser()).equals(player) )
                     return;
         view.changesOfAccess();
+    }
+
+    public void setLoggedInUser(LoggedInUser loggedInUser) {
+        this.loggedInUser = loggedInUser;
     }
 
     public void setPlayerDAO(PlayerDAO playerDAO){
@@ -43,7 +47,7 @@ public class PlayerPagePresenter {
     }
 
     public void onPlayerAccount(){
-        view.toPlayerAccount(player.getCredentials().getUsername());
+        view.toPlayerInfo(player.getCredentials().getUsername());
     }
 
     public void onPlayerTeams(){

@@ -37,9 +37,6 @@ public class PlayerPageActivity extends AppCompatActivity implements PlayerPageV
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player_page);
         playerUsername = this.getIntent().getStringExtra(PLAYER_USERNAME_EXTRA);
-        System.out.println(playerUsername);
-        System.out.println(new PlayerDAOMemory().findAll());
-        System.out.println(new PlayerDAOMemory().find(playerUsername));
 
         viewModel = new ViewModelProvider(this).get(PlayerPageViewModel.class);
         viewModel.getPresenter().setView(this);
@@ -55,11 +52,12 @@ public class PlayerPageActivity extends AppCompatActivity implements PlayerPageV
         btnPlayerAccount.setOnClickListener(v -> viewModel.getPresenter().onPlayerAccount());
         btnPlayerTeams.setOnClickListener(v -> viewModel.getPresenter().onPlayerTeams());
         btnPlayerInvites.setOnClickListener(v -> viewModel.getPresenter().onPlayerInvites());
-        viewModel.getPresenter().findAccess();
+
+        viewModel.getPresenter().findAccess(playerUsername);
 
     }
 
-    public void toPlayerAccount(String playerUsername) {
+    public void toPlayerInfo(String playerUsername) {
         Intent intent = new Intent(PlayerPageActivity.this, PlayerInfoActivity.class);
         intent.putExtra(PLAYER_USERNAME_EXTRA, playerUsername);
         startActivity(intent);
@@ -73,6 +71,7 @@ public class PlayerPageActivity extends AppCompatActivity implements PlayerPageV
 
     public void toPlayerInvites(String playerUsername) {
         // Intent intent = new Intent(PlayerPageActivity.this, PlayerInvitedActivity.class);
+//        intent.putExtra(PLAYER_USERNAME_EXTRA, playerUsername);
         //  startActivity(intent);
     }
 

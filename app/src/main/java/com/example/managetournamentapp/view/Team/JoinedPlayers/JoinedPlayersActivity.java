@@ -21,6 +21,8 @@ public class JoinedPlayersActivity extends AppCompatActivity implements PlayersL
 
     JoinedPlayersViewModel viewModel;
     public static final String PLAYER_NAME_EXTRA = "player_name_extra";
+    public static final String TEAM_NAME_EXTRA = "team_name_extra";
+    String teamName;
     private Button deleteBtn;
     private Button inviteNewBtn;
 
@@ -29,7 +31,9 @@ public class JoinedPlayersActivity extends AppCompatActivity implements PlayersL
 
         new MemoryInitializer().prepareData();
         super.onCreate(savedInstanceState);
+        teamName =  this.getIntent().getStringExtra(TEAM_NAME_EXTRA);
         setContentView(R.layout.activity_joined_players);
+
         deleteBtn = (Button) findViewById(R.id.delete_players_button);
         inviteNewBtn = (Button) findViewById(R.id.invite_new_players_button);
         deleteBtn.setOnClickListener(this);
@@ -44,7 +48,7 @@ public class JoinedPlayersActivity extends AppCompatActivity implements PlayersL
                 return;
             }
 
-            viewModel.getPresenter().findPlayers();
+            viewModel.getPresenter().findPlayers(teamName);
 
             PlayersListFragment playersListFragment = PlayersListFragment.newInstance(1);
             getSupportFragmentManager().beginTransaction()

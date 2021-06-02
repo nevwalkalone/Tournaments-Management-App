@@ -1,6 +1,7 @@
 package com.example.managetournamentapp.view.Player.JoinedTeams;
 
 import com.example.managetournamentapp.dao.LoggedInUser;
+import com.example.managetournamentapp.dao.PlayerDAO;
 import com.example.managetournamentapp.dao.TeamDAO;
 import com.example.managetournamentapp.domain.Participation;
 import com.example.managetournamentapp.domain.Player;
@@ -14,12 +15,19 @@ public class JoinedTeamsPresenter {
     private JoinedTeamsView view;
     private TeamDAO teamDAO;
     private Player player = null;
+    private PlayerDAO playerDAO;
     private ArrayList<Team> results = new ArrayList<>();
     private LoggedInUser loggedInUser;
 
     public JoinedTeamsPresenter(){}
 
-    public void findJoinedTeams(){
+    public void findJoinedTeams(String playerUsername){
+        if (playerUsername==null)
+            return;
+        player = playerDAO.find(playerUsername);
+        if( player == null )
+            return;
+
         results.clear();
         results.addAll(player.getTeamsJoined());
     }
@@ -48,6 +56,10 @@ public class JoinedTeamsPresenter {
         this.view = null;
     }
 
+    public void setPlayerDAO(PlayerDAO playerDAO) {
+        this.playerDAO = playerDAO;
+    }
+
     public void setTeamDAO(TeamDAO teamDAO) {
         this.teamDAO = teamDAO;
     }
@@ -55,17 +67,6 @@ public class JoinedTeamsPresenter {
     public void setLoggedInUser(LoggedInUser loggedInUser) {
         this.loggedInUser = loggedInUser;
     }
-
-
-    public void setPlayer(User user){
-        if (user == null)
-            return;
-        if ( !(user instanceof Player) )
-            return;
-
-        player = (Player) user;
-    }
-
 
 
 }

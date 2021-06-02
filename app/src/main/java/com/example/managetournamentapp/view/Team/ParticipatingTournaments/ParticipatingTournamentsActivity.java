@@ -40,7 +40,6 @@ public class ParticipatingTournamentsActivity extends AppCompatActivity implemen
 
         if (findViewById(R.id.fragment_container) != null){
 
-
             if (savedInstanceState != null){
                 return;
             }
@@ -56,16 +55,15 @@ public class ParticipatingTournamentsActivity extends AppCompatActivity implemen
     }
 
     @Override
-    public void onListFragmentInteraction(Tournament item) {
-        Intent intent = new Intent();
-        intent.putExtra(TOURNAMENT_TITLE_EXTRA, item.getTitle());
-        setResult(RESULT_OK, intent);
-        onBackPressed();
+    public ArrayList<Tournament> getTournamentList() {
+        return viewModel.getPresenter().getResults();
     }
 
     @Override
-    public ArrayList<Tournament> getTournamentList() {
-        return viewModel.getPresenter().getResults();
+    public void onListFragmentInteraction(Tournament item) {
+        Intent intent = new Intent(ParticipatingTournamentsActivity.this, TournamentPageActivity.class);
+        intent.putExtra(TOURNAMENT_TITLE_EXTRA, item.getTitle());
+        startActivity(intent);
     }
 
     @Override

@@ -4,15 +4,13 @@ import com.example.managetournamentapp.domain.Team;
 
 public interface CreateTeamView {
 
-    void startSaveTeam();
+    void startSaveTeam(String userName);
 
     String getTeamName();
 
     String getTeamColors();
 
     int getSportType();
-
-    String getConnectedTeamName();
 
     void setTeamName(String name);
 
