@@ -209,6 +209,10 @@ public class Player extends User {
         sportsInterested.add(sport);
     }
 
+    public void clearSportsInterest() {
+        sportsInterested.clear();
+    }
+
     //for every player
     public void removeSportInterested(Sport sport) {
         if (sport == null) {

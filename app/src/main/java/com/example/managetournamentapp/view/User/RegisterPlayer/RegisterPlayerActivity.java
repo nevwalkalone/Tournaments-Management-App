@@ -104,6 +104,7 @@ public class RegisterPlayerActivity extends AppCompatActivity implements Registe
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.savePlayerBtn) {
+            System.out.println("SAVE BUTTON PRESSED!");
             handleSportsInterest();
             System.out.println(sportsInterest);
             viewModel.getPresenter().handlePlayerData();
@@ -271,10 +272,12 @@ public class RegisterPlayerActivity extends AppCompatActivity implements Registe
         else {
             sportsInterest.remove(new Sport("Volleyball6v6"));
         }
+        System.out.println("Handle: " + sportsInterest);
     }
 
     @Override
     public void setSportsInterest(ArrayList<Sport> sports) {
+        System.out.println("Set sport: " +sports);
         if (sports.contains(new Sport("Basketball3v3")))
             checkBox1.setChecked(true);
         if (sports.contains(new Sport("Basketball5v5")))

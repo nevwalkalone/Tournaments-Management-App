@@ -58,6 +58,9 @@ public class RegisterOrganizerActivity extends AppCompatActivity implements Regi
 
     public Organizer getConnectedOrganizer() {
         if (("1").equals(this.getIntent().getStringExtra("IS_EDIT"))) {
+            TextView title = (TextView) findViewById(R.id.organizer_info);
+            title.setText("Organizer Info");
+
             return (Organizer) (new MemoryLoggedInUser()).getUser();
         } else {
             return null;
@@ -71,7 +74,7 @@ public class RegisterOrganizerActivity extends AppCompatActivity implements Regi
         }
     }
 
-    public void startOrganizerPage(){
+    public void startOrganizerPage() {
         Intent intent = new Intent(this, OrganizerPageActivity.class);
         startActivity(intent);
     }

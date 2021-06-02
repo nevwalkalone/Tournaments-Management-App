@@ -38,8 +38,10 @@ public class RegisterPlayerPresenter {
 
     public void showPreviousInfo() {
         this.connectedPlayer = view.getConnectedPlayer();
+
         if (connectedPlayer != null)//edit mode
         {
+            System.out.println(connectedPlayer.getSportsInterested());
             view.setName(connectedPlayer.getName());
             view.setSurname(connectedPlayer.getSurname());
             view.setUsername(connectedPlayer.getCredentials().getUsername());
@@ -62,6 +64,7 @@ public class RegisterPlayerPresenter {
         String birthDate = view.getBirthDate();
         String location = view.getLocation();
         ArrayList<Sport> sportsInterest = view.getSportsInterest();
+        System.out.println("Handle: " + sportsInterest);
 
         // validate user data
         if (usename.length() < 5 || usename.length() > 20)
@@ -89,8 +92,6 @@ public class RegisterPlayerPresenter {
                     player.addSportInterested(sport);
                 playerDAO = new PlayerDAOMemory();
                 playerDAO.save(player);
-                System.out.println(playerDAO.findAll());
-                System.out.println(playerDAO.findAll());
                 loggedInUser.setUser(player);
 
             } else {
@@ -101,6 +102,7 @@ public class RegisterPlayerPresenter {
                 connectedPlayer.setLocation(location);
                 connectedPlayer.setPhoneNumber(phoneNumber);
                 connectedPlayer.setEmail(email);
+                connectedPlayer.clearSportsInterest();
                 for (Sport sport : sportsInterest)
                     connectedPlayer.addSportInterested(sport);
 
