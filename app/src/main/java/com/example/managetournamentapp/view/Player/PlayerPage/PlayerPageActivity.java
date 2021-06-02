@@ -18,9 +18,9 @@ import com.example.managetournamentapp.memoryDao.TeamDAOMemory;
 import com.example.managetournamentapp.view.Player.JoinedTeams.JoinedTeamsActivity;
 import com.example.managetournamentapp.view.Player.PlayerInfo.PlayerInfoActivity;
 
-public class PlayerPageActivity extends AppCompatActivity implements PlayerPageView{
+public class PlayerPageActivity extends AppCompatActivity implements PlayerPageView {
 
-    private static final String PLAYER_USERNAME_EXTRA = "player_username_extra" ;
+    private static final String PLAYER_USERNAME_EXTRA = "player_username_extra";
     private PlayerPageViewModel viewModel;
     TextView txtPlayerName;
     Button btnPlayerAccount;
@@ -32,52 +32,53 @@ public class PlayerPageActivity extends AppCompatActivity implements PlayerPageV
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        if (init){
+        if (init) {
             new MemoryInitializer().prepareData();
             init = false;
         }
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player_page);
-        playerUsername =  this.getIntent().getStringExtra(PLAYER_USERNAME_EXTRA);
+        playerUsername = this.getIntent().getStringExtra(PLAYER_USERNAME_EXTRA);
 
         viewModel = new ViewModelProvider(this).get(PlayerPageViewModel.class);
         viewModel.getPresenter().setView(this);
         viewModel.getPresenter().findPlayerInfo(playerUsername);
-        viewModel.getPresenter().findAccess();
+
 
         txtPlayerName = findViewById(R.id.text_player_name);
         btnPlayerAccount = findViewById(R.id.player_account_button);
         btnPlayerTeams = findViewById(R.id.player_teams_button);
         btnPlayerInvites = findViewById(R.id.player_invites_button);
 
-        txtPlayerName.setText( viewModel.getPresenter().getPlayerName() );
+        txtPlayerName.setText(viewModel.getPresenter().getPlayerName());
         btnPlayerAccount.setOnClickListener(v -> viewModel.getPresenter().onPlayerAccount());
         btnPlayerTeams.setOnClickListener(v -> viewModel.getPresenter().onPlayerTeams());
         btnPlayerInvites.setOnClickListener(v -> viewModel.getPresenter().onPlayerInvites());
+        viewModel.getPresenter().findAccess();
 
     }
 
-    public void toPlayerAccount(){
+    public void toPlayerAccount() {
         Intent intent = new Intent(PlayerPageActivity.this, PlayerInfoActivity.class);
         startActivity(intent);
     }
 
-    public void toPlayerTeams(){
+    public void toPlayerTeams() {
         Intent intent = new Intent(PlayerPageActivity.this, JoinedTeamsActivity.class);
         startActivity(intent);
     }
 
-    public void toPlayerInvites(){
-      // Intent intent = new Intent(PlayerPageActivity.this, PlayerInvitedActivity.class);
-     //  startActivity(intent);
+    public void toPlayerInvites() {
+        // Intent intent = new Intent(PlayerPageActivity.this, PlayerInvitedActivity.class);
+        //  startActivity(intent);
     }
 
-    public void changesOfAccess(){
+    public void changesOfAccess() {
 
         btnPlayerInvites.setVisibility(View.GONE);
-    }
 
+    }
 
 
 }

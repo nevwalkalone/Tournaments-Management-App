@@ -5,13 +5,13 @@ import com.example.managetournamentapp.domain.Organizer;
 import com.example.managetournamentapp.domain.User;
 
 public class MemoryLoggedInUser implements LoggedInUser {
-//    private static User user = null;
+    private static User user = null;
 
-    //random player
+
 //    private static User user =(new PlayerDAOMemory()).find("tom");
 
-    //random organizer
-    private static User user = (new OrganizerDAOMemory().findByTitle("ESKA"));
+//    //random organizer
+//    private static User user = (new OrganizerDAOMemory().findByTitle("ESKA"));
 
     public MemoryLoggedInUser() {
 

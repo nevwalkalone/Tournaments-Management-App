@@ -5,6 +5,10 @@ import android.view.View;
 import com.example.managetournamentapp.domain.AgeDivision;
 import com.example.managetournamentapp.domain.Credentials;
 import com.example.managetournamentapp.domain.Player;
+import com.example.managetournamentapp.domain.Sport;
+import com.example.managetournamentapp.domain.TournamentType;
+
+import java.util.ArrayList;
 
 public interface RegisterPlayerView {
 
@@ -46,7 +50,9 @@ public interface RegisterPlayerView {
 
     void setLocation(String location);
 
-    void setAgeDivision(AgeDivision ageDivision);
+    ArrayList<Sport> getSportsInterest();
+
+    void setSportsInterest(ArrayList<Sport> sports);
 
     void showPopUp(RegisterPlayerView view, String msg);
 

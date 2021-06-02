@@ -8,12 +8,14 @@ import com.example.managetournamentapp.dao.LoggedInUser;
 import com.example.managetournamentapp.dao.PlayerDAO;
 import com.example.managetournamentapp.domain.Credentials;
 import com.example.managetournamentapp.domain.Player;
+import com.example.managetournamentapp.domain.Sport;
 import com.example.managetournamentapp.domain.TournamentType;
 import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
 import com.example.managetournamentapp.memoryDao.PlayerDAOMemory;
 import com.example.managetournamentapp.view.Player.PlayerPage.PlayerPageActivity;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -46,6 +48,7 @@ public class RegisterPlayerPresenter {
             view.setEmail(connectedPlayer.getEmail());
             view.setBirthdate(connectedPlayer.getBirthDate().toString());
             view.setLocation(connectedPlayer.getLocation());
+            view.setSportsInterest(connectedPlayer.getSportsInterested());
         }
     }
 
@@ -58,6 +61,7 @@ public class RegisterPlayerPresenter {
         String email = view.getEmail();
         String birthDate = view.getBirthDate();
         String location = view.getLocation();
+        ArrayList<Sport> sportsInterest = view.getSportsInterest();
 
         // validate user data
         if (usename.length() < 5 || usename.length() > 20)
@@ -78,7 +82,11 @@ public class RegisterPlayerPresenter {
             // IF USER IS NEW!
             if (view.getConnectedPlayer() == null) {
                 birthDate = birthDate.replace("/", "-");
-                Player player = new Player(name, surname, location, phoneNumber, email, LocalDate.parse(birthDate), new Credentials(usename, password));
+                String dateFormat = LocalDate.parse(birthDate, DateTimeFormatter.ofPattern("dd-MM-uuuu")).format(DateTimeFormatter.ofPattern("uuuu-MM-dd"));
+
+                Player player = new Player(name, surname, location, phoneNumber, email, LocalDate.parse(dateFormat), new Credentials(usename, password));
+                for (Sport sport : sportsInterest)
+                    player.addSportInterested(sport);
                 playerDAO = new PlayerDAOMemory();
                 playerDAO.save(player);
                 loggedInUser.setUser(player);
@@ -91,6 +99,8 @@ public class RegisterPlayerPresenter {
                 connectedPlayer.setLocation(location);
                 connectedPlayer.setPhoneNumber(phoneNumber);
                 connectedPlayer.setEmail(email);
+                for (Sport sport : sportsInterest)
+                    connectedPlayer.addSportInterested(sport);
 
             }
             view.startPlayerPage();

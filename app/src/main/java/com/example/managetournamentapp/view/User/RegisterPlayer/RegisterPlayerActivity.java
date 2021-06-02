@@ -4,12 +4,16 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,6 +21,9 @@ import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.domain.AgeDivision;
 import com.example.managetournamentapp.domain.Credentials;
 import com.example.managetournamentapp.domain.Player;
+import com.example.managetournamentapp.domain.Sport;
+import com.example.managetournamentapp.domain.Tournament;
+import com.example.managetournamentapp.domain.TournamentType;
 import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
 import com.example.managetournamentapp.view.HomePage.HomePageActivity;
 import com.example.managetournamentapp.view.Organizer.OrganizerPage.OrganizerPageActivity;
@@ -24,23 +31,40 @@ import com.example.managetournamentapp.view.Player.PlayerPage.PlayerPageActivity
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
+
 public class RegisterPlayerActivity extends AppCompatActivity implements RegisterPlayerView, View.OnClickListener {
 
     RegisterPlayerViewModel viewModel;
     public static final String PLAYER_USERNAME = "PLAYER_USERNAME";
     private Button saveBtn;
+    private CheckBox checkBox1;
+    private CheckBox checkBox2;
+    private CheckBox checkBox3;
+    private CheckBox checkBox4;
+    private CheckBox checkBox5;
+    private CheckBox checkBox6;
+
+    private ArrayList<Sport> sportsInterest = new ArrayList<>();
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_player);
-
+        System.out.println("PLAYER REGISTRATION CURRENT PAGE");
         viewModel = new ViewModelProvider(this).get(RegisterPlayerViewModel.class);
         viewModel.getPresenter().setView(this);
-        viewModel.getPresenter().showPreviousInfo();
         saveBtn = (Button) findViewById(R.id.savePlayerBtn);
+        checkBox1 = (CheckBox) findViewById(R.id.radio_button_basketball3v3);
+        checkBox2 = (CheckBox) findViewById(R.id.radio_button_basketball5v5);
+        checkBox3 = (CheckBox) findViewById(R.id.radio_button_football5v5);
+        checkBox4 = (CheckBox) findViewById(R.id.radio_button_football7v7);
+        checkBox5 = (CheckBox) findViewById(R.id.radio_button_volleyball3v3);
+        checkBox6 = (CheckBox) findViewById(R.id.radio_button_volleyball6v6);
+        viewModel.getPresenter().showPreviousInfo();
         saveBtn.setOnClickListener(this);
+
 
     }
 
@@ -76,14 +100,18 @@ public class RegisterPlayerActivity extends AppCompatActivity implements Registe
         }
     }
 
+
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.savePlayerBtn) {
+            handleSportsInterest();
+            System.out.println(sportsInterest);
             viewModel.getPresenter().handlePlayerData();
+
         }
     }
 
-    public void startPlayerPage(){
+    public void startPlayerPage() {
         Intent intent = new Intent(this, PlayerPageActivity.class);
         startActivity(intent);
     }
@@ -128,7 +156,7 @@ public class RegisterPlayerActivity extends AppCompatActivity implements Registe
     @Override
     public String getBirthDate() {
         EditText BIRTHDATE = (EditText) findViewById(R.id.birthdate);
-        return BIRTHDATE.getText().toString();      //
+        return BIRTHDATE.getText().toString();
     }
 
     @Override
@@ -206,8 +234,60 @@ public class RegisterPlayerActivity extends AppCompatActivity implements Registe
     }
 
     @Override
-    public void setAgeDivision(AgeDivision ageDivision) {
-        //TODO
+    public ArrayList<Sport> getSportsInterest() {
+        return this.sportsInterest;
 
     }
+
+    public void handleSportsInterest() {
+        if (checkBox1.isChecked())
+            sportsInterest.add(new Sport("Basketball3v3"));
+        else {
+            sportsInterest.remove(new Sport("Basketball3v3"));
+        }
+        if (checkBox2.isChecked())
+            sportsInterest.add(new Sport("Basketball5v5"));
+        else {
+            sportsInterest.remove(new Sport("Basketball5v5"));
+        }
+        if (checkBox3.isChecked())
+            sportsInterest.add(new Sport("Football5v5"));
+        else {
+            sportsInterest.remove(new Sport("Football5v5"));
+        }
+        if (checkBox4.isChecked())
+            sportsInterest.add(new Sport("Football7v7"));
+        else {
+            sportsInterest.remove(new Sport("Football7v7"));
+        }
+        if (checkBox5.isChecked())
+            sportsInterest.add(new Sport("Volleyball3v3"));
+        else {
+            sportsInterest.remove(new Sport("Volleyball3v3"));
+        }
+        if (checkBox6.isChecked())
+            sportsInterest.add(new Sport("Volleyball6v6"));
+        else {
+            sportsInterest.remove(new Sport("Volleyball6v6"));
+        }
+    }
+
+    @Override
+    public void setSportsInterest(ArrayList<Sport> sports) {
+        if (sports.contains(new Sport("Basketball3v3")))
+            checkBox1.setChecked(true);
+        if (sports.contains(new Sport("Basketball5v5")))
+            checkBox2.setChecked(true);
+        if (sports.contains(new Sport("Football5v5")))
+            checkBox3.setChecked(true);
+        if (sports.contains(new Sport("Football7v7")))
+            checkBox4.setChecked(true);
+        if (sports.contains(new Sport("Volleyball3v3")))
+            checkBox5.setChecked(true);
+        if (sports.contains(new Sport("Volleyball6v6")))
+            checkBox6.setChecked(true);
+
+
+    }
+
 }
