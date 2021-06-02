@@ -14,6 +14,7 @@ import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.domain.Player;
 import com.example.managetournamentapp.memoryDao.MemoryInitializer;
 import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
+import com.example.managetournamentapp.memoryDao.PlayerDAOMemory;
 import com.example.managetournamentapp.memoryDao.TeamDAOMemory;
 import com.example.managetournamentapp.view.Player.JoinedTeams.JoinedTeamsActivity;
 import com.example.managetournamentapp.view.Player.PlayerInfo.PlayerInfoActivity;
@@ -32,14 +33,12 @@ public class PlayerPageActivity extends AppCompatActivity implements PlayerPageV
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        if (init) {
-            new MemoryInitializer().prepareData();
-            init = false;
-        }
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player_page);
         playerUsername = this.getIntent().getStringExtra(PLAYER_USERNAME_EXTRA);
+        System.out.println(playerUsername);
+        System.out.println(new PlayerDAOMemory().findAll());
+        System.out.println(new PlayerDAOMemory().find(playerUsername));
 
         viewModel = new ViewModelProvider(this).get(PlayerPageViewModel.class);
         viewModel.getPresenter().setView(this);

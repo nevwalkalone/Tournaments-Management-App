@@ -36,7 +36,7 @@ import java.util.ArrayList;
 public class RegisterPlayerActivity extends AppCompatActivity implements RegisterPlayerView, View.OnClickListener {
 
     RegisterPlayerViewModel viewModel;
-    public static final String PLAYER_USERNAME = "PLAYER_USERNAME";
+    private static final String PLAYER_USERNAME_EXTRA = "player_username_extra";
     private Button saveBtn;
     private CheckBox checkBox1;
     private CheckBox checkBox2;
@@ -113,6 +113,7 @@ public class RegisterPlayerActivity extends AppCompatActivity implements Registe
 
     public void startPlayerPage() {
         Intent intent = new Intent(this, PlayerPageActivity.class);
+        intent.putExtra(PLAYER_USERNAME_EXTRA, getUsername());
         startActivity(intent);
     }
 

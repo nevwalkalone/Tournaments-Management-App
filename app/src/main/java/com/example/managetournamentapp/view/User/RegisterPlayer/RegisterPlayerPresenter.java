@@ -89,6 +89,8 @@ public class RegisterPlayerPresenter {
                     player.addSportInterested(sport);
                 playerDAO = new PlayerDAOMemory();
                 playerDAO.save(player);
+                System.out.println(playerDAO.findAll());
+                System.out.println(playerDAO.findAll());
                 loggedInUser.setUser(player);
 
             } else {
