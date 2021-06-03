@@ -73,6 +73,7 @@ public class JoinedPlayersActivity extends AppCompatActivity implements PlayersL
 
     }
 
+    //TODO ONLY CAPTAIN CAN MODIFY PLAYERS LIST
     @Override
     public void onListFragmentInteraction(Player item) {
         playerSelected = item;
