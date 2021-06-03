@@ -1,6 +1,7 @@
 package com.example.managetournamentapp.view.Tournament.TournamentInfo;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -12,7 +13,6 @@ import com.example.managetournamentapp.R;
 public class TournamentInfoActivity extends AppCompatActivity implements TournamentInfoView {
     private TournamentInfoViewModel viewModel;
     public static final String TOURNAMENT_TITLE_EXTRA = "tournament_title_extra";
-
     String tournamentName;
     Button btnEditTournament;
     Button btnDeleteTournament;
@@ -26,6 +26,13 @@ public class TournamentInfoActivity extends AppCompatActivity implements Tournam
         viewModel.getPresenter().setView(this);
         viewModel.getPresenter().findTournamentInfo(tournamentName);
 
+        btnEditTournament = findViewById(R.id.edit_button);
+        btnDeleteTournament = findViewById(R.id.delete_button);
+
+        btnEditTournament.setOnClickListener(v -> viewModel.getPresenter().onEditTournament());
+        btnDeleteTournament.setOnClickListener(v -> viewModel.getPresenter().onDeleteTournament());
+
+        viewModel.getPresenter().findAccess();
     }
 
     @Override
@@ -76,5 +83,11 @@ public class TournamentInfoActivity extends AppCompatActivity implements Tournam
     @Override
     public void startDeleteTournament() {
 
+    }
+
+    @Override
+    public void changesOfAccess() {
+        btnEditTournament.setVisibility(View.GONE);
+        btnDeleteTournament.setVisibility(View.GONE);
     }
 }

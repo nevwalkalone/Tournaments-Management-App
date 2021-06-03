@@ -1,14 +1,16 @@
 package com.example.managetournamentapp.view.Tournament.TournamentInfo;
 
-import com.example.managetournamentapp.dao.PlayerDAO;
+import com.example.managetournamentapp.dao.LoggedInUser;
 import com.example.managetournamentapp.dao.TournamentDAO;
+import com.example.managetournamentapp.domain.Organizer;
+import com.example.managetournamentapp.domain.Player;
 import com.example.managetournamentapp.domain.Tournament;
-import com.example.managetournamentapp.view.Player.PlayerInfo.PlayerInfoView;
 
 public class TournamentInfoPresenter {
     private TournamentInfoView view;
     private Tournament tournament;
     private TournamentDAO tournamentDAO;
+    private LoggedInUser loggedInUser;
 
     public TournamentInfoPresenter(){
     }
@@ -18,6 +20,8 @@ public class TournamentInfoPresenter {
             return;
         }
         tournament = tournamentDAO.find(tournamentName);
+        if( tournament == null )
+            return;
 
         view.setTitle(tournament.getTitle());
         view.setLocation(tournament.getLocation());
@@ -29,7 +33,14 @@ public class TournamentInfoPresenter {
         view.setAgeDivision(tournament.getAgeDivision().toString());
         view.setDescription(tournament.getDescription());
 
+    }
 
+    public void findAccess(){
+        if ( loggedInUser.getUser() != null )
+            if (loggedInUser.getUser() instanceof Organizer)
+                if ( ((Organizer)loggedInUser.getUser()).getTournaments().contains(tournament) )
+                    return;
+        view.changesOfAccess();
     }
 
     //TODO CHECKING
@@ -43,6 +54,9 @@ public class TournamentInfoPresenter {
         view.startDeleteTournament();
     }
 
+    public void setLoggedInUser(LoggedInUser loggedInUser) {
+        this.loggedInUser = loggedInUser;
+    }
 
     public void setTournamentDAO(TournamentDAO tournamentDAO) {
         this.tournamentDAO = tournamentDAO;

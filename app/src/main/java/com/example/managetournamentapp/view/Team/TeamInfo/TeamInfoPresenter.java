@@ -1,7 +1,5 @@
 package com.example.managetournamentapp.view.Team.TeamInfo;
 
-import android.util.Log;
-
 import com.example.managetournamentapp.dao.LoggedInUser;
 import com.example.managetournamentapp.dao.TeamDAO;
 import com.example.managetournamentapp.domain.Player;
@@ -16,17 +14,11 @@ public class TeamInfoPresenter {
     public TeamInfoPresenter(){}
 
     public void findTeamInfo(String teamName) {
-        Log.wtf("aaaaaa", teamName);
-        Log.wtf("aaaaaa",  teamDAO.findAll().toString());
-
         if (teamName==null)
             return;
         team = teamDAO.find(teamName);
         if( team == null )
             return;
-
-
-        //todo there is an error here
 
         view.setTeamName(team.getName());
         view.setColors(team.getColors() );
