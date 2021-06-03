@@ -1,7 +1,5 @@
 package com.example.managetournamentapp.view.Player.CreateTeam;
 
-import com.example.managetournamentapp.domain.Team;
-
 public interface CreateTeamView {
 
     void startSaveTeam(String userName);

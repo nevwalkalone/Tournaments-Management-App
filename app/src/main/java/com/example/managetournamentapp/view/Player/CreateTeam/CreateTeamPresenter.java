@@ -1,7 +1,5 @@
 package com.example.managetournamentapp.view.Player.CreateTeam;
 
-import android.util.Log;
-
 import com.example.managetournamentapp.dao.PlayerDAO;
 import com.example.managetournamentapp.dao.TeamDAO;
 import com.example.managetournamentapp.domain.Player;
@@ -9,9 +7,6 @@ import com.example.managetournamentapp.domain.Sport;
 import com.example.managetournamentapp.domain.Team;
 import com.example.managetournamentapp.domain.TournamentType;
 import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
-
-
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class CreateTeamPresenter {
@@ -40,12 +35,6 @@ public class CreateTeamPresenter {
         view.lockSportType();
 
     }
-
-
-    public void setTeamDAO(TeamDAO teamDAO){
-        this.teamDAO = teamDAO;
-    }
-
 
 
     public void onSaveTeam(){
@@ -90,6 +79,10 @@ public class CreateTeamPresenter {
             sportTypes.add(TournamentType.values()[i].toString());
         }
         return  sportTypes;
+    }
+
+    public void setTeamDAO(TeamDAO teamDAO){
+        this.teamDAO = teamDAO;
     }
 
     public void setPlayer(Player player){
