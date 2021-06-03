@@ -2,7 +2,6 @@ package com.example.managetournamentapp.view.Team.JoinedPlayers;
 
 import com.example.managetournamentapp.dao.PlayerDAO;
 import com.example.managetournamentapp.domain.Player;
-import com.example.managetournamentapp.view.Team.InvitePlayers.InvitePlayersView;
 
 import java.util.ArrayList;
 
@@ -27,6 +26,7 @@ public class JoinedPlayersPresenter {
     public void onPlayerSelected(Player p) {
         // todo
     }
+
 
     public void setView(JoinedPlayersView view) {
         this.view = view;

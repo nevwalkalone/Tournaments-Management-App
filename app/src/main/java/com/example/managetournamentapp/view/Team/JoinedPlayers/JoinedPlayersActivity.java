@@ -17,7 +17,7 @@ import com.example.managetournamentapp.view.Team.InvitePlayers.fragment.PlayersL
 
 import java.util.ArrayList;
 
-public class JoinedPlayersActivity extends AppCompatActivity implements PlayersListFragment.OnListFragmentInteractionListener, View.OnClickListener {
+public class JoinedPlayersActivity extends AppCompatActivity implements PlayersListFragment.OnListFragmentInteractionListener, View.OnClickListener,JoinedPlayersView {
 
     JoinedPlayersViewModel viewModel;
     public static final String PLAYER_NAME_EXTRA = "player_name_extra";
@@ -77,6 +77,13 @@ public class JoinedPlayersActivity extends AppCompatActivity implements PlayersL
             Intent intent = new Intent(this, InvitePlayersActivity.class);
             startActivity(intent);
         }
+
+    }
+
+
+
+    @Override
+    public void changesOfAccess() {
 
     }
 }

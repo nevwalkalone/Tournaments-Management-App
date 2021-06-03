@@ -38,4 +38,8 @@
     <string name="tournament_info">Tournament Info</string>
     <string name="create_tournament">Create Tournament</string>
     <string name="team_details">Team Info</string>
+    <string name="join_tournament">Join Tournament</string>
+    <string name="register_player">Player Registration</string>
+    <string name="register_organizer">Organizer Registration</string>
+    <string name="log_in">Log In Info</string>
 </resources>

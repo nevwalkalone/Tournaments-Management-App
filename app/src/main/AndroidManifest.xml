@@ -24,13 +24,16 @@
         </activity>
         <activity
             android:name=".view.User.RegisterPlayer.RegisterPlayerActivity"
+            android:label="@string/register_player"
             android:theme="@style/SecondaryTheme" />
         <activity
             android:name=".view.User.RegisterOrganizer.RegisterOrganizerActivity"
             android:exported="true"
+            android:label="@string/register_organizer"
             android:theme="@style/SecondaryTheme" />
         <activity
             android:name=".view.User.Login.LoginActivity"
+            android:label="@string/log_in"
             android:exported="true" />
         <activity
             android:name=".view.Organizer.OrganizerTournaments.OrganizerTournamentsActivity"
@@ -96,7 +99,7 @@
         <activity
             android:name=".view.Team.AddParticipation.AddParticipationActivity"
             android:exported="true"
-            android:label="@string/tournament_prof"
+            android:label="@string/join_tournament"
             android:theme="@style/SecondaryTheme" />
         <activity
             android:name=".view.Team.TeamInfo.TeamInfoActivity"
