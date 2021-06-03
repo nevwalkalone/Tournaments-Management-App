@@ -29,7 +29,4 @@ public class CreateTeamViewModel extends ViewModel {
         presenter.clearView();
     }
 
-
-
-
 }

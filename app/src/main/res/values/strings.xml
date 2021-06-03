@@ -16,7 +16,12 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
     <string name="add_new_item">Add</string>
-    <string name="create_team">Create Team</string>
+
+    <string name="round_1">Round 1</string>
+    <string name="round_2">Round 2</string>
+    <string name="round_3">Round 3</string>
+    <string name="round_4">Round 4</string>
+    <string name="round_5">Round 5</string>
 
     <string name="organizer_info">Account Information</string>
     <string name="delete_organizer">Delete</string>
