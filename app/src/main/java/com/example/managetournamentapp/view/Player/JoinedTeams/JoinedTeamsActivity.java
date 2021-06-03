@@ -26,7 +26,6 @@ public class JoinedTeamsActivity extends AppCompatActivity implements JoinedTeam
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_joined_teams);
         playerUsername = this.getIntent().getStringExtra(PLAYER_USERNAME_EXTRA);

@@ -24,7 +24,6 @@ public class TeamInfoActivity  extends AppCompatActivity implements TeamInfoView
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        new MemoryInitializer().prepareData();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_team_info);

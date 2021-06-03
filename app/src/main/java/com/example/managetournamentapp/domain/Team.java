@@ -1,5 +1,7 @@
 package com.example.managetournamentapp.domain;
 
+import android.util.Log;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -174,8 +176,10 @@ public class Team {
 
     public void setName(String name) {
         if (name == null || !getUndoneParticipations().isEmpty()) {
+            Log.wtf("aaaa","not changed");
             return;
         }
+        Log.wtf("aaaa","changed");
         this.name = name;
     }
 
