@@ -56,7 +56,7 @@ public abstract class Initializer {
 
         Participation part = new Participation( tour1, teamDAO.find("Celtic") );
         participationDAO.save( part);
-//        teamDAO.find( "Celtic" ).addParticipation(part);
+        teamDAO.find( "Celtic" ).addParticipation(part);
 
         //TODO CHECK ADDPARTICIPATION
         //adding participation to tournament

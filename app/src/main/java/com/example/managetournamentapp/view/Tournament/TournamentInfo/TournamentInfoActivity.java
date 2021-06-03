@@ -1,5 +1,6 @@
 package com.example.managetournamentapp.view.Tournament.TournamentInfo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -9,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.managetournamentapp.R;
+import com.example.managetournamentapp.view.Organizer.CreateTournament.CreateTournamentActivity;
 
 public class TournamentInfoActivity extends AppCompatActivity implements TournamentInfoView {
     private TournamentInfoViewModel viewModel;
@@ -77,7 +79,9 @@ public class TournamentInfoActivity extends AppCompatActivity implements Tournam
 
     @Override
     public void startEditTournament() {
-
+        Intent intent = new Intent(TournamentInfoActivity.this, CreateTournamentActivity.class);
+        intent.putExtra(TOURNAMENT_TITLE_EXTRA,tournamentName);
+        startActivity(intent);
     }
 
     @Override
