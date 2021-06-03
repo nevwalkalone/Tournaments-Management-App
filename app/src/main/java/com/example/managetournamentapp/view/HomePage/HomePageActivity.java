@@ -26,11 +26,15 @@ public class HomePageActivity extends AppCompatActivity implements HomePageView,
     public static final String TOURNAMENT_TITLE_EXTRA = "tournament_title_extra";
     private Button btn;
     HomePageViewModel viewModel;
+    private static boolean first=true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //todo erase
-        new MemoryInitializer().prepareData();
+        if (first){
+            new MemoryInitializer().prepareData();
+            first = false;
+        }
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);

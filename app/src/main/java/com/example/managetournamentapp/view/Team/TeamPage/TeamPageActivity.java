@@ -3,6 +3,7 @@ package com.example.managetournamentapp.view.Team.TeamPage;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -23,9 +24,9 @@ import com.example.managetournamentapp.view.Team.ParticipatingTournaments.Partic
 import com.example.managetournamentapp.view.Team.TeamInfo.TeamInfoActivity;
 
 public class TeamPageActivity extends AppCompatActivity implements TeamPageView {
+    private TeamPageViewModel viewModel;
     public static final String TEAM_NAME_EXTRA = "team_name_extra";
     String teamName;
-    private TeamPageViewModel viewModel;
     TextView txtTeamName;
     Button btnTeamInfo;
     Button btnTeamPlayers;
@@ -40,6 +41,7 @@ public class TeamPageActivity extends AppCompatActivity implements TeamPageView 
 
         viewModel = new ViewModelProvider(this).get(TeamPageViewModel.class);
         viewModel.getPresenter().setView(this);
+        viewModel.getPresenter().findTeamInfo(teamName);
 
         txtTeamName = findViewById(R.id.text_team_name);
         btnTeamInfo = findViewById(R.id.team_info_button);
@@ -51,6 +53,7 @@ public class TeamPageActivity extends AppCompatActivity implements TeamPageView 
         btnTeamPlayers.setOnClickListener(v -> viewModel.getPresenter().onTeamPlayers());
         btnTeamParticipations.setOnClickListener(v -> viewModel.getPresenter().onTeamParticipations());
 
+        viewModel.getPresenter().findAccess();
     }
 
 
@@ -73,5 +76,10 @@ public class TeamPageActivity extends AppCompatActivity implements TeamPageView 
         Intent intent = new Intent(TeamPageActivity.this, ParticipatingTournamentsActivity.class);
         intent.putExtra(TEAM_NAME_EXTRA, teamName);
         startActivity(intent);
+    }
+
+    @Override
+    public void changesOfAccess() {
+        btnTeamParticipations.setVisibility(View.GONE);
     }
 }

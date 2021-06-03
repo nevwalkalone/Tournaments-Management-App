@@ -224,8 +224,8 @@ public class Team {
                     && colors.equals(otherTeam.colors)
                     && players.equals(otherTeam.players)
                     && ageDivision.equals(otherTeam.getAgeDivision())
-                    && captain.equals(otherTeam.captain)
-                    && participations.equals(otherTeam.participations))
+                    && captain.equals(otherTeam.captain))
+//                    && participations.equals(otherTeam.participations))
                 return true;
         }
         return false;

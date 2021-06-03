@@ -213,7 +213,7 @@ public class Tournament {
                     (sportType.equals(otherTour.sportType) && otherTour.sportType != null) &&
                     (ageDivision.equals(otherTour.ageDivision) && otherTour.ageDivision != null) &&
                     (otherTour.dates != null && dates.equals(otherTour.dates)) &&
-                    (participations.equals(otherTour.participations) && otherTour.participations != null) &&
+//                    (participations.equals(otherTour.participations) && otherTour.participations != null) &&
                     (rounds.equals(otherTour.rounds) && otherTour.rounds != null) &&
                     getMAX_TEAMS_NUMBER() == otherTour.getMAX_TEAMS_NUMBER())
 

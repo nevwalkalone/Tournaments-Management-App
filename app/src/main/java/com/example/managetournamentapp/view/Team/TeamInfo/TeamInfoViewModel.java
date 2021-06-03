@@ -1,7 +1,6 @@
 package com.example.managetournamentapp.view.Team.TeamInfo;
 
 import androidx.lifecycle.ViewModel;
-
 import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
 import com.example.managetournamentapp.memoryDao.TeamDAOMemory;
 

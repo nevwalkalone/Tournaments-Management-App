@@ -8,4 +8,5 @@ public interface TeamPageView {
 
     void startTeamParticipations();
 
+    void changesOfAccess();
 }
