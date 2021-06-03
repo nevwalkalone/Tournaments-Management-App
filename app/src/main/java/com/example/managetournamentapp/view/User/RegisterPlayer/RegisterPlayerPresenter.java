@@ -25,10 +25,10 @@ public class RegisterPlayerPresenter {
     }
 
     public void showPreviousInfo(String playerUsername) {
-        if (playerUsername==null)
+        if (playerUsername == null)
             return;
         connectedPlayer = playerDAO.find(playerUsername);
-        if( connectedPlayer == null )
+        if (connectedPlayer == null)
             return;
 
         view.setName(connectedPlayer.getName());
@@ -85,7 +85,9 @@ public class RegisterPlayerPresenter {
                 connectedPlayer.setName(name);
                 connectedPlayer.setSurname(surname);
                 connectedPlayer.setCredentials(new Credentials(usename, password));
-                connectedPlayer.setBirthDate(LocalDate.parse(birthDate));
+                birthDate = birthDate.replace("/", "-");
+                String dateFormat = LocalDate.parse(birthDate, DateTimeFormatter.ofPattern("dd-MM-uuuu")).format(DateTimeFormatter.ofPattern("uuuu-MM-dd"));
+                connectedPlayer.setBirthDate(LocalDate.parse(dateFormat));
                 connectedPlayer.setLocation(location);
                 connectedPlayer.setPhoneNumber(phoneNumber);
                 connectedPlayer.setEmail(email);

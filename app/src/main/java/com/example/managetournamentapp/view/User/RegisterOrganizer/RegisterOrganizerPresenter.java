@@ -11,6 +11,7 @@ import com.example.managetournamentapp.domain.Organizer;
 import com.example.managetournamentapp.memoryDao.OrganizerDAOMemory;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -67,24 +68,28 @@ public class RegisterOrganizerPresenter {
             view.showPopUp(view, "Not valid email!");
 
 
-        // IF USER IS NEW!
-        if (view.getConnectedOrganizer() == null) {
-            birthDate = birthDate.replace("/", "-");
-            Organizer organizer = new Organizer(name, surname, phoneNumber, email, LocalDate.parse(birthDate), new Credentials(usename, password), title);
-            organizerDAO = new OrganizerDAOMemory();
-            organizerDAO.save(organizer);
-            loggedInUser.setUser(organizer);
-            view.startOrganizerPage();
-        } else {
-            connectedOrganizer.setName(name);
-            connectedOrganizer.setSurname(surname);
-            connectedOrganizer.setCredentials(new Credentials(usename, password));
-            connectedOrganizer.setBirthDate(LocalDate.parse(birthDate));
-            connectedOrganizer.setTitle(title);
-            connectedOrganizer.setPhoneNumber(phoneNumber);
-            connectedOrganizer.setEmail(email);
-            view.startOrganizerPage();
+        else {
+            // IF USER IS NEW!
+            if (view.getConnectedOrganizer() == null) {
+                birthDate = birthDate.replace("/", "-");
+                Organizer organizer = new Organizer(name, surname, phoneNumber, email, LocalDate.parse(birthDate), new Credentials(usename, password), title);
+                organizerDAO = new OrganizerDAOMemory();
+                organizerDAO.save(organizer);
+                loggedInUser.setUser(organizer);
+                view.startOrganizerPage();
+            } else {
+                connectedOrganizer.setName(name);
+                connectedOrganizer.setSurname(surname);
+                birthDate = birthDate.replace("/", "-");
+                String dateFormat = LocalDate.parse(birthDate, DateTimeFormatter.ofPattern("dd-MM-uuuu")).format(DateTimeFormatter.ofPattern("uuuu-MM-dd"));
+                connectedOrganizer.setCredentials(new Credentials(usename, password));
+                connectedOrganizer.setBirthDate(LocalDate.parse(dateFormat));
+                connectedOrganizer.setTitle(title);
+                connectedOrganizer.setPhoneNumber(phoneNumber);
+                connectedOrganizer.setEmail(email);
+                view.startOrganizerPage();
 
+            }
         }
 
     }

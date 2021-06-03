@@ -14,29 +14,27 @@ import com.example.managetournamentapp.memoryDao.MemoryInitializer;
 import com.example.managetournamentapp.view.Team.InvitePlayers.InvitePlayersActivity;
 import com.example.managetournamentapp.view.Team.InvitePlayers.InvitePlayersViewModel;
 import com.example.managetournamentapp.view.Team.InvitePlayers.fragment.PlayersListFragment;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
-public class JoinedPlayersActivity extends AppCompatActivity implements PlayersListFragment.OnListFragmentInteractionListener, View.OnClickListener,JoinedPlayersView {
+public class JoinedPlayersActivity extends AppCompatActivity implements PlayersListFragment.OnListFragmentInteractionListener, View.OnClickListener, JoinedPlayersView {
 
     JoinedPlayersViewModel viewModel;
     public static final String PLAYER_NAME_EXTRA = "player_name_extra";
     public static final String TEAM_NAME_EXTRA = "team_name_extra";
     String teamName;
-    private Button deleteBtn;
-    private Button inviteNewBtn;
+    private FloatingActionButton inviteNewBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         new MemoryInitializer().prepareData();
         super.onCreate(savedInstanceState);
-        teamName =  this.getIntent().getStringExtra(TEAM_NAME_EXTRA);
+        teamName = this.getIntent().getStringExtra(TEAM_NAME_EXTRA);
         setContentView(R.layout.activity_joined_players);
 
-        deleteBtn = (Button) findViewById(R.id.delete_players_button);
-        inviteNewBtn = (Button) findViewById(R.id.invite_new_players_button);
-        deleteBtn.setOnClickListener(this);
+        inviteNewBtn = (FloatingActionButton) findViewById(R.id.invite_new_players_button);
         inviteNewBtn.setOnClickListener(this);
 
         viewModel = new ViewModelProvider(this).get(JoinedPlayersViewModel.class);
@@ -79,7 +77,6 @@ public class JoinedPlayersActivity extends AppCompatActivity implements PlayersL
         }
 
     }
-
 
 
     @Override
