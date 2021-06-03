@@ -19,7 +19,7 @@ public abstract class Initializer {
 
     protected abstract void eraseData();
 
-    public void prepareData(){
+    public void prepareData() {
         eraseData();
         GameDAO gameDAO = getGameDAO();
         GroupDAO groupDAO = getGroupDAO();
@@ -31,32 +31,44 @@ public abstract class Initializer {
         TeamDAO teamDAO = getTeamDAO();
         TournamentDAO tournamentDAO = getTournamentDAO();
 
-        playerDAO.save( new Player("tomtomtom", "jerry","Athens",  "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("tom12", "12345")));
-        playerDAO.save( new Player("tom2", "jerry","Athens",  "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("tom23", "12345")));
-        playerDAO.save( new Player("tom3", "jerry","Athens",  "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("tom34", "12345")));
+        playerDAO.save(new Player("tomtomtom", "jerry", "Athens", "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("tom12", "12345")));
+        playerDAO.save(new Player("tom2", "jerry", "Athens", "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("tom23", "12345")));
+        playerDAO.save(new Player("tom3", "jerry", "Athens", "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("tom34", "12345")));
+        playerDAO.save(new Player("nikolakis", "jerry", "Athens", "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("nikos12", "12345")));
+        playerDAO.save(new Player("tasoulis", "jerry", "Athens", "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("tasos13", "12345")));
+        playerDAO.save(new Player("giorgakis", "jerry", "Athens", "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("giorgos14", "12345")));
         playerDAO.find("tom12").addSportInterested(new Sport("Basketball3v3"));
         playerDAO.find("tom23").addSportInterested(new Sport("Basketball3v3"));
         playerDAO.find("tom34").addSportInterested(new Sport("Basketball3v3"));
+        playerDAO.find("nikos12").addSportInterested(new Sport("Basketball3v3"));
+        playerDAO.find("tasos13").addSportInterested(new Sport("Basketball3v3"));
+        playerDAO.find("giorgos14").addSportInterested(new Sport("Basketball3v3"));
 
         ArrayList<LocalDate> dates = new ArrayList<>();
         for (int i = 1; i < 64; i++) {
             dates.add(LocalDate.now());
         }
 
-        organizerDAO.save( new Organizer("Nikos", "Nikopoulos", "69xxxxxxxx", "nikosnik@gmail.com",  LocalDate.parse("2000-01-01"), new Credentials("nikos", "12345"), "ESKA"));
-        Tournament tour1 =  new Tournament("TOURNOUA1", LocalDate.parse("2030-05-10"), LocalDate.parse("2030-05-29"), "ATHENS", (new Sport("Basketball3v3")),
+        organizerDAO.save(new Organizer("Nikos", "Nikopoulos", "69xxxxxxxx", "nikosnik@gmail.com", LocalDate.parse("2000-01-01"), new Credentials("nikos", "12345"), "ESKA"));
+        Tournament tour1 = new Tournament("TOURNOUA1", LocalDate.parse("2030-05-10"), LocalDate.parse("2030-05-29"), "ATHENS", (new Sport("Basketball3v3")),
                 32, AgeDivision.K100, dates);
         tournamentDAO.save(tour1);
         organizerDAO.findByTitle("ESKA").addTournament(tour1);
 
 
-        teamDAO.save(  new Team("Celtic", (new Sport("Basketball3v3")), AgeDivision.K100, playerDAO.find("tom12") , "green") );
-        teamDAO.find( "Celtic" ).addPlayer( playerDAO.find("tom23")  );
-        teamDAO.find( "Celtic" ).addPlayer( playerDAO.find("tom34") );
+        teamDAO.save(new Team("Celtic", (new Sport("Basketball3v3")), AgeDivision.K100, playerDAO.find("tom12"), "green"));
+        teamDAO.find("Celtic").addPlayer(playerDAO.find("tom23"));
+        teamDAO.find("Celtic").addPlayer(playerDAO.find("tom34"));
+        teamDAO.save(new Team("Bulls", (new Sport("Basketball3v3")), AgeDivision.K100, playerDAO.find("nikos12"), "green"));
+        teamDAO.find("Bulls").addPlayer(playerDAO.find("tasos13"));
+        teamDAO.find("Bulls").addPlayer(playerDAO.find("giorgos14"));
 
-        Participation part = new Participation( tour1, teamDAO.find("Celtic") );
-        participationDAO.save( part);
-        teamDAO.find( "Celtic" ).addParticipation(part);
+        Participation part = new Participation(tour1, teamDAO.find("Celtic"));
+        participationDAO.save(part);
+        teamDAO.find("Celtic").addParticipation(part);
+        Participation part2 = new Participation(tour1, teamDAO.find("Bulls"));
+        participationDAO.save(part2);
+        teamDAO.find("Bulls").addParticipation(part2);
 
         //TODO CHECK ADDPARTICIPATION
         //adding participation to tournament
@@ -81,7 +93,6 @@ public abstract class Initializer {
     public abstract TeamDAO getTeamDAO();
 
     public abstract TournamentDAO getTournamentDAO();
-
 
 
 }
