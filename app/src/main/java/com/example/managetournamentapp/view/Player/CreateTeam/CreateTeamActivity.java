@@ -52,9 +52,6 @@ public class CreateTeamActivity extends AppCompatActivity implements CreateTeamV
         saveBtn = findViewById(R.id.saveTeambtn);
         saveBtn.setOnClickListener(v -> viewModel.getPresenter().onSaveTeam());
 
-        saveBtn.setOnClickListener(v -> {
-            viewModel.getPresenter().onSaveTeam();
-        });
     }
 
     @Override
