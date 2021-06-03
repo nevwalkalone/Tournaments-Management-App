@@ -332,6 +332,7 @@
                 android:id="@+id/savePlayerBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
                 android:text="SAVE" />
         </LinearLayout>
 
