@@ -62,13 +62,13 @@ public class RegisterPlayerActivity extends AppCompatActivity implements Registe
         viewModel.getPresenter().showPreviousInfo(playerUsername);
     }
 
-    // TODO OVERRIDE BACK PRESS
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        Intent intent = new Intent(this, HomePageActivity.class);
-        startActivity(intent);
-    }
+//    // TODO OVERRIDE BACK PRESS
+//    @Override
+//    public void onBackPressed() {
+//        super.onBackPressed();
+//        Intent intent = new Intent(this, HomePageActivity.class);
+//        startActivity(intent);
+//    }
 
     public void showPopUp(RegisterPlayerView view, String msg) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);

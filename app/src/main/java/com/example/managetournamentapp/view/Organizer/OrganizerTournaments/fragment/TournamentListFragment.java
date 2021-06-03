@@ -45,7 +45,7 @@ public class TournamentListFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_created_tournaments_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_tournaments_list, container, false);
 
         ArrayList<Tournament> tournamentList = mListener.getTournamentList();
 //        Log.d("TournamentListFragment", "Found " + tournamentList.size() + " tournaments");

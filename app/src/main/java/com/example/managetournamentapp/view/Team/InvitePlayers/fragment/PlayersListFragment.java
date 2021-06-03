@@ -2,7 +2,6 @@ package com.example.managetournamentapp.view.Team.InvitePlayers.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,7 +45,7 @@ public class PlayersListFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_created_tournaments_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_tournaments_list, container, false);
 
         ArrayList<Player> playerList = mListener.getPlayerList();
 //        Log.d("TournamentListFragment", "Found " + tournamentList.size() + " tournaments");

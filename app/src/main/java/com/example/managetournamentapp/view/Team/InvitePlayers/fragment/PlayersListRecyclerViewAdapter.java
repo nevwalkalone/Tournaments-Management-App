@@ -12,7 +12,6 @@ import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.domain.Player;
 import com.example.managetournamentapp.view.Team.InvitePlayers.fragment.PlayersListFragment.OnListFragmentInteractionListener;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class PlayersListRecyclerViewAdapter extends RecyclerView.Adapter<PlayersListRecyclerViewAdapter.ViewHolder> {
@@ -29,7 +28,7 @@ public class PlayersListRecyclerViewAdapter extends RecyclerView.Adapter<Players
     @Override
     public PlayersListRecyclerViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_invite_players_list_item, parent, false);
+                .inflate(R.layout.fragment_players_list_item, parent, false);
         return new ViewHolder(view);
     }
 

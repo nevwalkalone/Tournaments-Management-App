@@ -29,10 +29,10 @@ public class PlayerPageActivity extends AppCompatActivity implements PlayerPageV
     Button btnPlayerTeams;
     Button btnPlayerInvites;
     private String playerUsername;
-    private static boolean init = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player_page);

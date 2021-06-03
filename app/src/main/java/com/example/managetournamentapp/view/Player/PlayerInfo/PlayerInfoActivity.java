@@ -39,6 +39,16 @@ public class PlayerInfoActivity extends AppCompatActivity implements PlayerInfoV
         viewModel.getPresenter().findAccess();
     }
 
+//    @Override
+//    public void onBackPressed(){
+//        super.onBackPressed();
+//        Intent intent = new Intent(PlayerInfoActivity.this, RegisterPlayerActivity.class);
+//        intent.putExtra(PLAYER_USERNAME_EXTRA , playerUsername);
+//        startActivity(intent);
+//    }
+
+
+
     public void setUsername(String username){
         ((TextView)findViewById(R.id.text_username)).setText(username);
     }

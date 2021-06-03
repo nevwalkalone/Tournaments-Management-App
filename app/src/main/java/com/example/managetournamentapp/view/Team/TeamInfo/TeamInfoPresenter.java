@@ -20,6 +20,8 @@ public class TeamInfoPresenter {
         if( team == null )
             return;
 
+        //todo there is an error here
+
         view.setTeamName(team.getName());
         view.setColors(team.getColors() );
         view.setSport(team.getSportType().getName());

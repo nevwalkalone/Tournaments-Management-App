@@ -30,7 +30,6 @@ public class CreateTeamActivity extends AppCompatActivity implements CreateTeamV
     private static final String PLAYER_USERNAME_EXTRA = "player_username_extra";
     private Button saveBtn;
     private Spinner spinner;
-    String playerUsername;
     String teamName;
 
 
@@ -40,8 +39,7 @@ public class CreateTeamActivity extends AppCompatActivity implements CreateTeamV
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_team);
 
-        playerUsername = this.getIntent().getStringExtra(PLAYER_USERNAME_EXTRA);
-        teamName = this.getIntent().getStringExtra(PLAYER_USERNAME_EXTRA);
+        teamName = this.getIntent().getStringExtra(TEAM_NAME_EXTRA);
 
         viewModel = new ViewModelProvider(this).get(CreateTeamViewModel.class);
         viewModel.getPresenter().setView(this);
@@ -49,7 +47,7 @@ public class CreateTeamActivity extends AppCompatActivity implements CreateTeamV
         spinner =  findViewById(R.id.sport_spinner);
         setSpinnerList( viewModel.getPresenter().getSportTypes() );
 
-        viewModel.getPresenter().showPreviousInfo(playerUsername, teamName);
+        viewModel.getPresenter().showPreviousInfo(teamName);
 
         saveBtn = findViewById(R.id.saveTeambtn);
         saveBtn.setOnClickListener(v -> viewModel.getPresenter().onSaveTeam());
@@ -62,7 +60,7 @@ public class CreateTeamActivity extends AppCompatActivity implements CreateTeamV
     @Override
     public void startSaveTeam(String userName) {
         Intent intent = new Intent(CreateTeamActivity.this, JoinedTeamsActivity.class);
-        intent.putExtra(TEAM_NAME_EXTRA, getTeamName());
+        intent.putExtra(PLAYER_USERNAME_EXTRA, userName);
         startActivity(intent);
     }
 

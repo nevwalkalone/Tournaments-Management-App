@@ -20,10 +20,6 @@ public class PlayerPagePresenter {
     }
 
     public void findAccess(String playerUsername){
-        if (playerUsername==null)
-            return;
-        player = playerDAO.find(playerUsername);
-
         if ( loggedInUser.getUser() != null )
             if (loggedInUser.getUser() instanceof  Player)
                 if ( ((Player)loggedInUser.getUser()).equals(player) )

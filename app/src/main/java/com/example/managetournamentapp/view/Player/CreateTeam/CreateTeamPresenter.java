@@ -1,5 +1,7 @@
 package com.example.managetournamentapp.view.Player.CreateTeam;
 
+import android.util.Log;
+
 import com.example.managetournamentapp.dao.PlayerDAO;
 import com.example.managetournamentapp.dao.TeamDAO;
 import com.example.managetournamentapp.domain.Player;
@@ -25,13 +27,7 @@ public class CreateTeamPresenter {
         sportTypes = findSportTypes();
     }
 
-    public void showPreviousInfo(String playerUsername , String teamName) {
-        if (playerUsername==null)
-            return;
-        player = playerDAO.find(playerUsername);
-        if( player == null )
-            return;
-
+    public void showPreviousInfo(String teamName) {
         if (teamName==null)
             return;
         connectedTeam = teamDAO.find(teamName);
@@ -63,7 +59,7 @@ public class CreateTeamPresenter {
         }else if (colors.length() < 3 || colors.length() > 20) {
 
         }else{
-            // IF USER IS NEW!
+            // IF TEAM IS NEW!
             if ( connectedTeam == null) {
                 Player player = ( (Player) (new MemoryLoggedInUser()).getUser() );
                 Team team = new Team( name, new Sport(sportType) , player.getAgeDivision(), player , colors );
@@ -94,6 +90,10 @@ public class CreateTeamPresenter {
             sportTypes.add(TournamentType.values()[i].toString());
         }
         return  sportTypes;
+    }
+
+    public void setPlayer(Player player){
+        this.player = player;
     }
 
     public void setPlayerDAO(PlayerDAO playerDAO) {

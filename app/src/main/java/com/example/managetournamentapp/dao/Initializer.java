@@ -31,12 +31,12 @@ public abstract class Initializer {
         TeamDAO teamDAO = getTeamDAO();
         TournamentDAO tournamentDAO = getTournamentDAO();
 
-        playerDAO.save( new Player("tomtomtom", "jerry","Athens",  "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("tom", "123")));
+        playerDAO.save( new Player("tomtomtom", "jerry","Athens",  "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("tom12", "12345")));
         playerDAO.save( new Player("tom2", "jerry","Athens",  "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("tom23", "12345")));
-        playerDAO.save( new Player("tom3", "jerry","Athens",  "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("tom3", "123")));
-        playerDAO.find("tom").addSportInterested(new Sport("Basketball3v3"));
+        playerDAO.save( new Player("tom3", "jerry","Athens",  "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("tom34", "12345")));
+        playerDAO.find("tom12").addSportInterested(new Sport("Basketball3v3"));
         playerDAO.find("tom23").addSportInterested(new Sport("Basketball3v3"));
-        playerDAO.find("tom3").addSportInterested(new Sport("Basketball3v3"));
+        playerDAO.find("tom34").addSportInterested(new Sport("Basketball3v3"));
 
         ArrayList<LocalDate> dates = new ArrayList<>();
         for (int i = 1; i < 64; i++) {
@@ -50,16 +50,13 @@ public abstract class Initializer {
         organizerDAO.findByTitle("ESKA").addTournament(tour1);
 
 
-        teamDAO.save(  new Team("Celtic", (new Sport("Basketball3v3")), AgeDivision.K100, playerDAO.find("tom") , "green") );
+        teamDAO.save(  new Team("Celtic", (new Sport("Basketball3v3")), AgeDivision.K100, playerDAO.find("tom12") , "green") );
         teamDAO.find( "Celtic" ).addPlayer( playerDAO.find("tom23")  );
-        teamDAO.find( "Celtic" ).addPlayer( playerDAO.find("tom3") );
+        teamDAO.find( "Celtic" ).addPlayer( playerDAO.find("tom34") );
 
         Participation part = new Participation( tour1, teamDAO.find("Celtic") );
         participationDAO.save( part);
-        teamDAO.find( "Celtic" ).addParticipation(part);
-
-        Log.wtf("initt" ,  teamDAO.find( "Celtic" ).getParticipations().toString());
-        Log.wtf("initt" ,  tour1.getParticipations().toString());
+//        teamDAO.find( "Celtic" ).addParticipation(part);
 
         //TODO CHECK ADDPARTICIPATION
         //adding participation to tournament
