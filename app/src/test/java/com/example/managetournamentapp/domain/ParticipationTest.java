@@ -82,7 +82,7 @@ public class ParticipationTest {
 
     @Test
     public void isRunningTest(){
-        Assert.assertTrue(participation3.isRunning());
+        Assert.assertFalse(participation3.isRunning());
         Assert.assertFalse(participation.isRunning());
         participation5.setFinishDate(LocalDate.parse("2021-05-19"));
         Assert.assertFalse(participation5.isRunning());

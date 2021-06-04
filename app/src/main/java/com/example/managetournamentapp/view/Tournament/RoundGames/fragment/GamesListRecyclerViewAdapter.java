@@ -1,5 +1,6 @@
 package com.example.managetournamentapp.view.Tournament.RoundGames.fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,11 +35,17 @@ public class GamesListRecyclerViewAdapter extends RecyclerView.Adapter<GamesList
         Game currentGame = mValues.get(position);
         holder.mItem = currentGame;
 
-        holder.txtTeamA.setText(currentGame.getTeamA().getName());
-        holder.txtTeamB.setText(currentGame.getTeamB().getName());
-        // todo something  under breaks here
-        holder.scoreA.setText( Integer.toString( currentGame.getScoreA()));
-        holder.scoreB.setText(Integer.toString( currentGame.getScoreB()));
+        if (currentGame.getTeamA().getName()!=null ){
+            holder.txtTeamA.setText(currentGame.getTeamA().getName());
+            holder.txtTeamB.setText(currentGame.getTeamB().getName());
+            holder.scoreA.setText(  String.valueOf( currentGame.getScoreA()) );
+            holder.scoreB.setText( String.valueOf( currentGame.getScoreB()) );
+        }else{
+            holder.txtTeamA.setText( "To Be Announced" );
+            holder.txtTeamB.setText( "To Be Announced" ) ;
+            holder.scoreA.setText(" ");
+            holder.scoreB.setText(" ");
+        }
         holder.date.setText(currentGame.getDate().toString());
 
     }
