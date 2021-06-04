@@ -3,6 +3,7 @@ package com.example.managetournamentapp.view.Team.InvitePlayers;
 import com.example.managetournamentapp.dao.LoggedInUser;
 import com.example.managetournamentapp.dao.PlayerDAO;
 import com.example.managetournamentapp.dao.TeamDAO;
+import com.example.managetournamentapp.domain.Invitation;
 import com.example.managetournamentapp.domain.Player;
 import com.example.managetournamentapp.domain.Team;
 
@@ -26,7 +27,8 @@ public class InvitePlayersPresenter {
         ArrayList<Player> allPlayers = playerDAO.findAll();
         Team team = teamDAO.find(teamName);
         for (Player player : allPlayers) {
-            if (player.canJoin(team))
+            boolean alreadyInvitedForTheTeam = player.getInvitesReceived().contains(new Invitation(team));
+            if (player.canJoin(team) && !alreadyInvitedForTheTeam)
                 results.add(player);
         }
 
@@ -36,8 +38,13 @@ public class InvitePlayersPresenter {
         return results;
     }
 
-    public void onPlayerSelected(Player p) {
-        // todo
+    public void onPlayerAccountSelected(Player p) {
+        view.startPlayerPage(p);
+    }
+
+    public void inviteNewPlayer(String teamName, Player p) {
+        Team team = teamDAO.find(teamName);
+        playerDAO.find(p.getCredentials().getUsername()).addInvite(new Invitation(team));
     }
 
     public void setView(InvitePlayersView view) {

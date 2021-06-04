@@ -5,6 +5,7 @@ import android.util.Log;
 
 import com.example.managetournamentapp.domain.AgeDivision;
 import com.example.managetournamentapp.domain.Credentials;
+import com.example.managetournamentapp.domain.Invitation;
 import com.example.managetournamentapp.domain.Organizer;
 import com.example.managetournamentapp.domain.Participation;
 import com.example.managetournamentapp.domain.Player;
@@ -69,6 +70,10 @@ public abstract class Initializer {
         Participation part2 = new Participation(tour1, teamDAO.find("Bulls"));
         participationDAO.save(part2);
         teamDAO.find("Bulls").addParticipation(part2);
+
+
+        //TODO INVITES
+        playerDAO.find("tom12").addInvite(new Invitation(teamDAO.find("Bulls")));
 
         //TODO CHECK ADDPARTICIPATION
         //adding participation to tournament

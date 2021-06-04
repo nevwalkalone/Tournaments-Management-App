@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.view.Player.JoinedTeams.JoinedTeamsActivity;
 import com.example.managetournamentapp.view.Player.PlayerInfo.PlayerInfoActivity;
+import com.example.managetournamentapp.view.Player.ReceivedInvites.ReceivedInvitesActivity;
 
 public class PlayerPageActivity extends AppCompatActivity implements PlayerPageView {
 
@@ -63,11 +64,11 @@ public class PlayerPageActivity extends AppCompatActivity implements PlayerPageV
         startActivity(intent);
     }
 
-    //TODO
+
     public void toPlayerInvites(String playerUsername) {
-        // Intent intent = new Intent(PlayerPageActivity.this, PlayerInvitedActivity.class);
-//        intent.putExtra(PLAYER_USERNAME_EXTRA, playerUsername);
-        //  startActivity(intent);
+        Intent intent = new Intent(PlayerPageActivity.this, ReceivedInvitesActivity.class);
+        intent.putExtra(PLAYER_USERNAME_EXTRA, playerUsername);
+        startActivity(intent);
     }
 
     public void changesOfAccess() {

@@ -1,32 +1,40 @@
 package com.example.managetournamentapp.view.Player.ReceivedInvites;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.managetournamentapp.R;
+import com.example.managetournamentapp.domain.Invitation;
 import com.example.managetournamentapp.domain.Team;
+import com.example.managetournamentapp.memoryDao.PlayerDAOMemory;
+import com.example.managetournamentapp.memoryDao.TeamDAOMemory;
 import com.example.managetournamentapp.view.Player.CreateTeam.CreateTeamActivity;
 import com.example.managetournamentapp.view.Player.JoinedTeams.JoinedTeamsActivity;
 import com.example.managetournamentapp.view.Player.JoinedTeams.JoinedTeamsView;
 import com.example.managetournamentapp.view.Player.JoinedTeams.JoinedTeamsViewModel;
+import com.example.managetournamentapp.view.Player.ReceivedInvites.fragment.InvitationListFragment;
 import com.example.managetournamentapp.view.Team.TeamPage.TeamPageActivity;
 import com.example.managetournamentapp.view.Tournament.ParticipatingTeams.fragment.TeamsListFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
-public class ReceivedInvitesActivity extends AppCompatActivity implements ReceivedInvitesView, TeamsListFragment.OnListFragmentInteractionListener {
+public class ReceivedInvitesActivity extends AppCompatActivity implements ReceivedInvitesView, View.OnClickListener, InvitationListFragment.OnListFragmentInteractionListener {
 
 
     public static final String TEAM_NAME_EXTRA = "team_name_extra";
     private static final String PLAYER_USERNAME_EXTRA = "player_username_extra";
-    JoinedTeamsViewModel viewModel;
-    private FloatingActionButton addBtn;
+    private AlertDialog POPUP_ACTION;
+    ReceivedInvitesViewModel viewModel;
     private String playerUsername;
+    private Invitation invitationSelected;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,10 +43,12 @@ public class ReceivedInvitesActivity extends AppCompatActivity implements Receiv
         setContentView(R.layout.activity_received_invites);
         playerUsername = this.getIntent().getStringExtra(PLAYER_USERNAME_EXTRA);
 
-        viewModel = new ViewModelProvider(this).get(JoinedTeamsViewModel.class);
-//        viewModel.getPresenter().setView(this);
-        addBtn = findViewById(R.id.create_team_button);
-        addBtn.setOnClickListener(v -> viewModel.getPresenter().onAddTeam());
+        viewModel = new ViewModelProvider(this).get(ReceivedInvitesViewModel.class);
+        viewModel.getPresenter().setView(this);
+        viewModel.getPresenter().setPlayerDAO((new PlayerDAOMemory()));
+        viewModel.getPresenter().setTeamDAO((new TeamDAOMemory()));
+        viewModel.getPresenter().findInvites(playerUsername);
+
 
         if (findViewById(R.id.fragment_container) != null) {
 
@@ -46,28 +56,73 @@ public class ReceivedInvitesActivity extends AppCompatActivity implements Receiv
                 return;
             }
 
-            viewModel.getPresenter().findJoinedTeams(playerUsername);
-
-
-            TeamsListFragment teamsListFragment = TeamsListFragment.newInstance(1);
+            InvitationListFragment invitationListFragment = InvitationListFragment.newInstance(1);
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.fragment_container, teamsListFragment)
+                    .add(R.id.fragment_container, invitationListFragment)
                     .commit();
         }
-        // viewModel.getPresenter().findAccess();
+
+    }
+
+
+    @Override
+    public ArrayList<Invitation> getInvitationsList() {
+        return viewModel.getPresenter().getInvites();
     }
 
     @Override
-    public void onListFragmentInteraction(Team item) {
-        Intent intent = new Intent(ReceivedInvitesActivity.this, TeamPageActivity.class);
-        intent.putExtra(TEAM_NAME_EXTRA, item.getName());
+    public void startTeamPage() {
+        Intent intent = new Intent(this, TeamPageActivity.class);
+        intent.putExtra(TEAM_NAME_EXTRA, invitationSelected.getTeam().getName());
         startActivity(intent);
     }
 
     @Override
-    public ArrayList<Team> getTeamsList() {
-        return null;
+    public AlertDialog showPopUp(int layoutId, String msg, int btn1, int btn2, int btn3) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        View customLayout = getLayoutInflater().inflate(layoutId, null);
+        builder.setView(customLayout);
+        AlertDialog dialog = builder.create();
+
+        TextView textMsg = (TextView) customLayout.findViewById(R.id.action_message);
+        Button firstButton = (Button) customLayout.findViewById(btn1);
+        Button secondButton = (Button) customLayout.findViewById(btn2);
+        Button thirdButton = (Button) customLayout.findViewById(btn3);
+
+        textMsg.setText(msg);
+
+        firstButton.setOnClickListener(this);
+        secondButton.setOnClickListener(this);
+        thirdButton.setOnClickListener(this);
+        return dialog;
     }
 
 
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == R.id.decline_team_popup) {
+            viewModel.getPresenter().declineInvitation(invitationSelected);
+            POPUP_ACTION.dismiss();
+            recreate();
+        } else if (v.getId() == R.id.accept_team_popup) {
+            viewModel.getPresenter().acceptInvitation(invitationSelected);
+            POPUP_ACTION.dismiss();
+            recreate();
+        } else if (v.getId() == R.id.account_team_popup) {
+            viewModel.getPresenter().onTeamPageClick();
+
+        }
+    }
+
+    @Override
+    public void onListFragmentInteraction(Invitation item) {
+        invitationSelected = item;
+        POPUP_ACTION = showPopUp(R.layout.manage_invites_popup, "Team: " + invitationSelected.getTeam().getName(), R.id.decline_team_popup, R.id.accept_team_popup, R.id.account_team_popup);
+        POPUP_ACTION.show();
+    }
+
+    @Override
+    public ArrayList<Invitation> getInvitationList() {
+        return viewModel.getPresenter().getInvites();
+    }
 }
