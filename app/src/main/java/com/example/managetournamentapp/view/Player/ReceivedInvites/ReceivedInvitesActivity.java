@@ -12,17 +12,10 @@ import android.widget.TextView;
 
 import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.domain.Invitation;
-import com.example.managetournamentapp.domain.Team;
 import com.example.managetournamentapp.memoryDao.PlayerDAOMemory;
 import com.example.managetournamentapp.memoryDao.TeamDAOMemory;
-import com.example.managetournamentapp.view.Player.CreateTeam.CreateTeamActivity;
-import com.example.managetournamentapp.view.Player.JoinedTeams.JoinedTeamsActivity;
-import com.example.managetournamentapp.view.Player.JoinedTeams.JoinedTeamsView;
-import com.example.managetournamentapp.view.Player.JoinedTeams.JoinedTeamsViewModel;
 import com.example.managetournamentapp.view.Player.ReceivedInvites.fragment.InvitationListFragment;
 import com.example.managetournamentapp.view.Team.TeamPage.TeamPageActivity;
-import com.example.managetournamentapp.view.Tournament.ParticipatingTeams.fragment.TeamsListFragment;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
@@ -78,7 +71,7 @@ public class ReceivedInvitesActivity extends AppCompatActivity implements Receiv
     }
 
     @Override
-    public AlertDialog showPopUp(int layoutId, String msg, int btn1, int btn2, int btn3) {
+    public AlertDialog showPopUp(int layoutId, String msg, int btn1, int btn2, int btn3,boolean changePopup) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         View customLayout = getLayoutInflater().inflate(layoutId, null);
         builder.setView(customLayout);
@@ -88,9 +81,18 @@ public class ReceivedInvitesActivity extends AppCompatActivity implements Receiv
         Button firstButton = (Button) customLayout.findViewById(btn1);
         Button secondButton = (Button) customLayout.findViewById(btn2);
         Button thirdButton = (Button) customLayout.findViewById(btn3);
-
         textMsg.setText(msg);
 
+        if(changePopup){
+            customLayout.findViewById(R.id.textView2).setVisibility(View.GONE);
+            TextView tempMsg = customLayout.findViewById(btn2);
+            tempMsg.setText("OK");
+
+            firstButton.setVisibility(View.GONE);
+            thirdButton.setVisibility(View.GONE);
+        }
+
+        //(findViewById(R.id.password_row)).setVisibility(View.GONE);
         firstButton.setOnClickListener(this);
         secondButton.setOnClickListener(this);
         thirdButton.setOnClickListener(this);
@@ -100,14 +102,29 @@ public class ReceivedInvitesActivity extends AppCompatActivity implements Receiv
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.decline_team_popup) {
+        Button b = (Button) v;
+        String newButton=b.getText().toString();
+
+        if ("OK".equals(newButton)) {
+            POPUP_ACTION.dismiss();
+            recreate();
+        }
+        else if (v.getId() == R.id.decline_team_popup) {
             viewModel.getPresenter().declineInvitation(invitationSelected);
             POPUP_ACTION.dismiss();
-            recreate();
-        } else if (v.getId() == R.id.accept_team_popup) {
+            POPUP_ACTION = showPopUp(R.layout.manage_invites_popup, "Successfully deleted invitation from " + invitationSelected.getTeam().getName()+" Team", R.id.decline_team_popup, R.id.accept_team_popup, R.id.account_team_popup,true);
+            POPUP_ACTION.show();
+
+        }
+        else if (v.getId() == R.id.accept_team_popup) {
+
+
             viewModel.getPresenter().acceptInvitation(invitationSelected);
             POPUP_ACTION.dismiss();
-            recreate();
+            POPUP_ACTION = showPopUp(R.layout.manage_invites_popup, "Successfully Joined " + invitationSelected.getTeam().getName()+" Team!", R.id.decline_team_popup, R.id.accept_team_popup, R.id.account_team_popup,true);
+            POPUP_ACTION.show();
+
+
         } else if (v.getId() == R.id.account_team_popup) {
             viewModel.getPresenter().onTeamPageClick();
 
@@ -117,7 +134,7 @@ public class ReceivedInvitesActivity extends AppCompatActivity implements Receiv
     @Override
     public void onListFragmentInteraction(Invitation item) {
         invitationSelected = item;
-        POPUP_ACTION = showPopUp(R.layout.manage_invites_popup, "Team: " + invitationSelected.getTeam().getName(), R.id.decline_team_popup, R.id.accept_team_popup, R.id.account_team_popup);
+        POPUP_ACTION = showPopUp(R.layout.manage_invites_popup, "Team: " + invitationSelected.getTeam().getName(), R.id.decline_team_popup, R.id.accept_team_popup, R.id.account_team_popup,false);
         POPUP_ACTION.show();
     }
 

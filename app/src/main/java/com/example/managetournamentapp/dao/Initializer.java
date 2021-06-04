@@ -1,8 +1,6 @@
 package com.example.managetournamentapp.dao;
 
 
-import android.util.Log;
-
 import com.example.managetournamentapp.domain.AgeDivision;
 import com.example.managetournamentapp.domain.Credentials;
 import com.example.managetournamentapp.domain.Invitation;

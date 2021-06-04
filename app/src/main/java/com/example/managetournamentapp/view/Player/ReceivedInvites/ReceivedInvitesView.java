@@ -7,7 +7,7 @@ import com.example.managetournamentapp.domain.Invitation;
 import java.util.ArrayList;
 
 public interface ReceivedInvitesView {
-    AlertDialog showPopUp(int layoutId, String msg, int btn1, int btn2, int btn3);
+    AlertDialog showPopUp(int layoutId, String msg, int btn1, int btn2, int btn3,boolean flag);
 
     void startTeamPage();
 
