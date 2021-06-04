@@ -22,7 +22,6 @@ import java.util.ArrayList;
 
 public class InvitePlayersActivity extends AppCompatActivity implements PlayersListFragment.OnListFragmentInteractionListener, View.OnClickListener, InvitePlayersView {
 
-    public static final String PLAYER_NAME_EXTRA = "player_name_extra";
     private static final String PLAYER_USERNAME_EXTRA = "player_username_extra";
     public static final String TEAM_NAME_EXTRA = "team_name_extra";
     private static AlertDialog POPUP_ACTION;

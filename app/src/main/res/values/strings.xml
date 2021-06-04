@@ -23,6 +23,12 @@
     <string name="round_4">Round 4</string>
     <string name="round_5">Round 5</string>
 
+    <string name="date">Date</string>
+    <string name="teamA">team A</string>
+    <string name="teamB">team B</string>
+    <string name="scoreA">score A</string>
+    <string name="scoreB">score B</string>
+
     <string name="organizer_info">Organizer Info</string>
     <string name="delete_organizer">Delete</string>
     <string name="edit_organizer">Edit</string>
@@ -49,4 +55,5 @@
     <string name="log_in">Log In Info</string>
     <string name="joined_players">Joined Players</string>
     <string name="create_team"> Create Team</string>
+    <string name="dash">-</string>
 </resources>

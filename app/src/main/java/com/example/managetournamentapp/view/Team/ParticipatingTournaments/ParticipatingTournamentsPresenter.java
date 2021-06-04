@@ -1,7 +1,5 @@
 package com.example.managetournamentapp.view.Team.ParticipatingTournaments;
 
-import android.util.Log;
-
 import com.example.managetournamentapp.dao.LoggedInUser;
 import com.example.managetournamentapp.dao.TeamDAO;
 import com.example.managetournamentapp.dao.TournamentDAO;
@@ -9,9 +7,8 @@ import com.example.managetournamentapp.domain.Participation;
 import com.example.managetournamentapp.domain.Player;
 import com.example.managetournamentapp.domain.Team;
 import com.example.managetournamentapp.domain.Tournament;
-import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
-
 import java.util.ArrayList;
+
 
 public class ParticipatingTournamentsPresenter {
     private ParticipatingTournamentsView view;
@@ -24,11 +21,11 @@ public class ParticipatingTournamentsPresenter {
     public ParticipatingTournamentsPresenter(){}
 
     public void findParticipatingTournaments(String teamName){
+        if (teamName==null)
+            return;
         team = teamDAO.find(teamName);
-
         if (team==null)
             return;
-
         results.clear();
         for (Participation p : team.getParticipations())
             results.add( p.getTournament()  );
@@ -61,7 +58,6 @@ public class ParticipatingTournamentsPresenter {
     public void setTournamentDAO(TournamentDAO tournamentDAO) {
         this.tournamentDAO = tournamentDAO;
     }
-
 
     public void setTeamDAO(TeamDAO teamDAO) {
         this.teamDAO = teamDAO;

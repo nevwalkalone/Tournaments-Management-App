@@ -83,7 +83,6 @@ public class PlayersListFragment extends Fragment {
     }
 
     public interface OnListFragmentInteractionListener {
-        // TODO: Update argument type and name
         void onListFragmentInteraction(Player item);
 
         ArrayList<Player> getPlayerList();

@@ -9,6 +9,7 @@ import com.example.managetournamentapp.domain.Invitation;
 import com.example.managetournamentapp.domain.Organizer;
 import com.example.managetournamentapp.domain.Participation;
 import com.example.managetournamentapp.domain.Player;
+import com.example.managetournamentapp.domain.Round;
 import com.example.managetournamentapp.domain.Sport;
 import com.example.managetournamentapp.domain.Team;
 import com.example.managetournamentapp.domain.Tournament;
@@ -55,6 +56,14 @@ public abstract class Initializer {
                 32, AgeDivision.K100, dates);
         tournamentDAO.save(tour1);
         organizerDAO.findByTitle("ESKA").addTournament(tour1);
+
+        for (Round round : tour1.getRounds()){
+            ArrayList<Team> emptyTeams = new ArrayList<>();
+            for (int i=0;i<round.getTeamsNumber();i++)
+                emptyTeams.add(new Team());
+
+            round.setup(emptyTeams);
+        }
 
 
         teamDAO.save(new Team("Celtic", (new Sport("Basketball3v3")), AgeDivision.K100, playerDAO.find("tom12"), "green"));

@@ -33,7 +33,6 @@ public class Round {
         }
     }
 
-
     public void setup(ArrayList<Team> teams){
         this.teams = teams;
         int firstIndex = 0;
