@@ -63,7 +63,6 @@ public class CreateTournamentPresenter {
                 connectedTournament.setAgeDivision( AgeDivision.values()[getAgeDivisionIndex(ageDivision)] );
                 view.startSaveTournament(connectedTournament.getTitle());
             }
-
         }
     }
 
