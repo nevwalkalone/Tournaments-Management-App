@@ -28,28 +28,24 @@ public class TournamentRoundsPresenter {
     }
 
     public void onGroups(){
-
-        view.showGroupRound(tournament.getTitle());
+        view.showRoundGames(tournament.getTitle(),tournament.getMAX_TEAMS_NUMBER());
     }
 
     public void on16(){
 
-        view.showRound16(tournament.getTitle());
+        view.showRoundGames(tournament.getTitle(),16 );
     }
 
     public void on8(){
-
-        view.showRound8(tournament.getTitle());
+        view.showRoundGames(tournament.getTitle(),8);
     }
 
     public void onSemifinals(){
-
-        view.showSemifinals(tournament.getTitle());
+        view.showRoundGames(tournament.getTitle(),4);
     }
 
     public void onFinal(){
-
-        view.showFinal(tournament.getTitle());
+        view.showRoundGames(tournament.getTitle(),2);
     }
 
     public void setTournamentDAO(TournamentDAO tournamentDAO) {

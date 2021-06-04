@@ -1,5 +1,6 @@
 package com.example.managetournamentapp.view.Tournament.TournamentRounds;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -8,9 +9,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.managetournamentapp.R;
+import com.example.managetournamentapp.view.Tournament.RoundGames.RoundGamesActivity;
 
 public class TournamentRoundsActivity extends AppCompatActivity implements TournamentRoundsView {
     public static final String TOURNAMENT_TITLE_EXTRA = "tournament_title_extra";
+    private static final String ROUND_TEAMS_EXTRA = "round_teams_extra" ;
     String tournamentTitle;
     private TournamentRoundsViewModel viewModel;
     Button btnGroups;
@@ -55,26 +58,12 @@ public class TournamentRoundsActivity extends AppCompatActivity implements Tourn
         }
     }
 
-    public void showGroupRound(String tournamentTitle){
-
+    public void showRoundGames(String tournamentTitle, int roundTeamsNumber){
+        Intent intent = new Intent(TournamentRoundsActivity.this, RoundGamesActivity.class);
+        intent.putExtra(TOURNAMENT_TITLE_EXTRA, tournamentTitle);
+        intent.putExtra(ROUND_TEAMS_EXTRA, String.valueOf(roundTeamsNumber));
+        startActivity(intent);
     }
 
-    public void showRound16(String tournamentTitle){
-
-    }
-
-    public void showRound8(String tournamentTitle){
-
-    }
-
-
-    public void showSemifinals(String tournamentTitle){
-
-    }
-
-
-    public void showFinal(String tournamentTitle){
-
-    }
 
 }

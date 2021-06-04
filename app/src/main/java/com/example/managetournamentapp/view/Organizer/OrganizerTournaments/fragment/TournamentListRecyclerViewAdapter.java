@@ -9,8 +9,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.domain.Tournament;
 import com.example.managetournamentapp.view.Organizer.OrganizerTournaments.fragment.TournamentListFragment.OnListFragmentInteractionListener;
-
-
 import java.util.ArrayList;
 
 public class TournamentListRecyclerViewAdapter extends RecyclerView.Adapter<TournamentListRecyclerViewAdapter.ViewHolder>  {
@@ -52,7 +50,6 @@ public class TournamentListRecyclerViewAdapter extends RecyclerView.Adapter<Tour
 
     @Override
     public int getItemCount() {
-
         return mValues.size();
     }
 
