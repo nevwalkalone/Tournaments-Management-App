@@ -11,6 +11,10 @@ public class OrganizerPagePresenter {
 
     }
 
+    public void findOrganizerInfo(){
+        view.setTitle(organizer.getTitle());
+    }
+
     public void setOrganizer(User user){
         if (user == null)
             return;
@@ -19,7 +23,6 @@ public class OrganizerPagePresenter {
         organizer = (Organizer) user;
 
     }
-
 
     public void onOrganizerAccount(){
         view.toOrganizerAccount();
@@ -32,7 +35,6 @@ public class OrganizerPagePresenter {
     public void setView(OrganizerPageView view) {
         this.view = view;
     }
-
 
     public void clearView(){
         this.view = null;

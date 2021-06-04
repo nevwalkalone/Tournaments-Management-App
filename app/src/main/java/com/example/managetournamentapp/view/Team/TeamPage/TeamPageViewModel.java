@@ -10,6 +10,7 @@ public class TeamPageViewModel extends ViewModel {
 
     public TeamPageViewModel() {
         presenter = new TeamPagePresenter();
+        presenter.setLoggedInUser( new MemoryLoggedInUser() );
         presenter.setTeamDAO(new TeamDAOMemory());
     }
 

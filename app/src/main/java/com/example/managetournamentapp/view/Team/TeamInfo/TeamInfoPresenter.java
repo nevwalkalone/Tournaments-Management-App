@@ -28,9 +28,9 @@ public class TeamInfoPresenter {
     }
 
     public void findAccess(){
-        if ( MemoryLoggedInUser.getUser() != null )
-            if (MemoryLoggedInUser.getUser() instanceof  Player)
-                if ((MemoryLoggedInUser.getUser()).equals( team.getCaptain()) )
+        if ( loggedInUser.getUser() != null )
+            if (loggedInUser.getUser() instanceof  Player)
+                if ( ((Player)loggedInUser.getUser()).equals( team.getCaptain()) )
                     return;
         view.changesOfAccess();
     }
@@ -41,7 +41,7 @@ public class TeamInfoPresenter {
 
     public void onDeleteTeam(){
         //todo more
-       // view.startDeleteTeam(((Player)loggedInUser.getUser()).getCredentials().getUsername() );
+        view.startDeleteTeam(((Player)loggedInUser.getUser()).getCredentials().getUsername() );
     }
 
     public void setTeamDAO(TeamDAO teamDAO) {

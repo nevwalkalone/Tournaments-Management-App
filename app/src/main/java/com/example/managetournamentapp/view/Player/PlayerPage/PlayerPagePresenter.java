@@ -3,10 +3,10 @@ package com.example.managetournamentapp.view.Player.PlayerPage;
 import com.example.managetournamentapp.dao.LoggedInUser;
 import com.example.managetournamentapp.dao.PlayerDAO;
 import com.example.managetournamentapp.domain.Player;
-import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
 
 public class PlayerPagePresenter {
     private PlayerPageView view;
+    private LoggedInUser loggedInUser;
     private Player player;
     private PlayerDAO playerDAO;
 
@@ -19,14 +19,17 @@ public class PlayerPagePresenter {
         player = playerDAO.find(playerUsername);
     }
 
-    public void findAccess(){
-        if ( MemoryLoggedInUser.getUser() != null )
-            if (MemoryLoggedInUser.getUser() instanceof  Player)
-                if ( (MemoryLoggedInUser.getUser()).equals(player) )
+    public void findAccess(String playerUsername){
+        if ( loggedInUser.getUser() != null )
+            if (loggedInUser.getUser() instanceof  Player)
+                if ( ((Player)loggedInUser.getUser()).equals(player) )
                     return;
         view.changesOfAccess();
     }
 
+    public void setLoggedInUser(LoggedInUser loggedInUser) {
+        this.loggedInUser = loggedInUser;
+    }
 
     public void setPlayerDAO(PlayerDAO playerDAO){
         this.playerDAO = playerDAO;

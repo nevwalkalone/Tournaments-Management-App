@@ -30,12 +30,11 @@ public class OrganizerPageActivity extends AppCompatActivity implements Organize
         setContentView(R.layout.activity_organizer_page);
         viewModel = new ViewModelProvider(this).get(OrganizerPageViewModel.class);
         viewModel.getPresenter().setView(this);
+        viewModel.getPresenter().findOrganizerInfo();
 
         txtOrganizerName = findViewById(R.id.title_organizer_name);
         btnOrganizerAccount = findViewById(R.id.organizer_account);
         btnOrganizerTournaments = findViewById(R.id.organizer_tournaments);
-
-        txtOrganizerName.setText(((Organizer)MemoryLoggedInUser.getUser()).getTitle());
 
         btnOrganizerAccount.setOnClickListener(v -> viewModel.getPresenter().onOrganizerAccount());
         btnOrganizerTournaments.setOnClickListener(v -> viewModel.getPresenter().onOrganizerTournaments());
@@ -57,6 +56,10 @@ public class OrganizerPageActivity extends AppCompatActivity implements Organize
         Intent intent = new Intent(OrganizerPageActivity.this, OrganizerTournamentsActivity.class);
         startActivity(intent);
 
+    }
+
+    public void setTitle(String organizerTitle){
+        txtOrganizerName.setText(organizerTitle);
     }
 
 

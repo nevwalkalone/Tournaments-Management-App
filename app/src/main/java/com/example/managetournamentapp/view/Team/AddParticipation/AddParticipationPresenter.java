@@ -27,7 +27,7 @@ public class AddParticipationPresenter {
             Participation part = new Participation(tournament, team);
 
             //TODO JUST CHECKING
-           // if ( team.canParticipate(part)  )
+            if ( team.canParticipate(part)  )
                 results.add(tournament);
         }
     }

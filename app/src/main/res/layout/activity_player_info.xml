@@ -46,6 +46,7 @@
         </TableRow>
 
         <TableRow
+            android:id="@+id/password_row"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="12dp"

@@ -1,5 +1,6 @@
 package com.example.managetournamentapp.view.Tournament.TournamentInfo;
 
+import com.example.managetournamentapp.dao.LoggedInUser;
 import com.example.managetournamentapp.dao.TournamentDAO;
 import com.example.managetournamentapp.domain.Organizer;
 import com.example.managetournamentapp.domain.Tournament;
@@ -11,6 +12,7 @@ public class TournamentInfoPresenter {
     private TournamentInfoView view;
     private Tournament tournament;
     private TournamentDAO tournamentDAO;
+    private LoggedInUser loggedInUser;
 
     public TournamentInfoPresenter(){
     }
@@ -36,9 +38,9 @@ public class TournamentInfoPresenter {
     }
 
     public void findAccess(){
-        if (MemoryLoggedInUser.getUser() != null )
-            if (MemoryLoggedInUser.getUser() instanceof Organizer)
-                if ( ((Organizer)MemoryLoggedInUser.getUser()).getTournaments().contains(tournament) )
+        if ( loggedInUser.getUser() != null )
+            if (loggedInUser.getUser() instanceof Organizer)
+                if ( ((Organizer)loggedInUser.getUser()).getTournaments().contains(tournament) )
                     return;
         view.changesOfAccess();
     }
@@ -59,6 +61,10 @@ public class TournamentInfoPresenter {
 
     public void onNoDeleteTournament(){
         view.noDeleteTournament();
+    }
+
+    public void setLoggedInUser(LoggedInUser loggedInUser) {
+        this.loggedInUser = loggedInUser;
     }
 
 

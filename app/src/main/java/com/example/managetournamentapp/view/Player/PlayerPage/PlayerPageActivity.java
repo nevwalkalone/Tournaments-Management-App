@@ -47,7 +47,7 @@ public class PlayerPageActivity extends AppCompatActivity implements PlayerPageV
         btnPlayerTeams.setOnClickListener(v -> viewModel.getPresenter().onPlayerTeams());
         btnPlayerInvites.setOnClickListener(v -> viewModel.getPresenter().onPlayerInvites());
 
-        viewModel.getPresenter().findAccess();
+        viewModel.getPresenter().findAccess(playerUsername);
 
     }
 

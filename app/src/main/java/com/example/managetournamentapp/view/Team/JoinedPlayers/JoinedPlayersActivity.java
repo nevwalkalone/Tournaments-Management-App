@@ -90,7 +90,7 @@ public class JoinedPlayersActivity extends AppCompatActivity implements PlayersL
             startActivity(intent);
         }
         else{
-            if (item.equals(MemoryLoggedInUser.getUser())){
+            if (item.equals( (new MemoryLoggedInUser()).getUser() )){
                 Intent intent = new Intent(this, PlayerPageActivity.class);
                 intent.putExtra(PLAYER_USERNAME_EXTRA, playerSelected.getCredentials().getUsername());
                 startActivity(intent);

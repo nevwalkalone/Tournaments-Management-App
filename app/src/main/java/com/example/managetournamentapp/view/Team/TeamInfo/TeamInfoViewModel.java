@@ -9,6 +9,7 @@ public class TeamInfoViewModel extends ViewModel {
 
     public TeamInfoViewModel() {
         presenter = new TeamInfoPresenter();
+        presenter.setLoggedInUser( new MemoryLoggedInUser() );
         presenter.setTeamDAO(new TeamDAOMemory());
     }
 

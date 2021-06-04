@@ -5,4 +5,6 @@ public interface OrganizerPageView {
 
     void toOrganizerTournaments();
 
+    void setTitle(String title);
+
 }

@@ -14,14 +14,13 @@ public class MemoryLoggedInUser implements LoggedInUser {
 //  private static User user = (new OrganizerDAOMemory().findByTitle("ESKA"));
 
     public MemoryLoggedInUser() {
-
     }
 
     public void setUser(User user) {
         this.user = user;
     }
 
-    public static User getUser() {
+    public User getUser() {
         return user;
     }
 

@@ -27,18 +27,12 @@ public class PlayerInfoActivity extends AppCompatActivity implements PlayerInfoV
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player_info);
         playerUsername = this.getIntent().getStringExtra(PLAYER_USERNAME_EXTRA);
-        String no_rights = this.getIntent().getStringExtra(PASSWORD_SHOWN_EXTRA);
 
-        if ("1".equals(no_rights)){
-            setContentView(R.layout.activity_player_info_no_pass);
-        }
-        else{
-            setContentView(R.layout.activity_player_info);
-        }
+        setContentView(R.layout.activity_player_info);
 
         viewModel = new ViewModelProvider(this).get(PlayerInfoViewModel.class);
         viewModel.getPresenter().setView(this);
-        viewModel.getPresenter().findPlayerInfo(playerUsername,no_rights);
+        viewModel.getPresenter().findPlayerInfo(playerUsername);
 
         btnEditPlayer = findViewById(R.id.edit_player_button);
         btnDeletePlayer = findViewById(R.id.delete_player_button);
@@ -104,7 +98,7 @@ public class PlayerInfoActivity extends AppCompatActivity implements PlayerInfoV
     public void changesOfAccess(){
         btnEditPlayer.setVisibility(View.GONE);
         btnDeletePlayer.setVisibility(View.GONE);
-//        (findViewById(R.id.text_password)).setVisibility(View.GONE);
+        (findViewById(R.id.password_row)).setVisibility(View.GONE);
 
     }
 }

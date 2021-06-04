@@ -10,6 +10,7 @@ public class PlayerPageViewModel extends ViewModel {
 
     public PlayerPageViewModel() {
         presenter = new PlayerPagePresenter();
+        presenter.setLoggedInUser( new MemoryLoggedInUser() );
         presenter.setPlayerDAO( new PlayerDAOMemory());
     }
 
