@@ -22,7 +22,6 @@ public class ReceivedInvitesViewModel extends ViewModel {
     @Override
     protected void onCleared() {
         super.onCleared();
-        // avoid leaking activity for any reason
         presenter.clearView();
     }
 }

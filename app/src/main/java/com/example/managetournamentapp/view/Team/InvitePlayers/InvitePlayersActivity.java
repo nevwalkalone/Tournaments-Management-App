@@ -40,6 +40,7 @@ public class InvitePlayersActivity extends AppCompatActivity implements PlayersL
         viewModel.getPresenter().setView(this);
         viewModel.getPresenter().setPlayerDAO((new PlayerDAOMemory()));
         viewModel.getPresenter().setTeamDAO((new TeamDAOMemory()));
+        viewModel.getPresenter().findPlayers(teamName);
 
         if (findViewById(R.id.fragment_container) != null) {
 
@@ -47,8 +48,6 @@ public class InvitePlayersActivity extends AppCompatActivity implements PlayersL
             if (savedInstanceState != null) {
                 return;
             }
-
-            viewModel.getPresenter().findPlayers(teamName);
 
             PlayersListFragment playersListFragment = PlayersListFragment.newInstance(1);
             getSupportFragmentManager().beginTransaction()
@@ -75,9 +74,11 @@ public class InvitePlayersActivity extends AppCompatActivity implements PlayersL
     public void onClick(View v) {
 
         if (v.getId() == R.id.account_player_popup) {
-            Intent intent = new Intent(this, PlayerInfoActivity.class);
-            intent.putExtra(PLAYER_USERNAME_EXTRA, playerSelected.getCredentials().getUsername());
-            startActivity(intent);
+            viewModel.getPresenter().onPlayerAccountSelected(playerSelected);
+        } else if (v.getId() == R.id.invite_player_popup) {
+            viewModel.getPresenter().inviteNewPlayer(teamName, playerSelected);
+            POPUP_ACTION.dismiss();
+            recreate();
         }
 
     }
@@ -99,6 +100,13 @@ public class InvitePlayersActivity extends AppCompatActivity implements PlayersL
         firstButton.setOnClickListener(this);
         secondButton.setOnClickListener(this);
         return dialog;
+    }
+
+    @Override
+    public void startPlayerPage(Player player) {
+        Intent intent = new Intent(this, PlayerInfoActivity.class);
+        intent.putExtra(PLAYER_USERNAME_EXTRA, player.getCredentials().getUsername());
+        startActivity(intent);
     }
 }
 
