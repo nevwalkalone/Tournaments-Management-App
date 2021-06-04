@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel;
 
 import com.example.managetournamentapp.domain.Organizer;
 import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
+import com.example.managetournamentapp.memoryDao.OrganizerDAOMemory;
 
 public class OrganizerInfoViewModel extends ViewModel {
     OrganizerInfoPresenter presenter;
@@ -11,6 +12,7 @@ public class OrganizerInfoViewModel extends ViewModel {
     public OrganizerInfoViewModel(){
         presenter = new OrganizerInfoPresenter();
         presenter.setOrganizer((Organizer)new MemoryLoggedInUser().getUser());
+        presenter.setOrganizerDAO(new OrganizerDAOMemory());
     }
 
     public OrganizerInfoPresenter getPresenter(){

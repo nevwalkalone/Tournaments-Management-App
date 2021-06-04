@@ -45,6 +45,10 @@ public class PlayerInfoPresenter {
     }
 
     public void onDeletePlayer(){
+        if (player.getUndoneParticipations().size()>0){
+            view.showCantDelete();
+            return;
+        }
         playerDAO.delete(player);
         (new MemoryLoggedInUser()).clear();
         view.startDeletePlayer();

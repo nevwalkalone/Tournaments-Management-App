@@ -12,8 +12,8 @@ public class TournamentInfoViewModel extends ViewModel {
         presenter = new TournamentInfoPresenter();
         presenter.setLoggedInUser( new MemoryLoggedInUser() );
         presenter.setTournamentDAO(new TournamentDAOMemory());
-
     }
+
     public TournamentInfoPresenter getPresenter(){
         return presenter;
     }

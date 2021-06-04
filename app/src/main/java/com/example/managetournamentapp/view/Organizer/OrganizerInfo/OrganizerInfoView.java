@@ -21,7 +21,9 @@ public interface OrganizerInfoView {
 
     void startEditOrganizer(String organizerUsername);
 
-    void startDeleteOrganizer(Organizer organizer);
+    void startDeleteOrganizer();
 
     void setTitle(String title);
+
+    void showCantDelete();
 }

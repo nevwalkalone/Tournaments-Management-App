@@ -6,6 +6,7 @@ import android.text.Layout;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +14,8 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.view.Organizer.CreateTournament.CreateTournamentActivity;
+import com.example.managetournamentapp.view.Organizer.OrganizerPage.OrganizerPageActivity;
+import com.example.managetournamentapp.view.Organizer.OrganizerTournaments.OrganizerTournamentsActivity;
 
 public class TournamentInfoActivity extends AppCompatActivity implements TournamentInfoView {
     private TournamentInfoViewModel viewModel;
@@ -91,7 +94,13 @@ public class TournamentInfoActivity extends AppCompatActivity implements Tournam
 
     @Override
     public void yesDeleteTournament() {
+        Intent intent = new Intent(TournamentInfoActivity.this, OrganizerTournamentsActivity.class);
+        startActivity(intent);
+    }
 
+    @Override
+    public void showCantDelete() {
+        Toast.makeText(this,"YOU CAN'T DELETE THIS TOURNAMENT", Toast.LENGTH_SHORT).show();
     }
 
     @Override

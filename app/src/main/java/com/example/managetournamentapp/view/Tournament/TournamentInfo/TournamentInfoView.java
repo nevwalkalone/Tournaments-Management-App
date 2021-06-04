@@ -29,4 +29,6 @@ public interface TournamentInfoView {
 
     void yesDeleteTournament();
 
+    void showCantDelete();
+
 }

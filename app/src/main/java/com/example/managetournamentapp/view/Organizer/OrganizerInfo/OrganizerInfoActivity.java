@@ -4,12 +4,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.domain.Organizer;
+import com.example.managetournamentapp.view.HomePage.HomePageActivity;
+import com.example.managetournamentapp.view.Player.PlayerInfo.PlayerInfoActivity;
 import com.example.managetournamentapp.view.User.RegisterOrganizer.RegisterOrganizerActivity;
 
 public class OrganizerInfoActivity extends AppCompatActivity implements OrganizerInfoView {
@@ -84,10 +87,15 @@ public class OrganizerInfoActivity extends AppCompatActivity implements Organize
     }
 
 
-    //TODO CHECKS....
     @Override
-    public void startDeleteOrganizer(Organizer organizer) {
+    public void startDeleteOrganizer() {
+        Intent intent = new Intent(OrganizerInfoActivity.this, HomePageActivity.class);
+        startActivity(intent);
+    }
 
+    @Override
+    public void showCantDelete() {
+        Toast.makeText(this,"YOU CAN'T DELETE YOUR ACCOUNT", Toast.LENGTH_SHORT).show();
     }
 
 

@@ -52,6 +52,11 @@ public class TournamentInfoPresenter {
 
     //TODO CHECKING
     public void onDeleteTournament(){
+        if (!tournament.getParticipations().isEmpty()){
+            view.showCantDelete();
+            return;
+        }
+        tournamentDAO.delete(tournament);
         view.deleteConfirmation();
     }
 

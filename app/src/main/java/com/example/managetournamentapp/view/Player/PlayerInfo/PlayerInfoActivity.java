@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -95,10 +96,14 @@ public class PlayerInfoActivity extends AppCompatActivity implements PlayerInfoV
         startActivity(intent);
     }
 
+    @Override
+    public void showCantDelete() {
+        Toast.makeText(this,"YOU CAN'T DELETE YOUR ACCOUNT", Toast.LENGTH_SHORT).show();
+    }
+
     public void changesOfAccess(){
         btnEditPlayer.setVisibility(View.GONE);
         btnDeletePlayer.setVisibility(View.GONE);
         (findViewById(R.id.password_row)).setVisibility(View.GONE);
-
     }
 }

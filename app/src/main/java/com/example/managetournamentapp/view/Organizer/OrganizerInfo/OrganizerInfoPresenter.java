@@ -1,7 +1,11 @@
 package com.example.managetournamentapp.view.Organizer.OrganizerInfo;
 
+import com.example.managetournamentapp.dao.OrganizerDAO;
 import com.example.managetournamentapp.domain.Organizer;
+import com.example.managetournamentapp.domain.Round;
+import com.example.managetournamentapp.domain.Tournament;
 import com.example.managetournamentapp.domain.User;
+import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
 
 import java.time.format.DateTimeFormatter;
 
@@ -9,6 +13,7 @@ import java.time.format.DateTimeFormatter;
 public class OrganizerInfoPresenter {
     private OrganizerInfoView view;
     private Organizer organizer = null;
+    private OrganizerDAO organizerDAO;
 
     public OrganizerInfoPresenter(){}
 
@@ -28,9 +33,21 @@ public class OrganizerInfoPresenter {
     }
 
 
-    //TODO POPUP CHECK
     public void onDeleteOrganizer() {
-        view.startDeleteOrganizer(organizer);
+        boolean canDelete = true;
+
+        for (Tournament tournament : organizer.getTournaments())
+            for ( Round round : tournament.getRounds())
+                if ( !round.allGamesFinished() )
+                    canDelete = false;
+
+        if ( !canDelete ){
+            view.showCantDelete();
+            return;
+        }
+        organizerDAO.delete(organizer);
+        (new MemoryLoggedInUser()).clear();
+        view.startDeleteOrganizer();
     }
 
     public void setOrganizer(User user){
@@ -40,6 +57,10 @@ public class OrganizerInfoPresenter {
             return;
         organizer = (Organizer) user;
 
+    }
+
+    public void setOrganizerDAO(OrganizerDAO organizerDAO){
+        this.organizerDAO = organizerDAO;
     }
 
     public void setView(OrganizerInfoView view) {
