@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.view.Tournament.ParticipatingTeams.ParticipatingTeamsActivity;
 import com.example.managetournamentapp.view.Tournament.TournamentInfo.TournamentInfoActivity;
+import com.example.managetournamentapp.view.Tournament.TournamentRounds.TournamentRoundsActivity;
 
 public class TournamentPageActivity extends AppCompatActivity implements TournamentPageView {
     public static final String TOURNAMENT_TITLE_EXTRA = "tournament_title_extra";
@@ -24,11 +25,8 @@ public class TournamentPageActivity extends AppCompatActivity implements Tournam
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-
         super.onCreate(savedInstanceState);
-
         tournamentName = this.getIntent().getStringExtra(TOURNAMENT_TITLE_EXTRA);
-        System.out.println(tournamentName);
         setContentView(R.layout.activity_tournament_page);
 
         viewModel = new ViewModelProvider(this).get(TournamentPageViewModel.class);
@@ -65,8 +63,9 @@ public class TournamentPageActivity extends AppCompatActivity implements Tournam
     }
 
     @Override
-    //TODO
     public void startTournamentGames() {
-
+        Intent intent = new Intent(TournamentPageActivity.this, TournamentRoundsActivity.class);
+        intent.putExtra(TOURNAMENT_TITLE_EXTRA,tournamentName);
+        startActivity(intent);
     }
 }
