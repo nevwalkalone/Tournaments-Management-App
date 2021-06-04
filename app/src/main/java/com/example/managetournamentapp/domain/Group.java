@@ -52,7 +52,9 @@ public class Group {
         setupGames(teams);
     }
 
+
     public void setupGames(List<Team> teams){
+        games.clear();
         games.add( new Game("",teams.get(0),teams.get(1),dates.get(0)  ));
         if (isKnockout)
             return;
