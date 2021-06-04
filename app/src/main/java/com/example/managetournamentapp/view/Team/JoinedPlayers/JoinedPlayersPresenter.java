@@ -3,6 +3,8 @@ package com.example.managetournamentapp.view.Team.JoinedPlayers;
 import com.example.managetournamentapp.dao.PlayerDAO;
 import com.example.managetournamentapp.dao.TeamDAO;
 import com.example.managetournamentapp.domain.Player;
+import com.example.managetournamentapp.domain.Team;
+import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
 
 import java.util.ArrayList;
 
@@ -11,12 +13,14 @@ public class JoinedPlayersPresenter {
     private JoinedPlayersView view;
     private PlayerDAO playerDAO;
     private TeamDAO teamDAO;
+    private String teamName;
     private ArrayList<Player> results = new ArrayList<>();
 
     public JoinedPlayersPresenter() {
     }
 
     public void findPlayers(String teamName) {
+        this.teamName = teamName;
         results.clear();
         results = teamDAO.find(teamName).getPlayers();
     }
@@ -26,6 +30,23 @@ public class JoinedPlayersPresenter {
         teamDAO.find(teamName).removePlayer(player);
         results = teamDAO.find(teamName).getPlayers();
     }
+
+    public void findAccess() {
+        Team team = teamDAO.find(teamName);
+        boolean captain = false;
+        boolean player = false;
+        if (MemoryLoggedInUser.getUser() != null) {
+            if (MemoryLoggedInUser.getUser() instanceof Player) {
+                player = true;
+                if ((MemoryLoggedInUser.getUser()).equals(team.getCaptain())) {
+                    captain = true;
+                }
+
+            }
+        }
+        view.changesOfAccess(captain,player);
+    }
+
 
     public ArrayList<Player> getResults() {
         return results;

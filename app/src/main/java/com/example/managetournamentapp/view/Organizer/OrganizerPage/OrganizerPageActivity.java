@@ -24,7 +24,7 @@ public class OrganizerPageActivity extends AppCompatActivity implements Organize
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        new MemoryInitializer().prepareData();
+
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_organizer_page);
@@ -35,7 +35,7 @@ public class OrganizerPageActivity extends AppCompatActivity implements Organize
         btnOrganizerAccount = findViewById(R.id.organizer_account);
         btnOrganizerTournaments = findViewById(R.id.organizer_tournaments);
 
-        txtOrganizerName.setText(((Organizer) (new MemoryLoggedInUser()).getUser()).getTitle());
+        txtOrganizerName.setText(((Organizer)MemoryLoggedInUser.getUser()).getTitle());
 
         btnOrganizerAccount.setOnClickListener(v -> viewModel.getPresenter().onOrganizerAccount());
         btnOrganizerTournaments.setOnClickListener(v -> viewModel.getPresenter().onOrganizerTournaments());
@@ -43,7 +43,7 @@ public class OrganizerPageActivity extends AppCompatActivity implements Organize
     }
 
     /**
-     * Stars Organizer's Account Activity
+     * Starts Organizer's Account Activity
      */
     public void toOrganizerAccount() {
         Intent intent = new Intent(OrganizerPageActivity.this, OrganizerInfoActivity.class);

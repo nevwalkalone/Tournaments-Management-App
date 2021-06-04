@@ -10,19 +10,16 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.domain.Organizer;
-import com.example.managetournamentapp.memoryDao.MemoryInitializer;
-import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
-import com.example.managetournamentapp.memoryDao.OrganizerDAOMemory;
 import com.example.managetournamentapp.view.User.RegisterOrganizer.RegisterOrganizerActivity;
 
 public class OrganizerInfoActivity extends AppCompatActivity implements OrganizerInfoView {
     private OrganizerInfoViewModel viewModel;
+    private static final String IS_EDIT = "IS_EDIT";
     Button btnEditOrganizer;
     Button btnDeleteOrganizer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        new MemoryInitializer().prepareData();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_organizer_info);
 
@@ -82,10 +79,12 @@ public class OrganizerInfoActivity extends AppCompatActivity implements Organize
     @Override
     public void startEditOrganizer(Organizer organizer) {
         Intent intent = new Intent(OrganizerInfoActivity.this, RegisterOrganizerActivity.class);
-        intent.putExtra("IS_EDIT", "1");
+        intent.putExtra(IS_EDIT, "1");
         startActivity(intent);
     }
 
+
+    //TODO CHECKS....
     @Override
     public void startDeleteOrganizer(Organizer organizer) {
 

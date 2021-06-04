@@ -20,8 +20,13 @@ public interface TournamentInfoView {
 
     void startEditTournament();
 
-    void startDeleteTournament();
 
     void changesOfAccess();
+
+    void deleteConfirmation();
+
+    void noDeleteTournament();
+
+    void yesDeleteTournament();
 
 }

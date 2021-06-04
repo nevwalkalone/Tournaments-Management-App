@@ -35,14 +35,14 @@ public class JoinedTeamsPresenter {
     public ArrayList<Team> getResults() {
         return results;
     }
-
+/*
     public void findAccess(){
         if ( loggedInUser.getUser() != null )
             if (loggedInUser.getUser() instanceof  Player)
                 if ( ((Player)loggedInUser.getUser()).equals(player) )
                     return;
         view.changesOfAccess();
-    }
+    }*/
 
     public void onAddTeam(){
         view.startAddTeam();

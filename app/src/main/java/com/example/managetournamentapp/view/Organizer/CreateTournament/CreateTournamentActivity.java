@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class CreateTournamentActivity extends AppCompatActivity implements CreateTournamentView {
     private static final String BASIC_INFO_EXTRA = "basic_info_extra" ;
     private CreateTournamentViewModel viewModel;
-    public static final String TOURNAMENT_NAME_EXTRA = "tournament_name_extra";
+    public static final String TOURNAMENT_TITLE_EXTRA = "tournament_title_extra";
     private Button saveBtn;
     String tournamentTitle;
     private Spinner sportTypeSpinner;
@@ -29,7 +29,7 @@ public class CreateTournamentActivity extends AppCompatActivity implements Creat
        super.onCreate(savedInstanceState);
        setContentView(R.layout.activity_create_tournament);
 
-       tournamentTitle = this.getIntent().getStringExtra(TOURNAMENT_NAME_EXTRA);
+       tournamentTitle = this.getIntent().getStringExtra(TOURNAMENT_TITLE_EXTRA);
        viewModel = new ViewModelProvider(this).get(CreateTournamentViewModel.class);
        viewModel.getPresenter().setView(this);
 
@@ -48,7 +48,7 @@ public class CreateTournamentActivity extends AppCompatActivity implements Creat
     @Override
     public void startSaveTournament(String tournamentTitle) {
         Intent intent = new Intent(CreateTournamentActivity.this, TournamentPageActivity.class);
-        intent.putExtra(TOURNAMENT_NAME_EXTRA, tournamentTitle);
+        intent.putExtra(TOURNAMENT_TITLE_EXTRA, tournamentTitle);
         startActivity(intent);
     }
 
@@ -78,7 +78,7 @@ public class CreateTournamentActivity extends AppCompatActivity implements Creat
 
     @Override
     public String getFinishDate() {
-        return ((EditText) findViewById(R.id.tournament_finish_date)).getText().toString();
+        return ((EditText) findViewById(R.id.tournament_finish_Date)).getText().toString();
 
     }
 
@@ -116,7 +116,7 @@ public class CreateTournamentActivity extends AppCompatActivity implements Creat
 
     @Override
     public void setFinishDate(String date) {
-        ((EditText) findViewById(R.id.tournament_finish_date)).setText(date);
+        ((EditText) findViewById(R.id.tournament_finish_Date)).setText(date);
     }
 
 
@@ -126,7 +126,7 @@ public class CreateTournamentActivity extends AppCompatActivity implements Creat
     }
 
     @Override
-    public void setTeamsNumber(int teamsNumber) {
+    public void setTeamsNumber(String teamsNumber) {
         ((EditText) findViewById(R.id.tournament_teams_number)).setText(teamsNumber);
     }
 

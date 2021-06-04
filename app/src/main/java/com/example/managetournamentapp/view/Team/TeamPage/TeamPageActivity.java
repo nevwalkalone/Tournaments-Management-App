@@ -26,6 +26,7 @@ import com.example.managetournamentapp.view.Team.TeamInfo.TeamInfoActivity;
 public class TeamPageActivity extends AppCompatActivity implements TeamPageView {
     private TeamPageViewModel viewModel;
     public static final String TEAM_NAME_EXTRA = "team_name_extra";
+    private boolean changeOfAccess = false;
     String teamName;
     TextView txtTeamName;
     Button btnTeamInfo;
@@ -53,7 +54,7 @@ public class TeamPageActivity extends AppCompatActivity implements TeamPageView 
         btnTeamPlayers.setOnClickListener(v -> viewModel.getPresenter().onTeamPlayers());
         btnTeamParticipations.setOnClickListener(v -> viewModel.getPresenter().onTeamParticipations());
 
-        viewModel.getPresenter().findAccess();
+       viewModel.getPresenter().findAccess();
     }
 
 
@@ -80,6 +81,8 @@ public class TeamPageActivity extends AppCompatActivity implements TeamPageView 
 
     @Override
     public void changesOfAccess() {
+
         btnTeamParticipations.setVisibility(View.GONE);
+        changeOfAccess = true;
     }
 }

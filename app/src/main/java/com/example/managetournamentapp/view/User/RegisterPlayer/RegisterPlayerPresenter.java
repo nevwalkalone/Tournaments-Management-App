@@ -37,7 +37,7 @@ public class RegisterPlayerPresenter {
         view.setPassword(connectedPlayer.getCredentials().getPassword());
         view.setPhoneNumber(connectedPlayer.getPhoneNumber());
         view.setEmail(connectedPlayer.getEmail());
-        view.setBirthdate(connectedPlayer.getBirthDate().toString());
+        view.setBirthdate(connectedPlayer.getBirthDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
         view.setLocation(connectedPlayer.getLocation());
         view.setSportsInterest(connectedPlayer.getSportsInterested());
     }

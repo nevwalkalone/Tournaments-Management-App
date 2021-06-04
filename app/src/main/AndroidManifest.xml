@@ -11,7 +11,9 @@
         android:theme="@style/SecondaryTheme">
         <activity
             android:name=".view.Team.JoinedPlayers.JoinedPlayersActivity"
-            android:exported="true"></activity>
+            android:exported="true"
+            android:label="@string/joined_players" />
+
         <activity
             android:name=".view.HomePage.HomePageActivity"
             android:label="@string/manageApp"
@@ -63,7 +65,7 @@
         <activity
             android:name=".view.Team.InvitePlayers.InvitePlayersActivity"
             android:exported="true"
-            android:label="@string/participating_tournaments"
+            android:label="@string/invite_players"
             android:theme="@style/SecondaryTheme" />
         <activity
             android:name=".view.Player.PlayerPage.PlayerPageActivity"
@@ -73,7 +75,7 @@
         <activity
             android:name=".view.Player.PlayerInfo.PlayerInfoActivity"
             android:exported="true"
-            android:label="@string/participating_tournaments"
+            android:label="@string/player_info"
             android:theme="@style/SecondaryTheme" />
         <activity
             android:name=".view.Team.TeamPage.TeamPageActivity"

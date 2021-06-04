@@ -5,15 +5,16 @@ import com.example.managetournamentapp.dao.PlayerDAO;
 import com.example.managetournamentapp.domain.Player;
 import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
 
+import java.time.format.DateTimeFormatter;
+
 public class PlayerInfoPresenter {
     private PlayerInfoView view;
     private Player player;
     private PlayerDAO playerDAO;
-    private LoggedInUser loggedInUser;
 
     public PlayerInfoPresenter(){}
 
-    public void findPlayerInfo(String playerUsername){
+    public void findPlayerInfo(String playerUsername, String checkValue){
         if (playerUsername==null)
             return;
         player = playerDAO.find(playerUsername);
@@ -21,19 +22,21 @@ public class PlayerInfoPresenter {
             return;
 
         view.setUsername(player.getCredentials().getUsername());
-        view.setPassword(player.getCredentials().getPassword());
+        if (!"1".equals(checkValue)){
+            view.setPassword(player.getCredentials().getPassword());
+        }
         view.setName(player.getName());
         view.setSurname(player.getSurname());
         view.setPhone(player.getPhoneNumber());
         view.setEmail(player.getEmail());
         view.setLocation(player.getLocation());
-        view.setBirthDate(player.getBirthDate().toString());
+        view.setBirthDate(player.getBirthDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
     }
 
     public void findAccess(){
-        if ( loggedInUser.getUser() != null )
-            if (loggedInUser.getUser() instanceof  Player)
-                if ( ((Player)loggedInUser.getUser()).equals(player) )
+        if ( MemoryLoggedInUser.getUser() != null )
+            if (MemoryLoggedInUser.getUser() instanceof  Player)
+                if ( (MemoryLoggedInUser.getUser()).equals(player) )
                     return;
         view.changesOfAccess();
     }
@@ -52,9 +55,6 @@ public class PlayerInfoPresenter {
         this.playerDAO = playerDAO;
     }
 
-    public void setLoggedInUser(LoggedInUser loggedInUser) {
-        this.loggedInUser = loggedInUser;
-    }
 
     public void setView(PlayerInfoView view) {
         this.view = view;

@@ -12,18 +12,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.managetournamentapp.R;
-import com.example.managetournamentapp.domain.Organizer;
-import com.example.managetournamentapp.domain.Player;
-import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
 import com.example.managetournamentapp.view.Organizer.OrganizerPage.OrganizerPageActivity;
 import com.example.managetournamentapp.view.Player.PlayerPage.PlayerPageActivity;
-import com.example.managetournamentapp.view.User.RegisterPlayer.RegisterPlayerView;
-import com.example.managetournamentapp.view.User.RegisterPlayer.RegisterPlayerViewModel;
+
 
 public class LoginActivity extends AppCompatActivity implements LoginView, View.OnClickListener {
 
     private static final String PLAYER_USERNAME_EXTRA = "player_username_extra" ;
-    private static final String ORGANIZER_USERNAME_EXTRA =  "organizer_username_extra" ;;
+    private static final String ORGANIZER_USERNAME_EXTRA =  "organizer_username_extra" ;
     private Button loginBtn;
     LoginViewModel viewModel;
 

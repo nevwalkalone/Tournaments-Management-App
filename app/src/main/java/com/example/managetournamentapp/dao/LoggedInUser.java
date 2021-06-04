@@ -6,7 +6,9 @@ public interface LoggedInUser {
 
     void setUser(User user);
 
-    User getUser();
+    static User getUser() {
+        return null;
+    }
 
     void clear();
 

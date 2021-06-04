@@ -5,10 +5,10 @@
     <string name="participating_teams">Participating Teams</string>
     <string name="joined_teams">Joined Teams</string>
     <string name="participating_tournaments">Participating Tournaments</string>
-    <string name="invite_players">InvitePlayers</string>
+    <string name="invite_players">Invite Player</string>
 
     <!-- Strings used for fragments for navigation -->
-    <string name="player_info">Account Information</string>
+    <string name="player_info">Player Info</string>
     <string name="edit_player">Edit</string>
     <string name="delete_player">Delete</string>
     <string name="first_fragment_label">First Fragment</string>
@@ -18,7 +18,7 @@
     <string name="add_new_item">Add</string>
     <string name="create_team">Create Team</string>
 
-    <string name="organizer_info">Account Information</string>
+    <string name="organizer_info">Organizer Info</string>
     <string name="delete_organizer">Delete</string>
     <string name="edit_organizer">Edit</string>
 
@@ -30,11 +30,11 @@
     <string name="diorganoseis">Οι Διοργανώσεις Μου</string>
     <string name="title_activity_organizer_page">Organizer Profile</string>
     <string name="prof_omadas">Team Profile</string>
-    <string name="player">Player</string>
+    <string name="player">Player Profile</string>
     <string name="manageApp">Manage Tournament App</string>
     <string name="tournament_prof">Tournament Profile</string>
     <string name="account">Account</string>
-    <string name="account_Details">Account Info</string>
+    <string name="account_Details">Organizer Info</string>
     <string name="tournament_info">Tournament Info</string>
     <string name="create_tournament">Create Tournament</string>
     <string name="team_details">Team Info</string>
@@ -42,4 +42,5 @@
     <string name="register_player">Player Registration</string>
     <string name="register_organizer">Organizer Registration</string>
     <string name="log_in">Log In Info</string>
+    <string name="joined_players">Joined Players</string>
 </resources>

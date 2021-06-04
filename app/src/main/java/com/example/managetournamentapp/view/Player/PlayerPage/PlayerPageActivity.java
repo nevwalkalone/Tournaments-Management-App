@@ -2,7 +2,6 @@ package com.example.managetournamentapp.view.Player.PlayerPage;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -11,17 +10,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.managetournamentapp.R;
-import com.example.managetournamentapp.domain.Player;
-import com.example.managetournamentapp.memoryDao.MemoryInitializer;
-import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
-import com.example.managetournamentapp.memoryDao.PlayerDAOMemory;
-import com.example.managetournamentapp.memoryDao.TeamDAOMemory;
 import com.example.managetournamentapp.view.Player.JoinedTeams.JoinedTeamsActivity;
 import com.example.managetournamentapp.view.Player.PlayerInfo.PlayerInfoActivity;
 
 public class PlayerPageActivity extends AppCompatActivity implements PlayerPageView {
 
-    public static final String TEAM_NAME_EXTRA = "team_name_extra";
+    //public static final String TEAM_NAME_EXTRA = "team_name_extra";
     private static final String PLAYER_USERNAME_EXTRA = "player_username_extra";
     private PlayerPageViewModel viewModel;
     TextView txtPlayerName;
@@ -53,7 +47,7 @@ public class PlayerPageActivity extends AppCompatActivity implements PlayerPageV
         btnPlayerTeams.setOnClickListener(v -> viewModel.getPresenter().onPlayerTeams());
         btnPlayerInvites.setOnClickListener(v -> viewModel.getPresenter().onPlayerInvites());
 
-        viewModel.getPresenter().findAccess(playerUsername);
+        viewModel.getPresenter().findAccess();
 
     }
 
@@ -69,6 +63,7 @@ public class PlayerPageActivity extends AppCompatActivity implements PlayerPageV
         startActivity(intent);
     }
 
+    //TODO
     public void toPlayerInvites(String playerUsername) {
         // Intent intent = new Intent(PlayerPageActivity.this, PlayerInvitedActivity.class);
 //        intent.putExtra(PLAYER_USERNAME_EXTRA, playerUsername);

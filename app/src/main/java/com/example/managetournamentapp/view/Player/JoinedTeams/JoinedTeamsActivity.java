@@ -49,7 +49,7 @@ public class JoinedTeamsActivity extends AppCompatActivity implements JoinedTeam
                     .add(R.id.fragment_container, teamsListFragment)
                     .commit();
         }
-        viewModel.getPresenter().findAccess();
+       // viewModel.getPresenter().findAccess();
     }
 
     @Override

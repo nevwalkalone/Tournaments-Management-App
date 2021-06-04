@@ -1,9 +1,5 @@
 package com.example.managetournamentapp.view.User.RegisterOrganizer;
 
-import android.content.Context;
-import android.content.Intent;
-import android.widget.Toast;
-
 import com.example.managetournamentapp.dao.LoggedInUser;
 import com.example.managetournamentapp.dao.OrganizerDAO;
 import com.example.managetournamentapp.domain.Credentials;
@@ -30,14 +26,13 @@ public class RegisterOrganizerPresenter {
         this.connectedOrganizer = view.getConnectedOrganizer();
         if (connectedOrganizer != null)//edit mode
         {
-
             view.setName(connectedOrganizer.getName());
             view.setSurname(connectedOrganizer.getSurname());
             view.setUsername(connectedOrganizer.getCredentials().getUsername());
             view.setPassword(connectedOrganizer.getCredentials().getPassword());
             view.setPhoneNumber(connectedOrganizer.getPhoneNumber());
             view.setEmail(connectedOrganizer.getEmail());
-            view.setBirthdate(connectedOrganizer.getBirthDate().toString());
+            view.setBirthdate(connectedOrganizer.getBirthDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
             view.setTitle(connectedOrganizer.getTitle());
         }
     }

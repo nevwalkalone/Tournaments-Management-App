@@ -21,7 +21,7 @@ public class MemoryLoggedInUser implements LoggedInUser {
         this.user = user;
     }
 
-    public User getUser() {
+    public static User getUser() {
         return user;
     }
 

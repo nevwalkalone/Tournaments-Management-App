@@ -16,6 +16,7 @@ import com.example.managetournamentapp.view.User.RegisterPlayer.RegisterPlayerAc
 public class PlayerInfoActivity extends AppCompatActivity implements PlayerInfoView {
     private PlayerInfoViewModel viewModel;
     private static final String PLAYER_USERNAME_EXTRA = "player_username_extra";
+    public static final String PASSWORD_SHOWN_EXTRA = "password_extra";
     Button btnEditPlayer;
     Button btnDeletePlayer;
     String playerUsername;
@@ -26,16 +27,23 @@ public class PlayerInfoActivity extends AppCompatActivity implements PlayerInfoV
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player_info);
         playerUsername = this.getIntent().getStringExtra(PLAYER_USERNAME_EXTRA);
+        String no_rights = this.getIntent().getStringExtra(PASSWORD_SHOWN_EXTRA);
+
+        if ("1".equals(no_rights)){
+            setContentView(R.layout.activity_player_info_no_pass);
+        }
+        else{
+            setContentView(R.layout.activity_player_info);
+        }
 
         viewModel = new ViewModelProvider(this).get(PlayerInfoViewModel.class);
         viewModel.getPresenter().setView(this);
-        viewModel.getPresenter().findPlayerInfo(playerUsername);
+        viewModel.getPresenter().findPlayerInfo(playerUsername,no_rights);
 
         btnEditPlayer = findViewById(R.id.edit_player_button);
         btnDeletePlayer = findViewById(R.id.delete_player_button);
         btnEditPlayer.setOnClickListener(v -> viewModel.getPresenter().onEditPlayer());
         btnDeletePlayer.setOnClickListener(v -> viewModel.getPresenter().onDeletePlayer());
-
         viewModel.getPresenter().findAccess();
     }
 

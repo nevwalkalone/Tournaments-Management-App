@@ -9,6 +9,8 @@ import com.example.managetournamentapp.domain.Participation;
 import com.example.managetournamentapp.domain.Player;
 import com.example.managetournamentapp.domain.Team;
 import com.example.managetournamentapp.domain.Tournament;
+import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
+
 import java.util.ArrayList;
 
 public class ParticipatingTournamentsPresenter {
@@ -32,10 +34,10 @@ public class ParticipatingTournamentsPresenter {
             results.add( p.getTournament()  );
     }
 
-    public void findAccess(){
-        if ( loggedInUser.getUser() != null )
-            if (loggedInUser.getUser() instanceof Player)
-                if ( ((Player)loggedInUser.getUser()).equals( team.getCaptain()) )
+   public void findAccess(){
+        if (MemoryLoggedInUser.getUser() != null )
+            if (MemoryLoggedInUser.getUser() instanceof Player)
+                if ( (MemoryLoggedInUser.getUser()).equals( team.getCaptain()) )
                     return;
         view.changesOfAccess();
     }
@@ -52,9 +54,6 @@ public class ParticipatingTournamentsPresenter {
         this.view = null;
     }
 
-    public void setLoggedInUser(LoggedInUser loggedInUser) {
-        this.loggedInUser = loggedInUser;
-    }
 
     public void setTournamentDAO(TournamentDAO tournamentDAO) {
         this.tournamentDAO = tournamentDAO;

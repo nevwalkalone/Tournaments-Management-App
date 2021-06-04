@@ -14,8 +14,10 @@ import android.widget.Toast;
 import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.domain.Player;
 import com.example.managetournamentapp.memoryDao.MemoryInitializer;
+import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
 import com.example.managetournamentapp.memoryDao.PlayerDAOMemory;
 import com.example.managetournamentapp.memoryDao.TeamDAOMemory;
+import com.example.managetournamentapp.view.Player.PlayerInfo.PlayerInfoActivity;
 import com.example.managetournamentapp.view.Player.PlayerPage.PlayerPageActivity;
 import com.example.managetournamentapp.view.Team.InvitePlayers.InvitePlayersActivity;
 import com.example.managetournamentapp.view.Team.InvitePlayers.InvitePlayersViewModel;
@@ -30,13 +32,15 @@ public class JoinedPlayersActivity extends AppCompatActivity implements PlayersL
 
     JoinedPlayersViewModel viewModel;
     private static final String PLAYER_USERNAME_EXTRA = "player_username_extra";
-    public static final String PLAYER_NAME_EXTRA = "player_name_extra";
+    public static final String PASSWORD_SHOWN_EXTRA = "password_extra";
     public static final String TEAM_NAME_EXTRA = "team_name_extra";
     private static boolean removeActionPopup = false;
     private static AlertDialog POPUP_ACTION;
     private static AlertDialog POPUP_DELETION;
     private static Player playerSelected;
-    String teamName;
+    private boolean captain;
+    private boolean player;
+    private String teamName;
     private FloatingActionButton inviteNewBtn;
 
     @Override
@@ -70,15 +74,40 @@ public class JoinedPlayersActivity extends AppCompatActivity implements PlayersL
                     .add(R.id.fragment_container, playersListFragment)
                     .commit();
         }
+        viewModel.getPresenter().findAccess();
 
     }
 
-    //TODO ONLY CAPTAIN CAN MODIFY PLAYERS LIST
+
     @Override
     public void onListFragmentInteraction(Player item) {
         playerSelected = item;
-        POPUP_ACTION = showPopUp(R.layout.player_action_popup, "Username: " + item.getName() + "\nSurname: " + item.getSurname(), R.id.remove_player_popup, R.id.account_player_popup);
-        POPUP_ACTION.show();
+
+        if(!player){
+            Intent intent = new Intent(this, PlayerInfoActivity.class);
+            intent.putExtra(PLAYER_USERNAME_EXTRA,playerSelected.getCredentials().getUsername());
+            intent.putExtra(PASSWORD_SHOWN_EXTRA,"1");
+            startActivity(intent);
+        }
+        else{
+            if (item.equals(MemoryLoggedInUser.getUser())){
+                Intent intent = new Intent(this, PlayerPageActivity.class);
+                intent.putExtra(PLAYER_USERNAME_EXTRA, playerSelected.getCredentials().getUsername());
+                startActivity(intent);
+            }
+            else{
+                if (captain){
+                    POPUP_ACTION = showPopUp(R.layout.player_action_popup, "Username: " + item.getName() + "\nSurname: " + item.getSurname(), R.id.remove_player_popup, R.id.account_player_popup);
+                    POPUP_ACTION.show();
+                }
+                else{
+                    Intent intent = new Intent(this, PlayerInfoActivity.class);
+                    intent.putExtra(PLAYER_USERNAME_EXTRA,playerSelected.getCredentials().getUsername());
+                    intent.putExtra(PASSWORD_SHOWN_EXTRA,"1");
+                    startActivity(intent);
+                }
+            }
+        }
     }
 
     @Override
@@ -115,8 +144,9 @@ public class JoinedPlayersActivity extends AppCompatActivity implements PlayersL
 
 
         if (v.getId() == R.id.account_player_popup) {
-            Intent intent = new Intent(this, PlayerPageActivity.class);
+            Intent intent = new Intent(this, PlayerInfoActivity.class);
             intent.putExtra(PLAYER_USERNAME_EXTRA, playerSelected.getCredentials().getUsername());
+            intent.putExtra(PASSWORD_SHOWN_EXTRA,"1");
             startActivity(intent);
 
 
@@ -132,8 +162,12 @@ public class JoinedPlayersActivity extends AppCompatActivity implements PlayersL
 
 
     @Override
-    public void changesOfAccess() {
-
+    public void changesOfAccess(boolean captain, boolean player) {
+        this.captain = captain;
+        this.player = player;
+        if (!captain){
+            inviteNewBtn.setVisibility(View.GONE);
+        }
     }
 
     @Override

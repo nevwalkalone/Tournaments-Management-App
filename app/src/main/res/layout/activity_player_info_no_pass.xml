@@ -23,7 +23,7 @@
             android:gravity="center">
 
             <TextView
-                android:text="Title"
+                android:text="Username"
                 android:layout_width="0dp"
                 android:layout_weight="0.75"
                 android:layout_height="wrap_content"
@@ -34,7 +34,123 @@
                 android:paddingRight="20dp"/>
 
             <TextView
-                android:id="@+id/text_title"
+                android:id="@+id/text_username"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:maxLines="1"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                android:paddingRight="20dp"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:gravity="center">
+
+            <TextView
+                android:text="Name"
+                android:layout_width="0dp"
+                android:layout_weight="0.75"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:maxLines="1"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                android:paddingRight="20dp"/>
+
+            <TextView
+                android:id="@+id/text_name"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:maxLines="1"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                android:paddingRight="20dp"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:gravity="center">
+
+            <TextView
+                android:text="Surname"
+                android:layout_width="0dp"
+                android:layout_weight="0.75"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:maxLines="1"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                android:paddingRight="20dp"/>
+
+            <TextView
+                android:id="@+id/text_surname"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:maxLines="1"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                android:paddingRight="20dp"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:gravity="center">
+
+            <TextView
+                android:text="Phone number"
+                android:layout_width="0dp"
+                android:layout_weight="0.75"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:maxLines="1"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                android:paddingRight="20dp"/>
+
+            <TextView
+                android:id="@+id/text_phone"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:maxLines="1"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                android:paddingRight="20dp"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:gravity="center">
+
+            <TextView
+                android:text="Email"
+                android:layout_width="0dp"
+                android:layout_weight="0.75"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:maxLines="1"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                android:paddingRight="20dp"/>
+
+            <TextView
+                android:id="@+id/text_email"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
@@ -81,7 +197,7 @@
             android:gravity="center">
 
             <TextView
-                android:text="Description"
+                android:text="Birth Date"
                 android:layout_width="0dp"
                 android:layout_weight="0.75"
                 android:layout_height="wrap_content"
@@ -92,152 +208,7 @@
                 android:paddingRight="20dp"/>
 
             <TextView
-                android:id="@+id/text_description"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:gravity="left"
-                android:maxLines="1"
-                android:textColor="@color/white"
-                android:textSize="16dp"
-                android:paddingRight="20dp"/>
-        </TableRow>
-
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="12dp"
-            android:gravity="center">
-
-            <TextView
-                android:text="Teams Number"
-                android:layout_width="0dp"
-                android:layout_weight="0.75"
-                android:layout_height="wrap_content"
-                android:gravity="left"
-                android:maxLines="1"
-                android:textColor="@color/white"
-                android:textSize="16dp"
-                android:paddingRight="20dp"/>
-
-            <TextView
-                android:id="@+id/text_teams_number"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:gravity="left"
-                android:maxLines="1"
-                android:textColor="@color/white"
-                android:textSize="16dp"
-                android:paddingRight="20dp"/>
-        </TableRow>
-
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="12dp"
-            android:gravity="center">
-
-            <TextView
-                android:text="Start Date"
-                android:layout_width="0dp"
-                android:layout_weight="0.75"
-                android:layout_height="wrap_content"
-                android:gravity="left"
-                android:maxLines="1"
-                android:textColor="@color/white"
-                android:textSize="16dp"
-                android:paddingRight="20dp"/>
-
-            <TextView
-                android:id="@+id/text_start_date"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:gravity="left"
-                android:maxLines="1"
-                android:textColor="@color/white"
-                android:textSize="16dp"
-                android:paddingRight="20dp"/>
-        </TableRow>
-
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="12dp"
-            android:gravity="center">
-
-            <TextView
-                android:text="Finish Date"
-                android:layout_width="0dp"
-                android:layout_weight="0.75"
-                android:layout_height="wrap_content"
-                android:gravity="left"
-                android:maxLines="1"
-                android:textColor="@color/white"
-                android:textSize="16dp"
-                android:paddingRight="20dp"/>
-
-            <TextView
-                android:id="@+id/text_finish_date"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:gravity="left"
-                android:maxLines="1"
-                android:textColor="@color/white"
-                android:textSize="16dp"
-                android:paddingRight="20dp"/>
-        </TableRow>
-
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="12dp"
-            android:gravity="center">
-
-            <TextView
-                android:text="Sport Type"
-                android:layout_width="0dp"
-                android:layout_weight="0.75"
-                android:layout_height="wrap_content"
-                android:gravity="left"
-                android:maxLines="1"
-                android:textColor="@color/white"
-                android:textSize="16dp"
-                android:paddingRight="20dp"/>
-
-            <TextView
-                android:id="@+id/text_sport_type"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:gravity="left"
-                android:maxLines="1"
-                android:textColor="@color/white"
-                android:textSize="16dp"
-                android:paddingRight="20dp"/>
-        </TableRow>
-
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="12dp"
-            android:gravity="center">
-
-            <TextView
-                android:text="Age Division"
-                android:layout_width="0dp"
-                android:layout_weight="0.75"
-                android:layout_height="wrap_content"
-                android:gravity="left"
-                android:maxLines="1"
-                android:textColor="@color/white"
-                android:textSize="16dp"
-                android:paddingRight="20dp"/>
-
-            <TextView
-                android:id="@+id/text_age_division"
+                android:id="@+id/text_birth_date"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
@@ -260,7 +231,7 @@
                 android:layout_height="wrap_content">
 
                 <Button
-                    android:id="@+id/delete_button"
+                    android:id="@+id/delete_player_button"
                     android:text="@string/delete_player"
                     android:textAllCaps="false"
                     android:layout_width="140dp"
@@ -270,18 +241,23 @@
                     android:textSize="15dp"/>
 
                 <Button
-                    android:id="@+id/edit_button"
+                    android:id="@+id/edit_player_button"
                     android:text="@string/edit_player"
                     android:textAllCaps="false"
                     android:layout_width="140dp"
                     android:layout_height="55dp"
                     android:textColor="@color/white"
                     android:textSize="15dp"
-                    android:layout_toRightOf="@+id/delete_button"/>
+                    android:layout_toRightOf="@+id/delete_player_button"/>
 
             </RelativeLayout>
         </TableRow>
 
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            ></TableRow>
 
     </TableLayout>
 </ScrollView>

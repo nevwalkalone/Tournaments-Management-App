@@ -1,16 +1,15 @@
 package com.example.managetournamentapp.view.Team.TeamPage;
 
-import com.example.managetournamentapp.dao.LoggedInUser;
 import com.example.managetournamentapp.dao.TeamDAO;
 import com.example.managetournamentapp.domain.Player;
 import com.example.managetournamentapp.domain.Team;
-import com.example.managetournamentapp.view.Team.TeamInfo.TeamInfoView;
+import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
+
 
 public class TeamPagePresenter {
     private TeamPageView view;
     private Team team;
     private TeamDAO teamDAO;
-    private LoggedInUser loggedInUser;
 
 
     public TeamPagePresenter(){}
@@ -25,9 +24,9 @@ public class TeamPagePresenter {
     }
 
     public void findAccess(){
-        if ( loggedInUser.getUser() != null )
-            if (loggedInUser.getUser() instanceof Player)
-                if ( team.getPlayers().contains((Player)loggedInUser.getUser())  )
+        if (MemoryLoggedInUser.getUser() != null )
+            if (MemoryLoggedInUser.getUser() instanceof Player)
+                if ( team.getPlayers().contains(MemoryLoggedInUser.getUser())  )
                     return;
         view.changesOfAccess();
     }
@@ -46,10 +45,6 @@ public class TeamPagePresenter {
 
     public void setTeamDAO(TeamDAO teamDAO) {
         this.teamDAO = teamDAO;
-    }
-
-    public void setLoggedInUser(LoggedInUser loggedInUser) {
-        this.loggedInUser = loggedInUser;
     }
 
     public void setView(TeamPageView view) {

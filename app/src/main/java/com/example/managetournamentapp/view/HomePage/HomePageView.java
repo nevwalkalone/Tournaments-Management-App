@@ -12,8 +12,17 @@ public interface HomePageView {
      * When app user clicks on any team, on the browsing list,
      * the app redirects the user to the TeamPageActivity
      */
-    void teamOnBrowsingSelection();
+    void browseAction();
 
-    void returnSearchResult(int id);
+    void loginAction();
+
+    void registerAction();
+
+    void organizerRegisterAction();
+
+    void playerRegisterAction();
+
+
+
 
 }

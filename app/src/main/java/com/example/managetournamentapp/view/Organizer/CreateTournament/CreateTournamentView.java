@@ -36,7 +36,7 @@ public interface CreateTournamentView {
 
     void setAgeDivision(int position);
 
-    void setTeamsNumber(int teamsNumber);
+    void setTeamsNumber(String teamsNumber);
 
     void setSportType(int position);
 

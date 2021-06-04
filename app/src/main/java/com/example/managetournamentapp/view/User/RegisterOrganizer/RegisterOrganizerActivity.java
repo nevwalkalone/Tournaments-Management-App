@@ -38,7 +38,7 @@ public class RegisterOrganizerActivity extends AppCompatActivity implements Regi
         viewModel = new ViewModelProvider(this).get(RegisterOrganizerViewModel.class);
         viewModel.getPresenter().setView(this);
         viewModel.getPresenter().showPreviousInfo();
-        saveBtn = (Button) findViewById(R.id.saveOrganizerBtn);
+        saveBtn = findViewById(R.id.saveOrganizerBtn);
         saveBtn.setOnClickListener(this);
 
     }
@@ -177,11 +177,7 @@ public class RegisterOrganizerActivity extends AppCompatActivity implements Regi
         BIRTHDATE.setText(birthdate);
     }
 
-    @Override
-    public void setCredentials(Credentials credentials) {
-        //TODO
 
-    }
 
     @Override
     public void setTitle(String title) {

@@ -2,10 +2,12 @@ package com.example.managetournamentapp.view.Tournament.TournamentInfo;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Layout;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -18,6 +20,7 @@ public class TournamentInfoActivity extends AppCompatActivity implements Tournam
     String tournamentName;
     Button btnEditTournament;
     Button btnDeleteTournament;
+    private AlertDialog POPUP_ACTION;
 
     @Override
     protected  void onCreate(Bundle savedInstanceState) {
@@ -34,7 +37,7 @@ public class TournamentInfoActivity extends AppCompatActivity implements Tournam
         btnEditTournament.setOnClickListener(v -> viewModel.getPresenter().onEditTournament());
         btnDeleteTournament.setOnClickListener(v -> viewModel.getPresenter().onDeleteTournament());
 
-        viewModel.getPresenter().findAccess();
+       viewModel.getPresenter().findAccess();
     }
 
     @Override
@@ -84,9 +87,16 @@ public class TournamentInfoActivity extends AppCompatActivity implements Tournam
         startActivity(intent);
     }
 
-    @Override
-    public void startDeleteTournament() {
 
+
+    @Override
+    public void yesDeleteTournament() {
+
+    }
+
+    @Override
+    public void noDeleteTournament() {
+        POPUP_ACTION.dismiss();
     }
 
     @Override
@@ -94,4 +104,34 @@ public class TournamentInfoActivity extends AppCompatActivity implements Tournam
         btnEditTournament.setVisibility(View.GONE);
         btnDeleteTournament.setVisibility(View.GONE);
     }
+
+    @Override
+    public void deleteConfirmation() {
+        POPUP_ACTION = showPopUp(R.layout.tournament_delete_popup, "Do you really want to delete this Tournament?", R.id.no_delete, R.id.yes_delete);
+
+        POPUP_ACTION.show();
+    }
+
+
+    public AlertDialog showPopUp(int layoutId, String msg, int btn1, int btn2) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        View customLayout = getLayoutInflater().inflate(layoutId, null);
+
+        builder.setView(customLayout);
+        AlertDialog dialog = builder.create();
+
+        TextView textMsg = (TextView) customLayout.findViewById(R.id.action_message);
+
+        //no delete
+        Button firstButton = (Button) customLayout.findViewById(btn1);
+        //yes delete
+        Button secondButton = (Button) customLayout.findViewById(btn2);
+
+        textMsg.setText(msg);
+
+        firstButton.setOnClickListener(v->viewModel.getPresenter().onNoDeleteTournament());
+        secondButton.setOnClickListener(v->viewModel.getPresenter().onYesDeleteTournament());
+        return dialog;
+    }
+
 }

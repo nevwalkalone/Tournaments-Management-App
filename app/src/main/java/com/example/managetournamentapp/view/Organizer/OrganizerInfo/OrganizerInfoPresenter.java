@@ -1,9 +1,10 @@
 package com.example.managetournamentapp.view.Organizer.OrganizerInfo;
 
 import com.example.managetournamentapp.domain.Organizer;
-import com.example.managetournamentapp.domain.Player;
 import com.example.managetournamentapp.domain.User;
-import com.example.managetournamentapp.view.Player.PlayerInfo.PlayerInfoView;
+
+import java.time.format.DateTimeFormatter;
+
 
 public class OrganizerInfoPresenter {
     private OrganizerInfoView view;
@@ -18,7 +19,7 @@ public class OrganizerInfoPresenter {
         view.setSurname(organizer.getSurname());
         view.setPhone(organizer.getPhoneNumber());
         view.setEmail(organizer.getEmail());
-        view.setBirthDate(organizer.getBirthDate().toString());
+        view.setBirthDate(organizer.getBirthDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
         view.setTitle(organizer.getTitle());
     }
 
@@ -26,6 +27,8 @@ public class OrganizerInfoPresenter {
         view.startEditOrganizer(organizer);
     }
 
+
+    //TODO POPUP CHECK
     public void onDeleteOrganizer() {
         view.startDeleteOrganizer(organizer);
     }

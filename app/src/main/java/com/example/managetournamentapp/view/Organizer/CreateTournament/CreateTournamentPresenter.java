@@ -6,6 +6,7 @@ import com.example.managetournamentapp.domain.Tournament;
 import com.example.managetournamentapp.domain.TournamentType;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -31,10 +32,10 @@ public class CreateTournamentPresenter {
 
         view.setTournamentTitle( connectedTournament.getTitle());
         view.setLocation( connectedTournament.getLocation());
-        view.setStartDate(connectedTournament.getStartDate().toString());
-        view.setFinishDate(connectedTournament.getFinishDate().toString());
+        view.setStartDate(connectedTournament.getStartDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
+        view.setFinishDate(connectedTournament.getFinishDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
         view.setAgeDivision( getAgeDivisionIndex(connectedTournament.getAgeDivision().toString()) );
-        view.setTeamsNumber(connectedTournament.getMAX_TEAMS_NUMBER());
+        view.setTeamsNumber(String.valueOf(connectedTournament.getMAX_TEAMS_NUMBER()));
         view.setSportType(getSportTypeIndex(connectedTournament.getSportType().getName()) );
         view.lockSportType();
     }

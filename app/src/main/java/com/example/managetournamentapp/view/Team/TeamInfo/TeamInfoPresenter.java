@@ -4,6 +4,7 @@ import com.example.managetournamentapp.dao.LoggedInUser;
 import com.example.managetournamentapp.dao.TeamDAO;
 import com.example.managetournamentapp.domain.Player;
 import com.example.managetournamentapp.domain.Team;
+import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
 
 public class TeamInfoPresenter {
     private TeamInfoView view;
@@ -27,9 +28,9 @@ public class TeamInfoPresenter {
     }
 
     public void findAccess(){
-        if ( loggedInUser.getUser() != null )
-            if (loggedInUser.getUser() instanceof  Player)
-                if ( ((Player)loggedInUser.getUser()).equals( team.getCaptain()) )
+        if ( MemoryLoggedInUser.getUser() != null )
+            if (MemoryLoggedInUser.getUser() instanceof  Player)
+                if ((MemoryLoggedInUser.getUser()).equals( team.getCaptain()) )
                     return;
         view.changesOfAccess();
     }
@@ -40,7 +41,7 @@ public class TeamInfoPresenter {
 
     public void onDeleteTeam(){
         //todo more
-        view.startDeleteTeam(((Player)loggedInUser.getUser()).getCredentials().getUsername() );
+       // view.startDeleteTeam(((Player)loggedInUser.getUser()).getCredentials().getUsername() );
     }
 
     public void setTeamDAO(TeamDAO teamDAO) {

@@ -1,11 +1,9 @@
 package com.example.managetournamentapp.view.User.RegisterOrganizer;
 
-import android.view.View;
 
-import com.example.managetournamentapp.domain.AgeDivision;
 import com.example.managetournamentapp.domain.Credentials;
 import com.example.managetournamentapp.domain.Organizer;
-import com.example.managetournamentapp.domain.Player;
+
 
 public interface RegisterOrganizerView {
 
@@ -41,7 +39,6 @@ public interface RegisterOrganizerView {
 
     void setBirthdate(String birthdate);
 
-    void setCredentials(Credentials credentials);
 
     void setTitle(String title);
 
