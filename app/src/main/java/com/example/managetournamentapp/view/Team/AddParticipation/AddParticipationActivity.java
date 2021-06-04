@@ -45,12 +45,10 @@ public class AddParticipationActivity  extends AppCompatActivity implements  Add
     //TODO FIXING
     @Override
     public void onListFragmentInteraction(Tournament item) {
-        //viewModel.getPresenter().onAddParticipation(item);
-        //Intent intent = new Intent(AddParticipationActivity.this, ParticipatingTournamentsActivity.class);
-        //intent.putExtra(TEAM_NAME_EXTRA, teamName);
-        //startActivity(intent);
-        Intent intent = new Intent();
-        onBackPressed();
+        viewModel.getPresenter().onAddParticipation(item);
+        Intent intent = new Intent(AddParticipationActivity.this, ParticipatingTournamentsActivity.class);
+        intent.putExtra(TEAM_NAME_EXTRA, teamName);
+        startActivity(intent);
     }
 
     @Override

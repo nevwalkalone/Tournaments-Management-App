@@ -25,8 +25,9 @@ import org.w3c.dom.Text;
 public class RegisterOrganizerActivity extends AppCompatActivity implements RegisterOrganizerView, View.OnClickListener {
 
     RegisterOrganizerViewModel viewModel;
-    public static final String ORGANIZER_USERNAME = "ORGANIZER_USERNAME";
+    public static final String ORGANIZER_TITLE = "organizer_title";
     private Button saveBtn;
+    String organizerTitle;
 
 
     @Override
@@ -34,10 +35,11 @@ public class RegisterOrganizerActivity extends AppCompatActivity implements Regi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_organizer);
 
+        organizerTitle = this.getIntent().getStringExtra(ORGANIZER_TITLE);
 
         viewModel = new ViewModelProvider(this).get(RegisterOrganizerViewModel.class);
         viewModel.getPresenter().setView(this);
-        viewModel.getPresenter().showPreviousInfo();
+        viewModel.getPresenter().showPreviousInfo(organizerTitle);
         saveBtn = findViewById(R.id.saveOrganizerBtn);
         saveBtn.setOnClickListener(this);
 
@@ -55,17 +57,6 @@ public class RegisterOrganizerActivity extends AppCompatActivity implements Regi
         dialog.show();
     }
 
-
-    public Organizer getConnectedOrganizer() {
-        if (("1").equals(this.getIntent().getStringExtra("IS_EDIT"))) {
-            //TextView title = (TextView) findViewById(R.id.organizer_info);
-            //title.setText("Organizer Info");
-
-            return (Organizer) (new MemoryLoggedInUser()).getUser();
-        } else {
-            return null;
-        }
-    }
 
     @Override
     public void onClick(View v) {

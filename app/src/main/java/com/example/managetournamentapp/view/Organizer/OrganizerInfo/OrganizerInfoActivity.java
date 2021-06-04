@@ -14,7 +14,7 @@ import com.example.managetournamentapp.view.User.RegisterOrganizer.RegisterOrgan
 
 public class OrganizerInfoActivity extends AppCompatActivity implements OrganizerInfoView {
     private OrganizerInfoViewModel viewModel;
-    private static final String IS_EDIT = "IS_EDIT";
+    public static final String ORGANIZER_TITLE = "organizer_title";
     Button btnEditOrganizer;
     Button btnDeleteOrganizer;
 
@@ -77,9 +77,9 @@ public class OrganizerInfoActivity extends AppCompatActivity implements Organize
     }
 
     @Override
-    public void startEditOrganizer(Organizer organizer) {
+    public void startEditOrganizer(String organizerTitle) {
         Intent intent = new Intent(OrganizerInfoActivity.this, RegisterOrganizerActivity.class);
-        intent.putExtra(IS_EDIT, "1");
+        intent.putExtra( ORGANIZER_TITLE , organizerTitle);
         startActivity(intent);
     }
 

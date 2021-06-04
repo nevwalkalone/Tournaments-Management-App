@@ -3,6 +3,7 @@ package com.example.managetournamentapp.view.User.RegisterOrganizer;
 import androidx.lifecycle.ViewModel;
 
 import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
+import com.example.managetournamentapp.memoryDao.OrganizerDAOMemory;
 
 
 public class RegisterOrganizerViewModel extends ViewModel {
@@ -14,6 +15,7 @@ public class RegisterOrganizerViewModel extends ViewModel {
 
         presenter = new RegisterOrganizerPresenter();
         presenter.setLoggedInUser( new MemoryLoggedInUser());
+        presenter.setOrganizerDAO( new OrganizerDAOMemory());
     }
 
     public RegisterOrganizerPresenter getPresenter() {

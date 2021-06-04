@@ -19,7 +19,7 @@ public interface OrganizerInfoView {
 
     void setBirthDate(String date);
 
-    void startEditOrganizer(Organizer organizer);
+    void startEditOrganizer(String organizerUsername);
 
     void startDeleteOrganizer(Organizer organizer);
 

@@ -24,7 +24,7 @@ public class OrganizerInfoPresenter {
     }
 
     public void onEditOrganizer() {
-        view.startEditOrganizer(organizer);
+        view.startEditOrganizer(organizer.getTitle());
     }
 
 

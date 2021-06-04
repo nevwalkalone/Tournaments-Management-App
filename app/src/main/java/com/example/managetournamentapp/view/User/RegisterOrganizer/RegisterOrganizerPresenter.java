@@ -22,8 +22,13 @@ public class RegisterOrganizerPresenter {
 
     }
 
-    public void showPreviousInfo() {
-        this.connectedOrganizer = view.getConnectedOrganizer();
+    public void showPreviousInfo(String organizerTitle) {
+        if (organizerTitle == null)
+            return;
+        connectedOrganizer = organizerDAO.findByTitle(organizerTitle);
+        if (connectedOrganizer == null)
+            return;
+
         if (connectedOrganizer != null)//edit mode
         {
             view.setName(connectedOrganizer.getName());
@@ -65,7 +70,7 @@ public class RegisterOrganizerPresenter {
 
         else {
             // IF USER IS NEW!
-            if (view.getConnectedOrganizer() == null) {
+            if (connectedOrganizer == null) {
                 birthDate = birthDate.replace("/", "-");
                 Organizer organizer = new Organizer(name, surname, phoneNumber, email, LocalDate.parse(birthDate), new Credentials(usename, password), title);
                 organizerDAO = new OrganizerDAOMemory();

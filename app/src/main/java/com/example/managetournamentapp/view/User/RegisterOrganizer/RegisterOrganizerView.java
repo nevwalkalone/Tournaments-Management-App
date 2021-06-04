@@ -44,8 +44,6 @@ public interface RegisterOrganizerView {
 
     void showPopUp(RegisterOrganizerView view, String msg);
 
-    Organizer getConnectedOrganizer();
-
     void startOrganizerPage();
 
 }
