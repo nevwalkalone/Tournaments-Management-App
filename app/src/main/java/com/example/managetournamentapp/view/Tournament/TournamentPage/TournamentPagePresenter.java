@@ -13,6 +13,7 @@ public class TournamentPagePresenter {
     public void onTournamentInfo(){
         view.startTournamentInfo();
     }
+
     public void onTournamentTeams(){
         view.startTeamsParticipating();
     }
