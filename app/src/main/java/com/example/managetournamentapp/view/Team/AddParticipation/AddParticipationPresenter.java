@@ -25,7 +25,9 @@ public class AddParticipationPresenter {
         results.clear();
         for (Tournament tournament : tournamentDAO.findAll()){
             Participation part = new Participation(tournament, team);
-            if ( team.canParticipate(part)  )
+
+            //TODO JUST CHECKING
+           // if ( team.canParticipate(part)  )
                 results.add(tournament);
         }
     }

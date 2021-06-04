@@ -8,7 +8,6 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.domain.Player;
-import com.example.managetournamentapp.memoryDao.MemoryInitializer;
 import com.example.managetournamentapp.view.Team.InvitePlayers.fragment.PlayersListFragment;
 
 import java.util.ArrayList;
@@ -20,17 +19,11 @@ public class InvitePlayersActivity extends AppCompatActivity implements PlayersL
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        //todo erase
-        new MemoryInitializer().prepareData();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_invite_players);
 
         Intent intent = getIntent();
-
-//
-//        Log.d("BookSearchActivity", "Search criteria: " + titleCriterion
-//                + " " + authorCriterion);
 
         viewModel = new ViewModelProvider(this).get(InvitePlayersViewModel.class);
 
@@ -51,6 +44,7 @@ public class InvitePlayersActivity extends AppCompatActivity implements PlayersL
 
     }
 
+    //TODO FIXING
     @Override
     public void onListFragmentInteraction(Player item) {
         Intent intent = new Intent();
