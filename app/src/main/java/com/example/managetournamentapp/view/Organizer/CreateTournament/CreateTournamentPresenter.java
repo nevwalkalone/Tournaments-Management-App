@@ -2,6 +2,7 @@ package com.example.managetournamentapp.view.Organizer.CreateTournament;
 
 import com.example.managetournamentapp.dao.TournamentDAO;
 import com.example.managetournamentapp.domain.AgeDivision;
+import com.example.managetournamentapp.domain.Sport;
 import com.example.managetournamentapp.domain.Tournament;
 import com.example.managetournamentapp.domain.TournamentType;
 
@@ -32,8 +33,8 @@ public class CreateTournamentPresenter {
 
         view.setTournamentTitle( connectedTournament.getTitle());
         view.setLocation( connectedTournament.getLocation());
-        view.setStartDate(connectedTournament.getStartDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
-        view.setFinishDate(connectedTournament.getFinishDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
+        view.setStartDate(connectedTournament.getStartDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")).replace("-", "/"));
+        view.setFinishDate(connectedTournament.getFinishDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")).replace("-", "/"));
         view.setAgeDivision( getAgeDivisionIndex(connectedTournament.getAgeDivision().toString()) );
         view.setTeamsNumber(String.valueOf(connectedTournament.getMAX_TEAMS_NUMBER()));
         view.setSportType(getSportTypeIndex(connectedTournament.getSportType().getName()) );
@@ -43,9 +44,16 @@ public class CreateTournamentPresenter {
     public void onSaveTournament(){
         String title = view.getTournamentTitle();
         String location = view.getLocation();
+
         String startDate = view.getStartDate();
         String finishDate = view.getFinishDate();
+        startDate = startDate.replace("/", "-");
+        finishDate = finishDate.replace("/", "-");
+        LocalDate startLocalDate = LocalDate.parse(startDate, DateTimeFormatter.ofPattern("dd-MM-uuuu"));
+        LocalDate finishLocalDate = LocalDate.parse(finishDate, DateTimeFormatter.ofPattern("dd-MM-uuuu"));
+
         String ageDivision = ageDivisions.get( view.getAgeDivision() );
+        String sportType = ageDivisions.get( view.getSportType() );
         String teamsNumber = view.getTeamsNumber() ;
 
         if (title.length() < 2 || title.length() > 20){
@@ -53,14 +61,15 @@ public class CreateTournamentPresenter {
         }else{
 
             if (connectedTournament == null){
-                ArrayList<String> basicInfo = new ArrayList<>(Arrays.asList(title, location , startDate , finishDate , ageDivision , teamsNumber));
+                ArrayList<String> basicInfo = new ArrayList<>( Arrays.asList(title, startLocalDate.toString() , finishLocalDate.toString(), location , sportType, teamsNumber, ageDivision) );
                 view.startSetDates( basicInfo );
             }else{
                 connectedTournament.setTitle(title);
                 connectedTournament.setLocation(location);
-                connectedTournament.setStartDate(LocalDate.parse(startDate));
-                connectedTournament.setFinishDate(LocalDate.parse(finishDate));
+                connectedTournament.setStartDate(startLocalDate);
+                connectedTournament.setFinishDate(finishLocalDate);
                 connectedTournament.setAgeDivision( AgeDivision.values()[getAgeDivisionIndex(ageDivision)] );
+                connectedTournament.setSportType( new Sport(sportType) );
                 view.startSaveTournament(connectedTournament.getTitle());
             }
         }

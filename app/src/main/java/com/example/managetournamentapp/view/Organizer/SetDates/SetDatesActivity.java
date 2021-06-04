@@ -2,6 +2,7 @@ package com.example.managetournamentapp.view.Organizer.SetDates;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -34,41 +35,61 @@ public class SetDatesActivity extends AppCompatActivity implements SetDatesView 
         basicInfo = (ArrayList<String>) this.getIntent().getSerializableExtra(BASIC_INFO_EXTRA);
         teamsNumber = basicInfo.get(5);
         setupLayout(teamsNumber);
-
-
+        viewModel.presenter.findBasicInfo(basicInfo);
 
         saveBtn = (Button) findViewById(R.id.save_tournament);
         saveBtn.setOnClickListener(v -> viewModel.getPresenter().onSaveTournament());
+
 
     }
 
 
     public ArrayList<String> getDates() {
         ArrayList<String> dates = new ArrayList<>();
-        for (EditText e : editTexts)
-            dates.add(e.getText().toString());
+        int len;
+        if ( teamsNumber.equals("8"))
+            len = 6;
+        else if (teamsNumber.equals("16"))
+            len = 8;
+        else
+            len = 10;
+
+        for (int i=0;i<len;i++){
+            Log.wtf("getting edittext", String.valueOf(i));
+            dates.add( editTexts.get(i).getText().toString() );
+        }
         return dates;
     }
 
     public void setupLayout(String teamsNumber){
+        editTexts.clear();
+        if (teamsNumber.equals("8")){
+            setContentView(R.layout.activity_set_dates_8);
+        } else if (teamsNumber.equals("16")){
+            setContentView(R.layout.activity_set_dates_16);
+        }else if(teamsNumber.equals("32")) {
+            setContentView(R.layout.activity_set_dates_32);
+        }
+
+        Log.wtf( "testtt",((EditText) findViewById(R.id.round1_start_txt)).getText().toString() );
         editTexts.add( (EditText) findViewById(R.id.round1_start_txt) );
         editTexts.add( (EditText) findViewById(R.id.round1_finish_txt) );
         editTexts.add( (EditText) findViewById(R.id.round2_start_txt) );
         editTexts.add( (EditText) findViewById(R.id.round2_finish_txt) );
         editTexts.add( (EditText) findViewById(R.id.round3_start_txt) );
         editTexts.add( (EditText) findViewById(R.id.round3_finish_txt) );
-        setContentView(R.layout.activity_set_dates_8);
+
 
         if (teamsNumber.equals("16")){
             editTexts.add( (EditText) findViewById(R.id.round4_start_txt) );
             editTexts.add( (EditText) findViewById(R.id.round4_finish_txt) );
-            setContentView(R.layout.activity_set_dates_16);
+            Log.wtf("setupp","in 16");
+
         }else if(teamsNumber.equals("32")) {
             editTexts.add( (EditText) findViewById(R.id.round4_start_txt) );
             editTexts.add( (EditText) findViewById(R.id.round4_finish_txt) );
             editTexts.add( (EditText) findViewById(R.id.round5_start_txt) );
             editTexts.add( (EditText) findViewById(R.id.round5_finish_txt) );
-            setContentView(R.layout.activity_set_dates_32);
         }
 
     }

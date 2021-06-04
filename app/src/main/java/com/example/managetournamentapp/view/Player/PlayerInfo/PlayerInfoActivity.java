@@ -44,6 +44,7 @@ public class PlayerInfoActivity extends AppCompatActivity implements PlayerInfoV
         btnDeletePlayer = findViewById(R.id.delete_player_button);
         btnEditPlayer.setOnClickListener(v -> viewModel.getPresenter().onEditPlayer());
         btnDeletePlayer.setOnClickListener(v -> viewModel.getPresenter().onDeletePlayer());
+
         viewModel.getPresenter().findAccess();
     }
 
@@ -103,5 +104,7 @@ public class PlayerInfoActivity extends AppCompatActivity implements PlayerInfoV
     public void changesOfAccess(){
         btnEditPlayer.setVisibility(View.GONE);
         btnDeletePlayer.setVisibility(View.GONE);
+//        (findViewById(R.id.text_password)).setVisibility(View.GONE);
+
     }
 }
