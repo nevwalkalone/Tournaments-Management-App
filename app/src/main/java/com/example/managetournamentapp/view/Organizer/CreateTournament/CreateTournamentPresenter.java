@@ -53,7 +53,7 @@ public class CreateTournamentPresenter {
         LocalDate finishLocalDate = LocalDate.parse(finishDate, DateTimeFormatter.ofPattern("dd-MM-uuuu"));
 
         String ageDivision = ageDivisions.get( view.getAgeDivision() );
-        String sportType = ageDivisions.get( view.getSportType() );
+        String sportType = sportTypes.get( view.getSportType() );
         String teamsNumber = view.getTeamsNumber() ;
 
         if (title.length() < 2 || title.length() > 20){

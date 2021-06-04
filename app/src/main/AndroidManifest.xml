@@ -9,11 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/SecondaryTheme">
+        <activity android:name=".view.Player.ReceivedInvites.ReceivedInvitesActivity"></activity>
         <activity
             android:name=".view.Team.JoinedPlayers.JoinedPlayersActivity"
             android:exported="true"
             android:label="@string/joined_players" />
-
         <activity
             android:name=".view.HomePage.HomePageActivity"
             android:label="@string/manageApp"
@@ -35,8 +35,8 @@
             android:theme="@style/SecondaryTheme" />
         <activity
             android:name=".view.User.Login.LoginActivity"
-            android:label="@string/log_in"
-            android:exported="true" />
+            android:exported="true"
+            android:label="@string/log_in" />
         <activity
             android:name=".view.Organizer.OrganizerTournaments.OrganizerTournamentsActivity"
             android:exported="true"
@@ -123,7 +123,6 @@
             android:exported="true"
             android:label="@string/create_tournament"
             android:theme="@style/SecondaryTheme" />
-
     </application>
 
 </manifest>

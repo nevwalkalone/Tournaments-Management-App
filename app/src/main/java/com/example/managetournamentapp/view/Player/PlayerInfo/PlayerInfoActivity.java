@@ -16,7 +16,7 @@ import com.example.managetournamentapp.view.User.RegisterPlayer.RegisterPlayerAc
 public class PlayerInfoActivity extends AppCompatActivity implements PlayerInfoView {
     private PlayerInfoViewModel viewModel;
     private static final String PLAYER_USERNAME_EXTRA = "player_username_extra";
-    public static final String PASSWORD_SHOWN_EXTRA = "password_extra";
+
     Button btnEditPlayer;
     Button btnDeletePlayer;
     String playerUsername;

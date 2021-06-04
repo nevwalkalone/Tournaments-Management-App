@@ -74,7 +74,7 @@ public class JoinedPlayersActivity extends AppCompatActivity implements PlayersL
                     .add(R.id.fragment_container, playersListFragment)
                     .commit();
         }
-        viewModel.getPresenter().findAccess();
+        viewModel.getPresenter().findAccess();          // check who is currently using the page!
 
     }
 
@@ -83,27 +83,23 @@ public class JoinedPlayersActivity extends AppCompatActivity implements PlayersL
     public void onListFragmentInteraction(Player item) {
         playerSelected = item;
 
-        if(!player){
+        if (!player) {
             Intent intent = new Intent(this, PlayerInfoActivity.class);
-            intent.putExtra(PLAYER_USERNAME_EXTRA,playerSelected.getCredentials().getUsername());
-            intent.putExtra(PASSWORD_SHOWN_EXTRA,"1");
+            intent.putExtra(PLAYER_USERNAME_EXTRA, playerSelected.getCredentials().getUsername());
             startActivity(intent);
-        }
-        else{
-            if (item.equals( (new MemoryLoggedInUser()).getUser() )){
+        } else {
+            if (item.equals((new MemoryLoggedInUser()).getUser())) {
                 Intent intent = new Intent(this, PlayerPageActivity.class);
                 intent.putExtra(PLAYER_USERNAME_EXTRA, playerSelected.getCredentials().getUsername());
                 startActivity(intent);
-            }
-            else{
-                if (captain){
-                    POPUP_ACTION = showPopUp(R.layout.player_action_popup, "Username: " + item.getName() + "\nSurname: " + item.getSurname(), R.id.remove_player_popup, R.id.account_player_popup);
+            } else {
+                if (captain) {
+                    POPUP_ACTION = showPopUp(R.layout.player_action_popup, "Name: " + item.getName() + "\nSurname: " + item.getSurname(), R.id.remove_player_popup, R.id.account_player_popup);
                     POPUP_ACTION.show();
-                }
-                else{
+                } else {
                     Intent intent = new Intent(this, PlayerInfoActivity.class);
-                    intent.putExtra(PLAYER_USERNAME_EXTRA,playerSelected.getCredentials().getUsername());
-                    intent.putExtra(PASSWORD_SHOWN_EXTRA,"1");
+                    intent.putExtra(PLAYER_USERNAME_EXTRA, playerSelected.getCredentials().getUsername());
+                    intent.putExtra(PASSWORD_SHOWN_EXTRA, "1");
                     startActivity(intent);
                 }
             }
@@ -146,7 +142,7 @@ public class JoinedPlayersActivity extends AppCompatActivity implements PlayersL
         if (v.getId() == R.id.account_player_popup) {
             Intent intent = new Intent(this, PlayerInfoActivity.class);
             intent.putExtra(PLAYER_USERNAME_EXTRA, playerSelected.getCredentials().getUsername());
-            intent.putExtra(PASSWORD_SHOWN_EXTRA,"1");
+            intent.putExtra(PASSWORD_SHOWN_EXTRA, "1");
             startActivity(intent);
 
 
@@ -155,6 +151,7 @@ public class JoinedPlayersActivity extends AppCompatActivity implements PlayersL
 
         if (v.getId() == R.id.invite_new_players_button) {
             Intent intent = new Intent(this, InvitePlayersActivity.class);
+            intent.putExtra(TEAM_NAME_EXTRA, teamName);
             startActivity(intent);
         }
 
@@ -165,7 +162,7 @@ public class JoinedPlayersActivity extends AppCompatActivity implements PlayersL
     public void changesOfAccess(boolean captain, boolean player) {
         this.captain = captain;
         this.player = player;
-        if (!captain){
+        if (!captain) {
             inviteNewBtn.setVisibility(View.GONE);
         }
     }

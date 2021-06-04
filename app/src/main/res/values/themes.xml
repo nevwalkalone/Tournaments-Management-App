@@ -15,7 +15,7 @@
         <item name="colorControlHighlight">@color/colorWhite</item>
         <item name="android:textColorHint">@color/colorSemiWhite</item>
         <item name="android:editTextColor">@color/colorWhite</item>
-        <item name="android:textCursorDrawable">@drawable/custom_cursor</item>
+
     </style>
 
 

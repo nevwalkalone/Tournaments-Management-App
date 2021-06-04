@@ -1,26 +1,42 @@
 package com.example.managetournamentapp.view.Team.InvitePlayers;
 
+import com.example.managetournamentapp.dao.LoggedInUser;
 import com.example.managetournamentapp.dao.PlayerDAO;
+import com.example.managetournamentapp.dao.TeamDAO;
 import com.example.managetournamentapp.domain.Player;
+import com.example.managetournamentapp.domain.Team;
+
 import java.util.ArrayList;
 
 public class InvitePlayersPresenter {
     private InvitePlayersView view;
     private PlayerDAO playerDAO;
+    private TeamDAO teamDAO;
+    private String teamName;
     private ArrayList<Player> results = new ArrayList<>();
+    private LoggedInUser loggedInUser;
 
-    public InvitePlayersPresenter(){}
 
-    public void findPlayers(){
+    public InvitePlayersPresenter() {
+    }
+
+    public void findPlayers(String teamName) {
+        this.teamName = teamName;
         results.clear();
-        results = playerDAO.findAll();
+        ArrayList<Player> allPlayers = playerDAO.findAll();
+        Team team = teamDAO.find(teamName);
+        for (Player player : allPlayers) {
+            if (player.canJoin(team))
+                results.add(player);
+        }
+
     }
 
     public ArrayList<Player> getResults() {
         return results;
     }
 
-    public void onPlayerSelected(Player p){
+    public void onPlayerSelected(Player p) {
         // todo
     }
 
@@ -28,11 +44,15 @@ public class InvitePlayersPresenter {
         this.view = view;
     }
 
-    public void clearView(){
+    public void clearView() {
         this.view = null;
     }
 
     public void setPlayerDAO(PlayerDAO playerDAO) {
         this.playerDAO = playerDAO;
+    }
+
+    public void setTeamDAO(TeamDAO teamDAO) {
+        this.teamDAO = teamDAO;
     }
 }

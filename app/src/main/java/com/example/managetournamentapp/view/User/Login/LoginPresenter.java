@@ -24,7 +24,6 @@ public class LoginPresenter {
      * This method check in both PlayerDAO and OrganizerDAO via credentials.
      * @param username user input
      * @param password user input
-     * @return true, if User already exists at least in one DAO.
      */
     public void checkInDAO(String username, String password) {
         Credentials credCheck = new Credentials(username, password);
@@ -36,6 +35,9 @@ public class LoginPresenter {
             Player loggedInPlayer = playerDAO.find(credCheck.getUsername());                   // Try to find the Player in DAO and set it as current LoggedInUser
             loggedInUser.setUser(loggedInPlayer);
             view.startPlayerPage(username);
+        }
+        else{
+            view.showPopUp(view, "Invalid credentials. We didn't find any user with these credentials.");
         }
     }
 
@@ -62,7 +64,6 @@ public class LoginPresenter {
 
     /**
      *  Check for input validation and existence of Credentials in DAOs.
-     * @return true if user exists and input data are valid.
      */
     public void validateCredentials() {
         String usename = view.getUsername();
