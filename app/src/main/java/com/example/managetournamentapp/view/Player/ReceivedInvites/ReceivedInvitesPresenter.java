@@ -83,6 +83,7 @@ public class ReceivedInvitesPresenter {
 
     public void acceptInvitation(Invitation invitation) {
         player.replyToInvitation(invitation, true);
+        player.removeInvite(invitation);
     }
 
     public void onTeamPageClick() {

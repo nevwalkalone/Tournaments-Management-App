@@ -1,6 +1,8 @@
 package com.example.managetournamentapp.view.Tournament.RoundGames;
 
 import android.os.Bundle;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import com.example.managetournamentapp.R;
@@ -52,6 +54,10 @@ public class RoundGamesActivity extends AppCompatActivity implements GamesListFr
 
     @Override
     public void onListFragmentInteraction(Game item) {
+        Toast.makeText(this,
+                "GAME SELECTED",
+                Toast.LENGTH_SHORT)
+                .show();
 
     }
 

@@ -5,10 +5,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.domain.Team;
 import com.example.managetournamentapp.view.Tournament.ParticipatingTeams.fragment.TeamsListFragment.OnListFragmentInteractionListener;
+
 import java.util.ArrayList;
 
 
@@ -18,7 +21,7 @@ public class TeamsListRecyclerViewAdapter extends RecyclerView.Adapter<TeamsList
     private final OnListFragmentInteractionListener mListener;
 
 
-    public TeamsListRecyclerViewAdapter(ArrayList<Team> items, OnListFragmentInteractionListener listener){
+    public TeamsListRecyclerViewAdapter(ArrayList<Team> items, OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
@@ -32,7 +35,7 @@ public class TeamsListRecyclerViewAdapter extends RecyclerView.Adapter<TeamsList
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        Team currentTeam= mValues.get(position);
+        Team currentTeam = mValues.get(position);
         holder.mItem = currentTeam;
         holder.txtTeamTitle.setText(currentTeam.getName());
 
