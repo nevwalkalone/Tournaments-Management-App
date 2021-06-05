@@ -25,8 +25,6 @@ public class AddParticipationPresenter {
         results.clear();
         for (Tournament tournament : tournamentDAO.findAll()){
             Participation part = new Participation(tournament, team);
-
-            //TODO JUST CHECKING
             if ( team.canParticipate(part)  )
                 results.add(tournament);
         }
@@ -52,9 +50,20 @@ public class AddParticipationPresenter {
         this.teamDAO = teamDAO;
     }
 
-    public void onAddParticipation(Tournament tournament){
+    public void onAddParticipation(String tournamentName){
+        Tournament tournament = tournamentDAO.find(tournamentName);
         Participation part = new Participation(tournament, team);
         team.addParticipation(part);
+
+    }
+    public void onTournamentPage(String tournamentName){
+        Tournament tournament = tournamentDAO.find(tournamentName);
+        view.startTournamentPage(tournament);
+    }
+
+    public void onStartPartTournaments(){
+        String teamName = team.getName();
+        view.startPartTournaments(teamName);
 
     }
 

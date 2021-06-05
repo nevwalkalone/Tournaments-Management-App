@@ -138,7 +138,6 @@ public class Team {
         if (players.size() < (sportType.getMinimumPlayers() / 2)) {
             return false;
         }
-
         //if there is a player that participates in the specific tournament
         //with another team, then this team can't join the tournament
         for (Player player : players) {

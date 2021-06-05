@@ -91,7 +91,6 @@ public class InvitePlayersActivity extends AppCompatActivity implements PlayersL
 
     }
 
-
     @Override
     public AlertDialog showPopUp(int layoutId, String msg, int btn1, int btn2,boolean changePopup) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
