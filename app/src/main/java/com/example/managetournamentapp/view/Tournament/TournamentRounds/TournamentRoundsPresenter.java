@@ -28,7 +28,7 @@ public class TournamentRoundsPresenter {
     }
 
     public void onGroups(){
-        view.showRoundGames(tournament.getTitle(),tournament.getMAX_TEAMS_NUMBER());
+        view.showGroups(tournament.getTitle(),tournament.getMAX_TEAMS_NUMBER());
     }
 
     public void on16(){

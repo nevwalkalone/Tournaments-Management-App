@@ -1,19 +1,18 @@
-package com.example.managetournamentapp.view.Tournament.TournamentRounds;
+package com.example.managetournamentapp.view.Tournament.TournamentGroups;
 
 import androidx.lifecycle.ViewModel;
 
 import com.example.managetournamentapp.memoryDao.TournamentDAOMemory;
 
+public class TournamentGroupsViewModel extends ViewModel {
+    TournamentGroupsPresenter presenter;
 
-public class TournamentRoundsViewModel extends ViewModel {
-    TournamentRoundsPresenter presenter;
-
-    public TournamentRoundsViewModel(){
-        presenter = new TournamentRoundsPresenter();
+    public TournamentGroupsViewModel(){
+        presenter = new TournamentGroupsPresenter();
         presenter.setTournamentDAO(new TournamentDAOMemory());
     }
 
-    public TournamentRoundsPresenter getPresenter(){
+    public TournamentGroupsPresenter getPresenter(){
         return presenter;
     }
 
@@ -22,7 +21,4 @@ public class TournamentRoundsViewModel extends ViewModel {
         super.onCleared();
         presenter.clearView();
     }
-
-
-
 }

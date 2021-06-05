@@ -135,6 +135,11 @@
             android:exported="true"
             android:label="@string/create_tournament"
             android:theme="@style/SecondaryTheme" />
+        <activity
+            android:name=".view.Tournament.TournamentGroups.TournamentGroupsActivity"
+            android:exported="true"
+            android:label="@string/create_tournament"
+            android:theme="@style/SecondaryTheme" />
     </application>
 
 </manifest>

@@ -29,6 +29,16 @@
     <string name="scoreA">score A</string>
     <string name="scoreB">score B</string>
 
+    <string name="groupA">Group A</string>
+    <string name="groupB">Group B</string>
+    <string name="groupC">Group C</string>
+    <string name="groupD">Group D</string>
+    <string name="groupE">Group E</string>
+    <string name="groupF">Group F</string>
+    <string name="groupG">Group G</string>
+    <string name="groupH">Group H</string>
+
+
     <string name="organizer_info">Organizer Info</string>
     <string name="delete_organizer">Delete</string>
     <string name="edit_organizer">Edit</string>

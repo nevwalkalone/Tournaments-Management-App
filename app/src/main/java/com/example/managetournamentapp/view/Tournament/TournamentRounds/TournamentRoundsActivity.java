@@ -10,12 +10,13 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.view.Tournament.RoundGames.RoundGamesActivity;
+import com.example.managetournamentapp.view.Tournament.TournamentGroups.TournamentGroupsActivity;
 
 public class TournamentRoundsActivity extends AppCompatActivity implements TournamentRoundsView {
     public static final String TOURNAMENT_TITLE_EXTRA = "tournament_title_extra";
     private static final String ROUND_TEAMS_EXTRA = "round_teams_extra" ;
-    String tournamentTitle;
     private TournamentRoundsViewModel viewModel;
+    String tournamentTitle;
     Button btnGroups;
     Button btn16;
     Button btn8;
@@ -58,10 +59,18 @@ public class TournamentRoundsActivity extends AppCompatActivity implements Tourn
         }
     }
 
+    @Override
     public void showRoundGames(String tournamentTitle, int roundTeamsNumber){
         Intent intent = new Intent(TournamentRoundsActivity.this, RoundGamesActivity.class);
         intent.putExtra(TOURNAMENT_TITLE_EXTRA, tournamentTitle);
         intent.putExtra(ROUND_TEAMS_EXTRA, String.valueOf(roundTeamsNumber));
+        startActivity(intent);
+    }
+
+    @Override
+    public void showGroups(String tournamentTitle, int roundTeamsNumber){
+        Intent intent = new Intent(TournamentRoundsActivity.this, TournamentGroupsActivity.class);
+        intent.putExtra(TOURNAMENT_TITLE_EXTRA, tournamentTitle);
         startActivity(intent);
     }
 
