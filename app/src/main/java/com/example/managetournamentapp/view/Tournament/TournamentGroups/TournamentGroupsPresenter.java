@@ -18,16 +18,24 @@ public class TournamentGroupsPresenter {
         tournament = tournamentDAO.find(tournamentName);
         if( tournament == null )
             return;
+    }
 
+    public void onGroup(int index){
+        view.showPopup(index);
+    }
+
+    public void onGames(int index){
+        view.showGroupGames( tournament.getTitle(),tournament.getRounds().get(0).getTeamsNumber(), index  );
+    }
+
+    public void onRankings(int index){
+        view.showGroupRankings( tournament.getTitle(),tournament.getRounds().get(0).getTeamsNumber(), index  );
     }
 
     public void findAccess(){
         view.changesOfAccess(tournament.getRounds().get(0).getGroups().size() );
     }
 
-    public void onGroup(int index){
-        view.showGroup(tournament.getTitle(), index );
-    }
 
     public void setTournamentDAO(TournamentDAO tournamentDAO) {
         this.tournamentDAO = tournamentDAO;

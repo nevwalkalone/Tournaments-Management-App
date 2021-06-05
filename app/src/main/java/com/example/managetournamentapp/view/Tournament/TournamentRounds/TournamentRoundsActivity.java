@@ -15,6 +15,7 @@ import com.example.managetournamentapp.view.Tournament.TournamentGroups.Tourname
 public class TournamentRoundsActivity extends AppCompatActivity implements TournamentRoundsView {
     public static final String TOURNAMENT_TITLE_EXTRA = "tournament_title_extra";
     private static final String ROUND_TEAMS_EXTRA = "round_teams_extra" ;
+    private static final String SPECIFIC_GROUP_EXTRA = "specific_group_extra" ;
     private TournamentRoundsViewModel viewModel;
     String tournamentTitle;
     Button btnGroups;
@@ -64,6 +65,7 @@ public class TournamentRoundsActivity extends AppCompatActivity implements Tourn
         Intent intent = new Intent(TournamentRoundsActivity.this, RoundGamesActivity.class);
         intent.putExtra(TOURNAMENT_TITLE_EXTRA, tournamentTitle);
         intent.putExtra(ROUND_TEAMS_EXTRA, String.valueOf(roundTeamsNumber));
+        intent.putExtra(SPECIFIC_GROUP_EXTRA, String.valueOf(-1));
         startActivity(intent);
     }
 

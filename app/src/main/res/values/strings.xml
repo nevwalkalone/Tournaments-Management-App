@@ -66,4 +66,6 @@
     <string name="joined_players">Joined Players</string>
     <string name="create_team"> Create Team</string>
     <string name="dash">-</string>
+    <string name="games">Games</string>
+    <string name="rankings">Rankings</string>
 </resources>

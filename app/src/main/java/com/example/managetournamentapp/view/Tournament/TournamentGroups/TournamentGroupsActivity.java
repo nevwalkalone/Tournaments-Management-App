@@ -1,13 +1,16 @@
 package com.example.managetournamentapp.view.Tournament.TournamentGroups;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.managetournamentapp.R;
+import com.example.managetournamentapp.view.Tournament.RoundGames.RoundGamesActivity;
 
 import java.util.ArrayList;
 
@@ -15,17 +18,12 @@ import java.util.ArrayList;
 public class TournamentGroupsActivity extends AppCompatActivity implements TournamentGroupsView {
     public static final String TOURNAMENT_TITLE_EXTRA = "tournament_title_extra";
     private static final String ROUND_TEAMS_EXTRA = "round_teams_extra" ;
+    private static final String SPECIFIC_GROUP_EXTRA = "specific_group_extra" ;
+    private static AlertDialog POPUP_ACTION;
     private TournamentGroupsViewModel viewModel;
     String tournamentTitle;
     ArrayList<Button> groupButtons = new ArrayList<>();
-    Button btnGroupA;
-    Button btnGroupB;
-    Button btnGroupC;
-    Button btnGroupD;
-    Button btnGroupE;
-    Button btnGroupF;
-    Button btnGroupG;
-    Button btnGroupH;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,10 +48,27 @@ public class TournamentGroupsActivity extends AppCompatActivity implements Tourn
             int finalI = i;
             groupButtons.get(i).setOnClickListener(v -> viewModel.getPresenter().onGroup(finalI) );
         }
-
         viewModel.getPresenter().findAccess();
     }
 
+    @Override
+    public void showPopup(int index){
+        POPUP_ACTION = showPopUp(R.layout.group_action_popup, R.id.games_button, R.id.rankings_button, index);
+        POPUP_ACTION.show();
+    }
+
+    public AlertDialog showPopUp(int layoutId, int btn1, int btn2, int index) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        View customLayout = getLayoutInflater().inflate(layoutId, null);
+        builder.setView(customLayout);
+        AlertDialog dialog = builder.create();
+
+        Button firstButton = (Button) customLayout.findViewById(btn1);
+        Button secondButton = (Button) customLayout.findViewById(btn2);
+        firstButton.setOnClickListener(v -> viewModel.getPresenter().onGames(index) );
+        secondButton.setOnClickListener(v -> viewModel.getPresenter().onRankings(index) );
+        return dialog;
+    }
 
     @Override
     public void changesOfAccess(int groupsNumber) {
@@ -62,8 +77,18 @@ public class TournamentGroupsActivity extends AppCompatActivity implements Tourn
     }
 
     @Override
-    public void showGroup(String tournamentTitle, int index) {
+    public void showGroupGames(String tournamentGame, int roundTeamsNumber, int index) {
+        Intent intent = new Intent(TournamentGroupsActivity.this, RoundGamesActivity.class);
+        intent.putExtra(TOURNAMENT_TITLE_EXTRA, tournamentTitle);
+        intent.putExtra(ROUND_TEAMS_EXTRA, String.valueOf(roundTeamsNumber));
+        intent.putExtra(SPECIFIC_GROUP_EXTRA, String.valueOf(index));
+        startActivity(intent);
+    }
+
+    @Override
+    public void showGroupRankings(String tournamentGame, int roundTeamsNumber, int index) {
 
     }
+
 
 }

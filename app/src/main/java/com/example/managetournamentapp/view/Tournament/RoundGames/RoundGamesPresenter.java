@@ -19,7 +19,7 @@ public class RoundGamesPresenter {
 
     public RoundGamesPresenter(){}
 
-    public void findGames(String tournamentTitle, int roundTeamsNumber){
+    public void findGames(String tournamentTitle, int roundTeamsNumber, int specificGroup){
         if (tournamentTitle==null)
             return;
         tournament = tournamentDAO.find(tournamentTitle);
@@ -29,7 +29,13 @@ public class RoundGamesPresenter {
         results.clear();
         for (Round round : tournament.getRounds()){
             if (round.getTeamsNumber()==roundTeamsNumber){
-                for(Group group : round.getGroups()){
+                ArrayList<Group> groupsWanted = new ArrayList<>();
+                if (specificGroup==-1)
+                    groupsWanted.addAll( round.getGroups());
+                else
+                    groupsWanted.add(round.getGroups().get(specificGroup)) ;
+
+                for(Group group : groupsWanted){
                     results.addAll(group.getGames());
                 }
                 return;
