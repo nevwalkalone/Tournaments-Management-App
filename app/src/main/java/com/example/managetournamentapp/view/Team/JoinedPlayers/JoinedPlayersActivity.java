@@ -51,14 +51,14 @@ public class JoinedPlayersActivity extends AppCompatActivity implements PlayersL
         super.onCreate(savedInstanceState);
         teamName = this.getIntent().getStringExtra(TEAM_NAME_EXTRA);
         setContentView(R.layout.activity_joined_players);
+        viewModel = new ViewModelProvider(this).get(JoinedPlayersViewModel.class);
+        viewModel.getPresenter().setView(this);
+
+        viewModel.getPresenter().findPlayers(teamName);
+        viewModel.getPresenter().findAccess();          // check who is currently using the page!
 
         inviteNewBtn = (FloatingActionButton) findViewById(R.id.invite_new_players_button);
         inviteNewBtn.setOnClickListener(this);
-
-        viewModel = new ViewModelProvider(this).get(JoinedPlayersViewModel.class);
-        viewModel.getPresenter().setView(this);
-        viewModel.getPresenter().setPlayerDAO((new PlayerDAOMemory()));
-        viewModel.getPresenter().setTeamDAO((new TeamDAOMemory()));
 
 
         if (findViewById(R.id.fragment_container) != null) {
@@ -68,14 +68,13 @@ public class JoinedPlayersActivity extends AppCompatActivity implements PlayersL
                 return;
             }
 
-            viewModel.getPresenter().findPlayers(teamName);
 
             PlayersListFragment playersListFragment = PlayersListFragment.newInstance(1);
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.fragment_container, playersListFragment)
                     .commit();
         }
-        viewModel.getPresenter().findAccess();          // check who is currently using the page!
+
 
     }
 
@@ -85,19 +84,13 @@ public class JoinedPlayersActivity extends AppCompatActivity implements PlayersL
         playerSelected = item;
 
         if (!player || item.equals((new MemoryLoggedInUser()).getUser())) {
-            Intent intent = new Intent(this, PlayerInfoActivity.class);
-            intent.putExtra(PLAYER_USERNAME_EXTRA, playerSelected.getCredentials().getUsername());
-            startActivity(intent);
-        }
-        else {
+            viewModel.getPresenter().startPlayerInfo();
+        } else {
             if (captain) {
-                POPUP_ACTION = showPopUp(R.layout.player_action_popup, "Name: " + item.getName() + "\nSurname: " + item.getSurname(), R.id.remove_player_popup, R.id.account_player_popup);
-                POPUP_ACTION.show();
+                viewModel.getPresenter().displayPopAction(R.layout.player_action_popup, "Name: " + item.getName() + "\nSurname: " + item.getSurname(), R.id.remove_player_popup, R.id.account_player_popup);
+
             } else {
-                Intent intent = new Intent(this, PlayerInfoActivity.class);
-                intent.putExtra(PLAYER_USERNAME_EXTRA, playerSelected.getCredentials().getUsername());
-                intent.putExtra(PASSWORD_SHOWN_EXTRA, "1");
-                startActivity(intent);
+                viewModel.getPresenter().startPlayerInfo();
             }
         }
     }
@@ -113,41 +106,29 @@ public class JoinedPlayersActivity extends AppCompatActivity implements PlayersL
         if (removeActionPopup) {
             if (v.getId() == R.id.no_delete) {
                 removeActionPopup = false;
-                POPUP_DELETION.dismiss();
-                POPUP_ACTION.dismiss();
+                viewModel.getPresenter().closePopDeletion();
+                viewModel.getPresenter().closePopAction();
 
             } else if (v.getId() == R.id.yes_delete) {
                 viewModel.getPresenter().removePlayer(teamName, playerSelected);
-                POPUP_DELETION.dismiss();
-                POPUP_ACTION.dismiss();
-                POPUP_DELETION = null;
-                POPUP_ACTION = null;
+                viewModel.getPresenter().closePopDeletion();
+                viewModel.getPresenter().closePopAction();
+                viewModel.getPresenter().resetPopUp();
+                viewModel.getPresenter().restartActivity();
             }
         }
 
         if (v.getId() == R.id.remove_player_popup) {
             removeActionPopup = true;
-            POPUP_DELETION = showPopUp(R.layout.player_delete_popup, "Do you really want to delete this player?", R.id.no_delete, R.id.yes_delete);
-            POPUP_DELETION.show();
-
-
+            viewModel.getPresenter().displayPopDeletion(R.layout.player_delete_popup, "Do you really want to delete this player?", R.id.no_delete, R.id.yes_delete);
         }
-
 
         if (v.getId() == R.id.account_player_popup) {
-            Intent intent = new Intent(this, PlayerInfoActivity.class);
-            intent.putExtra(PLAYER_USERNAME_EXTRA, playerSelected.getCredentials().getUsername());
-            intent.putExtra(PASSWORD_SHOWN_EXTRA, "1");
-            startActivity(intent);
-
-
+            viewModel.getPresenter().startPlayerInfo();
         }
 
-
         if (v.getId() == R.id.invite_new_players_button) {
-            Intent intent = new Intent(this, InvitePlayersActivity.class);
-            intent.putExtra(TEAM_NAME_EXTRA, teamName);
-            startActivity(intent);
+            viewModel.getPresenter().startInviteActivity();
         }
 
     }
@@ -179,14 +160,56 @@ public class JoinedPlayersActivity extends AppCompatActivity implements PlayersL
         secondButton.setOnClickListener(this);
         return dialog;
     }
+
     @Override
-    public void backToTeamPage(){
-        Toast.makeText(this,
-                "DELETED PLAYER",
-                Toast.LENGTH_SHORT)
-                .show();
-        Intent intent = new Intent(this, TeamPageActivity.class);
-        intent.putExtra(TEAM_NAME_EXTRA,teamName);
+    public void startPlayerInfo() {
+        Intent intent = new Intent(this, PlayerInfoActivity.class);
+        intent.putExtra(PLAYER_USERNAME_EXTRA, playerSelected.getCredentials().getUsername());
+        intent.putExtra(PASSWORD_SHOWN_EXTRA, "1");
         startActivity(intent);
+
+    }
+
+    @Override
+    public void startInvitePlayerPage() {
+        Intent intent = new Intent(this, InvitePlayersActivity.class);
+        intent.putExtra(TEAM_NAME_EXTRA, teamName);
+        startActivity(intent);
+    }
+
+    @Override
+    public void displayPopUpAction(int layout, String msg, int btn1, int btn2) {
+        POPUP_ACTION = showPopUp(layout, msg, btn1, btn2);
+        POPUP_ACTION.show();
+    }
+
+    @Override
+    public void displayPopUpDeletion(int layout, String msg, int btn1, int btn2) {
+        POPUP_DELETION = showPopUp(layout, msg, btn1, btn2);
+        POPUP_DELETION.show();
+
+    }
+
+    @Override
+    public void dismissPopUpAction() {
+        POPUP_ACTION.dismiss();
+    }
+
+    @Override
+    public void dismissPopUpDeletion() {
+        POPUP_DELETION.dismiss();
+    }
+
+    @Override
+    public void resetPopUps() {
+        POPUP_DELETION = null;
+        POPUP_ACTION = null;
+
+
+    }
+
+    @Override
+    public void restartActivity() {
+        this.recreate();
     }
 }

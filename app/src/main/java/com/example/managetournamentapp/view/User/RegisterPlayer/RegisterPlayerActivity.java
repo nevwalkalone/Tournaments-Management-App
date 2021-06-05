@@ -14,6 +14,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 
 import android.widget.TextView;
+
 import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.domain.AgeDivision;
 import com.example.managetournamentapp.domain.Credentials;
@@ -62,14 +63,14 @@ public class RegisterPlayerActivity extends AppCompatActivity implements Registe
         viewModel.getPresenter().showPreviousInfo(playerUsername);
     }
 
-//    // TODO OVERRIDE BACK PRESS
+    //    // TODO OVERRIDE BACK PRESS
 //    @Override
 //    public void onBackPressed() {
 //        super.onBackPressed();
 //        Intent intent = new Intent(this, HomePageActivity.class);
 //        startActivity(intent);
 //    }
-
+    @Override
     public void showPopUp(RegisterPlayerView view, String msg) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         View customLayout = getLayoutInflater().inflate(R.layout.wrong_input_popup, null);
@@ -88,7 +89,6 @@ public class RegisterPlayerActivity extends AppCompatActivity implements Registe
         if (v.getId() == R.id.savePlayerBtn) {
             System.out.println("SAVE BUTTON PRESSED!");
             handleSportsInterest();
-            System.out.println(sportsInterest);
             viewModel.getPresenter().handlePlayerData();
 
         }
@@ -259,7 +259,7 @@ public class RegisterPlayerActivity extends AppCompatActivity implements Registe
 
     @Override
     public void setSportsInterest(ArrayList<Sport> sports) {
-        System.out.println("Set sport: " +sports);
+        System.out.println("Set sport: " + sports);
         if (sports.contains(new Sport("Basketball3v3")))
             checkBox1.setChecked(true);
         if (sports.contains(new Sport("Basketball5v5")))

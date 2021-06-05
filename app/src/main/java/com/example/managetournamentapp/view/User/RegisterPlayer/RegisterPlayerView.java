@@ -58,4 +58,6 @@ public interface RegisterPlayerView {
 
     void startPlayerPage();
 
+
+
 }

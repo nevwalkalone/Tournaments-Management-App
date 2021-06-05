@@ -62,4 +62,22 @@ public class InvitePlayersPresenter {
     public void setTeamDAO(TeamDAO teamDAO) {
         this.teamDAO = teamDAO;
     }
+
+    public void displayPopAction(int layout, String msg, int btn1, int btn2, boolean invited) {
+        view.displayPopUpAction(layout, msg, btn1, btn2, invited);
+    }
+
+
+    public void closePopAction() {
+        view.dismissPopUpAction();
+    }
+
+
+    public void resetPopUp() {
+        view.resetPopUps();
+    }
+
+    public void restartActivity() {
+        view.restartActivity();
+    }
 }

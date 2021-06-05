@@ -2,12 +2,18 @@ package com.example.managetournamentapp.view.Player.ReceivedInvites;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.managetournamentapp.R;
@@ -41,6 +47,16 @@ public class ReceivedInvitesActivity extends AppCompatActivity implements Receiv
         viewModel.getPresenter().setPlayerDAO((new PlayerDAOMemory()));
         viewModel.getPresenter().setTeamDAO((new TeamDAOMemory()));
         viewModel.getPresenter().findInvites(playerUsername);
+        if (getInvitationsList().isEmpty()) {
+            ConstraintLayout parentLayout = (ConstraintLayout) findViewById(R.id.constraint_received_invites);
+            TextView textView = new TextView(this);
+            textView.setText("You do not have any pending invites.");
+            textView.setTextSize(20.0f);
+            ConstraintLayout.LayoutParams params = new ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.MATCH_PARENT, ConstraintLayout.LayoutParams.MATCH_PARENT);
+            parentLayout.addView(textView, 0, params);
+
+
+        }
 
 
         if (findViewById(R.id.fragment_container) != null) {

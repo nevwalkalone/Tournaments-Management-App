@@ -6,6 +6,9 @@ import com.example.managetournamentapp.domain.Credentials;
 import com.example.managetournamentapp.domain.Organizer;
 import com.example.managetournamentapp.memoryDao.OrganizerDAOMemory;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.regex.Matcher;
@@ -62,17 +65,18 @@ public class RegisterOrganizerPresenter {
             view.showPopUp(view, "Name must be at least 2 chars and only alphabetical chars!");
         else if (surname.length() < 2 || !validateName(surname))
             view.showPopUp(view, "Surname must be at least 2 chars and only alphabetical chars!");
-        else if (phoneNumber.length() != 10)
+        else if (phoneNumber.length() != 10 || !validatePhone(phoneNumber))
             view.showPopUp(view, "Phone number must contain 10 numbers!");
         else if (email.length() < 2 || !checkEmail(email))
             view.showPopUp(view, "Not valid email!");
+        else if (!validateBirthdate(birthDate))
+            view.showPopUp(view, "Not valid date!");
 
 
         else {
             // IF USER IS NEW!
             if (connectedOrganizer == null) {
-                birthDate = birthDate.replace("/", "-");
-                Organizer organizer = new Organizer(name, surname, phoneNumber, email, LocalDate.parse(birthDate), new Credentials(usename, password), title);
+                Organizer organizer = new Organizer(name, surname, phoneNumber, email, LocalDate.parse(reformatBirthdate(birthDate)), new Credentials(usename, password), title);
                 organizerDAO = new OrganizerDAOMemory();
                 organizerDAO.save(organizer);
                 loggedInUser.setUser(organizer);
@@ -80,10 +84,8 @@ public class RegisterOrganizerPresenter {
             } else {
                 connectedOrganizer.setName(name);
                 connectedOrganizer.setSurname(surname);
-                birthDate = birthDate.replace("/", "-");
-                String dateFormat = LocalDate.parse(birthDate, DateTimeFormatter.ofPattern("dd-MM-uuuu")).format(DateTimeFormatter.ofPattern("uuuu-MM-dd"));
                 connectedOrganizer.setCredentials(new Credentials(usename, password));
-                connectedOrganizer.setBirthDate(LocalDate.parse(dateFormat));
+                connectedOrganizer.setBirthDate(LocalDate.parse(reformatBirthdate(birthDate)));
                 connectedOrganizer.setTitle(title);
                 connectedOrganizer.setPhoneNumber(phoneNumber);
                 connectedOrganizer.setEmail(email);
@@ -110,6 +112,31 @@ public class RegisterOrganizerPresenter {
         Pattern pattern = Pattern.compile(valid);
         Matcher matcher = pattern.matcher(name);
         return matcher.matches();
+    }
+
+    public boolean validatePhone(String phone) {
+        String valid = "[0-9]+";
+        Pattern pattern = Pattern.compile(valid);
+        Matcher matcher = pattern.matcher(phone);
+        return matcher.matches();
+    }
+
+    public String reformatBirthdate(String birthdate) {
+        birthdate = birthdate.replace("/", "-");
+        String dateFormat = LocalDate.parse(birthdate, DateTimeFormatter.ofPattern("dd-MM-uuuu")).format(DateTimeFormatter.ofPattern("uuuu-MM-dd"));
+        return dateFormat;
+    }
+
+
+    public boolean validateBirthdate(String birthdate) {
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        dateFormat.setLenient(false);
+        try {
+            dateFormat.parse(birthdate);
+        } catch (ParseException e) {
+            return false;
+        }
+        return true;
     }
 
     public LoggedInUser getLoggedInUser() {

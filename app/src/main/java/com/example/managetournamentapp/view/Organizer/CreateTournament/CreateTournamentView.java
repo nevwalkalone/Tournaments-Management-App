@@ -2,6 +2,7 @@ package com.example.managetournamentapp.view.Organizer.CreateTournament;
 
 
 import com.example.managetournamentapp.domain.AgeDivision;
+import com.example.managetournamentapp.view.Player.CreateTeam.CreateTeamView;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -41,5 +42,7 @@ public interface CreateTournamentView {
     void setSportType(int position);
 
     void lockSportType();
+
+    void showPopUp(CreateTournamentView view, String msg);
 
 }

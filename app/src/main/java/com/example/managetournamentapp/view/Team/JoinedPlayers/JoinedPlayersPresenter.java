@@ -24,6 +24,7 @@ public class JoinedPlayersPresenter {
     public void findPlayers(String teamName) {
         this.teamName = teamName;
         results.clear();
+        System.out.println("TEAMMMMMMMMM: " + teamName);
         results = teamDAO.find(teamName).getPlayers();
     }
 
@@ -31,23 +32,24 @@ public class JoinedPlayersPresenter {
         results.clear();
         teamDAO.find(teamName).removePlayer(player);
         results = teamDAO.find(teamName).getPlayers();
-        view.backToTeamPage();
     }
 
     public void findAccess() {
+        System.out.println();
         Team team = teamDAO.find(teamName);
+
         boolean captain = false;
         boolean player = false;
         if (loggedInUser.getUser() != null) {
             if (loggedInUser.getUser() instanceof Player) {
                 player = true;
-                if ((loggedInUser.getUser() ).equals(team.getCaptain())) {
+                if ((loggedInUser.getUser()).equals(team.getCaptain())) {
                     captain = true;
                 }
 
             }
         }
-        view.changesOfAccess(captain,player);
+        view.changesOfAccess(captain, player);
     }
 
 
@@ -78,5 +80,37 @@ public class JoinedPlayersPresenter {
 
     public void setTeamDAO(TeamDAO teamDAO) {
         this.teamDAO = teamDAO;
+    }
+
+    public void startPlayerInfo() {
+        view.startPlayerInfo();
+    }
+
+    public void startInviteActivity() {
+        view.startInvitePlayerPage();
+    }
+
+    public void displayPopAction(int layout, String msg, int btn1, int btn2) {
+        view.displayPopUpAction(layout, msg, btn1, btn2);
+    }
+
+    public void displayPopDeletion(int layout, String msg, int btn1, int btn2) {
+        view.displayPopUpDeletion(layout, msg, btn1, btn2);
+    }
+
+    public void closePopAction() {
+        view.dismissPopUpAction();
+    }
+
+    public void closePopDeletion() {
+        view.dismissPopUpDeletion();
+    }
+
+    public void resetPopUp() {
+        view.resetPopUps();
+    }
+
+    public void restartActivity() {
+        view.restartActivity();
     }
 }

@@ -8,7 +8,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -20,6 +22,7 @@ import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
 import com.example.managetournamentapp.memoryDao.TeamDAOMemory;
 import com.example.managetournamentapp.view.Player.JoinedTeams.JoinedTeamsActivity;
 import com.example.managetournamentapp.view.Team.TeamPage.TeamPageActivity;
+import com.example.managetournamentapp.view.User.RegisterPlayer.RegisterPlayerView;
 
 import java.util.ArrayList;
 
@@ -44,8 +47,8 @@ public class CreateTeamActivity extends AppCompatActivity implements CreateTeamV
         viewModel = new ViewModelProvider(this).get(CreateTeamViewModel.class);
         viewModel.getPresenter().setView(this);
 
-        spinner =  findViewById(R.id.sport_spinner);
-        setSpinnerList( viewModel.getPresenter().getSportTypes() );
+        spinner = findViewById(R.id.sport_spinner);
+        setSpinnerList(viewModel.getPresenter().getSportTypes());
 
         viewModel.getPresenter().showPreviousInfo(teamName);
 
@@ -97,10 +100,23 @@ public class CreateTeamActivity extends AppCompatActivity implements CreateTeamV
         spinner.setEnabled(false);
     }
 
-    public void setSpinnerList(ArrayList<String> list){
+    public void setSpinnerList(ArrayList<String> list) {
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, list);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+    }
+
+    @Override
+    public void showPopUp(CreateTeamView view, String msg) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        View customLayout = getLayoutInflater().inflate(R.layout.wrong_input_popup, null);
+        builder.setView(customLayout);
+        AlertDialog dialog = builder.create();
+        Button OKbtn = (Button) customLayout.findViewById(R.id.OK_popup);
+        TextView errorMsg = (TextView) customLayout.findViewById(R.id.error_messsage);      // display message we want.
+        errorMsg.setText(msg);
+        OKbtn.setOnClickListener(v -> dialog.dismiss());
+        dialog.show();
     }
 
 }

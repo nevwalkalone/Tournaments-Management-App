@@ -6,6 +6,9 @@ import com.example.managetournamentapp.domain.Credentials;
 import com.example.managetournamentapp.domain.Player;
 import com.example.managetournamentapp.domain.Sport;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -52,7 +55,7 @@ public class RegisterPlayerPresenter {
         String birthDate = view.getBirthDate();
         String location = view.getLocation();
         ArrayList<Sport> sportsInterest = view.getSportsInterest();
-        System.out.println("Handle: " + sportsInterest);
+
 
         // validate user data
         if (usename.length() < 5 || usename.length() > 20)
@@ -63,19 +66,19 @@ public class RegisterPlayerPresenter {
             view.showPopUp(view, "Name must be at least 2 chars and only alphabetical chars!");
         else if (surname.length() < 2 || !validateName(surname))
             view.showPopUp(view, "Surname must be at least 2 chars and only alphabetical chars!");
-        else if (phoneNumber.length() != 10)
+        else if (phoneNumber.length() != 10 || !validatePhone(phoneNumber))
             view.showPopUp(view, "Phone number must contain 10 numbers!");
         else if (email.length() < 2 || !checkEmail(email))
             view.showPopUp(view, "Not valid email!");
         else if (location.length() < 2 || !validateName(location))
             view.showPopUp(view, "Location must be at least 2 chars and only alphabetical chars!");
+        else if (!validateBirthdate(birthDate))
+            view.showPopUp(view, "Not valid date!");
+
         else {
             // IF USER IS NEW!
             if (connectedPlayer == null) {
-                birthDate = birthDate.replace("/", "-");
-                String dateFormat = LocalDate.parse(birthDate, DateTimeFormatter.ofPattern("dd-MM-uuuu")).format(DateTimeFormatter.ofPattern("uuuu-MM-dd"));
-
-                Player player = new Player(name, surname, location, phoneNumber, email, LocalDate.parse(dateFormat), new Credentials(usename, password));
+                Player player = new Player(name, surname, location, phoneNumber, email, LocalDate.parse(reformatBirthdate(birthDate)), new Credentials(usename, password));
                 for (Sport sport : sportsInterest)
                     player.addSportInterested(sport);
                 playerDAO.save(player);
@@ -85,9 +88,7 @@ public class RegisterPlayerPresenter {
                 connectedPlayer.setName(name);
                 connectedPlayer.setSurname(surname);
                 connectedPlayer.setCredentials(new Credentials(usename, password));
-                birthDate = birthDate.replace("/", "-");
-                String dateFormat = LocalDate.parse(birthDate, DateTimeFormatter.ofPattern("dd-MM-uuuu")).format(DateTimeFormatter.ofPattern("uuuu-MM-dd"));
-                connectedPlayer.setBirthDate(LocalDate.parse(dateFormat));
+                connectedPlayer.setBirthDate(LocalDate.parse(reformatBirthdate(birthDate)));
                 connectedPlayer.setLocation(location);
                 connectedPlayer.setPhoneNumber(phoneNumber);
                 connectedPlayer.setEmail(email);
@@ -117,6 +118,31 @@ public class RegisterPlayerPresenter {
         Pattern pattern = Pattern.compile(valid);
         Matcher matcher = pattern.matcher(name);
         return matcher.matches();
+    }
+
+    public boolean validatePhone(String phone) {
+        String valid = "[0-9]+";
+        Pattern pattern = Pattern.compile(valid);
+        Matcher matcher = pattern.matcher(phone);
+        return matcher.matches();
+    }
+
+    public String reformatBirthdate(String birthdate) {
+        birthdate = birthdate.replace("/", "-");
+        String dateFormat = LocalDate.parse(birthdate, DateTimeFormatter.ofPattern("dd-MM-uuuu")).format(DateTimeFormatter.ofPattern("uuuu-MM-dd"));
+        return dateFormat;
+    }
+
+
+    public boolean validateBirthdate(String birthdate) {
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        dateFormat.setLenient(false);
+        try {
+            dateFormat.parse(birthdate);
+        } catch (ParseException e) {
+            return false;
+        }
+        return true;
     }
 
     public LoggedInUser getLoggedInUser() {

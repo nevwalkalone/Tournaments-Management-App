@@ -68,7 +68,7 @@
                 android:layout_width="140dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/round_1"
+                android:text="@string/round_2"
                 android:textSize="18sp" />
 
             <EditText

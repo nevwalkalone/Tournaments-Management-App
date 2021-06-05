@@ -6,10 +6,15 @@ import com.example.managetournamentapp.domain.Sport;
 import com.example.managetournamentapp.domain.Tournament;
 import com.example.managetournamentapp.domain.TournamentType;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public class CreateTournamentPresenter {
@@ -25,91 +30,93 @@ public class CreateTournamentPresenter {
     }
 
     public void showPreviousInfo(String tournamentName) {
-        if ( tournamentName==null )
+        if (tournamentName == null)
             return;
         connectedTournament = tournamentDAO.find(tournamentName);
-        if( connectedTournament == null )
+        if (connectedTournament == null)
             return;
 
-        view.setTournamentTitle( connectedTournament.getTitle());
-        view.setLocation( connectedTournament.getLocation());
+        view.setTournamentTitle(connectedTournament.getTitle());
+        view.setLocation(connectedTournament.getLocation());
         view.setStartDate(connectedTournament.getStartDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")).replace("-", "/"));
         view.setFinishDate(connectedTournament.getFinishDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")).replace("-", "/"));
-        view.setAgeDivision( getAgeDivisionIndex(connectedTournament.getAgeDivision().toString()) );
+        view.setAgeDivision(getAgeDivisionIndex(connectedTournament.getAgeDivision().toString()));
         view.setTeamsNumber(String.valueOf(connectedTournament.getMAX_TEAMS_NUMBER()));
-        view.setSportType(getSportTypeIndex(connectedTournament.getSportType().getName()) );
+        view.setSportType(getSportTypeIndex(connectedTournament.getSportType().getName()));
         view.lockSportType();
     }
 
-    public void onSaveTournament(){
+    public void onSaveTournament() {
         String title = view.getTournamentTitle();
         String location = view.getLocation();
-
         String startDate = view.getStartDate();
         String finishDate = view.getFinishDate();
-        startDate = startDate.replace("/", "-");
-        finishDate = finishDate.replace("/", "-");
-        LocalDate startLocalDate = LocalDate.parse(startDate, DateTimeFormatter.ofPattern("dd-MM-uuuu"));
-        LocalDate finishLocalDate = LocalDate.parse(finishDate, DateTimeFormatter.ofPattern("dd-MM-uuuu"));
+        String ageDivision = ageDivisions.get(view.getAgeDivision());
+        String sportType = sportTypes.get(view.getSportType());
+        String teamsNumber = view.getTeamsNumber();
 
-        String ageDivision = ageDivisions.get( view.getAgeDivision() );
-        String sportType = sportTypes.get( view.getSportType() );
-        String teamsNumber = view.getTeamsNumber() ;
+        if (title.length() < 2 || title.length() > 20 || !validateTitle(title))
+            view.showPopUp(view, "Title must contain at least 2 alphanumerical chars and be 20 chars long!");
+        else if (location.length() < 2 || location.length() > 20 || !validateName(location))
+            view.showPopUp(view, "Location must be at least 2 chars and only alphabetical chars!");
+        else if (!validateDate(startDate) || !validateDate(finishDate))
+            view.showPopUp(view, "Not valid date!");
+        else {
 
-        if (title.length() < 2 || title.length() > 20){
-
-        }else{
-
-            if (connectedTournament == null){
-                ArrayList<String> basicInfo = new ArrayList<>( Arrays.asList(title, startLocalDate.toString() , finishLocalDate.toString(), location , sportType, teamsNumber, ageDivision) );
-                view.startSetDates( basicInfo );
-            }else{
+            if (connectedTournament == null) {
+                LocalDate startLocalDate = reformatDate(startDate);
+                LocalDate finishLocalDate = reformatDate(finishDate);
+                ArrayList<String> basicInfo = new ArrayList<>(Arrays.asList(title, startLocalDate.toString(), finishLocalDate.toString(), location, sportType, teamsNumber, ageDivision));
+                view.startSetDates(basicInfo);
+            } else {
                 connectedTournament.setTitle(title);
                 connectedTournament.setLocation(location);
+                LocalDate startLocalDate = reformatDate(startDate);
+                LocalDate finishLocalDate = reformatDate(finishDate);
                 connectedTournament.setStartDate(startLocalDate);
                 connectedTournament.setFinishDate(finishLocalDate);
-                connectedTournament.setAgeDivision( AgeDivision.values()[getAgeDivisionIndex(ageDivision)] );
-                connectedTournament.setSportType( new Sport(sportType) );
+                connectedTournament.setAgeDivision(AgeDivision.values()[getAgeDivisionIndex(ageDivision)]);
+                connectedTournament.setSportType(new Sport(sportType));
                 view.startSaveTournament(connectedTournament.getTitle());
             }
         }
     }
 
-    public ArrayList<String> getSportTypes(){
+    public ArrayList<String> getSportTypes() {
         return sportTypes;
     }
 
-    public ArrayList<String> getAgeDivisions(){
+    public ArrayList<String> getAgeDivisions() {
         return ageDivisions;
     }
 
-    private int getSportTypeIndex(String sportType){
-        for (int i = 0; i< sportTypes.size(); i++){
-            if (sportTypes.get(i).equals(sportType) )
+    private int getSportTypeIndex(String sportType) {
+        for (int i = 0; i < sportTypes.size(); i++) {
+            if (sportTypes.get(i).equals(sportType))
                 return i;
         }
         return 0;
     }
 
-    private int getAgeDivisionIndex(String ageDivision){
-        for (int i = 0; i< ageDivisions.size(); i++){
-            if (ageDivisions.get(i).equals(ageDivision) )
+    private int getAgeDivisionIndex(String ageDivision) {
+        for (int i = 0; i < ageDivisions.size(); i++) {
+            if (ageDivisions.get(i).equals(ageDivision))
                 return i;
         }
         return 0;
     }
 
-    private ArrayList<String> findSportTypes(){
+    private ArrayList<String> findSportTypes() {
         ArrayList<String> sportTypes = new ArrayList<>();
-        for (int i = 0; i< TournamentType.values().length; i++){
+        for (int i = 0; i < TournamentType.values().length; i++) {
             sportTypes.add(TournamentType.values()[i].toString());
         }
-        return  sportTypes;
+        return sportTypes;
     }
 
-    private ArrayList<String> findAgeDivisions(){
+    private ArrayList<String> findAgeDivisions() {
         ArrayList<String> ageDivisions = new ArrayList<>();
-        for (int i = 0; i< AgeDivision.values().length; i++){
+        for (int i = 0; i < AgeDivision.values().length; i++) {
             ageDivisions.add(AgeDivision.values()[i].toString());
         }
         return ageDivisions;
@@ -128,4 +135,35 @@ public class CreateTournamentPresenter {
         this.view = null;
     }
 
+    public boolean validateTitle(String name) {
+        String valid = "^[a-zA-Z0-9]+$";
+        Pattern pattern = Pattern.compile(valid);
+        Matcher matcher = pattern.matcher(name);
+        return matcher.matches();
+    }
+
+    public boolean validateName(String name) {
+        String valid = "^[a-zA-Z]*$";
+        Pattern pattern = Pattern.compile(valid);
+        Matcher matcher = pattern.matcher(name);
+        return matcher.matches();
+    }
+
+    public LocalDate reformatDate(String date) {
+        date = date.replace("/", "-");
+        LocalDate Localdate = LocalDate.parse(date, DateTimeFormatter.ofPattern("dd-MM-uuuu"));
+        return Localdate;
+    }
+
+
+    public boolean validateDate(String date) {
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        dateFormat.setLenient(false);
+        try {
+            dateFormat.parse(date);
+        } catch (ParseException e) {
+            return false;
+        }
+        return true;
+    }
 }

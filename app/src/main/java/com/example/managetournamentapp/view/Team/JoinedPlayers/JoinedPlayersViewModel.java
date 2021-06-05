@@ -4,7 +4,8 @@ import androidx.lifecycle.ViewModel;
 
 import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
 import com.example.managetournamentapp.memoryDao.PlayerDAOMemory;
-import com.example.managetournamentapp.view.Team.InvitePlayers.InvitePlayersPresenter;
+import com.example.managetournamentapp.memoryDao.TeamDAOMemory;
+
 
 public class JoinedPlayersViewModel extends ViewModel {
 
@@ -13,6 +14,7 @@ public class JoinedPlayersViewModel extends ViewModel {
     public JoinedPlayersViewModel() {
         presenter = new JoinedPlayersPresenter();
         presenter.setPlayerDAO(new PlayerDAOMemory());
+        presenter.setTeamDAO(new TeamDAOMemory());
         presenter.setLoggedInUser(new MemoryLoggedInUser());
     }
 

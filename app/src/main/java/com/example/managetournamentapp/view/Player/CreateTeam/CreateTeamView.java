@@ -1,5 +1,7 @@
 package com.example.managetournamentapp.view.Player.CreateTeam;
 
+import com.example.managetournamentapp.view.User.RegisterPlayer.RegisterPlayerView;
+
 public interface CreateTeamView {
 
     void startSaveTeam(String userName);
@@ -17,4 +19,6 @@ public interface CreateTeamView {
     void setSportType(int position);
 
     void lockSportType();
+
+    void showPopUp(CreateTeamView view, String msg);
 }

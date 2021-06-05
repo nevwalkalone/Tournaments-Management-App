@@ -61,8 +61,8 @@ public class InvitePlayersActivity extends AppCompatActivity implements PlayersL
     @Override
     public void onListFragmentInteraction(Player item) {
         playerSelected = item;
-        POPUP_ACTION = showPopUp(R.layout.invite_player_popup, "Name: " + item.getName() + "\nSurname: " + item.getSurname(), R.id.invite_player_popup, R.id.account_player_popup,false);
-        POPUP_ACTION.show();
+        viewModel.getPresenter().displayPopAction(R.layout.invite_player_popup, "Name: " + item.getName() + "\nSurname: " + item.getSurname(), R.id.invite_player_popup, R.id.account_player_popup, false);
+
     }
 
     @Override
@@ -73,26 +73,24 @@ public class InvitePlayersActivity extends AppCompatActivity implements PlayersL
     @Override
     public void onClick(View v) {
         Button b = (Button) v;
-        String newButton=b.getText().toString();
+        String newButton = b.getText().toString();
 
         if ("OK".equals(newButton)) {
-            POPUP_ACTION.dismiss();
-            recreate();
-        }
-        else if (v.getId() == R.id.invite_player_popup) {
+            viewModel.getPresenter().closePopAction();
+            viewModel.getPresenter().restartActivity();
+        } else if (v.getId() == R.id.invite_player_popup) {
             viewModel.getPresenter().inviteNewPlayer(teamName, playerSelected);
-            POPUP_ACTION.dismiss();
-            POPUP_ACTION = showPopUp(R.layout.invite_player_popup, "Succesfully invited " + playerSelected.getName() + " " + playerSelected.getSurname()+"!", R.id.invite_player_popup, R.id.account_player_popup,true);
-            POPUP_ACTION.show();
-        }
-        else if (v.getId() == R.id.account_player_popup) {
+            viewModel.getPresenter().closePopAction();
+            viewModel.getPresenter().displayPopAction(R.layout.invite_player_popup, "Succesfully invited " + playerSelected.getName() + " " + playerSelected.getSurname() + "!", R.id.invite_player_popup, R.id.account_player_popup, true);
+
+        } else if (v.getId() == R.id.account_player_popup) {
             viewModel.getPresenter().onPlayerAccountSelected(playerSelected);
         }
 
     }
 
     @Override
-    public AlertDialog showPopUp(int layoutId, String msg, int btn1, int btn2,boolean changePopup) {
+    public AlertDialog showPopUp(int layoutId, String msg, int btn1, int btn2, boolean changePopup) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         View customLayout = getLayoutInflater().inflate(layoutId, null);
         builder.setView(customLayout);
@@ -104,7 +102,7 @@ public class InvitePlayersActivity extends AppCompatActivity implements PlayersL
 
         textMsg.setText(msg);
 
-        if(changePopup){
+        if (changePopup) {
             TextView tempMsg = customLayout.findViewById(btn1);
             tempMsg.setText("OK");
             secondButton.setVisibility(View.GONE);
@@ -120,5 +118,30 @@ public class InvitePlayersActivity extends AppCompatActivity implements PlayersL
         intent.putExtra(PLAYER_USERNAME_EXTRA, player.getCredentials().getUsername());
         startActivity(intent);
     }
+
+
+    @Override
+    public void displayPopUpAction(int layout, String msg, int btn1, int btn2, boolean invited) {
+        POPUP_ACTION = showPopUp(layout, msg, btn1, btn2, invited);
+        POPUP_ACTION.show();
+    }
+
+
+    @Override
+    public void dismissPopUpAction() {
+        POPUP_ACTION.dismiss();
+    }
+
+
+    @Override
+    public void resetPopUps() {
+        POPUP_ACTION = null;
+    }
+
+    @Override
+    public void restartActivity() {
+        this.recreate();
+    }
+
 }
 
