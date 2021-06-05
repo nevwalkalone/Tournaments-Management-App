@@ -1,7 +1,10 @@
-package com.example.managetournamentapp.view.Tournament.ParticipatingTeams;
+package com.example.managetournamentapp.view.Tournament.GroupRankings;
+
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import com.example.managetournamentapp.R;
@@ -10,21 +13,27 @@ import com.example.managetournamentapp.view.Team.TeamPage.TeamPageActivity;
 import com.example.managetournamentapp.view.Tournament.ParticipatingTeams.fragment.TeamsListFragment;
 import java.util.ArrayList;
 
-public class ParticipatingTeamsActivity extends AppCompatActivity implements ParticipatingTeamsView, TeamsListFragment.OnListFragmentInteractionListener {
 
-    public static final String TOURNAMENT_TITLE_EXTRA = "tournament_title_extra";
+public class GroupRankingsActivity extends AppCompatActivity implements GroupRankingsView,TeamsListFragment.OnListFragmentInteractionListener {
+
+    public static final String  TOURNAMENT_TITLE_EXTRA= "tournament_title_extra";
     public static final String TEAM_NAME_EXTRA = "team_name_extra";
-    ParticipatingTeamsViewModel viewModel;
-    String tournamentTitle;
+    private static final String SPECIFIC_GROUP_EXTRA = "specific_group_extra" ;
+    GroupRankingsViewModel viewModel;
+    private String tournamentTitle;
+    private int specificGroup;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_participating_teams);
-        viewModel = new ViewModelProvider(this).get(ParticipatingTeamsViewModel.class);
+        setContentView(R.layout.activity_group_rankings);
+        viewModel = new ViewModelProvider(this).get(GroupRankingsViewModel.class);
         viewModel.getPresenter().setView(this);
+
         tournamentTitle = this.getIntent().getStringExtra(TOURNAMENT_TITLE_EXTRA);
+        specificGroup = Integer.parseInt( this.getIntent().getStringExtra(SPECIFIC_GROUP_EXTRA) );
 
         if (findViewById(R.id.fragment_container) != null) {
 
@@ -32,9 +41,7 @@ public class ParticipatingTeamsActivity extends AppCompatActivity implements Par
                 return;
             }
 
-            System.out.println(this.getIntent().getStringExtra(TOURNAMENT_TITLE_EXTRA));
-            viewModel.getPresenter().findParticipatingTeams(tournamentTitle);
-//
+            viewModel.getPresenter().findTeams(tournamentTitle, specificGroup);
             TeamsListFragment teamsListFragment = TeamsListFragment.newInstance(1);
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.fragment_container, teamsListFragment)
@@ -44,7 +51,13 @@ public class ParticipatingTeamsActivity extends AppCompatActivity implements Par
 
     @Override
     public void onListFragmentInteraction(Team item) {
-        Intent intent = new Intent(ParticipatingTeamsActivity.this, TeamPageActivity.class);
+        if (item.getName()==null){
+            Toast.makeText(this,"THE TEAM IS NOT SET", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+
+        Intent intent = new Intent(GroupRankingsActivity.this, TeamPageActivity.class);
         intent.putExtra(TEAM_NAME_EXTRA, item.getName());
         startActivity(intent);
     }
@@ -54,9 +67,4 @@ public class ParticipatingTeamsActivity extends AppCompatActivity implements Par
         return viewModel.getPresenter().getResults();
     }
 
-
-    @Override
-    public void checkTeam() {
-
-    }
 }

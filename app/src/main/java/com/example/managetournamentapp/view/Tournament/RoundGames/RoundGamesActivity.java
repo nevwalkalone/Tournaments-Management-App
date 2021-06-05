@@ -25,14 +25,13 @@ public class RoundGamesActivity extends AppCompatActivity implements GamesListFr
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_round_games);
+        viewModel = new ViewModelProvider(this).get(RoundGamesViewModel.class);
+        viewModel.getPresenter().setView(this);
+
         tournamentTitle = this.getIntent().getStringExtra(TOURNAMENT_TITLE_EXTRA);
         roundTeamsNumber = Integer.parseInt( this.getIntent().getStringExtra(ROUND_TEAMS_EXTRA) );
         specificGroup = Integer.parseInt( this.getIntent().getStringExtra(SPECIFIC_GROUP_EXTRA) );
-
-        setContentView(R.layout.activity_round_games);
-
-        viewModel = new ViewModelProvider(this).get(RoundGamesViewModel.class);
-        viewModel.getPresenter().setView(this);
 
         if (findViewById(R.id.fragment_container) != null) {
 

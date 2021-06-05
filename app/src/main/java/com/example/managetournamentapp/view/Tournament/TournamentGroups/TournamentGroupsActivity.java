@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.managetournamentapp.R;
+import com.example.managetournamentapp.view.Tournament.GroupRankings.GroupRankingsActivity;
 import com.example.managetournamentapp.view.Tournament.RoundGames.RoundGamesActivity;
 
 import java.util.ArrayList;
@@ -87,7 +88,10 @@ public class TournamentGroupsActivity extends AppCompatActivity implements Tourn
 
     @Override
     public void showGroupRankings(String tournamentGame, int roundTeamsNumber, int index) {
-
+        Intent intent = new Intent(TournamentGroupsActivity.this, GroupRankingsActivity.class);
+        intent.putExtra(TOURNAMENT_TITLE_EXTRA, tournamentTitle);
+        intent.putExtra(SPECIFIC_GROUP_EXTRA, String.valueOf(index));
+        startActivity(intent);
     }
 
 

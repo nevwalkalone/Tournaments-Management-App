@@ -14,8 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.domain.Game;
-
 import java.util.ArrayList;
+
 
 public class GamesListFragment extends Fragment {
 
