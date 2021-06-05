@@ -91,6 +91,7 @@ public class SetDatesPresenter {
         ArrayList<LocalDate> dates = findGameDates(findRoundDates());
 
         Tournament tournament = new Tournament(basicInfo.get(0), startDate, finishDate, basicInfo.get(3), new Sport(basicInfo.get(4)), teamsNumber, ageDivision, dates);
+        tournament.setDescription((basicInfo.get(7)));
         tournamentDAO.save(tournament);
         organizer.addTournament(tournament);
         view.startSaveTournament(tournament.getTitle());

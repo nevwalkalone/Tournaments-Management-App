@@ -72,7 +72,7 @@ public class CreateTournamentPresenter {
             if (connectedTournament == null) {
                 LocalDate startLocalDate = reformatDate(startDate);
                 LocalDate finishLocalDate = reformatDate(finishDate);
-                ArrayList<String> basicInfo = new ArrayList<>(Arrays.asList(title, startLocalDate.toString(), finishLocalDate.toString(), location, sportType, teamsNumber, ageDivision));
+                ArrayList<String> basicInfo = new ArrayList<>(Arrays.asList(title, startLocalDate.toString(), finishLocalDate.toString(), location, sportType, teamsNumber, ageDivision, description));
                 view.startSetDates(basicInfo);
             } else {
                 connectedTournament.setTitle(title);
