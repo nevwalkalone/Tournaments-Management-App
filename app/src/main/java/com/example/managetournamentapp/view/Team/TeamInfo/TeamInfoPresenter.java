@@ -2,6 +2,7 @@ package com.example.managetournamentapp.view.Team.TeamInfo;
 
 import com.example.managetournamentapp.dao.LoggedInUser;
 import com.example.managetournamentapp.dao.TeamDAO;
+import com.example.managetournamentapp.domain.Participation;
 import com.example.managetournamentapp.domain.Player;
 import com.example.managetournamentapp.domain.Team;
 import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
@@ -36,11 +37,31 @@ public class TeamInfoPresenter {
     }
 
     public void onEditTeam(){
+        for (Participation part : team.getParticipations()){
+            if (!part.isPast()){
+                view.showToast("CAN'T EDIT : THIS TEAM HAS ARRANGED PARTICIPATIONS");
+                return;
+            }
+        }
         view.startEditTeam();
     }
 
     public void onDeleteTeam(){
         //todo more
+        for (Participation part : team.getParticipations()){
+            if (!part.isPast()){
+                view.showToast("CAN'T DELETE : THIS TEAM HAS ARRANGED PARTICIPATIONS");
+                return;
+            }
+        }
+
+        if (team.getPlayers().size()>1){
+            view.showToast("CAN'T DELETE : YOU HAVE TO REMOVE ALL THE OTHER PLAYERS");
+            return;
+        }
+
+        team.removePlayer(team.getCaptain());
+        teamDAO.delete(team);
         view.startDeleteTeam(((Player)loggedInUser.getUser()).getCredentials().getUsername() );
     }
 

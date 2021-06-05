@@ -55,11 +55,9 @@ public class JoinedPlayersActivity extends AppCompatActivity implements PlayersL
         viewModel.getPresenter().setView(this);
 
         viewModel.getPresenter().findPlayers(teamName);
-        viewModel.getPresenter().findAccess();          // check who is currently using the page!
-
         inviteNewBtn = (FloatingActionButton) findViewById(R.id.invite_new_players_button);
         inviteNewBtn.setOnClickListener(this);
-
+        viewModel.getPresenter().findAccess();          // check who is currently using the page!
 
         if (findViewById(R.id.fragment_container) != null) {
 

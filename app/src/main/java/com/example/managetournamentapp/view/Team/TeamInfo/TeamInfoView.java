@@ -12,6 +12,8 @@ public interface TeamInfoView {
 
     void startEditTeam();
 
+    void showToast(String txt);
+
     void startDeleteTeam(String playerUsername);
 
     void changesOfAccess();

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -74,6 +75,12 @@ public class TeamInfoActivity  extends AppCompatActivity implements TeamInfoView
         Intent intent = new Intent(TeamInfoActivity.this, JoinedTeamsActivity.class);
         intent.putExtra(PLAYER_USERNAME_EXTRA, playerUsername);
         startActivity(intent);
+    }
+
+    @Override
+    public void showToast(String txt) {
+
+        Toast.makeText(this,txt, Toast.LENGTH_SHORT).show();
     }
 
     @Override

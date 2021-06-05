@@ -29,7 +29,7 @@ public class PlayerInfoPresenter {
         view.setPhone(player.getPhoneNumber());
         view.setEmail(player.getEmail());
         view.setLocation(player.getLocation());
-        view.setBirthDate(player.getBirthDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
+        view.setBirthDate(player.getBirthDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")).replace("-","/") );
     }
 
     public void findAccess(){
