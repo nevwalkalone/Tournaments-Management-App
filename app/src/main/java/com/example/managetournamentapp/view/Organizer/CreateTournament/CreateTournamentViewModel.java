@@ -16,6 +16,7 @@ public class CreateTournamentViewModel extends ViewModel {
     }
 
     public CreateTournamentPresenter getPresenter() {
+
         return presenter;
     }
 
@@ -24,9 +25,5 @@ public class CreateTournamentViewModel extends ViewModel {
         super.onCleared();
         presenter.clearView();
     }
-
-
-
-
 
 }

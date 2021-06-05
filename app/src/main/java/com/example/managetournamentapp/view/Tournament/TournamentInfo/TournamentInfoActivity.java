@@ -97,8 +97,8 @@ public class TournamentInfoActivity extends AppCompatActivity implements Tournam
     }
 
     @Override
-    public void showCantDelete() {
-        Toast.makeText(this,"YOU CAN'T DELETE THIS TOURNAMENT", Toast.LENGTH_SHORT).show();
+    public void showToast(String txt) {
+        Toast.makeText(this,txt, Toast.LENGTH_SHORT).show();
     }
 
     @Override

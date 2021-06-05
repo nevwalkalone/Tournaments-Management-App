@@ -27,10 +27,10 @@ public class TournamentInfoPresenter {
 
         view.setTitle(tournament.getTitle());
         view.setLocation(tournament.getLocation());
-        view.setFinishDate(tournament.getFinishDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
+        view.setStartDate(tournament.getStartDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")).replace("-","/"));
+        view.setFinishDate(tournament.getFinishDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")).replace("-","/"));
         view.setLocation(tournament.getLocation());
         view.setsportType(tournament.getSportType().getName());
-        view.setStartDate(tournament.getStartDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
         view.setTeamsNumber(String.valueOf(tournament.getMAX_TEAMS_NUMBER()));
         view.setAgeDivision(tournament.getAgeDivision().toString());
         view.setDescription(tournament.getDescription());
@@ -47,13 +47,17 @@ public class TournamentInfoPresenter {
 
     //TODO CHECKING
     public void onEditTournament(){
+        if (!tournament.getParticipations().isEmpty()){
+            view.showToast("CAN'T EDIT: THERE ARE ACTIVE PARTICIPATIONS");
+            return;
+        }
         view.startEditTournament();
     }
 
     //TODO CHECKING
     public void onDeleteTournament(){
         if (!tournament.getParticipations().isEmpty()){
-            view.showCantDelete();
+            view.showToast("CAN'T DELETE: THERE ARE ACTIVE PARTICIPATIONS");
             return;
         }
         tournamentDAO.delete(tournament);

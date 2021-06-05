@@ -29,6 +29,7 @@ public class CreateTournamentActivity extends AppCompatActivity implements Creat
     String tournamentTitle;
     private Spinner sportTypeSpinner;
     private Spinner ageDivisionSpinner;
+    private Spinner teamsNumberSpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +43,11 @@ public class CreateTournamentActivity extends AppCompatActivity implements Creat
         sportTypeSpinner = findViewById(R.id.sport_spinner);
         setSportTypeSpinner(viewModel.getPresenter().getSportTypes());
 
-        ageDivisionSpinner = findViewById(R.id.age_spinner);
-        setAgeDivisionSpinner(viewModel.getPresenter().getAgeDivisions());
+       teamsNumberSpinner =  findViewById(R.id.teams_number_spinner);
+       setTeamsNumberSpinner( viewModel.getPresenter().getTeamNumbers() );
+
+       ageDivisionSpinner =  findViewById(R.id.age_spinner);
+       setAgeDivisionSpinner( viewModel.getPresenter().getAgeDivisions() );
 
         viewModel.getPresenter().showPreviousInfo(tournamentTitle);
 
@@ -72,6 +76,12 @@ public class CreateTournamentActivity extends AppCompatActivity implements Creat
     }
 
     @Override
+    public String getDescription() {
+        return ((EditText) findViewById(R.id.tournament_description)).getText().toString();
+
+    }
+
+    @Override
     public String getLocation() {
         return ((EditText) findViewById(R.id.tournament_location)).getText().toString();
     }
@@ -94,8 +104,8 @@ public class CreateTournamentActivity extends AppCompatActivity implements Creat
     }
 
     @Override
-    public String getTeamsNumber() {
-        return ((EditText) findViewById(R.id.tournament_teams_number)).getText().toString();
+    public int getTeamsNumber() {
+        return teamsNumberSpinner.getSelectedItemPosition();
 
     }
 
@@ -107,6 +117,12 @@ public class CreateTournamentActivity extends AppCompatActivity implements Creat
     @Override
     public void setTournamentTitle(String title) {
         ((EditText) findViewById(R.id.tournament_title)).setText(title);
+
+    }
+
+    @Override
+    public void setDescription(String description) {
+        ((EditText) findViewById(R.id.tournament_description)).setText(description);
 
     }
 
@@ -132,8 +148,8 @@ public class CreateTournamentActivity extends AppCompatActivity implements Creat
     }
 
     @Override
-    public void setTeamsNumber(String teamsNumber) {
-        ((EditText) findViewById(R.id.tournament_teams_number)).setText(teamsNumber);
+    public void setTeamsNumber(int position) {
+        teamsNumberSpinner.setSelection(position);
     }
 
     @Override
@@ -143,8 +159,10 @@ public class CreateTournamentActivity extends AppCompatActivity implements Creat
     }
 
     @Override
-    public void lockSportType() {
-
+    public void lockPrevious() {
+        findViewById(R.id.tournament_start_date).setEnabled(false);
+        findViewById(R.id.tournament_finish_Date).setEnabled(false);
+        teamsNumberSpinner.setEnabled(false);
     }
 
     @Override
@@ -161,16 +179,22 @@ public class CreateTournamentActivity extends AppCompatActivity implements Creat
     }
 
 
-    public void setSportTypeSpinner(ArrayList<String> list) {
+    public void setSportTypeSpinner(ArrayList<String> list){
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, list);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sportTypeSpinner.setAdapter(adapter);
     }
 
 
-    public void setAgeDivisionSpinner(ArrayList<String> list) {
+    public void setAgeDivisionSpinner(ArrayList<String> list){
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, list);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         ageDivisionSpinner.setAdapter(adapter);
+    }
+
+    public void setTeamsNumberSpinner(ArrayList<String> list){
+        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, list);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        teamsNumberSpinner.setAdapter(adapter);
     }
 }

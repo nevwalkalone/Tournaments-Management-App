@@ -21,12 +21,14 @@ public class CreateTournamentPresenter {
     private CreateTournamentView view;
     private ArrayList<String> sportTypes;
     private ArrayList<String> ageDivisions;
+    private ArrayList<String> teamNumbers ;
     private Tournament connectedTournament;
     private TournamentDAO tournamentDAO;
 
     public CreateTournamentPresenter() {
         sportTypes = findSportTypes();
         ageDivisions = findAgeDivisions();
+        teamNumbers = new ArrayList<>(Arrays.asList(new String[]{"8", "16", "32"}));
     }
 
     public void showPreviousInfo(String tournamentName) {
@@ -37,13 +39,15 @@ public class CreateTournamentPresenter {
             return;
 
         view.setTournamentTitle(connectedTournament.getTitle());
+        view.setDescription(connectedTournament.getDescription());
         view.setLocation(connectedTournament.getLocation());
         view.setStartDate(connectedTournament.getStartDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")).replace("-", "/"));
         view.setFinishDate(connectedTournament.getFinishDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")).replace("-", "/"));
-        view.setAgeDivision(getAgeDivisionIndex(connectedTournament.getAgeDivision().toString()));
-        view.setTeamsNumber(String.valueOf(connectedTournament.getMAX_TEAMS_NUMBER()));
-        view.setSportType(getSportTypeIndex(connectedTournament.getSportType().getName()));
-        view.lockSportType();
+        view.setAgeDivision( getAgeDivisionIndex(connectedTournament.getAgeDivision().toString()) );
+        view.setTeamsNumber( getTeamsNumberIndex( String.valueOf( connectedTournament.getMAX_TEAMS_NUMBER() ) ) );
+        view.setSportType(getSportTypeIndex(connectedTournament.getSportType().getName()) );
+
+        view.lockPrevious();
     }
 
     public void onSaveTournament() {
@@ -51,9 +55,11 @@ public class CreateTournamentPresenter {
         String location = view.getLocation();
         String startDate = view.getStartDate();
         String finishDate = view.getFinishDate();
+        String description = view.getDescription();
         String ageDivision = ageDivisions.get(view.getAgeDivision());
         String sportType = sportTypes.get(view.getSportType());
-        String teamsNumber = view.getTeamsNumber();
+        String teamsNumber = teamNumbers.get(view.getTeamsNumber());
+
 
         if (title.length() < 2 || title.length() > 20 || !validateTitle(title))
             view.showPopUp(view, "Title must contain at least 2 alphanumerical chars and be 20 chars long!");
@@ -70,6 +76,7 @@ public class CreateTournamentPresenter {
                 view.startSetDates(basicInfo);
             } else {
                 connectedTournament.setTitle(title);
+                connectedTournament.setDescription(description);
                 connectedTournament.setLocation(location);
                 LocalDate startLocalDate = reformatDate(startDate);
                 LocalDate finishLocalDate = reformatDate(finishDate);
@@ -90,6 +97,10 @@ public class CreateTournamentPresenter {
         return ageDivisions;
     }
 
+    public ArrayList<String> getTeamNumbers() {
+        return teamNumbers;
+    }
+
     private int getSportTypeIndex(String sportType) {
         for (int i = 0; i < sportTypes.size(); i++) {
             if (sportTypes.get(i).equals(sportType))
@@ -101,6 +112,14 @@ public class CreateTournamentPresenter {
     private int getAgeDivisionIndex(String ageDivision) {
         for (int i = 0; i < ageDivisions.size(); i++) {
             if (ageDivisions.get(i).equals(ageDivision))
+                return i;
+        }
+        return 0;
+    }
+
+    private int getTeamsNumberIndex(String teamsNumber){
+        for (int i = 0; i< teamNumbers.size(); i++){
+            if (teamNumbers.get(i).equals(teamsNumber) )
                 return i;
         }
         return 0;

@@ -23,11 +23,13 @@ public interface CreateTournamentView {
 
     int getAgeDivision();
 
-    String getTeamsNumber();
+    int getTeamsNumber();
 
     int getSportType();
 
     void setTournamentTitle(String title);
+
+    void setDescription(String description);
 
     void setLocation(String location);
 
@@ -37,12 +39,13 @@ public interface CreateTournamentView {
 
     void setAgeDivision(int position);
 
-    void setTeamsNumber(String teamsNumber);
+    void setTeamsNumber(int position);
 
     void setSportType(int position);
 
-    void lockSportType();
-
     void showPopUp(CreateTournamentView view, String msg);
 
+    void lockPrevious();
+
+    String getDescription();
 }
