@@ -1,10 +1,13 @@
 package com.example.managetournamentapp.view.Organizer.OrganizerPage;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import com.example.managetournamentapp.domain.Organizer;
 import com.example.managetournamentapp.memoryDao.MemoryInitializer;
 import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
+
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -14,6 +17,7 @@ import android.widget.TextView;
 import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.view.Organizer.OrganizerTournaments.OrganizerTournamentsActivity;
 import com.example.managetournamentapp.view.Organizer.OrganizerInfo.OrganizerInfoActivity;
+import com.example.managetournamentapp.view.Player.PlayerPage.PlayerPageActivity;
 
 
 public class OrganizerPageActivity extends AppCompatActivity implements OrganizerPageView {
@@ -61,5 +65,26 @@ public class OrganizerPageActivity extends AppCompatActivity implements Organize
         txtOrganizerName.setText(organizerTitle);
     }
 
-
+    @Override
+    public void onBackPressed() {
+            AlertDialog.Builder builder = new AlertDialog.Builder(OrganizerPageActivity.this);
+            builder.setTitle(R.string.app_name);
+            builder.setIcon(R.mipmap.ic_launcher);
+            builder.setMessage("Are you sure you want to exit?")
+                    .setCancelable(false)
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            moveTaskToBack(true);
+                            android.os.Process.killProcess(android.os.Process.myPid());
+                            System.exit(1);
+                        }
+                    })
+                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+            AlertDialog alert = builder.create();
+            alert.show();
+        }
 }

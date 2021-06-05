@@ -1,11 +1,13 @@
 package com.example.managetournamentapp.view.Player.PlayerPage;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -17,6 +19,7 @@ import com.example.managetournamentapp.view.Player.ReceivedInvites.ReceivedInvit
 public class PlayerPageActivity extends AppCompatActivity implements PlayerPageView {
 
     //public static final String TEAM_NAME_EXTRA = "team_name_extra";
+    private boolean sameAsLogged = true;
     private static final String PLAYER_USERNAME_EXTRA = "player_username_extra";
     private PlayerPageViewModel viewModel;
     TextView txtPlayerName;
@@ -72,8 +75,32 @@ public class PlayerPageActivity extends AppCompatActivity implements PlayerPageV
     }
 
     public void changesOfAccess() {
+        sameAsLogged = false;
         btnPlayerInvites.setVisibility(View.GONE);
     }
 
-
+    @Override
+    public void onBackPressed() {
+        if(sameAsLogged){
+            AlertDialog.Builder builder = new AlertDialog.Builder(PlayerPageActivity.this);
+            builder.setTitle(R.string.app_name);
+            builder.setIcon(R.mipmap.ic_launcher);
+            builder.setMessage("Are you sure you want to exit?")
+                    .setCancelable(false)
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            moveTaskToBack(true);
+                            android.os.Process.killProcess(android.os.Process.myPid());
+                            System.exit(1);
+                        }
+                    })
+                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+            AlertDialog alert = builder.create();
+            alert.show();
+        }
+    }
 }

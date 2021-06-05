@@ -54,7 +54,6 @@ public class ReceivedInvitesActivity extends AppCompatActivity implements Receiv
                     .add(R.id.fragment_container, invitationListFragment)
                     .commit();
         }
-
     }
 
 
@@ -92,7 +91,6 @@ public class ReceivedInvitesActivity extends AppCompatActivity implements Receiv
             thirdButton.setVisibility(View.GONE);
         }
 
-        //(findViewById(R.id.password_row)).setVisibility(View.GONE);
         firstButton.setOnClickListener(this);
         secondButton.setOnClickListener(this);
         thirdButton.setOnClickListener(this);
@@ -114,20 +112,17 @@ public class ReceivedInvitesActivity extends AppCompatActivity implements Receiv
             POPUP_ACTION.dismiss();
             POPUP_ACTION = showPopUp(R.layout.manage_invites_popup, "Successfully deleted invitation from " + invitationSelected.getTeam().getName()+" Team", R.id.decline_team_popup, R.id.accept_team_popup, R.id.account_team_popup,true);
             POPUP_ACTION.show();
-
         }
         else if (v.getId() == R.id.accept_team_popup) {
-
-
             viewModel.getPresenter().acceptInvitation(invitationSelected);
             POPUP_ACTION.dismiss();
             POPUP_ACTION = showPopUp(R.layout.manage_invites_popup, "Successfully Joined " + invitationSelected.getTeam().getName()+" Team!", R.id.decline_team_popup, R.id.accept_team_popup, R.id.account_team_popup,true);
             POPUP_ACTION.show();
 
 
-        } else if (v.getId() == R.id.account_team_popup) {
+        }
+        else if (v.getId() == R.id.account_team_popup) {
             viewModel.getPresenter().onTeamPageClick();
-
         }
     }
 

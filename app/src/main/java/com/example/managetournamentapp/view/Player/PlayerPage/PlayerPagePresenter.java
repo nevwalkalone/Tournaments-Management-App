@@ -22,7 +22,7 @@ public class PlayerPagePresenter {
     public void findAccess(String playerUsername){
         if ( loggedInUser.getUser() != null )
             if (loggedInUser.getUser() instanceof  Player)
-                if ( ((Player)loggedInUser.getUser()).equals(player) )
+                if ( (loggedInUser.getUser()).equals(player) )
                     return;
         view.changesOfAccess();
     }
