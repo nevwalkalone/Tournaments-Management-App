@@ -11,4 +11,5 @@ public interface JoinedPlayersView {
 
 
     AlertDialog showPopUp(int layoutId, String msg, int btn1, int btn2);
+    void backToTeamPage();
 }

@@ -2,7 +2,6 @@ package com.example.managetournamentapp.view.HomePage;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.DialogInterface;
@@ -14,7 +13,6 @@ import android.widget.Toast;
 
 import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.memoryDao.MemoryInitializer;
-import com.example.managetournamentapp.view.Player.PlayerPage.PlayerPageActivity;
 import com.example.managetournamentapp.view.User.Login.LoginActivity;
 import com.example.managetournamentapp.view.User.RegisterOrganizer.RegisterOrganizerActivity;
 import com.example.managetournamentapp.view.User.RegisterPlayer.RegisterPlayerActivity;

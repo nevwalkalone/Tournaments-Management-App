@@ -22,6 +22,7 @@ import com.example.managetournamentapp.view.Player.PlayerPage.PlayerPageActivity
 import com.example.managetournamentapp.view.Team.InvitePlayers.InvitePlayersActivity;
 import com.example.managetournamentapp.view.Team.InvitePlayers.InvitePlayersViewModel;
 import com.example.managetournamentapp.view.Team.InvitePlayers.fragment.PlayersListFragment;
+import com.example.managetournamentapp.view.Team.TeamPage.TeamPageActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.w3c.dom.Text;
@@ -121,7 +122,6 @@ public class JoinedPlayersActivity extends AppCompatActivity implements PlayersL
                 POPUP_ACTION.dismiss();
                 POPUP_DELETION = null;
                 POPUP_ACTION = null;
-                recreate();
             }
         }
 
@@ -178,5 +178,15 @@ public class JoinedPlayersActivity extends AppCompatActivity implements PlayersL
         firstButton.setOnClickListener(this);
         secondButton.setOnClickListener(this);
         return dialog;
+    }
+    @Override
+    public void backToTeamPage(){
+        Toast.makeText(this,
+                "DELETED PLAYER",
+                Toast.LENGTH_SHORT)
+                .show();
+        Intent intent = new Intent(this, TeamPageActivity.class);
+        intent.putExtra(TEAM_NAME_EXTRA,teamName);
+        startActivity(intent);
     }
 }

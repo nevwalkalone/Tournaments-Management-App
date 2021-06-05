@@ -42,7 +42,7 @@ public class InvitePlayersActivity extends AppCompatActivity implements PlayersL
         viewModel.getPresenter().setTeamDAO((new TeamDAOMemory()));
         viewModel.getPresenter().findPlayers(teamName);
 
-        if (findViewById(R.id.fragment_container) != null) {
+     if (findViewById(R.id.fragment_container) != null) {
 
             // Activity is recreated, do not add fragment twice
             if (savedInstanceState != null) {

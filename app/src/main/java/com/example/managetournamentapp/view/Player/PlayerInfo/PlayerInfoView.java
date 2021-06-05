@@ -1,7 +1,10 @@
 package com.example.managetournamentapp.view.Player.PlayerInfo;
 
+import androidx.appcompat.app.AlertDialog;
+
 public interface PlayerInfoView {
 
+    AlertDialog showPopUp(int layoutId, String msg, int btn1, int btn2);
 
     void setUsername(String username);
 

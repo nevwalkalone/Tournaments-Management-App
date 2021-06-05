@@ -45,7 +45,7 @@ public class PlayerInfoPresenter {
     }
 
     public void onDeletePlayer(){
-        if (player.getUndoneParticipations().size()>0){
+        if (player.getTeamsJoined().size()>0){
             view.showCantDelete();
             return;
         }
@@ -68,6 +68,14 @@ public class PlayerInfoPresenter {
 
     public void clearView(){
         this.view = null;
+    }
+
+    public void onNoDeletePlayer(){
+
+    }
+
+    public void onYesDeletePlayer(){
+
     }
 
 }

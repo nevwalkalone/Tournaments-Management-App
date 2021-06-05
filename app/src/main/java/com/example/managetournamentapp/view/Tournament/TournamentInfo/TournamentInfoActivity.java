@@ -2,7 +2,6 @@ package com.example.managetournamentapp.view.Tournament.TournamentInfo;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Layout;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -14,7 +13,6 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.view.Organizer.CreateTournament.CreateTournamentActivity;
-import com.example.managetournamentapp.view.Organizer.OrganizerPage.OrganizerPageActivity;
 import com.example.managetournamentapp.view.Organizer.OrganizerTournaments.OrganizerTournamentsActivity;
 
 public class TournamentInfoActivity extends AppCompatActivity implements TournamentInfoView {

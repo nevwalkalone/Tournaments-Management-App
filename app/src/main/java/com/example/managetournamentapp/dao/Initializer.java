@@ -37,12 +37,14 @@ public abstract class Initializer {
         playerDAO.save(new Player("nikolakis", "jerry", "Athens", "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("nikos12", "12345")));
         playerDAO.save(new Player("tasoulis", "jerry", "Athens", "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("tasos13", "12345")));
         playerDAO.save(new Player("giorgakis", "jerry", "Athens", "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("giorgos14", "12345")));
+        playerDAO.save(new Player("johny", "boy", "Athens", "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("johny14", "12345")));
         playerDAO.find("tom12").addSportInterested(new Sport("Basketball3v3"));
         playerDAO.find("tom23").addSportInterested(new Sport("Basketball3v3"));
         playerDAO.find("tom34").addSportInterested(new Sport("Basketball3v3"));
         playerDAO.find("nikos12").addSportInterested(new Sport("Basketball3v3"));
         playerDAO.find("tasos13").addSportInterested(new Sport("Basketball3v3"));
         playerDAO.find("giorgos14").addSportInterested(new Sport("Basketball3v3"));
+        playerDAO.find("johny14").addSportInterested(new Sport("Basketball3v3"));
 
         ArrayList<LocalDate> dates = new ArrayList<>();
         for (int i = 1; i < 64; i++) {

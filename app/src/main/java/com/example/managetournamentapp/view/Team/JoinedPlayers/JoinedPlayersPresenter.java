@@ -31,6 +31,7 @@ public class JoinedPlayersPresenter {
         results.clear();
         teamDAO.find(teamName).removePlayer(player);
         results = teamDAO.find(teamName).getPlayers();
+        view.backToTeamPage();
     }
 
     public void findAccess() {
