@@ -97,7 +97,6 @@ public abstract class Initializer {
             ArrayList<Team> emptyTeams = new ArrayList<>();
             for (int i=0;i<round.getTeamsNumber();i++)
                 emptyTeams.add(new Team());
-
             round.setup(emptyTeams);
         }
 
@@ -120,7 +119,7 @@ public abstract class Initializer {
         //TODO INVITES
         playerDAO.find("tom12").addInvite(new Invitation(teamDAO.find("Bulls")));
 
-        //TODO CHECK ADDPARTICIPATION
+        //TODO CHECK ADD PARTICIPATION
         //adding participation to tournament
 //        Tournament temp = tournamentDAO.find(tour1.getTitle());
 //        temp.friendGetParticipations().add(part);

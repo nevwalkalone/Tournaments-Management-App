@@ -63,7 +63,7 @@ public class AddParticipationPresenter {
 
     public void onStartPartTournaments(){
         String teamName = team.getName();
-        view.startPartTournaments(teamName);
+        view.startPlayerPage(team.getCaptain().getCredentials().getUsername());
 
     }
 

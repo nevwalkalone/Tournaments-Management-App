@@ -40,7 +40,7 @@ public class RegisterOrganizerPresenter {
             view.setPassword(connectedOrganizer.getCredentials().getPassword());
             view.setPhoneNumber(connectedOrganizer.getPhoneNumber());
             view.setEmail(connectedOrganizer.getEmail());
-            view.setBirthdate(connectedOrganizer.getBirthDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
+            view.setBirthdate(connectedOrganizer.getBirthDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")).replace("-","/"));
             view.setTitle(connectedOrganizer.getTitle());
         }
     }

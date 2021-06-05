@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.domain.Tournament;
 import com.example.managetournamentapp.view.Organizer.OrganizerTournaments.fragment.TournamentListFragment;
+import com.example.managetournamentapp.view.Player.PlayerPage.PlayerPageActivity;
 import com.example.managetournamentapp.view.Team.ParticipatingTournaments.ParticipatingTournamentsActivity;
 import com.example.managetournamentapp.view.Tournament.TournamentPage.TournamentPageActivity;
 import java.util.ArrayList;
@@ -21,6 +22,7 @@ import java.util.ArrayList;
 public class AddParticipationActivity  extends AppCompatActivity implements  AddParticipationView, TournamentListFragment.OnListFragmentInteractionListener, View.OnClickListener{
     public static final String TEAM_NAME_EXTRA = "team_name_extra";
     public static final String TOURNAMENT_TITLE_EXTRA = "tournament_title_extra";
+    private static final String PLAYER_USERNAME_EXTRA = "player_username_extra";
     private static AlertDialog POPUP_ACTION;
     private String teamName;
     private String tournamentName;
@@ -119,11 +121,10 @@ public class AddParticipationActivity  extends AppCompatActivity implements  Add
     }
 
     @Override
-    public void startPartTournaments(String teamName){
-        Intent intent = new Intent(this, ParticipatingTournamentsActivity.class);
-        intent.putExtra(TEAM_NAME_EXTRA,teamName);
+    public void startPlayerPage(String userName) {
+        Intent intent = new Intent(this, PlayerPageActivity.class);
+        intent.putExtra(PLAYER_USERNAME_EXTRA, userName);
         startActivity(intent);
     }
-
 
 }

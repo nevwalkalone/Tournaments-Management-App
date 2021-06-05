@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.view.Organizer.CreateTournament.CreateTournamentActivity;
+import com.example.managetournamentapp.view.Organizer.OrganizerPage.OrganizerPageActivity;
 import com.example.managetournamentapp.view.Organizer.OrganizerTournaments.OrganizerTournamentsActivity;
 
 public class TournamentInfoActivity extends AppCompatActivity implements TournamentInfoView {
@@ -88,11 +89,9 @@ public class TournamentInfoActivity extends AppCompatActivity implements Tournam
         startActivity(intent);
     }
 
-
-
     @Override
     public void yesDeleteTournament() {
-        Intent intent = new Intent(TournamentInfoActivity.this, OrganizerTournamentsActivity.class);
+        Intent intent = new Intent(TournamentInfoActivity.this, OrganizerPageActivity.class);
         startActivity(intent);
     }
 

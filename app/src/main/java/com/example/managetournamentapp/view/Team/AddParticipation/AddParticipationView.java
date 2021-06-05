@@ -6,6 +6,8 @@ import com.example.managetournamentapp.domain.Tournament;
 
 public interface AddParticipationView {
     AlertDialog showPopUp(int layoutId, String msg, int btn1, int btn2, boolean flag);
+
     void startTournamentPage(Tournament tournament);
-    void startPartTournaments(String teamName);
+
+    void startPlayerPage(String userName);
 }

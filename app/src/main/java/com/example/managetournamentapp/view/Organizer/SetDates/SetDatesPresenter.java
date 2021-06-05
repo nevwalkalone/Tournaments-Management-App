@@ -6,7 +6,9 @@ import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.dao.TournamentDAO;
 import com.example.managetournamentapp.domain.AgeDivision;
 import com.example.managetournamentapp.domain.Organizer;
+import com.example.managetournamentapp.domain.Round;
 import com.example.managetournamentapp.domain.Sport;
+import com.example.managetournamentapp.domain.Team;
 import com.example.managetournamentapp.domain.Tournament;
 import com.example.managetournamentapp.domain.TournamentType;
 
@@ -92,10 +94,21 @@ public class SetDatesPresenter {
 
         Tournament tournament = new Tournament(basicInfo.get(0), startDate, finishDate, basicInfo.get(3), new Sport(basicInfo.get(4)), teamsNumber, ageDivision, dates);
         tournament.setDescription((basicInfo.get(7)));
+        initEmptyTeams(tournament);
+
         tournamentDAO.save(tournament);
         organizer.addTournament(tournament);
         view.startSaveTournament(tournament.getTitle());
 
+    }
+
+    private void initEmptyTeams(Tournament tournament){
+        for (Round round : tournament.getRounds()){
+            ArrayList<Team> emptyTeams = new ArrayList<>();
+            for (int i=0;i<round.getTeamsNumber();i++)
+                emptyTeams.add(new Team());
+            round.setup(emptyTeams);
+        }
     }
 
     public void setTournamentDAO(TournamentDAO tournamentDAO) {

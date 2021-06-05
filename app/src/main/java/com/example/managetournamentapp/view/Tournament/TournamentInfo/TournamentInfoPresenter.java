@@ -60,6 +60,8 @@ public class TournamentInfoPresenter {
             view.showToast("CAN'T DELETE: THERE ARE ACTIVE PARTICIPATIONS");
             return;
         }
+
+        ((Organizer)loggedInUser.getUser()).deleteTournament(tournament);
         tournamentDAO.delete(tournament);
         view.deleteConfirmation();
     }

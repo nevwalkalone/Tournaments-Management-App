@@ -50,8 +50,8 @@ public class RoundGamesPresenter {
 
     public void onPressed(Game game){
         //todo erase comments
-        game.setTeamA(new TeamDAOMemory().find("Bulls"));
-        game.setTeamB(new TeamDAOMemory().find("Bulls"));
+//        game.setTeamA(new TeamDAOMemory().find("Bulls"));
+//        game.setTeamB(new TeamDAOMemory().find("Bulls"));
         if ( hasAccess)
             if (game.isFinished())
                 view.showToast("THE SCORE HAS ALREADY BEEN SET");

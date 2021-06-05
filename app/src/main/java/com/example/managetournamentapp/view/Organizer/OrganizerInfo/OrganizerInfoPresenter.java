@@ -24,7 +24,7 @@ public class OrganizerInfoPresenter {
         view.setSurname(organizer.getSurname());
         view.setPhone(organizer.getPhoneNumber());
         view.setEmail(organizer.getEmail());
-        view.setBirthDate(organizer.getBirthDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
+        view.setBirthDate(organizer.getBirthDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")).replace("-","/") );
         view.setTitle(organizer.getTitle());
     }
 
