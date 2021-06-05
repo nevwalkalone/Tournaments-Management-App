@@ -13,6 +13,7 @@ import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -20,6 +21,7 @@ import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.domain.Invitation;
 import com.example.managetournamentapp.memoryDao.PlayerDAOMemory;
 import com.example.managetournamentapp.memoryDao.TeamDAOMemory;
+import com.example.managetournamentapp.view.Player.PlayerPage.PlayerPageActivity;
 import com.example.managetournamentapp.view.Player.ReceivedInvites.fragment.InvitationListFragment;
 import com.example.managetournamentapp.view.Team.TeamPage.TeamPageActivity;
 
@@ -32,6 +34,7 @@ public class ReceivedInvitesActivity extends AppCompatActivity implements Receiv
     private static final String PLAYER_USERNAME_EXTRA = "player_username_extra";
     private AlertDialog POPUP_ACTION;
     ReceivedInvitesViewModel viewModel;
+    ImageButton btnHome;
     private String playerUsername;
     private Invitation invitationSelected;
 
@@ -41,6 +44,9 @@ public class ReceivedInvitesActivity extends AppCompatActivity implements Receiv
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_received_invites);
         playerUsername = this.getIntent().getStringExtra(PLAYER_USERNAME_EXTRA);
+
+        btnHome = findViewById(R.id.homeButton);
+        btnHome.setOnClickListener(v -> viewModel.getPresenter().onHomePage());
 
         viewModel = new ViewModelProvider(this).get(ReceivedInvitesViewModel.class);
         viewModel.getPresenter().setView(this);
@@ -152,5 +158,11 @@ public class ReceivedInvitesActivity extends AppCompatActivity implements Receiv
     @Override
     public ArrayList<Invitation> getInvitationList() {
         return viewModel.getPresenter().getInvites();
+    }
+    @Override
+    public void backToHomePage(){
+        Intent intent = new Intent(this, PlayerPageActivity.class);
+        intent.putExtra(PLAYER_USERNAME_EXTRA,playerUsername);
+        startActivity(intent);
     }
 }

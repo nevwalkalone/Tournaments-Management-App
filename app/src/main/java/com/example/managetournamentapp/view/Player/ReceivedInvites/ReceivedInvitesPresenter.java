@@ -89,4 +89,8 @@ public class ReceivedInvitesPresenter {
     public void onTeamPageClick() {
         view.startTeamPage();
     }
+
+    public void onHomePage(){
+        view.backToHomePage();
+    }
 }

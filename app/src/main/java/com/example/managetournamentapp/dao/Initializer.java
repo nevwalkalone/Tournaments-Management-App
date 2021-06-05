@@ -38,6 +38,29 @@ public abstract class Initializer {
         playerDAO.save(new Player("tasoulis", "jerry", "Athens", "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("tasos13", "12345")));
         playerDAO.save(new Player("giorgakis", "jerry", "Athens", "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("giorgos14", "12345")));
         playerDAO.save(new Player("johny", "boy", "Athens", "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("johny14", "12345")));
+        playerDAO.save(new Player("johny", "boy15", "Athens", "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("johny15", "12345")));
+        playerDAO.save(new Player("johny", "boy16", "Athens", "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("johny16", "12345")));
+        playerDAO.save(new Player("johny", "boy17", "Athens", "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("johny17", "12345")));
+        playerDAO.save(new Player("johny", "boy18", "Athens", "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("johny18", "12345")));
+        playerDAO.save(new Player("johny", "boy19", "Athens", "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("johny19", "12345")));
+        playerDAO.save(new Player("johny", "boy20", "Athens", "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("johny20", "12345")));
+        playerDAO.save(new Player("johny", "boy21", "Athens", "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("johny21", "12345")));
+        playerDAO.save(new Player("johny", "boy22", "Athens", "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("johny22", "12345")));
+        playerDAO.save(new Player("johny", "boy23", "Athens", "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("johny23", "12345")));
+        playerDAO.save(new Player("johny", "boy24", "Athens", "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("johny24", "12345")));
+        playerDAO.save(new Player("johny", "boy25", "Athens", "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("johny25", "12345")));
+        playerDAO.save(new Player("johny", "boy26", "Athens", "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("johny26", "12345")));
+        playerDAO.save(new Player("johny", "boy27", "Athens", "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("johny27", "12345")));
+
+
+
+
+
+
+
+
+
+
         playerDAO.find("tom12").addSportInterested(new Sport("Basketball3v3"));
         playerDAO.find("tom23").addSportInterested(new Sport("Basketball3v3"));
         playerDAO.find("tom34").addSportInterested(new Sport("Basketball3v3"));
@@ -45,6 +68,19 @@ public abstract class Initializer {
         playerDAO.find("tasos13").addSportInterested(new Sport("Basketball3v3"));
         playerDAO.find("giorgos14").addSportInterested(new Sport("Basketball3v3"));
         playerDAO.find("johny14").addSportInterested(new Sport("Basketball3v3"));
+        playerDAO.find("johny15").addSportInterested(new Sport("Basketball3v3"));
+        playerDAO.find("johny16").addSportInterested(new Sport("Basketball3v3"));
+        playerDAO.find("johny17").addSportInterested(new Sport("Basketball3v3"));
+        playerDAO.find("johny18").addSportInterested(new Sport("Basketball3v3"));
+        playerDAO.find("johny19").addSportInterested(new Sport("Basketball3v3"));
+        playerDAO.find("johny20").addSportInterested(new Sport("Basketball3v3"));
+        playerDAO.find("johny21").addSportInterested(new Sport("Basketball3v3"));
+        playerDAO.find("johny22").addSportInterested(new Sport("Basketball3v3"));
+        playerDAO.find("johny23").addSportInterested(new Sport("Basketball3v3"));
+        playerDAO.find("johny24").addSportInterested(new Sport("Basketball3v3"));
+        playerDAO.find("johny25").addSportInterested(new Sport("Basketball3v3"));
+        playerDAO.find("johny26").addSportInterested(new Sport("Basketball3v3"));
+        playerDAO.find("johny27").addSportInterested(new Sport("Basketball3v3"));
 
         ArrayList<LocalDate> dates = new ArrayList<>();
         for (int i = 1; i < 64; i++) {

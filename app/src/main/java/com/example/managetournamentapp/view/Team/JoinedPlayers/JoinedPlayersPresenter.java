@@ -5,8 +5,6 @@ import com.example.managetournamentapp.dao.PlayerDAO;
 import com.example.managetournamentapp.dao.TeamDAO;
 import com.example.managetournamentapp.domain.Player;
 import com.example.managetournamentapp.domain.Team;
-import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
-
 import java.util.ArrayList;
 
 public class JoinedPlayersPresenter {

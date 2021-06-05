@@ -13,4 +13,5 @@ public interface ReceivedInvitesView {
 
     ArrayList<Invitation> getInvitationsList();
 
+    void backToHomePage();
 }

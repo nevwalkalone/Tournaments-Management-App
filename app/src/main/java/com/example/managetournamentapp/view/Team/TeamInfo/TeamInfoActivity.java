@@ -13,6 +13,7 @@ import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.memoryDao.MemoryInitializer;
 import com.example.managetournamentapp.view.Player.CreateTeam.CreateTeamActivity;
 import com.example.managetournamentapp.view.Player.JoinedTeams.JoinedTeamsActivity;
+import com.example.managetournamentapp.view.Player.PlayerPage.PlayerPageActivity;
 
 
 public class TeamInfoActivity  extends AppCompatActivity implements TeamInfoView {
@@ -72,7 +73,7 @@ public class TeamInfoActivity  extends AppCompatActivity implements TeamInfoView
 
     @Override
     public void startDeleteTeam(String playerUsername) {
-        Intent intent = new Intent(TeamInfoActivity.this, JoinedTeamsActivity.class);
+        Intent intent = new Intent(TeamInfoActivity.this, PlayerPageActivity.class);
         intent.putExtra(PLAYER_USERNAME_EXTRA, playerUsername);
         startActivity(intent);
     }
