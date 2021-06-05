@@ -7,4 +7,6 @@ public interface OrganizerPageView {
 
     void setTitle(String title);
 
+    void logOut();
+
 }

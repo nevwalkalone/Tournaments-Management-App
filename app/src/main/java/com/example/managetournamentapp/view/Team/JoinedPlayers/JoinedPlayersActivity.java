@@ -83,25 +83,20 @@ public class JoinedPlayersActivity extends AppCompatActivity implements PlayersL
     public void onListFragmentInteraction(Player item) {
         playerSelected = item;
 
-        if (!player) {
+        if (!player || item.equals((new MemoryLoggedInUser()).getUser())) {
             Intent intent = new Intent(this, PlayerInfoActivity.class);
             intent.putExtra(PLAYER_USERNAME_EXTRA, playerSelected.getCredentials().getUsername());
             startActivity(intent);
-        } else {
-            if (item.equals((new MemoryLoggedInUser()).getUser())) {
-                Intent intent = new Intent(this, PlayerPageActivity.class);
-                intent.putExtra(PLAYER_USERNAME_EXTRA, playerSelected.getCredentials().getUsername());
-                startActivity(intent);
+        }
+        else {
+            if (captain) {
+                POPUP_ACTION = showPopUp(R.layout.player_action_popup, "Name: " + item.getName() + "\nSurname: " + item.getSurname(), R.id.remove_player_popup, R.id.account_player_popup);
+                POPUP_ACTION.show();
             } else {
-                if (captain) {
-                    POPUP_ACTION = showPopUp(R.layout.player_action_popup, "Name: " + item.getName() + "\nSurname: " + item.getSurname(), R.id.remove_player_popup, R.id.account_player_popup);
-                    POPUP_ACTION.show();
-                } else {
-                    Intent intent = new Intent(this, PlayerInfoActivity.class);
-                    intent.putExtra(PLAYER_USERNAME_EXTRA, playerSelected.getCredentials().getUsername());
-                    intent.putExtra(PASSWORD_SHOWN_EXTRA, "1");
-                    startActivity(intent);
-                }
+                Intent intent = new Intent(this, PlayerInfoActivity.class);
+                intent.putExtra(PLAYER_USERNAME_EXTRA, playerSelected.getCredentials().getUsername());
+                intent.putExtra(PASSWORD_SHOWN_EXTRA, "1");
+                startActivity(intent);
             }
         }
     }

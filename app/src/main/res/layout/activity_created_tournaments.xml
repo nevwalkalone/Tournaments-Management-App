@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     android:background="@color/appColor"
     tools:context=".view.Organizer.OrganizerTournaments.OrganizerTournamentsActivity">
+
+
 <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="0dp"

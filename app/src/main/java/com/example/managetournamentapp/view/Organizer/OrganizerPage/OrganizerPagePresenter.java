@@ -32,6 +32,10 @@ public class OrganizerPagePresenter {
         view.toOrganizerTournaments();
     }
 
+    public void onLogOut(){
+        view.logOut();
+    }
+
     public void setView(OrganizerPageView view) {
         this.view = view;
     }

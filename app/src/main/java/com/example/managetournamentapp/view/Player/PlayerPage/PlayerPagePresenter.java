@@ -54,6 +54,10 @@ public class PlayerPagePresenter {
         view.toPlayerInvites(player.getCredentials().getUsername());
     }
 
+    public void onLogOut(){
+        view.logOut();
+    }
+
     public void setView(PlayerPageView view) {
         this.view = view;
     }

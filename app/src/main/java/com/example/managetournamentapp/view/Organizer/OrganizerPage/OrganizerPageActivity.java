@@ -9,15 +9,17 @@ import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.view.Organizer.OrganizerTournaments.OrganizerTournamentsActivity;
 import com.example.managetournamentapp.view.Organizer.OrganizerInfo.OrganizerInfoActivity;
-import com.example.managetournamentapp.view.Player.PlayerPage.PlayerPageActivity;
+import com.example.managetournamentapp.view.User.Login.LoginActivity;
 
 
 public class OrganizerPageActivity extends AppCompatActivity implements OrganizerPageView {
@@ -25,6 +27,7 @@ public class OrganizerPageActivity extends AppCompatActivity implements Organize
     private TextView txtOrganizerName;
     private Button btnOrganizerAccount;
     private Button btnOrganizerTournaments;
+    private Button btnLogOut;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,15 +35,19 @@ public class OrganizerPageActivity extends AppCompatActivity implements Organize
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_organizer_page);
+
+
         viewModel = new ViewModelProvider(this).get(OrganizerPageViewModel.class);
         viewModel.getPresenter().setView(this);
 
         txtOrganizerName = findViewById(R.id.title_organizer_name);
         btnOrganizerAccount = findViewById(R.id.organizer_account);
         btnOrganizerTournaments = findViewById(R.id.organizer_tournaments);
+        btnLogOut = findViewById(R.id.log_out_button);
 
         btnOrganizerAccount.setOnClickListener(v -> viewModel.getPresenter().onOrganizerAccount());
         btnOrganizerTournaments.setOnClickListener(v -> viewModel.getPresenter().onOrganizerTournaments());
+        btnLogOut.setOnClickListener(v->viewModel.getPresenter().onLogOut());
         viewModel.getPresenter().findOrganizerInfo();
     }
 
@@ -61,8 +68,19 @@ public class OrganizerPageActivity extends AppCompatActivity implements Organize
 
     }
 
+
     public void setTitle(String organizerTitle){
         txtOrganizerName.setText(organizerTitle);
+    }
+
+    @Override
+    public void logOut() {
+        Toast.makeText(this,
+                "LOGGED OUT",
+                Toast.LENGTH_SHORT)
+                .show();
+        Intent intent = new Intent(OrganizerPageActivity.this, LoginActivity.class);
+        startActivity(intent);
     }
 
     @Override

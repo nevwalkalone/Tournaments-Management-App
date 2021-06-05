@@ -10,4 +10,6 @@ public interface PlayerPageView {
 
     void changesOfAccess();
 
+    void logOut();
+
 }

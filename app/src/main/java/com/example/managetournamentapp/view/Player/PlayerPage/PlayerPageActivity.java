@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +16,7 @@ import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.view.Player.JoinedTeams.JoinedTeamsActivity;
 import com.example.managetournamentapp.view.Player.PlayerInfo.PlayerInfoActivity;
 import com.example.managetournamentapp.view.Player.ReceivedInvites.ReceivedInvitesActivity;
+import com.example.managetournamentapp.view.User.Login.LoginActivity;
 
 public class PlayerPageActivity extends AppCompatActivity implements PlayerPageView {
 
@@ -26,6 +28,7 @@ public class PlayerPageActivity extends AppCompatActivity implements PlayerPageV
     Button btnPlayerAccount;
     Button btnPlayerTeams;
     Button btnPlayerInvites;
+    Button btnLogOut;
     private String playerUsername;
 
     @Override
@@ -45,12 +48,13 @@ public class PlayerPageActivity extends AppCompatActivity implements PlayerPageV
         btnPlayerAccount = findViewById(R.id.player_account_button);
         btnPlayerTeams = findViewById(R.id.player_teams_button);
         btnPlayerInvites = findViewById(R.id.player_invites_button);
+        btnLogOut = findViewById(R.id.log_out_button);
 
         txtPlayerName.setText(viewModel.getPresenter().getPlayerName());
         btnPlayerAccount.setOnClickListener(v -> viewModel.getPresenter().onPlayerAccount());
         btnPlayerTeams.setOnClickListener(v -> viewModel.getPresenter().onPlayerTeams());
         btnPlayerInvites.setOnClickListener(v -> viewModel.getPresenter().onPlayerInvites());
-
+        btnLogOut.setOnClickListener(v->viewModel.getPresenter().onLogOut());
         viewModel.getPresenter().findAccess(playerUsername);
 
     }
@@ -71,6 +75,15 @@ public class PlayerPageActivity extends AppCompatActivity implements PlayerPageV
     public void toPlayerInvites(String playerUsername) {
         Intent intent = new Intent(PlayerPageActivity.this, ReceivedInvitesActivity.class);
         intent.putExtra(PLAYER_USERNAME_EXTRA, playerUsername);
+        startActivity(intent);
+    }
+
+    public void logOut(){
+        Toast.makeText(this,
+                "LOGGED OUT",
+                Toast.LENGTH_SHORT)
+                .show();
+        Intent intent = new Intent(PlayerPageActivity.this, LoginActivity.class);
         startActivity(intent);
     }
 

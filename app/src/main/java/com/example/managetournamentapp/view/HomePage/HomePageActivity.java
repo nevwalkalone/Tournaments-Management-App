@@ -2,8 +2,10 @@ package com.example.managetournamentapp.view.HomePage;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.memoryDao.MemoryInitializer;
+import com.example.managetournamentapp.view.Player.PlayerPage.PlayerPageActivity;
 import com.example.managetournamentapp.view.User.Login.LoginActivity;
 import com.example.managetournamentapp.view.User.RegisterOrganizer.RegisterOrganizerActivity;
 import com.example.managetournamentapp.view.User.RegisterPlayer.RegisterPlayerActivity;
@@ -38,6 +41,8 @@ public class HomePageActivity extends AppCompatActivity implements HomePageView 
         setContentView(R.layout.activity_home_page);
         viewModel = new ViewModelProvider(this).get(HomePageViewModel.class);
         viewModel.getPresenter().setView(this);
+
+
 
         connectBtn = (Button) findViewById(R.id.connect_button);
         browseBtn = (Button) findViewById(R.id.browse_button);
@@ -76,10 +81,6 @@ public class HomePageActivity extends AppCompatActivity implements HomePageView 
 
     @Override
     public void loginAction(){
-        Toast.makeText(this,
-                "LOGIN",
-                Toast.LENGTH_SHORT)
-                .show();
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
 
@@ -121,4 +122,26 @@ public class HomePageActivity extends AppCompatActivity implements HomePageView 
 
     }
 
+    @Override
+    public void onBackPressed() {
+            AlertDialog.Builder builder = new AlertDialog.Builder(HomePageActivity.this);
+            builder.setTitle(R.string.app_name);
+            builder.setIcon(R.mipmap.ic_launcher);
+            builder.setMessage("Are you sure you want to exit?")
+                    .setCancelable(false)
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            moveTaskToBack(true);
+                            android.os.Process.killProcess(android.os.Process.myPid());
+                            System.exit(1);
+                        }
+                    })
+                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+            AlertDialog alert = builder.create();
+            alert.show();
+        }
 }

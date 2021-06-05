@@ -2,6 +2,7 @@ package com.example.managetournamentapp.view.User.Login;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
@@ -10,8 +11,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.managetournamentapp.R;
+import com.example.managetournamentapp.view.HomePage.HomePageActivity;
 import com.example.managetournamentapp.view.Organizer.OrganizerPage.OrganizerPageActivity;
 import com.example.managetournamentapp.view.Player.PlayerPage.PlayerPageActivity;
 
@@ -27,6 +30,9 @@ public class LoginActivity extends AppCompatActivity implements LoginView, View.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+
+
         viewModel = new ViewModelProvider(this).get(LoginViewModel.class);
         viewModel.getPresenter().setView(this);
         loginBtn = (Button) findViewById(R.id.complete_login);
@@ -66,13 +72,27 @@ public class LoginActivity extends AppCompatActivity implements LoginView, View.
    }
 
     public void startPlayerPage(String username){
+        Toast.makeText(this,
+                "LOGGED IN",
+                Toast.LENGTH_SHORT)
+                .show();
         Intent intent = new Intent(this, PlayerPageActivity.class);
         intent.putExtra(PLAYER_USERNAME_EXTRA, username);
         startActivity(intent);
     }
 
     public void startOrganizerPage(){
+        Toast.makeText(this,
+                "LOGGED IN",
+                Toast.LENGTH_SHORT)
+                .show();
         Intent intent = new Intent(this, OrganizerPageActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onBackPressed(){
+        Intent intent = new Intent(this, HomePageActivity.class);
         startActivity(intent);
     }
 

@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".view.Player.ReceivedInvites.ReceivedInvitesActivity"
     android:background="@color/appColor">
+
     <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="0dp"

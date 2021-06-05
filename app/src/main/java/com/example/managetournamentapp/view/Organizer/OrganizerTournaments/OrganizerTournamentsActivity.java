@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.managetournamentapp.R;
@@ -27,6 +28,8 @@ public class OrganizerTournamentsActivity extends AppCompatActivity implements O
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_created_tournaments);
+
+
         viewModel = new ViewModelProvider(this).get(OrganizerTournamentsViewModel.class);
         viewModel.getPresenter().setView(this);
 
