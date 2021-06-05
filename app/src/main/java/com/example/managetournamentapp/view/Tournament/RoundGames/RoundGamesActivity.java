@@ -1,8 +1,13 @@
 package com.example.managetournamentapp.view.Tournament.RoundGames;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import com.example.managetournamentapp.R;
@@ -17,6 +22,7 @@ public class RoundGamesActivity extends AppCompatActivity implements GamesListFr
     private static final String ROUND_TEAMS_EXTRA = "round_teams_extra" ;
     private static final String SPECIFIC_GROUP_EXTRA = "specific_group_extra" ;
     RoundGamesViewModel viewModel;
+    private static AlertDialog POPUP_ACTION;
     private String tournamentTitle;
     private int roundTeamsNumber;
     private int specificGroup;
@@ -35,13 +41,10 @@ public class RoundGamesActivity extends AppCompatActivity implements GamesListFr
 
         if (findViewById(R.id.fragment_container) != null) {
 
-            // Activity is recreated, do not add fragment twice
             if (savedInstanceState != null) {
                 return;
             }
-
             viewModel.getPresenter().findGames(tournamentTitle, roundTeamsNumber, specificGroup);
-
             GamesListFragment gamesListFragment = GamesListFragment.newInstance(1);
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.fragment_container, gamesListFragment)
@@ -51,17 +54,29 @@ public class RoundGamesActivity extends AppCompatActivity implements GamesListFr
 
 
     @Override
-    public void changesOfAccess() {
-
+    public void showPopup(Game game){
+        POPUP_ACTION = showPopUp(R.layout.game_score_popup,R.id.save_button, R.id.txt_scoreA, R.id.txt_scoreB,  game);
+        POPUP_ACTION.show();
     }
+
+    public AlertDialog showPopUp(int layoutId, int btn1, int txt1, int txt2,  Game game) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        View customLayout = getLayoutInflater().inflate(layoutId, null);
+        builder.setView(customLayout);
+        AlertDialog dialog = builder.create();
+
+        Button saveButton = (Button) customLayout.findViewById(btn1);
+        EditText edit1 =  customLayout.findViewById(txt1);
+        EditText edit2 =  customLayout.findViewById(txt2);
+        saveButton.setOnClickListener(v -> viewModel.getPresenter().onSave(game, edit1.getText().toString(), edit2.getText().toString() ) );
+
+        return dialog;
+    }
+
 
     @Override
     public void onListFragmentInteraction(Game item) {
-        Toast.makeText(this,
-                "GAME SELECTED",
-                Toast.LENGTH_SHORT)
-                .show();
-
+        viewModel.getPresenter().onPressed(item);
     }
 
     @Override
@@ -70,4 +85,13 @@ public class RoundGamesActivity extends AppCompatActivity implements GamesListFr
     }
 
 
+    @Override
+    public void showToast(String text){
+        Toast.makeText(this,text, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void recreateView(){
+        recreate();
+    }
 }

@@ -68,4 +68,8 @@
     <string name="dash">-</string>
     <string name="games">Games</string>
     <string name="rankings">Rankings</string>
+    <string name="score_a">Score A</string>
+    <string name="score_b">Score B</string>
+    <string name="save">Save</string>
+    <string name="enter_score">Enter the final score:</string>
 </resources>

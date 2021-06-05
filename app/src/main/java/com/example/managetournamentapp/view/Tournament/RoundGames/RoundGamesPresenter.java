@@ -7,6 +7,8 @@ import com.example.managetournamentapp.domain.Group;
 import com.example.managetournamentapp.domain.Organizer;
 import com.example.managetournamentapp.domain.Round;
 import com.example.managetournamentapp.domain.Tournament;
+import com.example.managetournamentapp.memoryDao.TeamDAOMemory;
+
 import java.util.ArrayList;
 
 
@@ -16,6 +18,7 @@ public class RoundGamesPresenter {
     private Tournament tournament;
     private LoggedInUser loggedInUser;
     private ArrayList<Game> results = new ArrayList<>();
+    private boolean hasAccess;
 
     public RoundGamesPresenter(){}
 
@@ -26,6 +29,7 @@ public class RoundGamesPresenter {
         if (tournament == null)
             return;
 
+        findAccess();
         results.clear();
         for (Round round : tournament.getRounds()){
             if (round.getTeamsNumber()==roundTeamsNumber){
@@ -43,12 +47,36 @@ public class RoundGamesPresenter {
         }
     }
 
+
+    public void onPressed(Game game){
+        //todo erase comments
+//        game.setTeamA(new TeamDAOMemory().find("Bulls"));
+//        game.setTeamB(new TeamDAOMemory().find("Bulls"));
+        if ( hasAccess)
+            if (game.isFinished())
+                view.showToast("THE SCORE HAS ALREADY BEEN SET");
+            else if (game.getTeamA().getName()==null || game.getTeamA().getName()==null)
+                view.showToast("THE TEAMS HAVE NOT BEEN SET");
+            else
+                view.showPopup(game);
+    }
+
+    public void onSave(Game game, String scoreA, String scoreB){
+        if (scoreA==null || scoreA.isEmpty() || scoreB==null || scoreB.isEmpty() )
+            return;
+
+        game.setScoreA( Integer.parseInt(scoreA) );
+        game.setScoreB( Integer.parseInt(scoreB) );
+        game.setFinished(true);
+        view.recreateView();
+    }
+
     public void findAccess(){
+        hasAccess =false;
         if ( loggedInUser.getUser() != null )
             if (loggedInUser.getUser() instanceof Organizer)
                 if ( ((Organizer)loggedInUser.getUser()).getTournaments().contains(tournament) )
-                    return;
-        view.changesOfAccess();
+                    hasAccess = true;
     }
 
     public ArrayList<Game> getResults() {

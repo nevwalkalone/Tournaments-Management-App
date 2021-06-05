@@ -1,6 +1,12 @@
 package com.example.managetournamentapp.view.Tournament.RoundGames;
 
+import com.example.managetournamentapp.domain.Game;
+
 public interface RoundGamesView {
 
-    void changesOfAccess();
+    void showToast(String test);
+
+    void showPopup(Game game);
+
+    void recreateView();
 }

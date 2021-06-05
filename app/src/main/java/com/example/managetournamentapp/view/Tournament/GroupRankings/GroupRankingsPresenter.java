@@ -2,6 +2,7 @@ package com.example.managetournamentapp.view.Tournament.GroupRankings;
 
 
 import com.example.managetournamentapp.dao.TournamentDAO;
+import com.example.managetournamentapp.domain.Group;
 import com.example.managetournamentapp.domain.Team;
 import com.example.managetournamentapp.domain.Tournament;
 
@@ -21,8 +22,10 @@ public class GroupRankingsPresenter {
             return;
         }
         results.clear();
-//todo updated earlier
-        results.addAll( tournament.getRounds().get(0).getGroups().get(specificGroup).getRankings().keySet());
+
+        Group group = tournament.getRounds().get(0).getGroups().get(specificGroup);
+        group.refreshRankings();
+        results.addAll( group.getRankings().keySet());
     }
 
     public void setTournamentDAO(TournamentDAO tournamentDAO) {

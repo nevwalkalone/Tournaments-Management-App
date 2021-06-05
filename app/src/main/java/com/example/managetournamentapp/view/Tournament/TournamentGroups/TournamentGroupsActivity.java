@@ -12,7 +12,6 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.view.Tournament.GroupRankings.GroupRankingsActivity;
 import com.example.managetournamentapp.view.Tournament.RoundGames.RoundGamesActivity;
-
 import java.util.ArrayList;
 
 
@@ -24,7 +23,6 @@ public class TournamentGroupsActivity extends AppCompatActivity implements Tourn
     private TournamentGroupsViewModel viewModel;
     String tournamentTitle;
     ArrayList<Button> groupButtons = new ArrayList<>();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

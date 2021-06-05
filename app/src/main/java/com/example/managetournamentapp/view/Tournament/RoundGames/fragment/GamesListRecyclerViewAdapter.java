@@ -53,14 +53,9 @@ public class GamesListRecyclerViewAdapter extends RecyclerView.Adapter<GamesList
         }
         holder.date.setText(currentGame.getDate().toString());
 
-        holder.btnSelect.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (null != mListener) {
-                    // Notify the active callbacks interface (the activity, if the
-                    // fragment is attached to one) that an item has been selected.
-                    mListener.onListFragmentInteraction(holder.mItem);
-                }
+        holder.btnSelect.setOnClickListener(v -> {
+            if (null != mListener) {
+                mListener.onListFragmentInteraction(holder.mItem);
             }
         });
 
@@ -76,8 +71,8 @@ public class GamesListRecyclerViewAdapter extends RecyclerView.Adapter<GamesList
         public final View mView;
         public final TextView txtTeamA;
         public final TextView txtTeamB;
-        public final EditText scoreA;
-        public final EditText scoreB;
+        public final TextView scoreA;
+        public final TextView scoreB;
         public final TextView date;
         public final LinearLayout btnSelect;
         public Game mItem;
