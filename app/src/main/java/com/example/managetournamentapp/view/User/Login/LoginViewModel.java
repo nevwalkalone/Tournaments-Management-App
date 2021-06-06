@@ -13,9 +13,9 @@ public class LoginViewModel extends ViewModel {
 
     public LoginViewModel() {
         presenter = new LoginPresenter();
-        presenter.setOrganizerDAO( new OrganizerDAOMemory());
+        presenter.setOrganizerDAO(new OrganizerDAOMemory());
         presenter.setPlayerDAO(new PlayerDAOMemory());
-        presenter.setLoggedInUser( new MemoryLoggedInUser() );
+        presenter.setLoggedInUser(new MemoryLoggedInUser());
     }
 
     public LoginPresenter getPresenter() {

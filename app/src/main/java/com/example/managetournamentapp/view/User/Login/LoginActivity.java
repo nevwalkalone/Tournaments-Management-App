@@ -2,7 +2,6 @@ package com.example.managetournamentapp.view.User.Login;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
@@ -21,8 +20,8 @@ import com.example.managetournamentapp.view.Player.PlayerPage.PlayerPageActivity
 
 public class LoginActivity extends AppCompatActivity implements LoginView, View.OnClickListener {
 
-    private static final String PLAYER_USERNAME_EXTRA = "player_username_extra" ;
-    private static final String ORGANIZER_USERNAME_EXTRA =  "organizer_username_extra" ;
+    private static final String PLAYER_USERNAME_EXTRA = "player_username_extra";
+    private static final String ORGANIZER_USERNAME_EXTRA = "organizer_username_extra";
     private Button loginBtn;
     LoginViewModel viewModel;
 
@@ -30,7 +29,6 @@ public class LoginActivity extends AppCompatActivity implements LoginView, View.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
 
 
         viewModel = new ViewModelProvider(this).get(LoginViewModel.class);
@@ -69,9 +67,9 @@ public class LoginActivity extends AppCompatActivity implements LoginView, View.
         if (v.getId() == R.id.complete_login) {
             viewModel.getPresenter().validateCredentials();
         }
-   }
+    }
 
-    public void startPlayerPage(String username){
+    public void startPlayerPage(String username) {
         Toast.makeText(this,
                 "LOGGED IN",
                 Toast.LENGTH_SHORT)
@@ -81,7 +79,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView, View.
         startActivity(intent);
     }
 
-    public void startOrganizerPage(){
+    public void startOrganizerPage() {
         Toast.makeText(this,
                 "LOGGED IN",
                 Toast.LENGTH_SHORT)
@@ -91,7 +89,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView, View.
     }
 
     @Override
-    public void onBackPressed(){
+    public void onBackPressed() {
         Intent intent = new Intent(this, HomePageActivity.class);
         startActivity(intent);
     }

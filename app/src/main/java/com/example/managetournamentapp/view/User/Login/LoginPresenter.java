@@ -16,25 +16,26 @@ public class LoginPresenter {
     private OrganizerDAO organizerDAO;
     private LoggedInUser loggedInUser;
 
-    public LoginPresenter() { }
+    public LoginPresenter() {
+    }
 
     /**
      * This method check in both PlayerDAO and OrganizerDAO via credentials.
+     *
      * @param username user input
      * @param password user input
      */
     public void checkInDAO(String username, String password) {
         Credentials credCheck = new Credentials(username, password);
-        if ( organizerDAO.verify(credCheck)) {
+        if (organizerDAO.verify(credCheck)) {
             Organizer loggedInOrganizer = organizerDAO.findByCredentials(credCheck);           // Try to find the Organizer in DAO and set it as current LoggedInUser
             loggedInUser.setUser(loggedInOrganizer);
             view.startOrganizerPage();
-        } else if ( playerDAO.verify(credCheck)) {
+        } else if (playerDAO.verify(credCheck)) {
             Player loggedInPlayer = playerDAO.find(credCheck.getUsername());                   // Try to find the Player in DAO and set it as current LoggedInUser
             loggedInUser.setUser(loggedInPlayer);
             view.startPlayerPage(username);
-        }
-        else{
+        } else {
             view.showPopUp(view, "Invalid credentials. We didn't find any user with these credentials.");
         }
     }
@@ -59,12 +60,12 @@ public class LoginPresenter {
         this.loggedInUser = loggedInUser;
     }
 
-    public LoggedInUser getLoggedInUser(){
+    public LoggedInUser getLoggedInUser() {
         return loggedInUser;
     }
 
     /**
-     *  Check for input validation and existence of Credentials in DAOs.
+     * Check for input validation and existence of Credentials in DAOs.
      */
     public void validateCredentials() {
         String usename = view.getUsername();

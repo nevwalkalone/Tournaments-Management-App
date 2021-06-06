@@ -9,9 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/SecondaryTheme">
-        <activity android:name=".view.Player.ReceivedInvites.ReceivedInvitesActivity"
-            android:label="Invites Received"
-            />
+        <activity android:name=".view.User.Browsing.BrowsingActivity"></activity>
+        <activity
+            android:name=".view.Player.ReceivedInvites.ReceivedInvitesActivity"
+            android:label="Invites Received" />
         <activity
             android:name=".view.Team.JoinedPlayers.JoinedPlayersActivity"
             android:exported="true"

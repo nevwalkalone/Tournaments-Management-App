@@ -2,6 +2,7 @@ package com.example.managetournamentapp.view.Organizer.OrganizerTournaments.frag
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,6 +49,7 @@ public class TournamentListFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_tournaments_list, container, false);
 
         ArrayList<Tournament> tournamentList = mListener.getTournamentList();
+        System.out.println(tournamentList.size());
 
         // Set the adapter
         if (view instanceof RecyclerView) {

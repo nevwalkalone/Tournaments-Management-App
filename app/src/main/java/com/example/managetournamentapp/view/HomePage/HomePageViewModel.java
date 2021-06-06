@@ -2,6 +2,8 @@ package com.example.managetournamentapp.view.HomePage;
 
 import androidx.lifecycle.ViewModel;
 
+import com.example.managetournamentapp.memoryDao.TournamentDAOMemory;
+
 
 public class HomePageViewModel extends ViewModel {
 
@@ -9,6 +11,7 @@ public class HomePageViewModel extends ViewModel {
 
     public HomePageViewModel() {
         presenter = new HomePagePresenter();
+        presenter.setTournamentDAO(new TournamentDAOMemory());
     }
 
     public HomePagePresenter getPresenter() {
