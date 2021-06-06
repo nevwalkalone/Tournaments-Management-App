@@ -50,9 +50,9 @@ public class TeamPageActivity extends AppCompatActivity implements TeamPageView 
         btnTeamParticipations = findViewById(R.id.team_participations_button);
 
         txtTeamName.setText( teamName);
-        btnTeamInfo.setOnClickListener(v -> viewModel.getPresenter().onTeamInfo());
-        btnTeamPlayers.setOnClickListener(v -> viewModel.getPresenter().onTeamPlayers());
-        btnTeamParticipations.setOnClickListener(v -> viewModel.getPresenter().onTeamParticipations());
+        btnTeamInfo.setOnClickListener(v ->  startTeamInfo());
+        btnTeamPlayers.setOnClickListener(v -> startTeamPlayers());
+        btnTeamParticipations.setOnClickListener(v ->  startTeamParticipations());
 
        viewModel.getPresenter().findAccess();
     }

@@ -22,7 +22,6 @@ public class TeamPagePresenter {
         team = teamDAO.find(teamName);
         if( team == null )
             return;
-
     }
 
     public void findAccess(){
@@ -31,18 +30,6 @@ public class TeamPagePresenter {
                 if ( team.getPlayers().contains((Player)loggedInUser.getUser())  )
                     return;
         view.changesOfAccess();
-    }
-
-    public void onTeamInfo(){
-        view.startTeamInfo();
-    }
-
-    public void onTeamPlayers(){
-        view.startTeamPlayers();
-    }
-
-    public void onTeamParticipations(){
-        view.startTeamParticipations();
     }
 
     public void setTeamDAO(TeamDAO teamDAO) {
