@@ -51,8 +51,10 @@ public class RoundGamesPresenter {
             groupsWanted.add(currentRound.getGroups().get(specificGroup)) ;
 
         for(Group group : groupsWanted){
+            System.out.println(group.getGames());
             results.addAll(group.getGames());
         }
+
 
 
     }

@@ -2,12 +2,15 @@ package com.example.managetournamentapp.view.Tournament.ParticipatingTeams;
 
 import android.content.Intent;
 import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
+
 import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.domain.Team;
 import com.example.managetournamentapp.view.Team.TeamPage.TeamPageActivity;
 import com.example.managetournamentapp.view.Tournament.ParticipatingTeams.fragment.TeamsListFragment;
+
 import java.util.ArrayList;
 
 public class ParticipatingTeamsActivity extends AppCompatActivity implements ParticipatingTeamsView, TeamsListFragment.OnListFragmentInteractionListener {
@@ -44,9 +47,7 @@ public class ParticipatingTeamsActivity extends AppCompatActivity implements Par
 
     @Override
     public void onListFragmentInteraction(Team item) {
-        Intent intent = new Intent(ParticipatingTeamsActivity.this, TeamPageActivity.class);
-        intent.putExtra(TEAM_NAME_EXTRA, item.getName());
-        startActivity(intent);
+        viewModel.getPresenter().onTeamSelected(item);
     }
 
     @Override
@@ -58,5 +59,12 @@ public class ParticipatingTeamsActivity extends AppCompatActivity implements Par
     @Override
     public void checkTeam() {
 
+    }
+
+    @Override
+    public void startTeamPage(String teamname) {
+        Intent intent = new Intent(ParticipatingTeamsActivity.this, TeamPageActivity.class);
+        intent.putExtra(TEAM_NAME_EXTRA, teamname);
+        startActivity(intent);
     }
 }

@@ -88,6 +88,9 @@ public abstract class Initializer {
             round.setup(emptyTeams);
         }
 
+        Tournament testTournament = new Tournament("NBA", LocalDate.parse("2050-05-10"), LocalDate.parse("2050-05-29"), "ATHENS", (new Sport("Basketball3v3")), 8, AgeDivision.K100, dates);
+        tournamentDAO.save(testTournament);
+
         //add teams to tournament
         for ( int i=0;i<8;i++ ){
             Team current = teamDAO.find("Celtic"+i);

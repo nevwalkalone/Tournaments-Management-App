@@ -33,7 +33,7 @@ public class BrowsingPresenterTest {
     @Test
     public void findAllTournaments() {
         presenter.findAllTournaments();
-        Assert.assertEquals(2, presenter.getResults().size());
+        Assert.assertEquals(3, presenter.getResults().size());
 
     }
 

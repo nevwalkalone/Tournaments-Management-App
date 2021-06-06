@@ -15,16 +15,17 @@ public class ParticipatingTeamsPresenter {
     private ArrayList<Team> results = new ArrayList<>();
     private Tournament tournament;
 
-    public ParticipatingTeamsPresenter(){}
+    public ParticipatingTeamsPresenter() {
+    }
 
-    public void findParticipatingTeams(String tournamentName){
+    public void findParticipatingTeams(String tournamentName) {
         tournament = tournamentDAO.find(tournamentName);
-        if (tournament== null){
+        if (tournament == null) {
             return;
         }
         results.clear();
-        for (Participation participation : tournament.getParticipations()){
-            results.add( participation.getTeam());
+        for (Participation participation : tournament.getParticipations()) {
+            results.add(participation.getTeam());
 
         }
     }
@@ -37,15 +38,15 @@ public class ParticipatingTeamsPresenter {
         return results;
     }
 
-    public void onTeamSelected(Team team){
-        // todo
+    public void onTeamSelected(Team team) {
+        view.startTeamPage(team.getName());
     }
 
     public void setView(ParticipatingTeamsView view) {
         this.view = view;
     }
 
-    public void clearView(){
+    public void clearView() {
         this.view = null;
     }
 
