@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.view.Organizer.CreateTournament.CreateTournamentView;
+import com.example.managetournamentapp.view.Organizer.OrganizerPage.OrganizerPageActivity;
 import com.example.managetournamentapp.view.Tournament.TournamentPage.TournamentPageActivity;
 
 import java.util.ArrayList;
@@ -22,6 +23,7 @@ public class SetDatesActivity extends AppCompatActivity implements SetDatesView 
     SetDatesViewModel viewModel;
     public static final String TOURNAMENT_TITLE_EXTRA = "tournament_title_extra";
     private static final String BASIC_INFO_EXTRA = "basic_info_extra";
+    public static final String ORGANIZER_TITLE = "organizer_title";
     ArrayList<String> basicInfo;
     ArrayList<EditText> editTexts = new ArrayList<>();
     String teamsNumber;
@@ -88,8 +90,6 @@ public class SetDatesActivity extends AppCompatActivity implements SetDatesView 
         } else if (teamsNumber.equals("32")) {
             setContentView(R.layout.activity_set_dates_32);
         }
-
-        Log.wtf("testtt", ((EditText) findViewById(R.id.round1_start_txt)).getText().toString());
         editTexts.add((EditText) findViewById(R.id.round1_start_txt));
         editTexts.add((EditText) findViewById(R.id.round1_finish_txt));
         editTexts.add((EditText) findViewById(R.id.round2_start_txt));
@@ -101,8 +101,6 @@ public class SetDatesActivity extends AppCompatActivity implements SetDatesView 
         if (teamsNumber.equals("16")) {
             editTexts.add((EditText) findViewById(R.id.round4_start_txt));
             editTexts.add((EditText) findViewById(R.id.round4_finish_txt));
-            Log.wtf("setupp", "in 16");
-
         } else if (teamsNumber.equals("32")) {
             editTexts.add((EditText) findViewById(R.id.round4_start_txt));
             editTexts.add((EditText) findViewById(R.id.round4_finish_txt));
@@ -112,9 +110,9 @@ public class SetDatesActivity extends AppCompatActivity implements SetDatesView 
 
     }
 
-    public void startSaveTournament(String tournamentName) {
-        Intent intent = new Intent(SetDatesActivity.this, TournamentPageActivity.class);
-        intent.putExtra(TOURNAMENT_TITLE_EXTRA, tournamentName);
+    public void startSaveTournament(String organizerTitle) {
+        Intent intent = new Intent(SetDatesActivity.this, OrganizerPageActivity.class);
+        intent.putExtra(ORGANIZER_TITLE, organizerTitle);
         startActivity(intent);
     }
 

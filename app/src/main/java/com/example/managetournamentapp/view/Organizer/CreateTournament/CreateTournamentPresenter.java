@@ -2,9 +2,11 @@ package com.example.managetournamentapp.view.Organizer.CreateTournament;
 
 import com.example.managetournamentapp.dao.TournamentDAO;
 import com.example.managetournamentapp.domain.AgeDivision;
+import com.example.managetournamentapp.domain.Organizer;
 import com.example.managetournamentapp.domain.Sport;
 import com.example.managetournamentapp.domain.Tournament;
 import com.example.managetournamentapp.domain.TournamentType;
+import com.example.managetournamentapp.domain.User;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -24,6 +26,7 @@ public class CreateTournamentPresenter {
     private ArrayList<String> teamNumbers ;
     private Tournament connectedTournament;
     private TournamentDAO tournamentDAO;
+    private Organizer organizer;
 
     public CreateTournamentPresenter() {
         sportTypes = findSportTypes();
@@ -84,9 +87,18 @@ public class CreateTournamentPresenter {
                 connectedTournament.setFinishDate(finishLocalDate);
                 connectedTournament.setAgeDivision(AgeDivision.values()[getAgeDivisionIndex(ageDivision)]);
                 connectedTournament.setSportType(new Sport(sportType));
-                view.startSaveTournament(connectedTournament.getTitle());
+                view.startSaveTournament(organizer.getTitle());
             }
         }
+    }
+
+    public void setOrganizer(User user){
+        if (user == null)
+            return;
+        if (!(user instanceof Organizer))
+            return;
+        organizer = (Organizer) user;
+
     }
 
     public ArrayList<String> getSportTypes() {

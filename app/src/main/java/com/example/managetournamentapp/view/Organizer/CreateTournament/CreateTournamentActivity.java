@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.managetournamentapp.R;
+import com.example.managetournamentapp.view.Organizer.OrganizerPage.OrganizerPageActivity;
 import com.example.managetournamentapp.view.Organizer.SetDates.SetDatesActivity;
 import com.example.managetournamentapp.view.Player.CreateTeam.CreateTeamView;
 import com.example.managetournamentapp.view.Tournament.TournamentPage.TournamentPageActivity;
@@ -23,8 +24,9 @@ import java.util.ArrayList;
 
 public class CreateTournamentActivity extends AppCompatActivity implements CreateTournamentView {
     private static final String BASIC_INFO_EXTRA = "basic_info_extra";
-    private CreateTournamentViewModel viewModel;
     public static final String TOURNAMENT_TITLE_EXTRA = "tournament_title_extra";
+    public static final String ORGANIZER_TITLE = "organizer_title";
+    private CreateTournamentViewModel viewModel;
     private Button saveBtn;
     String tournamentTitle;
     private Spinner sportTypeSpinner;
@@ -56,9 +58,9 @@ public class CreateTournamentActivity extends AppCompatActivity implements Creat
     }
 
     @Override
-    public void startSaveTournament(String tournamentTitle) {
-        Intent intent = new Intent(CreateTournamentActivity.this, TournamentPageActivity.class);
-        intent.putExtra(TOURNAMENT_TITLE_EXTRA, tournamentTitle);
+    public void startSaveTournament(String organizerTitle) {
+        Intent intent = new Intent(CreateTournamentActivity.this, OrganizerPageActivity.class);
+        intent.putExtra(ORGANIZER_TITLE, organizerTitle);
         startActivity(intent);
     }
 
