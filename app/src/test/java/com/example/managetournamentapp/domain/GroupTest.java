@@ -70,7 +70,7 @@ public class GroupTest {
         group.addTeam(teamB);
         group.increaseTeamRanking(teamA,3);
         group.addGame(game);
-        Assert.assertEquals(group.getGroupWinners().get(0) , teamB);
+        Assert.assertEquals(group.getGroupWinners().get(0) , teamA);
 
         Map<Team, Integer> rankings = new HashMap<>();
         rankings.put(teamA,3);

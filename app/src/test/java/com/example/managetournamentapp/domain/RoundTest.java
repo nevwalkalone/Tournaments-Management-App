@@ -50,8 +50,8 @@ public class RoundTest {
         round.getGroups().get(1).getGames().get(0).setFinished(true);
 
         ArrayList<Team> winners = new ArrayList<>();
-        winners.add(teams.get(0));
-        winners.add(teams.get(3));
+        winners.add(teams.get(1));
+        winners.add(teams.get(2));
 
         Assert.assertEquals(round.getRoundWinners(),winners);
     }
