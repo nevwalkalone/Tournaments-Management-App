@@ -21,7 +21,6 @@ public class RegisterOrganizerPresenterTest {
         presenter.setLoggedInUser( new MemoryLoggedInUser());
         presenter.setOrganizerDAO( new OrganizerDAOMemory());
         presenter.setView(view);
-
     }
 
 

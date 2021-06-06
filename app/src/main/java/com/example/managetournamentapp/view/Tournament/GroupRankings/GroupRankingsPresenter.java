@@ -1,8 +1,6 @@
 package com.example.managetournamentapp.view.Tournament.GroupRankings;
 
 
-import android.util.Log;
-
 import com.example.managetournamentapp.dao.TournamentDAO;
 import com.example.managetournamentapp.domain.Group;
 import com.example.managetournamentapp.domain.Team;

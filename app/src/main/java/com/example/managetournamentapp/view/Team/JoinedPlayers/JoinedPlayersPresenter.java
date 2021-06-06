@@ -22,12 +22,12 @@ public class JoinedPlayersPresenter {
     public void findPlayers(String teamName) {
         this.teamName = teamName;
         results.clear();
-        System.out.println("TEAMMMMMMMMM: " + teamName);
         results = teamDAO.find(teamName).getPlayers();
     }
 
     public void removePlayer(String teamName, Player player) {
         results.clear();
+        //not remove if has undone participation
         teamDAO.find(teamName).removePlayer(player);
         results = teamDAO.find(teamName).getPlayers();
     }
@@ -55,21 +55,8 @@ public class JoinedPlayersPresenter {
         return results;
     }
 
-    public void onPlayerSelected(Player p) {
-        // todo
-    }
-
     public void setLoggedInUser(LoggedInUser loggedInUser) {
         this.loggedInUser = loggedInUser;
-    }
-
-
-    public void setView(JoinedPlayersView view) {
-        this.view = view;
-    }
-
-    public void clearView() {
-        this.view = null;
     }
 
     public void setPlayerDAO(PlayerDAO playerDAO) {
@@ -80,35 +67,13 @@ public class JoinedPlayersPresenter {
         this.teamDAO = teamDAO;
     }
 
-    public void startPlayerInfo() {
-        view.startPlayerInfo();
+    public void setView(JoinedPlayersView view) {
+        this.view = view;
     }
 
-    public void startInviteActivity() {
-        view.startInvitePlayerPage();
+    public void clearView() {
+        this.view = null;
     }
 
-    public void displayPopAction(int layout, String msg, int btn1, int btn2) {
-        view.displayPopUpAction(layout, msg, btn1, btn2);
-    }
 
-    public void displayPopDeletion(int layout, String msg, int btn1, int btn2) {
-        view.displayPopUpDeletion(layout, msg, btn1, btn2);
-    }
-
-    public void closePopAction() {
-        view.dismissPopUpAction();
-    }
-
-    public void closePopDeletion() {
-        view.dismissPopUpDeletion();
-    }
-
-    public void resetPopUp() {
-        view.resetPopUps();
-    }
-
-    public void restartActivity() {
-        view.restartActivity();
-    }
 }

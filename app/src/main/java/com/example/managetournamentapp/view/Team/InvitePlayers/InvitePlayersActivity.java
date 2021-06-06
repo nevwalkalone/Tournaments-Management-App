@@ -38,8 +38,6 @@ public class InvitePlayersActivity extends AppCompatActivity implements PlayersL
 
         viewModel = new ViewModelProvider(this).get(InvitePlayersViewModel.class);
         viewModel.getPresenter().setView(this);
-        viewModel.getPresenter().setPlayerDAO((new PlayerDAOMemory()));
-        viewModel.getPresenter().setTeamDAO((new TeamDAOMemory()));
         viewModel.getPresenter().findPlayers(teamName);
 
      if (findViewById(R.id.fragment_container) != null) {

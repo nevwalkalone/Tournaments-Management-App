@@ -72,11 +72,6 @@ public class InvitePlayersPresenter {
         view.dismissPopUpAction();
     }
 
-
-    public void resetPopUp() {
-        view.resetPopUps();
-    }
-
     public void restartActivity() {
         view.restartActivity();
     }

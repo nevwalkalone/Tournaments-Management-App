@@ -11,6 +11,7 @@ import com.example.managetournamentapp.domain.Round;
 import com.example.managetournamentapp.domain.Sport;
 import com.example.managetournamentapp.domain.Team;
 import com.example.managetournamentapp.domain.Tournament;
+import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
 
 import org.w3c.dom.ls.LSOutput;
 
@@ -33,10 +34,11 @@ public abstract class Initializer {
         TeamDAO teamDAO = getTeamDAO();
         TournamentDAO tournamentDAO = getTournamentDAO();
         ArrayList<Player> players = new ArrayList<>();
+        new MemoryLoggedInUser().clear();
 
         //create 30 players
-        for (int i = 0; i < 30; i++) {
-            Player current = new Player("tomtom", "jerry", "Athens", "6900000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("tommy" + i, "12345"));
+        for ( int i=0;i<35;i++ ){
+            Player current = new Player("tomtom", "jerry", "Athens", "6900000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("tommy"+i, "12345"));
             current.addSportInterested(new Sport("Basketball3v3"));
             players.add(current);
             playerDAO.save(current);
@@ -46,12 +48,12 @@ public abstract class Initializer {
         players.add(testPlayer);
         playerDAO.save(testPlayer);
 
-        //create 8 teams
+        //create 9 teams
         int j = 0;
-        for (int i = 0; i < 22; i += 3) {
-            Team current = new Team("Celtic" + j, (new Sport("Basketball3v3")), AgeDivision.K100, players.get(i), "green");
-            current.addPlayer(players.get(i + 1));
-            current.addPlayer(players.get(i + 2));
+        for ( int i=0;i<25;i+=3 ){
+            Team current = new Team("Celtic"+j, (new Sport("Basketball3v3")), AgeDivision.K100, players.get(i), "green");
+            current.addPlayer(players.get(i+1));
+            current.addPlayer(players.get(i+2));
             teamDAO.save(current);
             j++;
         }
@@ -70,9 +72,13 @@ public abstract class Initializer {
         tournamentDAO.save(tour1);
         organizerDAO.findByTitle("ESKA").addTournament(tour1);
 
+        Tournament tour2 = new Tournament("NBAGR", LocalDate.parse("2050-05-10"), LocalDate.parse("2050-05-29"), "ATHENS", (new Sport("Basketball3v3")), 8, AgeDivision.K100, dates);
+        tournamentDAO.save(tour2);
+        organizerDAO.findByTitle("ESKA").addTournament(tour2);
+
         //add teams to tournament
-        for (int i = 0; i < 8; i++) {
-            Team current = teamDAO.find("Celtic" + i);
+        for ( int i=0;i<8;i++ ){
+            Team current = teamDAO.find("Celtic"+i);
             Participation part = new Participation(tour1, current);
             current.addParticipation(part);
         }

@@ -82,13 +82,12 @@ public class JoinedPlayersActivity extends AppCompatActivity implements PlayersL
         playerSelected = item;
 
         if (!player || item.equals((new MemoryLoggedInUser()).getUser())) {
-            viewModel.getPresenter().startPlayerInfo();
+            startPlayerInfo();
         } else {
             if (captain) {
-                viewModel.getPresenter().displayPopAction(R.layout.player_action_popup, "Name: " + item.getName() + "\nSurname: " + item.getSurname(), R.id.remove_player_popup, R.id.account_player_popup);
-
+                displayPopUpAction(R.layout.player_action_popup, "Name: " + item.getName() + "\nSurname: " + item.getSurname(), R.id.remove_player_popup, R.id.account_player_popup);
             } else {
-                viewModel.getPresenter().startPlayerInfo();
+                startPlayerInfo();
             }
         }
     }
@@ -104,29 +103,29 @@ public class JoinedPlayersActivity extends AppCompatActivity implements PlayersL
         if (removeActionPopup) {
             if (v.getId() == R.id.no_delete) {
                 removeActionPopup = false;
-                viewModel.getPresenter().closePopDeletion();
-                viewModel.getPresenter().closePopAction();
+                dismissPopUpDeletion();
+                dismissPopUpAction();
 
             } else if (v.getId() == R.id.yes_delete) {
                 viewModel.getPresenter().removePlayer(teamName, playerSelected);
-                viewModel.getPresenter().closePopDeletion();
-                viewModel.getPresenter().closePopAction();
-                viewModel.getPresenter().resetPopUp();
-                viewModel.getPresenter().restartActivity();
+                dismissPopUpDeletion();
+                dismissPopUpAction();
+                resetPopUps();
+                restartActivity();
             }
         }
 
         if (v.getId() == R.id.remove_player_popup) {
             removeActionPopup = true;
-            viewModel.getPresenter().displayPopDeletion(R.layout.player_delete_popup, "Do you really want to delete this player?", R.id.no_delete, R.id.yes_delete);
+            displayPopUpDeletion(R.layout.player_delete_popup, "Do you really want to delete this player?", R.id.no_delete, R.id.yes_delete);
         }
 
         if (v.getId() == R.id.account_player_popup) {
-            viewModel.getPresenter().startPlayerInfo();
+            startPlayerInfo();
         }
 
         if (v.getId() == R.id.invite_new_players_button) {
-            viewModel.getPresenter().startInviteActivity();
+            startInvitePlayerPage();
         }
 
     }
