@@ -113,14 +113,6 @@ public class RegisterOrganizerActivity extends AppCompatActivity implements Regi
     }
 
     @Override
-    public Credentials getCredentials() {
-
-        EditText USERNAME = (EditText) findViewById(R.id.username);
-        EditText PASSWORD = (EditText) findViewById(R.id.password);
-        return new Credentials(USERNAME.getText().toString(), PASSWORD.getText().toString());
-    }
-
-    @Override
     public String getOrganizerTitle() {
         EditText TITLE = (EditText) findViewById(R.id.organizer_title);
         return TITLE.getText().toString();

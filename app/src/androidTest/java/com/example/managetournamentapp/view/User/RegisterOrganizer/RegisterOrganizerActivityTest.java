@@ -31,13 +31,14 @@ public class RegisterOrganizerActivityTest {
 
     @Before
     public void setup(){
+
         activityObject = new RegisterOrganizerActivityObject();
     }
 
 
     @Test
     public void basicFill(){
-        onView(withId(R.id.saveOrganizerBtn)).check(matches( withText("SAVE")));
+//        onView(withId(R.id.saveOrganizerBtn)).check(matches( withText("SAVE")));
 
         activityObject
                 .fillField("username","user123")
@@ -56,7 +57,5 @@ public class RegisterOrganizerActivityTest {
 
         intended(hasComponent(OrganizerPageActivity.class.getName()));
 
-
     }
-
 }

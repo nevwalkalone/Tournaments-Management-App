@@ -21,8 +21,6 @@ public interface RegisterOrganizerView {
 
     String getBirthDate();
 
-    Credentials getCredentials();
-
     String getOrganizerTitle();
 
     void setUsername(String username);
@@ -38,7 +36,6 @@ public interface RegisterOrganizerView {
     void setEmail(String email);
 
     void setBirthdate(String birthdate);
-
 
     void setTitle(String title);
 
