@@ -9,6 +9,7 @@ import com.example.managetournamentapp.domain.Team;
 import com.example.managetournamentapp.domain.Tournament;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class GroupRankingsPresenter {
     private GroupRankingsView view;
@@ -27,8 +28,8 @@ public class GroupRankingsPresenter {
 
         Group group = tournament.getRounds().get(0).getGroups().get(specificGroup);
         group.refreshRankings();
-        Log.wtf("rankk", group.getRankings().toString());
-        results.addAll( group.getRankings().keySet());
+        ArrayList<Team> reversed = new ArrayList<>( group.getRankings().keySet());
+        results = new ArrayList<>(Arrays.asList( reversed.get(3),reversed.get(2),reversed.get(1),reversed.get(0) ) );
     }
 
     public void setTournamentDAO(TournamentDAO tournamentDAO) {
