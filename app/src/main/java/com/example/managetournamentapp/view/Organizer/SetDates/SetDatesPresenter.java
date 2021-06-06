@@ -51,7 +51,6 @@ public class SetDatesPresenter {
     public void onSaveTournament() {
 
         ArrayList<String> datesReceived = view.getDates();
-        Log.wtf("getting edittext", String.valueOf(datesReceived.size()));
 
         if (teamsNumber == 8) {
             if (datesReceived.size() != 6) {
@@ -102,10 +101,10 @@ public class SetDatesPresenter {
 
     }
 
-    private void initEmptyTeams(Tournament tournament){
-        for (Round round : tournament.getRounds()){
+    private void initEmptyTeams(Tournament tournament) {
+        for (Round round : tournament.getRounds()) {
             ArrayList<Team> emptyTeams = new ArrayList<>();
-            for (int i=0;i<round.getTeamsNumber();i++)
+            for (int i = 0; i < round.getTeamsNumber(); i++)
                 emptyTeams.add(new Team());
             round.setup(emptyTeams);
         }
