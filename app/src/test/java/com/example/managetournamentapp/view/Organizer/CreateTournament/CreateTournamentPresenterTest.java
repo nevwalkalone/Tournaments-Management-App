@@ -64,9 +64,11 @@ public class CreateTournamentPresenterTest {
         presenter.showPreviousInfo(title);
         view.setTournamentTitle("TOURNOUA2");
         presenter.onSaveTournament();
-//title does not change cus there are active participations
+
+        //title does not change because there are active participations.
+
         String newName = new TournamentDAOMemory().find("TOURNOUA1").getTitle();
-        Assert.assertEquals(newName, "TOURNOUA1");
+        Assert.assertEquals("TOURNOUA1", newName);
     }
 
 

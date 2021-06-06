@@ -35,22 +35,30 @@ public abstract class Initializer {
         ArrayList<Player> players = new ArrayList<>();
 
         //create 30 players
-        for ( int i=0;i<30;i++ ){
-            Player current = new Player("tomtom", "jerry", "Athens", "6900000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("tommy"+i, "12345"));
+        for (int i = 0; i < 30; i++) {
+            Player current = new Player("tomtom", "jerry", "Athens", "6900000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("tommy" + i, "12345"));
             current.addSportInterested(new Sport("Basketball3v3"));
             players.add(current);
             playerDAO.save(current);
         }
+        Player testPlayer = new Player("gioza", "zagio", "Athens", "6900000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("gioza", "12345"));
+        testPlayer.addSportInterested(new Sport("Basketball3v3"));
+        players.add(testPlayer);
+        playerDAO.save(testPlayer);
 
         //create 8 teams
         int j = 0;
-        for ( int i=0;i<22;i+=3 ){
-            Team current = new Team("Celtic"+j, (new Sport("Basketball3v3")), AgeDivision.K100, players.get(i), "green");
-            current.addPlayer(players.get(i+1));
-            current.addPlayer(players.get(i+2));
+        for (int i = 0; i < 22; i += 3) {
+            Team current = new Team("Celtic" + j, (new Sport("Basketball3v3")), AgeDivision.K100, players.get(i), "green");
+            current.addPlayer(players.get(i + 1));
+            current.addPlayer(players.get(i + 2));
             teamDAO.save(current);
             j++;
         }
+        Team testTeam = new Team("Celtic" + 10, (new Sport("Basketball3v3")), AgeDivision.K100, players.get(0), "green");
+        testTeam.addPlayer(players.get(1));
+        testTeam.addPlayer(players.get(2));
+        teamDAO.save(testTeam);
 
         ArrayList<LocalDate> dates = new ArrayList<>();
         for (int i = 1; i < 64; i++) {
@@ -63,11 +71,15 @@ public abstract class Initializer {
         organizerDAO.findByTitle("ESKA").addTournament(tour1);
 
         //add teams to tournament
-        for ( int i=0;i<8;i++ ){
-            Team current = teamDAO.find("Celtic"+i);
+        for (int i = 0; i < 8; i++) {
+            Team current = teamDAO.find("Celtic" + i);
             Participation part = new Participation(tour1, current);
             current.addParticipation(part);
         }
+
+        //Invite initialize
+        Invitation invitation = new Invitation(testTeam);
+        playerDAO.find("gioza").addInvite(invitation);
     }
 
     public abstract GameDAO getGameDAO();

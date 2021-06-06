@@ -5,4 +5,5 @@ public interface JoinedTeamsView {
     void startAddTeam();
 
     void changesOfAccess();
+
 }

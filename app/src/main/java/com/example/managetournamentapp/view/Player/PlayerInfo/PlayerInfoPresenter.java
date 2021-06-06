@@ -1,5 +1,6 @@
 package com.example.managetournamentapp.view.Player.PlayerInfo;
 
+import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.dao.LoggedInUser;
 import com.example.managetournamentapp.dao.PlayerDAO;
 import com.example.managetournamentapp.domain.Player;
@@ -13,13 +14,14 @@ public class PlayerInfoPresenter {
     private PlayerDAO playerDAO;
     private LoggedInUser loggedInUser;
 
-    public PlayerInfoPresenter(){}
+    public PlayerInfoPresenter() {
+    }
 
-    public void findPlayerInfo(String playerUsername){
-        if (playerUsername==null)
+    public void findPlayerInfo(String playerUsername) {
+        if (playerUsername == null)
             return;
         player = playerDAO.find(playerUsername);
-        if( player == null )
+        if (player == null)
             return;
 
         view.setUsername(player.getCredentials().getUsername());
@@ -29,29 +31,28 @@ public class PlayerInfoPresenter {
         view.setPhone(player.getPhoneNumber());
         view.setEmail(player.getEmail());
         view.setLocation(player.getLocation());
-        view.setBirthDate(player.getBirthDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")).replace("-","/") );
+        view.setBirthDate(player.getBirthDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")).replace("-", "/"));
     }
 
-    public void findAccess(){
-        if ( loggedInUser.getUser() != null )
-            if (loggedInUser.getUser() instanceof  Player)
-                if ( ((Player)loggedInUser.getUser()).equals(player) )
+    public void findAccess() {
+        if (loggedInUser.getUser() != null)
+            if (loggedInUser.getUser() instanceof Player)
+                if (((Player) loggedInUser.getUser()).equals(player))
                     return;
         view.changesOfAccess();
     }
 
-    public void onEditPlayer(){
+    public void onEditPlayer() {
         view.startEditPlayer();
     }
 
-    public void onDeletePlayer(){
-        if (player.getTeamsJoined().size()>0){
+    public void onDeletePlayer() {
+        if (player.getTeamsJoined().size() > 0) {
             view.showCantDelete();
             return;
         }
-        playerDAO.delete(player);
-        (new MemoryLoggedInUser()).clear();
-        view.startDeletePlayer();
+        displayPopUp(R.layout.player_delete_popup, "Do you really want to delete your account?", R.id.no_delete, R.id.yes_delete);
+
     }
 
     public void setPlayerDAO(PlayerDAO playerDAO) {
@@ -66,16 +67,23 @@ public class PlayerInfoPresenter {
         this.view = view;
     }
 
-    public void clearView(){
+    public void clearView() {
         this.view = null;
     }
 
-    public void onNoDeletePlayer(){
-
+    public void onNoDeletePlayer() {
+        view.dismissPopUp();
     }
 
-    public void onYesDeletePlayer(){
+    public void onYesDeletePlayer() {
+        playerDAO.delete(player);
+        (new MemoryLoggedInUser()).clear();
+        view.dismissPopUp();
+        view.startDeletePlayer();
+    }
 
+    public void displayPopUp(int layout, String msg, int btn1, int btn2) {
+        view.displayPopUp(layout, msg, btn1, btn2);
     }
 
 }

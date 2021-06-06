@@ -48,7 +48,8 @@ public class CreateTeamPresenter {
 
         if (name.length() < 5 || name.length() > 20 || !validateName(name)) {
             view.showPopUp(view, "Name must be at least 5 chars and no longer than 20 chars!");
-        } else if (colors.length() < 3 || colors.length() > 20 || !validateName(colors)) {
+        }
+        else if (colors.length() < 3 || colors.length() > 20 || !validateName(colors)) {
             view.showPopUp(view, "Color must be at least 3 chars and no longer than 20 chars!");
         } else {
             // IF TEAM IS NEW!

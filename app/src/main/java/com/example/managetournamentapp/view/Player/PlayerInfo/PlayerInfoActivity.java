@@ -10,6 +10,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
+
 import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.view.HomePage.HomePageActivity;
 import com.example.managetournamentapp.view.User.RegisterPlayer.RegisterPlayerActivity;
@@ -22,6 +23,7 @@ public class PlayerInfoActivity extends AppCompatActivity implements PlayerInfoV
     Button btnEditPlayer;
     Button btnDeletePlayer;
     String playerUsername;
+    AlertDialog POPUP_DELETION;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +54,7 @@ public class PlayerInfoActivity extends AppCompatActivity implements PlayerInfoV
 //        startActivity(intent);
 //    }
 
-    @Override //TODO AlertDialog
+    @Override
     public AlertDialog showPopUp(int layoutId, String msg, int btn1, int btn2) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         View customLayout = getLayoutInflater().inflate(layoutId, null);
@@ -69,74 +71,86 @@ public class PlayerInfoActivity extends AppCompatActivity implements PlayerInfoV
 
         textMsg.setText(msg);
 
-        firstButton.setOnClickListener(v->viewModel.getPresenter().onNoDeletePlayer());
-        secondButton.setOnClickListener(v->viewModel.getPresenter().onYesDeletePlayer());
+        firstButton.setOnClickListener(v -> viewModel.getPresenter().onNoDeletePlayer());
+        secondButton.setOnClickListener(v -> viewModel.getPresenter().onYesDeletePlayer());
         return dialog;
     }
 
     @Override
-    public void setUsername(String username){
-        ((TextView)findViewById(R.id.text_username)).setText(username);
+    public void setUsername(String username) {
+        ((TextView) findViewById(R.id.text_username)).setText(username);
     }
 
     @Override
-    public void setPassword(String password){
-        ((TextView)findViewById(R.id.text_password)).setText(password);
+    public void setPassword(String password) {
+        ((TextView) findViewById(R.id.text_password)).setText(password);
     }
 
     @Override
-    public void setName(String name){
-        ((TextView)findViewById(R.id.text_name)).setText(name);
+    public void setName(String name) {
+        ((TextView) findViewById(R.id.text_name)).setText(name);
     }
 
     @Override
-    public void setSurname(String surname){
-        ((TextView)findViewById(R.id.text_surname)).setText(surname);
+    public void setSurname(String surname) {
+        ((TextView) findViewById(R.id.text_surname)).setText(surname);
     }
 
     @Override
-    public void setPhone(String phone){
-        ((TextView)findViewById(R.id.text_phone)).setText(phone);
+    public void setPhone(String phone) {
+        ((TextView) findViewById(R.id.text_phone)).setText(phone);
     }
 
     @Override
-    public void setEmail(String email){
-        ((TextView)findViewById(R.id.text_email)).setText(email);
+    public void setEmail(String email) {
+        ((TextView) findViewById(R.id.text_email)).setText(email);
     }
 
     @Override
-    public void setLocation(String location){
-        ((TextView)findViewById(R.id.text_location)).setText(location);
+    public void setLocation(String location) {
+        ((TextView) findViewById(R.id.text_location)).setText(location);
     }
 
     @Override
-    public void setBirthDate(String date){
-        ((TextView)findViewById(R.id.text_birth_date)).setText(date);
+    public void setBirthDate(String date) {
+        ((TextView) findViewById(R.id.text_birth_date)).setText(date);
     }
 
     @Override
-    public void startEditPlayer(){
+    public void startEditPlayer() {
         Intent intent = new Intent(PlayerInfoActivity.this, RegisterPlayerActivity.class);
-        intent.putExtra(PLAYER_USERNAME_EXTRA , playerUsername);
+        intent.putExtra(PLAYER_USERNAME_EXTRA, playerUsername);
         startActivity(intent);
     }
 
     @Override
-    public void startDeletePlayer(){
-        Toast.makeText(this,"USER HAS BEEN DELETED. BACK TO HOME PAGE.", Toast.LENGTH_SHORT).show();
+    public void startDeletePlayer() {
+        Toast.makeText(this, "USER HAS BEEN DELETED. BACK TO HOME PAGE.", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(PlayerInfoActivity.this, HomePageActivity.class);
         startActivity(intent);
     }
 
     @Override
     public void showCantDelete() {
-        Toast.makeText(this,"YOU CAN'T DELETE YOUR ACCOUNT. REASON: PARTICIPATING IN A TEAM", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "YOU CAN'T DELETE YOUR ACCOUNT. REASON: PARTICIPATING IN A TEAM", Toast.LENGTH_SHORT).show();
     }
 
     @Override
-    public void changesOfAccess(){
+    public void changesOfAccess() {
         btnEditPlayer.setVisibility(View.GONE);
         btnDeletePlayer.setVisibility(View.GONE);
         (findViewById(R.id.password_row)).setVisibility(View.GONE);
+    }
+
+    @Override
+    public void displayPopUp(int layout, String msg, int btn1, int btn2) {
+        POPUP_DELETION = showPopUp(layout, msg, btn1, btn2);
+        POPUP_DELETION.show();
+    }
+
+    @Override
+    public void dismissPopUp() {
+        POPUP_DELETION.dismiss();
+        POPUP_DELETION = null;
     }
 }

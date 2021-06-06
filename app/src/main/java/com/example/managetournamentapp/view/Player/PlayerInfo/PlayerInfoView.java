@@ -30,4 +30,8 @@ public interface PlayerInfoView {
 
     void changesOfAccess();
 
+    void displayPopUp(int layout, String msg, int btn1, int btn2);
+
+    void dismissPopUp();
+
 }
