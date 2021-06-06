@@ -46,6 +46,7 @@ public class Group {
     }
 
     public void addTeams(ArrayList<Team> teams) {
+        rankings = new HashMap<>();
         for (Team team: teams){
             addTeam(team);
         }
