@@ -1,8 +1,8 @@
 package com.example.managetournamentapp.view.User.Login;
 
-public class LoginViewStub implements com.example.managetournamentapp.view.User.Login.UserBrowsingView {
-    String username="tommy0";
-    String password="12345";
+public class LoginViewStub implements LoginView {
+    String username = "tommy0";
+    String password = "12345";
 
     @Override
     public String getUsername() {
@@ -15,7 +15,7 @@ public class LoginViewStub implements com.example.managetournamentapp.view.User.
     }
 
     @Override
-    public void showPopUp(com.example.managetournamentapp.view.User.Login.UserBrowsingView view, String msg) {
+    public void showPopUp(LoginView view, String msg) {
 
     }
 

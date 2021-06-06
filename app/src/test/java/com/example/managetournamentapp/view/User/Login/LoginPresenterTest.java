@@ -11,17 +11,17 @@ import org.junit.Test;
 
 public class LoginPresenterTest {
 
-    private com.example.managetournamentapp.view.User.Login.UserBrowsingPresenter presenter;
-    private com.example.managetournamentapp.view.User.Login.UserBrowsingView view;
+    private LoginPresenter presenter;
+    private LoginView view;
 
     @Before
-    public void setup(){
+    public void setup() {
         new MemoryInitializer().prepareData();
         view = new LoginViewStub();
-        presenter = new com.example.managetournamentapp.view.User.Login.UserBrowsingPresenter();
-        presenter.setOrganizerDAO( new OrganizerDAOMemory());
+        presenter = new LoginPresenter();
+        presenter.setOrganizerDAO(new OrganizerDAOMemory());
         presenter.setPlayerDAO(new PlayerDAOMemory());
-        presenter.setLoggedInUser( new MemoryLoggedInUser() );
+        presenter.setLoggedInUser(new MemoryLoggedInUser());
 
         presenter.setView(view);
     }
@@ -34,7 +34,7 @@ public class LoginPresenterTest {
 
     @Test
     public void loginFail() {
-        new PlayerDAOMemory().delete(   new PlayerDAOMemory().find("tommy0")   );
+        new PlayerDAOMemory().delete(new PlayerDAOMemory().find("tommy0"));
         presenter.validateCredentials();
         Assert.assertEquals(presenter.getLoggedInUser().getUser(), null);
     }
