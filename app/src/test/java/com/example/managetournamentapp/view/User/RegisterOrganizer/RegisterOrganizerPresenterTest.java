@@ -42,6 +42,19 @@ public class RegisterOrganizerPresenterTest {
         int organizers2 = new OrganizerDAOMemory().findAll().size();
         Assert.assertEquals(organizers1+1,organizers2);
 
+        Assert.assertEquals(presenter.getLoggedInUser().getUser(), new OrganizerDAOMemory().findByTitle("veryquick"));
+    }
+
+    @Test
+    public void changeExisting(){
+
+        String title = "ESKA";
+        presenter.showPreviousInfo(title);
+        view.setName("newNameNikos");
+        presenter.handleOrganizerData();
+
+        String newName = new OrganizerDAOMemory().findByTitle("ESKA").getName();
+        Assert.assertEquals(newName,"newNameNikos");
     }
 
 

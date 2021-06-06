@@ -1,8 +1,15 @@
-package com.example.managetournamentapp.view.User.RegisterOrganizer;
+package com.example.managetournamentapp.view.User.RegisterPlayer;
 
+import com.example.managetournamentapp.domain.AgeDivision;
+import com.example.managetournamentapp.domain.Credentials;
+import com.example.managetournamentapp.domain.Sport;
 
-public class RegisterOrganizerViewStub implements RegisterOrganizerView{
-    String username, password, name , surname , phoneNumber, email, birthdate, organizerTitle;
+import java.util.ArrayList;
+
+public class RegisterPlayerViewStub implements RegisterPlayerView{
+    String username, password, name , surname, location , phoneNumber, email, birthdate;
+    AgeDivision ageDivision;
+    ArrayList<Sport> sportsInterest;
 
     @Override
     public String getUsername() {
@@ -40,8 +47,13 @@ public class RegisterOrganizerViewStub implements RegisterOrganizerView{
     }
 
     @Override
-    public String getOrganizerTitle() {
-        return organizerTitle;
+    public String getLocation() {
+        return location;
+    }
+
+    @Override
+    public AgeDivision getAgeDivision() {
+        return ageDivision;
     }
 
     @Override
@@ -80,17 +92,27 @@ public class RegisterOrganizerViewStub implements RegisterOrganizerView{
     }
 
     @Override
-    public void setTitle(String title) {
-        this.organizerTitle = title;
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     @Override
-    public void showPopUp(RegisterOrganizerView view, String msg) {
+    public ArrayList<Sport> getSportsInterest() {
+        return sportsInterest;
+    }
+
+    @Override
+    public void setSportsInterest(ArrayList<Sport> sports) {
+        this.sportsInterest = sports;
+    }
+
+    @Override
+    public void showPopUp(RegisterPlayerView view, String msg) {
 
     }
 
     @Override
-    public void startOrganizerPage() {
+    public void startPlayerPage() {
 
     }
 }

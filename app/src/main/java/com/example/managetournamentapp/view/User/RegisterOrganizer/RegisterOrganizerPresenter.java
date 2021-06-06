@@ -139,6 +139,10 @@ public class RegisterOrganizerPresenter {
         return true;
     }
 
+    public LoggedInUser getLoggedInUser() {
+        return loggedInUser;
+    }
+
     public void setLoggedInUser(LoggedInUser loggedInUser) {
         this.loggedInUser = loggedInUser;
     }

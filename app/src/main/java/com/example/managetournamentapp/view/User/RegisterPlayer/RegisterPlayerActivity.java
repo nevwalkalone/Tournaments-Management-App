@@ -144,14 +144,6 @@ public class RegisterPlayerActivity extends AppCompatActivity implements Registe
     }
 
     @Override
-    public Credentials getCredentials() {
-
-        EditText USERNAME = (EditText) findViewById(R.id.username);
-        EditText PASSWORD = (EditText) findViewById(R.id.password);
-        return new Credentials(USERNAME.getText().toString(), PASSWORD.getText().toString());
-    }
-
-    @Override
     public String getLocation() {
         EditText LOCATION = (EditText) findViewById(R.id.location);
         return LOCATION.getText().toString();
@@ -203,12 +195,6 @@ public class RegisterPlayerActivity extends AppCompatActivity implements Registe
     public void setBirthdate(String birthdate) {
         EditText BIRTHDATE = (EditText) findViewById(R.id.birthdate);
         BIRTHDATE.setText(birthdate);
-    }
-
-    @Override
-    public void setCredentials(Credentials credentials) {
-        //TODO
-
     }
 
     @Override

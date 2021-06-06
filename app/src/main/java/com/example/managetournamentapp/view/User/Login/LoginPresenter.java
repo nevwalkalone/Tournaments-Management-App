@@ -16,9 +16,7 @@ public class LoginPresenter {
     private OrganizerDAO organizerDAO;
     private LoggedInUser loggedInUser;
 
-    public LoginPresenter() {
-
-    }
+    public LoginPresenter() { }
 
     /**
      * This method check in both PlayerDAO and OrganizerDAO via credentials.
@@ -61,6 +59,9 @@ public class LoginPresenter {
         this.loggedInUser = loggedInUser;
     }
 
+    public LoggedInUser getLoggedInUser(){
+        return loggedInUser;
+    }
 
     /**
      *  Check for input validation and existence of Credentials in DAOs.

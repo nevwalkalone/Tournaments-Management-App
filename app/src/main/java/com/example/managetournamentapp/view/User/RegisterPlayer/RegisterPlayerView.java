@@ -1,12 +1,8 @@
 package com.example.managetournamentapp.view.User.RegisterPlayer;
 
-import android.view.View;
-
 import com.example.managetournamentapp.domain.AgeDivision;
-import com.example.managetournamentapp.domain.Credentials;
-import com.example.managetournamentapp.domain.Player;
 import com.example.managetournamentapp.domain.Sport;
-import com.example.managetournamentapp.domain.TournamentType;
+
 
 import java.util.ArrayList;
 
@@ -26,8 +22,6 @@ public interface RegisterPlayerView {
 
     String getBirthDate();
 
-    Credentials getCredentials();
-
     String getLocation();
 
     AgeDivision getAgeDivision();
@@ -46,8 +40,6 @@ public interface RegisterPlayerView {
 
     void setBirthdate(String birthdate);
 
-    void setCredentials(Credentials credentials);
-
     void setLocation(String location);
 
     ArrayList<Sport> getSportsInterest();
@@ -57,7 +49,6 @@ public interface RegisterPlayerView {
     void showPopUp(RegisterPlayerView view, String msg);
 
     void startPlayerPage();
-
 
 
 }

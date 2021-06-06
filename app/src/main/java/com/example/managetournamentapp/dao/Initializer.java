@@ -31,34 +31,26 @@ public abstract class Initializer {
         TeamDAO teamDAO = getTeamDAO();
         TournamentDAO tournamentDAO = getTournamentDAO();
 
-        playerDAO.save(new Player("tomtomtom", "jerry", "Athens", "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("tom12", "12345")));
-        playerDAO.save(new Player("tom2", "jerry", "Athens", "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("tom23", "12345")));
-        playerDAO.save(new Player("tom3", "jerry", "Athens", "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("tom34", "12345")));
-        playerDAO.save(new Player("nikolakis", "jerry", "Athens", "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("nikos12", "12345")));
-        playerDAO.save(new Player("tasoulis", "jerry", "Athens", "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("tasos13", "12345")));
-        playerDAO.save(new Player("giorgakis", "jerry", "Athens", "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("giorgos14", "12345")));
-        playerDAO.save(new Player("johny", "boy", "Athens", "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("johny14", "12345")));
-        playerDAO.save(new Player("johny", "boy15", "Athens", "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("johny15", "12345")));
-        playerDAO.save(new Player("johny", "boy16", "Athens", "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("johny16", "12345")));
-        playerDAO.save(new Player("johny", "boy17", "Athens", "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("johny17", "12345")));
-        playerDAO.save(new Player("johny", "boy18", "Athens", "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("johny18", "12345")));
-        playerDAO.save(new Player("johny", "boy19", "Athens", "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("johny19", "12345")));
-        playerDAO.save(new Player("johny", "boy20", "Athens", "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("johny20", "12345")));
-        playerDAO.save(new Player("johny", "boy21", "Athens", "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("johny21", "12345")));
-        playerDAO.save(new Player("johny", "boy22", "Athens", "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("johny22", "12345")));
-        playerDAO.save(new Player("johny", "boy23", "Athens", "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("johny23", "12345")));
-        playerDAO.save(new Player("johny", "boy24", "Athens", "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("johny24", "12345")));
-        playerDAO.save(new Player("johny", "boy25", "Athens", "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("johny25", "12345")));
-        playerDAO.save(new Player("johny", "boy26", "Athens", "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("johny26", "12345")));
-        playerDAO.save(new Player("johny", "boy27", "Athens", "69000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("johny27", "12345")));
-
-
-
-
-
-
-
-
+        playerDAO.save(new Player("tomtomtom", "jerry", "Athens", "6900000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("tom12", "12345")));
+        playerDAO.save(new Player("tom2", "jerry", "Athens", "6900000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("tom23", "12345")));
+        playerDAO.save(new Player("tom3", "jerry", "Athens", "6900000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("tom34", "12345")));
+        playerDAO.save(new Player("nikolakis", "jerry", "Athens", "6900000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("nikos12", "12345")));
+        playerDAO.save(new Player("tasoulis", "jerry", "Athens", "6900000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("tasos13", "12345")));
+        playerDAO.save(new Player("giorgakis", "jerry", "Athens", "6900000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("giorgos14", "12345")));
+        playerDAO.save(new Player("johny", "boy14", "Athens", "6900000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("johny14", "12345")));
+        playerDAO.save(new Player("johny", "boy15", "Athens", "6900000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("johny15", "12345")));
+        playerDAO.save(new Player("johny", "boy16", "Athens", "6900000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("johny16", "12345")));
+        playerDAO.save(new Player("johny", "boy17", "Athens", "6900000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("johny17", "12345")));
+        playerDAO.save(new Player("johny", "boy18", "Athens", "6900000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("johny18", "12345")));
+        playerDAO.save(new Player("johny", "boy19", "Athens", "6900000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("johny19", "12345")));
+        playerDAO.save(new Player("johny", "boy20", "Athens", "6900000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("johny20", "12345")));
+        playerDAO.save(new Player("johny", "boy21", "Athens", "6900000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("johny21", "12345")));
+        playerDAO.save(new Player("johny", "boy22", "Athens", "6900000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("johny22", "12345")));
+        playerDAO.save(new Player("johny", "boy23", "Athens", "6900000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("johny23", "12345")));
+        playerDAO.save(new Player("johny", "boy24", "Athens", "6900000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("johny24", "12345")));
+        playerDAO.save(new Player("johny", "boy25", "Athens", "6900000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("johny25", "12345")));
+        playerDAO.save(new Player("johny", "boy26", "Athens", "6900000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("johny26", "12345")));
+        playerDAO.save(new Player("johny", "boy27", "Athens", "6900000000", "aa@aa.aa", LocalDate.parse("2000-01-01"), new Credentials("johny27", "12345")));
 
 
         playerDAO.find("tom12").addSportInterested(new Sport("Basketball3v3"));
@@ -82,12 +74,12 @@ public abstract class Initializer {
         playerDAO.find("johny26").addSportInterested(new Sport("Basketball3v3"));
         playerDAO.find("johny27").addSportInterested(new Sport("Basketball3v3"));
 
+
         ArrayList<LocalDate> dates = new ArrayList<>();
         for (int i = 1; i < 64; i++) {
             dates.add(LocalDate.now());
         }
-
-        organizerDAO.save(new Organizer("Nikos", "Nikopoulos", "69xxxxxxxx", "nikosnik@gmail.com", LocalDate.parse("2000-01-01"), new Credentials("nikos", "12345"), "ESKA"));
+        organizerDAO.save(new Organizer("Nikos", "Nikopoulos", "6900000000", "nikosnik@gmail.com", LocalDate.parse("2000-01-01"), new Credentials("nikos", "12345"), "ESKA"));
         Tournament tour1 = new Tournament("TOURNOUA1", LocalDate.parse("2030-05-10"), LocalDate.parse("2030-05-29"), "ATHENS", (new Sport("Basketball3v3")),
                 32, AgeDivision.K100, dates);
         tournamentDAO.save(tour1);
@@ -119,10 +111,6 @@ public abstract class Initializer {
         //TODO INVITES
         playerDAO.find("tom12").addInvite(new Invitation(teamDAO.find("Bulls")));
 
-        //TODO CHECK ADD PARTICIPATION
-        //adding participation to tournament
-//        Tournament temp = tournamentDAO.find(tour1.getTitle());
-//        temp.friendGetParticipations().add(part);
     }
 
     public abstract GameDAO getGameDAO();
