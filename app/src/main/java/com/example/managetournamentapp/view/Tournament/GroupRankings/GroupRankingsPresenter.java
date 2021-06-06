@@ -1,6 +1,8 @@
 package com.example.managetournamentapp.view.Tournament.GroupRankings;
 
 
+import android.util.Log;
+
 import com.example.managetournamentapp.dao.TournamentDAO;
 import com.example.managetournamentapp.domain.Group;
 import com.example.managetournamentapp.domain.Team;
@@ -25,6 +27,7 @@ public class GroupRankingsPresenter {
 
         Group group = tournament.getRounds().get(0).getGroups().get(specificGroup);
         group.refreshRankings();
+        Log.wtf("rankk", group.getRankings().toString());
         results.addAll( group.getRankings().keySet());
     }
 

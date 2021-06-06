@@ -1,6 +1,5 @@
 package com.example.managetournamentapp.domain;
 
-import android.util.Log;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -97,6 +96,7 @@ public class Team {
         if (canParticipate(participation)) {
             participations.add(participation);
             participation.getTournament().friendGetParticipations().add(participation);
+            participation.getTournament().checkIfStarts();
         }
     }
 

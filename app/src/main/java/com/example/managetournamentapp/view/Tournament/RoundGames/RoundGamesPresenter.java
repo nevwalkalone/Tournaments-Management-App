@@ -19,6 +19,9 @@ public class RoundGamesPresenter {
     private LoggedInUser loggedInUser;
     private ArrayList<Game> results = new ArrayList<>();
     private boolean hasAccess;
+    private Round currentRound;
+    private int currentRoundIndex;
+
 
     public RoundGamesPresenter(){}
 
@@ -31,27 +34,32 @@ public class RoundGamesPresenter {
 
         findAccess();
         results.clear();
-        for (Round round : tournament.getRounds()){
-            if (round.getTeamsNumber()==roundTeamsNumber){
-                ArrayList<Group> groupsWanted = new ArrayList<>();
-                if (specificGroup==-1)
-                    groupsWanted.addAll( round.getGroups());
-                else
-                    groupsWanted.add(round.getGroups().get(specificGroup)) ;
 
-                for(Group group : groupsWanted){
-                    results.addAll(group.getGames());
-                }
-                return;
+        currentRoundIndex=0;
+        for (Round round : tournament.getRounds()) {
+            if (round.getTeamsNumber()==roundTeamsNumber){
+                currentRound = round;
+                break;
             }
+            currentRoundIndex++;
         }
+
+        ArrayList<Group> groupsWanted = new ArrayList<>();
+        if (specificGroup==-1)
+            groupsWanted.addAll( currentRound.getGroups());
+        else
+            groupsWanted.add(currentRound.getGroups().get(specificGroup)) ;
+
+        for(Group group : groupsWanted){
+            results.addAll(group.getGames());
+        }
+
+
     }
 
 
     public void onPressed(Game game){
-        //todo erase comments
-//        game.setTeamA(new TeamDAOMemory().find("Bulls"));
-//        game.setTeamB(new TeamDAOMemory().find("Bulls"));
+
         if ( hasAccess)
             if (game.isFinished())
                 view.showToast("THE SCORE HAS ALREADY BEEN SET");
@@ -68,7 +76,14 @@ public class RoundGamesPresenter {
         game.setScoreA( Integer.parseInt(scoreA) );
         game.setScoreB( Integer.parseInt(scoreB) );
         game.setFinished(true);
+        checkIfFinished();
         view.recreateView();
+    }
+
+    public void checkIfFinished(){
+        if (currentRound.allGamesFinished() && currentRoundIndex<tournament.getRounds().size()-1){
+            tournament.getRounds().get( currentRoundIndex+1 ).setup( currentRound.getRoundWinners() );
+        }
     }
 
     public void findAccess(){

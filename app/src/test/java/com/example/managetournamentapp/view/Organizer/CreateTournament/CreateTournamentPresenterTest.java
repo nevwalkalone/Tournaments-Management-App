@@ -60,14 +60,13 @@ public class CreateTournamentPresenterTest {
 
     @Test
     public void changeExisting() {
-
         String title = "TOURNOUA1";
         presenter.showPreviousInfo(title);
         view.setTournamentTitle("TOURNOUA2");
         presenter.onSaveTournament();
-
-        String newName = new TournamentDAOMemory().find("TOURNOUA2").getTitle();
-        Assert.assertEquals(newName, "TOURNOUA2");
+//title does not change cus there are active participations
+        String newName = new TournamentDAOMemory().find("TOURNOUA1").getTitle();
+        Assert.assertEquals(newName, "TOURNOUA1");
     }
 
 

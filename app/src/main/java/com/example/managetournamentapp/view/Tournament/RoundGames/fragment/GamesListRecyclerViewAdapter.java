@@ -39,18 +39,22 @@ public class GamesListRecyclerViewAdapter extends RecyclerView.Adapter<GamesList
     public void onBindViewHolder(ViewHolder holder, int position) {
         Game currentGame = mValues.get(position);
         holder.mItem = currentGame;
-
         if (currentGame.getTeamA().getName() != null) {
             holder.txtTeamA.setText(currentGame.getTeamA().getName());
             holder.txtTeamB.setText(currentGame.getTeamB().getName());
-            holder.scoreA.setText(String.valueOf(currentGame.getScoreA()));
-            holder.scoreB.setText(String.valueOf(currentGame.getScoreB()));
         } else {
             holder.txtTeamA.setText("To Be Announced");
             holder.txtTeamB.setText("To Be Announced");
+        }
+
+        if (currentGame.isFinished()){
+            holder.scoreA.setText(String.valueOf(currentGame.getScoreA()));
+            holder.scoreB.setText(String.valueOf(currentGame.getScoreB()));
+        }else{
             holder.scoreA.setText(" ");
             holder.scoreB.setText(" ");
         }
+
         holder.date.setText(currentGame.getDate().toString());
 
         holder.btnSelect.setOnClickListener(v -> {

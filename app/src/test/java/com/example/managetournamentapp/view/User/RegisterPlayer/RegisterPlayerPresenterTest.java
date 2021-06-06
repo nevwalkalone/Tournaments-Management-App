@@ -54,12 +54,12 @@ public class RegisterPlayerPresenterTest {
     @Test
     public void changeExisting(){
 
-        String userName = "tom12";
+        String userName = "tommy0";
         presenter.showPreviousInfo(userName);
         view.setName("newNameTom");
         presenter.handlePlayerData();
 
-        String newName = new PlayerDAOMemory().find("tom12").getName();
+        String newName = new PlayerDAOMemory().find("tommy0").getName();
         Assert.assertEquals(newName,"newNameTom");
     }
 

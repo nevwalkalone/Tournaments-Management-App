@@ -1,5 +1,7 @@
 package com.example.managetournamentapp.domain;
 
+import android.util.Log;
+
 import java.time.LocalDate;
 import java.util.*;
 public class Round {

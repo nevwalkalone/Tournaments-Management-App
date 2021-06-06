@@ -1,6 +1,7 @@
 package com.example.managetournamentapp.domain;
 
 
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -60,12 +61,26 @@ public class Tournament {
         participation.getTeam().addParticipation(participation);
     }
 
+    public void checkIfStarts(){
+        if ( isFull()) {
+            rounds.get(0).setup(findTeams());
+        }
+    }
+
     public void removeParticipation(Participation participation) {
         if (participation == null) {
             return;
         }
         participation.getTeam().removeParticipation(participation);
     }
+
+    public ArrayList<Team> findTeams(){
+        ArrayList<Team> teams = new ArrayList<>();
+        for (Participation p : participations)
+            teams.add(p.getTeam());
+        return teams;
+    }
+
 
     public ArrayList<Participation> getParticipations() {
         return new ArrayList<>(participations);

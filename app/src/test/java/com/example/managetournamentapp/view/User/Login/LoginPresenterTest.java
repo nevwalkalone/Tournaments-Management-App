@@ -34,12 +34,12 @@ public class LoginPresenterTest {
     @Test
     public void loginSuccess() {
         presenter.validateCredentials();
-        Assert.assertEquals(presenter.getLoggedInUser().getUser(), new PlayerDAOMemory().find("tom12"));
+        Assert.assertEquals(presenter.getLoggedInUser().getUser(), new PlayerDAOMemory().find("tommy0"));
     }
 
     @Test
     public void loginFail() {
-        new PlayerDAOMemory().delete(   new PlayerDAOMemory().find("tom12")   );
+        new PlayerDAOMemory().delete(   new PlayerDAOMemory().find("tommy0")   );
         presenter.validateCredentials();
         Assert.assertEquals(presenter.getLoggedInUser().getUser(), null);
     }

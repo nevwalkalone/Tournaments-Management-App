@@ -130,7 +130,7 @@ public class Group {
     }
 
     public Map<Team, Integer> getRankings() {
-        return new HashMap<>(rankings);
+        return sortByValue(rankings);
     }
 
     public ArrayList<Team> getTeams() {
@@ -180,7 +180,7 @@ public class Group {
         Collections.sort(list, new Comparator<Map.Entry<Team, Integer>>() {
             public int compare(Map.Entry<Team, Integer> o1,
                                Map.Entry<Team, Integer> o2) {
-                return (o1.getValue()).compareTo(o2.getValue());
+                return -(o1.getValue()).compareTo(o2.getValue());
             }
         });
 
