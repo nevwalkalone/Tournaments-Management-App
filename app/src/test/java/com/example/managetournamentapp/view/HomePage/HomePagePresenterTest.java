@@ -40,9 +40,4 @@ public class HomePagePresenterTest {
         presenter.onPlayerRegisterAction();
         presenter.onRegisterAction();
     }
-    @Test
-    public void testGetter() {
-        ArrayList<Tournament> tournaments = new TournamentDAOMemory().findAll();
-        Assert.assertTrue(tournaments==presenter.getResults());
-    }
 }

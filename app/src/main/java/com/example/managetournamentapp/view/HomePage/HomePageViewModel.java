@@ -11,7 +11,6 @@ public class HomePageViewModel extends ViewModel {
 
     public HomePageViewModel() {
         presenter = new HomePagePresenter();
-        presenter.setTournamentDAO(new TournamentDAOMemory());
     }
 
     public HomePagePresenter getPresenter() {

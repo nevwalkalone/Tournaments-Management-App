@@ -8,15 +8,8 @@ import java.util.ArrayList;
 public class HomePagePresenter {
 
     private HomePageView view;
-    private TournamentDAO tournamentDAO;
-    private ArrayList<Tournament> results = new ArrayList<>();
 
     public HomePagePresenter() {
-    }
-
-
-    public ArrayList<Tournament> getResults() {
-        return results;
     }
 
 
@@ -46,10 +39,6 @@ public class HomePagePresenter {
 
     public void setView(HomePageView view) {
         this.view = view;
-    }
-
-    public void setTournamentDAO(TournamentDAO tournamentDAO) {
-        this.tournamentDAO = tournamentDAO;
     }
 
     public void clearView() {
