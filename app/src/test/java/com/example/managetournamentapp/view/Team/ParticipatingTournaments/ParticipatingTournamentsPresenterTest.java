@@ -28,7 +28,6 @@ public class ParticipatingTournamentsPresenterTest {
         presenter.setLoggedInUser(new MemoryLoggedInUser());
         presenter.setTeamDAO(new TeamDAOMemory());
         presenter.setView(view);
-
     }
 
     @Test

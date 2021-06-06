@@ -57,6 +57,7 @@ public abstract class Initializer {
             teamDAO.save(current);
             j++;
         }
+
         Team testTeam = new Team("Celtic" + 10, (new Sport("Basketball3v3")), AgeDivision.K100, players.get(0), "green");
         testTeam.addPlayer(players.get(1));
         testTeam.addPlayer(players.get(2));
@@ -68,6 +69,7 @@ public abstract class Initializer {
         }
         organizerDAO.save(new Organizer("Takis", "Takis", "6900000000", "takistak@gmail.com", LocalDate.parse("2000-01-01"), new Credentials("takis", "12345"), "ESKANA"));
         organizerDAO.save(new Organizer("Nikos", "Nikopoulos", "6900000000", "nikosnik@gmail.com", LocalDate.parse("2000-01-01"), new Credentials("nikos", "12345"), "ESKA"));
+
         Tournament tour1 = new Tournament("TOURNOUA1", LocalDate.parse("2030-05-10"), LocalDate.parse("2030-05-29"), "ATHENS", (new Sport("Basketball3v3")), 8, AgeDivision.K100, dates);
         tournamentDAO.save(tour1);
         organizerDAO.findByTitle("ESKA").addTournament(tour1);
@@ -78,6 +80,7 @@ public abstract class Initializer {
             round.setup(emptyTeams);
         }
 
+
         Tournament tour2 = new Tournament("NBAGR", LocalDate.parse("2050-05-10"), LocalDate.parse("2050-05-29"), "ATHENS", (new Sport("Basketball3v3")), 8, AgeDivision.K100, dates);
         tournamentDAO.save(tour2);
         organizerDAO.findByTitle("ESKA").addTournament(tour2);
@@ -87,6 +90,7 @@ public abstract class Initializer {
                 emptyTeams.add(new Team());
             round.setup(emptyTeams);
         }
+
 
         //add teams to tournament
         for ( int i=0;i<8;i++ ){
