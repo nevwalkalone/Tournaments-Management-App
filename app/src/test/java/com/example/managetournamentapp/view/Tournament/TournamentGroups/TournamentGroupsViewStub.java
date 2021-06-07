@@ -20,4 +20,9 @@ public class TournamentGroupsViewStub implements TournamentGroupsView{
     public void showPopup(int index) {
 
     }
+
+    @Override
+    public void backToHomePage(boolean flag, String string) {
+
+    }
 }

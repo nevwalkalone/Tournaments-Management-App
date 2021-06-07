@@ -13,4 +13,9 @@ public class GroupRankingsViewStub implements GroupRankingsView {
     public ArrayList<Team> getTeamsList() {
         return teams;
     }
+
+    @Override
+    public void backToHomePage(boolean flag, String string) {
+
+    }
 }

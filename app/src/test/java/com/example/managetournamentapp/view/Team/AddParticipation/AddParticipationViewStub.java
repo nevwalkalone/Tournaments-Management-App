@@ -20,4 +20,9 @@ public class AddParticipationViewStub implements  AddParticipationView{
     public void startPlayerPage(String userName) {
 
     }
+
+    @Override
+    public void backToHomePage(String string) {
+
+    }
 }

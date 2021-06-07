@@ -34,4 +34,9 @@ public class InvitePlayersViewStub implements InvitePlayersView{
     public void restartActivity() {
 
     }
+
+    @Override
+    public void backToHomePage(String string) {
+
+    }
 }
