@@ -6,6 +6,10 @@ public class Sport {
     private String name;
     private int minimumPlayers;
 
+    /**
+     * the constructor of a sport
+     * @param name the name(type) of the sport
+     */
     public Sport(String name) {
         boolean flag = checkSportName(name);
         if (flag) {
@@ -14,6 +18,11 @@ public class Sport {
         }
     }
 
+    /**
+     * check if the sport name given is included in supporteds sports
+     * @param name the name of the sport
+     * @return true if the name of the sport is valid
+     */
     public boolean checkSportName(String name) {
         for (TournamentType tt : TournamentType.values()) {
             if (tt.name().equals(name)) {
@@ -23,6 +32,11 @@ public class Sport {
         return false;
     }
 
+    /**
+     * set the minimum number of players that are needed
+     * for a game to take place
+     * @param name the name of the sport
+     */
     public void setMinPlayers(String name) {
         switch (name) {
             case "Volleyball3v3":
@@ -48,6 +62,7 @@ public class Sport {
 
     /**
      * Change sport selection
+     * @param name the name of the new sport
      */
     public void changeSetup(String name) {
 
@@ -60,22 +75,26 @@ public class Sport {
         }
     }
 
-    //NO SETTERS NEEDED
-
-
-    //GETTERS
-
+    /**
+     * find the name(type) of the sport
+     * @return the name of the sport
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * the minimum number of players for a game of this sport
+     * @return the minimum number of players
+     */
     public int getMinimumPlayers() {
         return minimumPlayers;
     }
 
 
     /**
-     * Used for printing purposes
+     * the string representation of the sport
+     * @return the basic info of the sport to string
      */
     @Override
     public String toString() {
@@ -86,8 +105,9 @@ public class Sport {
     }
 
     /**
-     * Checking if the fields between
-     * the two objects are equal
+     *check if two sports are equal
+     * @param other is the other sport
+     * @return if this sport is equal to the other sport
      */
     public boolean equals(Object other) {
 
@@ -101,7 +121,6 @@ public class Sport {
             return true;
         }
         Sport check = (Sport) other;
-
         if (!(name == null ? check.getName() == null : name.equals(check.getName()))) {
             return false;
         }

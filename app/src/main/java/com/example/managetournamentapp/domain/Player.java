@@ -356,7 +356,7 @@ public class Player extends User {
     /**
      *check if two players are equal
      * @param other the other players
-     * @return if this players is equal to the other players
+     * @return if this player is equal to the other players
      */
     public boolean equals(Object other) {
         if (other == null) {

@@ -12,6 +12,12 @@ public class Round {
     private ArrayList<LocalDate> dates;
     private ArrayList<Team> teams;
 
+    /**
+     * the full constructor of the round
+     * @param teamsNumber the number of teams in the round
+     * @param isKnockout true if the round is knockout (not a group stage)
+     * @param dates the arraylist of the dates for each game
+     */
     public Round(int teamsNumber, boolean isKnockout , ArrayList<LocalDate> dates) {
         this.teamsNumber = teamsNumber;
         this.isKnockout = isKnockout;
@@ -19,6 +25,10 @@ public class Round {
         initGroups();
     }
 
+    /**
+     * initialize the groups of the round,
+     * assign a list of game dates to each group
+     */
     public void initGroups(){
         teamsPerGroup = 4;
         if (isKnockout){
@@ -35,6 +45,10 @@ public class Round {
         }
     }
 
+    /**
+     *  assign the teams to each group
+     * @param teams the arraylist of the teams in this round
+     */
     public void setup(ArrayList<Team> teams){
         this.teams = teams;
         int firstIndex = 0;
@@ -46,6 +60,10 @@ public class Round {
         }
     }
 
+    /**
+     * find if all the games in this round are completed
+     * @return true of the round is finished
+     */
     public boolean allGamesFinished() {
         for (Group group : groups) {
             if (!group.allGamesFinished())
@@ -54,10 +72,20 @@ public class Round {
         return true;
     }
 
+    /**
+     * get the teams that participate in this round
+     * @return the arraylist of the teams in this round
+     */
     public ArrayList<Team> getTeams() {
         return teams;
     }
 
+    /**
+     * find which teams are promoted (winners of this round)
+     * there is 1 winner if the round is knockout, or else
+     * 2 winners if the round is a "group stage"
+     * @return the arraylist of the winners in this round
+     */
     public ArrayList<Team> getRoundWinners(){
         ArrayList<Team> winners = new ArrayList<>();
         if (!allGamesFinished()){
@@ -70,23 +98,48 @@ public class Round {
         return winners;
     }
 
+    /**
+     * get all the dates for the games of the round
+     * @return the date for each game of this round
+     */
     public ArrayList<LocalDate> getDates() {
         return new ArrayList<>(dates);
     }
 
+    /**
+     * get the groups of this round
+     * if this is a knockout round, each group consists
+     * of 2 teams, else each groups consists of 4 teams
+     * @return get the groups of this round
+     */
     public ArrayList<Group> getGroups() {
         return new ArrayList<>(groups);
     }
 
+    /**
+     *  find how many teams are playing in this round
+     * @return the number of teams that participate in this round
+     */
     public int getTeamsNumber() {
         return teamsNumber;
     }
 
+    /**
+     *find how many teams participate each group of this round
+     * if this is a knockout round, each group consists
+     * of 2 teams, else each groups consists of 4 teams
+     * @return the number of teams in a group
+     */
     public int getTeamsPerGroup() {
         return teamsPerGroup;
     }
 
 
+    /**
+     *check if two rounds are equal
+     * @param other is the other round
+     * @return if this round is equal to the other round
+     */
     public boolean equals(Object other) {
         if (this == other){
             return true;
@@ -101,6 +154,10 @@ public class Round {
         return false;
     }
 
+    /**
+     * the string representation of the round
+     * @return the basic info of the round to string
+     */
     @Override
     public String toString() {
         return "Round{" +

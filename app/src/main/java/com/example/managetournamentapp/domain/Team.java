@@ -14,9 +14,20 @@ public class Team {
     private ArrayList<Player> players = new ArrayList<>();
     private ArrayList<Participation> participations = new ArrayList<>();
 
+    /**
+     * default contructor of a team
+     */
     public Team() {
     }
 
+    /**
+     *the full constructor of the team
+     * @param name of the team
+     * @param sportType of the team
+     * @param ageDivision of the team
+     * @param captain of the team
+     * @param colors of the team
+     */
     public Team(String name, Sport sportType, AgeDivision ageDivision, Player captain, String colors) {
         this.name = name;
         this.sportType = sportType;
@@ -26,15 +37,26 @@ public class Team {
         addPlayer(captain);
     }
 
+    /**
+     * get the players that have joined this team
+     * @return a copy of arraylist of players in this team
+     */
     public ArrayList<Player> getPlayers() {
         return new ArrayList<>(players);
     }
 
+    /**
+     * get the players that have joined this team
+     * @return the arraylist of players in this team
+     */
     protected ArrayList<Player> friendGetPlayers(){
         return players;
     }
 
-    //checks are made on player class
+    /**
+     * add a new player in the team
+     * @param player the player that will be added
+     */
     public void addPlayer(Player player) {
         if (player == null) {
             return;
@@ -42,6 +64,10 @@ public class Team {
         player.addJoinedTeam(this);
     }
 
+    /**
+     * remove a player from the team
+     * @param player that will be removed
+     */
     public void removePlayer(Player player) {
         if (player == null) {
             return;
@@ -50,6 +76,10 @@ public class Team {
     }
 
 
+    /**
+     * find if the team has participations that are happening right now
+     * @return true if the team is currently participating in a tournament
+     */
     public boolean hasAnyActivePart() {
         //check if there is any running participation
         for (Participation participation : participations) {
@@ -57,11 +87,13 @@ public class Team {
                 return true;
             }
         }
-        return false;                       //player can be successfully removed
-    }                                       //because there is no active tournament
-    //for his team
+        return false;
+    }
 
-
+    /**
+     * set a member of the team as the new captain
+     * @param player the new captain
+     */
     public void setCaptain(Player player) {
         if (player == null) {
             return;
@@ -71,10 +103,18 @@ public class Team {
         captain = player;
     }
 
+    /**
+     * get the current captain of the team
+     * @return the captain
+     */
     public Player getCaptain() {
         return captain;
     }
 
+    /**
+     * send an invitation to a player
+     * @param player the player who is invited
+     */
     public void invitePlayer(Player player) {
         if (player == null || players.contains(player)) {
             return;
@@ -86,6 +126,11 @@ public class Team {
     }
 
 
+    /**
+     *  add a new participation - the team
+     *  participates in a new tournament
+     * @param participation the new participation
+     */
     public void addParticipation(Participation participation) {
         if (participation == null) {
             return;
@@ -100,8 +145,11 @@ public class Team {
         }
     }
 
-    //we need the tournament to remove the appropriate participation
-    //linked with the tournament
+    /**
+     *  remove a participation - the team
+     *  exits a tournament
+     * @param participation the participation
+     */
     public void removeParticipation(Participation participation) {
         if (participation == null) {
             return;
@@ -114,8 +162,11 @@ public class Team {
     }
 
 
-    //if all criterias are met, then this team
-    //can join the specific tournament
+    /**
+     * find if this participation is valid
+     * @param participation the participation which is checked
+     * @return true if this participation can actually happen
+     */
     public boolean canParticipate(Participation participation) {
         Tournament tournToJoin = participation.getTournament();
 
@@ -129,12 +180,9 @@ public class Team {
         if (!tournToJoin.getSportType().equals(sportType)) {
             return false;
         }
-
         if (tournToJoin.isFull()) {
             return false;
         }
-
-
         if (players.size() < (sportType.getMinimumPlayers() / 2)) {
             return false;
         }
@@ -147,7 +195,6 @@ public class Team {
                 }
             }
         }
-
         for (Participation part : participations) {
             if (participation.isSimultaneous(part))
                 return false;
@@ -155,11 +202,18 @@ public class Team {
         return true;
     }
 
-
+    /**
+     * get all the participations of this team
+     * @return a copy of the participations arraylist
+     */
     public ArrayList<Participation> getParticipations() {
         return new ArrayList<>(participations);
     }
 
+    /**
+     * find the participations that are either happening now or are scheduled
+     * @return the participations of this team, that are not finished
+     */
     public ArrayList<Participation> getUndoneParticipations() {
         ArrayList<Participation> runningParticipations = new ArrayList<>();
         for (Participation p : participations) {
@@ -169,10 +223,18 @@ public class Team {
         return runningParticipations;
     }
 
+    /**
+     * get the name of this team
+     * @return the name of the team
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * set a new name for this team
+     * @param name is the new name
+     */
     public void setName(String name) {
         if (name == null || !getUndoneParticipations().isEmpty()) {
             return;
@@ -180,10 +242,18 @@ public class Team {
         this.name = name;
     }
 
+    /**
+     * get the colors of this team
+     * @return the colors of the team
+     */
     public String getColors() {
         return colors;
     }
 
+    /**
+     * set new colors for this team
+     * @param colors is the new name
+     */
     public void setColors(String colors) {
         if (colors == null || !getUndoneParticipations().isEmpty()) {
             return;
@@ -191,15 +261,26 @@ public class Team {
         this.colors = colors;
     }
 
+    /**
+     * get the sport of this team
+     * @return the Sport of the team
+     */
     public Sport getSportType() {
         return sportType;
     }
 
-
+    /**
+     * get the age division that this team competes in
+     * @return the age division of the team
+     */
     public AgeDivision getAgeDivision() {
         return ageDivision;
     }
 
+    /**
+     * the string representation of the team
+     * @return the basic info of the team in a string
+     */
     @Override
     public String toString() {
         return "Team{" +
@@ -210,6 +291,11 @@ public class Team {
     }
 
 
+    /**
+     *check if two teams are equal
+     * @param other is the other team
+     * @return if this team is equal to the other team
+     */
     public boolean equals(Object other) {
         if (this == other){
             return true;
