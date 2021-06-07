@@ -52,4 +52,9 @@ public class JoinedPlayersViewStub implements JoinedPlayersView{
     public void restartActivity() {
 
     }
+
+    @Override
+    public void backToHomePage(boolean flag, String string) {
+
+    }
 }

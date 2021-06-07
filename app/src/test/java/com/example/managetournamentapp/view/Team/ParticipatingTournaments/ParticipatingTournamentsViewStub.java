@@ -11,4 +11,9 @@ public class ParticipatingTournamentsViewStub implements ParticipatingTournament
     public void changesOfAccess() {
 
     }
+
+    @Override
+    public void backToHomePage(String string) {
+
+    }
 }

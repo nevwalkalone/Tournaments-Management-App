@@ -77,8 +77,9 @@ public class TournamentInfoPresenterTest {
 
     @Test
     public void testButtons() {
+        new MemoryLoggedInUser().setUser(new OrganizerDAOMemory().findByTitle("ESKA"));
         presenter.onYesDeleteTournament();
         presenter.onNoDeleteTournament();
-
     }
+
 }

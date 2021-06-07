@@ -108,4 +108,9 @@ public class CreateTournamentViewStub implements CreateTournamentView {
     public String getDescription() {
         return description;
     }
+
+    @Override
+    public void backToHomePage(String name) {
+
+    }
 }

@@ -21,4 +21,9 @@ public class TeamPageViewStub implements TeamPageView{
     public void changesOfAccess() {
         changed = true;
     }
+
+    @Override
+    public void backToHomePage(boolean flag, String string) {
+
+    }
 }

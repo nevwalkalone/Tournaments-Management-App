@@ -15,4 +15,9 @@ public class TournamentRoundsViewStub implements TournamentRoundsView {
     public void showGroups(String tournamentTitle, int roundTeamsNumber) {
 
     }
+
+    @Override
+    public void backToHomePage(boolean flag, String string) {
+
+    }
 }

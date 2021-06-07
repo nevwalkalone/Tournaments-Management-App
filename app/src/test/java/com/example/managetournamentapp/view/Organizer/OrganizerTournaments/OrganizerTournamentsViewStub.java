@@ -5,4 +5,9 @@ public class OrganizerTournamentsViewStub  implements  OrganizerTournamentsView{
     public void startCreateTournament() {
 
     }
+
+    @Override
+    public void backToHomePage(String title) {
+
+    }
 }

@@ -42,4 +42,9 @@ public class TeamInfoViewStub implements TeamInfoView{
     public void changesOfAccess() {
 
     }
+
+    @Override
+    public void backToHomePage(boolean flag, String string) {
+
+    }
 }

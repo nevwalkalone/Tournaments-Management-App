@@ -25,7 +25,8 @@ public class LoginViewStub implements LoginView {
     }
 
     @Override
-    public void startOrganizerPage() {
+    public void startOrganizerPage(String title) {
 
     }
+
 }

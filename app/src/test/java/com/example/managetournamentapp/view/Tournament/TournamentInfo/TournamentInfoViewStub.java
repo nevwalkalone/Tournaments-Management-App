@@ -64,7 +64,7 @@ public class TournamentInfoViewStub implements TournamentInfoView {
     }
 
     @Override
-    public void yesDeleteTournament() {
+    public void yesDeleteTournament(String title) {
 
     }
 

@@ -17,4 +17,9 @@ public class RoundGamesViewStub implements RoundGamesView {
     public void recreateView() {
 
     }
+
+    @Override
+    public void backToHomePage(boolean flag, String string) {
+
+    }
 }

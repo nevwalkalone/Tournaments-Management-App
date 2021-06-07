@@ -19,4 +19,9 @@ public class SetDatesViewStub implements SetDatesView{
     public void showPopUp(SetDatesView view, String msg) {
 
     }
+
+    @Override
+    public void backToHomePage(boolean isPlayer, String name) {
+
+    }
 }

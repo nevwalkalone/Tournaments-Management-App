@@ -15,4 +15,9 @@ public class TournamentPageViewStub implements TournamentPageView {
     public void startTournamentGames() {
 
     }
+
+    @Override
+    public void backToHomePage(boolean flag, String string) {
+
+    }
 }

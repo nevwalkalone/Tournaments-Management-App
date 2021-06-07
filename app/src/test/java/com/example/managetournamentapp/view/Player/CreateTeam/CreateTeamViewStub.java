@@ -48,4 +48,9 @@ public class CreateTeamViewStub implements CreateTeamView {
     public void showPopUp(CreateTeamView view, String msg) {
 
     }
+
+    @Override
+    public void backToHomePage(String string) {
+
+    }
 }

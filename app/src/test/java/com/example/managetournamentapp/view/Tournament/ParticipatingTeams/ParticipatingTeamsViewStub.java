@@ -11,4 +11,9 @@ public class ParticipatingTeamsViewStub implements ParticipatingTeamsView {
     public void startTeamPage(String teamname) {
 
     }
+
+    @Override
+    public void backToHomePage(boolean flag, String string) {
+
+    }
 }
