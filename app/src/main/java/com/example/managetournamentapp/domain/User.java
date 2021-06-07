@@ -19,7 +19,6 @@ public class User {
         this.email = "";
         this.birthDate = null;
         this.credentials = null;
-
     }
 
     /**

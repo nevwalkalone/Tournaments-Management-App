@@ -13,7 +13,9 @@ import com.example.managetournamentapp.dao.TournamentDAO;
 
 public class MemoryInitializer extends Initializer {
 
-
+    /**
+     *erase all the DAO objects
+     */
     @Override
     protected void eraseData() {
         getGroupDAO().deleteAll();
@@ -27,46 +29,80 @@ public class MemoryInitializer extends Initializer {
         getTournamentDAO().deleteAll();
     }
 
+    /**
+     * get the game DAO
+     * @return game DAO
+     */
     @Override
     public GameDAO getGameDAO() {
         return new GameDAOMemory();
     }
 
-
+    /**
+     * get the group DAO
+     * @return group DAO
+     */
     @Override
     public GroupDAO getGroupDAO() {
         return new GroupDAOMemory();
     }
 
+    /**
+     * get the invitation DAO
+     * @return invitation DAO
+     */
     @Override
     public InvitationDAO getInvitationDAO() {
         return new InvitationDAOMemory();
     }
 
+    /**
+     * get the organizer DAO
+     * @return organizer DAO
+     */
     @Override
     public OrganizerDAO getOrganizerDAO() {
         return new OrganizerDAOMemory();
     }
 
+    /**
+     * get the participation DAO
+     * @return participation DAO
+     */
     @Override
     public ParticipationDAO getParticipationDAO() {
         return new ParticipationDAOMemory();
     }
 
+    /**
+     * get the player DAO
+     * @return player DAO
+     */
     @Override
     public PlayerDAO getPlayerDAO() {
         return new PlayerDAOMemory();
     }
 
+    /**
+     * get the round DAO
+     * @return round DAO
+     */
     @Override
     public RoundDAO getRoundDAO() {
         return new RoundDAOMemory();
     }
 
+    /**
+     * get the team DAO
+     * @return team DAO
+     */
     @Override
     public TeamDAO getTeamDAO() {  return new TeamDAOMemory(); }
 
-
+    /**
+     * get the tournament DAO
+     * @return the TournamentDAO
+     */
     @Override
     public TournamentDAO getTournamentDAO() {
         return new TournamentDAOMemory();

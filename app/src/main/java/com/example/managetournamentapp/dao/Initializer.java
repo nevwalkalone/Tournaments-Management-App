@@ -23,6 +23,9 @@ public abstract class Initializer {
 
     protected abstract void eraseData();
 
+    /**
+     * create the initial data
+     */
     public void prepareData() {
         eraseData();
         GameDAO gameDAO = getGameDAO();
@@ -104,25 +107,57 @@ public abstract class Initializer {
         playerDAO.find("gioza").addInvite(invitation);
     }
 
+    /**
+     * get the game DAO
+     * @return game DAO
+     */
     public abstract GameDAO getGameDAO();
 
+    /**
+     * get the group DAO
+     * @return group DAO
+     */
     public abstract GroupDAO getGroupDAO();
 
+    /**
+     * get the invitation DAO
+     * @return invitation DAO
+     */
     public abstract InvitationDAO getInvitationDAO();
 
+    /**
+     * get the organizer DAO
+     * @return organizer DAO
+     */
     public abstract OrganizerDAO getOrganizerDAO();
 
+    /**
+     * get the participation DAO
+     * @return participation DAO
+     */
     public abstract ParticipationDAO getParticipationDAO();
 
+    /**
+     * get the player DAO
+     * @return player DAO
+     */
     public abstract PlayerDAO getPlayerDAO();
 
+    /**
+     * get the round DAO
+     * @return round DAO
+     */
     public abstract RoundDAO getRoundDAO();
 
+    /**
+     * get the team DAO
+     * @return team DAO
+     */
     public abstract TeamDAO getTeamDAO();
 
     /**
-     * Returns
-     * @return the DAO of the tournaments
+     * get the tournament DAO
+     * @return the TournamentDAO
      */
     public abstract TournamentDAO getTournamentDAO();
 
