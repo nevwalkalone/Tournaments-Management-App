@@ -1,4 +1,4 @@
-<diagram program="umletino" version="14.3.0"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>610</x><y>164</y><w>400</w><h>220</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt; CreateTeamView
+<diagram program="umletino" version="14.3.0"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>610</x><y>150</y><w>400</w><h>220</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt; CreateTeamView
 --
 backToHomePage(isPlayer : boolean, name : String) : void
 startSaveTeam(userName : String) : void
@@ -9,7 +9,7 @@ setTeamName(name : String) : void
 setTeamColors(colors: String) : void
 setSportType(position: int) : void
 lockSportType() : void
-showPopIp(view : CreaTeamView, msg : String) : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>144</y><w>470</w><h>330</h></coordinates><panel_attributes>CreateTeamActivity
+showPopIp(view : CreaTeamView, msg : String) : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>130</y><w>470</w><h>330</h></coordinates><panel_attributes>CreateTeamActivity
 --
 ~ btnHome : ImageButton
 - saveBtn : Button
@@ -30,11 +30,11 @@ _- PLAYER_USERNAME_EXTRA: String_
 + lockSportType() : void
 + setSpinnerList(list : ArrayList&lt;String&gt;) : void
 + showPopIp(view : CreaTeamView, msg : String) : void
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>30</x><y>574</y><w>330</w><h>100</h></coordinates><panel_attributes>CreateTeamViewModel
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>30</x><y>560</y><w>330</w><h>100</h></coordinates><panel_attributes>CreateTeamViewModel
 --
 + SetDatesViewModel()
 + getPresenter() : CreateTeamPresenter
-#  onCleared() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>580</x><y>474</y><w>420</w><h>310</h></coordinates><panel_attributes>CreateTeamPresenter
+#  onCleared() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>580</x><y>460</y><w>420</w><h>310</h></coordinates><panel_attributes>CreateTeamPresenter
 --
 - player : Player
 - connedTeam : Team
@@ -51,10 +51,10 @@ _- PLAYER_USERNAME_EXTRA: String_
 + setPlayer(player : Player) : void
 + validateName(name : String) : boolean
 + onHomePage() : void
-+ setView(view : OrganizerInfoView) : void
-+ clearView() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>14</y><w>290</w><h>40</h></coordinates><panel_attributes>androidx.appcompat.app.AppCompatActivity</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>130</x><y>44</y><w>40</w><h>120</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>20;10;10;100</additional_attributes></element><element><id>Relation</id><coordinates><x>350</x><y>592</y><w>250</w><h>40</h></coordinates><panel_attributes>lt=&lt;-
-περιέχει</panel_attributes><additional_attributes>230;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>200</x><y>462</y><w>70</w><h>130</h></coordinates><panel_attributes>lt=&lt;-
-περιέχει</panel_attributes><additional_attributes>10;110;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>820</x><y>44</y><w>210</w><h>40</h></coordinates><panel_attributes>androidx.lifecycle.ViewModel</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>890</x><y>72</y><w>60</w><h>120</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>40;10;10;92</additional_attributes></element><element><id>Relation</id><coordinates><x>460</x><y>242</y><w>170</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>150;12;10;12</additional_attributes></element><element><id>Relation</id><coordinates><x>710</x><y>372</y><w>70</w><h>120</h></coordinates><panel_attributes>lt=&lt;-
-περιέχει</panel_attributes><additional_attributes>10;12;10;100</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1110</x><y>404</y><w>150</w><h>40</h></coordinates><panel_attributes>TeamDAO</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>990</x><y>422</y><w>140</w><h>80</h></coordinates><panel_attributes>lt=&lt;-
-περιέχει</panel_attributes><additional_attributes>120;10;10;52</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1120</x><y>504</y><w>150</w><h>40</h></coordinates><panel_attributes>PlayerDAO</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>990</x><y>512</y><w>150</w><h>40</h></coordinates><panel_attributes>lt=&lt;-
++ setView(view : CreateTeamView) : void
++ clearView() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>0</y><w>290</w><h>40</h></coordinates><panel_attributes>androidx.appcompat.app.AppCompatActivity</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>130</x><y>30</y><w>40</w><h>120</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>20;10;10;100</additional_attributes></element><element><id>Relation</id><coordinates><x>350</x><y>578</y><w>250</w><h>40</h></coordinates><panel_attributes>lt=&lt;-
+περιέχει</panel_attributes><additional_attributes>230;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>200</x><y>448</y><w>70</w><h>130</h></coordinates><panel_attributes>lt=&lt;-
+περιέχει</panel_attributes><additional_attributes>10;110;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>820</x><y>30</y><w>210</w><h>40</h></coordinates><panel_attributes>androidx.lifecycle.ViewModel</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>890</x><y>58</y><w>60</w><h>120</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>40;10;10;92</additional_attributes></element><element><id>Relation</id><coordinates><x>460</x><y>228</y><w>170</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>150;12;10;12</additional_attributes></element><element><id>Relation</id><coordinates><x>710</x><y>358</y><w>70</w><h>120</h></coordinates><panel_attributes>lt=&lt;-
+περιέχει</panel_attributes><additional_attributes>10;12;10;100</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1110</x><y>390</y><w>150</w><h>40</h></coordinates><panel_attributes>TeamDAO</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>990</x><y>408</y><w>140</w><h>80</h></coordinates><panel_attributes>lt=&lt;-
+περιέχει</panel_attributes><additional_attributes>120;10;10;52</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1120</x><y>490</y><w>150</w><h>40</h></coordinates><panel_attributes>PlayerDAO</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>990</x><y>498</y><w>150</w><h>40</h></coordinates><panel_attributes>lt=&lt;-
 περιέχει</panel_attributes><additional_attributes>130;20;10;12</additional_attributes></element></diagram>

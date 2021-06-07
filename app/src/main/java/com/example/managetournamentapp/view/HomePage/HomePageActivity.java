@@ -49,6 +49,7 @@ public class HomePageActivity extends AppCompatActivity implements HomePageView 
     }
 
 
+
     public void showPopUp(int layoutId, int btn1, int btn2, boolean firstPopup) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         View customLayout = getLayoutInflater().inflate(layoutId, null);
@@ -81,6 +82,7 @@ public class HomePageActivity extends AppCompatActivity implements HomePageView 
         startActivity(intent);
 
     }
+
 
     @Override
     public void registerAction() {
