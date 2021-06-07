@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 public class GroupRankingsViewStub implements GroupRankingsView {
     ArrayList<Team> teams = new TournamentDAOMemory().find("TOURNOUA1").findTeams();
+    boolean onHome = false;
 
     @Override
     public ArrayList<Team> getTeamsList() {
@@ -16,6 +17,6 @@ public class GroupRankingsViewStub implements GroupRankingsView {
 
     @Override
     public void backToHomePage(boolean flag, String string) {
-
+        onHome = true;
     }
 }

@@ -32,30 +32,36 @@ public class PlayerPagePresenterTest {
 
     @Test
     public void findPlayerInfo() {
+        presenter.findAccess("tommy0");
         presenter.findPlayerInfo("tommy0");
         Assert.assertEquals("tomtom", presenter.getPlayerName());
-    }
-
-    @Test
-    public void findAccess() {
-
-        presenter.findAccess("tommy0");
-
-        // if tommy0 is the logged in user!
-        new MemoryLoggedInUser().setUser(new PlayerDAOMemory().find("tommy0"));
-        presenter.findPlayerInfo("tommy0");
-        presenter.findAccess("tommy0");
-
     }
 
     @Test
     public void testActions() {
 
         presenter.findPlayerInfo("tommy0");
+        new MemoryLoggedInUser().setUser(new PlayerDAOMemory().find("tommy0"));
+        Assert.assertNotEquals(null, new MemoryLoggedInUser().getUser());
+
         presenter.onLogOut();
+        Assert.assertTrue(((PlayerPageViewStub) view).onLogout);
+
+        presenter.onNoLogOut();
+        Assert.assertTrue(((PlayerPageViewStub) view).onNoLogout);
+
+        presenter.onYesLogOut();
+
+        Assert.assertEquals(null, new MemoryLoggedInUser().getUser());
+
         presenter.onPlayerAccount();
-        presenter.onPlayerInvites();
+        Assert.assertTrue(((PlayerPageViewStub) view).onInfo);
+
         presenter.onPlayerTeams();
+        Assert.assertTrue(((PlayerPageViewStub) view).onTeams);
+
+        presenter.onPlayerInvites();
+        Assert.assertTrue(((PlayerPageViewStub) view).onInvites);
 
     }
 }

@@ -72,10 +72,6 @@ public class ReceivedInvitesPresenter {
         return invites;
     }
 
-    public ArrayList<Team> getTeamsInvites() {
-        return teamsInvites;
-    }
-
     public void declineInvitation(Invitation invitation) {
         player.replyToInvitation(invitation, false);
         player.removeInvite(invitation);
@@ -90,7 +86,7 @@ public class ReceivedInvitesPresenter {
         view.startTeamPage();
     }
 
-    public void onHomePage(){
+    public void onHomePage() {
         view.backToHomePage();
     }
 }

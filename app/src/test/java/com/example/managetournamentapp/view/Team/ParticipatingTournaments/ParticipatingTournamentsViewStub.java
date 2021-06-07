@@ -1,6 +1,7 @@
 package com.example.managetournamentapp.view.Team.ParticipatingTournaments;
 
 public class ParticipatingTournamentsViewStub implements ParticipatingTournamentsView {
+    boolean onHome = false;
 
     @Override
     public void startAddParticipation() {
@@ -14,6 +15,6 @@ public class ParticipatingTournamentsViewStub implements ParticipatingTournament
 
     @Override
     public void backToHomePage(String string) {
-
+        onHome = true;
     }
 }

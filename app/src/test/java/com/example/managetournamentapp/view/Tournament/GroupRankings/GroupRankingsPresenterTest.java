@@ -7,12 +7,15 @@ import com.example.managetournamentapp.domain.Sport;
 import com.example.managetournamentapp.domain.Team;
 import com.example.managetournamentapp.domain.Tournament;
 import com.example.managetournamentapp.memoryDao.MemoryInitializer;
+import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
+import com.example.managetournamentapp.memoryDao.OrganizerDAOMemory;
 import com.example.managetournamentapp.memoryDao.PlayerDAOMemory;
 import com.example.managetournamentapp.memoryDao.TeamDAOMemory;
 import com.example.managetournamentapp.memoryDao.TournamentDAOMemory;
 import com.example.managetournamentapp.view.Team.AddParticipation.AddParticipationPresenter;
 import com.example.managetournamentapp.view.Team.AddParticipation.AddParticipationView;
 import com.example.managetournamentapp.view.Team.AddParticipation.AddParticipationViewStub;
+import com.example.managetournamentapp.view.Team.TeamPage.TeamPageViewStub;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -44,6 +47,13 @@ public class GroupRankingsPresenterTest {
 
         Assert.assertTrue(presenter.getResults().contains(new TeamDAOMemory().find("Celtic0")));
 
+    }
+
+    @Test
+    public void testAction(){
+        new MemoryLoggedInUser().setUser(new OrganizerDAOMemory().findByTitle("ESKA"));
+        presenter.onHomePage();
+        Assert.assertTrue(((GroupRankingsViewStub) view).onHome);
     }
 
 }

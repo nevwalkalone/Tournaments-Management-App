@@ -2,6 +2,7 @@ package com.example.managetournamentapp.view.Organizer.OrganizerInfo;
 
 public class OrganizerInfoViewStub implements OrganizerInfoView {
     String username, password, name, surname, phone, email, birthdate, title;
+    boolean onEdit = false, onDelete = false, onShow = false;
 
     @Override
     public void setUsername(String username) {
@@ -40,12 +41,12 @@ public class OrganizerInfoViewStub implements OrganizerInfoView {
 
     @Override
     public void startEditOrganizer(String organizerUsername) {
-
+        onEdit = true;
     }
 
     @Override
     public void startDeleteOrganizer() {
-
+        onDelete = true;
     }
 
     @Override
@@ -55,6 +56,6 @@ public class OrganizerInfoViewStub implements OrganizerInfoView {
 
     @Override
     public void showCantDelete() {
-
+        onShow = true;
     }
 }

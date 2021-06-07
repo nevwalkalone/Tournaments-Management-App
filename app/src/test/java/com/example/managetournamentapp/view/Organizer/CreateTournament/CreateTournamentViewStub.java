@@ -5,15 +5,17 @@ import java.util.ArrayList;
 public class CreateTournamentViewStub implements CreateTournamentView {
     String location, description, title, startDate, finishDate;
     int ageDivision, teamsNumber, sportType;
+    boolean onSave = false, onHome = false, onSet = false, onLock = false;
 
     @Override
     public void startSaveTournament(String tournamentTitle) {
+        onSave = true;
         this.title = tournamentTitle;
     }
 
     @Override
     public void startSetDates(ArrayList<String> basicInfo) {
-
+        onSet = true;
     }
 
     @Override
@@ -101,7 +103,7 @@ public class CreateTournamentViewStub implements CreateTournamentView {
 
     @Override
     public void lockPrevious() {
-
+        onLock = true;
     }
 
     @Override
@@ -111,6 +113,6 @@ public class CreateTournamentViewStub implements CreateTournamentView {
 
     @Override
     public void backToHomePage(String name) {
-
+        onHome = true;
     }
 }

@@ -2,11 +2,13 @@ package com.example.managetournamentapp.view.Tournament.TournamentGroups;
 
 import com.example.managetournamentapp.memoryDao.MemoryInitializer;
 import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
+import com.example.managetournamentapp.memoryDao.OrganizerDAOMemory;
 import com.example.managetournamentapp.memoryDao.TournamentDAOMemory;
 import com.example.managetournamentapp.view.Tournament.RoundGames.RoundGamesPresenter;
 import com.example.managetournamentapp.view.Tournament.RoundGames.RoundGamesView;
 import com.example.managetournamentapp.view.Tournament.RoundGames.RoundGamesViewStub;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -27,32 +29,41 @@ public class TournamentGroupsPresenterTest {
         presenter.setView(view);
     }
 
-    @Test
-    public void findTournamentInfo() {
-        presenter.findTournamentInfo("TOURNOUA1");
-    }
 
     @Test
     public void onGroup() {
         presenter.findTournamentInfo("TOURNOUA1");
         presenter.onGroup(0);
+
+        Assert.assertTrue(((TournamentGroupsViewStub) view).onShow);
     }
 
     @Test
     public void onGames() {
         presenter.findTournamentInfo("TOURNOUA1");
         presenter.onGames(0);
+        Assert.assertTrue(((TournamentGroupsViewStub) view).onGroup);
     }
 
     @Test
     public void onRankings() {
         presenter.findTournamentInfo("TOURNOUA1");
         presenter.onRankings(0);
+        Assert.assertTrue(((TournamentGroupsViewStub) view).onRankings);
     }
 
     @Test
     public void findAccess() {
         presenter.findTournamentInfo("TOURNOUA1");
         presenter.findAccess();
+        Assert.assertTrue(((TournamentGroupsViewStub) view).onChange);
+    }
+
+    @Test
+    public void changePage() {
+        new MemoryLoggedInUser().setUser(new OrganizerDAOMemory().findByTitle("ESKA"));
+        presenter.onHomePage();
+        Assert.assertTrue(((TournamentGroupsViewStub) view).onHome);
+
     }
 }

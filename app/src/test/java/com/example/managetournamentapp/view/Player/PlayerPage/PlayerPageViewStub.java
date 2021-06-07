@@ -2,20 +2,24 @@ package com.example.managetournamentapp.view.Player.PlayerPage;
 
 import androidx.appcompat.app.AlertDialog;
 
-public class PlayerPageViewStub implements PlayerPageView{
+public class PlayerPageViewStub implements PlayerPageView {
+
+    boolean onTeams = false, onInvites = false, onInfo = false, onLogout = false, onNoLogout = false;
+
     @Override
     public void toPlayerInfo(String playerUsername) {
+        onInfo = true;
 
     }
 
     @Override
     public void toPlayerTeams(String playerUsername) {
-
+        onTeams = true;
     }
 
     @Override
     public void toPlayerInvites(String playerUsername) {
-
+        onInvites = true;
     }
 
     @Override
@@ -45,11 +49,11 @@ public class PlayerPageViewStub implements PlayerPageView{
 
     @Override
     public void logOutConfirmation() {
-
+        onLogout = true;
     }
 
     @Override
     public void noLogOut() {
-
+        onNoLogout = true;
     }
 }

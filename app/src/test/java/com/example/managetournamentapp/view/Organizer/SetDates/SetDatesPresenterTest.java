@@ -2,9 +2,12 @@ package com.example.managetournamentapp.view.Organizer.SetDates;
 
 import com.example.managetournamentapp.domain.Tournament;
 import com.example.managetournamentapp.memoryDao.MemoryInitializer;
+import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
 import com.example.managetournamentapp.memoryDao.OrganizerDAOMemory;
 import com.example.managetournamentapp.memoryDao.TournamentDAOMemory;
+import com.example.managetournamentapp.view.Organizer.OrganizerTournaments.OrganizerTournamentsViewStub;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -30,17 +33,20 @@ public class SetDatesPresenterTest {
         tournament = new TournamentDAOMemory().find("TOURNOUA1");
     }
 
-    @Test
-    public void findInfo() {
-
-        ArrayList<String> basicInfo = new ArrayList<>(Arrays.asList(tournament.getTitle(), tournament.getStartDate().toString(), tournament.getFinishDate().toString(), tournament.getLocation(), tournament.getSportType().getName(), String.valueOf(tournament.getMAX_TEAMS_NUMBER()), tournament.getAgeDivision().toString(), tournament.getDescription()));
-        presenter.findBasicInfo(basicInfo);
-    }
 
     @Test
     public void testOnSaveTournament() {
         ArrayList<String> basicInfo = new ArrayList<>(Arrays.asList(tournament.getTitle(), tournament.getStartDate().toString(), tournament.getFinishDate().toString(), tournament.getLocation(), tournament.getSportType().getName(), String.valueOf(tournament.getMAX_TEAMS_NUMBER()), tournament.getAgeDivision().toString(), tournament.getDescription()));
         presenter.findBasicInfo(basicInfo);
         presenter.onSaveTournament();
+        Assert.assertTrue(((SetDatesViewStub) view).onSave);
     }
+
+    @Test
+    public void testChangePage() {
+        new MemoryLoggedInUser().setUser(new OrganizerDAOMemory().findByTitle("ESKA"));
+        presenter.onHomePage();
+        Assert.assertTrue(((SetDatesViewStub) view).onHome);
+    }
+
 }

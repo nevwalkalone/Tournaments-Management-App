@@ -4,11 +4,13 @@ import com.example.managetournamentapp.domain.Organizer;
 import com.example.managetournamentapp.memoryDao.MemoryInitializer;
 import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
 import com.example.managetournamentapp.memoryDao.OrganizerDAOMemory;
+import com.example.managetournamentapp.memoryDao.PlayerDAOMemory;
 import com.example.managetournamentapp.memoryDao.TournamentDAOMemory;
 import com.example.managetournamentapp.view.Tournament.TournamentGroups.TournamentGroupsPresenter;
 import com.example.managetournamentapp.view.Tournament.TournamentGroups.TournamentGroupsView;
 import com.example.managetournamentapp.view.Tournament.TournamentGroups.TournamentGroupsViewStub;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -32,31 +34,30 @@ public class TournamentInfoPresenterTest {
     }
 
     @Test
-    public void findTournamentInfo() {
-        presenter.findTournamentInfo("TOURNOUA1");
-    }
-
-    @Test
     public void findAccess() {
-        presenter.findAccess();
 
         // SET ORGANIZER AS LOGGED IN USER
         new MemoryLoggedInUser().setUser(new OrganizerDAOMemory().findByTitle("ESKA"));
         presenter.findAccess();
+        Assert.assertTrue(((TournamentInfoViewStub) view).onChange);
     }
 
     @Test
     public void testDeleteTournament() {
         presenter.findTournamentInfo("TOURNOUA1");
         presenter.onDeleteTournament();
+        Assert.assertFalse(((TournamentInfoViewStub) view).onConfirm);
 
         // SET ORGANIZER AS LOGGED IN USER
         new MemoryLoggedInUser().setUser(new OrganizerDAOMemory().findByTitle("ESKA"));
         presenter.onDeleteTournament();
+        Assert.assertFalse(((TournamentInfoViewStub) view).onConfirm);
+
 
         // DELETE A TOURNAMENT WITH NO PARTICIPATION
         presenter.findTournamentInfo("NBA");
         presenter.onDeleteTournament();
+        Assert.assertTrue(((TournamentInfoViewStub) view).onConfirm);
 
     }
 
@@ -64,14 +65,17 @@ public class TournamentInfoPresenterTest {
     public void testEditTournament() {
         presenter.findTournamentInfo("TOURNOUA1");
         presenter.onEditTournament();
+        Assert.assertFalse(((TournamentInfoViewStub) view).onEdit);
 
         // SET ORGANIZER AS LOGGED IN USER
         new MemoryLoggedInUser().setUser(new OrganizerDAOMemory().findByTitle("ESKA"));
         presenter.onEditTournament();
+        Assert.assertFalse(((TournamentInfoViewStub) view).onEdit);
 
         // EDIT A TOURNAMENT WITH NO PARTICIPATION
         presenter.findTournamentInfo("NBA");
         presenter.onEditTournament();
+        Assert.assertTrue(((TournamentInfoViewStub) view).onEdit);
 
     }
 
@@ -79,7 +83,9 @@ public class TournamentInfoPresenterTest {
     public void testButtons() {
         new MemoryLoggedInUser().setUser(new OrganizerDAOMemory().findByTitle("ESKA"));
         presenter.onYesDeleteTournament();
+        Assert.assertTrue(((TournamentInfoViewStub) view).onYesDelete);
         presenter.onNoDeleteTournament();
+        Assert.assertTrue(((TournamentInfoViewStub) view).onNoDelete);
     }
 
 }

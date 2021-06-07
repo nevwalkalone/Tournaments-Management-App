@@ -6,6 +6,7 @@ import com.example.managetournamentapp.memoryDao.MemoryInitializer;
 import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
 import com.example.managetournamentapp.memoryDao.PlayerDAOMemory;
 import com.example.managetournamentapp.memoryDao.TeamDAOMemory;
+import com.example.managetournamentapp.view.Team.InvitePlayers.InvitePlayersViewStub;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -44,6 +45,13 @@ public class JoinedPlayersPresenterTest {
         int number1 = presenter.getResults().size();
         presenter.removePlayer(team.getName(), player);
         Assert.assertEquals(number1-1 , team.getPlayers().size() );
+    }
+
+    @Test
+    public void testAction(){
+        new MemoryLoggedInUser().setUser(new PlayerDAOMemory().find("tommy0"));
+        presenter.onHomePage();
+        Assert.assertTrue(((JoinedPlayersViewStub) view).onHome);
     }
 
 

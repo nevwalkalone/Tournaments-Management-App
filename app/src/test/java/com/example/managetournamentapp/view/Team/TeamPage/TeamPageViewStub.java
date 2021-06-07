@@ -1,7 +1,8 @@
 package com.example.managetournamentapp.view.Team.TeamPage;
 
-public class TeamPageViewStub implements TeamPageView{
-    public boolean changed = false;
+public class TeamPageViewStub implements TeamPageView {
+    public boolean changed = false, onHome = false;
+
     @Override
     public void startTeamInfo() {
 
@@ -24,6 +25,9 @@ public class TeamPageViewStub implements TeamPageView{
 
     @Override
     public void backToHomePage(boolean flag, String string) {
+        onHome = true;
 
     }
+
+
 }

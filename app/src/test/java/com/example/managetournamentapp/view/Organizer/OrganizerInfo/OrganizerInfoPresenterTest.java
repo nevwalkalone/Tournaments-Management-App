@@ -3,6 +3,7 @@ package com.example.managetournamentapp.view.Organizer.OrganizerInfo;
 import com.example.managetournamentapp.memoryDao.MemoryInitializer;
 import com.example.managetournamentapp.memoryDao.OrganizerDAOMemory;
 import com.example.managetournamentapp.memoryDao.TournamentDAOMemory;
+import com.example.managetournamentapp.view.HomePage.HomePageViewStub;
 import com.example.managetournamentapp.view.Organizer.CreateTournament.CreateTournamentPresenter;
 import com.example.managetournamentapp.view.Organizer.CreateTournament.CreateTournamentView;
 import com.example.managetournamentapp.view.Organizer.CreateTournament.CreateTournamentViewStub;
@@ -27,27 +28,30 @@ public class OrganizerInfoPresenterTest {
         presenter.setOrganizerDAO(new OrganizerDAOMemory());
         presenter.setOrganizer(new OrganizerDAOMemory().findByTitle("ESKA"));
 
+
         presenter.setView(view);
     }
 
-    @Test
-    public void findExisting() {
-        presenter.findOrganizerInfo();
-    }
 
     @Test
     public void deleteOrganizer() {
+        presenter.findOrganizerInfo();
         // Can't delete case
         presenter.onDeleteOrganizer();
+        Assert.assertTrue(((OrganizerInfoViewStub) view).onShow);
 
         // can delete case
         presenter.setOrganizer(new OrganizerDAOMemory().findByTitle("ESKANA"));
         presenter.onDeleteOrganizer();
+        Assert.assertTrue(((OrganizerInfoViewStub) view).onDelete);
     }
 
     @Test
     public void editOrganizer() {
+        presenter.findOrganizerInfo();
         presenter.onEditOrganizer();
+        Assert.assertTrue(((OrganizerInfoViewStub) view).onEdit);
 
     }
+
 }

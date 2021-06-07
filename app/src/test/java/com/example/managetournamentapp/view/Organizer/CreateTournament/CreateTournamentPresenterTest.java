@@ -3,6 +3,7 @@ package com.example.managetournamentapp.view.Organizer.CreateTournament;
 import com.example.managetournamentapp.memoryDao.MemoryInitializer;
 import com.example.managetournamentapp.memoryDao.OrganizerDAOMemory;
 import com.example.managetournamentapp.memoryDao.TournamentDAOMemory;
+import com.example.managetournamentapp.view.HomePage.HomePageViewStub;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -51,11 +52,21 @@ public class CreateTournamentPresenterTest {
         presenter.showPreviousInfo(title);
         view.setTournamentTitle("TOURNOUA2");
         presenter.onSaveTournament();
+        Assert.assertTrue(((CreateTournamentViewStub) view).onSave);
 
         //title does not change because there are active participations.
 
         String newName = new TournamentDAOMemory().find("TOURNOUA1").getTitle();
         Assert.assertEquals("TOURNOUA1", newName);
+    }
+
+    @Test
+    public void testActions() {
+        presenter.onHomePage();
+        Assert.assertTrue(((CreateTournamentViewStub) view).onHome);
+
+        presenter.showPreviousInfo("TOURNOUA1");
+        Assert.assertTrue(((CreateTournamentViewStub) view).onLock);
     }
 
 

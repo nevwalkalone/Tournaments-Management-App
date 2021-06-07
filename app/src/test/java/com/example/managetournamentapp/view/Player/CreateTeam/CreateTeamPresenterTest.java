@@ -10,6 +10,7 @@ import com.example.managetournamentapp.memoryDao.TournamentDAOMemory;
 import com.example.managetournamentapp.view.Organizer.CreateTournament.CreateTournamentPresenter;
 import com.example.managetournamentapp.view.Organizer.CreateTournament.CreateTournamentView;
 import com.example.managetournamentapp.view.Organizer.CreateTournament.CreateTournamentViewStub;
+import com.example.managetournamentapp.view.Organizer.SetDates.SetDatesViewStub;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -46,6 +47,7 @@ public class CreateTeamPresenterTest {
         view.setTeamColors("white");
         view.setSportType(2);
         presenter.onSaveTeam();
+        Assert.assertTrue(((CreateTeamViewStub) view).onSave);
 
         Assert.assertEquals(presenter.getSportTypes().get(2), "Football5v5");
 
@@ -55,11 +57,21 @@ public class CreateTeamPresenterTest {
     public void changeExisting() {
         String teamName = "Celtic10";
         presenter.showPreviousInfo(teamName);
+        Assert.assertTrue(((CreateTeamViewStub) view).onLock);
+
         view.setTeamName("Bulls");
         presenter.onSaveTeam();
 
         String newName = new TeamDAOMemory().find("Bulls").getName();
         Assert.assertEquals("Bulls", newName);
     }
+
+    @Test
+    public void testAction() {
+        presenter.onHomePage();
+        Assert.assertTrue(((CreateTeamViewStub) view).onHome);
+
+    }
+
 
 }

@@ -2,11 +2,14 @@ package com.example.managetournamentapp.view.Tournament.ParticipatingTeams;
 
 import com.example.managetournamentapp.domain.Tournament;
 import com.example.managetournamentapp.memoryDao.MemoryInitializer;
+import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
+import com.example.managetournamentapp.memoryDao.OrganizerDAOMemory;
 import com.example.managetournamentapp.memoryDao.TeamDAOMemory;
 import com.example.managetournamentapp.memoryDao.TournamentDAOMemory;
 import com.example.managetournamentapp.view.Team.AddParticipation.AddParticipationPresenter;
 import com.example.managetournamentapp.view.Team.AddParticipation.AddParticipationView;
 import com.example.managetournamentapp.view.Team.AddParticipation.AddParticipationViewStub;
+import com.example.managetournamentapp.view.Tournament.GroupRankings.GroupRankingsViewStub;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -31,7 +34,7 @@ public class ParticipatingTeamsPresenterTest {
     }
 
     @Test
-    public void findParticipatingTeams(){
+    public void findParticipatingTeams() {
         presenter.findParticipatingTeams("TOURNOUA1");
         Assert.assertEquals(8, presenter.getResults().size());
         Assert.assertTrue(presenter.getResults().contains(new TeamDAOMemory().find("Celtic0")));
@@ -39,8 +42,13 @@ public class ParticipatingTeamsPresenterTest {
     }
 
     @Test
-    public void changePage(){
+    public void changePage() {
         presenter.onTeamSelected(new TeamDAOMemory().find("Celtic0"));
+        Assert.assertTrue(((ParticipatingTeamsViewStub) view).onTeam);
+
+        new MemoryLoggedInUser().setUser(new OrganizerDAOMemory().findByTitle("ESKA"));
+        presenter.onHomePage();
+        Assert.assertTrue(((ParticipatingTeamsViewStub) view).onHome);
 
     }
 }

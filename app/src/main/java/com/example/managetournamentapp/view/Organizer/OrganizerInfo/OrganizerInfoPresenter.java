@@ -12,7 +12,7 @@ import java.time.format.DateTimeFormatter;
 
 public class OrganizerInfoPresenter {
     private OrganizerInfoView view;
-    private Organizer organizer = null;
+    private Organizer organizer;
     private OrganizerDAO organizerDAO;
 
     public OrganizerInfoPresenter(){}

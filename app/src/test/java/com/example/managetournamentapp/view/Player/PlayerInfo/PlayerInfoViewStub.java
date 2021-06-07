@@ -5,6 +5,7 @@ import androidx.appcompat.app.AlertDialog;
 public class PlayerInfoViewStub implements PlayerInfoView {
     AlertDialog dialog;
     String username, password, name, surname, phone, email, location, birthdate;
+    boolean onEdit = false, onDelete = false, onShow = false, onChange = false;
 
     @Override
     public AlertDialog showPopUp(int layoutId, String msg, int btn1, int btn2) {
@@ -53,28 +54,27 @@ public class PlayerInfoViewStub implements PlayerInfoView {
 
     @Override
     public void startEditPlayer() {
-
+        onEdit = true;
     }
 
     @Override
     public void startDeletePlayer() {
-
+        onDelete = true;
     }
 
     @Override
     public void showCantDelete() {
-
+        onShow = true;
     }
 
     @Override
     public void changesOfAccess() {
-
+        onChange = true;
     }
 
     @Override
     public void displayPopUp(int layout, String msg, int btn1, int btn2) {
-//        this.dialog = d(layout, msg, btn1, btn2);
-//        this.dialog.show();
+
     }
 
     @Override

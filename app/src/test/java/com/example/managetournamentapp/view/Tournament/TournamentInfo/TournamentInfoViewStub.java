@@ -2,6 +2,7 @@ package com.example.managetournamentapp.view.Tournament.TournamentInfo;
 
 public class TournamentInfoViewStub implements TournamentInfoView {
     String teamsnumber, location, startdate, finishdate, sportType, title, ageDivision, description;
+    boolean onEdit = false, onChange = false, onConfirm = false, onNoDelete = false, onYesDelete = false;
 
     @Override
     public void setTeamsNumber(String teamsNumber) {
@@ -45,27 +46,27 @@ public class TournamentInfoViewStub implements TournamentInfoView {
 
     @Override
     public void startEditTournament() {
-
+        onEdit = true;
     }
 
     @Override
     public void changesOfAccess() {
-
+        onChange = true;
     }
 
     @Override
     public void deleteConfirmation() {
-
+        onConfirm = true;
     }
 
     @Override
     public void noDeleteTournament() {
-
+        onNoDelete = true;
     }
 
     @Override
     public void yesDeleteTournament(String title) {
-
+        onYesDelete = true;
     }
 
     @Override

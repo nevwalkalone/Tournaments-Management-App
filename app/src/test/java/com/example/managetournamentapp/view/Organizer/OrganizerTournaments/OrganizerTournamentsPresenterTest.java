@@ -38,6 +38,10 @@ public class OrganizerTournamentsPresenterTest {
     @Test
     public void changePage() {
         presenter.onAddTournament();
+        Assert.assertTrue(((OrganizerTournamentsViewStub) view).onCreate);
+
+        presenter.onHomePage();
+        Assert.assertTrue(((OrganizerTournamentsViewStub) view).onHome);
 
     }
 

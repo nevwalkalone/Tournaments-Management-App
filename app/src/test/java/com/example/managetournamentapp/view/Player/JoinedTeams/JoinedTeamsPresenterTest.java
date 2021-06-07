@@ -38,6 +38,11 @@ public class JoinedTeamsPresenterTest {
     public void changePage() {
 
         presenter.onAddTeam();
+        Assert.assertTrue(((JoinedTeamsViewStub) view).onAdd);
+
+        presenter.onHomePage();
+        Assert.assertTrue(((JoinedTeamsViewStub) view).onHome);
+
 
     }
 
@@ -49,4 +54,5 @@ public class JoinedTeamsPresenterTest {
         Assert.assertEquals(2, presenter.getResults().size());
 
     }
+
 }

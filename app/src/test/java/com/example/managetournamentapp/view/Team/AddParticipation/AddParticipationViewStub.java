@@ -4,7 +4,8 @@ import androidx.appcompat.app.AlertDialog;
 
 import com.example.managetournamentapp.domain.Tournament;
 
-public class AddParticipationViewStub implements  AddParticipationView{
+public class AddParticipationViewStub implements AddParticipationView {
+    boolean onHome = false;
 
     @Override
     public AlertDialog showPopUp(int layoutId, String msg, int btn1, int btn2, boolean flag) {
@@ -13,16 +14,14 @@ public class AddParticipationViewStub implements  AddParticipationView{
 
     @Override
     public void startTournamentPage(Tournament tournament) {
-
     }
 
     @Override
     public void startPlayerPage(String userName) {
-
     }
 
     @Override
     public void backToHomePage(String string) {
-
+        onHome = true;
     }
 }

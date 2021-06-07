@@ -1,7 +1,8 @@
 package com.example.managetournamentapp.view.Team.TeamInfo;
 
-public class TeamInfoViewStub implements TeamInfoView{
-    String name="Celtic9",colors="green",division="K100",sport="Basketball3v3";
+public class TeamInfoViewStub implements TeamInfoView {
+    String name = "Celtic9", colors = "green", division = "K100", sport = "Basketball3v3";
+    boolean onHome = false;
 
     @Override
     public void setTeamName(String name) {
@@ -45,6 +46,6 @@ public class TeamInfoViewStub implements TeamInfoView{
 
     @Override
     public void backToHomePage(boolean flag, String string) {
-
+        onHome = true;
     }
 }

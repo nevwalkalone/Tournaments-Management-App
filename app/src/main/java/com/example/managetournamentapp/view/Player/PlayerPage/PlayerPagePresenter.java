@@ -11,18 +11,19 @@ public class PlayerPagePresenter {
     private PlayerDAO playerDAO;
 
 
-    public PlayerPagePresenter(){}
+    public PlayerPagePresenter() {
+    }
 
-    public void findPlayerInfo(String playerUsername){
-        if ( playerUsername == null )
+    public void findPlayerInfo(String playerUsername) {
+        if (playerUsername == null)
             return;
         player = playerDAO.find(playerUsername);
     }
 
-    public void findAccess(String playerUsername){
-        if ( loggedInUser.getUser() != null )
-            if (loggedInUser.getUser() instanceof  Player)
-                if ( (loggedInUser.getUser()).equals(player) )
+    public void findAccess(String playerUsername) {
+        if (loggedInUser.getUser() != null)
+            if (loggedInUser.getUser() instanceof Player)
+                if ((loggedInUser.getUser()).equals(player))
                     return;
         view.changesOfAccess();
     }
@@ -31,39 +32,41 @@ public class PlayerPagePresenter {
         this.loggedInUser = loggedInUser;
     }
 
-    public void setPlayerDAO(PlayerDAO playerDAO){
+    public void setPlayerDAO(PlayerDAO playerDAO) {
         this.playerDAO = playerDAO;
     }
 
-    public String getPlayerName(){
-        if (player==null)
+    public String getPlayerName() {
+        if (player == null)
             return "";
 
         return player.getName();
     }
 
-    public void onPlayerAccount(){
+    public void onPlayerAccount() {
         view.toPlayerInfo(player.getCredentials().getUsername());
     }
 
-    public void onPlayerTeams(){
+    public void onPlayerTeams() {
         view.toPlayerTeams(player.getCredentials().getUsername());
     }
 
-    public void onPlayerInvites(){
+    public void onPlayerInvites() {
         view.toPlayerInvites(player.getCredentials().getUsername());
     }
 
-    public void onLogOut(){
+    public void onLogOut() {
         view.logOutConfirmation();
     }
 
 
-    public void onNoLogOut(){
+    public void onNoLogOut() {
         view.noLogOut();
     }
 
-    public void onYesLogOut(){
+    public void onYesLogOut() {
+
+        loggedInUser.clear();
         view.logOut();
     }
 
@@ -71,10 +74,9 @@ public class PlayerPagePresenter {
         this.view = view;
     }
 
-    public void clearView(){
+    public void clearView() {
         this.view = null;
     }
-
 
 
 }

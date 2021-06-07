@@ -5,6 +5,7 @@ import com.example.managetournamentapp.memoryDao.MemoryInitializer;
 import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
 import com.example.managetournamentapp.memoryDao.PlayerDAOMemory;
 import com.example.managetournamentapp.memoryDao.TeamDAOMemory;
+import com.example.managetournamentapp.view.Team.ParticipatingTournaments.ParticipatingTournamentsViewStub;
 import com.example.managetournamentapp.view.User.RegisterOrganizer.RegisterOrganizerPresenter;
 import com.example.managetournamentapp.view.User.RegisterOrganizer.RegisterOrganizerView;
 
@@ -21,10 +22,6 @@ public class TeamInfoPresenterTest {
 
     @Before
     public void setUp() {
-    }
-
-    @Test
-    public void teamInfoEditable(){
         new MemoryInitializer().prepareData();
         new MemoryLoggedInUser().setUser(new PlayerDAOMemory().find("tommy24"));
 
@@ -35,6 +32,11 @@ public class TeamInfoPresenterTest {
         presenter.setView(view);
 
         team = new TeamDAOMemory().find("Celtic8");
+    }
+
+    @Test
+    public void teamInfoEditable(){
+
         presenter.findTeamInfo(team.getName());
         presenter.findAccess();
 
@@ -73,6 +75,13 @@ public class TeamInfoPresenterTest {
         int number1 = new TeamDAOMemory().findAll().size();
         presenter.onDeleteTeam();
         Assert.assertEquals( number1, new TeamDAOMemory().findAll().size());
+    }
+
+    @Test
+    public void testAction(){
+        new MemoryLoggedInUser().setUser(new PlayerDAOMemory().find("tommy0"));
+        presenter.onHomePage();
+        Assert.assertTrue(((TeamInfoViewStub) view).onHome);
     }
 
 }

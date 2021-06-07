@@ -13,6 +13,7 @@ import java.util.Arrays;
 public class ReceivedInvitesViewStub implements ReceivedInvitesView {
     AlertDialog dialog;
     ArrayList<Invitation> invitations = new PlayerDAOMemory().find("gioza").getInvitesReceived();
+    boolean onTeam = false, onHome = false;
 
     @Override
     public AlertDialog showPopUp(int layoutId, String msg, int btn1, int btn2, int btn3, boolean flag) {
@@ -21,7 +22,7 @@ public class ReceivedInvitesViewStub implements ReceivedInvitesView {
 
     @Override
     public void startTeamPage() {
-
+        onTeam = true;
     }
 
     @Override
@@ -31,6 +32,6 @@ public class ReceivedInvitesViewStub implements ReceivedInvitesView {
 
     @Override
     public void backToHomePage() {
-
+        onHome = true;
     }
 }

@@ -3,6 +3,7 @@ package com.example.managetournamentapp.view.Team.JoinedPlayers;
 import androidx.appcompat.app.AlertDialog;
 
 public class JoinedPlayersViewStub implements JoinedPlayersView{
+    boolean onHome = false;
     @Override
     public void changesOfAccess(boolean flag, boolean flag2) {
 
@@ -55,6 +56,6 @@ public class JoinedPlayersViewStub implements JoinedPlayersView{
 
     @Override
     public void backToHomePage(boolean flag, String string) {
-
+onHome = true;
     }
 }

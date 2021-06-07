@@ -5,6 +5,7 @@ import com.example.managetournamentapp.memoryDao.MemoryInitializer;
 import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
 import com.example.managetournamentapp.memoryDao.PlayerDAOMemory;
 import com.example.managetournamentapp.memoryDao.TeamDAOMemory;
+import com.example.managetournamentapp.view.Team.TeamInfo.TeamInfoViewStub;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -34,6 +35,13 @@ public class TeamPagePresenterTest {
         presenter.findAccess();
         Assert.assertEquals( ((TeamPageViewStub)view ).changed , true );
 
+    }
+
+    @Test
+    public void testAction(){
+        new MemoryLoggedInUser().setUser(new PlayerDAOMemory().find("tommy0"));
+        presenter.onHomePage();
+        Assert.assertTrue(((TeamPageViewStub) view).onHome);
     }
 
 

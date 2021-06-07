@@ -34,10 +34,21 @@ public class HomePagePresenterTest {
     @Test
     public void testActions() {
         presenter.onBrowseAction();
+        Assert.assertTrue(((HomePageViewStub) view).onBrowse);
+
         presenter.onConnectAction();
+        Assert.assertTrue(((HomePageViewStub) view).onConnect);
+
         presenter.onLogInAction();
+        Assert.assertTrue(((HomePageViewStub) view).onLogin);
+
         presenter.onOrganizerRegisterAction();
+        Assert.assertTrue(((HomePageViewStub) view).onOrganizerRegister);
+
         presenter.onPlayerRegisterAction();
+        Assert.assertTrue(((HomePageViewStub) view).onPlayerRegister);
+
         presenter.onRegisterAction();
+        Assert.assertTrue(((HomePageViewStub) view).onRegister);
     }
 }

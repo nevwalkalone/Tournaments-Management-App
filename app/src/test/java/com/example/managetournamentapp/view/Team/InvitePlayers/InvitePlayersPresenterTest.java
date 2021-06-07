@@ -3,8 +3,10 @@ package com.example.managetournamentapp.view.Team.InvitePlayers;
 import com.example.managetournamentapp.domain.Player;
 import com.example.managetournamentapp.domain.Team;
 import com.example.managetournamentapp.memoryDao.MemoryInitializer;
+import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
 import com.example.managetournamentapp.memoryDao.PlayerDAOMemory;
 import com.example.managetournamentapp.memoryDao.TeamDAOMemory;
+import com.example.managetournamentapp.view.Team.AddParticipation.AddParticipationViewStub;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -48,6 +50,13 @@ public class InvitePlayersPresenterTest {
         presenter.restartActivity();
         Assert.assertEquals(number1+1, player.getInvitesReceived().size());
         Assert.assertEquals(number2, team.getPlayers().size());
+    }
+
+    @Test
+    public void testAction(){
+        new MemoryLoggedInUser().setUser(new PlayerDAOMemory().find("tommy0"));
+        presenter.onHomePage();
+        Assert.assertTrue(((InvitePlayersViewStub) view).onHome);
     }
 
 

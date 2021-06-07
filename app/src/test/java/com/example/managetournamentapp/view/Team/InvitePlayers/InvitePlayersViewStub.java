@@ -4,7 +4,9 @@ import androidx.appcompat.app.AlertDialog;
 
 import com.example.managetournamentapp.domain.Player;
 
-public class InvitePlayersViewStub implements InvitePlayersView{
+public class InvitePlayersViewStub implements InvitePlayersView {
+    boolean onHome = false;
+
     @Override
     public AlertDialog showPopUp(int layoutId, String msg, int btn1, int btn2, boolean flag) {
         return null;
@@ -37,6 +39,6 @@ public class InvitePlayersViewStub implements InvitePlayersView{
 
     @Override
     public void backToHomePage(String string) {
-
+        onHome = true;
     }
 }

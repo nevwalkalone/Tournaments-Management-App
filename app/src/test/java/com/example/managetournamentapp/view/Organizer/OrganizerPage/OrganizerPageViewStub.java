@@ -4,15 +4,17 @@ import androidx.appcompat.app.AlertDialog;
 
 public class OrganizerPageViewStub implements OrganizerPageView {
     String title;
+    boolean onOrganizer = false, onTournaments = false, onLogout = false, onNoLogout = false, onLogConfirmation = false;
 
     @Override
     public void toOrganizerAccount() {
+        onOrganizer = true;
 
     }
 
     @Override
     public void toOrganizerTournaments(String title) {
-
+        onTournaments = true;
     }
 
     @Override
@@ -22,7 +24,7 @@ public class OrganizerPageViewStub implements OrganizerPageView {
 
     @Override
     public void logOut() {
-
+        onLogout = true;
     }
 
     @Override
@@ -42,11 +44,11 @@ public class OrganizerPageViewStub implements OrganizerPageView {
 
     @Override
     public void logOutConfirmation() {
-
+        onLogConfirmation = true;
     }
 
     @Override
     public void noLogOut() {
-
+        onNoLogout = true;
     }
 }

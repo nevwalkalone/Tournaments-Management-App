@@ -5,6 +5,7 @@ import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
 import com.example.managetournamentapp.memoryDao.OrganizerDAOMemory;
 import com.example.managetournamentapp.memoryDao.PlayerDAOMemory;
 import com.example.managetournamentapp.memoryDao.TournamentDAOMemory;
+import com.example.managetournamentapp.view.Tournament.GroupRankings.GroupRankingsViewStub;
 import com.example.managetournamentapp.view.User.Login.LoginPresenter;
 import com.example.managetournamentapp.view.User.Login.LoginView;
 import com.example.managetournamentapp.view.User.Login.LoginViewStub;
@@ -41,6 +42,7 @@ public class BrowsingPresenterTest {
     public void startPage() {
         presenter.findAllTournaments();
         presenter.startTournamentPage(presenter.getResults().get(0));
+        Assert.assertTrue(((BrowsingViewStub) view).onTournament);
 
     }
 }

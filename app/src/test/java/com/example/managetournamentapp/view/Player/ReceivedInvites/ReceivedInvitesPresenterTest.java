@@ -45,7 +45,10 @@ public class ReceivedInvitesPresenterTest {
     @Test
     public void testActions() {
         presenter.onTeamPageClick();
+        Assert.assertTrue(((ReceivedInvitesViewStub) view).onTeam);
+
         presenter.onHomePage();
+        Assert.assertTrue(((ReceivedInvitesViewStub) view).onHome);
 
     }
 

@@ -3,10 +3,11 @@ package com.example.managetournamentapp.view.Player.CreateTeam;
 public class CreateTeamViewStub implements CreateTeamView {
     String teamname, teamcolor;
     int sportType;
+    boolean onSave = false, onHome = false, onLock = false;
 
     @Override
     public void startSaveTeam(String userName) {
-
+        onSave = true;
     }
 
     @Override
@@ -41,7 +42,7 @@ public class CreateTeamViewStub implements CreateTeamView {
 
     @Override
     public void lockSportType() {
-
+        onLock = true;
     }
 
     @Override
@@ -51,6 +52,6 @@ public class CreateTeamViewStub implements CreateTeamView {
 
     @Override
     public void backToHomePage(String string) {
-
+        onHome = true;
     }
 }

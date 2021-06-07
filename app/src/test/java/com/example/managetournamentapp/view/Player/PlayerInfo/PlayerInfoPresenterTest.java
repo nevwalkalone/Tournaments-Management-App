@@ -30,45 +30,49 @@ public class PlayerInfoPresenterTest {
         presenter.setView(view);
     }
 
-    @Test
-    public void findPlayerInfo() {
-        presenter.findPlayerInfo("tommy0");
-
-    }
 
     @Test
     public void findAccess() {
 
         presenter.findAccess();
+        presenter.findPlayerInfo("tommy0");
 
         // if tommy0 selects to see his info page!
         new MemoryLoggedInUser().setUser(new PlayerDAOMemory().find("tommy0"));
         presenter.findPlayerInfo("tommy0");
         presenter.findAccess();
+        Assert.assertTrue(((PlayerInfoViewStub) view).onChange);
 
     }
 
     @Test
-    //TODO POP DELETE TEST
     public void deletePlayerInfo() {
 
         // CAN'T DELETE
         new MemoryLoggedInUser().setUser(new PlayerDAOMemory().find("tommy0"));
         presenter.findPlayerInfo("tommy0");
         presenter.onDeletePlayer();
+        Assert.assertTrue(new MemoryLoggedInUser().getUser() != null);
 
         // CAN DELETE
         new MemoryLoggedInUser().setUser(new PlayerDAOMemory().find("tommy28"));
         presenter.findPlayerInfo("tommy28");
         presenter.onDeletePlayer();
 
+
+
         presenter.onNoDeletePlayer();
+        Assert.assertTrue(new MemoryLoggedInUser().getUser() != null);
 
         presenter.onYesDeletePlayer();
+        Assert.assertTrue(new MemoryLoggedInUser().getUser() == null);
+        Assert.assertTrue(((PlayerInfoViewStub) view).onDelete);
     }
 
     @Test
     public void editPlayer() {
         presenter.onEditPlayer();
+        Assert.assertTrue(((PlayerInfoViewStub) view).onEdit);
     }
+
 }
