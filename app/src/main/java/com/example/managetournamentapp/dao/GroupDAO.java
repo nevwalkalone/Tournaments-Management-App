@@ -4,6 +4,12 @@ import com.example.managetournamentapp.domain.Group;
 
 import java.util.ArrayList;
 
+
+/**
+ * Developed for the purposes of University Lesson "Software Engineering" at AUEB
+ * -Athens University of Economics and Business
+ */
+
 public interface GroupDAO {
 
     /**
@@ -12,7 +18,10 @@ public interface GroupDAO {
      */
     void save(Group entity);
 
-    //TODO
+    /**
+     * Finds a game.
+     * @return Returns the specified game.
+     */
     Group find();
 
     /**
@@ -23,7 +32,7 @@ public interface GroupDAO {
 
     /**
      * Deletes a specific group.
-     * @param entity
+     * @param entity Group to be deleted.
      */
     void delete(Group entity);
 

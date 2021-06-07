@@ -1,9 +1,12 @@
 package com.example.managetournamentapp.dao;
 
-import com.example.managetournamentapp.domain.Game;
 import com.example.managetournamentapp.domain.Participation;
-
 import java.util.ArrayList;
+
+/**
+ * Developed for the purposes of University Lesson "Software Engineering" at AUEB
+ * -Athens University of Economics and Business
+ */
 
 public interface ParticipationDAO {
 

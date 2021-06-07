@@ -5,6 +5,11 @@ import com.example.managetournamentapp.domain.Game;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+/**
+ * Developed for the purposes of University Lesson "Software Engineering" at AUEB
+ * -Athens University of Economics and Business
+ */
+
 public interface GameDAO {
 
     /**

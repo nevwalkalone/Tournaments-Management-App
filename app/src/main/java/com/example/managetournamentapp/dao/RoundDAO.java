@@ -2,6 +2,12 @@ package com.example.managetournamentapp.dao;
 
 import com.example.managetournamentapp.domain.Round;
 
+
+/**
+ * Developed for the purposes of University Lesson "Software Engineering" at AUEB
+ * -Athens University of Economics and Business
+ */
+
 public interface RoundDAO {
 
     /**
