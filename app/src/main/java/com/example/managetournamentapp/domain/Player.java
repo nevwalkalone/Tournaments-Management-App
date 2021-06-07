@@ -17,13 +17,24 @@ public class Player extends User {
     private ArrayList<Invitation> invitesReceived = new ArrayList<>();
 
 
-    //Default Constructor
+    /**
+     * the default constructor
+     */
     public Player() {
         location = "";
         ageDivision = null;
-
     }
 
+    /**
+     *the full constructor of a new player
+     * @param name of the player
+     * @param surname of the player
+     * @param location of the player
+     * @param phoneNumber of the player
+     * @param email of the player
+     * @param birthDate of the player
+     * @param credentials of the player
+     */
     public Player(String name, String surname, String location, String phoneNumber, String email, LocalDate birthDate, Credentials credentials) {
         super(name, surname, phoneNumber, email, birthDate, credentials);
         this.location = location;
@@ -32,7 +43,10 @@ public class Player extends User {
         initAgeDivision(diff);
     }
 
-
+    /**
+     * set the age division according to the player's age
+     * @param age is the age of the player
+     */
     public void initAgeDivision(int age) {
         if (age <= 12) {
             ageDivision = AgeDivision.valueOf("K12");
@@ -46,10 +60,10 @@ public class Player extends User {
     }
 
 
-    //for every player
-    //after accepting a request
-    //for the captain it is called in the
-    //team constructor
+    /**
+     * add a new team in the player's joined teams
+     * @param team is the new team
+     */
     public void addJoinedTeam(Team team) {
         if (team == null) {
             return;
@@ -57,23 +71,20 @@ public class Player extends User {
         if (team.hasAnyActivePart()) {
             return;
         }
-
         if (!canJoin(team)) {
-
             return;
         }
-
-
         team.friendGetPlayers().add(this);
         teamsJoined.add(team);
         if (team.getCaptain().equals(this)) {
-
-
             captainInTeams.add(team);
         }
     }
 
-
+    /**
+     * remove a team from the player's joined teams
+     * @param team the team that will be removed
+     */
     public void removeJoinedTeam(Team team) {
         if (team == null) {
             return;
@@ -83,7 +94,6 @@ public class Player extends User {
         if (!teamsJoined.contains(team)) {
             return;
         }
-
         team.friendGetPlayers().remove(this);
         teamsJoined.remove(team);
         if (team.getCaptain().equals(this)) {
@@ -91,11 +101,18 @@ public class Player extends User {
         }
     }
 
+    /**
+     * get the teams that the player is currently joined to
+     * @return the ArrayList of the player's joined teams
+     */
     public ArrayList<Team> getTeamsJoined() {
         return new ArrayList<>(teamsJoined);
     }
 
-    //captain only
+    /**
+     *delete a team that the player has created (works only if the player is the captain of this team)
+     * @param team is the team that will be deleted
+     */
     public void deleteTeam(Team team) {
         if (team == null) {
             return;
@@ -125,7 +142,10 @@ public class Player extends User {
         }
     }
 
-
+    /**
+     *add a team to the list of teams whose captain is this player
+     * @param team the team that will be added
+     */
     public void addCaptainInTeams(Team team) {
         if (team == null) {
             return;
@@ -140,7 +160,10 @@ public class Player extends User {
         captainInTeams.add(team);
     }
 
-
+    /**
+     * remove a team to the list of teams whose captain is this player
+     * @param team the team that will be remover
+     */
     public void removeCaptainInTeams(Team team) {
         if (team == null) {
             return;
@@ -153,11 +176,19 @@ public class Player extends User {
         captainInTeams.remove(team);
     }
 
+    /**
+     * get the teams that this player is managing
+     * @return the array list of teams whose captain is this player
+     */
     public ArrayList<Team> getCaptainInTeams() {
         return new ArrayList<>(captainInTeams);
     }
 
-
+    /**
+     * find if this player can join a particular team
+     * @param team the team that is examined
+     * @return true if the player is able to join this particular team
+     */
     public boolean canJoin(Team team) {
         // check if player belongs in the same
         // age group
@@ -177,7 +208,11 @@ public class Player extends User {
     }
 
 
-    //for every player
+    /**
+     * reply to an invitation (accept or reject)
+     * @param invite the invitation that the player will reply to
+     * @param accept is true if the player accepts the invitation
+     */
     public void replyToInvitation(Invitation invite, boolean accept) {
         if (invite == null)
             return;
@@ -193,12 +228,20 @@ public class Player extends User {
         }
     }
 
+    /**
+     * get the invites that have been sent to the player
+     * @return all the invites that the player has received
+     */
     public ArrayList<Invitation> getInvitesReceived() {
         return new ArrayList<>(invitesReceived);
     }
 
 
-    //for every player
+    /**
+     * add a new sport that the player is interested in
+     * teams of this sport will be able to sent invitations to the player
+     * @param sport is the new sport
+     */
     public void addSportInterested(Sport sport) {
         if (sport == null) {
             return;
@@ -209,11 +252,19 @@ public class Player extends User {
         sportsInterested.add(sport);
     }
 
+    /**
+     * empty list of sports that the player is interested in
+     * , the player will not receive any invites after this
+     */
     public void clearSportsInterest() {
         sportsInterested.clear();
     }
 
-    //for every player
+    /**
+     * remove a sport that the player is interested in
+     * teams of this sport will not be able to sent invitations to the player
+     * @param sport is the sport
+     */
     public void removeSportInterested(Sport sport) {
         if (sport == null) {
             return;
@@ -221,13 +272,20 @@ public class Player extends User {
         if (sportsInterested.contains(sport)) {
             sportsInterested.remove(sport);
         }
-
     }
 
+    /**
+     * find the sports whose teams can sent invitations to the player
+     * @return the arraylist of the sports that the user is interested in
+     */
     public ArrayList<Sport> getSportsInterested() {
         return new ArrayList<>(sportsInterested);
     }
 
+    /**
+     * add a new invitation to the invitations arraylist
+     * @param invite is the invitation that will be added
+     */
     public void addInvite(Invitation invite) {
         if (invite == null) {
             return;
@@ -235,6 +293,10 @@ public class Player extends User {
         invitesReceived.add(invite);
     }
 
+    /**
+     * remove an invitation to the invitations arraylist
+     * @param invite is the invitation that will be removed
+     */
     public void removeInvite(Invitation invite) {
         if (invite == null) {
             return;
@@ -245,22 +307,35 @@ public class Player extends User {
         invitesReceived.remove(invite);
     }
 
-
+    /**
+     * get the player's location
+     * @return the location of the player
+     */
     public String getLocation() {
         return location;
     }
 
+    /**
+     * set the player;s location
+     * @param location the new location
+     */
     public void setLocation(String location) {
         this.location = location;
     }
 
-
+    /**
+     * get the age division that the player belongs to
+     * @return the player's age division
+     */
     public AgeDivision getAgeDivision() {
         return ageDivision;
     }
 
 
-    //all player's present or future participations
+    /**
+     * get the player's participations that are either running or scheduled for the future
+     * @return the player's participations that have not been finished
+     */
     public ArrayList<Participation> getUndoneParticipations() {
         ArrayList<Participation> runningParticipations = new ArrayList<>();
         for (Team team : teamsJoined) {
@@ -269,12 +344,20 @@ public class Player extends User {
         return runningParticipations;
     }
 
-
+    /**
+     * the string representation of the player
+     * @return the basic info of the player to string
+     */
     @Override
     public String toString() {
         return super.toString() + "Location: " + getLocation() + " Age group: " + getAgeDivision();
     }
 
+    /**
+     *check if two players are equal
+     * @param other the other players
+     * @return if this players is equal to the other players
+     */
     public boolean equals(Object other) {
         if (other == null) {
             return false;
@@ -289,14 +372,10 @@ public class Player extends User {
             Player otherPlayer = (Player) other;
             if (location.equals(otherPlayer.getLocation())
                     && ageDivision.equals(otherPlayer.getAgeDivision())
-//                    && teamsJoined.equals(otherPlayer.getTeamsJoined())
-//                    && captainInTeams.equals(otherPlayer.getCaptainInTeams())
                     && invitesReceived.equals(otherPlayer.getInvitesReceived())
                     && sportsInterested.equals(otherPlayer.getSportsInterested()))
                 return true;
         }
-
-
         return false;
     }
 

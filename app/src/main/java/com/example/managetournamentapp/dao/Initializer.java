@@ -17,8 +17,6 @@ import java.util.ArrayList;
 
 /**
  * Helper Class that is responsible for initialing data in our database.
- * Βοηθητική κλάση που παρέχει δεδομένα για τα παραδείγματα και τις δοκιμασίες ελέγχου<p>
- * Βιβλία
  */
 
 public abstract class Initializer {
@@ -124,7 +122,7 @@ public abstract class Initializer {
 
     /**
      * Returns
-     * @return Το DAO των χωρών
+     * @return the DAO of the tournaments
      */
     public abstract TournamentDAO getTournamentDAO();
 

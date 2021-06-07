@@ -1,6 +1,5 @@
 package com.example.managetournamentapp.domain;
 
-import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -19,7 +18,11 @@ public class Group {
     private Map<Team, Integer> rankings = new HashMap<>();
     private ArrayList<LocalDate> dates;
 
-
+    /**
+     *the constructor of a group
+     * @param isKnockout if the group contains knockout games or groups
+     * @param dates an arraylist of all the game dates
+     */
     public Group(boolean isKnockout , ArrayList<LocalDate> dates ) {
         this.isKnockout = isKnockout;
         this.dates = dates;
@@ -27,12 +30,15 @@ public class Group {
             groupSize = 2;
             gamesNumber = 1;
         } else {
-            //TODO IF PERITTOS ARITHMOS
             groupSize = 4;
             gamesNumber = 6;
         }
     }
 
+    /**
+     * adds a new team in the group
+     * @param team is the new team that will be added
+     */
     public void addTeam(Team team) {
         if (team == null) {
             return;
@@ -45,6 +51,10 @@ public class Group {
         rankings.put(team, 0);
     }
 
+    /**
+     * add all the teams that will participate in the round
+     * @param teams the arraylist of teams that will be added
+     */
     public void addTeams(ArrayList<Team> teams) {
         rankings = new HashMap<>();
         for (Team team: teams){
@@ -53,7 +63,10 @@ public class Group {
         setupGames(teams);
     }
 
-
+    /**
+     * assign the teams to the games that will take part
+     * @param teams the list of teams that will participate
+     */
     public void setupGames(List<Team> teams){
         games.clear();
         games.add( new Game("",teams.get(0),teams.get(1),dates.get(0)  ));
@@ -66,7 +79,11 @@ public class Group {
         games.add( new Game("",teams.get(2),teams.get(3),dates.get(5)  ));
     }
 
-
+    /**
+     * returns the ranking of the team in the group
+     * @param team is the team
+     * @return the ranking of the team
+     */
     public int getTeamRanking(Team team) {
         if (team == null) {
             return -1;
@@ -77,6 +94,11 @@ public class Group {
         return rankings.get(team);
     }
 
+    /**
+     * is used to increase the ranking of a team (basically when the team accomplishes a new win)
+     * @param team the team whose ranking we will increase
+     * @param points the additional points that the team collects
+     */
     public void increaseTeamRanking(Team team, int points) {
         if (team == null || points < 0) {
             return;
@@ -87,12 +109,18 @@ public class Group {
         rankings.put(team, rankings.get(team) + points);
     }
 
+    /**
+     * resets the rankings, every teams gets zero points
+     */
     public void setRankingsToZero(){
         for (Map.Entry<Team, Integer> entry : rankings.entrySet()) {
             rankings.put(entry.getKey(), 0);
         }
     }
 
+    /**
+     * check every game of the group and recalculate the rankings
+     */
     public void refreshRankings(){
         setRankingsToZero();
         for (Game game : games){
@@ -109,15 +137,28 @@ public class Group {
         }
     }
 
-
+    /**
+     * the group is considered knockout: there are two teams, one match, and one team is promoted
+     * or
+     * he group is considered as an actual group: there are four teams, six matches, and two teams are promoted
+     * @return true if the group is knockout
+     */
     public boolean isKnockout() {
         return isKnockout;
     }
 
+    /**
+     * return the all the games of the group
+     * @return the arraylist of the games
+     */
     public ArrayList<Game> getGames() {
         return new ArrayList<>(games);
     }
 
+    /**
+     * add a new game in the group
+     * @param game that will be added
+     */
     public void addGame(Game game) {
         if (game == null) {
             return;
@@ -130,14 +171,26 @@ public class Group {
         games.add(game);
     }
 
+    /**
+     * get the rankings of the group as a sorted set of pairs <team , ranking of team>
+     * @return the map with the rankings
+     */
     public Map<Team, Integer> getRankings() {
         return sortByValue(rankings);
     }
 
+    /**
+     *get a copy of the teams of the group
+     * @return the teams of the group
+     */
     public ArrayList<Team> getTeams() {
-        return new ArrayList<Team>(rankings.keySet());
+        return new ArrayList<>(rankings.keySet());
     }
 
+    /**
+     * find if the group is done
+     * @return true if every game of the group is finished
+     */
     public boolean allGamesFinished() {
         if (games.isEmpty())
             return false;
@@ -149,7 +202,10 @@ public class Group {
     }
 
 
-
+    /**
+     *get the teams that are considered winners, and will be promoted
+     * @return the arraylist of the promoted teams
+     */
     public ArrayList<Team> getGroupWinners() {
         if (!allGamesFinished())
             return null;
@@ -170,13 +226,14 @@ public class Group {
     }
 
 
-
-    // function to sort hashmap by values
+    /**
+     *sorts the rankings by points (in descending order)
+     * @param hm the initial hashmap
+     * @return the sorted hashmap
+     */
     private static Map<Team, Integer> sortByValue(Map<Team, Integer> hm) {
         // Create a list from elements of HashMap
-        List<Map.Entry<Team, Integer>> list =
-                new LinkedList<Map.Entry<Team, Integer>>(hm.entrySet());
-
+        List<Map.Entry<Team, Integer>> list = new LinkedList<Map.Entry<Team, Integer>>(hm.entrySet());
         // Sort the list
         Collections.sort(list, new Comparator<Map.Entry<Team, Integer>>() {
             public int compare(Map.Entry<Team, Integer> o1,
@@ -184,7 +241,6 @@ public class Group {
                 return (o1.getValue()).compareTo(o2.getValue());
             }
         });
-
         // put data from sorted list to hashmap
         HashMap<Team, Integer> temp = new LinkedHashMap<Team, Integer>();
         for (Map.Entry<Team, Integer> aa : list) {
@@ -194,8 +250,11 @@ public class Group {
     }
 
 
-
-
+    /**
+     * check the equality of two group objects
+     * @param other the other group
+     * @return true if this group is equal to the other
+     */
     public boolean equals(Object other) {
         if (this == other){
             return true;

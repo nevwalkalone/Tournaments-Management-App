@@ -48,11 +48,9 @@ public class GameTest {
         Assert.assertEquals(game.getArena(),"Oaka");
         Assert.assertEquals(game.getDate(),date  );
         Assert.assertEquals(game.toString(), "Game{" +
-                                            "arena='" + "Oaka" + '\'' +
+                                            "arena='" + "Oaka" +
                                             ", scoreA=" + 0 +
                                             ", scoreB=" + 0 +
-//                                            ", teamA=" + teamA +
-//                                            ", teamB=" + teamB +
                                             ", date=" + date +
                                             ", isFinished=" + false +
                                             '}' );

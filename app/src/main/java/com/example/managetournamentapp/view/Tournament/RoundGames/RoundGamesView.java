@@ -10,6 +10,5 @@ public interface RoundGamesView {
 
     void recreateView();
 
-
     void backToHomePage(boolean flag, String string);
 }
