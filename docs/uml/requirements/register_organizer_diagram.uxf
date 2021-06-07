@@ -1,0 +1,72 @@
+<diagram program="umletino" version="14.3.0"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>610</x><y>150</y><w>380</w><h>360</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt; RegisterOrganizerView
+--
+startOrganizerPage( title : String ) :  void
+showPopUp(view : RegisterOrganizerView, msg : String) : void
+setTitle(title : String) : void
+setBirthdate(birthdate : String) : void
+setEmail( email : String) : void
+setPhoneNumber(phoneNumber : String) : void
+setName(name : String) : void
+setSurname( surname : String) : void
+setUsername( username : String) : void
+setPassword ( password : String): void
+getOrganizerTitle() : String
+getBirthDate() : String
+getEmail() : String
+getPhoneNumber() : String
+getName() : String
+getSurname() : String
+getUsername() : String
+getPassword() : String</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>210</y><w>470</w><h>410</h></coordinates><panel_attributes>RegisterOrganizerActivity
+--
+~ organizerTitle : String
+- saveBtn : Button
+_- ORGANIZER_TITLE_EXTRA: String_
+
+--
+# onCreate(savedInstanceState : Bundle) : void
++ showPopUp(view : RegisterOrganizerView, msg : String) : void
++ onClick( v : View ) : void
++ startOrganizerPage() : void
++ getUsername() : String
++ getPassword() : String
++ getName() : String
++ getSurname() : String
++ getPhoneNumber() : String
++ getEmail() : String
++ getBirthDate() : String
++ getOrganizerTitle() : String
++ setUsername( username : String) : void
++ setPassword ( password : String): void
++ setName(name : String) : void
++ setSurname( surname : String) : void
++ setPhoneNumber(phoneNumber : String) : void
++ setEmail( email : String) : void
++ setBirthdate(birthdate : String) : void
++ setTitle(title : String) : void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>50</x><y>740</y><w>330</w><h>100</h></coordinates><panel_attributes>RegisterOrganizerViewModel
+--
++ RegisterOrganizerViewModel()
++ getPresenter() : RegisterOrganizerPresenter
+#  onCleared() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>580</x><y>650</y><w>480</w><h>300</h></coordinates><panel_attributes>RegisterOrganizerPresenter
+--
+- loggedInUser : LoggedInUser
+- connectedOrganizer : Organizer
+--
++ RegisterOrganizerPresenter()
++ showPreviousInfo (organizerTitle : String) : void
++ handleOrganizerDate() : void
++ checkEmail(emailToCheck : String) : boolean
++ validateName(name : String) : boolean
++ validatePhone(phone : String) : String
++ reformatBirthdate( birthdate : String) : String
++ validateBirthdate( birthdate : String) : String
++ getLoggedInUser() : LoggedInUser
++ setLoggedInUser(loggedInUser : LoggedInUser) : void
++ setView(view : RegisterOrganizerView) : void
++ clearView() : void
++ setOrganizerDAO(organizerDAO : OrganizerDAO) : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>80</x><y>120</y><w>290</w><h>40</h></coordinates><panel_attributes>androidx.appcompat.app.AppCompatActivity</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>220</x><y>150</y><w>30</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;60</additional_attributes></element><element><id>Relation</id><coordinates><x>370</x><y>758</y><w>230</w><h>40</h></coordinates><panel_attributes>lt=&lt;-
+περιέχει</panel_attributes><additional_attributes>210;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>220</x><y>608</y><w>70</w><h>150</h></coordinates><panel_attributes>lt=&lt;-
+περιέχει</panel_attributes><additional_attributes>10;130;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>700</x><y>40</y><w>210</w><h>40</h></coordinates><panel_attributes>androidx.lifecycle.ViewModel</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>790</x><y>68</y><w>30</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;82</additional_attributes></element><element><id>Relation</id><coordinates><x>460</x><y>368</y><w>170</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>150;12;10;12</additional_attributes></element><element><id>Relation</id><coordinates><x>790</x><y>498</y><w>70</w><h>170</h></coordinates><panel_attributes>lt=&lt;-
+περιέχει</panel_attributes><additional_attributes>10;12;10;150</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1060</x><y>520</y><w>150</w><h>50</h></coordinates><panel_attributes>OrganizertDAO</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1050</x><y>558</y><w>70</w><h>120</h></coordinates><panel_attributes>lt=&lt;-
+περιέχει</panel_attributes><additional_attributes>10;10;10;92</additional_attributes></element></diagram>

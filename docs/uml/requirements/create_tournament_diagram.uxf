@@ -62,7 +62,6 @@ setTeamsNumberSpinner(list : ArrayList&lt;String&gt;) : void
 backToHomePage(name : String) : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>540</x><y>420</y><w>440</w><h>460</h></coordinates><panel_attributes>CreateTournamentPresenter
 --
 - organizer : Organizer
-- tournamentDAO : TournamentDAO
 - connectedTournament : Tournament
 - teamNumbers : ArrayList&lt;String&gt;
 - ageDivisions : ArrayList&lt;String&gt;
