@@ -1,15 +1,7 @@
 package com.example.managetournamentapp.view.User.Browsing;
 
-import android.content.Intent;
-
-import com.example.managetournamentapp.dao.LoggedInUser;
-import com.example.managetournamentapp.dao.TeamDAO;
 import com.example.managetournamentapp.dao.TournamentDAO;
-import com.example.managetournamentapp.domain.Participation;
-import com.example.managetournamentapp.domain.Player;
-import com.example.managetournamentapp.domain.Team;
 import com.example.managetournamentapp.domain.Tournament;
-
 import java.util.ArrayList;
 
 public class BrowsingPresenter {
@@ -17,18 +9,32 @@ public class BrowsingPresenter {
     private TournamentDAO tournamentDAO;
     private ArrayList<Tournament> results = new ArrayList<>();
 
+    /**
+     * default constructor
+     */
     public BrowsingPresenter() {
     }
 
+    /**
+     * find all the tournaments
+     */
     public void findAllTournaments() {
         results.clear();
         results = tournamentDAO.findAll();
     }
 
+    /**
+     * start the tournament page activity
+     * @param tournament the tournament
+     */
     public void startTournamentPage(Tournament tournament) {
         view.startTournamentPage(tournament.getTitle());
     }
 
+    /**
+     * get all the tournaments
+     * @return the arraylist of tournaments
+     */
     public ArrayList<Tournament> getResults() {
         return results;
     }

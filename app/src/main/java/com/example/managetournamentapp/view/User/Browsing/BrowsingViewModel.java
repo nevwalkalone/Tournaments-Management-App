@@ -10,16 +10,26 @@ public class BrowsingViewModel extends ViewModel {
 
     BrowsingPresenter presenter;
 
+    /**
+     * the constructor
+     */
     public BrowsingViewModel() {
         presenter = new BrowsingPresenter();
         presenter.setTournamentDAO(new TournamentDAOMemory());
 
     }
 
+    /**
+     *
+     * @return the presenter instance
+     */
     public BrowsingPresenter getPresenter() {
         return presenter;
     }
 
+    /**
+     * clear the view of the presenter
+     */
     @Override
     protected void onCleared() {
         super.onCleared();

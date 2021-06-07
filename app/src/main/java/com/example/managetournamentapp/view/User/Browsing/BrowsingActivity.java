@@ -49,6 +49,10 @@ public class BrowsingActivity extends AppCompatActivity implements BrowsingView,
         }
     }
 
+    /**
+     * What happens when an item is selected
+     * @param item the tournament that is selected
+     */
     @Override
     public void onListFragmentInteraction(Tournament item) {
         tournamentSelected = item.getTitle();
@@ -56,11 +60,19 @@ public class BrowsingActivity extends AppCompatActivity implements BrowsingView,
 
     }
 
+    /**
+     * get the list of all the tournaments
+     * @return the list of tournaments
+     */
     @Override
     public ArrayList<Tournament> getTournamentList() {
         return viewModel.getPresenter().getResults();
     }
 
+    /**
+     * start the tournament page activity
+     * @param title the title of the tournament
+     */
     @Override
     public void startTournamentPage(String title) {
         Intent intent = new Intent(this, TournamentPageActivity.class);
