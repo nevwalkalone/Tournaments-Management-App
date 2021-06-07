@@ -12,8 +12,6 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.domain.Player;
-import com.example.managetournamentapp.memoryDao.PlayerDAOMemory;
-import com.example.managetournamentapp.memoryDao.TeamDAOMemory;
 import com.example.managetournamentapp.view.Player.PlayerInfo.PlayerInfoActivity;
 import com.example.managetournamentapp.view.Team.InvitePlayers.fragment.PlayersListFragment;
 

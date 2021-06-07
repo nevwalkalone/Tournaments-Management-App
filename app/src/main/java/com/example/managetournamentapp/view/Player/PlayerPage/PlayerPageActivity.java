@@ -24,6 +24,7 @@ public class PlayerPageActivity extends AppCompatActivity implements PlayerPageV
     private boolean sameAsLogged = true;
     private static final String PLAYER_USERNAME_EXTRA = "player_username_extra";
     private PlayerPageViewModel viewModel;
+    private static AlertDialog POPUP_ACTION;
     TextView txtPlayerName;
     Button btnPlayerAccount;
     Button btnPlayerTeams;
@@ -85,6 +86,48 @@ public class PlayerPageActivity extends AppCompatActivity implements PlayerPageV
                 .show();
         Intent intent = new Intent(PlayerPageActivity.this, LoginActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    public void displayPopUpAction(int layout, String msg, int btn1, int btn2) {
+        POPUP_ACTION = showPopUp(layout, msg, btn1, btn2);
+        POPUP_ACTION.show();
+    }
+
+    @Override
+    public void dismissPopUpAction() {
+        POPUP_ACTION.dismiss();
+    }
+
+    @Override
+    public AlertDialog showPopUp(int layoutId, String msg, int btn1, int btn2) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        View customLayout = getLayoutInflater().inflate(layoutId, null);
+        builder.setView(customLayout);
+        AlertDialog dialog = builder.create();
+
+        TextView textMsg = (TextView) customLayout.findViewById(R.id.action_message);
+        Button firstButton = (Button) customLayout.findViewById(btn1);
+        Button secondButton = (Button) customLayout.findViewById(btn2);
+
+        textMsg.setText(msg);
+
+        firstButton.setOnClickListener(v->viewModel.getPresenter().onNoLogOut());
+        secondButton.setOnClickListener(v->viewModel.getPresenter().onYesLogOut());
+
+        return dialog;
+    }
+
+    @Override
+    public void logOutConfirmation() {
+        POPUP_ACTION = showPopUp(R.layout.tournament_delete_popup, "Do you really want to log out?", R.id.no_delete, R.id.yes_delete);
+
+        POPUP_ACTION.show();
+    }
+
+    @Override
+    public void noLogOut() {
+        POPUP_ACTION.dismiss();
     }
 
     public void changesOfAccess() {

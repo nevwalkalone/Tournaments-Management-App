@@ -55,6 +55,15 @@ public class PlayerPagePresenter {
     }
 
     public void onLogOut(){
+        view.logOutConfirmation();
+    }
+
+
+    public void onNoLogOut(){
+        view.noLogOut();
+    }
+
+    public void onYesLogOut(){
         view.logOut();
     }
 

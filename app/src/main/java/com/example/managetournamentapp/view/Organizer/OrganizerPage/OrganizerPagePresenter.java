@@ -54,9 +54,17 @@ public class OrganizerPagePresenter {
     }
 
     public void onLogOut(){
-        view.logOut();
+        view.logOutConfirmation();
     }
 
+
+    public void onNoLogOut(){
+        view.noLogOut();
+    }
+
+    public void onYesLogOut(){
+        view.logOut();
+    }
     public void setView(OrganizerPageView view) {
         this.view = view;
     }
