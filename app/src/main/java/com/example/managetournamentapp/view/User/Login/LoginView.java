@@ -11,6 +11,6 @@ public interface LoginView {
 
     void startPlayerPage(String username);
 
-    void startOrganizerPage();
+    void startOrganizerPage(String title);
 
 }

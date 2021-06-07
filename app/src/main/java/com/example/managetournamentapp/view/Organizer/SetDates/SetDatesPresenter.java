@@ -6,11 +6,14 @@ import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.dao.TournamentDAO;
 import com.example.managetournamentapp.domain.AgeDivision;
 import com.example.managetournamentapp.domain.Organizer;
+import com.example.managetournamentapp.domain.Player;
 import com.example.managetournamentapp.domain.Round;
 import com.example.managetournamentapp.domain.Sport;
 import com.example.managetournamentapp.domain.Team;
 import com.example.managetournamentapp.domain.Tournament;
 import com.example.managetournamentapp.domain.TournamentType;
+import com.example.managetournamentapp.domain.User;
+import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -182,5 +185,15 @@ public class SetDatesPresenter {
             return false;
         }
         return true;
+    }
+
+    public void onHomePage(){
+        User user = new MemoryLoggedInUser().getUser();
+        if (user instanceof Player){
+            view.backToHomePage(true,user.getCredentials().getUsername());
+        }
+        else{
+            view.backToHomePage(false,((Organizer)user).getTitle());
+        }
     }
 }

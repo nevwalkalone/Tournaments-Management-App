@@ -9,4 +9,7 @@ public interface RoundGamesView {
     void showPopup(Game game);
 
     void recreateView();
+
+
+    void backToHomePage(boolean flag, String string);
 }

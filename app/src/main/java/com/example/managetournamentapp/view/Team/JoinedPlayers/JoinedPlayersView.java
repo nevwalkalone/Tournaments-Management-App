@@ -26,4 +26,6 @@ public interface JoinedPlayersView {
     void resetPopUps();
 
     void restartActivity();
+
+    void backToHomePage(boolean flag, String string);
 }

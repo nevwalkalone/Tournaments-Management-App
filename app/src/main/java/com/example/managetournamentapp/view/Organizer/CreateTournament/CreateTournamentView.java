@@ -48,4 +48,6 @@ public interface CreateTournamentView {
     void lockPrevious();
 
     String getDescription();
+
+    void backToHomePage(String name);
 }

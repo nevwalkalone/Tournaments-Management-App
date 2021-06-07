@@ -22,7 +22,7 @@ public class OrganizerPagePresenterTest {
 
     @Test
     public void findOrganizer() {
-        presenter.findOrganizerInfo();
+        //presenter.findOrganizerInfo();
     }
 
     @Test

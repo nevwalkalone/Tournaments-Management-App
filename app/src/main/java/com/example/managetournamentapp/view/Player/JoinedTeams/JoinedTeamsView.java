@@ -6,4 +6,5 @@ public interface JoinedTeamsView {
 
     void changesOfAccess();
 
+    void backToHomePage();
 }

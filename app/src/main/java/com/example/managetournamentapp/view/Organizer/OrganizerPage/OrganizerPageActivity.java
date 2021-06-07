@@ -24,10 +24,12 @@ import com.example.managetournamentapp.view.User.Login.LoginActivity;
 
 public class OrganizerPageActivity extends AppCompatActivity implements OrganizerPageView {
     private OrganizerPageViewModel viewModel;
+    private static final String ORGANIZER_TITLE_EXTRA = "organizer_title_extra";
     private TextView txtOrganizerName;
     private Button btnOrganizerAccount;
     private Button btnOrganizerTournaments;
     private Button btnLogOut;
+    private String organizerUsername;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,20 +37,21 @@ public class OrganizerPageActivity extends AppCompatActivity implements Organize
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_organizer_page);
-
+        organizerUsername = this.getIntent().getStringExtra(ORGANIZER_TITLE_EXTRA);
 
         viewModel = new ViewModelProvider(this).get(OrganizerPageViewModel.class);
         viewModel.getPresenter().setView(this);
+        viewModel.getPresenter().findOrganizerInfo(organizerUsername);
 
         txtOrganizerName = findViewById(R.id.title_organizer_name);
         btnOrganizerAccount = findViewById(R.id.organizer_account);
         btnOrganizerTournaments = findViewById(R.id.organizer_tournaments);
         btnLogOut = findViewById(R.id.log_out_button);
 
+        txtOrganizerName.setText(viewModel.getPresenter().getOrganizerTitle());
         btnOrganizerAccount.setOnClickListener(v -> viewModel.getPresenter().onOrganizerAccount());
         btnOrganizerTournaments.setOnClickListener(v -> viewModel.getPresenter().onOrganizerTournaments());
         btnLogOut.setOnClickListener(v->viewModel.getPresenter().onLogOut());
-        viewModel.getPresenter().findOrganizerInfo();
     }
 
     /**
@@ -62,8 +65,9 @@ public class OrganizerPageActivity extends AppCompatActivity implements Organize
     /**
      * Starts CreatedTournaments Activity
      */
-    public void toOrganizerTournaments() {
+    public void toOrganizerTournaments(String title) {
         Intent intent = new Intent(OrganizerPageActivity.this, OrganizerTournamentsActivity.class);
+        intent.putExtra(ORGANIZER_TITLE_EXTRA,title);
         startActivity(intent);
 
     }

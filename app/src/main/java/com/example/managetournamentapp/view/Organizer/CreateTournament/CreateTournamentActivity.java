@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -16,8 +17,6 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.view.Organizer.OrganizerPage.OrganizerPageActivity;
 import com.example.managetournamentapp.view.Organizer.SetDates.SetDatesActivity;
-import com.example.managetournamentapp.view.Player.CreateTeam.CreateTeamView;
-import com.example.managetournamentapp.view.Tournament.TournamentPage.TournamentPageActivity;
 
 import java.util.ArrayList;
 
@@ -25,13 +24,14 @@ import java.util.ArrayList;
 public class CreateTournamentActivity extends AppCompatActivity implements CreateTournamentView {
     private static final String BASIC_INFO_EXTRA = "basic_info_extra";
     public static final String TOURNAMENT_TITLE_EXTRA = "tournament_title_extra";
-    public static final String ORGANIZER_TITLE = "organizer_title";
+    public static final String ORGANIZER_TITLE_EXTRA = "organizer_title_extra";
     private CreateTournamentViewModel viewModel;
     private Button saveBtn;
     String tournamentTitle;
     private Spinner sportTypeSpinner;
     private Spinner ageDivisionSpinner;
     private Spinner teamsNumberSpinner;
+    ImageButton btnHome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,13 +54,15 @@ public class CreateTournamentActivity extends AppCompatActivity implements Creat
         viewModel.getPresenter().showPreviousInfo(tournamentTitle);
 
         saveBtn = findViewById(R.id.saveTeambtn);
+        btnHome = findViewById(R.id.imageButton);
         saveBtn.setOnClickListener(v -> viewModel.getPresenter().onSaveTournament());
+        btnHome.setOnClickListener(v -> viewModel.getPresenter().onHomePage());
     }
 
     @Override
     public void startSaveTournament(String organizerTitle) {
         Intent intent = new Intent(CreateTournamentActivity.this, OrganizerPageActivity.class);
-        intent.putExtra(ORGANIZER_TITLE, organizerTitle);
+        intent.putExtra(ORGANIZER_TITLE_EXTRA, organizerTitle);
         startActivity(intent);
     }
 
@@ -198,5 +200,15 @@ public class CreateTournamentActivity extends AppCompatActivity implements Creat
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, list);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         teamsNumberSpinner.setAdapter(adapter);
+    }
+
+
+    @Override
+    public void backToHomePage(String name) {
+
+        Intent intent = new Intent (this, OrganizerPageActivity.class);
+        intent.putExtra(ORGANIZER_TITLE_EXTRA, name);
+        startActivity(intent);
+
     }
 }

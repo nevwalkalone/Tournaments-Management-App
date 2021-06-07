@@ -68,5 +68,9 @@ public class JoinedTeamsPresenter {
         this.loggedInUser = loggedInUser;
     }
 
+    public void onHomePage(){
+        view.backToHomePage();
+    }
+
 
 }

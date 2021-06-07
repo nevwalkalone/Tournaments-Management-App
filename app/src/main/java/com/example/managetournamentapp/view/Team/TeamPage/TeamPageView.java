@@ -9,4 +9,6 @@ public interface TeamPageView {
     void startTeamParticipations();
 
     void changesOfAccess();
+
+    void backToHomePage(boolean flag, String string);
 }

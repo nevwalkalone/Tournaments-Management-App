@@ -19,6 +19,7 @@ import com.example.managetournamentapp.view.Organizer.OrganizerTournaments.Organ
 public class TournamentInfoActivity extends AppCompatActivity implements TournamentInfoView {
     private TournamentInfoViewModel viewModel;
     public static final String TOURNAMENT_TITLE_EXTRA = "tournament_title_extra";
+    private static final String ORGANIZER_TITLE_EXTRA = "organizer_title_extra";
     String tournamentName;
     Button btnEditTournament;
     Button btnDeleteTournament;
@@ -90,8 +91,10 @@ public class TournamentInfoActivity extends AppCompatActivity implements Tournam
     }
 
     @Override
-    public void yesDeleteTournament() {
+    public void yesDeleteTournament(String title) {
         Intent intent = new Intent(TournamentInfoActivity.this, OrganizerPageActivity.class);
+        showToast("SUCCESSFULLY DELETED TOURNAMENT.");
+        intent.putExtra(ORGANIZER_TITLE_EXTRA,title);
         startActivity(intent);
     }
 

@@ -164,9 +164,11 @@
                     android:layout_toRightOf="@+id/delete_team_button"/>
 
             </RelativeLayout>
+
         </TableRow>
 
 
 
     </TableLayout>
+
 </ScrollView>

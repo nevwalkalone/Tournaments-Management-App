@@ -11,4 +11,6 @@ public interface SetDatesView {
     ArrayList<String> getDates();
 
     void showPopUp(SetDatesView view, String msg);
+
+    void backToHomePage(boolean isPlayer, String name);
 }

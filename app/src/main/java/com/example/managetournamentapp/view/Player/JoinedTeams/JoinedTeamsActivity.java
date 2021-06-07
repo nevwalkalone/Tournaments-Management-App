@@ -3,12 +3,16 @@ package com.example.managetournamentapp.view.Player.JoinedTeams;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.lifecycle.ViewModelProvider;
 import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.domain.Team;
 import com.example.managetournamentapp.view.Player.CreateTeam.CreateTeamActivity;
+import com.example.managetournamentapp.view.Player.PlayerPage.PlayerPageActivity;
 import com.example.managetournamentapp.view.Team.TeamPage.TeamPageActivity;
 import com.example.managetournamentapp.view.Tournament.ParticipatingTeams.fragment.TeamsListFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -22,6 +26,7 @@ public class JoinedTeamsActivity extends AppCompatActivity implements JoinedTeam
     JoinedTeamsViewModel viewModel;
     private FloatingActionButton addBtn;
     private String playerUsername;
+    ImageButton btnHome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +37,12 @@ public class JoinedTeamsActivity extends AppCompatActivity implements JoinedTeam
 
         viewModel = new ViewModelProvider(this).get(JoinedTeamsViewModel.class);
         viewModel.getPresenter().setView(this);
+
+
+
+        btnHome = findViewById(R.id.imageButton);
+        btnHome.setOnClickListener(v -> viewModel.getPresenter().onHomePage());
+
         addBtn = findViewById(R.id.create_team_button);
         addBtn.setOnClickListener(v -> viewModel.getPresenter().onAddTeam());
 
@@ -71,7 +82,12 @@ public class JoinedTeamsActivity extends AppCompatActivity implements JoinedTeam
         intent.putExtra(PLAYER_USERNAME_EXTRA , playerUsername);
         startActivity(intent);
     }
-
+    @Override
+    public void backToHomePage(){
+        Intent intent = new Intent(this, PlayerPageActivity.class);
+        intent.putExtra(PLAYER_USERNAME_EXTRA,playerUsername);
+        startActivity(intent);
+    }
     public void changesOfAccess(){
         addBtn.setVisibility(View.GONE);
     }

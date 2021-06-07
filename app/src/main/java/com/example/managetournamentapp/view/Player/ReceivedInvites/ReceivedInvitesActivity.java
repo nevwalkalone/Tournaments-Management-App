@@ -45,8 +45,6 @@ public class ReceivedInvitesActivity extends AppCompatActivity implements Receiv
         setContentView(R.layout.activity_received_invites);
         playerUsername = this.getIntent().getStringExtra(PLAYER_USERNAME_EXTRA);
 
-        btnHome = findViewById(R.id.homeButton);
-        btnHome.setOnClickListener(v -> viewModel.getPresenter().onHomePage());
 
         viewModel = new ViewModelProvider(this).get(ReceivedInvitesViewModel.class);
         viewModel.getPresenter().setView(this);
@@ -63,6 +61,9 @@ public class ReceivedInvitesActivity extends AppCompatActivity implements Receiv
 
 
         }
+
+        btnHome = findViewById(R.id.imageButton);
+        btnHome.setOnClickListener(v -> viewModel.getPresenter().onHomePage());
 
 
         if (findViewById(R.id.fragment_container) != null) {

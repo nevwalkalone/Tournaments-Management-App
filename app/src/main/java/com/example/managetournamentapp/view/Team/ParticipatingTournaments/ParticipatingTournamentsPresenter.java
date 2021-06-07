@@ -3,10 +3,14 @@ package com.example.managetournamentapp.view.Team.ParticipatingTournaments;
 import com.example.managetournamentapp.dao.LoggedInUser;
 import com.example.managetournamentapp.dao.TeamDAO;
 import com.example.managetournamentapp.dao.TournamentDAO;
+import com.example.managetournamentapp.domain.Organizer;
 import com.example.managetournamentapp.domain.Participation;
 import com.example.managetournamentapp.domain.Player;
 import com.example.managetournamentapp.domain.Team;
 import com.example.managetournamentapp.domain.Tournament;
+import com.example.managetournamentapp.domain.User;
+import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
+
 import java.util.ArrayList;
 
 
@@ -65,6 +69,12 @@ public class ParticipatingTournamentsPresenter {
 
     public void onAddParticipation(){
         view.startAddParticipation();
+    }
+
+    public void onHomePage(){
+        User user = loggedInUser.getUser();
+        view.backToHomePage(user.getCredentials().getUsername());
+
     }
 
 }

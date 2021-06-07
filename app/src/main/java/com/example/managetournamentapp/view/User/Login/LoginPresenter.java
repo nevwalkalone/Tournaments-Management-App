@@ -30,7 +30,7 @@ public class LoginPresenter {
         if (organizerDAO.verify(credCheck)) {
             Organizer loggedInOrganizer = organizerDAO.findByCredentials(credCheck);           // Try to find the Organizer in DAO and set it as current LoggedInUser
             loggedInUser.setUser(loggedInOrganizer);
-            view.startOrganizerPage();
+            view.startOrganizerPage(loggedInOrganizer.getTitle());
         } else if (playerDAO.verify(credCheck)) {
             Player loggedInPlayer = playerDAO.find(credCheck.getUsername());                   // Try to find the Player in DAO and set it as current LoggedInUser
             loggedInUser.setUser(loggedInPlayer);

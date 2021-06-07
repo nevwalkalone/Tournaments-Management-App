@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,6 +18,7 @@ import com.example.managetournamentapp.memoryDao.MemoryInitializer;
 import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
 import com.example.managetournamentapp.memoryDao.PlayerDAOMemory;
 import com.example.managetournamentapp.memoryDao.TeamDAOMemory;
+import com.example.managetournamentapp.view.Organizer.OrganizerPage.OrganizerPageActivity;
 import com.example.managetournamentapp.view.Player.PlayerInfo.PlayerInfoActivity;
 import com.example.managetournamentapp.view.Player.PlayerPage.PlayerPageActivity;
 import com.example.managetournamentapp.view.Team.InvitePlayers.InvitePlayersActivity;
@@ -33,6 +35,7 @@ public class JoinedPlayersActivity extends AppCompatActivity implements PlayersL
 
     JoinedPlayersViewModel viewModel;
     private static final String PLAYER_USERNAME_EXTRA = "player_username_extra";
+    private static final String ORGANIZER_TITLE_EXTRA = "organizer_title_extra";
     public static final String PASSWORD_SHOWN_EXTRA = "password_extra";
     public static final String TEAM_NAME_EXTRA = "team_name_extra";
     private static boolean removeActionPopup = false;
@@ -43,6 +46,7 @@ public class JoinedPlayersActivity extends AppCompatActivity implements PlayersL
     private boolean player;
     private String teamName;
     private FloatingActionButton inviteNewBtn;
+    ImageButton btnHome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,8 +60,11 @@ public class JoinedPlayersActivity extends AppCompatActivity implements PlayersL
 
         viewModel.getPresenter().findPlayers(teamName);
         inviteNewBtn = (FloatingActionButton) findViewById(R.id.invite_new_players_button);
+        btnHome = findViewById(R.id.imageButton);
         inviteNewBtn.setOnClickListener(this);
-        viewModel.getPresenter().findAccess();          // check who is currently using the page!
+        btnHome.setOnClickListener(v -> viewModel.getPresenter().onHomePage());
+
+        viewModel.getPresenter().findAccess();
 
         if (findViewById(R.id.fragment_container) != null) {
 
@@ -203,6 +210,20 @@ public class JoinedPlayersActivity extends AppCompatActivity implements PlayersL
         POPUP_ACTION = null;
 
 
+    }
+
+    @Override
+    public void backToHomePage(boolean isPlayer, String name) {
+        if (isPlayer){
+            Intent intent = new Intent(this, PlayerPageActivity.class);
+            intent.putExtra(PLAYER_USERNAME_EXTRA,name);
+            startActivity(intent);
+        }
+        else{
+            Intent intent = new Intent (this, OrganizerPageActivity.class);
+            intent.putExtra(ORGANIZER_TITLE_EXTRA, name);
+            startActivity(intent);
+        }
     }
 
     @Override

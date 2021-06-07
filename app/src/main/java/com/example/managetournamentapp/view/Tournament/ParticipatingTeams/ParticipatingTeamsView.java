@@ -4,4 +4,6 @@ public interface ParticipatingTeamsView {
     void checkTeam();
 
     void startTeamPage(String teamname);
+
+    void backToHomePage(boolean flag, String string);
 }

@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
@@ -15,6 +16,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.view.Organizer.CreateTournament.CreateTournamentView;
 import com.example.managetournamentapp.view.Organizer.OrganizerPage.OrganizerPageActivity;
+import com.example.managetournamentapp.view.Player.PlayerPage.PlayerPageActivity;
 import com.example.managetournamentapp.view.Tournament.TournamentPage.TournamentPageActivity;
 
 import java.util.ArrayList;
@@ -23,12 +25,13 @@ public class SetDatesActivity extends AppCompatActivity implements SetDatesView 
     SetDatesViewModel viewModel;
     public static final String TOURNAMENT_TITLE_EXTRA = "tournament_title_extra";
     private static final String BASIC_INFO_EXTRA = "basic_info_extra";
-    public static final String ORGANIZER_TITLE = "organizer_title";
+    public static final String ORGANIZER_TITLE_EXTRA = "organizer_title_extra";
+    private static final String PLAYER_USERNAME_EXTRA = "player_username_extra";
     ArrayList<String> basicInfo;
     ArrayList<EditText> editTexts = new ArrayList<>();
     String teamsNumber;
     private Button saveBtn;
-
+    ImageButton btnHome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +47,9 @@ public class SetDatesActivity extends AppCompatActivity implements SetDatesView 
 
         saveBtn = (Button) findViewById(R.id.save_tournament);
         saveBtn.setOnClickListener(v -> viewModel.getPresenter().onSaveTournament());
+        btnHome = findViewById(R.id.imageButton);
+        btnHome.setOnClickListener(v -> viewModel.getPresenter().onHomePage());
+
 
 
     }
@@ -112,10 +118,24 @@ public class SetDatesActivity extends AppCompatActivity implements SetDatesView 
 
     public void startSaveTournament(String organizerTitle) {
         Intent intent = new Intent(SetDatesActivity.this, OrganizerPageActivity.class);
-        intent.putExtra(ORGANIZER_TITLE, organizerTitle);
+        intent.putExtra(ORGANIZER_TITLE_EXTRA, organizerTitle);
         startActivity(intent);
     }
 
+
+    @Override
+    public void backToHomePage(boolean isPlayer, String name) {
+        if (isPlayer){
+            Intent intent = new Intent(this, PlayerPageActivity.class);
+            intent.putExtra(PLAYER_USERNAME_EXTRA,name);
+            startActivity(intent);
+        }
+        else{
+            Intent intent = new Intent (this, OrganizerPageActivity.class);
+            intent.putExtra(ORGANIZER_TITLE_EXTRA, name);
+            startActivity(intent);
+        }
+    }
 
 }
 

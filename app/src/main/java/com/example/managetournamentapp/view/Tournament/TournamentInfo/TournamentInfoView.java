@@ -27,7 +27,7 @@ public interface TournamentInfoView {
 
     void noDeleteTournament();
 
-    void yesDeleteTournament();
+    void yesDeleteTournament(String title);
 
     void showToast(String txt);
 

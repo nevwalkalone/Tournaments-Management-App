@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -11,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.memoryDao.MemoryInitializer;
+import com.example.managetournamentapp.view.Organizer.OrganizerPage.OrganizerPageActivity;
 import com.example.managetournamentapp.view.Player.CreateTeam.CreateTeamActivity;
 import com.example.managetournamentapp.view.Player.JoinedTeams.JoinedTeamsActivity;
 import com.example.managetournamentapp.view.Player.PlayerPage.PlayerPageActivity;
@@ -20,9 +22,11 @@ public class TeamInfoActivity  extends AppCompatActivity implements TeamInfoView
     private TeamInfoViewModel viewModel;
     public static final String TEAM_NAME_EXTRA = "team_name_extra";
     private static final String PLAYER_USERNAME_EXTRA = "player_username_extra";
+    private static final String ORGANIZER_TITLE_EXTRA = "organizer_title_extra";
     String teamName;
     Button btnEditTeam;
     Button btnDeleteTeam;
+    ImageButton btnHome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,12 +39,14 @@ public class TeamInfoActivity  extends AppCompatActivity implements TeamInfoView
         viewModel.getPresenter().setView(this);
         viewModel.getPresenter().findTeamInfo(teamName);
 
+
         btnEditTeam = findViewById(R.id.edit_team_button);
         btnDeleteTeam = findViewById(R.id.delete_team_button);
+        btnHome = findViewById(R.id.imageButton);
 
         btnEditTeam.setOnClickListener(v -> viewModel.getPresenter().onEditTeam());
         btnDeleteTeam.setOnClickListener(v -> viewModel.getPresenter().onDeleteTeam());
-
+//        btnHome.setOnClickListener(v -> viewModel.getPresenter().onHomePage());
         viewModel.getPresenter().findAccess();
     }
 
@@ -88,5 +94,19 @@ public class TeamInfoActivity  extends AppCompatActivity implements TeamInfoView
     public void changesOfAccess() {
         btnEditTeam.setVisibility(View.GONE);
         btnDeleteTeam.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void backToHomePage(boolean isPlayer, String name) {
+        if (isPlayer){
+            Intent intent = new Intent(this, PlayerPageActivity.class);
+            intent.putExtra(PLAYER_USERNAME_EXTRA,name);
+            startActivity(intent);
+        }
+        else{
+            Intent intent = new Intent (this, OrganizerPageActivity.class);
+            intent.putExtra(ORGANIZER_TITLE_EXTRA, name);
+            startActivity(intent);
+        }
     }
 }

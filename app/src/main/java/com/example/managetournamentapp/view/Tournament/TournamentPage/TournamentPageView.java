@@ -10,4 +10,6 @@ public interface TournamentPageView {
 
     void startTournamentGames();
 
+    void backToHomePage(boolean flag, String string);
+
 }

@@ -2,8 +2,9 @@ package com.example.managetournamentapp.view.Organizer.OrganizerPage;
 
 import androidx.lifecycle.ViewModel;
 
-import com.example.managetournamentapp.domain.Organizer;
+
 import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
+import com.example.managetournamentapp.memoryDao.OrganizerDAOMemory;
 
 
 public class OrganizerPageViewModel extends ViewModel {
@@ -11,7 +12,8 @@ public class OrganizerPageViewModel extends ViewModel {
 
     public OrganizerPageViewModel() {
         presenter = new OrganizerPagePresenter();
-        presenter.setOrganizer(new MemoryLoggedInUser().getUser());
+        presenter.setLoggedInUser(new MemoryLoggedInUser());
+        presenter.setOrganizerDAO(new OrganizerDAOMemory());
     }
 
     public OrganizerPagePresenter getPresenter(){

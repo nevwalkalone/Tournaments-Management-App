@@ -2,11 +2,11 @@ package com.example.managetournamentapp.view.Player.CreateTeam;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -20,7 +20,9 @@ import com.example.managetournamentapp.domain.Team;
 import com.example.managetournamentapp.domain.TournamentType;
 import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
 import com.example.managetournamentapp.memoryDao.TeamDAOMemory;
+import com.example.managetournamentapp.view.Organizer.OrganizerPage.OrganizerPageActivity;
 import com.example.managetournamentapp.view.Player.JoinedTeams.JoinedTeamsActivity;
+import com.example.managetournamentapp.view.Player.PlayerPage.PlayerPageActivity;
 import com.example.managetournamentapp.view.Team.TeamPage.TeamPageActivity;
 import com.example.managetournamentapp.view.User.RegisterPlayer.RegisterPlayerView;
 
@@ -34,6 +36,7 @@ public class CreateTeamActivity extends AppCompatActivity implements CreateTeamV
     private Button saveBtn;
     private Spinner spinner;
     String teamName;
+    ImageButton btnHome;
 
 
     @Override
@@ -53,7 +56,9 @@ public class CreateTeamActivity extends AppCompatActivity implements CreateTeamV
         viewModel.getPresenter().showPreviousInfo(teamName);
 
         saveBtn = findViewById(R.id.saveTeambtn);
+        btnHome = findViewById(R.id.imageButton);
         saveBtn.setOnClickListener(v -> viewModel.getPresenter().onSaveTeam());
+        btnHome.setOnClickListener(v -> viewModel.getPresenter().onHomePage());
 
     }
 
@@ -117,6 +122,13 @@ public class CreateTeamActivity extends AppCompatActivity implements CreateTeamV
         errorMsg.setText(msg);
         OKbtn.setOnClickListener(v -> dialog.dismiss());
         dialog.show();
+    }
+
+    @Override
+    public void backToHomePage( String name) {
+        Intent intent = new Intent(this, PlayerPageActivity.class);
+        intent.putExtra(PLAYER_USERNAME_EXTRA,name);
+        startActivity(intent);
     }
 
 }

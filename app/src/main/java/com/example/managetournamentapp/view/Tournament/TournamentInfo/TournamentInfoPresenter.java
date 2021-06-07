@@ -45,7 +45,6 @@ public class TournamentInfoPresenter {
         view.changesOfAccess();
     }
 
-    //TODO CHECKING
     public void onEditTournament(){
         if (!tournament.getParticipations().isEmpty()){
             view.showToast("CAN'T EDIT: THERE ARE ACTIVE PARTICIPATIONS");
@@ -67,7 +66,8 @@ public class TournamentInfoPresenter {
     }
 
     public void onYesDeleteTournament(){
-        view.yesDeleteTournament();
+        Organizer organizer = (Organizer) loggedInUser.getUser();
+        view.yesDeleteTournament(organizer.getTitle());
     }
 
     public void onNoDeleteTournament(){

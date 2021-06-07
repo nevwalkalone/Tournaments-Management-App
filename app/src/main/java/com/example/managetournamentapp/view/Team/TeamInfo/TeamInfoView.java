@@ -18,4 +18,6 @@ public interface TeamInfoView {
 
     void changesOfAccess();
 
+    void backToHomePage(boolean flag, String string);
+
 }

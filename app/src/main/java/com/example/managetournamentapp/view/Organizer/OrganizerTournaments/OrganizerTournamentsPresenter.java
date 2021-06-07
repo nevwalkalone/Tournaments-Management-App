@@ -10,6 +10,7 @@ import java.util.ArrayList;
 public class OrganizerTournamentsPresenter {
     private OrganizerTournamentsView view;
     private TournamentDAO tournamentDAO;
+    private String orgTitle;
     private OrganizerDAO organizerDAO;
     private ArrayList<Tournament> results = new ArrayList<>();
 
@@ -19,6 +20,7 @@ public class OrganizerTournamentsPresenter {
         Organizer organizer = organizerDAO.findByTitle(organizerTitle);
         if (organizer==null)
             return;
+        orgTitle = organizer.getTitle();
         results.clear();
         results.addAll( organizer.getTournaments()  );
     }
@@ -45,6 +47,10 @@ public class OrganizerTournamentsPresenter {
 
     public void setOrganizerDAO(OrganizerDAO organizerDAO) {
         this.organizerDAO = organizerDAO;
+    }
+
+    public void onHomePage(){
+        view.backToHomePage(orgTitle);
     }
 
 }

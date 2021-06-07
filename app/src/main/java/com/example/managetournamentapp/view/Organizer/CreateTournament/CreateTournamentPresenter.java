@@ -3,10 +3,12 @@ package com.example.managetournamentapp.view.Organizer.CreateTournament;
 import com.example.managetournamentapp.dao.TournamentDAO;
 import com.example.managetournamentapp.domain.AgeDivision;
 import com.example.managetournamentapp.domain.Organizer;
+import com.example.managetournamentapp.domain.Player;
 import com.example.managetournamentapp.domain.Sport;
 import com.example.managetournamentapp.domain.Tournament;
 import com.example.managetournamentapp.domain.TournamentType;
 import com.example.managetournamentapp.domain.User;
+import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -196,5 +198,11 @@ public class CreateTournamentPresenter {
             return false;
         }
         return true;
+    }
+
+    public void onHomePage(){
+
+        view.backToHomePage(organizer.getTitle());
+
     }
 }

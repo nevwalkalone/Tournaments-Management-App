@@ -21,4 +21,7 @@ public interface CreateTeamView {
     void lockSportType();
 
     void showPopUp(CreateTeamView view, String msg);
+
+
+    void backToHomePage(String string);
 }

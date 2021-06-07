@@ -21,7 +21,7 @@ import com.example.managetournamentapp.view.Player.PlayerPage.PlayerPageActivity
 public class LoginActivity extends AppCompatActivity implements LoginView, View.OnClickListener {
 
     private static final String PLAYER_USERNAME_EXTRA = "player_username_extra";
-    private static final String ORGANIZER_USERNAME_EXTRA = "organizer_username_extra";
+    private static final String ORGANIZER_TITLE_EXTRA = "organizer_title_extra";
     private Button loginBtn;
     LoginViewModel viewModel;
 
@@ -79,12 +79,13 @@ public class LoginActivity extends AppCompatActivity implements LoginView, View.
         startActivity(intent);
     }
 
-    public void startOrganizerPage() {
+    public void startOrganizerPage(String title) {
         Toast.makeText(this,
                 "LOGGED IN",
                 Toast.LENGTH_SHORT)
                 .show();
         Intent intent = new Intent(this, OrganizerPageActivity.class);
+        intent.putExtra(ORGANIZER_TITLE_EXTRA, title );
         startActivity(intent);
     }
 

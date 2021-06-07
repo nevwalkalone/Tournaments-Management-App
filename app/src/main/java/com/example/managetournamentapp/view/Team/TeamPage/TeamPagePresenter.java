@@ -1,10 +1,12 @@
 package com.example.managetournamentapp.view.Team.TeamPage;
 
+
 import com.example.managetournamentapp.dao.LoggedInUser;
 import com.example.managetournamentapp.dao.TeamDAO;
+import com.example.managetournamentapp.domain.Organizer;
 import com.example.managetournamentapp.domain.Player;
 import com.example.managetournamentapp.domain.Team;
-import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
+import com.example.managetournamentapp.domain.User;
 
 
 public class TeamPagePresenter {
@@ -48,4 +50,13 @@ public class TeamPagePresenter {
         this.view = null;
     }
 
+    public void onHomePage(){
+        User user = loggedInUser.getUser();
+        if (loggedInUser.getUser() instanceof Player){
+          view.backToHomePage(true,user.getCredentials().getUsername());
+        }
+        else{
+            view.backToHomePage(false,((Organizer)user).getTitle());
+        }
+    }
 }

@@ -5,20 +5,17 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.managetournamentapp.R;
+
 import com.example.managetournamentapp.domain.Player;
-import com.example.managetournamentapp.memoryDao.MemoryInitializer;
-import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
-import com.example.managetournamentapp.view.Player.CreateTeam.CreateTeamActivity;
-import com.example.managetournamentapp.view.Player.PlayerInfo.PlayerInfoActivity;
+import com.example.managetournamentapp.view.Organizer.OrganizerPage.OrganizerPageActivity;
 import com.example.managetournamentapp.view.Player.PlayerPage.PlayerPageActivity;
-import com.example.managetournamentapp.view.Player.PlayerPage.PlayerPageView;
-import com.example.managetournamentapp.view.Player.PlayerPage.PlayerPageViewModel;
 import com.example.managetournamentapp.view.Team.JoinedPlayers.JoinedPlayersActivity;
 import com.example.managetournamentapp.view.Team.ParticipatingTournaments.ParticipatingTournamentsActivity;
 import com.example.managetournamentapp.view.Team.TeamInfo.TeamInfoActivity;
@@ -26,12 +23,15 @@ import com.example.managetournamentapp.view.Team.TeamInfo.TeamInfoActivity;
 public class TeamPageActivity extends AppCompatActivity implements TeamPageView {
     private TeamPageViewModel viewModel;
     public static final String TEAM_NAME_EXTRA = "team_name_extra";
+    private static final String PLAYER_USERNAME_EXTRA = "player_username_extra";
+    private static final String ORGANIZER_TITLE_EXTRA = "organizer_title_extra";
     private boolean changeOfAccess = false;
     String teamName;
     TextView txtTeamName;
     Button btnTeamInfo;
     Button btnTeamPlayers;
     Button btnTeamParticipations;
+    ImageButton btnHome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +48,9 @@ public class TeamPageActivity extends AppCompatActivity implements TeamPageView 
         btnTeamInfo = findViewById(R.id.team_info_button);
         btnTeamPlayers = findViewById(R.id.team_players_button);
         btnTeamParticipations = findViewById(R.id.team_participations_button);
+        btnHome = findViewById(R.id.imageButton);
+        btnHome.setOnClickListener(v -> viewModel.getPresenter().onHomePage());
+
 
         txtTeamName.setText( teamName);
         btnTeamInfo.setOnClickListener(v ->  startTeamInfo());
@@ -85,4 +88,18 @@ public class TeamPageActivity extends AppCompatActivity implements TeamPageView 
         btnTeamParticipations.setVisibility(View.GONE);
         changeOfAccess = true;
     }
+
+    @Override
+   public void backToHomePage(boolean isPlayer, String name) {
+        if (isPlayer){
+            Intent intent = new Intent(this, PlayerPageActivity.class);
+            intent.putExtra(PLAYER_USERNAME_EXTRA,name);
+            startActivity(intent);
+        }
+        else{
+            Intent intent = new Intent (this, OrganizerPageActivity.class);
+            intent.putExtra(ORGANIZER_TITLE_EXTRA, name);
+            startActivity(intent);
+        }
+   }
 }

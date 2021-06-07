@@ -4,11 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.managetournamentapp.R;
+import com.example.managetournamentapp.view.Organizer.OrganizerPage.OrganizerPageActivity;
+import com.example.managetournamentapp.view.Player.PlayerPage.PlayerPageActivity;
 import com.example.managetournamentapp.view.Tournament.RoundGames.RoundGamesActivity;
 import com.example.managetournamentapp.view.Tournament.TournamentGroups.TournamentGroupsActivity;
 
@@ -16,6 +19,8 @@ public class TournamentRoundsActivity extends AppCompatActivity implements Tourn
     public static final String TOURNAMENT_TITLE_EXTRA = "tournament_title_extra";
     private static final String ROUND_TEAMS_EXTRA = "round_teams_extra" ;
     private static final String SPECIFIC_GROUP_EXTRA = "specific_group_extra" ;
+    private static final String PLAYER_USERNAME_EXTRA = "player_username_extra";
+    private static final String ORGANIZER_TITLE_EXTRA = "organizer_title_extra";
     private TournamentRoundsViewModel viewModel;
     String tournamentTitle;
     Button btnGroups;
@@ -23,6 +28,7 @@ public class TournamentRoundsActivity extends AppCompatActivity implements Tourn
     Button btn8;
     Button btnSemifinals;
     Button btnFinal;
+    ImageButton btnHome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,14 +45,17 @@ public class TournamentRoundsActivity extends AppCompatActivity implements Tourn
         btn8 = findViewById(R.id.round8_button);
         btnSemifinals = findViewById(R.id.semifinals_button);
         btnFinal = findViewById(R.id.final_button);
+        btnHome = findViewById(R.id.imageButton);
+
+        viewModel.getPresenter().findAccess();
 
         btnGroups.setOnClickListener(v -> viewModel.getPresenter().onGroups());
         btn16.setOnClickListener(v -> viewModel.getPresenter().on16());
         btn8.setOnClickListener(v -> viewModel.getPresenter().on8());
         btnSemifinals.setOnClickListener(v -> viewModel.getPresenter().onSemifinals());
         btnFinal.setOnClickListener(v -> viewModel.getPresenter().onFinal());
+        btnHome.setOnClickListener(v -> viewModel.getPresenter().onHomePage());
 
-        viewModel.getPresenter().findAccess();
     }
 
 
@@ -74,6 +83,20 @@ public class TournamentRoundsActivity extends AppCompatActivity implements Tourn
         Intent intent = new Intent(TournamentRoundsActivity.this, TournamentGroupsActivity.class);
         intent.putExtra(TOURNAMENT_TITLE_EXTRA, tournamentTitle);
         startActivity(intent);
+    }
+
+    @Override
+    public void backToHomePage(boolean isPlayer, String name) {
+        if (isPlayer){
+            Intent intent = new Intent(this, PlayerPageActivity.class);
+            intent.putExtra(PLAYER_USERNAME_EXTRA,name);
+            startActivity(intent);
+        }
+        else{
+            Intent intent = new Intent (this, OrganizerPageActivity.class);
+            intent.putExtra(ORGANIZER_TITLE_EXTRA, name);
+            startActivity(intent);
+        }
     }
 
 

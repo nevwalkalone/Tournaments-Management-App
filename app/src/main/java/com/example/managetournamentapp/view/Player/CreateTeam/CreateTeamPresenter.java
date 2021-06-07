@@ -2,10 +2,12 @@ package com.example.managetournamentapp.view.Player.CreateTeam;
 
 import com.example.managetournamentapp.dao.PlayerDAO;
 import com.example.managetournamentapp.dao.TeamDAO;
+import com.example.managetournamentapp.domain.Organizer;
 import com.example.managetournamentapp.domain.Player;
 import com.example.managetournamentapp.domain.Sport;
 import com.example.managetournamentapp.domain.Team;
 import com.example.managetournamentapp.domain.TournamentType;
+import com.example.managetournamentapp.domain.User;
 import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
 
 import java.util.ArrayList;
@@ -110,6 +112,14 @@ public class CreateTeamPresenter {
         Pattern pattern = Pattern.compile(valid);
         Matcher matcher = pattern.matcher(name);
         return matcher.matches();
+    }
+
+
+    public void onHomePage(){
+        User user = new MemoryLoggedInUser().getUser();
+
+        view.backToHomePage(user.getCredentials().getUsername());
+
     }
 
 

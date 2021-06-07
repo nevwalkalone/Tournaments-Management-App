@@ -5,8 +5,11 @@ import com.example.managetournamentapp.dao.TournamentDAO;
 import com.example.managetournamentapp.domain.Game;
 import com.example.managetournamentapp.domain.Group;
 import com.example.managetournamentapp.domain.Organizer;
+import com.example.managetournamentapp.domain.Player;
 import com.example.managetournamentapp.domain.Round;
 import com.example.managetournamentapp.domain.Tournament;
+import com.example.managetournamentapp.domain.User;
+import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
 import com.example.managetournamentapp.memoryDao.TeamDAOMemory;
 
 import java.util.ArrayList;
@@ -116,6 +119,13 @@ public class RoundGamesPresenter {
         this.view = null;
     }
 
-
-
+    public void onHomePage(){
+        User user = loggedInUser.getUser();
+        if (loggedInUser.getUser() instanceof Player){
+            view.backToHomePage(true,user.getCredentials().getUsername());
+        }
+        else{
+            view.backToHomePage(false,((Organizer)user).getTitle());
+        }
+    }
 }
