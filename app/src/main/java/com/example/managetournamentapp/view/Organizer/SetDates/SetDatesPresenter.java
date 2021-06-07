@@ -100,7 +100,7 @@ public class SetDatesPresenter {
 
         tournamentDAO.save(tournament);
         organizer.addTournament(tournament);
-        view.startSaveTournament(tournament.getTitle());
+        view.startSaveTournament(organizer.getTitle());
 
     }
 

@@ -2,9 +2,14 @@ package com.example.managetournamentapp.view.Team.AddParticipation;
 
 import com.example.managetournamentapp.dao.TeamDAO;
 import com.example.managetournamentapp.dao.TournamentDAO;
+import com.example.managetournamentapp.domain.Organizer;
 import com.example.managetournamentapp.domain.Participation;
+import com.example.managetournamentapp.domain.Player;
 import com.example.managetournamentapp.domain.Team;
 import com.example.managetournamentapp.domain.Tournament;
+import com.example.managetournamentapp.domain.User;
+import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
+
 import java.util.ArrayList;
 
 public class AddParticipationPresenter {
@@ -65,6 +70,11 @@ public class AddParticipationPresenter {
         String teamName = team.getName();
         view.startPlayerPage(team.getCaptain().getCredentials().getUsername());
 
+    }
+
+    public void onHomePage(){
+        User user = new MemoryLoggedInUser().getUser();
+        view.backToHomePage(user.getCredentials().getUsername());
     }
 
 }

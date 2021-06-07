@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
@@ -13,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.domain.Player;
 import com.example.managetournamentapp.view.Player.PlayerInfo.PlayerInfoActivity;
+import com.example.managetournamentapp.view.Player.PlayerPage.PlayerPageActivity;
 import com.example.managetournamentapp.view.Team.InvitePlayers.fragment.PlayersListFragment;
 
 
@@ -26,6 +28,7 @@ public class InvitePlayersActivity extends AppCompatActivity implements PlayersL
     private static Player playerSelected;
     InvitePlayersViewModel viewModel;
     private String teamName;
+    ImageButton btnHome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +40,9 @@ public class InvitePlayersActivity extends AppCompatActivity implements PlayersL
         viewModel = new ViewModelProvider(this).get(InvitePlayersViewModel.class);
         viewModel.getPresenter().setView(this);
         viewModel.getPresenter().findPlayers(teamName);
+
+        btnHome = findViewById(R.id.imageButton);
+        btnHome.setOnClickListener(v -> viewModel.getPresenter().onHomePage());
 
      if (findViewById(R.id.fragment_container) != null) {
 
@@ -139,5 +145,15 @@ public class InvitePlayersActivity extends AppCompatActivity implements PlayersL
         this.recreate();
     }
 
+
+    @Override
+    public void backToHomePage( String name) {
+        Intent intent = new Intent(this, PlayerPageActivity.class);
+        intent.putExtra(PLAYER_USERNAME_EXTRA,name);
+        startActivity(intent);
+    }
+
 }
+
+
 

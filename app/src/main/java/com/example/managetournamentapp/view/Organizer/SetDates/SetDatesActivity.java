@@ -119,6 +119,7 @@ public class SetDatesActivity extends AppCompatActivity implements SetDatesView 
     public void startSaveTournament(String organizerTitle) {
         Intent intent = new Intent(SetDatesActivity.this, OrganizerPageActivity.class);
         intent.putExtra(ORGANIZER_TITLE_EXTRA, organizerTitle);
+        System.out.println(organizerTitle);
         startActivity(intent);
     }
 

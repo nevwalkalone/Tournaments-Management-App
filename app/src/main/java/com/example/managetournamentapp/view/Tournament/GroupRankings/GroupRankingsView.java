@@ -8,4 +8,6 @@ public interface GroupRankingsView {
 
     ArrayList<Team> getTeamsList();
 
+    void backToHomePage(boolean flag, String string);
+
 }

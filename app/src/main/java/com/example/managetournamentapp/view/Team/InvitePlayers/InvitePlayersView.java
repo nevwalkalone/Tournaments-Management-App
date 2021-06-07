@@ -16,4 +16,6 @@ public interface InvitePlayersView {
     void resetPopUps();
 
     void restartActivity();
+
+    void backToHomePage(String string);
 }

@@ -6,6 +6,8 @@ import com.example.managetournamentapp.dao.TeamDAO;
 import com.example.managetournamentapp.domain.Invitation;
 import com.example.managetournamentapp.domain.Player;
 import com.example.managetournamentapp.domain.Team;
+import com.example.managetournamentapp.domain.User;
+import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
 
 import java.util.ArrayList;
 
@@ -15,7 +17,6 @@ public class InvitePlayersPresenter {
     private TeamDAO teamDAO;
     private String teamName;
     private ArrayList<Player> results = new ArrayList<>();
-    private LoggedInUser loggedInUser;
 
 
     public InvitePlayersPresenter() {
@@ -74,5 +75,11 @@ public class InvitePlayersPresenter {
 
     public void restartActivity() {
         view.restartActivity();
+    }
+
+    public void onHomePage(){
+        User user = new MemoryLoggedInUser().getUser();
+        view.backToHomePage(user.getCredentials().getUsername());
+
     }
 }

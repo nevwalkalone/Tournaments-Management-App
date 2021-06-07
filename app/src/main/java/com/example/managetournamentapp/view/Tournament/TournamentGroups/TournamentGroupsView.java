@@ -12,4 +12,6 @@ public interface TournamentGroupsView {
 
     void showPopup(int index);
 
+    void backToHomePage(boolean flag, String string);
+
 }

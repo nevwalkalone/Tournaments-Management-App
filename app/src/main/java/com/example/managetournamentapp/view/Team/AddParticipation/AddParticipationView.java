@@ -10,4 +10,6 @@ public interface AddParticipationView {
     void startTournamentPage(Tournament tournament);
 
     void startPlayerPage(String userName);
+
+    void backToHomePage(String string);
 }

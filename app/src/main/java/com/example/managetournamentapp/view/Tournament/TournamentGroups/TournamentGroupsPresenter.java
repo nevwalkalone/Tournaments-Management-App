@@ -1,7 +1,11 @@
 package com.example.managetournamentapp.view.Tournament.TournamentGroups;
 
 import com.example.managetournamentapp.dao.TournamentDAO;
+import com.example.managetournamentapp.domain.Organizer;
+import com.example.managetournamentapp.domain.Player;
 import com.example.managetournamentapp.domain.Tournament;
+import com.example.managetournamentapp.domain.User;
+import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
 
 public class TournamentGroupsPresenter {
     private TournamentGroupsView view;
@@ -48,5 +52,16 @@ public class TournamentGroupsPresenter {
     public void clearView(){
         this.view = null;
     }
+
+    public void onHomePage(){
+        User user = new MemoryLoggedInUser().getUser();
+        if (user instanceof Player){
+            view.backToHomePage(true,user.getCredentials().getUsername());
+        }
+        else{
+            view.backToHomePage(false,((Organizer)user).getTitle());
+        }
+    }
+
 
 }
