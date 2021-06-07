@@ -39,14 +39,25 @@ public class BrowsingPresenter {
         return results;
     }
 
+    /**
+     * set a new view
+     * @param view the new view
+     */
     public void setView(BrowsingView view) {
         this.view = view;
     }
 
+    /**
+     * clear the view
+     */
     public void clearView() {
         this.view = null;
     }
 
+    /**
+     * set the tournamentDAO
+     * @param tournamentDAO the new TournamentDAO
+     */
     public void setTournamentDAO(TournamentDAO tournamentDAO) {
         this.tournamentDAO = tournamentDAO;
     }

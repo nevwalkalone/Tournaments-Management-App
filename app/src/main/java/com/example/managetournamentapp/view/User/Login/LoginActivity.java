@@ -41,18 +41,31 @@ public class LoginActivity extends AppCompatActivity implements LoginView, View.
         loginBtn.setOnClickListener(this);
     }
 
+    /**
+     * get the contents of the edit text
+     * @return the username given
+     */
     @Override
     public String getUsername() {
         EditText USERNAME = (EditText) findViewById(R.id.login_input_username);
         return USERNAME.getText().toString();
     }
 
+    /**
+     * get the contents of the edit text
+     * @return the password given
+     */
     @Override
     public String getPassword() {
         EditText PASSWORD = (EditText) findViewById(R.id.login_input_password);
         return PASSWORD.getText().toString();
     }
 
+    /**
+     *show a popup on the screen
+     * @param view the view of the popup
+     * @param msg the message that will be shown
+     */
     @Override
     public void showPopUp(LoginView view, String msg) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -66,6 +79,10 @@ public class LoginActivity extends AppCompatActivity implements LoginView, View.
         dialog.show();
     }
 
+    /**
+     * what happens when a button is pressed
+     * @param v the current view
+     */
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.complete_login) {
@@ -73,6 +90,10 @@ public class LoginActivity extends AppCompatActivity implements LoginView, View.
         }
     }
 
+    /**
+     * start the player page activity
+     * @param username the username of the player
+     */
     public void startPlayerPage(String username) {
         Toast.makeText(this,
                 "LOGGED IN",
@@ -83,6 +104,10 @@ public class LoginActivity extends AppCompatActivity implements LoginView, View.
         startActivity(intent);
     }
 
+    /**
+     * start the organizer page activity
+     * @param title the title of the player
+     */
     public void startOrganizerPage(String title) {
         Toast.makeText(this,
                 "LOGGED IN",
@@ -93,6 +118,9 @@ public class LoginActivity extends AppCompatActivity implements LoginView, View.
         startActivity(intent);
     }
 
+    /**
+     * what happens when the back button is pressed
+     */
     @Override
     public void onBackPressed() {
         Intent intent = new Intent(this, HomePageActivity.class);

@@ -21,17 +21,21 @@ public class RegisterOrganizerPresenter {
     private Organizer connectedOrganizer;
     private LoggedInUser loggedInUser;
 
-    public RegisterOrganizerPresenter() {
+    /**
+     * default constructor
+     */
+    public RegisterOrganizerPresenter() {}
 
-    }
-
+    /**
+     * show the organizer's previous info, if we are on edit mode
+     * @param organizerTitle the organizer's title
+     */
     public void showPreviousInfo(String organizerTitle) {
         if (organizerTitle == null)
             return;
         connectedOrganizer = organizerDAO.findByTitle(organizerTitle);
         if (connectedOrganizer == null)
             return;
-
         if (connectedOrganizer != null)//edit mode
         {
             view.setName(connectedOrganizer.getName());
@@ -45,7 +49,10 @@ public class RegisterOrganizerPresenter {
         }
     }
 
-
+    /**
+     * handle the input fields
+     * create or edit an Organizer object
+     */
     public void handleOrganizerData() {
         String usename = view.getUsername();
         String password = view.getPassword();
@@ -71,8 +78,6 @@ public class RegisterOrganizerPresenter {
             view.showPopUp(view, "Not valid email!");
         else if (!validateBirthdate(birthDate))
             view.showPopUp(view, "Not valid date!");
-
-
         else {
             // IF USER IS NEW!
             if (connectedOrganizer == null) {
@@ -80,7 +85,7 @@ public class RegisterOrganizerPresenter {
                 organizerDAO = new OrganizerDAOMemory();
                 organizerDAO.save(organizer);
                 loggedInUser.setUser(organizer);
-                view.startOrganizerPage();
+                view.startOrganizerPage(title);
             } else {
                 connectedOrganizer.setName(name);
                 connectedOrganizer.setSurname(surname);
@@ -89,8 +94,7 @@ public class RegisterOrganizerPresenter {
                 connectedOrganizer.setTitle(title);
                 connectedOrganizer.setPhoneNumber(phoneNumber);
                 connectedOrganizer.setEmail(email);
-                view.startOrganizerPage();
-
+                view.startOrganizerPage(title);
             }
         }
 
@@ -107,6 +111,10 @@ public class RegisterOrganizerPresenter {
         return matcher.matches();
     }
 
+    /**
+     * @param name the email we want to check if it's valid.
+     * @return true if the name is valid, else false.
+     */
     public boolean validateName(String name) {
         String valid = "^[a-zA-Z]*$";
         Pattern pattern = Pattern.compile(valid);
@@ -114,6 +122,10 @@ public class RegisterOrganizerPresenter {
         return matcher.matches();
     }
 
+    /**
+     * @param phone the email we want to check if it's valid.
+     * @return true if the phone is valid, else false.
+     */
     public boolean validatePhone(String phone) {
         String valid = "[0-9]+";
         Pattern pattern = Pattern.compile(valid);
@@ -121,13 +133,21 @@ public class RegisterOrganizerPresenter {
         return matcher.matches();
     }
 
+    /**
+     * reformatting the given string
+     * @param birthdate the birth date in the initial format
+     * @return the reformatted birth date
+     */
     public String reformatBirthdate(String birthdate) {
         birthdate = birthdate.replace("/", "-");
         String dateFormat = LocalDate.parse(birthdate, DateTimeFormatter.ofPattern("dd-MM-uuuu")).format(DateTimeFormatter.ofPattern("uuuu-MM-dd"));
         return dateFormat;
     }
 
-
+    /**
+     * @param birthdate the email we want to check if it's valid.
+     * @return true if the birthd ate is valid, else false.
+     */
     public boolean validateBirthdate(String birthdate) {
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         dateFormat.setLenient(false);
@@ -139,22 +159,41 @@ public class RegisterOrganizerPresenter {
         return true;
     }
 
+    /**
+     * get the loggedInUser
+     * @return the LoggedInUser object
+     */
     public LoggedInUser getLoggedInUser() {
         return loggedInUser;
     }
 
+    /**
+     * set the loggedInUser
+     * @param loggedInUser the new LoggedInUser
+     */
     public void setLoggedInUser(LoggedInUser loggedInUser) {
         this.loggedInUser = loggedInUser;
     }
 
+    /**
+     * set a new view
+     * @param view the new view
+     */
     public void setView(RegisterOrganizerView view) {
         this.view = view;
     }
 
+    /**
+     * clear the view
+     */
     public void clearView() {
         this.view = null;
     }
 
+    /**
+     * set the organizerDAO
+     * @param organizerDAO the new OrganizerDAO
+     */
     public void setOrganizerDAO(OrganizerDAO organizerDAO) {
         this.organizerDAO = organizerDAO;
     }

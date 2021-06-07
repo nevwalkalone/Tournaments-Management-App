@@ -16,6 +16,9 @@ public class LoginPresenter {
     private OrganizerDAO organizerDAO;
     private LoggedInUser loggedInUser;
 
+    /**
+     * default constructor
+     */
     public LoginPresenter() {
     }
 
@@ -40,26 +43,49 @@ public class LoginPresenter {
         }
     }
 
+    /**
+     * set a new view
+     * @param view the new view
+     */
     public void setView(LoginView view) {
         this.view = view;
     }
 
+    /**
+     * clear the view
+     */
     public void clearView() {
         this.view = null;
     }
 
+    /**
+     * set the playerDAO
+     * @param playerDAO the new PlayerDAO
+     */
     public void setPlayerDAO(PlayerDAO playerDAO) {
         this.playerDAO = playerDAO;
     }
 
+    /**
+     * set the organizerDAO
+     * @param organizerDAO the new OrganizerDAO
+     */
     public void setOrganizerDAO(OrganizerDAO organizerDAO) {
         this.organizerDAO = organizerDAO;
     }
 
+    /**
+     * set the loggedInUser
+     * @param loggedInUser the new LoggedInUser
+     */
     public void setLoggedInUser(LoggedInUser loggedInUser) {
         this.loggedInUser = loggedInUser;
     }
 
+    /**
+     * get the loggedInUser
+     * @return the LoggedInUser object
+     */
     public LoggedInUser getLoggedInUser() {
         return loggedInUser;
     }

@@ -16,11 +16,9 @@ public class BrowsingViewModel extends ViewModel {
     public BrowsingViewModel() {
         presenter = new BrowsingPresenter();
         presenter.setTournamentDAO(new TournamentDAOMemory());
-
     }
 
     /**
-     *
      * @return the presenter instance
      */
     public BrowsingPresenter getPresenter() {
