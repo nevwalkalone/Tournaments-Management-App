@@ -2,8 +2,13 @@ package com.example.managetournamentapp.dao;
 
 import com.example.managetournamentapp.domain.Team;
 import com.example.managetournamentapp.domain.Tournament;
-
 import java.util.ArrayList;
+
+
+/**
+ * Developed for the purposes of University Lesson "Software Engineering" at AUEB
+ * -Athens University of Economics and Business
+ */
 
 public interface TeamDAO {
 
@@ -37,8 +42,11 @@ public interface TeamDAO {
      */
     void deleteAll();
 
-
-
+    /**
+     * Find teams that are participating in the specified tournament.
+     * @param tournament Tournament in which we are searching for teams.
+     * @return Teams that are participating.
+     */
     public ArrayList<Team> findByTournament(Tournament tournament);
 
 }

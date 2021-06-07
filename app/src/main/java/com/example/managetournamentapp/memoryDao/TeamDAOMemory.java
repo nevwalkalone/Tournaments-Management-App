@@ -1,27 +1,40 @@
 package com.example.managetournamentapp.memoryDao;
 
 import com.example.managetournamentapp.dao.TeamDAO;
-import com.example.managetournamentapp.domain.Game;
 import com.example.managetournamentapp.domain.Participation;
 import com.example.managetournamentapp.domain.Team;
 import com.example.managetournamentapp.domain.Tournament;
-
 import java.util.ArrayList;
-import java.util.List;
+
+/**
+ * Developed for the purposes of University Lesson "Software Engineering" at AUEB
+ * -Athens University of Economics and Business
+ */
 
 public class TeamDAOMemory implements TeamDAO {
     protected static ArrayList<Team> entities = new ArrayList<>();
 
+    /**
+     * Saves a specific team.
+     * @param entity Team to be saved.
+     */
     @Override
     public void save(Team entity) {
         entities.add(entity);
     }
 
+    /**
+     * Deletes a specific team.
+     * @param entity Team to be deleted.
+     */
     @Override
     public void delete(Team entity) {
         entities.remove(entity);
     }
 
+    /**
+     * Deletes all teams
+     */
     @Override
     public void deleteAll() {
         entities = new ArrayList<>();
@@ -36,6 +49,10 @@ public class TeamDAOMemory implements TeamDAO {
         return null;
     }
 
+    /**
+     * Finds all teams.
+     * @return All teams.
+     */
     @Override
     public ArrayList<Team> findAll() {
         ArrayList<Team> result = new ArrayList<>();
@@ -43,6 +60,11 @@ public class TeamDAOMemory implements TeamDAO {
         return result;
     }
 
+    /**
+     * Find teams that are participating in the specified tournament.
+     * @param tournament Tournament in which we are searching for teams.
+     * @return Teams that are participating.
+     */
     @Override
     public ArrayList<Team> findByTournament(Tournament tournament) {
         ArrayList<Team> results = new ArrayList<>();

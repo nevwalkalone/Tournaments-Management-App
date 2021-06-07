@@ -4,6 +4,12 @@ import com.example.managetournamentapp.domain.Organizer;
 import com.example.managetournamentapp.domain.Tournament;
 import java.util.ArrayList;
 
+
+/**
+ * Developed for the purposes of University Lesson "Software Engineering" at AUEB
+ * -Athens University of Economics and Business
+ */
+
 public interface TournamentDAO {
 
     /**
@@ -25,7 +31,11 @@ public interface TournamentDAO {
      */
     ArrayList<Tournament> findAll();
 
-    //TODO
+    /**
+     *
+     * @param organizer Organizer that owns the specific tournament
+     * @return Tournaments of the specified organizer
+     */
     ArrayList<Tournament> findByOrganizer(Organizer organizer);
 
     /**

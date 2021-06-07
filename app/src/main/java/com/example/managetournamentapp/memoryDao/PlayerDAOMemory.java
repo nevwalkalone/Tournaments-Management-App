@@ -2,17 +2,23 @@ package com.example.managetournamentapp.memoryDao;
 
 import com.example.managetournamentapp.dao.PlayerDAO;
 import com.example.managetournamentapp.domain.Credentials;
-import com.example.managetournamentapp.domain.Game;
-import com.example.managetournamentapp.domain.Invitation;
-import com.example.managetournamentapp.domain.Organizer;
 import com.example.managetournamentapp.domain.Player;
-
 import java.util.ArrayList;
+
+
+/**
+ * Developed for the purposes of University Lesson "Software Engineering" at AUEB
+ * -Athens University of Economics and Business
+ */
 
 public class PlayerDAOMemory implements PlayerDAO {
     protected static ArrayList<Player> entities = new ArrayList<>();
 
-
+    /**
+     * Verifies user, checks if credentials are ok.
+     * @param credentials Credentials of User.
+     * @return true if credentials are verified.
+     */
     @Override
     public boolean verify(Credentials credentials) {
         boolean valid = false;
@@ -21,21 +27,37 @@ public class PlayerDAOMemory implements PlayerDAO {
         return valid;
     }
 
+    /**
+     * Saves a specific player.
+     * @param entity Player to be saved.
+     */
     @Override
     public void save(Player entity) {
         entities.add(entity);
     }
 
+    /**
+     * Deletes a specific player.
+     * @param entity Player to be deleted.
+     */
     @Override
     public void delete(Player entity) {
         entities.remove(entity);
     }
 
+    /**
+     * Deletes all players.
+     */
     @Override
     public void deleteAll() {
         entities = new ArrayList<>();
     }
 
+
+    /**
+     * Finds all players.
+     * @return All players.
+     */
     @Override
     public ArrayList<Player> findAll() {
         ArrayList<Player> result = new ArrayList<>();
@@ -44,6 +66,11 @@ public class PlayerDAOMemory implements PlayerDAO {
 
     }
 
+    /**
+     * Finds a specific player.
+     * @param userName Player username.
+     * @return Player with the specific username.
+     */
     @Override
     public Player find(String userName) {
         for (Player p : entities) {
@@ -53,6 +80,11 @@ public class PlayerDAOMemory implements PlayerDAO {
         return null;
     }
 
+    /**
+     *  Check if the user who tries to login exists in DAO.
+     * @param credentials User input credentials
+     * @return true if User exists in DAO
+     */
     @Override
     public boolean exist(Credentials credentials) {
         for (Player o : entities) {

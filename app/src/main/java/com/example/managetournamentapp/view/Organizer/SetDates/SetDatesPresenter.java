@@ -1,8 +1,5 @@
 package com.example.managetournamentapp.view.Organizer.SetDates;
 
-import android.util.Log;
-
-import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.dao.TournamentDAO;
 import com.example.managetournamentapp.domain.AgeDivision;
 import com.example.managetournamentapp.domain.Organizer;

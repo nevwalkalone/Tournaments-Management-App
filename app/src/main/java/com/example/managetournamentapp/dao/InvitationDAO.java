@@ -5,6 +5,11 @@ import com.example.managetournamentapp.domain.Invitation;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+/**
+ * Developed for the purposes of University Lesson "Software Engineering" at AUEB
+ * -Athens University of Economics and Business
+ */
+
 public interface InvitationDAO {
 
     /**
@@ -13,7 +18,11 @@ public interface InvitationDAO {
      */
     void save(Invitation entity);
 
-    // TODO
+    /**
+     * Finds an invitations specified by
+     * @param teamName the team Name
+     * @param dateSent and the date it was sent
+     */
     void find(String teamName, LocalDate dateSent);
 
     /**

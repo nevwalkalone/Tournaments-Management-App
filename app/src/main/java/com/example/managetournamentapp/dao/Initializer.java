@@ -1,6 +1,5 @@
 package com.example.managetournamentapp.dao;
 
-
 import com.example.managetournamentapp.domain.AgeDivision;
 import com.example.managetournamentapp.domain.Credentials;
 import com.example.managetournamentapp.domain.Invitation;
@@ -12,11 +11,15 @@ import com.example.managetournamentapp.domain.Sport;
 import com.example.managetournamentapp.domain.Team;
 import com.example.managetournamentapp.domain.Tournament;
 import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
-
-import org.w3c.dom.ls.LSOutput;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
+
+
+/**
+ * Helper Class that is responsible for initialing data in our database.
+ * Βοηθητική κλάση που παρέχει δεδομένα για τα παραδείγματα και τις δοκιμασίες ελέγχου<p>
+ * Βιβλία
+ */
 
 public abstract class Initializer {
 
@@ -119,6 +122,10 @@ public abstract class Initializer {
 
     public abstract TeamDAO getTeamDAO();
 
+    /**
+     * Returns
+     * @return Το DAO των χωρών
+     */
     public abstract TournamentDAO getTournamentDAO();
 
 
