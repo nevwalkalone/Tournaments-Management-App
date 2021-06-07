@@ -26,6 +26,10 @@ public class ParticipatingTeamsActivity extends AppCompatActivity implements Par
     String tournamentTitle;
     ImageButton btnHome;
 
+    /**
+     * Creates the layout and initializes the activity
+     * @param savedInstanceState the Instance state
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 

@@ -25,6 +25,10 @@ public class TournamentInfoActivity extends AppCompatActivity implements Tournam
     Button btnDeleteTournament;
     private AlertDialog POPUP_ACTION;
 
+    /**
+     * Creates the layout and initializes the activity
+     * @param savedInstanceState the Instance state
+     */
     @Override
     protected  void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

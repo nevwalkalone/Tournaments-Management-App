@@ -37,10 +37,12 @@ public class RegisterPlayerActivity extends AppCompatActivity implements Registe
     private CheckBox checkBox5;
     private CheckBox checkBox6;
     String playerUsername;
-
     private ArrayList<Sport> sportsInterest = new ArrayList<>();
 
-
+    /**
+     * Creates the layout and initializes the activity
+     * @param savedInstanceState the Instance state
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -38,6 +38,11 @@ public class ReceivedInvitesActivity extends AppCompatActivity implements Receiv
     private String playerUsername;
     private Invitation invitationSelected;
 
+
+    /**
+     * Creates the layout and initializes the activity
+     * @param savedInstanceState the Instance state
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 

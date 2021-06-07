@@ -36,7 +36,10 @@ public class RoundGamesActivity extends AppCompatActivity implements GamesListFr
     private int specificGroup;
     ImageButton btnHome;
 
-
+    /**
+     * Creates the layout and initializes the activity
+     * @param savedInstanceState the Instance state
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 

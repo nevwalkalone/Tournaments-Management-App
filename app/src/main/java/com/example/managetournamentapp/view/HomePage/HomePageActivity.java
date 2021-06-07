@@ -26,6 +26,10 @@ public class HomePageActivity extends AppCompatActivity implements HomePageView 
     HomePageViewModel viewModel;
     private static boolean first = true;
 
+    /**
+     * Creates the layout and initializes the activity
+     * @param savedInstanceState the Instance state
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 

@@ -30,9 +30,12 @@ public class OrganizerPageActivity extends AppCompatActivity implements Organize
     private Button btnLogOut;
     private String organizerUsername;
 
+    /**
+     * Creates the layout and initializes the activity
+     * @param savedInstanceState the Instance state
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_organizer_page);

@@ -29,7 +29,10 @@ public class RegisterOrganizerActivity extends AppCompatActivity implements Regi
     private Button saveBtn;
     String organizerTitle;
 
-
+    /**
+     * Creates the layout and initializes the activity
+     * @param savedInstanceState the Instance state
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

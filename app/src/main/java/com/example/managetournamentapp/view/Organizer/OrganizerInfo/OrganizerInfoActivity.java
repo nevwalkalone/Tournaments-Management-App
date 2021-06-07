@@ -22,6 +22,10 @@ public class OrganizerInfoActivity extends AppCompatActivity implements Organize
     Button btnEditOrganizer;
     Button btnDeleteOrganizer;
 
+    /**
+     * Creates the layout and initializes the activity
+     * @param savedInstanceState the Instance state
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +40,6 @@ public class OrganizerInfoActivity extends AppCompatActivity implements Organize
 
         btnEditOrganizer.setOnClickListener(v -> viewModel.getPresenter().onEditOrganizer());
         btnDeleteOrganizer.setOnClickListener(v -> viewModel.getPresenter().onDeleteOrganizer());
-
 
     }
 

@@ -33,6 +33,10 @@ public class CreateTournamentActivity extends AppCompatActivity implements Creat
     private Spinner teamsNumberSpinner;
     ImageButton btnHome;
 
+    /**
+     * Creates the layout and initializes the activity
+     * @param savedInstanceState the Instance state
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

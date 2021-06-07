@@ -30,6 +30,10 @@ public class TournamentGroupsActivity extends AppCompatActivity implements Tourn
     ArrayList<Button> groupButtons = new ArrayList<>();
     ImageButton btnHome;
 
+    /**
+     * Creates the layout and initializes the activity
+     * @param savedInstanceState the Instance state
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

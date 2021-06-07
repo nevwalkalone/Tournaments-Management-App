@@ -33,6 +33,10 @@ public class SetDatesActivity extends AppCompatActivity implements SetDatesView 
     private Button saveBtn;
     ImageButton btnHome;
 
+    /**
+     * Creates the layout and initializes the activity
+     * @param savedInstanceState the Instance state
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
