@@ -2,7 +2,6 @@ package com.example.managetournamentapp.dao;
 
 import com.example.managetournamentapp.domain.Organizer;
 import com.example.managetournamentapp.domain.Tournament;
-import com.example.managetournamentapp.domain.User;
 
 import java.util.ArrayList;
 

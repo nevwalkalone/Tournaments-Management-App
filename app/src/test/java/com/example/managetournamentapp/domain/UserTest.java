@@ -1,14 +1,16 @@
 package com.example.managetournamentapp.domain;
 
-import com.example.managetournamentapp.domain.Credentials;
-import com.example.managetournamentapp.domain.User;
-
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.time.LocalDate;
-import java.util.Date;
+
+/**
+ * Developed for the purposes of the Course "Software Engineering" at AUEB
+ * Athens University of Economics and Business
+ * 2020-2021
+ */
 
 public class UserTest {
     private User user;

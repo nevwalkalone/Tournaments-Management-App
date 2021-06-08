@@ -2,7 +2,6 @@ package com.example.managetournamentapp.view.Team.AddParticipation;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -14,12 +13,16 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.domain.Tournament;
-import com.example.managetournamentapp.view.Organizer.OrganizerPage.OrganizerPageActivity;
 import com.example.managetournamentapp.view.Organizer.OrganizerTournaments.fragment.TournamentListFragment;
 import com.example.managetournamentapp.view.Player.PlayerPage.PlayerPageActivity;
-import com.example.managetournamentapp.view.Team.ParticipatingTournaments.ParticipatingTournamentsActivity;
 import com.example.managetournamentapp.view.Tournament.TournamentPage.TournamentPageActivity;
 import java.util.ArrayList;
+
+/**
+ * Developed for the purposes of the Course "Software Engineering" at AUEB
+ * Athens University of Economics and Business
+ * 2020-2021
+ */
 
 public class AddParticipationActivity  extends AppCompatActivity implements  AddParticipationView, TournamentListFragment.OnListFragmentInteractionListener, View.OnClickListener{
     public static final String TEAM_NAME_EXTRA = "team_name_extra";

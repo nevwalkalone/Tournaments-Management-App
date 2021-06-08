@@ -3,19 +3,19 @@ package com.example.managetournamentapp.view.Tournament.TournamentRounds;
 import com.example.managetournamentapp.memoryDao.MemoryInitializer;
 import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
 import com.example.managetournamentapp.memoryDao.OrganizerDAOMemory;
-import com.example.managetournamentapp.memoryDao.PlayerDAOMemory;
+
 import com.example.managetournamentapp.memoryDao.TournamentDAOMemory;
-import com.example.managetournamentapp.view.Team.TeamPage.TeamPageViewStub;
-import com.example.managetournamentapp.view.Tournament.TournamentInfo.TournamentInfoViewStub;
-import com.example.managetournamentapp.view.Tournament.TournamentPage.TournamentPagePresenter;
-import com.example.managetournamentapp.view.Tournament.TournamentPage.TournamentPageView;
-import com.example.managetournamentapp.view.Tournament.TournamentPage.TournamentPageViewStub;
+
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+/**
+ * Developed for the purposes of the Course "Software Engineering" at AUEB
+ * Athens University of Economics and Business
+ * 2020-2021
+ */
 
 public class TournamentRoundsPresenterTest {
 

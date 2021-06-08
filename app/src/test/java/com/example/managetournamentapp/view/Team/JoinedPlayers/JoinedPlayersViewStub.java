@@ -2,6 +2,12 @@ package com.example.managetournamentapp.view.Team.JoinedPlayers;
 
 import androidx.appcompat.app.AlertDialog;
 
+/**
+ * Developed for the purposes of the Course "Software Engineering" at AUEB
+ * Athens University of Economics and Business
+ * 2020-2021
+ */
+
 public class JoinedPlayersViewStub implements JoinedPlayersView{
     boolean onHome = false;
     @Override

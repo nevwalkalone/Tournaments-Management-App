@@ -1,5 +1,11 @@
 package com.example.managetournamentapp.view.Team.TeamInfo;
 
+/**
+ * Developed for the purposes of the Course "Software Engineering" at AUEB
+ * Athens University of Economics and Business
+ * 2020-2021
+ */
+
 public class TeamInfoViewStub implements TeamInfoView {
     String name = "Celtic9", colors = "green", division = "K100", sport = "Basketball3v3";
     boolean onHome = false;

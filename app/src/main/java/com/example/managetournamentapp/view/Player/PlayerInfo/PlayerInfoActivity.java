@@ -16,6 +16,12 @@ import com.example.managetournamentapp.view.HomePage.HomePageActivity;
 import com.example.managetournamentapp.view.User.RegisterPlayer.RegisterPlayerActivity;
 
 
+/**
+ * Developed for the purposes of the Course "Software Engineering" at AUEB
+ * Athens University of Economics and Business
+ * 2020-2021
+ */
+
 public class PlayerInfoActivity extends AppCompatActivity implements PlayerInfoView {
     private PlayerInfoViewModel viewModel;
     private static final String PLAYER_USERNAME_EXTRA = "player_username_extra";

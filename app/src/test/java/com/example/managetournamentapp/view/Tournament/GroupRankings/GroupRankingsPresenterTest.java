@@ -1,30 +1,22 @@
 package com.example.managetournamentapp.view.Tournament.GroupRankings;
 
-import com.example.managetournamentapp.domain.AgeDivision;
-import com.example.managetournamentapp.domain.Credentials;
-import com.example.managetournamentapp.domain.Player;
-import com.example.managetournamentapp.domain.Sport;
-import com.example.managetournamentapp.domain.Team;
-import com.example.managetournamentapp.domain.Tournament;
+
 import com.example.managetournamentapp.memoryDao.MemoryInitializer;
 import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
 import com.example.managetournamentapp.memoryDao.OrganizerDAOMemory;
-import com.example.managetournamentapp.memoryDao.PlayerDAOMemory;
+
 import com.example.managetournamentapp.memoryDao.TeamDAOMemory;
 import com.example.managetournamentapp.memoryDao.TournamentDAOMemory;
-import com.example.managetournamentapp.view.Team.AddParticipation.AddParticipationPresenter;
-import com.example.managetournamentapp.view.Team.AddParticipation.AddParticipationView;
-import com.example.managetournamentapp.view.Team.AddParticipation.AddParticipationViewStub;
-import com.example.managetournamentapp.view.Team.TeamPage.TeamPageViewStub;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-
-import static org.junit.Assert.*;
+/**
+ * Developed for the purposes of the Course "Software Engineering" at AUEB
+ * Athens University of Economics and Business
+ * 2020-2021
+ */;
 
 public class GroupRankingsPresenterTest {
 

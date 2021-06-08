@@ -1,11 +1,8 @@
 package com.example.managetournamentapp.view.Tournament.RoundGames.fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -18,6 +15,11 @@ import com.example.managetournamentapp.view.Tournament.RoundGames.fragment.Games
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
+/**
+ * Developed for the purposes of the Course "Software Engineering" at AUEB
+ * Athens University of Economics and Business
+ * 2020-2021
+ */
 
 public class GamesListRecyclerViewAdapter extends RecyclerView.Adapter<GamesListRecyclerViewAdapter.ViewHolder> {
     private final ArrayList<Game> mValues;

@@ -16,7 +16,6 @@ public interface SetDatesView {
      */
     void startSaveTournament(String organizerTitle);
 
-
     /**
      * get the date of every tournament game
      * @return the ArrayList of dates
@@ -28,6 +27,7 @@ public interface SetDatesView {
      * @param view
      * @param msg
      */
+
     void showPopUp(SetDatesView view, String msg);
 
     /**

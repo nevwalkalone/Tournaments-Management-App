@@ -35,6 +35,9 @@ public class SetDatesPresenter {
     private int teamsNumber;
     private Organizer organizer;
 
+    /**
+     * Default Constructor
+     */
     public SetDatesPresenter() {
         sportTypes = findSportTypes();
         ageDivisions = findAgeDivisions();

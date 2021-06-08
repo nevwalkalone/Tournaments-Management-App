@@ -4,7 +4,6 @@ import com.example.managetournamentapp.dao.LoggedInUser;
 import com.example.managetournamentapp.dao.OrganizerDAO;
 import com.example.managetournamentapp.dao.PlayerDAO;
 import com.example.managetournamentapp.domain.Credentials;
-import com.example.managetournamentapp.domain.Organizer;
 import com.example.managetournamentapp.domain.Player;
 import com.example.managetournamentapp.domain.Sport;
 import com.example.managetournamentapp.domain.User;

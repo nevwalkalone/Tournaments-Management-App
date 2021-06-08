@@ -3,11 +3,16 @@ package com.example.managetournamentapp.view.Organizer.CreateTournament;
 import com.example.managetournamentapp.memoryDao.MemoryInitializer;
 import com.example.managetournamentapp.memoryDao.OrganizerDAOMemory;
 import com.example.managetournamentapp.memoryDao.TournamentDAOMemory;
-import com.example.managetournamentapp.view.HomePage.HomePageViewStub;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
+/**
+ * Developed for the purposes of the Course "Software Engineering" at AUEB
+ * Athens University of Economics and Business
+ * 2020-2021
+ */
 
 public class CreateTournamentPresenterTest {
 

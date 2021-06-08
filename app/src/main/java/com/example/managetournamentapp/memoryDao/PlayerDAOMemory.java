@@ -7,7 +7,6 @@ import com.example.managetournamentapp.domain.User;
 
 import java.util.ArrayList;
 
-
 /**
  * Developed for the purposes of the Course "Software Engineering" at AUEB
  * Athens University of Economics and Business

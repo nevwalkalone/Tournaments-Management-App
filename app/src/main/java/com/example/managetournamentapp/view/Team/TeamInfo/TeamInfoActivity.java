@@ -11,12 +11,15 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import com.example.managetournamentapp.R;
-import com.example.managetournamentapp.memoryDao.MemoryInitializer;
 import com.example.managetournamentapp.view.Organizer.OrganizerPage.OrganizerPageActivity;
 import com.example.managetournamentapp.view.Player.CreateTeam.CreateTeamActivity;
-import com.example.managetournamentapp.view.Player.JoinedTeams.JoinedTeamsActivity;
 import com.example.managetournamentapp.view.Player.PlayerPage.PlayerPageActivity;
 
+/**
+ * Developed for the purposes of the Course "Software Engineering" at AUEB
+ * Athens University of Economics and Business
+ * 2020-2021
+ */
 
 public class TeamInfoActivity  extends AppCompatActivity implements TeamInfoView {
     private TeamInfoViewModel viewModel;

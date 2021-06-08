@@ -17,6 +17,12 @@ import com.example.managetournamentapp.view.Tournament.TournamentInfo.Tournament
 import com.example.managetournamentapp.view.Tournament.TournamentRounds.TournamentRoundsActivity;
 import com.example.managetournamentapp.view.User.Browsing.BrowsingActivity;
 
+/**
+ * Developed for the purposes of the Course "Software Engineering" at AUEB
+ * Athens University of Economics and Business
+ * 2020-2021
+ */
+
 public class TournamentPageActivity extends AppCompatActivity implements TournamentPageView {
     public static final String TOURNAMENT_TITLE_EXTRA = "tournament_title_extra";
     private static final String PLAYER_USERNAME_EXTRA = "player_username_extra";

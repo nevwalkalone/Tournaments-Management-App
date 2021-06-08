@@ -2,7 +2,6 @@ package com.example.managetournamentapp.view.Tournament.RoundGames.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +15,11 @@ import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.domain.Game;
 import java.util.ArrayList;
 
+/**
+ * Developed for the purposes of the Course "Software Engineering" at AUEB
+ * Athens University of Economics and Business
+ * 2020-2021
+ */
 
 /**
  * This fragment represents a list of games

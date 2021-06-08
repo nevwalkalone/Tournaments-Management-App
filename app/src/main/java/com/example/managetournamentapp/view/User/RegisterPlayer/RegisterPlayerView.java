@@ -1,6 +1,6 @@
 package com.example.managetournamentapp.view.User.RegisterPlayer;
 
-import com.example.managetournamentapp.domain.AgeDivision;
+
 import com.example.managetournamentapp.domain.Sport;
 import java.util.ArrayList;
 

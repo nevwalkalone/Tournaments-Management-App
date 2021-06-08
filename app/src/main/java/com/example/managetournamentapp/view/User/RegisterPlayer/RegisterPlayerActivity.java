@@ -14,7 +14,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.managetournamentapp.R;
-import com.example.managetournamentapp.domain.AgeDivision;
 import com.example.managetournamentapp.domain.Sport;
 import com.example.managetournamentapp.view.Player.PlayerPage.PlayerPageActivity;
 

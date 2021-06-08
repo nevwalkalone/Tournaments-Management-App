@@ -5,7 +5,6 @@ import com.example.managetournamentapp.memoryDao.MemoryInitializer;
 import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
 import com.example.managetournamentapp.memoryDao.OrganizerDAOMemory;
 import com.example.managetournamentapp.memoryDao.TournamentDAOMemory;
-import com.example.managetournamentapp.view.Organizer.OrganizerTournaments.OrganizerTournamentsViewStub;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -13,6 +12,12 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+
+/**
+ * Developed for the purposes of the Course "Software Engineering" at AUEB
+ * Athens University of Economics and Business
+ * 2020-2021
+ */
 
 public class SetDatesPresenterTest {
 

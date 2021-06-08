@@ -1,5 +1,10 @@
 package com.example.managetournamentapp.view.User.RegisterOrganizer;
 
+/**
+ * Developed for the purposes of the Course "Software Engineering" at AUEB
+ * Athens University of Economics and Business
+ * 2020-2021
+ */
 
 public class RegisterOrganizerViewStub implements RegisterOrganizerView{
     String username, password, name , surname , phoneNumber, email, birthdate, organizerTitle;

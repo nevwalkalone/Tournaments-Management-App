@@ -4,9 +4,15 @@ import com.example.managetournamentapp.dao.LoggedInUser;
 import com.example.managetournamentapp.dao.TournamentDAO;
 import com.example.managetournamentapp.domain.Organizer;
 import com.example.managetournamentapp.domain.Tournament;
-import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
+
 
 import java.time.format.DateTimeFormatter;
+
+/**
+ * Developed for the purposes of the Course "Software Engineering" at AUEB
+ * Athens University of Economics and Business
+ * 2020-2021
+ */
 
 public class TournamentInfoPresenter {
     private TournamentInfoView view;

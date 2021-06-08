@@ -1,5 +1,11 @@
 package com.example.managetournamentapp.view.Tournament.TournamentInfo;
 
+/**
+ * Developed for the purposes of the Course "Software Engineering" at AUEB
+ * Athens University of Economics and Business
+ * 2020-2021
+ */
+
 public class TournamentInfoViewStub implements TournamentInfoView {
     String teamsnumber, location, startdate, finishdate, sportType, title, ageDivision, description;
     boolean onEdit = false, onChange = false, onConfirm = false, onNoDelete = false, onYesDelete = false;

@@ -18,6 +18,7 @@ import java.util.regex.Pattern;
  * Athens University of Economics and Business
  * 2020-2021
  */
+
 public class CreateTeamPresenter {
     private CreateTeamView view;
     private ArrayList<String> sportTypes;

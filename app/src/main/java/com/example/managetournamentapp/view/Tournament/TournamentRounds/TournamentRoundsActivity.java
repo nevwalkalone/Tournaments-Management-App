@@ -17,6 +17,12 @@ import com.example.managetournamentapp.view.Tournament.RoundGames.RoundGamesActi
 import com.example.managetournamentapp.view.Tournament.TournamentGroups.TournamentGroupsActivity;
 import com.example.managetournamentapp.view.User.Browsing.BrowsingActivity;
 
+/**
+ * Developed for the purposes of the Course "Software Engineering" at AUEB
+ * Athens University of Economics and Business
+ * 2020-2021
+ */
+
 public class TournamentRoundsActivity extends AppCompatActivity implements TournamentRoundsView {
     public static final String TOURNAMENT_TITLE_EXTRA = "tournament_title_extra";
     private static final String ROUND_TEAMS_EXTRA = "round_teams_extra" ;

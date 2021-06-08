@@ -2,13 +2,18 @@ package com.example.managetournamentapp.view.Player.ReceivedInvites;
 
 import androidx.appcompat.app.AlertDialog;
 
-import com.example.managetournamentapp.dao.PlayerDAO;
+
 import com.example.managetournamentapp.domain.Invitation;
-import com.example.managetournamentapp.domain.Team;
+
 import com.example.managetournamentapp.memoryDao.PlayerDAOMemory;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+
+/**
+ * Developed for the purposes of the Course "Software Engineering" at AUEB
+ * Athens University of Economics and Business
+ * 2020-2021
+ */
 
 public class ReceivedInvitesViewStub implements ReceivedInvitesView {
     AlertDialog dialog;

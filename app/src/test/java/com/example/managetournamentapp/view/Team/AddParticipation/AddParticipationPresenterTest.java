@@ -1,6 +1,6 @@
 package com.example.managetournamentapp.view.Team.AddParticipation;
 
-import com.example.managetournamentapp.domain.Player;
+
 import com.example.managetournamentapp.domain.Team;
 import com.example.managetournamentapp.domain.Tournament;
 import com.example.managetournamentapp.memoryDao.MemoryInitializer;
@@ -8,13 +8,17 @@ import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
 import com.example.managetournamentapp.memoryDao.PlayerDAOMemory;
 import com.example.managetournamentapp.memoryDao.TeamDAOMemory;
 import com.example.managetournamentapp.memoryDao.TournamentDAOMemory;
-import com.example.managetournamentapp.view.Player.ReceivedInvites.ReceivedInvitesViewStub;
+
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+/**
+ * Developed for the purposes of the Course "Software Engineering" at AUEB
+ * Athens University of Economics and Business
+ * 2020-2021
+ */
 
 public class AddParticipationPresenterTest {
     private AddParticipationPresenter presenter;

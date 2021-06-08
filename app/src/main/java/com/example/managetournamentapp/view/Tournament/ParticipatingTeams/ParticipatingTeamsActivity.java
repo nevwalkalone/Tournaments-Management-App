@@ -9,7 +9,6 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.domain.Team;
-import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
 import com.example.managetournamentapp.view.Organizer.OrganizerPage.OrganizerPageActivity;
 import com.example.managetournamentapp.view.Player.PlayerPage.PlayerPageActivity;
 import com.example.managetournamentapp.view.Team.TeamPage.TeamPageActivity;
@@ -17,6 +16,12 @@ import com.example.managetournamentapp.view.Tournament.ParticipatingTeams.fragme
 import com.example.managetournamentapp.view.User.Browsing.BrowsingActivity;
 
 import java.util.ArrayList;
+
+/**
+ * Developed for the purposes of the Course "Software Engineering" at AUEB
+ * Athens University of Economics and Business
+ * 2020-2021
+ */
 
 public class ParticipatingTeamsActivity extends AppCompatActivity implements ParticipatingTeamsView, TeamsListFragment.OnListFragmentInteractionListener {
 

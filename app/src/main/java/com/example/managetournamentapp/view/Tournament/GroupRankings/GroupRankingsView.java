@@ -4,6 +4,12 @@ import com.example.managetournamentapp.domain.Team;
 
 import java.util.ArrayList;
 
+/**
+ * Developed for the purposes of the Course "Software Engineering" at AUEB
+ * Athens University of Economics and Business
+ * 2020-2021
+ */
+
 public interface GroupRankingsView {
 
     /**

@@ -1,6 +1,5 @@
 package com.example.managetournamentapp.view.Organizer.CreateTournament;
 
-import android.util.Log;
 
 import com.example.managetournamentapp.dao.TournamentDAO;
 import com.example.managetournamentapp.domain.AgeDivision;

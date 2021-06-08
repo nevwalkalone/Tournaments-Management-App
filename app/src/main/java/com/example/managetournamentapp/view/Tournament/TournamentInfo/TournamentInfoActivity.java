@@ -14,7 +14,12 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.view.Organizer.CreateTournament.CreateTournamentActivity;
 import com.example.managetournamentapp.view.Organizer.OrganizerPage.OrganizerPageActivity;
-import com.example.managetournamentapp.view.Organizer.OrganizerTournaments.OrganizerTournamentsActivity;
+
+/**
+ * Developed for the purposes of the Course "Software Engineering" at AUEB
+ * Athens University of Economics and Business
+ * 2020-2021
+ */
 
 public class TournamentInfoActivity extends AppCompatActivity implements TournamentInfoView {
     private TournamentInfoViewModel viewModel;

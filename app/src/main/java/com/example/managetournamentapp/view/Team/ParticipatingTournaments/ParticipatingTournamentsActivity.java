@@ -10,7 +10,6 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.domain.Tournament;
-import com.example.managetournamentapp.view.Organizer.OrganizerPage.OrganizerPageActivity;
 import com.example.managetournamentapp.view.Organizer.OrganizerTournaments.fragment.TournamentListFragment;
 import com.example.managetournamentapp.view.Player.PlayerPage.PlayerPageActivity;
 import com.example.managetournamentapp.view.Team.AddParticipation.AddParticipationActivity;
@@ -18,6 +17,12 @@ import com.example.managetournamentapp.view.Tournament.TournamentPage.Tournament
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
+
+/**
+ * Developed for the purposes of the Course "Software Engineering" at AUEB
+ * Athens University of Economics and Business
+ * 2020-2021
+ */
 
 public class ParticipatingTournamentsActivity extends AppCompatActivity implements ParticipatingTournamentsView, TournamentListFragment.OnListFragmentInteractionListener {
     public static final String TEAM_NAME_EXTRA = "team_name_extra";

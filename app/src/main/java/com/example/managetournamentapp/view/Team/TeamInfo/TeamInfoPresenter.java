@@ -9,6 +9,12 @@ import com.example.managetournamentapp.domain.Team;
 import com.example.managetournamentapp.domain.User;
 import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
 
+/**
+ * Developed for the purposes of the Course "Software Engineering" at AUEB
+ * Athens University of Economics and Business
+ * 2020-2021
+ */
+
 public class TeamInfoPresenter {
     private TeamInfoView view;
     private Team team;

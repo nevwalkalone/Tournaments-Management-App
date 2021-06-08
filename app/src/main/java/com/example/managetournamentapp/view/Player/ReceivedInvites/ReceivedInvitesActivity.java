@@ -21,6 +21,12 @@ import com.example.managetournamentapp.view.Player.ReceivedInvites.fragment.Invi
 import com.example.managetournamentapp.view.Team.TeamPage.TeamPageActivity;
 import java.util.ArrayList;
 
+/**
+ * Developed for the purposes of the Course "Software Engineering" at AUEB
+ * Athens University of Economics and Business
+ * 2020-2021
+ */
+
 public class ReceivedInvitesActivity extends AppCompatActivity implements ReceivedInvitesView, View.OnClickListener, InvitationListFragment.OnListFragmentInteractionListener {
 
     public static final String TEAM_NAME_EXTRA = "team_name_extra";

@@ -19,6 +19,12 @@ import com.example.managetournamentapp.view.Team.ParticipatingTournaments.Partic
 import com.example.managetournamentapp.view.Team.TeamInfo.TeamInfoActivity;
 import com.example.managetournamentapp.view.User.Browsing.BrowsingActivity;
 
+/**
+ * Developed for the purposes of the Course "Software Engineering" at AUEB
+ * Athens University of Economics and Business
+ * 2020-2021
+ */
+
 public class TeamPageActivity extends AppCompatActivity implements TeamPageView {
     private TeamPageViewModel viewModel;
     public static final String TEAM_NAME_EXTRA = "team_name_extra";

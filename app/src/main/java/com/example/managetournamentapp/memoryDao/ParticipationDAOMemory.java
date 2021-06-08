@@ -4,7 +4,6 @@ import com.example.managetournamentapp.dao.ParticipationDAO;
 import com.example.managetournamentapp.domain.Participation;
 import java.util.ArrayList;
 
-
 /**
  * Developed for the purposes of the Course "Software Engineering" at AUEB
  * Athens University of Economics and Business

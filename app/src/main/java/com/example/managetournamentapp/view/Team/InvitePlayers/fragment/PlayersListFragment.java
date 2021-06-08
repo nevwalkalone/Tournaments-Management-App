@@ -16,6 +16,12 @@ import com.example.managetournamentapp.domain.Player;
 import java.util.ArrayList;
 
 /**
+ * Developed for the purposes of the Course "Software Engineering" at AUEB
+ * Athens University of Economics and Business
+ * 2020-2021
+ */
+
+/**
  * This fragment represents a list of players
  * Every activity that contains this fragment must
  * implement the {@link OnListFragmentInteractionListener} interface

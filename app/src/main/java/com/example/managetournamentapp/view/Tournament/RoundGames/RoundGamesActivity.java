@@ -21,6 +21,12 @@ import com.example.managetournamentapp.view.User.Browsing.BrowsingActivity;
 
 import java.util.ArrayList;
 
+/**
+ * Developed for the purposes of the Course "Software Engineering" at AUEB
+ * Athens University of Economics and Business
+ * 2020-2021
+ */
+
 public class RoundGamesActivity extends AppCompatActivity implements GamesListFragment.OnListFragmentInteractionListener, RoundGamesView {
 
     public static final String TOURNAMENT_TITLE_EXTRA = "tournament_title_extra";

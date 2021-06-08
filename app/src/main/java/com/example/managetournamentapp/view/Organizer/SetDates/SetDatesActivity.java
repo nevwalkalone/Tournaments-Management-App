@@ -2,7 +2,6 @@ package com.example.managetournamentapp.view.Organizer.SetDates;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -83,8 +82,8 @@ public class SetDatesActivity extends AppCompatActivity implements SetDatesView 
 
     /**
      * Shows a popup
-     * @param view
-     * @param msg
+     * @param view the view
+     * @param msg the message we want to show
      */
     @Override
     public void showPopUp(SetDatesView view, String msg) {
@@ -119,11 +118,11 @@ public class SetDatesActivity extends AppCompatActivity implements SetDatesView 
         editTexts.add((EditText) findViewById(R.id.round3_start_txt));
         editTexts.add((EditText) findViewById(R.id.round3_finish_txt));
 
-
         if (teamsNumber.equals("16")) {
             editTexts.add((EditText) findViewById(R.id.round4_start_txt));
             editTexts.add((EditText) findViewById(R.id.round4_finish_txt));
-        } else if (teamsNumber.equals("32")) {
+        }
+        else if (teamsNumber.equals("32")) {
             editTexts.add((EditText) findViewById(R.id.round4_start_txt));
             editTexts.add((EditText) findViewById(R.id.round4_finish_txt));
             editTexts.add((EditText) findViewById(R.id.round5_start_txt));

@@ -2,6 +2,12 @@ package com.example.managetournamentapp.view.Tournament.RoundGames;
 
 import com.example.managetournamentapp.domain.Game;
 
+/**
+ * Developed for the purposes of the Course "Software Engineering" at AUEB
+ * Athens University of Economics and Business
+ * 2020-2021
+ */
+
 public class RoundGamesViewStub implements RoundGamesView {
     boolean onHome = false, onPop = false;
 

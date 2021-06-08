@@ -1,7 +1,5 @@
 package com.example.managetournamentapp.domain;
 
-import android.provider.Telephony;
-
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -10,7 +8,11 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Random;
 
-import static org.junit.Assert.*;
+/**
+ * Developed for the purposes of the Course "Software Engineering" at AUEB
+ * Athens University of Economics and Business
+ * 2020-2021
+ */
 
 public class TournamentTest {
 

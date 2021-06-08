@@ -3,7 +3,6 @@ package com.example.managetournamentapp.memoryDao;
 import com.example.managetournamentapp.dao.OrganizerDAO;
 import com.example.managetournamentapp.domain.Credentials;
 import com.example.managetournamentapp.domain.Organizer;
-import com.example.managetournamentapp.domain.Player;
 import com.example.managetournamentapp.domain.User;
 
 import java.util.ArrayList;
