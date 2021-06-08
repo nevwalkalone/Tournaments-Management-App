@@ -34,7 +34,7 @@ public class AddParticipationPresenterTest {
         presenter.setTeamDAO(new TeamDAOMemory());
         presenter.setView(view);
 
-        team = new TeamDAOMemory().find("Celtic1");
+        team = new TeamDAOMemory().find("Celtic8");
         presenter.findTournaments(team.getName());
     }
 

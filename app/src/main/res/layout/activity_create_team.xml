@@ -47,6 +47,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:hint="team name"
                 android:inputType="textPersonName" />
         </LinearLayout>
 
@@ -77,6 +78,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:hint="team color"
                 android:inputType="textPersonName" />
         </LinearLayout>
 

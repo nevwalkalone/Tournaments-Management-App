@@ -102,7 +102,6 @@
     <string name="surname">Surname</string>
     <string name="phone_number">Phone number</string>
     <string name="email">Email</string>
-    <string name="title">Title</string>
     <string name="birth_date">Birth Date</string>
     <string name="name_organizer">NAME</string>
     <string name="account_organizer">ACCOUNT</string>
@@ -162,4 +161,6 @@
     <string name="player_click">PLAYER</string>
     <string name="error">Error!</string>
     <string name="ok">OK</string>
+    <string name="dd_mm_yyyy">dd/mm/yyyy</string>
+    <string name="title">Title</string>
 </resources>

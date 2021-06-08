@@ -67,6 +67,7 @@
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:hint="@string/dd_mm_yyyy"
                 android:inputType="date" />
 
             <EditText
@@ -74,6 +75,7 @@
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:hint="@string/dd_mm_yyyy"
                 android:inputType="date" />
         </LinearLayout>
 
@@ -103,6 +105,7 @@
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:hint="@string/dd_mm_yyyy"
                 android:inputType="date" />
 
             <EditText
@@ -110,6 +113,7 @@
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:hint="@string/dd_mm_yyyy"
                 android:inputType="date" />
         </LinearLayout>
         <LinearLayout
@@ -137,6 +141,7 @@
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:hint="@string/dd_mm_yyyy"
                 android:inputType="date" />
 
             <EditText
@@ -144,6 +149,7 @@
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:hint="@string/dd_mm_yyyy"
                 android:inputType="date" />
         </LinearLayout>
         <LinearLayout
@@ -171,6 +177,7 @@
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:hint="@string/dd_mm_yyyy"
                 android:inputType="date" />
 
             <EditText
@@ -178,6 +185,7 @@
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:hint="@string/dd_mm_yyyy"
                 android:inputType="date" />
         </LinearLayout>
 
@@ -206,6 +214,7 @@
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:hint="@string/dd_mm_yyyy"
                 android:inputType="date" />
 
             <EditText
@@ -213,6 +222,7 @@
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:hint="@string/dd_mm_yyyy"
                 android:inputType="date" />
         </LinearLayout>
 

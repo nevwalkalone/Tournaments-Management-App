@@ -33,7 +33,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Title"
+                android:text="@string/title"
                 android:textSize="18sp" />
 
             <EditText
@@ -41,6 +41,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:hint="title"
                 android:inputType="textPersonName" />
         </LinearLayout>
 
@@ -71,6 +72,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:hint="location"
                 android:inputType="textPersonName" />
         </LinearLayout>
 
@@ -101,6 +103,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:hint="@string/description"
                 android:inputType="textPersonName" />
         </LinearLayout>
 
@@ -166,6 +169,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:hint="@string/dd_mm_yyyy"
                 android:inputType="date" />
         </LinearLayout>
 
@@ -195,6 +199,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:hint="@string/dd_mm_yyyy"
                 android:inputType="date" />
         </LinearLayout>
 
