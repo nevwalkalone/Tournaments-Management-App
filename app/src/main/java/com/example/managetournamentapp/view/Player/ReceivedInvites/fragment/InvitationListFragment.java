@@ -86,7 +86,7 @@ public class InvitationListFragment extends Fragment {
     }
 
     public interface OnListFragmentInteractionListener {
-        // TODO: Update argument type and name
+
         void onListFragmentInteraction(Invitation item);
 
         ArrayList<Invitation> getInvitationList();

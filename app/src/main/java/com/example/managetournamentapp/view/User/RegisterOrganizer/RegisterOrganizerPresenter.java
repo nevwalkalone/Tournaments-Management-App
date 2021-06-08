@@ -13,6 +13,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -89,6 +90,8 @@ public class RegisterOrganizerPresenter {
             view.showPopUp(view, "Not valid email!");
         else if (!validateBirthdate(birthDate))
             view.showPopUp(view, "Not valid date!");
+        else if (!isAdult(birthDate))
+            view.showPopUp(view, "You have to be over 18 years old!");
         else {
             // IF USER IS NEW!
             if (connectedOrganizer == null) {
@@ -185,6 +188,17 @@ public class RegisterOrganizerPresenter {
             return false;
         }
         return true;
+    }
+
+    /**
+     * @param birthdate the email we want to check if it's valid.
+     * @return true if the user is adult
+     */
+    public boolean isAdult(String birthdate) {
+        LocalDate now = LocalDate.now();
+        String format = reformatBirthdate(birthdate);
+        int diff = (int) LocalDate.parse(format).until(now, ChronoUnit.YEARS);
+        return diff >= 18;
     }
 
     /**

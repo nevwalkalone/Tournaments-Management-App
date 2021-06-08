@@ -60,11 +60,6 @@ public interface RegisterPlayerView {
      */
     String getLocation();
 
-    /**
-     * get the contents of the edit text
-     * @return the given age division
-     */
-    AgeDivision getAgeDivision();
 
     /**
      * set the contents in the username edit text

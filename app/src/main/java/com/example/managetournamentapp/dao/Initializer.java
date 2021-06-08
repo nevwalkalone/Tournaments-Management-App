@@ -68,7 +68,7 @@ public abstract class Initializer {
         teamDAO.save(testTeam);
 
         ArrayList<LocalDate> dates = new ArrayList<>();
-        for (int i = 1; i < 64; i++) {
+        for (int i = 1; i < 16; i++) {
             dates.add(LocalDate.now());
         }
         organizerDAO.save(new Organizer("Takis", "Takis", "6900000000", "takistak@gmail.com", LocalDate.parse("2000-01-01"), new Credentials("takis", "12345"), "ESKANA"));

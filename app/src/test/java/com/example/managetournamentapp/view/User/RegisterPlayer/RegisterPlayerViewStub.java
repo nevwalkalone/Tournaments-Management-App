@@ -6,8 +6,8 @@ import com.example.managetournamentapp.domain.Sport;
 
 import java.util.ArrayList;
 
-public class RegisterPlayerViewStub implements RegisterPlayerView{
-    String username, password, name , surname, location , phoneNumber, email, birthdate;
+public class RegisterPlayerViewStub implements RegisterPlayerView {
+    String username, password, name, surname, location, phoneNumber, email, birthdate;
     AgeDivision ageDivision;
     ArrayList<Sport> sportsInterest;
 
@@ -49,11 +49,6 @@ public class RegisterPlayerViewStub implements RegisterPlayerView{
     @Override
     public String getLocation() {
         return location;
-    }
-
-    @Override
-    public AgeDivision getAgeDivision() {
-        return ageDivision;
     }
 
     @Override

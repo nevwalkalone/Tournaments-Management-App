@@ -14,6 +14,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -34,10 +35,12 @@ public class RegisterPlayerPresenter {
     /**
      * default constructor
      */
-    public RegisterPlayerPresenter() {}
+    public RegisterPlayerPresenter() {
+    }
 
     /**
      * show the previous info of the player, if we are on edit mode
+     *
      * @param playerUsername the username of the player
      */
     public void showPreviousInfo(String playerUsername) {
@@ -91,6 +94,8 @@ public class RegisterPlayerPresenter {
             view.showPopUp(view, "Location must be at least 2 chars and only alphabetical chars!");
         else if (!validateBirthdate(birthDate))
             view.showPopUp(view, "Not valid date!");
+        else if(!checkPlayerAge(birthDate))
+            view.showPopUp(view, "You must be over 7 years old!");
 
         else {
             // IF USER IS NEW!
@@ -172,7 +177,7 @@ public class RegisterPlayerPresenter {
     }
 
     /**
-     * @param birthdate the email we want to check if it's valid.
+     * @param birthdate the birth date we want to check if it's valid.
      * @return true if the birth date is valid, else false.
      */
     public boolean validateBirthdate(String birthdate) {
@@ -185,6 +190,18 @@ public class RegisterPlayerPresenter {
         }
         return true;
     }
+
+    /**
+     * @param birthdate the birth date we want to check if it's valid.
+     * @return true if the birth date is valid, else false.
+     */
+    public boolean checkPlayerAge(String birthdate) {
+        LocalDate now = LocalDate.now();
+        String format = reformatBirthdate(birthdate);
+        int diff = (int) LocalDate.parse(format).until(now, ChronoUnit.YEARS);
+        return diff >= 7;
+    }
+
 
     /**
      * Check if there is another user who has these credentials

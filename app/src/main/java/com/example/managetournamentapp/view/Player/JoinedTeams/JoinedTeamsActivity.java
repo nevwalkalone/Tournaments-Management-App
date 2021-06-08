@@ -19,7 +19,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 
 public class JoinedTeamsActivity extends AppCompatActivity implements JoinedTeamsView, TeamsListFragment.OnListFragmentInteractionListener {
-//todo add to fragment
 
     public static final String TEAM_NAME_EXTRA = "team_name_extra";
     private static final String PLAYER_USERNAME_EXTRA = "player_username_extra";

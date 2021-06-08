@@ -74,6 +74,9 @@ public class SetDatesPresenter {
                 view.showPopUp(view, "There are invalid dates!");
                 return;
             }
+        LocalDate startDate = LocalDate.parse(basicInfo.get(1));
+        LocalDate finishDate = LocalDate.parse(basicInfo.get(2));
+
         for (int i = 1; i < datesReceived.size(); i++) {
             String prevS = datesReceived.get(i - 1).replace("/", "-");
             String nextS = datesReceived.get(i).replace("/", "-");
@@ -83,12 +86,14 @@ public class SetDatesPresenter {
                 view.showPopUp(view, "Previous round is after next round. Invalid dates.");
                 return;
             }
+            if (prev.isAfter(finishDate) || next.isAfter(finishDate) || prev.isBefore(startDate) || next.isBefore(startDate)) {
+                view.showPopUp(view, "Dates must be in range: " + startDate.format(DateTimeFormatter.ofPattern("dd-MM-uuuu")) + " - " + finishDate.format(DateTimeFormatter.ofPattern("dd-MM-uuuu")));
+                return;
+            }
 
         }
 
         AgeDivision ageDivision = AgeDivision.values()[getAgeDivisionIndex(basicInfo.get(6))];
-        LocalDate startDate = LocalDate.parse(basicInfo.get(1));
-        LocalDate finishDate = LocalDate.parse(basicInfo.get(2));
         ArrayList<LocalDate> dates = findGameDates(findRoundDates());
 
         Tournament tournament = new Tournament(basicInfo.get(0), startDate, finishDate, basicInfo.get(3), new Sport(basicInfo.get(4)), teamsNumber, ageDivision, dates);
@@ -184,13 +189,12 @@ public class SetDatesPresenter {
         return true;
     }
 
-    public void onHomePage(){
+    public void onHomePage() {
         User user = new MemoryLoggedInUser().getUser();
-        if (user instanceof Player){
-            view.backToHomePage(true,user.getCredentials().getUsername());
-        }
-        else{
-            view.backToHomePage(false,((Organizer)user).getTitle());
+        if (user instanceof Player) {
+            view.backToHomePage(true, user.getCredentials().getUsername());
+        } else {
+            view.backToHomePage(false, ((Organizer) user).getTitle());
         }
     }
 }

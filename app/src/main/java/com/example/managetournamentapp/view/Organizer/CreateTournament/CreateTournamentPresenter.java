@@ -80,7 +80,17 @@ public class CreateTournamentPresenter {
                     return;
                 }
                 LocalDate startLocalDate = reformatDate(startDate);
+                if (!checkDateIsNotPassed(startLocalDate)) {
+                    view.showPopUp(view, "Start Date has already passed! Try a new one.");
+                    return;
+                }
+
                 LocalDate finishLocalDate = reformatDate(finishDate);
+                if (!checkDateIsNotPassed(finishLocalDate)) {
+                    view.showPopUp(view, "Finish Date has already passed! Try a new one.");
+                    return;
+                }
+
                 ArrayList<String> basicInfo = new ArrayList<>(Arrays.asList(title, startLocalDate.toString(), finishLocalDate.toString(), location, sportType, teamsNumber, ageDivision, description));
                 view.startSetDates(basicInfo);
             } else {
@@ -88,11 +98,22 @@ public class CreateTournamentPresenter {
                     view.showPopUp(view, "Title already in use! Try a new one.");
                     return;
                 }
+
+                LocalDate startLocalDate = reformatDate(startDate);
+                if (!checkDateIsNotPassed(startLocalDate)) {
+                    view.showPopUp(view, "Start Date has already passed! Try a new one.");
+                    return;
+                }
+
+                LocalDate finishLocalDate = reformatDate(finishDate);
+                if (!checkDateIsNotPassed(finishLocalDate)) {
+                    view.showPopUp(view, "Finish Date has already passed! Try a new one.");
+                    return;
+                }
+
                 connectedTournament.setTitle(title);
                 connectedTournament.setDescription(description);
                 connectedTournament.setLocation(location);
-                LocalDate startLocalDate = reformatDate(startDate);
-                LocalDate finishLocalDate = reformatDate(finishDate);
                 connectedTournament.setStartDate(startLocalDate);
                 connectedTournament.setFinishDate(finishLocalDate);
                 connectedTournament.setAgeDivision(AgeDivision.values()[getAgeDivisionIndex(ageDivision)]);
@@ -210,6 +231,13 @@ public class CreateTournamentPresenter {
             return false;
         }
         return true;
+    }
+
+
+    public boolean checkDateIsNotPassed(LocalDate date) {
+        System.out.println(date);
+        System.out.println(date.isAfter(LocalDate.now()));
+        return date.isAfter(LocalDate.now());
     }
 
     public void onHomePage() {

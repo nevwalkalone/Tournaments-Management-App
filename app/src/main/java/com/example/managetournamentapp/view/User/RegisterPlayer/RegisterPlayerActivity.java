@@ -4,6 +4,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -42,6 +43,7 @@ public class RegisterPlayerActivity extends AppCompatActivity implements Registe
 
     /**
      * Creates the layout and initializes the activity
+     *
      * @param savedInstanceState the Instance state
      */
     @Override
@@ -51,10 +53,9 @@ public class RegisterPlayerActivity extends AppCompatActivity implements Registe
         System.out.println("PLAYER REGISTRATION CURRENT PAGE");
         playerUsername = this.getIntent().getStringExtra(PLAYER_USERNAME_EXTRA);
 
-        if(playerUsername != null){
+        if (playerUsername != null) {
             ActionBar actionBar = getSupportActionBar();
-            if(actionBar != null)
-            {
+            if (actionBar != null) {
                 actionBar.setTitle("Player Edit");
             }
         }
@@ -77,9 +78,10 @@ public class RegisterPlayerActivity extends AppCompatActivity implements Registe
 
 
     /**
-     *show a popup on the screen
+     * show a popup on the screen
+     *
      * @param view the view of the popup
-     * @param msg the message that will be shown
+     * @param msg  the message that will be shown
      */
     @Override
     public void showPopUp(RegisterPlayerView view, String msg) {
@@ -96,6 +98,7 @@ public class RegisterPlayerActivity extends AppCompatActivity implements Registe
 
     /**
      * what happens when a button is pressed
+     *
      * @param v
      */
     @Override
@@ -109,6 +112,7 @@ public class RegisterPlayerActivity extends AppCompatActivity implements Registe
 
     /**
      * start the player page activity
+     *
      * @param username the username of the player
      */
     public void startPlayerPage(String username) {
@@ -119,6 +123,7 @@ public class RegisterPlayerActivity extends AppCompatActivity implements Registe
 
     /**
      * get the contents of the edit text
+     *
      * @return the given username
      */
     @Override
@@ -129,6 +134,7 @@ public class RegisterPlayerActivity extends AppCompatActivity implements Registe
 
     /**
      * get the contents of the edit text
+     *
      * @return the given password
      */
     @Override
@@ -139,6 +145,7 @@ public class RegisterPlayerActivity extends AppCompatActivity implements Registe
 
     /**
      * get the contents of the edit text
+     *
      * @return the given name
      */
     @Override
@@ -149,6 +156,7 @@ public class RegisterPlayerActivity extends AppCompatActivity implements Registe
 
     /**
      * get the contents of the edit text
+     *
      * @return the given surname
      */
     @Override
@@ -159,6 +167,7 @@ public class RegisterPlayerActivity extends AppCompatActivity implements Registe
 
     /**
      * get the contents of the edit text
+     *
      * @return the name given
      */
     @Override
@@ -169,6 +178,7 @@ public class RegisterPlayerActivity extends AppCompatActivity implements Registe
 
     /**
      * get the contents of the edit text
+     *
      * @return the given birth date
      */
     @Override
@@ -179,6 +189,7 @@ public class RegisterPlayerActivity extends AppCompatActivity implements Registe
 
     /**
      * get the contents of the edit text
+     *
      * @return the birth date
      */
     @Override
@@ -189,6 +200,7 @@ public class RegisterPlayerActivity extends AppCompatActivity implements Registe
 
     /**
      * get the contents of the edit text
+     *
      * @return the given location
      */
     @Override
@@ -198,17 +210,8 @@ public class RegisterPlayerActivity extends AppCompatActivity implements Registe
     }
 
     /**
-     * get the contents of the edit text
-     * @return the given age division
-     */
-    @Override
-    public AgeDivision getAgeDivision() {
-        //TODO Change Birthdate edit text and add here
-        return AgeDivision.K15;
-    }
-
-    /**
      * set the contents in the username edit text
+     *
      * @param username the new username
      */
     @Override
@@ -219,6 +222,7 @@ public class RegisterPlayerActivity extends AppCompatActivity implements Registe
 
     /**
      * set the contents in the password edit text
+     *
      * @param password the new password
      */
     @Override
@@ -229,6 +233,7 @@ public class RegisterPlayerActivity extends AppCompatActivity implements Registe
 
     /**
      * set the contents in the name edit text
+     *
      * @param name the new name
      */
     @Override
@@ -239,6 +244,7 @@ public class RegisterPlayerActivity extends AppCompatActivity implements Registe
 
     /**
      * set the contents in the surname edit text
+     *
      * @param surname the new surname
      */
     @Override
@@ -249,6 +255,7 @@ public class RegisterPlayerActivity extends AppCompatActivity implements Registe
 
     /**
      * set the contents in the phone number edit text
+     *
      * @param phoneNumber the new phone number
      */
     @Override
@@ -259,6 +266,7 @@ public class RegisterPlayerActivity extends AppCompatActivity implements Registe
 
     /**
      * set the contents in the email edit text
+     *
      * @param email the new email
      */
     @Override
@@ -269,6 +277,7 @@ public class RegisterPlayerActivity extends AppCompatActivity implements Registe
 
     /**
      * set the contents in the birth date edit text
+     *
      * @param birthdate the new birth date
      */
     @Override
@@ -279,6 +288,7 @@ public class RegisterPlayerActivity extends AppCompatActivity implements Registe
 
     /**
      * set the contents in the location edit text
+     *
      * @param location the new location
      */
     @Override
@@ -289,6 +299,7 @@ public class RegisterPlayerActivity extends AppCompatActivity implements Registe
 
     /**
      * get the sports that the player has selected
+     *
      * @return the arraylist of sports
      */
     @Override
@@ -336,6 +347,7 @@ public class RegisterPlayerActivity extends AppCompatActivity implements Registe
 
     /**
      * set the contents in the sport checkboxes
+     *
      * @param sports the arraylist of sports that the player is interested in
      */
     @Override

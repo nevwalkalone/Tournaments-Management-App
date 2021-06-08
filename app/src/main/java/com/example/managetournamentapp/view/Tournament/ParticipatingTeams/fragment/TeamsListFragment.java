@@ -83,7 +83,7 @@ public class TeamsListFragment extends Fragment{
     }
 
     public interface OnListFragmentInteractionListener {
-        // TODO: Update argument type and name
+
         void onListFragmentInteraction(Team item);
 
         ArrayList<Team> getTeamsList();

@@ -26,18 +26,20 @@ public class RoundGamesPresenter {
     private int currentRoundIndex;
 
 
-    public RoundGamesPresenter(){}
+    public RoundGamesPresenter() {
+    }
 
     /**
      * find the games in this round
-     * @param tournamentTitle the title of the tournament
+     *
+     * @param tournamentTitle  the title of the tournament
      * @param roundTeamsNumber the number of teams in this tournament
-     * @param specificGroup is the index of the specific group  if we
-     *                      don't want to search in every group of the round
-     *                      or else it takes the value -1
+     * @param specificGroup    is the index of the specific group  if we
+     *                         don't want to search in every group of the round
+     *                         or else it takes the value -1
      */
-    public void findGames(String tournamentTitle, int roundTeamsNumber, int specificGroup){
-        if (tournamentTitle==null)
+    public void findGames(String tournamentTitle, int roundTeamsNumber, int specificGroup) {
+        if (tournamentTitle == null)
             return;
         tournament = tournamentDAO.find(tournamentTitle);
         if (tournament == null)
@@ -46,9 +48,9 @@ public class RoundGamesPresenter {
         findAccess();
         results.clear();
 
-        currentRoundIndex=0;
+        currentRoundIndex = 0;
         for (Round round : tournament.getRounds()) {
-            if (round.getTeamsNumber()==roundTeamsNumber){
+            if (round.getTeamsNumber() == roundTeamsNumber) {
                 currentRound = round;
                 break;
             }
@@ -56,27 +58,27 @@ public class RoundGamesPresenter {
         }
 
         ArrayList<Group> groupsWanted = new ArrayList<>();
-        if (specificGroup==-1)
-            groupsWanted.addAll( currentRound.getGroups());
+        if (specificGroup == -1)
+            groupsWanted.addAll(currentRound.getGroups());
         else
-            groupsWanted.add(currentRound.getGroups().get(specificGroup)) ;
+            groupsWanted.add(currentRound.getGroups().get(specificGroup));
 
-        for(Group group : groupsWanted){
-            System.out.println(group.getGames());
+        for (Group group : groupsWanted) {
             results.addAll(group.getGames());
         }
-            }
+    }
 
 
     /**
      * what happens when the user presses on a game
+     *
      * @param game the game that was pressed on
      */
-    public void onPressed(Game game){
-        if ( hasAccess)
+    public void onPressed(Game game) {
+        if (hasAccess)
             if (game.isFinished())
                 view.showToast("THE SCORE HAS ALREADY BEEN SET");
-            else if (game.getTeamA().getName()==null || game.getTeamA().getName()==null)
+            else if (game.getTeamA().getName() == null || game.getTeamA().getName() == null)
                 view.showToast("THE TEAMS HAVE NOT BEEN SET");
             else
                 view.showPopup(game);
@@ -85,16 +87,17 @@ public class RoundGamesPresenter {
     /**
      * what happens when the organizer presses "save"
      * on the popup
-     * @param game the game that was set
+     *
+     * @param game   the game that was set
      * @param scoreA the score of the first team
      * @param scoreB the score of the second teams
      */
-    public void onSave(Game game, String scoreA, String scoreB){
-        if (scoreA==null || scoreA.isEmpty() || scoreB==null || scoreB.isEmpty() )
+    public void onSave(Game game, String scoreA, String scoreB) {
+        if (scoreA == null || scoreA.isEmpty() || scoreB == null || scoreB.isEmpty())
             return;
 
-        game.setScoreA( Integer.parseInt(scoreA) );
-        game.setScoreB( Integer.parseInt(scoreB) );
+        game.setScoreA(Integer.parseInt(scoreA));
+        game.setScoreB(Integer.parseInt(scoreB));
         game.setFinished(true);
         checkIfFinished();
         view.recreateView();
@@ -105,9 +108,9 @@ public class RoundGamesPresenter {
      * promote the winners of this round
      * to the next round
      */
-    public void checkIfFinished(){
-        if (currentRound.allGamesFinished() && currentRoundIndex<tournament.getRounds().size()-1){
-            tournament.getRounds().get( currentRoundIndex+1 ).setup( currentRound.getRoundWinners() );
+    public void checkIfFinished() {
+        if (currentRound.allGamesFinished() && currentRoundIndex < tournament.getRounds().size() - 1) {
+            tournament.getRounds().get(currentRoundIndex + 1).setup(currentRound.getRoundWinners());
         }
     }
 
@@ -115,16 +118,17 @@ public class RoundGamesPresenter {
      * find out if the logged in user
      * is the organizer of this tournament
      */
-    public void findAccess(){
-        hasAccess =false;
-        if ( loggedInUser.getUser() != null )
+    public void findAccess() {
+        hasAccess = false;
+        if (loggedInUser.getUser() != null)
             if (loggedInUser.getUser() instanceof Organizer)
-                if ( ((Organizer)loggedInUser.getUser()).getTournaments().contains(tournament) )
+                if (((Organizer) loggedInUser.getUser()).getTournaments().contains(tournament))
                     hasAccess = true;
     }
 
     /**
      * get the games of this round
+     *
      * @return the ArrayList of games in this round
      */
     public ArrayList<Game> getResults() {
@@ -133,6 +137,7 @@ public class RoundGamesPresenter {
 
     /**
      * set the loggedInUser
+     *
      * @param loggedInUser the new LoggedInUser
      */
     public void setLoggedInUser(LoggedInUser loggedInUser) {
@@ -141,6 +146,7 @@ public class RoundGamesPresenter {
 
     /**
      * set the tournamentDAO
+     *
      * @param tournamentDAO the new TournamentDAO
      */
     public void setTournamentDAO(TournamentDAO tournamentDAO) {
@@ -149,6 +155,7 @@ public class RoundGamesPresenter {
 
     /**
      * set a new view
+     *
      * @param view the new view
      */
     public void setView(RoundGamesView view) {
@@ -158,20 +165,19 @@ public class RoundGamesPresenter {
     /**
      * clear the view
      */
-    public void clearView(){
+    public void clearView() {
         this.view = null;
     }
 
     /**
      * direct the logged in user to their home page
      */
-    public void onHomePage(){
+    public void onHomePage() {
         User user = loggedInUser.getUser();
-        if (loggedInUser.getUser() instanceof Player){
-            view.backToHomePage(true,user.getCredentials().getUsername());
-        }
-        else{
-            view.backToHomePage(false,((Organizer)user).getTitle());
+        if (loggedInUser.getUser() instanceof Player) {
+            view.backToHomePage(true, user.getCredentials().getUsername());
+        } else {
+            view.backToHomePage(false, ((Organizer) user).getTitle());
         }
     }
 }
