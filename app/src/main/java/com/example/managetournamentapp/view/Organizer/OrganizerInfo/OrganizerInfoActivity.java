@@ -6,6 +6,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -34,6 +35,7 @@ public class OrganizerInfoActivity extends AppCompatActivity implements Organize
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_organizer_info);
+
 
         viewModel = new ViewModelProvider(this).get(OrganizerInfoViewModel.class);
         viewModel.getPresenter().setView(this);

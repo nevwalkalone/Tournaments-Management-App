@@ -1,5 +1,6 @@
 package com.example.managetournamentapp.view.User.RegisterPlayer;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -49,6 +50,15 @@ public class RegisterPlayerActivity extends AppCompatActivity implements Registe
         setContentView(R.layout.activity_register_player);
         System.out.println("PLAYER REGISTRATION CURRENT PAGE");
         playerUsername = this.getIntent().getStringExtra(PLAYER_USERNAME_EXTRA);
+
+        if(playerUsername != null){
+            ActionBar actionBar = getSupportActionBar();
+            if(actionBar != null)
+            {
+                actionBar.setTitle("Player Edit");
+            }
+        }
+
         viewModel = new ViewModelProvider(this).get(RegisterPlayerViewModel.class);
         viewModel.getPresenter().setView(this);
 

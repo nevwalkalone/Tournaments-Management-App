@@ -1,5 +1,6 @@
 package com.example.managetournamentapp.view.User.RegisterOrganizer;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -37,6 +38,13 @@ public class RegisterOrganizerActivity extends AppCompatActivity implements Regi
         setContentView(R.layout.activity_register_organizer);
 
         organizerTitle = this.getIntent().getStringExtra(ORGANIZER_TITLE);
+        if(organizerTitle != null){
+            ActionBar actionBar = getSupportActionBar();
+            if(actionBar != null)
+            {
+                actionBar.setTitle("Organizer Edit");
+            }
+        }
 
         viewModel = new ViewModelProvider(this).get(RegisterOrganizerViewModel.class);
         viewModel.getPresenter().setView(this);
