@@ -14,6 +14,10 @@ public class RegisterOrganizerPresenterTest {
     private RegisterOrganizerPresenter presenter;
     private RegisterOrganizerView view;
 
+    /**
+     * setUp the view and presenter for testing Presenter Methods
+     * @throws Exception if setup fail
+     */
     @Before
     public void setup() {
         new MemoryInitializer().prepareData();
@@ -26,6 +30,9 @@ public class RegisterOrganizerPresenterTest {
     }
 
 
+    /**
+     * Test the creation a new organizer
+     */
     @Test
     public void createNew() {
 
@@ -46,6 +53,9 @@ public class RegisterOrganizerPresenterTest {
         Assert.assertEquals(presenter.getLoggedInUser().getUser(), new OrganizerDAOMemory().findByTitle("veryquick"));
     }
 
+    /**
+     * Test the edit of an existing organizer
+     */
     @Test
     public void changeExisting() {
 

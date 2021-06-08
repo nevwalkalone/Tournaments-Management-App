@@ -14,6 +14,10 @@ public class LoginPresenterTest {
     private LoginPresenter presenter;
     private LoginView view;
 
+    /**
+     * setUp the view and presenter for testing Presenter Methods
+     * @throws Exception if setup fail
+     */
     @Before
     public void setup() {
         new MemoryInitializer().prepareData();
@@ -26,12 +30,18 @@ public class LoginPresenterTest {
         presenter.setView(view);
     }
 
+    /**
+     * Test the success of login
+     */
     @Test
     public void loginSuccess() {
         presenter.validateCredentials();
         Assert.assertEquals(presenter.getLoggedInUser().getUser(), new PlayerDAOMemory().find("tommy0"));
     }
 
+    /**
+     * Test the failure of login
+     */
     @Test
     public void loginFail() {
         new PlayerDAOMemory().delete(new PlayerDAOMemory().find("tommy0"));

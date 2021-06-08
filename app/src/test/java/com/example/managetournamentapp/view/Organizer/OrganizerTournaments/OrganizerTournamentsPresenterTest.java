@@ -12,6 +12,10 @@ public class OrganizerTournamentsPresenterTest {
     private OrganizerTournamentsPresenter presenter;
     private OrganizerTournamentsView view;
 
+    /**
+     * setUp the view and presenter for testing Presenter Methods
+     * @throws Exception if setup fail
+     */
     @Before
     public void setUp() throws Exception {
         new MemoryInitializer().prepareData();
@@ -23,6 +27,9 @@ public class OrganizerTournamentsPresenterTest {
         presenter.setView(view);
     }
 
+    /**
+     * Test if presenter find's organizer's tournaments from DAO
+     */
     @Test
     public void findOrganizerTournaments() {
         // NULL
@@ -35,6 +42,9 @@ public class OrganizerTournamentsPresenterTest {
         Assert.assertEquals("TOURNOUA1", presenter.getResults().get(0).getTitle());
     }
 
+    /**
+     * Test user's action
+     */
     @Test
     public void changePage() {
         presenter.onAddTournament();

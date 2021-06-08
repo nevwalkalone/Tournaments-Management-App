@@ -21,6 +21,10 @@ public class TournamentInfoPresenterTest {
     private TournamentInfoPresenter presenter;
     private TournamentInfoView view;
 
+    /**
+     * setUp the view and presenter for testing Presenter Methods
+     * @throws Exception if setup fail
+     */
     @Before
     public void setUp() throws Exception {
 
@@ -33,6 +37,9 @@ public class TournamentInfoPresenterTest {
         presenter.setView(view);
     }
 
+    /**
+     * Test if presenter gives the access properly
+     */
     @Test
     public void findAccess() {
 
@@ -42,6 +49,9 @@ public class TournamentInfoPresenterTest {
         Assert.assertTrue(((TournamentInfoViewStub) view).onChange);
     }
 
+    /**
+     * Test the deletion of a tournament
+     */
     @Test
     public void testDeleteTournament() {
         presenter.findTournamentInfo("TOURNOUA1");
@@ -61,6 +71,9 @@ public class TournamentInfoPresenterTest {
 
     }
 
+    /**
+     * Test the edit of a tournament
+     */
     @Test
     public void testEditTournament() {
         presenter.findTournamentInfo("TOURNOUA1");
@@ -79,6 +92,9 @@ public class TournamentInfoPresenterTest {
 
     }
 
+    /**
+     * Test different buttons
+     */
     @Test
     public void testButtons() {
         new MemoryLoggedInUser().setUser(new OrganizerDAOMemory().findByTitle("ESKA"));

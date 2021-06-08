@@ -22,6 +22,10 @@ public class ReceivedInvitesPresenterTest {
     private ReceivedInvitesView view;
     private Player testPlayer;
 
+    /**
+     * setUp the view and presenter for testing Presenter Methods
+     * @throws Exception if setup fail
+     */
     @Before
     public void setUp() throws Exception {
 
@@ -35,6 +39,9 @@ public class ReceivedInvitesPresenterTest {
         presenter.setView(view);
     }
 
+    /**
+     * Test if presenter finds the player's invites properly from DAO
+     */
     @Test
     public void findInvites() {
         presenter.findInvites("gioza");
@@ -42,6 +49,9 @@ public class ReceivedInvitesPresenterTest {
 
     }
 
+    /**
+     * Test user's actions
+     */
     @Test
     public void testActions() {
         presenter.onTeamPageClick();
@@ -52,6 +62,9 @@ public class ReceivedInvitesPresenterTest {
 
     }
 
+    /**
+     * Test getter for Invitation List
+     */
     @Test
     public void getInvitations() {
         presenter.findInvites("gioza");
@@ -60,6 +73,9 @@ public class ReceivedInvitesPresenterTest {
 
     }
 
+    /**
+     * Test the declination of an invite
+     */
     @Test
     public void declineInvite() {
         testPlayer = new PlayerDAOMemory().find("gioza");
@@ -70,6 +86,9 @@ public class ReceivedInvitesPresenterTest {
 
     }
 
+    /**
+     * Test the acceptance of an invite
+     */
     @Test
     public void acceptInvite() {
         testPlayer = new PlayerDAOMemory().find("gioza");

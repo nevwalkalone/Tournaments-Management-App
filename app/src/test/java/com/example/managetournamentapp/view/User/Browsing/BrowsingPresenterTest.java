@@ -21,6 +21,10 @@ public class BrowsingPresenterTest {
     private BrowsingPresenter presenter;
     private BrowsingView view;
 
+    /**
+     * setUp the view and presenter for testing Presenter Methods
+     * @throws Exception if setup fail
+     */
     @Before
     public void setUp() throws Exception {
         new MemoryInitializer().prepareData();
@@ -31,6 +35,9 @@ public class BrowsingPresenterTest {
         presenter.setView(view);
     }
 
+    /**
+     * Test if presenter find tournaments properly from DAO
+     */
     @Test
     public void findAllTournaments() {
         presenter.findAllTournaments();
@@ -38,6 +45,9 @@ public class BrowsingPresenterTest {
 
     }
 
+    /**
+     * Test on tournament click
+     */
     @Test
     public void startPage() {
         presenter.findAllTournaments();

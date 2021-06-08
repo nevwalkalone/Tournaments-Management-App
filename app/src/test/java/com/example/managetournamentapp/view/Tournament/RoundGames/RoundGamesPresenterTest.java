@@ -20,6 +20,10 @@ public class RoundGamesPresenterTest {
     private RoundGamesPresenter presenter;
     private RoundGamesView view;
 
+    /**
+     * setUp the view and presenter for testing Presenter Methods
+     * @throws Exception if setup fail
+     */
     @Before
     public void setUp() throws Exception {
         new MemoryInitializer().prepareData();
@@ -31,6 +35,9 @@ public class RoundGamesPresenterTest {
 
     }
 
+    /**
+     * Test if presenter finds games properly from DAO ( for a Tournament )
+     */
     @Test
     public void findGames() {
         presenter.findGames("TOURNOUA1", 8, -1);
@@ -38,6 +45,9 @@ public class RoundGamesPresenterTest {
 
     }
 
+    /**
+     * Test user actions on different cases
+     */
     @Test
     public void onPressedTest() {
         presenter.findGames("TOURNOUA1", 4, 0);
@@ -53,6 +63,9 @@ public class RoundGamesPresenterTest {
 
     }
 
+    /**
+     * Test saving of games in different cases
+     */
     @Test
     public void onSaveTest() {
         presenter.findGames("TOURNOUA1", 8, 0);
@@ -68,6 +81,9 @@ public class RoundGamesPresenterTest {
         Assert.assertTrue(presenter.getResults().get(0).isFinished());
     }
 
+    /**
+     * Test user's actions
+     */
     @Test
     public void changePage() {
         new MemoryLoggedInUser().setUser(new OrganizerDAOMemory().findByTitle("ESKA"));

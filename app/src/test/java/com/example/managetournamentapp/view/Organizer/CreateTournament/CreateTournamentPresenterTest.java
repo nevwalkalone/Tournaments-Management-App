@@ -14,6 +14,10 @@ public class CreateTournamentPresenterTest {
     private CreateTournamentPresenter presenter;
     private CreateTournamentView view;
 
+    /**
+     * setUp the view and presenter for testing Presenter Methods
+     * @throws Exception if setup fail
+     */
     @Before
     public void setUp() throws Exception {
 
@@ -26,6 +30,9 @@ public class CreateTournamentPresenterTest {
         presenter.setView(view);
     }
 
+    /**
+     * Test the creation of a new Tournament
+     */
     @Test
     public void createNew() {
 
@@ -46,6 +53,9 @@ public class CreateTournamentPresenterTest {
 
     }
 
+    /**
+     * Test the edit of a an existing Tournament
+     */
     @Test
     public void changeExisting() {
         String title = "TOURNOUA1";
@@ -60,6 +70,9 @@ public class CreateTournamentPresenterTest {
         Assert.assertEquals("TOURNOUA1", newName);
     }
 
+    /**
+     * Test user's actions ond different clicks
+     */
     @Test
     public void testActions() {
         presenter.onHomePage();

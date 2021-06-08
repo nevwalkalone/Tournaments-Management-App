@@ -19,6 +19,10 @@ public class TournamentGroupsPresenterTest {
     private TournamentGroupsPresenter presenter;
     private TournamentGroupsView view;
 
+    /**
+     * setUp the view and presenter for testing Presenter Methods
+     * @throws Exception if setup fail
+     */
     @Before
     public void setUp() throws Exception {
         new MemoryInitializer().prepareData();
@@ -30,6 +34,9 @@ public class TournamentGroupsPresenterTest {
     }
 
 
+    /**
+     * Test presenter onGroup
+     */
     @Test
     public void onGroup() {
         presenter.findTournamentInfo("TOURNOUA1");
@@ -38,6 +45,9 @@ public class TournamentGroupsPresenterTest {
         Assert.assertTrue(((TournamentGroupsViewStub) view).onShow);
     }
 
+    /**
+     * Test presenter onGames
+     */
     @Test
     public void onGames() {
         presenter.findTournamentInfo("TOURNOUA1");
@@ -45,6 +55,9 @@ public class TournamentGroupsPresenterTest {
         Assert.assertTrue(((TournamentGroupsViewStub) view).onGroup);
     }
 
+    /**
+     * Test presenter onRankings
+     */
     @Test
     public void onRankings() {
         presenter.findTournamentInfo("TOURNOUA1");
@@ -52,6 +65,9 @@ public class TournamentGroupsPresenterTest {
         Assert.assertTrue(((TournamentGroupsViewStub) view).onRankings);
     }
 
+    /**
+     * Test if presenter gives the access properly
+     */
     @Test
     public void findAccess() {
         presenter.findTournamentInfo("TOURNOUA1");
@@ -59,6 +75,9 @@ public class TournamentGroupsPresenterTest {
         Assert.assertTrue(((TournamentGroupsViewStub) view).onChange);
     }
 
+    /**
+     * Test user's actions
+     */
     @Test
     public void changePage() {
         new MemoryLoggedInUser().setUser(new OrganizerDAOMemory().findByTitle("ESKA"));

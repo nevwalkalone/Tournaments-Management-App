@@ -22,6 +22,10 @@ public class ParticipatingTeamsPresenterTest {
     private ParticipatingTeamsPresenter presenter;
     private ParticipatingTeamsView view;
 
+    /**
+     * setUp the view and presenter for testing Presenter Methods
+     * @throws Exception if setup fail
+     */
     @Before
     public void setUp() throws Exception {
         new MemoryInitializer().prepareData();
@@ -33,6 +37,9 @@ public class ParticipatingTeamsPresenterTest {
 
     }
 
+    /**
+     * Test if presenter finds participating teams of a tournament properly from DAO
+     */
     @Test
     public void findParticipatingTeams() {
         presenter.findParticipatingTeams("TOURNOUA1");
@@ -41,6 +48,9 @@ public class ParticipatingTeamsPresenterTest {
 
     }
 
+    /**
+     * Test user's actions
+     */
     @Test
     public void changePage() {
         presenter.onTeamSelected(new TeamDAOMemory().find("Celtic0"));

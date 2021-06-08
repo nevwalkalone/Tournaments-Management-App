@@ -18,6 +18,10 @@ public class ParticipatingTournamentsPresenterTest {
     private ParticipatingTournamentsView view;
     private Team team;
 
+    /**
+     * setUp the view and presenter for testing Presenter Methods
+     * @throws Exception if setup fail
+     */
     @Before
     public void setUp() {
         new MemoryInitializer().prepareData();
@@ -31,6 +35,9 @@ public class ParticipatingTournamentsPresenterTest {
         presenter.setView(view);
     }
 
+    /**
+     * Test if presenter finds participation of a team properly from DAO
+     */
     @Test
     public void participatingTournaments(){
         team = new TeamDAOMemory().find("Celtic1");
@@ -44,6 +51,9 @@ public class ParticipatingTournamentsPresenterTest {
         Assert.assertEquals(number1, team.getParticipations().size());
     }
 
+    /**
+     * Test user's actions
+     */
     @Test
     public void testAction(){
         new MemoryLoggedInUser().setUser(new PlayerDAOMemory().find("tommy0"));

@@ -20,6 +20,10 @@ public class SetDatesPresenterTest {
     private SetDatesView view;
     private Tournament tournament;
 
+    /**
+     * setUp the view and presenter for testing Presenter Methods
+     * @throws Exception if setup fail
+     */
     @Before
     public void setUp() throws Exception {
 
@@ -34,6 +38,9 @@ public class SetDatesPresenterTest {
     }
 
 
+    /**
+     * Test saving of a Tournament
+     */
     @Test
     public void testOnSaveTournament() {
         ArrayList<String> basicInfo = new ArrayList<>(Arrays.asList(tournament.getTitle(), tournament.getStartDate().toString(), tournament.getFinishDate().toString(), tournament.getLocation(), tournament.getSportType().getName(), String.valueOf(tournament.getMAX_TEAMS_NUMBER()), tournament.getAgeDivision().toString(), tournament.getDescription()));
@@ -42,6 +49,9 @@ public class SetDatesPresenterTest {
         Assert.assertTrue(((SetDatesViewStub) view).onSave);
     }
 
+    /**
+     * Test user's actions on different clicks
+     */
     @Test
     public void testChangePage() {
         new MemoryLoggedInUser().setUser(new OrganizerDAOMemory().findByTitle("ESKA"));

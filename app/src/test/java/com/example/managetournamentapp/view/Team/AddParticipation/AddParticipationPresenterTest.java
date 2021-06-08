@@ -21,6 +21,10 @@ public class AddParticipationPresenterTest {
     private AddParticipationView view;
     private Team team;
 
+    /**
+     * setUp the view and presenter for testing Presenter Methods
+     * @throws Exception if setup fail
+     */
     @Before
     public void setUp() {
         new MemoryInitializer().prepareData();
@@ -34,6 +38,9 @@ public class AddParticipationPresenterTest {
         presenter.findTournaments(team.getName());
     }
 
+    /**
+     * Test the addition of a new participation in a tournament
+     */
     @Test
     public void addParticipation() {
         Tournament tournament = presenter.getResults().get(0);
@@ -50,6 +57,9 @@ public class AddParticipationPresenterTest {
 
     }
 
+    /**
+     * Test user's action
+     */
     @Test
     public void testAction() {
         new MemoryLoggedInUser().setUser(new PlayerDAOMemory().find("tommy0"));

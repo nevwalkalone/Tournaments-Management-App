@@ -20,6 +20,10 @@ public class TournamentPagePresenterTest {
     private TournamentPagePresenter presenter;
     private TournamentPageView view;
 
+    /**
+     * setUp the view and presenter for testing Presenter Methods
+     * @throws Exception if setup fail
+     */
     @Before
     public void setUp() throws Exception {
 
@@ -30,6 +34,9 @@ public class TournamentPagePresenterTest {
         presenter.setView(view);
     }
 
+    /**
+     * Test user's actions
+     */
     @Test
     public void testActions() {
         new MemoryLoggedInUser().setUser(new OrganizerDAOMemory().findByTitle("ESKA"));

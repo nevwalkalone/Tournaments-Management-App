@@ -19,6 +19,10 @@ public class InvitePlayersPresenterTest {
     InvitePlayersView view;
     private Team team;
 
+    /**
+     * setUp the view and presenter for testing Presenter Methods
+     * @throws Exception if setup fail
+     */
     @Before
     public void setUp() {
         new MemoryInitializer().prepareData();
@@ -32,6 +36,9 @@ public class InvitePlayersPresenterTest {
         presenter.findPlayers(team.getName());
     }
 
+    /**
+     * Test if captain can invite new players from Players List
+     */
     @Test
     public void invitePlayers(){
         Player player = presenter.getResults().get(0);
@@ -52,6 +59,9 @@ public class InvitePlayersPresenterTest {
         Assert.assertEquals(number2, team.getPlayers().size());
     }
 
+    /**
+     * Test user's actions
+     */
     @Test
     public void testAction(){
         new MemoryLoggedInUser().setUser(new PlayerDAOMemory().find("tommy0"));

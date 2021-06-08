@@ -19,6 +19,10 @@ public class JoinedPlayersPresenterTest {
     JoinedPlayersPresenter presenter;
     JoinedPlayersView view;
 
+    /**
+     * setUp the view and presenter for testing Presenter Methods
+     * @throws Exception if setup fail
+     */
     @Before
     public void setUp() {
         new MemoryInitializer().prepareData();
@@ -33,6 +37,9 @@ public class JoinedPlayersPresenterTest {
 
     }
 
+    /**
+     * Test if presenter finds properly the teams' players from DAO
+     */
     @Test
     public void joinedPlayers(){
         Team team = new TeamDAOMemory().find("Celtic8");
@@ -47,6 +54,9 @@ public class JoinedPlayersPresenterTest {
         Assert.assertEquals(number1-1 , team.getPlayers().size() );
     }
 
+    /**
+     * Test user's actions
+     */
     @Test
     public void testAction(){
         new MemoryLoggedInUser().setUser(new PlayerDAOMemory().find("tommy0"));

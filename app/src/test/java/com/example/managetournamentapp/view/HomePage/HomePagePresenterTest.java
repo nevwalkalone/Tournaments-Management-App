@@ -15,12 +15,20 @@ import org.junit.Test;
 import java.util.ArrayList;
 
 import static org.junit.Assert.*;
-
+/**
+ * Developed for the purposes of the Course "Software Engineering" at AUEB
+ * Athens University of Economics and Business
+ * 2020-2021
+ */
 public class HomePagePresenterTest {
 
     private HomePagePresenter presenter;
     private HomePageView view;
 
+    /**
+     * setUp the view and presenter for testing Presenter Methods
+     * @throws Exception if setup fail
+     */
     @Before
     public void setUp() throws Exception {
 
@@ -31,6 +39,9 @@ public class HomePagePresenterTest {
         presenter.setView(view);
     }
 
+    /**
+     * test user's actions on different Clicks
+     */
     @Test
     public void testActions() {
         presenter.onBrowseAction();

@@ -19,6 +19,10 @@ public class RegisterPlayerPresenterTest {
     private RegisterPlayerPresenter presenter;
     private RegisterPlayerView view;
 
+    /**
+     * setUp the view and presenter for testing Presenter Methods
+     * @throws Exception if setup fail
+     */
     @Before
     public void setup(){
         new MemoryInitializer().prepareData();
@@ -32,6 +36,9 @@ public class RegisterPlayerPresenterTest {
     }
 
 
+    /**
+     * Test the creation a new player
+     */
     @Test
     public void createNew() {
 
@@ -53,6 +60,9 @@ public class RegisterPlayerPresenterTest {
         Assert.assertEquals(presenter.getLoggedInUser().getUser(), new PlayerDAOMemory().find("nick12"));
     }
 
+    /**
+     * Test the edit of an existing player
+     */
     @Test
     public void changeExisting(){
 

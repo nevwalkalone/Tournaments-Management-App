@@ -21,6 +21,10 @@ public class PlayerInfoPresenterTest {
     private PlayerInfoPresenter presenter;
     private PlayerInfoView view;
 
+    /**
+     * setUp the view and presenter for testing Presenter Methods
+     * @throws Exception if setup fail
+     */
     @Before
     public void setUp() throws Exception {
         new MemoryInitializer().prepareData();
@@ -32,7 +36,9 @@ public class PlayerInfoPresenterTest {
         presenter.setView(view);
     }
 
-
+    /**
+     * Test if presenter gives the access correctly
+     */
     @Test
     public void findAccess() {
 
@@ -50,6 +56,9 @@ public class PlayerInfoPresenterTest {
 
     }
 
+    /**
+     * Test the deletion of a player on different cases
+     */
     @Test
     public void deletePlayerInfo() {
 
@@ -73,6 +82,9 @@ public class PlayerInfoPresenterTest {
         Assert.assertTrue(((PlayerInfoViewStub) view).onDelete);
     }
 
+    /**
+     * Test user's action
+     */
     @Test
     public void editPlayer() {
         presenter.onEditPlayer();

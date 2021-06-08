@@ -12,6 +12,10 @@ public class OrganizerPagePresenterTest {
     private OrganizerPagePresenter presenter;
     private OrganizerPageView view;
 
+    /**
+     * setUp the view and presenter for testing Presenter Methods
+     * @throws Exception if setup fail
+     */
     @Before
     public void setUp() throws Exception {
         new MemoryInitializer().prepareData();
@@ -25,12 +29,18 @@ public class OrganizerPagePresenterTest {
         presenter.setView(view);
     }
 
+    /**
+     * Test if presenter find organizer from DAO
+     */
     @Test
     public void findOrganizer() {
         presenter.findOrganizerInfo("ESKA");
         Assert.assertEquals("ESKA", presenter.getOrganizerTitle());
     }
 
+    /**
+     * Test user's actions on different movements
+     */
     @Test
     public void changePages() {
 
@@ -47,6 +57,9 @@ public class OrganizerPagePresenterTest {
         Assert.assertTrue(new MemoryLoggedInUser().getUser() == null);
     }
 
+    /**
+     * Test if organizer logs out properly
+     */
     @Test
     public void logoutOrganizer() {
         presenter.onLogOut();
