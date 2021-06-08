@@ -93,10 +93,19 @@ public abstract class Initializer {
             round.setup(emptyTeams);
         }
 
-        Tournament testTournament = new Tournament("NBA", LocalDate.parse("2050-05-10"), LocalDate.parse("2050-05-29"), "ATHENS", (new Sport("Basketball3v3")), 8, AgeDivision.K100, dates);
-        tournamentDAO.save(testTournament);
+        Tournament tour3 = new Tournament("NBA", LocalDate.parse("2050-05-10"), LocalDate.parse("2050-05-29"), "ATHENS", (new Sport("Basketball3v3")), 8, AgeDivision.K100, dates);
+        tournamentDAO.save(tour3);
+        organizerDAO.findByTitle("ESKA").addTournament(tour3);
+        for (Round round : tour3.getRounds()){
+            ArrayList<Team> emptyTeams = new ArrayList<>();
+            for (int i=0;i<round.getTeamsNumber();i++)
+                emptyTeams.add(new Team());
+            round.setup(emptyTeams);
+        }
 
-        //add teams to tournament
+
+
+        //add teams to tournament1
         for ( int i=0;i<8;i++ ){
             Team current = teamDAO.find("Celtic"+i);
             Participation part = new Participation(tour1, current);

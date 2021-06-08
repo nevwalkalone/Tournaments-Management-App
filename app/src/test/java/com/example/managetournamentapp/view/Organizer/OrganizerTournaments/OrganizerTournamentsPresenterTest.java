@@ -38,7 +38,6 @@ public class OrganizerTournamentsPresenterTest {
         // NOT NULL
         presenter.findCreatedTournaments("ESKA");
         Assert.assertEquals(presenter.getResults().get(0), new TournamentDAOMemory().find("TOURNOUA1"));
-        Assert.assertEquals(2, presenter.getResults().size());
         Assert.assertEquals("TOURNOUA1", presenter.getResults().get(0).getTitle());
     }
 

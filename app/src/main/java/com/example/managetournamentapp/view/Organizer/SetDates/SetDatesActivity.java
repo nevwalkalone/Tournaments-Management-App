@@ -60,8 +60,8 @@ public class SetDatesActivity extends AppCompatActivity implements SetDatesView 
     }
 
     /**
-     *
-     * @return
+     * get the date of every tournament game
+     * @return the ArrayList of dates
      */
     public ArrayList<String> getDates() {
         ArrayList<String> dates = new ArrayList<>();
@@ -74,7 +74,6 @@ public class SetDatesActivity extends AppCompatActivity implements SetDatesView 
             len = 10;
 
         for (int i = 0; i < len; i++) {
-            Log.wtf("getting edittext", String.valueOf(i));
             if (editTexts.get(i).getText().toString().isEmpty())
                 continue;
             dates.add(editTexts.get(i).getText().toString());
@@ -82,6 +81,11 @@ public class SetDatesActivity extends AppCompatActivity implements SetDatesView 
         return dates;
     }
 
+    /**
+     * Shows a popup
+     * @param view
+     * @param msg
+     */
     @Override
     public void showPopUp(SetDatesView view, String msg) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -95,6 +99,10 @@ public class SetDatesActivity extends AppCompatActivity implements SetDatesView 
         dialog.show();
     }
 
+    /**
+     * set the proper items on the screen
+     * @param teamsNumber the number of teams
+     */
     public void setupLayout(String teamsNumber) {
         editTexts.clear();
         if (teamsNumber.equals("8")) {
@@ -123,6 +131,10 @@ public class SetDatesActivity extends AppCompatActivity implements SetDatesView 
         }
     }
 
+    /**
+     * when the tournament is saved
+     * @param organizerTitle the tournament name
+     */
     public void startSaveTournament(String organizerTitle) {
         Intent intent = new Intent(SetDatesActivity.this, OrganizerPageActivity.class);
         intent.putExtra(ORGANIZER_TITLE_EXTRA, organizerTitle);
@@ -130,6 +142,11 @@ public class SetDatesActivity extends AppCompatActivity implements SetDatesView 
         startActivity(intent);
     }
 
+    /**
+     * what happens when the homepage button is pressed
+     * @param isPlayer is true if the logged in user is a player
+     * @param name is the name of a player. or the title of an organizer
+     */
     @Override
     public void backToHomePage(boolean isPlayer, String name) {
         if (isPlayer){

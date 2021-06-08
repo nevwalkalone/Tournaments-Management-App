@@ -40,7 +40,11 @@ public class SetDatesPresenter {
         ageDivisions = findAgeDivisions();
     }
 
-
+    /**
+     * we have taken as input the basic info from
+     * the create tournament activity
+     * @param basicInfo the ArrayList of the basic info
+     */
     public void findBasicInfo(ArrayList<String> basicInfo) {
         this.basicInfo = basicInfo;
         teamsNumber = Integer.parseInt(basicInfo.get(5));
@@ -54,6 +58,9 @@ public class SetDatesPresenter {
 
     }
 
+    /**
+     * when the tournament is saved
+     */
     public void onSaveTournament() {
 
         ArrayList<String> datesReceived = view.getDates();
@@ -112,6 +119,10 @@ public class SetDatesPresenter {
 
     }
 
+    /**
+     * initialize the tournament with empty teams
+     * @param tournament the tournament
+     */
     private void initEmptyTeams(Tournament tournament) {
         for (Round round : tournament.getRounds()) {
             ArrayList<Team> emptyTeams = new ArrayList<>();
@@ -121,11 +132,20 @@ public class SetDatesPresenter {
         }
     }
 
+    /**
+     * set the tournamentDAO
+     * @param tournamentDAO the new TeamDAO
+     */
     public void setTournamentDAO(TournamentDAO tournamentDAO) {
         this.tournamentDAO = tournamentDAO;
     }
 
 
+    /**
+     * Returns the age division index taken from the arraylist
+     * @param ageDivision age division to be found in the arraylist
+     * @return the index that the specific age division is in. 0 in case it doesn't exist
+     */
     private int getAgeDivisionIndex(String ageDivision) {
         for (int i = 0; i < ageDivisions.size(); i++) {
             if (ageDivisions.get(i).equals(ageDivision))
@@ -134,6 +154,10 @@ public class SetDatesPresenter {
         return 0;
     }
 
+    /**
+     * Returns the arraylist containing sport types
+     * @return the arraylist of sport types to be returned
+     */
     private ArrayList<String> findSportTypes() {
         ArrayList<String> sportTypes = new ArrayList<>();
         for (int i = 0; i < TournamentType.values().length; i++) {
@@ -142,6 +166,11 @@ public class SetDatesPresenter {
         return sportTypes;
     }
 
+
+    /**
+     * find the dates for each game
+     * @return an ArrayList of dates
+     */
     public ArrayList<LocalDate> findGameDates(ArrayList<LocalDate> roundDates) {
         ArrayList<LocalDate> gameDates = new ArrayList<>();
 
@@ -154,6 +183,10 @@ public class SetDatesPresenter {
         return gameDates;
     }
 
+    /**
+     * find the dates for each round
+     * @return an ArrayList of dates
+     */
     public ArrayList<LocalDate> findRoundDates() {
         ArrayList<LocalDate> roundDates = new ArrayList<>();
         String current;
@@ -164,6 +197,10 @@ public class SetDatesPresenter {
         return roundDates;
     }
 
+    /**
+     * Returns the arraylist containing sport types
+     * @return the arraylist of sport types to be returned
+     */
     private ArrayList<String> findAgeDivisions() {
         ArrayList<String> ageDivisions = new ArrayList<>();
         for (int i = 0; i < AgeDivision.values().length; i++) {
@@ -172,18 +209,34 @@ public class SetDatesPresenter {
         return ageDivisions;
     }
 
+    /**
+     *  set the organizer of the tournament
+     * @param organizer the organizer
+     */
     public void setOrganizer(Organizer organizer) {
         this.organizer = organizer;
     }
 
+    /**
+     * Sets the view
+     * @param view view to be set
+     */
     public void setView(SetDatesView view) {
         this.view = view;
     }
 
+    /**
+     * Sets view to null
+     */
     public void clearView() {
         this.view = null;
     }
 
+    /**
+     * Validates date
+     * @param date the date we want to check if it's valid
+     * @return true if the date is valid
+     */
     public boolean validateDate(String date) {
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         dateFormat.setLenient(false);
@@ -195,6 +248,9 @@ public class SetDatesPresenter {
         return true;
     }
 
+    /**
+     * Returns to organizer profile
+     */
     public void onHomePage() {
         User user = new MemoryLoggedInUser().getUser();
         if (user instanceof Player) {

@@ -13,19 +13,28 @@ import com.example.managetournamentapp.memoryDao.TournamentDAOMemory;
  */
 
 public class SetDatesViewModel extends ViewModel {
-
     SetDatesPresenter presenter;
 
+    /**
+     * Default constructor
+     */
     public SetDatesViewModel() {
         presenter = new SetDatesPresenter();
         presenter.setTournamentDAO(new TournamentDAOMemory());
         presenter.setOrganizer( (Organizer)(new MemoryLoggedInUser()).getUser() );
     }
 
+
+    /** get the presenter
+     * @return the SetDatesPresenter instance
+     */
     public SetDatesPresenter getPresenter() {
         return presenter;
     }
 
+    /**
+     * clear the view of the presenter
+     */
     @Override
     protected void onCleared() {
         super.onCleared();
