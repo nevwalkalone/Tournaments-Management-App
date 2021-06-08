@@ -14,6 +14,9 @@ public class RoundTest {
     Round round;
     ArrayList<LocalDate> dates ;
 
+    /**
+     *setup some initial variables before attempting each test
+     */
     @Before
     public void setUp() throws Exception {
         dates = new ArrayList<>();
@@ -22,6 +25,9 @@ public class RoundTest {
         round = new Round(4,true,dates);
     }
 
+    /**
+     * test the basic methods
+     */
     @Test
     public void basicTests() {
         Assert.assertEquals(round.getDates() , dates);
@@ -33,6 +39,9 @@ public class RoundTest {
                                                     '}');
     }
 
+    /**
+     * test the winners of a round
+     */
     @Test
     public void winnersTests() {
         Credentials credentials = new Credentials("sakis7","123");
@@ -56,6 +65,10 @@ public class RoundTest {
         Assert.assertEquals(round.getRoundWinners(),winners);
     }
 
+
+    /**
+     * test the setup of a round
+     */
     @Test
     public void setupTests() {
         dates = new ArrayList<>();
@@ -77,6 +90,9 @@ public class RoundTest {
 
     }
 
+    /**
+     * test the equality between to instances
+     */
     @Test
     public void testEquals() {
         dates = new ArrayList<>();

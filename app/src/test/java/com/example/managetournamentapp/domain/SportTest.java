@@ -19,6 +19,9 @@ public class SportTest {
     private Sport sport9;
     private Tournament tournament;
 
+    /**
+     *setup some initial variables before attempting each test
+     */
     @Before
     public void setUp() throws Exception {
         sport1 = new Sport("Basketball3v3");
@@ -34,13 +37,19 @@ public class SportTest {
     }
 
 
+    /**
+     * test the equality between to instances
+     */
     @Test
     public void testEquals(){
           Assert.assertEquals(sport3, sport1);
           Assert.assertEquals(sport1,sport4);
-
-
     }
+
+
+    /**
+     * test the inequality between to instances
+     */
     @Test
     public void testNotEquals(){
           Assert.assertNotEquals(sport1,sport5);
@@ -49,6 +58,11 @@ public class SportTest {
           Assert.assertNotEquals(sport1,sport9);
           Assert.assertNotEquals(sport1,tournament);
     }
+
+
+    /**
+     * test the name getter
+     */
     @Test
     public void getNameTest(){
           Assert.assertNull(sport8.getName());
@@ -56,6 +70,10 @@ public class SportTest {
           Assert.assertEquals("Volleyball6v6",sport6.getName());
     }
 
+
+    /**
+     * test the min players getter
+     */
     @Test
     public void getMinimumPlayersTest(){
         Assert.assertEquals(6,sport1.getMinimumPlayers());
@@ -63,12 +81,19 @@ public class SportTest {
         Assert.assertEquals(12,sport6.getMinimumPlayers());
     }
 
+
+    /**
+     * test changing the sport type
+     */
     @Test
     public void changeSetupTest(){
         sport1.changeSetup("Basketball5v5");
         Assert.assertEquals("Basketball5v5",sport1.getName());
     }
 
+    /**
+     * test the to string method
+     */
     @Test
     public void toStringTest(){
         Assert.assertEquals(sport1.toString(),sport4.toString());

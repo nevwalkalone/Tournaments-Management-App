@@ -15,6 +15,9 @@ public class GameTest {
     Team teamB ;
     LocalDate date;
 
+    /**
+     *setup some initial variables before attempting each test
+     */
     @Before
     public void setUp() throws Exception {
         player = new Player( "sakis", "rouvas" ,"Athens",  "69000000" , "aa@aa.aa", LocalDate.parse("2000-01-01") , credentials);
@@ -25,11 +28,19 @@ public class GameTest {
 
     }
 
+
+    /**
+     * when the game hasn't finished
+     */
     @Test
     public void notFinishedTest(){
         Assert.assertEquals(game.findWinner(),2);
     }
 
+
+    /**
+     * test the scores of the game
+     */
     @Test
     public void scoreTests(){
         game.setScoreA(5);
@@ -41,6 +52,10 @@ public class GameTest {
         Assert.assertEquals(game.findWinner(),1);
     }
 
+
+    /**
+     * test the basic methods
+     */
     @Test
     public void basicTests(){
         Assert.assertEquals(game.getTeamA(),teamA);
@@ -56,6 +71,10 @@ public class GameTest {
                                             '}' );
     }
 
+
+    /**
+     * test the equality between to instances
+     */
     @Test
     public void equalsTest() {
         LocalDate date = LocalDate.parse("2022-01-01");

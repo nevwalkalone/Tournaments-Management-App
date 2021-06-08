@@ -12,8 +12,11 @@ public class CredentialsTest {
     private Credentials credentials4;
     private Credentials credentials5;
 
+    /**
+     *setup some initial variables before attempting each test
+     */
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         credentials = new Credentials("Nondas", "123456");
         credentials2 = new Credentials("Giannis", "123456");
         credentials3 = new Credentials("Giannis", "GioGio");
@@ -21,17 +24,20 @@ public class CredentialsTest {
         credentials5 = new Credentials();
     }
 
+    /**
+     * test the equality between to instances
+     */
     @Test
     public void testEquals() {
 
         Credentials credentials4 = new Credentials("Nondas", "123456");
         Assert.assertEquals(credentials4, credentials);
         Assert.assertEquals(credentials, credentials);
-
-
-
     }
 
+    /**
+     * test the inequality between to instances
+     */
     @Test
     public void testNotEquals() {
 
@@ -43,27 +49,34 @@ public class CredentialsTest {
 
     }
 
-    // Tester for toString()
+    /**
+     * test the toString method
+     */
     @Test
     public void testPrinting() {
-
-
         Assert.assertEquals(credentials4.toString(), credentials.toString());
-
     }
 
-    // testers for Getters and Setter
-
+    /**
+     * test the username getter
+     */
     @Test
     public void getUsernameTest() {
         Assert.assertEquals("Nondas", credentials.getUsername());
     }
 
+    /**
+     * test the password getter
+     */
     @Test
     public void getPasswordTest() {
         Assert.assertEquals("123456", credentials.getPassword());
     }
 
+
+    /**
+     * test the username setter
+     */
     @Test
     public void testSetterGetterUsername() {
 
@@ -73,6 +86,10 @@ public class CredentialsTest {
 
     }
 
+
+    /**
+     * test the password setter
+     */
     @Test
     public void testSetterGetterPassword() {
 

@@ -19,6 +19,9 @@ public class OrganizerTest {
     private Credentials cred2;
     private Tournament tournament;
 
+    /**
+     *setup some initial variables before attempting each test
+     */
     @Before
     public void setUp() throws Exception {
 
@@ -43,7 +46,9 @@ public class OrganizerTest {
 
     }
 
-
+    /**
+     * test the equality between to instances
+     */
     @Test
     public void testEquals() {
 
@@ -52,6 +57,9 @@ public class OrganizerTest {
 
     }
 
+    /**
+     * test the inequality between to instances
+     */
     @Test
     public void testNotEquals() {
 
@@ -61,7 +69,9 @@ public class OrganizerTest {
 
     }
 
-    // Tester for toString()
+    /**
+     * test the toString method
+     */
     @Test
     public void testPrinting() {
 
@@ -69,14 +79,17 @@ public class OrganizerTest {
 
     }
 
-    // testers for Getters and Setter
-
+    /**
+     * test the title getter
+     */
     @Test
     public void getNameTest() {
         Assert.assertEquals("ESKA", organizer.getTitle());
     }
 
-
+    /**
+     * test the title setter
+     */
     @Test
     public void testSetterGetterTitle() {
 

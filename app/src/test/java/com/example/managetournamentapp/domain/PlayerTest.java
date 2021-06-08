@@ -20,14 +20,14 @@ public class PlayerTest {
     private Credentials credentials4;
     private Credentials credentials5;
 
-    private User user;
-    private User user2;
-
     private LocalDate date;
     private LocalDate date2;
 
     private Team team,team2;
 
+    /**
+     *setup some initial variables before attempting each test
+     */
     @Before
     public void setUp() throws Exception {
         credentials = new Credentials("Nondic", "123456");
@@ -54,13 +54,12 @@ public class PlayerTest {
         team2 = new Team("Blues", new Sport("Volleyball3v3"), AgeDivision.K100 ,player2, "white" );
         team2.getPlayers().add(player3);
 
-
-
     }
 
+    /**
+     * test the basic methods
+     */
     @Test
-    //some methods are already covered
-    //in tests of other classes
     public void basicTests(){
 
 
@@ -80,6 +79,9 @@ public class PlayerTest {
 
     }
 
+    /**
+     * test adding sports in the list
+     */
     @Test
     public void addSportInterestedTest(){
         Sport sport3 = null;
@@ -99,6 +101,10 @@ public class PlayerTest {
         player2.addSportInterested(new Sport("Volleyball5v5"));
         Assert.assertEquals(2,player2.getSportsInterested().size());
     }
+
+    /**
+     * test removing sports from the list
+     */
     @Test
     public void removeSportInterestedTest(){
         Sport sport4 = null;
@@ -113,6 +119,9 @@ public class PlayerTest {
         Assert.assertEquals(0,player2.getSportsInterested().size());
     }
 
+    /**
+     * test deleting teams
+     */
     @Test
     public void deleteTeamTest(){
 
@@ -132,6 +141,9 @@ public class PlayerTest {
 
     }
 
+    /**
+     * test adding more teams in the captain list
+     */
     @Test
     public void addCaptainInTeamsTest(){
         team = null;
@@ -149,6 +161,9 @@ public class PlayerTest {
         Assert.assertEquals(2,player2.getCaptainInTeams().size());
     }
 
+    /**
+     * test removing teams from the captain list
+     */
     @Test
     public void removeCaptainInTeamsTest(){
         team = null;
@@ -171,6 +186,9 @@ public class PlayerTest {
 
     }
 
+    /**
+     * test adding invitations
+     */
     @Test
     public void addInviteTest(){
         //can't add a null invite
@@ -185,6 +203,9 @@ public class PlayerTest {
         Assert.assertEquals(1,player2.getInvitesReceived().size());
     }
 
+    /**
+     * test removing invitations
+     */
     @Test
     public void removeInviteTest(){
         Invitation invitation2 = new Invitation(team);
@@ -212,23 +233,19 @@ public class PlayerTest {
 
     }
 
-
+    /**
+     * test the equality between to instances
+     */
     @Test
     public void testEquals(){
         player1.setLocation("Athens");
         player = player1;
         Assert.assertEquals(player,player1);
-       // player1.addSportInterested(new Sport("Volleyball3v3"));
-
-
-        Player player4 = new Player("Nondas", "Ioannou","Athens",  "69xxxxxxx", "nondas@gmail.com", date, credentials);
-        player4.setLocation("Athens");
-
-        Team team6 = new Team("Boston", new Sport("Volleyball3v3"), AgeDivision.K100 ,player4, "white" );
-
-//        Assert.assertEquals(player1,player4);
     }
 
+    /**
+     * test the toString method
+     */
     @Test
     public void toStringTest(){
         player2.setLocation("Athens");

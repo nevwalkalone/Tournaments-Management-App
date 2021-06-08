@@ -19,6 +19,9 @@ public class UserTest {
     private Credentials credentials;
     private Credentials credentials2;
 
+    /**
+     *setup some initial variables before attempting each test
+     */
     @Before
     public void setUp() throws Exception {
         date = LocalDate.parse("1994-05-03");
@@ -30,6 +33,9 @@ public class UserTest {
         user3 = new User();
     }
 
+    /**
+     * test the equality between to instances
+     */
     @Test
     public void testEquals() {
 
@@ -39,6 +45,9 @@ public class UserTest {
 
     }
 
+    /**
+     * test the inequality between to instances
+     */
     @Test
     public void testNotEquals() {
 
@@ -48,7 +57,9 @@ public class UserTest {
 
     }
 
-    // Tester for toString()
+    /**
+     * test the equality between to instances
+     */
     @Test
     public void testPrinting() {
 
@@ -57,52 +68,72 @@ public class UserTest {
 
     }
 
-    // testers for Getters and Setter
-
+    /**
+     * test the name getter
+     */
     @Test
     public void getNameTest() {
         Assert.assertEquals("Nondas", user.getName());
     }
 
+    /**
+     * test the surname getter
+     */
     @Test
     public void getSurnameTest() {
         Assert.assertEquals("Zachariadis", user2.getSurname());
     }
 
+    /**
+     * test the phone number
+     */
     @Test
     public void getPhoneNumber() {
         String phone = "69xxxxxxx";
         Assert.assertEquals(phone, user.getPhoneNumber());
     }
 
+    /**
+     * test the birth date getter
+     */
     @Test
     public void getBirthdayTest() {
         LocalDate dateTest = LocalDate.parse("2000-01-04");
         Assert.assertEquals(dateTest, user2.getBirthDate());
     }
 
+    /**
+     * test the email getter
+     */
     @Test
     public void getEmailTest() {
         String emailTest = "nondas@gmail.com";
         Assert.assertEquals(emailTest, user.getEmail());
     }
 
+    /**
+     * test the credentials getter
+     */
     @Test
     public void getCredentialsTest() {
         Credentials credentialsTest = new Credentials("zaaachos", "123456");
         Assert.assertEquals(credentialsTest, user2.getCredentials());
     }
 
-
+    /**
+     * test name getters and setters
+     */
     @Test
     public void testSetterGetterName() {
 
         String newName = "Christophoros";
         user.setName(newName);
         Assert.assertEquals(newName, user.getName());
-
     }
 
+    /**
+     * test the surname getters and setters
+     */
     @Test
     public void testSetterGetterSurname() {
 
@@ -112,6 +143,9 @@ public class UserTest {
 
     }
 
+    /**
+     * test the phone number getters and setters
+     */
     @Test
     public void testSetterGetterPhoneNumber() {
 
@@ -121,6 +155,9 @@ public class UserTest {
 
     }
 
+    /**
+     * test the email getters and setters
+     */
     @Test
     public void testSetterGetterEmail() {
 
@@ -130,6 +167,9 @@ public class UserTest {
 
     }
 
+    /**
+     * test the birth date getters and setters
+     */
     @Test
     public void testSetterGetterBirthdate() {
 
@@ -139,6 +179,9 @@ public class UserTest {
 
     }
 
+    /**
+     * test the credentials getters and setters
+     */
     @Test
     public void testSetterGetterCredentials() {
 
