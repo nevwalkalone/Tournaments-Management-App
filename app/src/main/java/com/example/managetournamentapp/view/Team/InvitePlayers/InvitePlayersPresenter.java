@@ -1,6 +1,5 @@
 package com.example.managetournamentapp.view.Team.InvitePlayers;
 
-import com.example.managetournamentapp.dao.LoggedInUser;
 import com.example.managetournamentapp.dao.PlayerDAO;
 import com.example.managetournamentapp.dao.TeamDAO;
 import com.example.managetournamentapp.domain.Invitation;
@@ -10,6 +9,12 @@ import com.example.managetournamentapp.domain.User;
 import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
 
 import java.util.ArrayList;
+
+/**
+ * Developed for the purposes of the Course "Software Engineering" at AUEB
+ * Athens University of Economics and Business
+ * 2020-2021
+ */
 
 public class InvitePlayersPresenter {
     private InvitePlayersView view;
@@ -42,7 +47,7 @@ public class InvitePlayersPresenter {
     }
 
     /**
-     * geet the players that the team can invite
+     * get the players that the team can invite
      * @return the ArrayList of players
      */
     public ArrayList<Player> getResults() {

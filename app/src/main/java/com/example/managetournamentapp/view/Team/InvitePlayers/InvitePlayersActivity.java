@@ -20,6 +20,12 @@ import com.example.managetournamentapp.view.Team.InvitePlayers.fragment.PlayersL
 
 import java.util.ArrayList;
 
+/**
+ * Developed for the purposes of the Course "Software Engineering" at AUEB
+ * Athens University of Economics and Business
+ * 2020-2021
+ */
+
 public class InvitePlayersActivity extends AppCompatActivity implements PlayersListFragment.OnListFragmentInteractionListener, View.OnClickListener, InvitePlayersView {
 
     private static final String PLAYER_USERNAME_EXTRA = "player_username_extra";

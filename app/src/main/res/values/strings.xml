@@ -82,4 +82,5 @@
     <string name="welcome">Welcome!</string>
     <string name="browse">Browse</string>
     <string name="connect">Connect</string>
+    <string name="browse_tourn">Check out all available tournaments!</string>
 </resources>
