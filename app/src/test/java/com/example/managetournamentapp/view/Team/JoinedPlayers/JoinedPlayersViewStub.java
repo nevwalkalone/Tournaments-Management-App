@@ -58,4 +58,9 @@ public class JoinedPlayersViewStub implements JoinedPlayersView{
     public void backToHomePage(boolean flag, String string) {
 onHome = true;
     }
+
+    @Override
+    public void showToast(String txt) {
+
+    }
 }
