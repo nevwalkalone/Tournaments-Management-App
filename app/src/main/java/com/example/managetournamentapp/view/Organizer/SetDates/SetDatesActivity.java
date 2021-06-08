@@ -57,9 +57,6 @@ public class SetDatesActivity extends AppCompatActivity implements SetDatesView 
         saveBtn.setOnClickListener(v -> viewModel.getPresenter().onSaveTournament());
         btnHome = findViewById(R.id.imageButton);
         btnHome.setOnClickListener(v -> viewModel.getPresenter().onHomePage());
-
-
-
     }
 
     /**
