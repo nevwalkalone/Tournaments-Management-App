@@ -17,6 +17,11 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
+/**
+ * Developed for the purposes of the Course "Software Engineering" at AUEB
+ * Athens University of Economics and Business
+ * 2020-2021
+ */
 
 public class OrganizerTournamentsActivity extends AppCompatActivity implements OrganizerTournamentsView,TournamentListFragment.OnListFragmentInteractionListener {
 
@@ -61,6 +66,10 @@ public class OrganizerTournamentsActivity extends AppCompatActivity implements O
 
     }
 
+    /**
+     * what happens when the user presses on a tournament
+     * @param item the tournament
+     */
     @Override
     public void onListFragmentInteraction(Tournament item) {
         Intent intent = new Intent(OrganizerTournamentsActivity.this, TournamentPageActivity.class);
@@ -68,18 +77,30 @@ public class OrganizerTournamentsActivity extends AppCompatActivity implements O
         startActivity(intent);
     }
 
+    /**
+     * get the created tournaments of the organizer
+     * @return the ArrayList of tournaments
+     */
     @Override
     public ArrayList<Tournament> getTournamentList() {
         return viewModel.getPresenter().getResults();
     }
 
-
+    /**
+     * When the user presses the "+" button to create a new tournament
+     * goes to the create tournament page
+     */
     @Override
     public void startCreateTournament() {
         Intent intent = new Intent(OrganizerTournamentsActivity.this, CreateTournamentActivity.class);
         startActivity(intent);
     }
 
+    /**
+     * what happens when the homepage button is pressed
+     * goes back to the organizer profile
+     * @param title is the title of the organizer that is passed as an extra
+     */
     @Override
     public void backToHomePage(String title){
         Intent intent = new Intent (this, OrganizerPageActivity.class);

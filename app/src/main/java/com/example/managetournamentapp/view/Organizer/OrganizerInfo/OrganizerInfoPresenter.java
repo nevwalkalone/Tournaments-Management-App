@@ -9,14 +9,26 @@ import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
 
 import java.time.format.DateTimeFormatter;
 
+/**
+ * Developed for the purposes of the Course "Software Engineering" at AUEB
+ * Athens University of Economics and Business
+ * 2020-2021
+ */
 
 public class OrganizerInfoPresenter {
     private OrganizerInfoView view;
     private Organizer organizer;
     private OrganizerDAO organizerDAO;
 
+    /**
+     * Default Constructor
+     */
     public OrganizerInfoPresenter(){}
 
+    /**
+     * Finds the organizer info to
+     * set all text fields in the current layout
+     */
     public void findOrganizerInfo() {
         view.setUsername(organizer.getCredentials().getUsername());
         view.setPassword(organizer.getCredentials().getPassword());
@@ -28,11 +40,19 @@ public class OrganizerInfoPresenter {
         view.setTitle(organizer.getTitle());
     }
 
+    /**
+     * Starts the Register Organizer Actitity
+     * so that the user can modify account
+     */
     public void onEditOrganizer() {
+
         view.startEditOrganizer(organizer.getTitle());
     }
 
-
+    /**
+     * Deletes the organizer's account
+     * and goes back to the home page screen
+     */
     public void onDeleteOrganizer() {
         boolean canDelete = true;
 
@@ -50,6 +70,10 @@ public class OrganizerInfoPresenter {
         view.startDeleteOrganizer();
     }
 
+    /**
+     * Sets the organizer to the user that is currently logged in
+     * @param user user to be set as an organizer
+     */
     public void setOrganizer(User user){
         if (user == null)
             return;
@@ -59,14 +83,25 @@ public class OrganizerInfoPresenter {
 
     }
 
+    /**
+     * Sets the organizerDAO
+     * @param organizerDAO organizerDAO to be set
+     */
     public void setOrganizerDAO(OrganizerDAO organizerDAO){
         this.organizerDAO = organizerDAO;
     }
 
+    /**
+     * Sets the view of the OrganizerInfoPresenter
+     * @param view OrganizerInfoView to be set
+     */
     public void setView(OrganizerInfoView view) {
         this.view = view;
     }
 
+    /**
+     * Sets the view of the presenter to null
+     */
     public void clearView() {
         this.view = null;
     }

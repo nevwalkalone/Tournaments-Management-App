@@ -23,7 +23,6 @@ public class HomePageViewModel extends ViewModel {
     /**
      * @return the presenter instance
      */
-
     public HomePagePresenter getPresenter() {
         return presenter;
     }

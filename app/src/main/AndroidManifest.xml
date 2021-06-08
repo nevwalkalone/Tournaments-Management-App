@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/SecondaryTheme">
-        <activity android:name=".view.User.Browsing.BrowsingActivity"></activity>
+        <activity android:name=".view.User.Browsing.BrowsingActivity"
+            android:label = "@string/browse_tourn"
+            ></activity>
         <activity
             android:name=".view.Player.ReceivedInvites.ReceivedInvitesActivity"
             android:label="Invites Received" />

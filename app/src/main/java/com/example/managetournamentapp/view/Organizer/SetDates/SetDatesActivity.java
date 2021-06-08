@@ -14,12 +14,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.managetournamentapp.R;
-import com.example.managetournamentapp.view.Organizer.CreateTournament.CreateTournamentView;
 import com.example.managetournamentapp.view.Organizer.OrganizerPage.OrganizerPageActivity;
 import com.example.managetournamentapp.view.Player.PlayerPage.PlayerPageActivity;
-import com.example.managetournamentapp.view.Tournament.TournamentPage.TournamentPageActivity;
 
 import java.util.ArrayList;
+
+/**
+ * Developed for the purposes of the Course "Software Engineering" at AUEB
+ * Athens University of Economics and Business
+ * 2020-2021
+ */
 
 public class SetDatesActivity extends AppCompatActivity implements SetDatesView {
     SetDatesViewModel viewModel;
@@ -53,12 +57,12 @@ public class SetDatesActivity extends AppCompatActivity implements SetDatesView 
         saveBtn.setOnClickListener(v -> viewModel.getPresenter().onSaveTournament());
         btnHome = findViewById(R.id.imageButton);
         btnHome.setOnClickListener(v -> viewModel.getPresenter().onHomePage());
-
-
-
     }
 
-
+    /**
+     *
+     * @return
+     */
     public ArrayList<String> getDates() {
         ArrayList<String> dates = new ArrayList<>();
         int len;
@@ -117,7 +121,6 @@ public class SetDatesActivity extends AppCompatActivity implements SetDatesView 
             editTexts.add((EditText) findViewById(R.id.round5_start_txt));
             editTexts.add((EditText) findViewById(R.id.round5_finish_txt));
         }
-
     }
 
     public void startSaveTournament(String organizerTitle) {
@@ -126,7 +129,6 @@ public class SetDatesActivity extends AppCompatActivity implements SetDatesView 
         System.out.println(organizerTitle);
         startActivity(intent);
     }
-
 
     @Override
     public void backToHomePage(boolean isPlayer, String name) {

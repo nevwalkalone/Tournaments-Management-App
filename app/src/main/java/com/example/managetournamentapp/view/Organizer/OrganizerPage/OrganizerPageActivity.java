@@ -19,6 +19,11 @@ import com.example.managetournamentapp.view.Organizer.OrganizerTournaments.Organ
 import com.example.managetournamentapp.view.Organizer.OrganizerInfo.OrganizerInfoActivity;
 import com.example.managetournamentapp.view.User.Login.LoginActivity;
 
+/**
+ * Developed for the purposes of the Course "Software Engineering" at AUEB
+ * Athens University of Economics and Business
+ * 2020-2021
+ */
 
 public class OrganizerPageActivity extends AppCompatActivity implements OrganizerPageView{
     private OrganizerPageViewModel viewModel;
@@ -58,6 +63,7 @@ public class OrganizerPageActivity extends AppCompatActivity implements Organize
 
     /**
      * Starts Organizer's Account Activity
+     * when "Account" button is pressed
      */
     public void toOrganizerAccount() {
         Intent intent = new Intent(OrganizerPageActivity.this, OrganizerInfoActivity.class);
@@ -65,7 +71,9 @@ public class OrganizerPageActivity extends AppCompatActivity implements Organize
     }
 
     /**
-     * Starts CreatedTournaments Activity
+     * Starts organizer's tournaments activity
+     * when "My tournaments" button is pressed
+     * @param title organizer's title is passed as an extra to the activity
      */
     public void toOrganizerTournaments(String title) {
         Intent intent = new Intent(OrganizerPageActivity.this, OrganizerTournamentsActivity.class);
@@ -74,11 +82,18 @@ public class OrganizerPageActivity extends AppCompatActivity implements Organize
 
     }
 
-
+    /**
+     * Sets organizer title in the layout to the title of the organizer we specify
+     * @param organizerTitle organizer title that will be showed
+     */
     public void setTitle(String organizerTitle){
         txtOrganizerName.setText(organizerTitle);
     }
 
+    /**
+     * When the user logs out
+     *  Goes Back to log in screen
+     */
     @Override
     public void logOut() {
         Toast.makeText(this,
@@ -89,6 +104,9 @@ public class OrganizerPageActivity extends AppCompatActivity implements Organize
         startActivity(intent);
     }
 
+    /**
+     * Overrides the back button so that a confirmation pop up shows asking the user to exit.
+     */
     @Override
     public void onBackPressed() {
             AlertDialog.Builder builder = new AlertDialog.Builder(OrganizerPageActivity.this);
@@ -112,6 +130,14 @@ public class OrganizerPageActivity extends AppCompatActivity implements Organize
             alert.show();
         }
 
+    /**
+     * Shows a popup
+     * @param layoutId the layout of the popup
+     * @param msg the message of the popup
+     * @param btn1 the first button
+     * @param btn2 the second button
+     * @return the AlertDialog that will be shown
+     */
     @Override
     public AlertDialog showPopUp(int layoutId, String msg, int btn1, int btn2) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -130,26 +156,44 @@ public class OrganizerPageActivity extends AppCompatActivity implements Organize
 
         return dialog;
     }
+
+    /**
+     * When the user presses log out
+     * a pop up shows asking for confirmation
+     */
     @Override
     public void logOutConfirmation(){
         POPUP_ACTION = showPopUp(R.layout.tournament_delete_popup, "Do you really want to log out?", R.id.no_delete, R.id.yes_delete);
-
         POPUP_ACTION.show();
 
     }
+
+    /**
+     * When the user presses no to the log out pop up
+     * the pop up message dismisses
+     */
     @Override
     public void noLogOut(){
         POPUP_ACTION.dismiss();
     }
 
 
-
+    /**
+     * Displays the desired pop up
+     * @param layout the layout of the popup
+     * @param msg the message of the popup
+     * @param btn1 the first button
+     * @param btn2 the second button
+     */
     @Override
     public void displayPopUpAction(int layout, String msg, int btn1, int btn2) {
         POPUP_ACTION = showPopUp(layout, msg, btn1, btn2);
         POPUP_ACTION.show();
     }
 
+    /**
+     * The pop up dismisses
+     */
     @Override
     public void dismissPopUpAction() {
         POPUP_ACTION.dismiss();

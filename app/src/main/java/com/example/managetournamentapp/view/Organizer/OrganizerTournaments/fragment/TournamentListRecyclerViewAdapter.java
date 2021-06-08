@@ -6,10 +6,17 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.domain.Tournament;
 import com.example.managetournamentapp.view.Organizer.OrganizerTournaments.fragment.TournamentListFragment.OnListFragmentInteractionListener;
 import java.util.ArrayList;
+
+/**
+ * Developed for the purposes of the Course "Software Engineering" at AUEB
+ * Athens University of Economics and Business
+ * 2020-2021
+ */
 
 public class TournamentListRecyclerViewAdapter extends RecyclerView.Adapter<TournamentListRecyclerViewAdapter.ViewHolder>  {
 
