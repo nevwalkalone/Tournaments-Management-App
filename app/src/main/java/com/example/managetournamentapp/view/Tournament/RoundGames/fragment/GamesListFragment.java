@@ -17,16 +17,28 @@ import com.example.managetournamentapp.domain.Game;
 import java.util.ArrayList;
 
 
+/**
+ * This fragment represents a list of games
+ * Every activity that contains this fragment must
+ * implement the {@link OnListFragmentInteractionListener} interface
+ */
 public class GamesListFragment extends Fragment {
 
     private static final String ARG_COLUMN_COUNT = "column-count";
     private int mColumnCount = 5;
     private OnListFragmentInteractionListener mListener;
 
-    public GamesListFragment() {
-    }
+    /**
+     * Default constructor
+     */
+    public GamesListFragment() { }
 
     @SuppressWarnings("unused")
+    /**
+     *
+     * @param columnCount  the number of columns in the list
+     * @return the fragment
+     */
     public static GamesListFragment newInstance(int columnCount) {
         GamesListFragment fragment = new GamesListFragment();
         Bundle args = new Bundle();
@@ -35,6 +47,10 @@ public class GamesListFragment extends Fragment {
         return fragment;
     }
 
+    /**
+     * Creates the layout and initializes the fragment
+     * @param savedInstanceState the Instance state
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,7 +60,12 @@ public class GamesListFragment extends Fragment {
         }
     }
 
-
+    /**
+     * @param inflater
+     * @param container
+     * @param savedInstanceState the Instance state
+     * @return the  view
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_games_list, container, false);
@@ -65,7 +86,10 @@ public class GamesListFragment extends Fragment {
         return view;
     }
 
-
+    /**
+     * When the fragment attaches on an activity
+     * @param context the context of the activity
+     */
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -77,16 +101,26 @@ public class GamesListFragment extends Fragment {
         }
     }
 
-
+    /**
+     * When the fragment detaches from the activity
+     */
     @Override
     public void onDetach() {
         super.onDetach();
         mListener = null;
     }
 
+    /**
+     * Every activity that contains this fragment must implement this interface, so
+     * that the activity or the other fragments, can interact with the fragment.
+     */
     public interface OnListFragmentInteractionListener {
         void onListFragmentInteraction(Game item);
 
+        /**
+         * get the games that will take place in this round
+         * @return the ArrayList of games in this round
+         */
         ArrayList<Game> getGamesList();
     }
 

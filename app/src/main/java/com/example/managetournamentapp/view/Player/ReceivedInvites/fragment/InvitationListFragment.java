@@ -2,35 +2,41 @@ package com.example.managetournamentapp.view.Player.ReceivedInvites.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.domain.Invitation;
 
-
 import java.util.ArrayList;
 
-
+/**
+ * This fragment represents a list of invitations
+ * Every activity that contains this fragment must
+ * implement the {@link OnListFragmentInteractionListener} interface
+ */
 public class InvitationListFragment extends Fragment {
 
     private static final String ARG_COLUMN_COUNT = "column-count";
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
 
-    public InvitationListFragment() {
-    }
+    /**
+     * Default constructor
+     */
+    public InvitationListFragment() {  }
 
     @SuppressWarnings("unused")
+    /**
+     *
+     * @param columnCount  the number of columns in the list
+     * @return the fragment
+     */
     public static InvitationListFragment newInstance(int columnCount) {
         InvitationListFragment fragment = new InvitationListFragment();
         Bundle args = new Bundle();
@@ -39,6 +45,10 @@ public class InvitationListFragment extends Fragment {
         return fragment;
     }
 
+    /**
+     * Creates the layout and initializes the fragment
+     * @param savedInstanceState the Instance state
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,13 +57,17 @@ public class InvitationListFragment extends Fragment {
         }
     }
 
-
+    /**
+     * @param inflater
+     * @param container
+     * @param savedInstanceState the Instance state
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_invites_list, container, false);
 
         ArrayList<Invitation> invitationList = mListener.getInvitationList();
-        // Set the adapter
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
             RecyclerView recyclerView = (RecyclerView) view;
@@ -67,7 +81,10 @@ public class InvitationListFragment extends Fragment {
         return view;
     }
 
-
+    /**
+     * When the fragment attaches on an activity
+     * @param context the context of the activity
+     */
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -79,14 +96,20 @@ public class InvitationListFragment extends Fragment {
         }
     }
 
+    /**
+     * When the fragment detaches from the activity
+     */
     @Override
     public void onDetach() {
         super.onDetach();
         mListener = null;
     }
 
+    /**
+     * Every activity that contains this fragment must implement this interface, so
+     * that the activity or the other fragments, can interact with the fragment.
+     */
     public interface OnListFragmentInteractionListener {
-        // TODO: Update argument type and name
         void onListFragmentInteraction(Invitation item);
 
         ArrayList<Invitation> getInvitationList();

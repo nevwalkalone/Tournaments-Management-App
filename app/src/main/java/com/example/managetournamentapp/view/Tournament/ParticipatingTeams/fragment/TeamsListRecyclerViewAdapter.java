@@ -21,11 +21,22 @@ public class TeamsListRecyclerViewAdapter extends RecyclerView.Adapter<TeamsList
     private final OnListFragmentInteractionListener mListener;
 
 
+    /**
+     * the constructor
+     * @param items the list of teams
+     * @param listener the listener for a teams selection
+     */
     public TeamsListRecyclerViewAdapter(ArrayList<Team> items, OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
 
+    /**
+     *
+     * @param parent the view parent
+     * @param viewType the view type
+     * @return
+     */
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
@@ -33,6 +44,11 @@ public class TeamsListRecyclerViewAdapter extends RecyclerView.Adapter<TeamsList
         return new ViewHolder(view);
     }
 
+    /**
+     *
+     * @param holder the holder
+     * @param position the index of the item
+     */
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         Team currentTeam = mValues.get(position);
@@ -52,6 +68,10 @@ public class TeamsListRecyclerViewAdapter extends RecyclerView.Adapter<TeamsList
     }
 
 
+    /**
+     * get the number of teams in the list
+     * @return the number of teams
+     */
     @Override
     public int getItemCount() {
         return mValues.size();
@@ -63,6 +83,10 @@ public class TeamsListRecyclerViewAdapter extends RecyclerView.Adapter<TeamsList
         public final ImageButton btnSelect;
         public Team mItem;
 
+        /**
+         *  constructor
+         * @param view the view
+         */
         public ViewHolder(View view) {
             super(view);
             mView = view;
@@ -70,6 +94,10 @@ public class TeamsListRecyclerViewAdapter extends RecyclerView.Adapter<TeamsList
             btnSelect = view.findViewById(R.id.btn_select_team);
         }
 
+        /**
+         * represents the basic info of the view holder as a string
+         * @return the string representation of the view holder contents
+         */
         @Override
         public String toString() {
             return super.toString() + " '" + txtTeamTitle.getText() + "'";

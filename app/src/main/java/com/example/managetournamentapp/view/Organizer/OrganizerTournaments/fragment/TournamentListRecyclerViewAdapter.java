@@ -16,12 +16,22 @@ public class TournamentListRecyclerViewAdapter extends RecyclerView.Adapter<Tour
     private final ArrayList<Tournament> mValues;
     private final OnListFragmentInteractionListener mListener;
 
-
+    /**
+     * the constructor
+     * @param items the list of tournaments
+     * @param listener the listener for a tournament selection
+     */
     public TournamentListRecyclerViewAdapter(ArrayList<Tournament> items, OnListFragmentInteractionListener listener){
         mValues = items;
         mListener = listener;
     }
 
+    /**
+     *
+     * @param parent the view parent
+     * @param viewType the view type
+     * @return
+     */
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
@@ -29,6 +39,11 @@ public class TournamentListRecyclerViewAdapter extends RecyclerView.Adapter<Tour
         return new ViewHolder(view);
     }
 
+    /**
+     *
+     * @param holder the holder
+     * @param position the index of the item
+     */
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         Tournament currentTournament = mValues.get(position);
@@ -39,15 +54,17 @@ public class TournamentListRecyclerViewAdapter extends RecyclerView.Adapter<Tour
             @Override
             public void onClick(View v) {
                 if (null != mListener) {
-                    // Notify the active callbacks interface (the activity, if the
-                    // fragment is attached to one) that an item has been selected.
+
                     mListener.onListFragmentInteraction(holder.mItem);
                 }
             }
         });
     }
 
-
+    /**
+     * get the number of tournaments in the list
+     * @return the number of tournaments
+     */
     @Override
     public int getItemCount() {
         return mValues.size();
@@ -59,6 +76,10 @@ public class TournamentListRecyclerViewAdapter extends RecyclerView.Adapter<Tour
         public final ImageButton btnSelect;
         public Tournament mItem;
 
+        /**
+         *  constructor
+         * @param view the view
+         */
         public ViewHolder(View view) {
             super(view);
             mView = view;
@@ -66,6 +87,10 @@ public class TournamentListRecyclerViewAdapter extends RecyclerView.Adapter<Tour
             btnSelect = view.findViewById(R.id.btn_select_tournament);
         }
 
+        /**
+         * represents the basic info of the view holder as a string
+         * @return the string representation of the view holder contents
+         */
         @Override
         public String toString() {
             return super.toString() + " '" + txtTournamentTitle.getText() + "'";
