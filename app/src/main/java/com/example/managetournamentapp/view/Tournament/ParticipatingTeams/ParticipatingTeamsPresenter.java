@@ -93,11 +93,14 @@ public class ParticipatingTeamsPresenter {
      */
     public void onHomePage(){
         User user = new MemoryLoggedInUser().getUser();
-        if (user instanceof Player){
-            view.backToHomePage(true,user.getCredentials().getUsername());
+        if (user == null){
+            view.backToHomePage(true, false,"");
+        }
+        else if (user instanceof Player){
+            view.backToHomePage(false,true,user.getCredentials().getUsername());
         }
         else{
-            view.backToHomePage(false,((Organizer)user).getTitle());
+            view.backToHomePage(false,false,((Organizer)user).getTitle());
         }
     }
 

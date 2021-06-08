@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.domain.Tournament;
+import com.example.managetournamentapp.view.HomePage.HomePageActivity;
 import com.example.managetournamentapp.view.Organizer.OrganizerTournaments.fragment.TournamentListFragment;
 import com.example.managetournamentapp.view.Tournament.TournamentPage.TournamentPageActivity;
 
@@ -79,6 +80,12 @@ public class BrowsingActivity extends AppCompatActivity implements BrowsingView,
     public void startTournamentPage(String title) {
         Intent intent = new Intent(this, TournamentPageActivity.class);
         intent.putExtra(TOURNAMENT_TITLE_EXTRA, title);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onBackPressed(){
+        Intent intent = new Intent(this, HomePageActivity.class);
         startActivity(intent);
     }
 }

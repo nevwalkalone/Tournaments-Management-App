@@ -10,7 +10,7 @@
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Choose an action"
+        android:text="@string/choose_an_action"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="28sp"
@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:textColor="@color/white"
-            android:text="ORGANIZER">
+            android:text="@string/organizer">
 
         </Button>
 
@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:textColor="@color/white"
-            android:text="PLAYER">
+            android:text="@string/player_click">
 
         </Button>
     </LinearLayout>

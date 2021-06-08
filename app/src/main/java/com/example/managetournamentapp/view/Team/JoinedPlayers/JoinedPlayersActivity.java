@@ -14,20 +14,15 @@ import android.widget.Toast;
 
 import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.domain.Player;
-import com.example.managetournamentapp.memoryDao.MemoryInitializer;
 import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
-import com.example.managetournamentapp.memoryDao.PlayerDAOMemory;
-import com.example.managetournamentapp.memoryDao.TeamDAOMemory;
 import com.example.managetournamentapp.view.Organizer.OrganizerPage.OrganizerPageActivity;
 import com.example.managetournamentapp.view.Player.PlayerInfo.PlayerInfoActivity;
 import com.example.managetournamentapp.view.Player.PlayerPage.PlayerPageActivity;
 import com.example.managetournamentapp.view.Team.InvitePlayers.InvitePlayersActivity;
-import com.example.managetournamentapp.view.Team.InvitePlayers.InvitePlayersViewModel;
 import com.example.managetournamentapp.view.Team.InvitePlayers.fragment.PlayersListFragment;
-import com.example.managetournamentapp.view.Team.TeamPage.TeamPageActivity;
+import com.example.managetournamentapp.view.User.Browsing.BrowsingActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -252,16 +247,22 @@ public class JoinedPlayersActivity extends AppCompatActivity implements PlayersL
 
     /**
      * what happens when the homepage button is pressed
-     * @param isPlayer true if the logged in user is a player
-     * @param name is the name of a player. or the title of an organizer
+     * @param noLogin boolean parameter, if true the user has not logged in
+     * @param isPlayer boolean parameter,if true the user is a player
+     * @param name name of the player or title of the organizer
      */
     @Override
-    public void backToHomePage(boolean isPlayer, String name) {
-        if (isPlayer){
+    public void backToHomePage(boolean noLogin, boolean isPlayer, String name) {
+        if (noLogin){
+            Intent intent = new Intent(this, BrowsingActivity.class);
+            startActivity(intent);
+        }
+        else if (isPlayer){
             Intent intent = new Intent(this, PlayerPageActivity.class);
             intent.putExtra(PLAYER_USERNAME_EXTRA,name);
             startActivity(intent);
         }
+
         else{
             Intent intent = new Intent (this, OrganizerPageActivity.class);
             intent.putExtra(ORGANIZER_TITLE_EXTRA, name);

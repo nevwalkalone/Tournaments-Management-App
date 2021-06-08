@@ -33,7 +33,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Username"
+                android:text="@string/username"
                 android:textSize="18sp" />
 
             <EditText
@@ -63,7 +63,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Password"
+                android:text="@string/password"
                 android:textSize="18sp" />
 
             <EditText
@@ -93,7 +93,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Name"
+                android:text="@string/name"
                 android:textSize="18sp" />
 
             <EditText
@@ -123,7 +123,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Surname"
+                android:text="@string/surname"
                 android:textSize="18sp" />
 
             <EditText
@@ -153,7 +153,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Phone Number"
+                android:text="@string/phone_number_player"
                 android:textSize="18sp" />
 
             <EditText
@@ -183,7 +183,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="E-mail"
+                android:text="@string/e_mail"
                 android:textSize="18sp" />
 
             <EditText
@@ -213,7 +213,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Location"
+                android:text="@string/location"
                 android:textSize="18sp" />
 
             <EditText
@@ -243,7 +243,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Birth Date"
+                android:text="@string/birth_date"
                 android:textSize="18sp" />
 
             <EditText
@@ -258,7 +258,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Select your Sport!"
+            android:text="@string/select_your_sport"
             android:textAlignment="center"
             android:textSize="20sp"></TextView>
 
@@ -279,19 +279,19 @@
                     android:id="@+id/radio_button_basketball3v3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Basketball3v3" />
+                    android:text="@string/basketball3v3" />
 
                 <CheckBox
                     android:id="@+id/radio_button_basketball5v5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Basketball5v5" />
+                    android:text="@string/basketball5v5" />
 
                 <CheckBox
                     android:id="@+id/radio_button_football5v5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Football5v5" />
+                    android:text="@string/football5v5" />
             </LinearLayout>
 
             <LinearLayout
@@ -303,19 +303,19 @@
                     android:id="@+id/radio_button_football7v7"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Football7v7" />
+                    android:text="@string/football7v7" />
 
                 <CheckBox
                     android:id="@+id/radio_button_volleyball3v3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Volleyball3v3" />
+                    android:text="@string/volleyball3v3" />
 
                 <CheckBox
                     android:id="@+id/radio_button_volleyball6v6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Volleyball6v6" />
+                    android:text="@string/volleyball6v6" />
 
             </LinearLayout>
 
@@ -333,7 +333,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
-                android:text="SAVE" />
+                android:text="@string/save_player" />
         </LinearLayout>
 
     </LinearLayout>

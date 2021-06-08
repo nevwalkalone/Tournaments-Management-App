@@ -10,7 +10,7 @@
         android:id="@+id/text_tournament_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TITLE"
+        android:text="@string/title_tournament"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="28sp"
@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:textColor="@color/white"
-            android:text="Info">
+            android:text="@string/info_tournament">
 
         </Button>
 
@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:textColor="@color/white"
-            android:text="Teams">
+            android:text="@string/teams">
 
         </Button>
 
@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:textColor="@color/white"
-            android:text="Games">
+            android:text="@string/rounds_tournament">
 
         </Button>
     </LinearLayout>
@@ -69,7 +69,7 @@
                 android:id="@+id/imageButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Bottom Gravity"
+                android:text="@string/bottom_gravity"
                 app:srcCompat="@drawable/ic_baseline_home_24"/>
 
         </RelativeLayout>

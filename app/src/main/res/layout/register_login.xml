@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:textColor="@color/white"
-            android:text="LOGIN">
+            android:text="@string/login">
 
         </Button>
 
@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:textColor="@color/white"
-            android:text="REGISTER">
+            android:text="@string/register">
 
         </Button>
     </LinearLayout>

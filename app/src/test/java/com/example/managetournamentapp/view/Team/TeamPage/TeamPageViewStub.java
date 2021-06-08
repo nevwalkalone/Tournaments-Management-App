@@ -24,7 +24,7 @@ public class TeamPageViewStub implements TeamPageView {
     }
 
     @Override
-    public void backToHomePage(boolean flag, String string) {
+    public void backToHomePage(boolean noLogin, boolean isPlayer, String name) {
         onHome = true;
 
     }

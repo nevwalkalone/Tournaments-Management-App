@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/text_margin"
             android:layout_weight="1"
-            android:text="Όνομα παίκτη"
+            android:text="@string/onoma_paikti"
             android:textAppearance="?attr/textAppearanceListItem" />
 
         <TextView
@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
 
             android:layout_weight="1"
-            android:text="Επίθετο παίκτη"
+            android:text="@string/epitheto_paikti"
             android:textAppearance="?attr/textAppearanceListItem" />
     </LinearLayout>
 
@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/text_margin"
         android:layout_weight="1"
-        android:text="Ημ. γέννησης παίκτη"
+        android:text="@string/imerominia"
         android:textAppearance="?attr/textAppearanceListItem" />
 
     <TextView
@@ -45,7 +45,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/text_margin"
         android:layout_weight="1"
-        android:text="Περιοχή παίκτη"
+        android:text="@string/perioxh"
         android:textAppearance="?attr/textAppearanceListItem" />
 
     <ImageButton

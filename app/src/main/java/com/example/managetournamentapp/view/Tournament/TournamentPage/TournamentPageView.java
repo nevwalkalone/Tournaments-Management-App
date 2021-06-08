@@ -21,11 +21,13 @@ public interface TournamentPageView {
      */
     void startTournamentGames();
 
+
     /**
      * what happens when the homepage button is pressed
-     * @param isPlayer is true if the logged in user is a player
-     * @param name is the name of a player. or the title of an organizer
+     * @param noLogin boolean parameter, if true the user has not logged in
+     * @param isPlayer boolean parameter,if true the user is a player
+     * @param name name of the player or title of the organizer
      */
-    void backToHomePage(boolean isPlayer, String name);
+    void backToHomePage(boolean noLogin, boolean isPlayer, String name);
 
 }

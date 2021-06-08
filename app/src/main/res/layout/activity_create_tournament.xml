@@ -63,7 +63,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Location"
+                android:text="@string/location"
                 android:textSize="18sp" />
 
             <EditText
@@ -93,7 +93,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Description"
+                android:text="@string/description"
                 android:textSize="18sp" />
 
             <EditText
@@ -121,7 +121,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Teams Number"
+                android:text="@string/teams_number"
                 android:textSize="18sp" />
 
             <Spinner
@@ -158,7 +158,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Start Date"
+                android:text="@string/start_date"
                 android:textSize="18sp" />
 
             <EditText
@@ -187,7 +187,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Finish Date"
+                android:text="@string/finish_date"
                 android:textSize="18sp" />
 
             <EditText
@@ -217,7 +217,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Sport Type"
+                android:text="@string/sport_type"
                 android:textSize="18sp" />
 
             <Spinner
@@ -255,7 +255,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Age Division"
+                android:text="@string/age_division"
                 android:textSize="18sp" />
 
             <Spinner
@@ -303,7 +303,7 @@
                     android:id="@+id/imageButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Bottom Gravity"
+                    android:text="@string/bottom_gravity"
                     app:srcCompat="@drawable/ic_baseline_home_24"/>
 
             </RelativeLayout>
