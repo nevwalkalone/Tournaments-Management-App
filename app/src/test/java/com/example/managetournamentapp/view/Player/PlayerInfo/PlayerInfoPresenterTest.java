@@ -1,5 +1,7 @@
 package com.example.managetournamentapp.view.Player.PlayerInfo;
 
+import com.example.managetournamentapp.domain.Player;
+import com.example.managetournamentapp.domain.User;
 import com.example.managetournamentapp.memoryDao.MemoryInitializer;
 import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
 import com.example.managetournamentapp.memoryDao.PlayerDAOMemory;
@@ -36,6 +38,9 @@ public class PlayerInfoPresenterTest {
 
         presenter.findAccess();
         presenter.findPlayerInfo("tommy0");
+        Player p = new PlayerDAOMemory().find("tommy0");
+        User u = p;
+        Assert.assertTrue(p.equals(u));
 
         // if tommy0 selects to see his info page!
         new MemoryLoggedInUser().setUser(new PlayerDAOMemory().find("tommy0"));
@@ -58,7 +63,6 @@ public class PlayerInfoPresenterTest {
         new MemoryLoggedInUser().setUser(new PlayerDAOMemory().find("tommy28"));
         presenter.findPlayerInfo("tommy28");
         presenter.onDeletePlayer();
-
 
 
         presenter.onNoDeletePlayer();

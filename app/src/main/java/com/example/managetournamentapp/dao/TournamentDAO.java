@@ -2,6 +2,8 @@ package com.example.managetournamentapp.dao;
 
 import com.example.managetournamentapp.domain.Organizer;
 import com.example.managetournamentapp.domain.Tournament;
+import com.example.managetournamentapp.domain.User;
+
 import java.util.ArrayList;
 
 /**
@@ -14,12 +16,14 @@ public interface TournamentDAO {
 
     /**
      * Saves a specific tournament.
+     *
      * @param entity Tournament to be saved.
      */
     void save(Tournament entity);
 
     /**
      * Finds a specific tournament.
+     *
      * @param tournamentName Tournament name.
      * @return Tournament with the specific name.
      */
@@ -27,12 +31,12 @@ public interface TournamentDAO {
 
     /**
      * Finds all tournaments.
+     *
      * @return All tournaments.
      */
     ArrayList<Tournament> findAll();
 
     /**
-     *
      * @param organizer Organizer that owns the specific tournament
      * @return Tournaments of the specified organizer
      */
@@ -40,6 +44,7 @@ public interface TournamentDAO {
 
     /**
      * Deletes a specific tournament.
+     *
      * @param entity
      */
     void delete(Tournament entity);
@@ -49,6 +54,14 @@ public interface TournamentDAO {
      */
     void deleteAll();
 
+    /**
+     * Checks if title is used by another tournament
+     *
+     * @param title title input
+     * @param tournament current tournament
+     * @return true if title used by another tournament
+     */
+    boolean TitleIsUsed(String title, Tournament tournament);
 
 
 }

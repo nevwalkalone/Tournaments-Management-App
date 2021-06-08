@@ -1,10 +1,13 @@
 package com.example.managetournamentapp.view.User.RegisterPlayer;
 
 import com.example.managetournamentapp.dao.LoggedInUser;
+import com.example.managetournamentapp.dao.OrganizerDAO;
 import com.example.managetournamentapp.dao.PlayerDAO;
 import com.example.managetournamentapp.domain.Credentials;
+import com.example.managetournamentapp.domain.Organizer;
 import com.example.managetournamentapp.domain.Player;
 import com.example.managetournamentapp.domain.Sport;
+import com.example.managetournamentapp.domain.User;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -25,6 +28,7 @@ public class RegisterPlayerPresenter {
 
     private RegisterPlayerView view;
     private PlayerDAO playerDAO;
+    private OrganizerDAO organizerDAO;
     private Player connectedPlayer = null;
     private LoggedInUser loggedInUser;
 
@@ -45,7 +49,7 @@ public class RegisterPlayerPresenter {
         view.setPassword(connectedPlayer.getCredentials().getPassword());
         view.setPhoneNumber(connectedPlayer.getPhoneNumber());
         view.setEmail(connectedPlayer.getEmail());
-        view.setBirthdate(connectedPlayer.getBirthDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")).replace("-","/") );
+        view.setBirthdate(connectedPlayer.getBirthDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")).replace("-", "/"));
         view.setLocation(connectedPlayer.getLocation());
         view.setSportsInterest(connectedPlayer.getSportsInterested());
     }
@@ -87,6 +91,10 @@ public class RegisterPlayerPresenter {
         else {
             // IF USER IS NEW!
             if (connectedPlayer == null) {
+                if (alreadyInUse(new Credentials(usename, password), connectedPlayer)) {
+                    view.showPopUp(view, "Username already in use! Try a new one.");
+                    return;
+                }
                 Player player = new Player(name, surname, location, phoneNumber, email, LocalDate.parse(reformatBirthdate(birthDate)), new Credentials(usename, password));
                 for (Sport sport : sportsInterest)
                     player.addSportInterested(sport);
@@ -94,6 +102,10 @@ public class RegisterPlayerPresenter {
                 loggedInUser.setUser(player);
 
             } else {
+                if (alreadyInUse(new Credentials(usename, password), connectedPlayer)) {
+                    view.showPopUp(view, "Username already in use! Try a new one.");
+                    return;
+                }
                 connectedPlayer.setName(name);
                 connectedPlayer.setSurname(surname);
                 connectedPlayer.setCredentials(new Credentials(usename, password));
@@ -145,6 +157,7 @@ public class RegisterPlayerPresenter {
 
     /**
      * reformatting the given string
+     *
      * @param birthdate the birth date in the initial format
      * @return the reformatted birth date
      */
@@ -170,7 +183,24 @@ public class RegisterPlayerPresenter {
     }
 
     /**
+     * Check if there is another user who has these credentials
+     *
+     * @param credentials the user credentials to check in registration
+     * @return true if credentials are existed in DAO
+     */
+    public boolean alreadyInUse(Credentials credentials, User user) {
+        boolean already = false;
+        if (playerDAO.isUsedByAnother(credentials, user))
+            already = true;
+        if (organizerDAO.isUsedByAnother(credentials, user))
+            already = true;
+        return already;
+
+    }
+
+    /**
      * get the loggedInUser
+     *
      * @return the LoggedInUser object
      */
     public LoggedInUser getLoggedInUser() {
@@ -179,6 +209,7 @@ public class RegisterPlayerPresenter {
 
     /**
      * set the loggedInUser
+     *
      * @param loggedInUser the new LoggedInUser
      */
     public void setLoggedInUser(LoggedInUser loggedInUser) {
@@ -187,6 +218,7 @@ public class RegisterPlayerPresenter {
 
     /**
      * set a new view
+     *
      * @param view the new view
      */
     public void setView(RegisterPlayerView view) {
@@ -202,10 +234,19 @@ public class RegisterPlayerPresenter {
 
     /**
      * set the playerDAO
+     *
      * @param playerDAO the new PlayerDAO
      */
     public void setPlayerDAO(PlayerDAO playerDAO) {
         this.playerDAO = playerDAO;
     }
 
+    /**
+     * set the organizerDAO
+     *
+     * @param organizerDAO the new OrganizerDAO
+     */
+    public void setOrganizerDAO(OrganizerDAO organizerDAO) {
+        this.organizerDAO = organizerDAO;
+    }
 }

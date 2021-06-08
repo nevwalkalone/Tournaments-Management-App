@@ -3,6 +3,7 @@ package com.example.managetournamentapp.view.User.RegisterPlayer;
 import androidx.lifecycle.ViewModel;
 
 import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
+import com.example.managetournamentapp.memoryDao.OrganizerDAOMemory;
 import com.example.managetournamentapp.memoryDao.PlayerDAOMemory;
 
 /**
@@ -22,6 +23,7 @@ public class RegisterPlayerViewModel extends ViewModel {
         presenter = new RegisterPlayerPresenter();
         presenter.setLoggedInUser( new MemoryLoggedInUser());
         presenter.setPlayerDAO(new PlayerDAOMemory());
+        presenter.setOrganizerDAO(new OrganizerDAOMemory());
     }
 
     /** get the presenter

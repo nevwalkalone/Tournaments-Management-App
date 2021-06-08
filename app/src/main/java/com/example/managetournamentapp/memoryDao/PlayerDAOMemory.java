@@ -3,6 +3,8 @@ package com.example.managetournamentapp.memoryDao;
 import com.example.managetournamentapp.dao.PlayerDAO;
 import com.example.managetournamentapp.domain.Credentials;
 import com.example.managetournamentapp.domain.Player;
+import com.example.managetournamentapp.domain.User;
+
 import java.util.ArrayList;
 
 
@@ -17,6 +19,7 @@ public class PlayerDAOMemory implements PlayerDAO {
 
     /**
      * Verifies user, checks if credentials are ok.
+     *
      * @param credentials Credentials of User.
      * @return true if credentials are verified.
      */
@@ -30,6 +33,7 @@ public class PlayerDAOMemory implements PlayerDAO {
 
     /**
      * Saves a specific player.
+     *
      * @param entity Player to be saved.
      */
     @Override
@@ -39,6 +43,7 @@ public class PlayerDAOMemory implements PlayerDAO {
 
     /**
      * Deletes a specific player.
+     *
      * @param entity Player to be deleted.
      */
     @Override
@@ -57,6 +62,7 @@ public class PlayerDAOMemory implements PlayerDAO {
 
     /**
      * Finds all players.
+     *
      * @return All players.
      */
     @Override
@@ -69,6 +75,7 @@ public class PlayerDAOMemory implements PlayerDAO {
 
     /**
      * Finds a specific player.
+     *
      * @param userName Player username.
      * @return Player with the specific username.
      */
@@ -82,7 +89,8 @@ public class PlayerDAOMemory implements PlayerDAO {
     }
 
     /**
-     *  Check if the user who tries to login exists in DAO.
+     * Check if the user who tries to login exists in DAO.
+     *
      * @param credentials User input credentials
      * @return true if User exists in DAO
      */
@@ -94,5 +102,18 @@ public class PlayerDAOMemory implements PlayerDAO {
         }
         return false;
     }
+
+    /**
+     * Checks if credentials is used by another user in registration
+     * @param credentials User input credentials
+     * @param user if user is current
+     * @return true if credentials used by another user
+     */
+    @Override
+    public boolean isUsedByAnother(Credentials credentials, User user) {
+        User existingPlayer = find(credentials.getUsername());
+        return !(existingPlayer == null || existingPlayer.equals(user));
+    }
+
 
 }

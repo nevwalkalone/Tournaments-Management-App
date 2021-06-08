@@ -1,8 +1,10 @@
 package com.example.managetournamentapp.view.User.RegisterOrganizer;
 
 import androidx.lifecycle.ViewModel;
+
 import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
 import com.example.managetournamentapp.memoryDao.OrganizerDAOMemory;
+import com.example.managetournamentapp.memoryDao.PlayerDAOMemory;
 
 /**
  * Developed for the purposes of the Course "Software Engineering" at AUEB
@@ -19,11 +21,14 @@ public class RegisterOrganizerViewModel extends ViewModel {
      */
     public RegisterOrganizerViewModel() {
         presenter = new RegisterOrganizerPresenter();
-        presenter.setLoggedInUser( new MemoryLoggedInUser());
-        presenter.setOrganizerDAO( new OrganizerDAOMemory());
+        presenter.setLoggedInUser(new MemoryLoggedInUser());
+        presenter.setOrganizerDAO(new OrganizerDAOMemory());
+        presenter.setPlayerDAO(new PlayerDAOMemory());
     }
 
-    /**get the presenter
+    /**
+     * get the presenter
+     *
      * @return the RegisterOrganizerPresenter instance
      */
     public RegisterOrganizerPresenter getPresenter() {

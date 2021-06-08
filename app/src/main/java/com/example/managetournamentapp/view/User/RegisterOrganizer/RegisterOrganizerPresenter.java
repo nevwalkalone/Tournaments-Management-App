@@ -2,8 +2,10 @@ package com.example.managetournamentapp.view.User.RegisterOrganizer;
 
 import com.example.managetournamentapp.dao.LoggedInUser;
 import com.example.managetournamentapp.dao.OrganizerDAO;
+import com.example.managetournamentapp.dao.PlayerDAO;
 import com.example.managetournamentapp.domain.Credentials;
 import com.example.managetournamentapp.domain.Organizer;
+import com.example.managetournamentapp.domain.User;
 import com.example.managetournamentapp.memoryDao.OrganizerDAOMemory;
 
 import java.text.DateFormat;
@@ -24,16 +26,19 @@ public class RegisterOrganizerPresenter {
 
     private RegisterOrganizerView view;
     private OrganizerDAO organizerDAO;
+    private PlayerDAO playerDAO;
     private Organizer connectedOrganizer;
     private LoggedInUser loggedInUser;
 
     /**
      * default constructor
      */
-    public RegisterOrganizerPresenter() {}
+    public RegisterOrganizerPresenter() {
+    }
 
     /**
      * show the organizer's previous info, if we are on edit mode
+     *
      * @param organizerTitle the organizer's title
      */
     public void showPreviousInfo(String organizerTitle) {
@@ -50,7 +55,7 @@ public class RegisterOrganizerPresenter {
             view.setPassword(connectedOrganizer.getCredentials().getPassword());
             view.setPhoneNumber(connectedOrganizer.getPhoneNumber());
             view.setEmail(connectedOrganizer.getEmail());
-            view.setBirthdate(connectedOrganizer.getBirthDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")).replace("-","/"));
+            view.setBirthdate(connectedOrganizer.getBirthDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")).replace("-", "/"));
             view.setTitle(connectedOrganizer.getTitle());
         }
     }
@@ -87,12 +92,29 @@ public class RegisterOrganizerPresenter {
         else {
             // IF USER IS NEW!
             if (connectedOrganizer == null) {
+                if (alreadyInUse(new Credentials(usename, password), connectedOrganizer)) {
+                    view.showPopUp(view, "Username already in use! Try a new one.");
+                    return;
+                }
+                if (TitleAlreadyInUse(title, connectedOrganizer)) {
+                    view.showPopUp(view, "Title already in use! Try a new one.");
+                    return;
+                }
                 Organizer organizer = new Organizer(name, surname, phoneNumber, email, LocalDate.parse(reformatBirthdate(birthDate)), new Credentials(usename, password), title);
                 organizerDAO = new OrganizerDAOMemory();
                 organizerDAO.save(organizer);
                 loggedInUser.setUser(organizer);
                 view.startOrganizerPage(title);
             } else {
+                if (alreadyInUse(new Credentials(usename, password), connectedOrganizer)) {
+                    view.showPopUp(view, "Username already in use! Try a new one.");
+                    return;
+                }
+
+                if (TitleAlreadyInUse(title, connectedOrganizer)) {
+                    view.showPopUp(view, "Title already in use! Try a new one.");
+                    return;
+                }
                 connectedOrganizer.setName(name);
                 connectedOrganizer.setSurname(surname);
                 connectedOrganizer.setCredentials(new Credentials(usename, password));
@@ -140,6 +162,7 @@ public class RegisterOrganizerPresenter {
 
     /**
      * reformatting the given string
+     *
      * @param birthdate the birth date in the initial format
      * @return the reformatted birth date
      */
@@ -165,7 +188,38 @@ public class RegisterOrganizerPresenter {
     }
 
     /**
+     * Check if there is another user who has these credentials
+     *
+     * @param credentials the user credentials to check in registration
+     * @return true if credentials are existed in DAO
+     */
+    public boolean alreadyInUse(Credentials credentials, User user) {
+        boolean already = false;
+        if (playerDAO.isUsedByAnother(credentials, user))
+            already = true;
+        if (organizerDAO.isUsedByAnother(credentials, user))
+            already = true;
+        return already;
+
+    }
+
+    /**
+     * Check if there is another user who has this title
+     *
+     * @param title the user title to check in registration
+     * @return true if credentials are existed in DAO
+     */
+    public boolean TitleAlreadyInUse(String title, User user) {
+        boolean already = false;
+        if (organizerDAO.TitleUsedByAnother(title, user))
+            already = true;
+        return already;
+
+    }
+
+    /**
      * get the loggedInUser
+     *
      * @return the LoggedInUser object
      */
     public LoggedInUser getLoggedInUser() {
@@ -174,6 +228,7 @@ public class RegisterOrganizerPresenter {
 
     /**
      * set the loggedInUser
+     *
      * @param loggedInUser the new LoggedInUser
      */
     public void setLoggedInUser(LoggedInUser loggedInUser) {
@@ -182,6 +237,7 @@ public class RegisterOrganizerPresenter {
 
     /**
      * set a new view
+     *
      * @param view the new view
      */
     public void setView(RegisterOrganizerView view) {
@@ -197,10 +253,21 @@ public class RegisterOrganizerPresenter {
 
     /**
      * set the organizerDAO
+     *
      * @param organizerDAO the new OrganizerDAO
      */
     public void setOrganizerDAO(OrganizerDAO organizerDAO) {
         this.organizerDAO = organizerDAO;
     }
+
+    /**
+     * set the playerDAO
+     *
+     * @param playerDAO the new PlayerDAO
+     */
+    public void setPlayerDAO(PlayerDAO playerDAO) {
+        this.playerDAO = playerDAO;
+    }
+
 
 }

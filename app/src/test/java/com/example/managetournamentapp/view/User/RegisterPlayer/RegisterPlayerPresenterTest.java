@@ -3,6 +3,7 @@ package com.example.managetournamentapp.view.User.RegisterPlayer;
 import com.example.managetournamentapp.domain.Sport;
 import com.example.managetournamentapp.memoryDao.MemoryInitializer;
 import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
+import com.example.managetournamentapp.memoryDao.OrganizerDAOMemory;
 import com.example.managetournamentapp.memoryDao.PlayerDAOMemory;
 
 import org.junit.Assert;
@@ -25,6 +26,7 @@ public class RegisterPlayerPresenterTest {
         presenter = new RegisterPlayerPresenter();
         presenter.setLoggedInUser( new MemoryLoggedInUser());
         presenter.setPlayerDAO( new PlayerDAOMemory());
+        presenter.setOrganizerDAO(new OrganizerDAOMemory());
         presenter.setView(view);
 
     }

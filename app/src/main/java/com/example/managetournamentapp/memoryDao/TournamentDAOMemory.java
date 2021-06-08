@@ -3,6 +3,8 @@ package com.example.managetournamentapp.memoryDao;
 import com.example.managetournamentapp.dao.TournamentDAO;
 import com.example.managetournamentapp.domain.Organizer;
 import com.example.managetournamentapp.domain.Tournament;
+import com.example.managetournamentapp.domain.User;
+
 import java.util.ArrayList;
 
 
@@ -17,6 +19,7 @@ public class TournamentDAOMemory implements TournamentDAO {
 
     /**
      * Saves a specific tournament.
+     *
      * @param entity Tournament to be saved.
      */
     @Override
@@ -26,6 +29,7 @@ public class TournamentDAOMemory implements TournamentDAO {
 
     /**
      * Deletes a specific tournament.
+     *
      * @param entity
      */
     @Override
@@ -43,6 +47,7 @@ public class TournamentDAOMemory implements TournamentDAO {
 
     /**
      * Finds a specific tournament.
+     *
      * @param tournamentName Tournament name.
      * @return Tournament with the specific name.
      */
@@ -57,6 +62,7 @@ public class TournamentDAOMemory implements TournamentDAO {
 
     /**
      * Finds all tournaments.
+     *
      * @return All tournaments.
      */
     @Override
@@ -67,16 +73,27 @@ public class TournamentDAOMemory implements TournamentDAO {
     }
 
     /**
-     *
      * @param organizer Organizer that owns the specific tournament
      * @return Tournaments of the specified organizer
      */
     @Override
-   public ArrayList<Tournament> findByOrganizer(Organizer organizer) {
+    public ArrayList<Tournament> findByOrganizer(Organizer organizer) {
         if (organizer == null)
             return new ArrayList<Tournament>();
 
         return organizer.getTournaments();
+    }
+
+    /**
+     * Checks if title is used by another tournament
+     *
+     * @param title title input
+     * @param tournament current tournament
+     * @return true if title used by another tournament
+     */
+    public boolean TitleIsUsed(String title, Tournament tournament) {
+        Tournament existingTournament = find(title);
+        return !(existingTournament == null || existingTournament.equals(tournament));
     }
 
 }

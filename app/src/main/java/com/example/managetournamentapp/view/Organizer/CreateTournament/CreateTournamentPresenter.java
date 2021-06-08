@@ -25,7 +25,7 @@ public class CreateTournamentPresenter {
     private CreateTournamentView view;
     private ArrayList<String> sportTypes;
     private ArrayList<String> ageDivisions;
-    private ArrayList<String> teamNumbers ;
+    private ArrayList<String> teamNumbers;
     private Tournament connectedTournament;
     private TournamentDAO tournamentDAO;
     private Organizer organizer;
@@ -48,9 +48,9 @@ public class CreateTournamentPresenter {
         view.setLocation(connectedTournament.getLocation());
         view.setStartDate(connectedTournament.getStartDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")).replace("-", "/"));
         view.setFinishDate(connectedTournament.getFinishDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")).replace("-", "/"));
-        view.setAgeDivision( getAgeDivisionIndex(connectedTournament.getAgeDivision().toString()) );
-        view.setTeamsNumber( getTeamsNumberIndex( String.valueOf( connectedTournament.getMAX_TEAMS_NUMBER() ) ) );
-        view.setSportType(getSportTypeIndex(connectedTournament.getSportType().getName()) );
+        view.setAgeDivision(getAgeDivisionIndex(connectedTournament.getAgeDivision().toString()));
+        view.setTeamsNumber(getTeamsNumberIndex(String.valueOf(connectedTournament.getMAX_TEAMS_NUMBER())));
+        view.setSportType(getSportTypeIndex(connectedTournament.getSportType().getName()));
 
         view.lockPrevious();
     }
@@ -75,11 +75,19 @@ public class CreateTournamentPresenter {
         else {
 
             if (connectedTournament == null) {
+                if (checkTitle(title, connectedTournament)) {
+                    view.showPopUp(view, "Title already in use! Try a new one.");
+                    return;
+                }
                 LocalDate startLocalDate = reformatDate(startDate);
                 LocalDate finishLocalDate = reformatDate(finishDate);
                 ArrayList<String> basicInfo = new ArrayList<>(Arrays.asList(title, startLocalDate.toString(), finishLocalDate.toString(), location, sportType, teamsNumber, ageDivision, description));
                 view.startSetDates(basicInfo);
             } else {
+                if (checkTitle(title, connectedTournament)) {
+                    view.showPopUp(view, "Title already in use! Try a new one.");
+                    return;
+                }
                 connectedTournament.setTitle(title);
                 connectedTournament.setDescription(description);
                 connectedTournament.setLocation(location);
@@ -94,7 +102,7 @@ public class CreateTournamentPresenter {
         }
     }
 
-    public void setOrganizer(User user){
+    public void setOrganizer(User user) {
         if (user == null)
             return;
         if (!(user instanceof Organizer))
@@ -131,9 +139,9 @@ public class CreateTournamentPresenter {
         return 0;
     }
 
-    private int getTeamsNumberIndex(String teamsNumber){
-        for (int i = 0; i< teamNumbers.size(); i++){
-            if (teamNumbers.get(i).equals(teamsNumber) )
+    private int getTeamsNumberIndex(String teamsNumber) {
+        for (int i = 0; i < teamNumbers.size(); i++) {
+            if (teamNumbers.get(i).equals(teamsNumber))
                 return i;
         }
         return 0;
@@ -158,6 +166,10 @@ public class CreateTournamentPresenter {
 
     public void setTournamentDAO(TournamentDAO tournamentDAO) {
         this.tournamentDAO = tournamentDAO;
+    }
+
+    public boolean checkTitle(String title, Tournament tournament) {
+        return tournamentDAO.TitleIsUsed(title, tournament);
     }
 
     public void setView(CreateTournamentView view) {
@@ -200,7 +212,7 @@ public class CreateTournamentPresenter {
         return true;
     }
 
-    public void onHomePage(){
+    public void onHomePage() {
 
         view.backToHomePage(organizer.getTitle());
 
