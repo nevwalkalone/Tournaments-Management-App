@@ -1,4 +1,4 @@
-<diagram program="umletino" version="14.3.0"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>610</x><y>190</y><w>380</w><h>380</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt; RegisterPlayerView
+<diagram program="umletino" version="14.3.0"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>900</x><y>190</y><w>380</w><h>380</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt; RegisterPlayerView
 --
 startPlayerPage( title : String ) :  void
 showPopUp(view : RegisterPlayerView, msg : String) : void
@@ -20,7 +20,7 @@ getPhoneNumber() : String
 getName() : String
 getSurname() : String
 getUsername() : String
-getPassword() : String</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>120</y><w>470</w><h>590</h></coordinates><panel_attributes>RegisterPlayerActivity
+getPassword() : String</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>290</x><y>120</y><w>470</w><h>590</h></coordinates><panel_attributes>RegisterPlayerActivity
 --
 - sportsInterest : ArrayList&lt;Sport&gt;
 ~ playerUsername : String
@@ -61,11 +61,11 @@ _- PLAYER_USERNAME_EXTRA: String_
 
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>50</x><y>780</y><w>330</w><h>100</h></coordinates><panel_attributes>RegisterPlayerViewModel
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>340</x><y>780</y><w>330</w><h>100</h></coordinates><panel_attributes>RegisterPlayerViewModel
 --
 + RegisterPlayerViewModel()
 + getPresenter() : RegisterPlayerPresenter
-#  onCleared() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>580</x><y>690</y><w>480</w><h>300</h></coordinates><panel_attributes>RegisterPlayerPresenter
+#  onCleared() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>870</x><y>690</y><w>480</w><h>300</h></coordinates><panel_attributes>RegisterPlayerPresenter
 --
 - loggedInUser : LoggedInUser
 - connectedPlayer : Player
@@ -83,8 +83,8 @@ _- PLAYER_USERNAME_EXTRA: String_
 + setLoggedInUser(loggedInUser : LoggedInUser) : void
 + setView(view : RegisterOrganizerView) : void
 + clearView() : void
-+ setPlayerDAO(organizerDAO : OrganizerDAO) : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>80</x><y>0</y><w>290</w><h>40</h></coordinates><panel_attributes>androidx.appcompat.app.AppCompatActivity</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>220</x><y>30</y><w>30</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>370</x><y>798</y><w>230</w><h>40</h></coordinates><panel_attributes>lt=&lt;-
-περιέχει</panel_attributes><additional_attributes>210;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>220</x><y>698</y><w>70</w><h>100</h></coordinates><panel_attributes>lt=&lt;-
-περιέχει</panel_attributes><additional_attributes>10;80;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>700</x><y>80</y><w>210</w><h>40</h></coordinates><panel_attributes>androidx.lifecycle.ViewModel</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>790</x><y>108</y><w>30</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;82</additional_attributes></element><element><id>Relation</id><coordinates><x>460</x><y>378</y><w>170</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>150;12;10;12</additional_attributes></element><element><id>Relation</id><coordinates><x>790</x><y>558</y><w>70</w><h>150</h></coordinates><panel_attributes>lt=&lt;-
-περιέχει</panel_attributes><additional_attributes>10;12;10;130</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1060</x><y>560</y><w>150</w><h>50</h></coordinates><panel_attributes>PlayerDAO</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1050</x><y>598</y><w>70</w><h>120</h></coordinates><panel_attributes>lt=&lt;-
++ setPlayerDAO(organizerDAO : OrganizerDAO) : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>370</x><y>0</y><w>290</w><h>40</h></coordinates><panel_attributes>androidx.appcompat.app.AppCompatActivity</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>510</x><y>30</y><w>30</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>660</x><y>798</y><w>230</w><h>40</h></coordinates><panel_attributes>lt=&lt;-
+περιέχει</panel_attributes><additional_attributes>210;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>510</x><y>698</y><w>70</w><h>100</h></coordinates><panel_attributes>lt=&lt;-
+περιέχει</panel_attributes><additional_attributes>10;80;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>10</x><y>800</y><w>210</w><h>40</h></coordinates><panel_attributes>androidx.lifecycle.ViewModel</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>210</x><y>808</y><w>150</w><h>50</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;130;22</additional_attributes></element><element><id>Relation</id><coordinates><x>750</x><y>378</y><w>170</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>150;12;10;12</additional_attributes></element><element><id>Relation</id><coordinates><x>1080</x><y>558</y><w>70</w><h>150</h></coordinates><panel_attributes>lt=&lt;-
+περιέχει</panel_attributes><additional_attributes>10;12;10;130</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1350</x><y>560</y><w>150</w><h>50</h></coordinates><panel_attributes>PlayerDAO</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1340</x><y>598</y><w>70</w><h>120</h></coordinates><panel_attributes>lt=&lt;-
 περιέχει</panel_attributes><additional_attributes>10;10;10;92</additional_attributes></element></diagram>
