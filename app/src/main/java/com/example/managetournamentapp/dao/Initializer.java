@@ -69,7 +69,7 @@ public abstract class Initializer {
 
         ArrayList<LocalDate> dates = new ArrayList<>();
         for (int i = 1; i < 16; i++) {
-            dates.add(LocalDate.now());
+            dates.add(LocalDate.parse("2030-05-15"));
         }
         organizerDAO.save(new Organizer("Takis", "Takis", "6900000000", "takistak@gmail.com", LocalDate.parse("2000-01-01"), new Credentials("takis", "12345"), "ESKANA"));
         organizerDAO.save(new Organizer("Nikos", "Nikopoulos", "6900000000", "nikosnik@gmail.com", LocalDate.parse("2000-01-01"), new Credentials("nikos", "12345"), "ESKA"));
@@ -83,7 +83,7 @@ public abstract class Initializer {
             round.setup(emptyTeams);
         }
 
-        Tournament tour2 = new Tournament("NBAGR", LocalDate.parse("2050-05-10"), LocalDate.parse("2050-05-29"), "ATHENS", (new Sport("Basketball3v3")), 8, AgeDivision.K100, dates);
+        Tournament tour2 = new Tournament("NBAGR", LocalDate.parse("2030-05-10"), LocalDate.parse("2030-05-29"), "ATHENS", (new Sport("Basketball3v3")), 8, AgeDivision.K100, dates);
         tournamentDAO.save(tour2);
         organizerDAO.findByTitle("ESKA").addTournament(tour2);
         for (Round round : tour2.getRounds()){
@@ -93,7 +93,7 @@ public abstract class Initializer {
             round.setup(emptyTeams);
         }
 
-        Tournament tour3 = new Tournament("NBA", LocalDate.parse("2050-05-10"), LocalDate.parse("2050-05-29"), "ATHENS", (new Sport("Basketball3v3")), 8, AgeDivision.K100, dates);
+        Tournament tour3 = new Tournament("NBA", LocalDate.parse("2030-05-10"), LocalDate.parse("2030-05-29"), "ATHENS", (new Sport("Basketball3v3")), 8, AgeDivision.K100, dates);
         tournamentDAO.save(tour3);
         organizerDAO.findByTitle("ESKA").addTournament(tour3);
         for (Round round : tour3.getRounds()){
