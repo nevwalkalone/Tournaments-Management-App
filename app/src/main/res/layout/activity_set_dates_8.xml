@@ -159,15 +159,16 @@
                 android:id="@+id/save_tournament"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="SAVE" />
+                android:text="SAVE"
+                android:textColor="@color/white" />
         </LinearLayout>
 
     </LinearLayout>
 
-    <FrameLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+        android:layout_height="fill_parent"
+        tools:ignore="MissingConstraints">
 
         <RelativeLayout
             android:layout_width="fill_parent"
@@ -179,7 +180,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Bottom Gravity"
-                app:srcCompat="@drawable/ic_baseline_home_24"/>
+                app:srcCompat="@drawable/ic_baseline_home_24" />
 
         </RelativeLayout>
     </FrameLayout>

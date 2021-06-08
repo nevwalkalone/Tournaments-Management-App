@@ -79,4 +79,7 @@
     <string name="score_b">Score B</string>
     <string name="save">Save</string>
     <string name="enter_score">Enter the final score:</string>
+    <string name="welcome">Welcome!</string>
+    <string name="browse">Browse</string>
+    <string name="connect">Connect</string>
 </resources>

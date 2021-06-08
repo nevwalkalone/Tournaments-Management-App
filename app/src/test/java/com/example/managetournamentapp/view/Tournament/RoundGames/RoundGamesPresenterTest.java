@@ -49,7 +49,8 @@ public class RoundGamesPresenterTest {
 
     @Test
     public void onSaveTest() {
-        presenter.findGames("TOURNOUA1", 4, 0);
+        presenter.findGames("TOURNOUA1", 8, 0);
+        System.out.println(presenter.getResults().get(0).getTeamA());
         presenter.onSave(presenter.getResults().get(0), "2", "0");
         Assert.assertTrue(presenter.getResults().get(0).isFinished());
 
@@ -58,7 +59,6 @@ public class RoundGamesPresenterTest {
         presenter.findAccess();
         presenter.onSave(presenter.getResults().get(0), "2", "0");
         Assert.assertTrue(presenter.getResults().get(0).isFinished());
-        presenter.onPressed(presenter.getResults().get(0));
     }
 
     @Test
