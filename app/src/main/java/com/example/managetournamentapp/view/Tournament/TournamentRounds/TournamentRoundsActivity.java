@@ -62,7 +62,11 @@ public class TournamentRoundsActivity extends AppCompatActivity implements Tourn
 
     }
 
-
+    /**
+     * hide the button of a round
+     * if this round doesn't exist in the tournament
+     * @param teamsNumber the number of teams in the tournament
+     */
     @Override
     public void changesOfAccess(int teamsNumber) {
         if (teamsNumber == 8){
@@ -73,6 +77,12 @@ public class TournamentRoundsActivity extends AppCompatActivity implements Tourn
         }
     }
 
+    /**
+     * when a player presses on the button of a round
+     * apart from the group stage round
+     * @param tournamentTitle the title of the tournament
+     * @param roundTeamsNumber the number of teams in the round
+     */
     @Override
     public void showRoundGames(String tournamentTitle, int roundTeamsNumber){
         Intent intent = new Intent(TournamentRoundsActivity.this, RoundGamesActivity.class);
@@ -82,6 +92,11 @@ public class TournamentRoundsActivity extends AppCompatActivity implements Tourn
         startActivity(intent);
     }
 
+    /**
+     * when the "groups" button is pressed,
+     * the user wants to explore the "group" stage (1st round)
+     * the tournament groups activity starts
+     */
     @Override
     public void showGroups(String tournamentTitle, int roundTeamsNumber){
         Intent intent = new Intent(TournamentRoundsActivity.this, TournamentGroupsActivity.class);
@@ -89,6 +104,11 @@ public class TournamentRoundsActivity extends AppCompatActivity implements Tourn
         startActivity(intent);
     }
 
+    /**
+     * what happens when the homepage button is pressed
+     * @param isPlayer is true if the logged in user is a player
+     * @param name is the name of a player. or the title of an organizer
+     */
     @Override
     public void backToHomePage(boolean isPlayer, String name) {
         if (isPlayer){

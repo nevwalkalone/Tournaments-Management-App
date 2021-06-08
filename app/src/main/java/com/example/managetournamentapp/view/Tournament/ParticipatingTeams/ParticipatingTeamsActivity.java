@@ -39,18 +39,14 @@ public class ParticipatingTeamsActivity extends AppCompatActivity implements Par
         viewModel.getPresenter().setView(this);
         btnHome = findViewById(R.id.imageButton);
         btnHome.setOnClickListener(v -> viewModel.getPresenter().onHomePage());
-
         tournamentTitle = this.getIntent().getStringExtra(TOURNAMENT_TITLE_EXTRA);
 
         if (findViewById(R.id.fragment_container) != null) {
-
             if (savedInstanceState != null) {
                 return;
             }
 
-            System.out.println(this.getIntent().getStringExtra(TOURNAMENT_TITLE_EXTRA));
             viewModel.getPresenter().findParticipatingTeams(tournamentTitle);
-//
             TeamsListFragment teamsListFragment = TeamsListFragment.newInstance(1);
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.fragment_container, teamsListFragment)
@@ -58,22 +54,29 @@ public class ParticipatingTeamsActivity extends AppCompatActivity implements Par
         }
     }
 
+    /**
+     * what happens when the user presses on a item
+     * @param item the item that was pressed on
+     */
     @Override
     public void onListFragmentInteraction(Team item) {
         viewModel.getPresenter().onTeamSelected(item);
     }
 
+
+    /**
+     * get the teams that participate in this tournament
+     * @return the ArrayList of teams
+     */
     @Override
     public ArrayList<Team> getTeamsList() {
         return viewModel.getPresenter().getResults();
     }
 
-
-    @Override
-    public void checkTeam() {
-
-    }
-
+    /**
+     * show the page of the chosen team
+     * @param teamname the name of the team
+     */
     @Override
     public void startTeamPage(String teamname) {
         Intent intent = new Intent(ParticipatingTeamsActivity.this, TeamPageActivity.class);
@@ -81,6 +84,11 @@ public class ParticipatingTeamsActivity extends AppCompatActivity implements Par
         startActivity(intent);
     }
 
+    /**
+     * what happens when the homepage button is pressed
+     * @param isPlayer is true if the logged in user is a player
+     * @param name is the name of a player. or the title of an organizer
+     */
     @Override
     public void backToHomePage(boolean isPlayer, String name) {
         if (isPlayer){

@@ -9,33 +9,52 @@ import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
 
 public class TournamentPagePresenter {
     private TournamentPageView view;
-    private Tournament tournament;
     private LoggedInUser loggedInUser;
 
-    public TournamentPagePresenter(){
+    /**
+     * the default constructor
+     */
+    public TournamentPagePresenter(){ }
 
-    }
-
+    /**
+     * direct the logged in user to the tournament info activity starts
+     */
     public void onTournamentInfo(){
         view.startTournamentInfo();
     }
 
+    /**
+     * direct the logged in user to the participating teams activity
+     */
     public void onTournamentTeams(){
         view.startTeamsParticipating();
     }
 
+    /**
+     * direct the logged in user to the tournament rounds activity
+     */
     public void onTournamentGames(){
         view.startTournamentGames();
     }
 
+    /**
+     * set a new view
+     * @param view the new view
+     */
     public void setView(TournamentPageView view) {
         this.view = view;
     }
 
+    /**
+     * clear the view
+     */
     public void clearView(){
         this.view = null;
     }
 
+    /**
+     * direct the logged in user to their home page
+     */
     public void onHomePage(){
         loggedInUser = new MemoryLoggedInUser();
         User user = loggedInUser.getUser();

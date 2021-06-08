@@ -52,7 +52,6 @@ public class GroupRankingsActivity extends AppCompatActivity implements GroupRan
             if (savedInstanceState != null) {
                 return;
             }
-
             viewModel.getPresenter().findTeams(tournamentTitle, specificGroup);
             TeamsListFragment teamsListFragment = TeamsListFragment.newInstance(1);
             getSupportFragmentManager().beginTransaction()
@@ -61,24 +60,36 @@ public class GroupRankingsActivity extends AppCompatActivity implements GroupRan
         }
     }
 
+    /**
+     * What happens when an item is selected
+     * @param item the team that is selected
+     */
     @Override
     public void onListFragmentInteraction(Team item) {
         if (item.getName()==null){
             Toast.makeText(this,"THE TEAM IS NOT SET", Toast.LENGTH_SHORT).show();
             return;
         }
-
-
         Intent intent = new Intent(GroupRankingsActivity.this, TeamPageActivity.class);
         intent.putExtra(TEAM_NAME_EXTRA, item.getName());
         startActivity(intent);
     }
 
+
+    /**
+     * get the list of the teams in the group
+     * @return the ArrayList of teams
+     */
     @Override
     public ArrayList<Team> getTeamsList() {
         return viewModel.getPresenter().getResults();
     }
 
+    /**
+     * what happens when the homepage button is pressed
+     * @param isPlayer is true if the logged in user is a player
+     * @param name is the name of a player. or the title of an organizer
+     */
     @Override
     public void backToHomePage(boolean isPlayer, String name) {
         if (isPlayer){

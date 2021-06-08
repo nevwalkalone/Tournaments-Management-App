@@ -50,6 +50,10 @@ public class RegisterPlayerPresenter {
         view.setSportsInterest(connectedPlayer.getSportsInterested());
     }
 
+    /**
+     * handle the input fields
+     * create or edit a Player object
+     */
     public void handlePlayerData() {
         String usename = view.getUsername();
         String password = view.getPassword();
@@ -102,7 +106,7 @@ public class RegisterPlayerPresenter {
                     connectedPlayer.addSportInterested(sport);
 
             }
-            view.startPlayerPage();
+            view.startPlayerPage(usename);
         }
     }
 
@@ -117,6 +121,10 @@ public class RegisterPlayerPresenter {
         return matcher.matches();
     }
 
+    /**
+     * @param name the email we want to check if it's valid.
+     * @return true if the name is valid, else false.
+     */
     public boolean validateName(String name) {
         String valid = "^[a-zA-Z]*$";
         Pattern pattern = Pattern.compile(valid);
@@ -124,6 +132,10 @@ public class RegisterPlayerPresenter {
         return matcher.matches();
     }
 
+    /**
+     * @param phone the email we want to check if it's valid.
+     * @return true if the phone is valid, else false.
+     */
     public boolean validatePhone(String phone) {
         String valid = "[0-9]+";
         Pattern pattern = Pattern.compile(valid);
@@ -131,13 +143,21 @@ public class RegisterPlayerPresenter {
         return matcher.matches();
     }
 
+    /**
+     * reformatting the given string
+     * @param birthdate the birth date in the initial format
+     * @return the reformatted birth date
+     */
     public String reformatBirthdate(String birthdate) {
         birthdate = birthdate.replace("/", "-");
         String dateFormat = LocalDate.parse(birthdate, DateTimeFormatter.ofPattern("dd-MM-uuuu")).format(DateTimeFormatter.ofPattern("uuuu-MM-dd"));
         return dateFormat;
     }
 
-
+    /**
+     * @param birthdate the email we want to check if it's valid.
+     * @return true if the birthd ate is valid, else false.
+     */
     public boolean validateBirthdate(String birthdate) {
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         dateFormat.setLenient(false);
@@ -149,22 +169,41 @@ public class RegisterPlayerPresenter {
         return true;
     }
 
+    /**
+     * get the loggedInUser
+     * @return the LoggedInUser object
+     */
     public LoggedInUser getLoggedInUser() {
         return loggedInUser;
     }
 
+    /**
+     * set the loggedInUser
+     * @param loggedInUser the new LoggedInUser
+     */
     public void setLoggedInUser(LoggedInUser loggedInUser) {
         this.loggedInUser = loggedInUser;
     }
 
+    /**
+     * set a new view
+     * @param view the new view
+     */
     public void setView(RegisterPlayerView view) {
         this.view = view;
     }
 
+    /**
+     * clear the view
+     */
     public void clearView() {
         this.view = null;
     }
 
+    /**
+     * set the playerDAO
+     * @param playerDAO the new PlayerDAO
+     */
     public void setPlayerDAO(PlayerDAO playerDAO) {
         this.playerDAO = playerDAO;
     }

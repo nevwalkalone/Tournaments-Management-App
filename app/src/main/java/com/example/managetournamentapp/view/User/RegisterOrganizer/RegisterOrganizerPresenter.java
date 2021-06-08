@@ -103,7 +103,6 @@ public class RegisterOrganizerPresenter {
                 view.startOrganizerPage(title);
             }
         }
-
     }
 
     /**

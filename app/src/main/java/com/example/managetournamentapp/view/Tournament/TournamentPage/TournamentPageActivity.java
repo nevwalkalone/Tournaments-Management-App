@@ -53,11 +53,12 @@ public class TournamentPageActivity extends AppCompatActivity implements Tournam
         btnTournamentGames.setOnClickListener(v -> viewModel.getPresenter().onTournamentGames());
         btnTournamentTeams.setOnClickListener(v -> viewModel.getPresenter().onTournamentTeams());
         btnHome.setOnClickListener(v -> viewModel.getPresenter().onHomePage());
-
     }
 
-
-
+    /**
+     * when the "info" button is pressed
+     * the tournament info activity starts
+     */
     @Override
     public void startTournamentInfo() {
         Intent intent = new Intent(TournamentPageActivity.this, TournamentInfoActivity.class);
@@ -65,6 +66,10 @@ public class TournamentPageActivity extends AppCompatActivity implements Tournam
         startActivity(intent);
     }
 
+    /**
+     * when the "teams" button is pressed
+     * the participating teams activity starts
+     */
     @Override
     public void startTeamsParticipating() {
         Intent intent = new Intent(TournamentPageActivity.this, ParticipatingTeamsActivity.class);
@@ -72,6 +77,10 @@ public class TournamentPageActivity extends AppCompatActivity implements Tournam
         startActivity(intent);
     }
 
+    /**
+     * when the "games" button is pressed
+     * the tournament rounds activity starts
+     */
     @Override
     public void startTournamentGames() {
         Intent intent = new Intent(TournamentPageActivity.this, TournamentRoundsActivity.class);
@@ -79,6 +88,11 @@ public class TournamentPageActivity extends AppCompatActivity implements Tournam
         startActivity(intent);
     }
 
+    /**
+     * what happens when the homepage button is pressed
+     * @param isPlayer is true if the logged in user is a player
+     * @param name is the name of a player. or the title of an organizer
+     */
     @Override
     public void backToHomePage(boolean isPlayer, String name) {
         if (isPlayer){

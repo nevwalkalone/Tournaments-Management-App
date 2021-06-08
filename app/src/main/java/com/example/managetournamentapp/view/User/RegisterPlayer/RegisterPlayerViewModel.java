@@ -15,17 +15,25 @@ public class RegisterPlayerViewModel extends ViewModel {
 
     RegisterPlayerPresenter presenter;
 
-
+    /**
+     * the default constructor
+     */
     public RegisterPlayerViewModel() {
         presenter = new RegisterPlayerPresenter();
         presenter.setLoggedInUser( new MemoryLoggedInUser());
         presenter.setPlayerDAO(new PlayerDAOMemory());
     }
 
+    /** get the presenter
+     * @return the RegisterPlayerPresenter instance
+     */
     public RegisterPlayerPresenter getPresenter() {
         return presenter;
     }
 
+    /**
+     * clear the view of the presenter
+     */
     @Override
     protected void onCleared() {
         super.onCleared();

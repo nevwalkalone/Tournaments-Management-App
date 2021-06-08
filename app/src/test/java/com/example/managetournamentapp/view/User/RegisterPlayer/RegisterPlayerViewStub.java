@@ -112,7 +112,8 @@ public class RegisterPlayerViewStub implements RegisterPlayerView{
     }
 
     @Override
-    public void startPlayerPage() {
+    public void startPlayerPage(String username) {
 
     }
+
 }

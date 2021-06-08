@@ -19,11 +19,18 @@ public class ParticipatingTeamsPresenter {
     private ArrayList<Team> results = new ArrayList<>();
     private Tournament tournament;
 
+    /**
+     * default constructor
+     */
     public ParticipatingTeamsPresenter() {
     }
 
-    public void findParticipatingTeams(String tournamentName) {
-        tournament = tournamentDAO.find(tournamentName);
+    /**
+     * find the teams that participate in this tournament
+     * @param tournamentTitle the title of the tournament
+     */
+    public void findParticipatingTeams(String tournamentTitle) {
+        tournament = tournamentDAO.find(tournamentTitle);
         if (tournament == null) {
             return;
         }
@@ -34,30 +41,56 @@ public class ParticipatingTeamsPresenter {
         }
     }
 
+    /**
+     * set the tournamentDAO
+     * @param tournamentDAO the new TournamentDAO
+     */
     public void setTournamentDAO(TournamentDAO tournamentDAO) {
         this.tournamentDAO = tournamentDAO;
     }
 
+    /**
+     * get the teams that participate in this tournament
+     * @return the ArrayList of teams
+     */
     public ArrayList<Team> getResults() {
         return results;
     }
 
+    /**
+     * what happens when the user presses on a team
+     * @param team the team
+     */
     public void onTeamSelected(Team team) {
         view.startTeamPage(team.getName());
     }
 
+    /**
+     * set a new view
+     * @param view the new view
+     */
     public void setView(ParticipatingTeamsView view) {
         this.view = view;
     }
 
+    /**
+     * clear the view
+     */
     public void clearView() {
         this.view = null;
     }
 
+    /**
+     * set the teamDAO
+     * @param teamDAO the new TeamDAO
+     */
     public void setTeamDAO(TeamDAO teamDAO) {
         this.teamDAO = teamDAO;
     }
 
+    /**
+     * direct the logged in user to their home page
+     */
     public void onHomePage(){
         User user = new MemoryLoggedInUser().getUser();
         if (user instanceof Player){

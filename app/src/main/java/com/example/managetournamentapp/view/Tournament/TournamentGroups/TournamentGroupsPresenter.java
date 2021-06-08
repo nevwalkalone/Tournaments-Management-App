@@ -12,47 +12,83 @@ public class TournamentGroupsPresenter {
     private Tournament tournament;
     private TournamentDAO tournamentDAO;
 
+    /**
+     * default constructor
+     */
+    public TournamentGroupsPresenter(){ }
 
-    public TournamentGroupsPresenter(){    }
-
-    public void findTournamentInfo(String tournamentName){
-        if(tournamentName ==null){
+    /**
+     * find the Tournament object
+     * @param tournamentTitle the title of the tournament
+     */
+    public void findTournamentInfo(String tournamentTitle){
+        if(tournamentTitle ==null){
             return;
         }
-        tournament = tournamentDAO.find(tournamentName);
+        tournament = tournamentDAO.find(tournamentTitle);
         if( tournament == null )
             return;
     }
 
+    /**
+     * when the user presses on a group
+     * @param index the index of the group
+     */
     public void onGroup(int index){
         view.showPopup(index);
     }
 
+    /**
+     * show the games of a group
+     * @param index the index of the group
+     */
     public void onGames(int index){
         view.showGroupGames( tournament.getTitle(),tournament.getRounds().get(0).getTeamsNumber(), index  );
     }
 
+    /**
+     * show the rankings of a group
+     * @param index the index of the group
+     */
     public void onRankings(int index){
         view.showGroupRankings( tournament.getTitle(),tournament.getRounds().get(0).getTeamsNumber(), index  );
     }
 
+    /**
+     * hide the button of a group
+     * if this group doesn't exist in the tournament
+     */
     public void findAccess(){
         view.changesOfAccess(tournament.getRounds().get(0).getGroups().size() );
     }
 
-
+    /**
+     * set the tournamentDAO
+     * @param tournamentDAO the new TournamentDAO
+     */
     public void setTournamentDAO(TournamentDAO tournamentDAO) {
         this.tournamentDAO = tournamentDAO;
     }
 
+    /**
+     * set a new view
+     * @param view the new view
+     */
     public void setView(TournamentGroupsView view) {
         this.view = view;
     }
 
+    /**
+     * clear the view
+     */
     public void clearView(){
         this.view = null;
     }
 
+
+    /**
+     * direct the logged in user to their home page
+     */
     public void onHomePage(){
         User user = new MemoryLoggedInUser().getUser();
         if (user instanceof Player){

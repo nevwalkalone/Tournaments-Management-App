@@ -28,6 +28,14 @@ public class RoundGamesPresenter {
 
     public RoundGamesPresenter(){}
 
+    /**
+     * find the games in this round
+     * @param tournamentTitle the title of the tournament
+     * @param roundTeamsNumber the number of teams in this tournament
+     * @param specificGroup is the index of the specific group  if we
+     *                      don't want to search in every group of the round
+     *                      or else it takes the value -1
+     */
     public void findGames(String tournamentTitle, int roundTeamsNumber, int specificGroup){
         if (tournamentTitle==null)
             return;
@@ -57,14 +65,14 @@ public class RoundGamesPresenter {
             System.out.println(group.getGames());
             results.addAll(group.getGames());
         }
+            }
 
 
-
-    }
-
-
+    /**
+     * what happens when the user presses on a game
+     * @param game the game that was pressed on
+     */
     public void onPressed(Game game){
-
         if ( hasAccess)
             if (game.isFinished())
                 view.showToast("THE SCORE HAS ALREADY BEEN SET");
@@ -74,6 +82,13 @@ public class RoundGamesPresenter {
                 view.showPopup(game);
     }
 
+    /**
+     * what happens when the organizer presses "save"
+     * on the popup
+     * @param game the game that was set
+     * @param scoreA the score of the first team
+     * @param scoreB the score of the second teams
+     */
     public void onSave(Game game, String scoreA, String scoreB){
         if (scoreA==null || scoreA.isEmpty() || scoreB==null || scoreB.isEmpty() )
             return;
@@ -85,12 +100,21 @@ public class RoundGamesPresenter {
         view.recreateView();
     }
 
+    /**
+     * if the current round just finished then
+     * promote the winners of this round
+     * to the next round
+     */
     public void checkIfFinished(){
         if (currentRound.allGamesFinished() && currentRoundIndex<tournament.getRounds().size()-1){
             tournament.getRounds().get( currentRoundIndex+1 ).setup( currentRound.getRoundWinners() );
         }
     }
 
+    /**
+     * find out if the logged in user
+     * is the organizer of this tournament
+     */
     public void findAccess(){
         hasAccess =false;
         if ( loggedInUser.getUser() != null )
@@ -99,26 +123,48 @@ public class RoundGamesPresenter {
                     hasAccess = true;
     }
 
+    /**
+     * get the games of this round
+     * @return the ArrayList of games in this round
+     */
     public ArrayList<Game> getResults() {
         return results;
     }
 
+    /**
+     * set the loggedInUser
+     * @param loggedInUser the new LoggedInUser
+     */
     public void setLoggedInUser(LoggedInUser loggedInUser) {
         this.loggedInUser = loggedInUser;
     }
 
+    /**
+     * set the tournamentDAO
+     * @param tournamentDAO the new TournamentDAO
+     */
     public void setTournamentDAO(TournamentDAO tournamentDAO) {
         this.tournamentDAO = tournamentDAO;
     }
 
+    /**
+     * set a new view
+     * @param view the new view
+     */
     public void setView(RoundGamesView view) {
         this.view = view;
     }
 
+    /**
+     * clear the view
+     */
     public void clearView(){
         this.view = null;
     }
 
+    /**
+     * direct the logged in user to their home page
+     */
     public void onHomePage(){
         User user = loggedInUser.getUser();
         if (loggedInUser.getUser() instanceof Player){

@@ -64,7 +64,7 @@ public class BrowsingActivity extends AppCompatActivity implements BrowsingView,
 
     /**
      * get the list of all the tournaments
-     * @return the list of tournaments
+     * @return the ArrayList of tournaments
      */
     @Override
     public ArrayList<Tournament> getTournamentList() {

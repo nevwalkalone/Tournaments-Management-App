@@ -12,57 +12,98 @@ public class TournamentRoundsPresenter {
     private Tournament tournament;
     private TournamentDAO tournamentDAO;
 
-    public TournamentRoundsPresenter(){
+    /**
+     * default constructor
+     */
+    public TournamentRoundsPresenter(){}
 
-    }
-
-    public void findTournamentInfo(String tournamentName){
-        if(tournamentName ==null){
+    /**
+     * find the
+     * @param tournamentTitle the title of the tournament
+     */
+    public void findTournamentInfo(String tournamentTitle){
+        if(tournamentTitle ==null){
             return;
         }
-        tournament = tournamentDAO.find(tournamentName);
+        tournament = tournamentDAO.find(tournamentTitle);
         if( tournament == null )
             return;
-
     }
 
+    /**
+     * hide the button of a round
+     * if this round doesn't exist in the tournament
+     */
     public void findAccess(){
         view.changesOfAccess(tournament.getMAX_TEAMS_NUMBER());
     }
 
+    /**
+     * the user wants to explore the "group" stage (1st round)
+     * the tournament groups activity starts
+     */
     public void onGroups(){
         view.showGroups(tournament.getTitle(),tournament.getMAX_TEAMS_NUMBER());
     }
 
+    /**
+     * the user wants to explore the round of 16
+     * the round games activity starts
+     */
     public void on16(){
-
         view.showRoundGames(tournament.getTitle(),16 );
     }
 
+    /**
+     * the user wants to explore the round of 8
+     * the round games activity starts
+     */
     public void on8(){
         view.showRoundGames(tournament.getTitle(),8);
     }
 
+    /**
+     * the user wants to explore the semifinals round
+     * the round games activity starts
+     */
     public void onSemifinals(){
         view.showRoundGames(tournament.getTitle(),4);
     }
 
+    /**
+     * the user wants to explore the final round
+     * the round games activity starts
+     */
     public void onFinal(){
         view.showRoundGames(tournament.getTitle(),2);
     }
 
+    /**
+     * set the tournamentDAO
+     * @param tournamentDAO the new TournamentDAO
+     */
     public void setTournamentDAO(TournamentDAO tournamentDAO) {
         this.tournamentDAO = tournamentDAO;
     }
 
+    /**
+     * set a new view
+     * @param view the new view
+     */
     public void setView(TournamentRoundsView view) {
         this.view = view;
     }
 
+    /**
+     * clear the view
+     */
     public void clearView(){
         this.view = null;
     }
 
+    /**
+     * direct the logged in user to their home page
+     */
     public void onHomePage(){
         User user = new MemoryLoggedInUser().getUser();
         if (user instanceof Player){

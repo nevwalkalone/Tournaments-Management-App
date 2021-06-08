@@ -90,7 +90,8 @@ public class RegisterOrganizerViewStub implements RegisterOrganizerView{
     }
 
     @Override
-    public void startOrganizerPage() {
+    public void startOrganizerPage(String title) {
 
     }
+
 }

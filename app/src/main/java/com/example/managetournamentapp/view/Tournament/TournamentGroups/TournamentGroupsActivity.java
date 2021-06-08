@@ -63,12 +63,26 @@ public class TournamentGroupsActivity extends AppCompatActivity implements Tourn
         viewModel.getPresenter().findAccess();
     }
 
+    /**
+     * when the user presses on a group
+     * a popup is shown, where he can choose to view the
+     * games or the rankings of this group
+     * @param index the index of the group that was chosen
+     */
     @Override
     public void showPopup(int index){
         POPUP_ACTION = showPopUp(R.layout.group_action_popup, R.id.games_button, R.id.rankings_button, index);
         POPUP_ACTION.show();
     }
 
+    /**
+     * create the popup
+     * @param layoutId the layout of the popup
+     * @param btn1 the first button
+     * @param btn2 the second button
+     * @param index the index of the group that was chosen
+     * @return the AlertDialog that will be shown
+     */
     public AlertDialog showPopUp(int layoutId, int btn1, int btn2, int index) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         View customLayout = getLayoutInflater().inflate(layoutId, null);
@@ -82,14 +96,25 @@ public class TournamentGroupsActivity extends AppCompatActivity implements Tourn
         return dialog;
     }
 
+    /**
+     * hide the button of a group
+     * if this group doesn't exist in the tournament
+     * @param groupsNumber the number of groups in the first round
+     */
     @Override
     public void changesOfAccess(int groupsNumber) {
         for (int i=groupsNumber;i<groupButtons.size();i++)
             groupButtons.get(i).setVisibility(View.GONE);
     }
 
+    /**
+     * show the games of a group
+     * @param tournamentTitle the title of the tournament
+     * @param roundTeamsNumber the number of the teams in this round
+     * @param index the index of the particular group
+     */
     @Override
-    public void showGroupGames(String tournamentGame, int roundTeamsNumber, int index) {
+    public void showGroupGames(String tournamentTitle, int roundTeamsNumber, int index) {
         Intent intent = new Intent(TournamentGroupsActivity.this, RoundGamesActivity.class);
         intent.putExtra(TOURNAMENT_TITLE_EXTRA, tournamentTitle);
         intent.putExtra(ROUND_TEAMS_EXTRA, String.valueOf(roundTeamsNumber));
@@ -97,14 +122,25 @@ public class TournamentGroupsActivity extends AppCompatActivity implements Tourn
         startActivity(intent);
     }
 
+    /**
+     * show the rankings of the teams in a group
+     * @param tournamentTitle the title of the tournament
+     * @param roundTeamsNumber the number of the teams in this round
+     * @param index the index of the particular group
+     */
     @Override
-    public void showGroupRankings(String tournamentGame, int roundTeamsNumber, int index) {
+    public void showGroupRankings(String tournamentTitle, int roundTeamsNumber, int index) {
         Intent intent = new Intent(TournamentGroupsActivity.this, GroupRankingsActivity.class);
         intent.putExtra(TOURNAMENT_TITLE_EXTRA, tournamentTitle);
         intent.putExtra(SPECIFIC_GROUP_EXTRA, String.valueOf(index));
         startActivity(intent);
     }
 
+    /**
+     * what happens when the homepage button is pressed
+     * @param isPlayer is true if the logged in user is a player
+     * @param name is the name of a player. or the title of an organizer
+     */
     @Override
     public void backToHomePage(boolean isPlayer, String name) {
         if (isPlayer){

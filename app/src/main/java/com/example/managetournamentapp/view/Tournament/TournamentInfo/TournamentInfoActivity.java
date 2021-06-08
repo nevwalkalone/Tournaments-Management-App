@@ -47,46 +47,82 @@ public class TournamentInfoActivity extends AppCompatActivity implements Tournam
        viewModel.getPresenter().findAccess();
     }
 
+    /**
+     * set the contents in the teams number edit text
+     * @param teamsNumber the number of teams
+     */
     @Override
     public void setTeamsNumber(String teamsNumber) {
         ((TextView)findViewById(R.id.text_teams_number)).setText(teamsNumber);
     }
 
+    /**
+     * set the contents in the location edit text
+     * @param location the new location
+     */
     @Override
     public void setLocation(String location) {
         ((TextView)findViewById(R.id.text_location)).setText(location);
     }
 
+    /**
+     * get the contents of the location edit text
+     * @return the given finish date
+     */
     @Override
     public void setStartDate(String startDate) {
         ((TextView)findViewById(R.id.text_start_date)).setText(startDate);
     }
 
+    /**
+     * get the contents of the finish date edit text
+     * @return the given finish date
+     */
     @Override
     public void setFinishDate(String finishDate) {
         ((TextView)findViewById(R.id.text_finish_date)).setText(finishDate);
     }
 
+    /**
+     * set the contents in the sport edit text
+     * @param sportType the new sport
+     */
     @Override
     public void setsportType(String sportType) {
         ((TextView)findViewById(R.id.text_sport_type)).setText(sportType);
     }
 
+    /**
+     * set the contents in the title edit text
+     * @param title the new title
+     */
     @Override
     public void setTitle(String title) {
         ((TextView)findViewById(R.id.text_title)).setText(title);
     }
 
+    /**
+     * set the contents in the age division edit text
+     * @param ageDivision the new age division
+     */
     @Override
     public void setAgeDivision(String ageDivision) {
         ((TextView)findViewById(R.id.text_age_division)).setText(ageDivision);
     }
 
+    /**
+     * set the contents in the description edit text
+     * @param description the new description
+     */
     @Override
     public void setDescription(String description) {
         ((TextView)findViewById(R.id.text_description)).setText(description);
     }
 
+    /**
+     * when the organizer chooses to edit this tournament
+     * the create tournament activity is started
+     */
     @Override
     public void startEditTournament() {
         Intent intent = new Intent(TournamentInfoActivity.this, CreateTournamentActivity.class);
@@ -94,6 +130,10 @@ public class TournamentInfoActivity extends AppCompatActivity implements Tournam
         startActivity(intent);
     }
 
+    /**
+     * when the organizer presses
+     * "yes" on the confirmation
+     */
     @Override
     public void yesDeleteTournament(String title) {
         Intent intent = new Intent(TournamentInfoActivity.this, OrganizerPageActivity.class);
@@ -102,22 +142,39 @@ public class TournamentInfoActivity extends AppCompatActivity implements Tournam
         startActivity(intent);
     }
 
+    /**
+     * show a toast on the screen
+     * @param txt the message of the toast
+     */
     @Override
     public void showToast(String txt) {
         Toast.makeText(this,txt, Toast.LENGTH_SHORT).show();
     }
 
+    /**
+     * when the organizer presses
+     * "no" on the confirmation
+     */
     @Override
     public void noDeleteTournament() {
         POPUP_ACTION.dismiss();
     }
 
+    /**
+     * hide the edit and delete buttons
+     * if the user viewing the page is not
+     * the organizer of this tournament
+     */
     @Override
     public void changesOfAccess() {
         btnEditTournament.setVisibility(View.GONE);
         btnDeleteTournament.setVisibility(View.GONE);
     }
 
+    /**
+     * ask for a confirmation before
+     * deleting a tournament
+     */
     @Override
     public void deleteConfirmation() {
         POPUP_ACTION = showPopUp(R.layout.tournament_delete_popup, "Do you really want to delete this Tournament?", R.id.no_delete, R.id.yes_delete);
@@ -125,7 +182,14 @@ public class TournamentInfoActivity extends AppCompatActivity implements Tournam
         POPUP_ACTION.show();
     }
 
-
+    /**
+     * show a popup on the screen
+     * @param layoutId the layout of the popup
+     * @param msg the message of the popup
+     * @param btn1 the first button
+     * @param btn2 the second button
+     * @return an AlertDialog that will be shown on the screen
+     */
     public AlertDialog showPopUp(int layoutId, String msg, int btn1, int btn2) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         View customLayout = getLayoutInflater().inflate(layoutId, null);
@@ -139,9 +203,7 @@ public class TournamentInfoActivity extends AppCompatActivity implements Tournam
         Button firstButton = (Button) customLayout.findViewById(btn1);
         //yes delete
         Button secondButton = (Button) customLayout.findViewById(btn2);
-
         textMsg.setText(msg);
-
         firstButton.setOnClickListener(v->viewModel.getPresenter().onNoDeleteTournament());
         secondButton.setOnClickListener(v->viewModel.getPresenter().onYesDeleteTournament());
         return dialog;

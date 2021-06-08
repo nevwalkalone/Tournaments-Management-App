@@ -19,6 +19,11 @@ public class GroupRankingsPresenter {
     private ArrayList<Team> results = new ArrayList<>();
     private Tournament tournament;
 
+    /**
+     * find the list of the teams in the group
+     * @param tournamentName the name of the tournament
+     * @param specificGroup the index of the group
+     */
     public void findTeams(String tournamentName, int specificGroup){
         if (tournamentName == null)
             return;
@@ -34,22 +39,41 @@ public class GroupRankingsPresenter {
         results = new ArrayList<>(Arrays.asList( reversed.get(3),reversed.get(2),reversed.get(1),reversed.get(0) ) );
     }
 
+    /**
+     * set the tournamentDAO
+     * @param tournamentDAO the new TournamentDAO
+     */
     public void setTournamentDAO(TournamentDAO tournamentDAO) {
         this.tournamentDAO = tournamentDAO;
     }
 
+
+    /**
+     * get the teams of the group
+     * @return the ArrayList of teams
+     */
     public ArrayList<Team> getResults() {
         return results;
     }
 
+    /**
+     * set a new view
+     * @param view the new view
+     */
     public void setView(GroupRankingsView view) {
         this.view = view;
     }
 
+    /**
+     * clear the view
+     */
     public void clearView(){
         this.view = null;
     }
 
+    /**
+     * direct the logged in user to their home page
+     */
     public void onHomePage(){
         User user = new MemoryLoggedInUser().getUser();
         if (user instanceof Player){

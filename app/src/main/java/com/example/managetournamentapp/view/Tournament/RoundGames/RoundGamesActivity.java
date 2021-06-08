@@ -67,13 +67,26 @@ public class RoundGamesActivity extends AppCompatActivity implements GamesListFr
         }
     }
 
-
+    /**
+     * when the organizer presses on a game
+     * they can set the score of the game
+     * @param game the game that was pressed on
+     */
     @Override
     public void showPopup(Game game) {
         POPUP_ACTION = showPopUp(R.layout.game_score_popup, R.id.save_button, R.id.txt_scoreA, R.id.txt_scoreB, game);
         POPUP_ACTION.show();
     }
 
+    /**
+     * create the popup
+     * @param layoutId the layout of the popup
+     * @param btn1 the button of the popup
+     * @param txt1 the name of the first team
+     * @param txt2 the name of the second team
+     * @param game the game that was pressed on
+     * @return the AlertDialog that will be shown
+     */
     public AlertDialog showPopUp(int layoutId, int btn1, int txt1, int txt2, Game game) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         View customLayout = getLayoutInflater().inflate(layoutId, null);
@@ -84,27 +97,39 @@ public class RoundGamesActivity extends AppCompatActivity implements GamesListFr
         EditText edit1 = customLayout.findViewById(txt1);
         EditText edit2 = customLayout.findViewById(txt2);
         saveButton.setOnClickListener(v -> viewModel.getPresenter().onSave(game, edit1.getText().toString(), edit2.getText().toString()));
-
         return dialog;
     }
 
-
+    /**
+     * what happens when the user presses on a game
+     * @param item the game that was pressed on
+     */
     @Override
     public void onListFragmentInteraction(Game item) {
         viewModel.getPresenter().onPressed(item);
     }
 
+    /**
+     * get the games that will take place in this round
+     * @return the ArrayList of games in this round
+     */
     @Override
     public ArrayList<Game> getGamesList() {
         return viewModel.getPresenter().getResults();
     }
 
-
+    /**
+     * show a toast on the screen
+     * @param text the message of the toast
+     */
     @Override
     public void showToast(String text) {
         Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
     }
 
+    /**
+     * refresh the current activity
+     */
     @Override
     public void recreateView() {
         POPUP_ACTION.dismiss();
@@ -112,7 +137,11 @@ public class RoundGamesActivity extends AppCompatActivity implements GamesListFr
         recreate();
     }
 
-
+    /**
+     * what happens when the homepage button is pressed
+     * @param isPlayer is true if the logged in user is a player
+     * @param name is the name of a player. or the title of an organizer
+     */
     @Override
     public void backToHomePage(boolean isPlayer, String name) {
         if (isPlayer){

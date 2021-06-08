@@ -23,8 +23,8 @@ public class RegisterOrganizerViewModel extends ViewModel {
         presenter.setOrganizerDAO( new OrganizerDAOMemory());
     }
 
-    /**
-     * @return the presenter instance
+    /**get the presenter
+     * @return the RegisterOrganizerPresenter instance
      */
     public RegisterOrganizerPresenter getPresenter() {
         return presenter;

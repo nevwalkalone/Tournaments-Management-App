@@ -4,11 +4,6 @@ public class ParticipatingTeamsViewStub implements ParticipatingTeamsView {
     boolean onHome = false, onTeam = false;
 
     @Override
-    public void checkTeam() {
-
-    }
-
-    @Override
     public void startTeamPage(String teamname) {
         onTeam = true;
     }

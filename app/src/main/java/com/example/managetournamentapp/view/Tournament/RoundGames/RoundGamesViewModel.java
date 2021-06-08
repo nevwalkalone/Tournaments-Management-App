@@ -8,17 +8,26 @@ import com.example.managetournamentapp.memoryDao.TournamentDAOMemory;
 public class RoundGamesViewModel extends ViewModel {
     RoundGamesPresenter presenter;
 
+    /**
+     * the constructor
+     */
     public RoundGamesViewModel(){
         presenter = new RoundGamesPresenter();
         presenter.setTournamentDAO( new TournamentDAOMemory());
         presenter.setLoggedInUser(new MemoryLoggedInUser());
-
     }
 
+
+    /** get the presenter
+     * @return the RoundGamesPresenter instance
+     */
     public RoundGamesPresenter getPresenter(){
         return presenter;
     }
 
+    /**
+     * clear the view of the presenter
+     */
     @Override
     protected void onCleared() {
         super.onCleared();
