@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -39,6 +40,8 @@ public class TournamentRoundsActivity extends AppCompatActivity implements Tourn
         super.onCreate(savedInstanceState);
         tournamentTitle = this.getIntent().getStringExtra(TOURNAMENT_TITLE_EXTRA);
         setContentView(R.layout.activity_tournament_rounds);
+        TextView textView = (TextView) findViewById(R.id.text_tournament_name);
+        textView.setText(tournamentTitle);
 
         viewModel = new ViewModelProvider(this).get(TournamentRoundsViewModel.class);
         viewModel.getPresenter().setView(this);

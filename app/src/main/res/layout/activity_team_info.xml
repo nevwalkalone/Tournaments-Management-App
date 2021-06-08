@@ -23,7 +23,7 @@
             android:gravity="center">
 
             <TextView
-                android:text="Team Name"
+                android:text="@string/team_name_info"
                 android:layout_width="0dp"
                 android:layout_weight="0.75"
                 android:layout_height="wrap_content"
@@ -52,7 +52,7 @@
             android:gravity="center">
 
             <TextView
-                android:text="Colors"
+                android:text="@string/colors"
                 android:layout_width="0dp"
                 android:layout_weight="0.75"
                 android:layout_height="wrap_content"
@@ -81,7 +81,7 @@
             android:gravity="center">
 
             <TextView
-                android:text="Sport"
+                android:text="@string/sport"
                 android:layout_width="0dp"
                 android:layout_weight="0.75"
                 android:layout_height="wrap_content"
@@ -110,7 +110,7 @@
             android:gravity="center">
 
             <TextView
-                android:text="Age Division"
+                android:text="@string/age_division"
                 android:layout_width="0dp"
                 android:layout_weight="0.75"
                 android:layout_height="wrap_content"

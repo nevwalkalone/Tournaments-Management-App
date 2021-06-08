@@ -24,21 +24,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="                  " />
+                android:text="@string/nothing" />
 
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Start Date" />
+                android:text="@string/start_date" />
 
             <TextView
                 android:id="@+id/textView5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Finish Date" />
+                android:text="@string/finish_date" />
         </LinearLayout>
 
 
@@ -244,7 +244,7 @@
                 android:id="@+id/imageButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Bottom Gravity"
+                android:text="@string/bottom_gravity"
                 app:srcCompat="@drawable/ic_baseline_home_24"/>
 
         </RelativeLayout>

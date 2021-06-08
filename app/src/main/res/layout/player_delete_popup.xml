@@ -10,7 +10,7 @@
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Player Action"
+        android:text="@string/player_action"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="28sp"
@@ -41,7 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:text="NO"
+            android:text="@string/no"
             android:textColor="@color/white" />
 
         <Button
@@ -49,7 +49,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:text="YES"
+            android:text="@string/yes"
             android:textColor="@color/white" />
 
 

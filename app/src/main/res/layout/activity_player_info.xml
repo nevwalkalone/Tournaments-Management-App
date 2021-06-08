@@ -23,7 +23,7 @@
             android:gravity="center">
 
             <TextView
-                android:text="Username"
+                android:text="@string/username"
                 android:layout_width="0dp"
                 android:layout_weight="0.75"
                 android:layout_height="wrap_content"
@@ -53,7 +53,7 @@
             android:gravity="center">
 
             <TextView
-                android:text="Password"
+                android:text="@string/password"
                 android:layout_width="0dp"
                 android:layout_weight="0.75"
                 android:layout_height="wrap_content"
@@ -82,7 +82,7 @@
             android:gravity="center">
 
             <TextView
-                android:text="Name"
+                android:text="@string/name"
                 android:layout_width="0dp"
                 android:layout_weight="0.75"
                 android:layout_height="wrap_content"
@@ -111,7 +111,7 @@
             android:gravity="center">
 
             <TextView
-                android:text="Surname"
+                android:text="@string/surname"
                 android:layout_width="0dp"
                 android:layout_weight="0.75"
                 android:layout_height="wrap_content"
@@ -140,7 +140,7 @@
             android:gravity="center">
 
             <TextView
-                android:text="Phone number"
+                android:text="@string/phone_number"
                 android:layout_width="0dp"
                 android:layout_weight="0.75"
                 android:layout_height="wrap_content"
@@ -169,7 +169,7 @@
             android:gravity="center">
 
             <TextView
-                android:text="Email"
+                android:text="@string/email"
                 android:layout_width="0dp"
                 android:layout_weight="0.75"
                 android:layout_height="wrap_content"
@@ -198,7 +198,7 @@
             android:gravity="center">
 
             <TextView
-                android:text="Location"
+                android:text="@string/location"
                 android:layout_width="0dp"
                 android:layout_weight="0.75"
                 android:layout_height="wrap_content"
@@ -227,7 +227,7 @@
             android:gravity="center">
 
             <TextView
-                android:text="Birth Date"
+                android:text="@string/birth_date"
                 android:layout_width="0dp"
                 android:layout_weight="0.75"
                 android:layout_height="wrap_content"

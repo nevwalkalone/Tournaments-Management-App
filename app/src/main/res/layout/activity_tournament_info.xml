@@ -23,7 +23,7 @@
             android:gravity="center">
 
             <TextView
-                android:text="Title"
+                android:text="@string/title"
                 android:layout_width="0dp"
                 android:layout_weight="0.75"
                 android:layout_height="wrap_content"
@@ -52,7 +52,7 @@
             android:gravity="center">
 
             <TextView
-                android:text="Location"
+                android:text="@string/location"
                 android:layout_width="0dp"
                 android:layout_weight="0.75"
                 android:layout_height="wrap_content"
@@ -81,7 +81,7 @@
             android:gravity="center">
 
             <TextView
-                android:text="Description"
+                android:text="@string/description"
                 android:layout_width="0dp"
                 android:layout_weight="0.75"
                 android:layout_height="wrap_content"
@@ -110,7 +110,7 @@
             android:gravity="center">
 
             <TextView
-                android:text="Teams Number"
+                android:text="@string/teams_number"
                 android:layout_width="0dp"
                 android:layout_weight="0.75"
                 android:layout_height="wrap_content"
@@ -139,7 +139,7 @@
             android:gravity="center">
 
             <TextView
-                android:text="Start Date"
+                android:text="@string/start_date"
                 android:layout_width="0dp"
                 android:layout_weight="0.75"
                 android:layout_height="wrap_content"
@@ -168,7 +168,7 @@
             android:gravity="center">
 
             <TextView
-                android:text="Finish Date"
+                android:text="@string/finish_date"
                 android:layout_width="0dp"
                 android:layout_weight="0.75"
                 android:layout_height="wrap_content"
@@ -197,7 +197,7 @@
             android:gravity="center">
 
             <TextView
-                android:text="Sport Type"
+                android:text="@string/sport_type"
                 android:layout_width="0dp"
                 android:layout_weight="0.75"
                 android:layout_height="wrap_content"
@@ -226,7 +226,7 @@
             android:gravity="center">
 
             <TextView
-                android:text="Age Division"
+                android:text="@string/age_division"
                 android:layout_width="0dp"
                 android:layout_weight="0.75"
                 android:layout_height="wrap_content"

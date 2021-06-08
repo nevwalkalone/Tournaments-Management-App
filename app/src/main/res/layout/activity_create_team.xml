@@ -39,7 +39,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Team name"
+                android:text="@string/team_name"
                 android:textSize="18sp" />
 
             <EditText
@@ -69,7 +69,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Team color"
+                android:text="@string/team_color"
                 android:textSize="18sp" />
 
             <EditText
@@ -98,7 +98,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Sport"
+                android:text="@string/sport"
                 android:textSize="18sp" />
 
             <Spinner
@@ -128,7 +128,7 @@
                 android:id="@+id/saveTeambtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="SAVE"
+                android:text="@string/save_team"
                 android:textColor="@color/white" />
 
         </LinearLayout>

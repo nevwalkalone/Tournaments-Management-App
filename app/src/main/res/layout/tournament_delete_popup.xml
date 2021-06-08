@@ -30,7 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:text="NO"
+            android:text="@string/no"
             android:textColor="@color/white" />
 
         <Button
@@ -38,7 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:text="YES"
+            android:text="@string/yes"
             android:textColor="@color/white" />
 
 

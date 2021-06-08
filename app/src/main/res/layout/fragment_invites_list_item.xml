@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/text_margin"
         android:layout_weight="1"
-        android:text="Όνομα ομάδας"
+        android:text="@string/onoma_omadas"
         android:textAppearance="?attr/textAppearanceListItem" />
 
     <ImageButton

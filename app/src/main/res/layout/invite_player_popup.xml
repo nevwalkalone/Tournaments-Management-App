@@ -29,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:text="INVITE"
+            android:text="@string/invite"
             android:textColor="@color/white" />
 
         <Button
@@ -37,7 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:text="INFO"
+            android:text="@string/info"
             android:textColor="@color/white" />
 
 

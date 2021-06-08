@@ -11,7 +11,7 @@
         android:id="@+id/text_player_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="NAME"
+        android:text="@string/name_player"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="28sp"
@@ -31,7 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:text="ACCOUNT"
+            android:text="@string/account_player"
             android:textColor="@color/white">
 
         </Button>
@@ -41,7 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:text="MY TEAMS"
+            android:text="@string/my_teams"
             android:textColor="@color/white">
 
         </Button>
@@ -51,7 +51,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:text="MY INVITES"
+            android:text="@string/my_invites"
             android:textColor="@color/white">
 
         </Button>
@@ -62,7 +62,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:text="LOG OUT"
+            android:text="@string/log_out"
             android:textColor="@color/white">
 
         </Button>

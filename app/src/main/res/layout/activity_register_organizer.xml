@@ -31,7 +31,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Username"
+                android:text="@string/username"
                 android:textSize="18sp" />
 
             <EditText
@@ -61,7 +61,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Password"
+                android:text="@string/password"
                 android:textSize="18sp" />
 
             <EditText
@@ -91,7 +91,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Name"
+                android:text="@string/name"
                 android:textSize="18sp" />
 
             <EditText
@@ -121,7 +121,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Surname"
+                android:text="@string/surname"
                 android:textSize="18sp" />
 
             <EditText
@@ -151,7 +151,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Phone Number"
+                android:text="@string/phone_number_organizer"
                 android:textSize="18sp" />
 
             <EditText
@@ -181,7 +181,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="E-mail"
+                android:text="@string/e_mail"
                 android:textSize="18sp" />
 
             <EditText
@@ -212,7 +212,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Birth Date"
+                android:text="@string/birth_date"
                 android:textSize="18sp" />
 
             <EditText
@@ -242,7 +242,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Title"
+                android:text="@string/title"
                 android:textSize="18sp" />
 
             <EditText
@@ -266,7 +266,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
-                android:text="SAVE" />
+                android:text="@string/save_organizer" />
         </LinearLayout>
 
     </LinearLayout>
