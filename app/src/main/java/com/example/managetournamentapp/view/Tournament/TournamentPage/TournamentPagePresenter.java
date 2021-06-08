@@ -1,15 +1,14 @@
 package com.example.managetournamentapp.view.Tournament.TournamentPage;
 
-import com.example.managetournamentapp.dao.LoggedInUser;
+
 import com.example.managetournamentapp.domain.Organizer;
 import com.example.managetournamentapp.domain.Player;
-import com.example.managetournamentapp.domain.Tournament;
 import com.example.managetournamentapp.domain.User;
 import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
 
 public class TournamentPagePresenter {
     private TournamentPageView view;
-    private LoggedInUser loggedInUser;
+
 
     /**
      * the default constructor
@@ -53,16 +52,18 @@ public class TournamentPagePresenter {
     }
 
     /**
-     * direct the logged in user to their home page
+     * what happens when the homepage button is pressed
      */
     public void onHomePage(){
-        loggedInUser = new MemoryLoggedInUser();
-        User user = loggedInUser.getUser();
-        if (loggedInUser.getUser() instanceof Player){
-            view.backToHomePage(true,user.getCredentials().getUsername());
+        User user = new MemoryLoggedInUser().getUser();
+        if (user == null){
+            view.backToHomePage(true, false,"");
+        }
+        else if (user instanceof Player){
+            view.backToHomePage(false,true,user.getCredentials().getUsername());
         }
         else{
-            view.backToHomePage(false,((Organizer)user).getTitle());
+            view.backToHomePage(false,false,((Organizer)user).getTitle());
         }
     }
 }

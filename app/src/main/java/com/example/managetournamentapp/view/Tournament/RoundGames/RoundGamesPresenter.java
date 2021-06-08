@@ -168,14 +168,18 @@ public class RoundGamesPresenter {
     }
 
     /**
-     * direct the logged in user to their home page
+     * what happens when the homepage button is pressed
      */
-    public void onHomePage() {
+    public void onHomePage(){
         User user = loggedInUser.getUser();
-        if (loggedInUser.getUser() instanceof Player) {
-            view.backToHomePage(true, user.getCredentials().getUsername());
-        } else {
-            view.backToHomePage(false, ((Organizer) user).getTitle());
+        if (user == null){
+            view.backToHomePage(true, false,"");
+        }
+        else if (user instanceof Player){
+            view.backToHomePage(false,true,user.getCredentials().getUsername());
+        }
+        else{
+            view.backToHomePage(false,false,((Organizer)user).getTitle());
         }
     }
 }

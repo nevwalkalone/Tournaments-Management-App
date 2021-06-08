@@ -15,6 +15,7 @@ import com.example.managetournamentapp.view.Organizer.OrganizerPage.OrganizerPag
 import com.example.managetournamentapp.view.Player.PlayerPage.PlayerPageActivity;
 import com.example.managetournamentapp.view.Tournament.RoundGames.RoundGamesActivity;
 import com.example.managetournamentapp.view.Tournament.TournamentGroups.TournamentGroupsActivity;
+import com.example.managetournamentapp.view.User.Browsing.BrowsingActivity;
 
 public class TournamentRoundsActivity extends AppCompatActivity implements TournamentRoundsView {
     public static final String TOURNAMENT_TITLE_EXTRA = "tournament_title_extra";
@@ -109,16 +110,22 @@ public class TournamentRoundsActivity extends AppCompatActivity implements Tourn
 
     /**
      * what happens when the homepage button is pressed
-     * @param isPlayer is true if the logged in user is a player
-     * @param name is the name of a player. or the title of an organizer
+     * @param noLogin boolean parameter, if true the user has not logged in
+     * @param isPlayer boolean parameter,if true the user is a player
+     * @param name name of the player or title of the organizer
      */
     @Override
-    public void backToHomePage(boolean isPlayer, String name) {
-        if (isPlayer){
+    public void backToHomePage(boolean noLogin, boolean isPlayer, String name) {
+        if (noLogin){
+            Intent intent = new Intent(this, BrowsingActivity.class);
+            startActivity(intent);
+        }
+        else if (isPlayer){
             Intent intent = new Intent(this, PlayerPageActivity.class);
             intent.putExtra(PLAYER_USERNAME_EXTRA,name);
             startActivity(intent);
         }
+
         else{
             Intent intent = new Intent (this, OrganizerPageActivity.class);
             intent.putExtra(ORGANIZER_TITLE_EXTRA, name);

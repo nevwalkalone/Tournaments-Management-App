@@ -126,13 +126,15 @@ public class JoinedPlayersPresenter {
      * what happens when the homepage button is pressed
      */
     public void onHomePage(){
-        loggedInUser = new MemoryLoggedInUser();
         User user = loggedInUser.getUser();
-        if (loggedInUser.getUser() instanceof Player){
-            view.backToHomePage(true,user.getCredentials().getUsername());
+        if (user == null){
+            view.backToHomePage(true, false,"");
+        }
+        else if (user instanceof Player){
+            view.backToHomePage(false,true,user.getCredentials().getUsername());
         }
         else{
-            view.backToHomePage(false,((Organizer)user).getTitle());
+            view.backToHomePage(false,false,((Organizer)user).getTitle());
         }
     }
 
