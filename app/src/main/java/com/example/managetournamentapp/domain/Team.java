@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 /**
- * Developed for the purposes of University Lesson "Software Engineering" at AUEB
+ * Developed for the purposes of the Course "Software Engineering" at AUEB
  * Athens University of Economics and Business
  * 2020-2021
  */
