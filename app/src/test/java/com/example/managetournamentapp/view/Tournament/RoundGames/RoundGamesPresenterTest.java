@@ -33,8 +33,8 @@ public class RoundGamesPresenterTest {
 
     @Test
     public void findGames() {
-        presenter.findGames("TOURNOUA1", 4, -1);
-        Assert.assertEquals(2, presenter.getResults().size());
+        presenter.findGames("TOURNOUA1", 8, -1);
+        Assert.assertEquals(12, presenter.getResults().size());
 
     }
 
@@ -44,15 +44,22 @@ public class RoundGamesPresenterTest {
         presenter.onPressed(presenter.getResults().get(0));
         Assert.assertFalse(((RoundGamesViewStub) view).onPop);
 
+        new MemoryLoggedInUser().setUser(new OrganizerDAOMemory().findByTitle("ESKA"));
+        presenter.findAccess();
+        presenter.findGames("TOURNOUA1", 8, 0);
+        presenter.onPressed(presenter.getResults().get(0));
+        Assert.assertTrue(((RoundGamesViewStub) view).onPop);
+
 
     }
 
     @Test
     public void onSaveTest() {
         presenter.findGames("TOURNOUA1", 8, 0);
-        System.out.println(presenter.getResults().get(0).getTeamA());
         presenter.onSave(presenter.getResults().get(0), "2", "0");
         Assert.assertTrue(presenter.getResults().get(0).isFinished());
+        Assert.assertEquals(2, presenter.getResults().get(0).getScoreA());
+        Assert.assertEquals(0, presenter.getResults().get(0).getScoreB());
 
         //GIVE ACCESS TO ORGANIZER
         new MemoryLoggedInUser().setUser(new OrganizerDAOMemory().findByTitle("ESKA"));

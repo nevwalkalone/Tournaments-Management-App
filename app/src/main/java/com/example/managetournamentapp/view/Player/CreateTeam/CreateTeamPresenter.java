@@ -35,6 +35,7 @@ public class CreateTeamPresenter {
 
     /**
      * show the previous info of the team, if we are on edit mode
+     *
      * @param teamName the name of the team
      */
     public void showPreviousInfo(String teamName) {
@@ -60,16 +61,23 @@ public class CreateTeamPresenter {
 
         if (name.length() < 5 || name.length() > 20 || !validateName(name)) {
             view.showPopUp(view, "Name must be at least 5 chars and no longer than 20 chars!");
-        }
-        else if (colors.length() < 3 || colors.length() > 20 || !validateName(colors)) {
+        } else if (colors.length() < 3 || colors.length() > 20 || !validateName(colors)) {
             view.showPopUp(view, "Color must be at least 3 chars and no longer than 20 chars!");
         } else {
             // IF TEAM IS NEW!
             if (connectedTeam == null) {
+                if (checkTeamName(name, connectedTeam)) {
+                    view.showPopUp(view, "Team name is already in use! Try a new one.");
+                    return;
+                }
                 Player player = ((Player) (new MemoryLoggedInUser()).getUser());
                 Team team = new Team(name, new Sport(sportType), player.getAgeDivision(), player, colors);
                 teamDAO.save(team);
             } else {
+                if (checkTeamName(name, connectedTeam)) {
+                    view.showPopUp(view, "Team name is already in use! Try a new one.");
+                    return;
+                }
                 connectedTeam.setName(name);
                 connectedTeam.setColors(colors);
             }
@@ -79,6 +87,7 @@ public class CreateTeamPresenter {
 
     /**
      * get the sport types
+     *
      * @return the ArrayList of sport types
      */
     public ArrayList<String> getSportTypes() {
@@ -87,6 +96,7 @@ public class CreateTeamPresenter {
 
     /**
      * finds the index of a sport type in the sportType ArrayList
+     *
      * @param sportType the sport type
      * @return the index of the sport type
      */
@@ -100,6 +110,7 @@ public class CreateTeamPresenter {
 
     /**
      * convert the tournament type enum to an arraylist
+     *
      * @return the ArrayList of the sport types
      */
     private ArrayList<String> findSportTypes() {
@@ -112,6 +123,7 @@ public class CreateTeamPresenter {
 
     /**
      * set the teamDAO
+     *
      * @param teamDAO the new TeamDAO
      */
     public void setTeamDAO(TeamDAO teamDAO) {
@@ -120,6 +132,7 @@ public class CreateTeamPresenter {
 
     /**
      * set the player
+     *
      * @param player the player
      */
     public void setPlayer(Player player) {
@@ -128,6 +141,7 @@ public class CreateTeamPresenter {
 
     /**
      * set the playerDAO
+     *
      * @param playerDAO the new PlayerDAO
      */
     public void setPlayerDAO(PlayerDAO playerDAO) {
@@ -136,6 +150,7 @@ public class CreateTeamPresenter {
 
     /**
      * set a new view
+     *
      * @param view the new view
      */
     public void setView(CreateTeamView view) {
@@ -150,21 +165,31 @@ public class CreateTeamPresenter {
     }
 
     /**
-     *
      * @param name the name we want to check if it's valid.
      * @return true if the name is valid
      */
     public boolean validateName(String name) {
-        String valid = "^[a-zA-Z]*$";
+        String valid = "^[a-zA-Z0-9]+$";
         Pattern pattern = Pattern.compile(valid);
         Matcher matcher = pattern.matcher(name);
         return matcher.matches();
     }
 
     /**
+     * Checks if title is used by another team
+     *
+     * @param title title input
+     * @param team  current team
+     * @return true if title used by another team
+     */
+    public boolean checkTeamName(String title, Team team) {
+        return teamDAO.TitleIsUsed(title, team);
+    }
+
+    /**
      * what happens when the homepage button is pressed
      */
-    public void onHomePage(){
+    public void onHomePage() {
         User user = new MemoryLoggedInUser().getUser();
         view.backToHomePage(user.getCredentials().getUsername());
 

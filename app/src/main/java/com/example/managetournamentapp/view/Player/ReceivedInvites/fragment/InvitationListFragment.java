@@ -110,6 +110,7 @@ public class InvitationListFragment extends Fragment {
      * that the activity or the other fragments, can interact with the fragment.
      */
     public interface OnListFragmentInteractionListener {
+
         void onListFragmentInteraction(Invitation item);
 
         ArrayList<Invitation> getInvitationList();

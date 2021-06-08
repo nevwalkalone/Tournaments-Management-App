@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class SetDatesViewStub implements SetDatesView {
-    ArrayList<String> dates = new ArrayList<String>(Arrays.asList("08/08/2021", "08/08/2021", "08/08/2021", "08/08/2021", "08/08/2021", "08/08/2021"));
+    ArrayList<String> dates = new ArrayList<String>(Arrays.asList("15/05/2030", "16/05/2030", "17/05/2030", "18/05/2030", "19/05/2030", "20/05/2030"));
     boolean onSave = false, onHome = false;
 
     @Override

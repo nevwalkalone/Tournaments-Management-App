@@ -62,7 +62,7 @@ public class Tournament {
      * initialize the game dates for each round
      * @param dates the arraylist of dates
      */
-    public void initRounds(ArrayList<LocalDate> dates) {      //TODO dates = 2*maxteams - 1
+    public void initRounds(ArrayList<LocalDate> dates) {
         int teamsNumber = MAX_TEAMS_NUMBER;
         int firstIndex = 0;
         int lastIndex = MAX_TEAMS_NUMBER / 4 * 6;

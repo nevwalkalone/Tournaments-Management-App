@@ -98,6 +98,7 @@ public class PlayersListRecyclerViewAdapter extends RecyclerView.Adapter<Players
             txtPlayerArea = view.findViewById(R.id.txt_player_area);
             btnSelect = view.findViewById(R.id.btn_select_player);
 
+
             if(!run){
                 btnSelect.setVisibility(View.GONE);
             }
