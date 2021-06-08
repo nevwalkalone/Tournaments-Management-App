@@ -22,11 +22,23 @@ public class GamesListRecyclerViewAdapter extends RecyclerView.Adapter<GamesList
     private final ArrayList<Game> mValues;
     private final OnListFragmentInteractionListener mListener;
 
+
+    /**
+     * the constructor
+     * @param items the list of tournaments
+     * @param listener the listener for a tournament selection
+     */
     public GamesListRecyclerViewAdapter(ArrayList<Game> items, OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
 
+    /**
+     *
+     * @param parent the view parent
+     * @param viewType the view type
+     * @return
+     */
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
@@ -34,7 +46,11 @@ public class GamesListRecyclerViewAdapter extends RecyclerView.Adapter<GamesList
         return new ViewHolder(view);
     }
 
-
+    /**
+     *
+     * @param holder the holder
+     * @param position the index of the item
+     */
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Game currentGame = mValues.get(position);
@@ -65,6 +81,10 @@ public class GamesListRecyclerViewAdapter extends RecyclerView.Adapter<GamesList
 
     }
 
+    /**
+     * get the number of games in the list
+     * @return the number of games
+     */
     @Override
     public int getItemCount() {
         return mValues.size();
@@ -81,6 +101,10 @@ public class GamesListRecyclerViewAdapter extends RecyclerView.Adapter<GamesList
         public final LinearLayout btnSelect;
         public Game mItem;
 
+        /**
+         *  constructor
+         * @param view the view
+         */
         public ViewHolder(View view) {
             super(view);
             mView = view;
@@ -93,6 +117,10 @@ public class GamesListRecyclerViewAdapter extends RecyclerView.Adapter<GamesList
 
         }
 
+        /**
+         * represents the basic info of the view holder as a string
+         * @return the string representation of the view holder contents
+         */
         @Override
         public String toString() {
             return super.toString() + " '" + txtTeamA.getText() + "'" + txtTeamB.getText();

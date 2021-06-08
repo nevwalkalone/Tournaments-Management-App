@@ -63,7 +63,6 @@ public class ParticipatingTeamsActivity extends AppCompatActivity implements Par
         viewModel.getPresenter().onTeamSelected(item);
     }
 
-
     /**
      * get the teams that participate in this tournament
      * @return the ArrayList of teams

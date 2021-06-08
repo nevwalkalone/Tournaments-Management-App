@@ -49,7 +49,6 @@ public class InvitePlayersActivity extends AppCompatActivity implements PlayersL
 
      if (findViewById(R.id.fragment_container) != null) {
 
-            // Activity is recreated, do not add fragment twice
             if (savedInstanceState != null) {
                 return;
             }

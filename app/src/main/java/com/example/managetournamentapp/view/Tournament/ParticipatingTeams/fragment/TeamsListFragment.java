@@ -13,20 +13,33 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.domain.Team;
+import com.example.managetournamentapp.view.Organizer.OrganizerTournaments.fragment.TournamentListFragment;
 
 import java.util.ArrayList;
 
 
+/**
+ * This fragment represents a list of teams
+ * Every activity that contains this fragment must
+ * implement the {@link OnListFragmentInteractionListener} interface
+ */
 public class TeamsListFragment extends Fragment{
 
     private static final String ARG_COLUMN_COUNT = "column-count";
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
 
-    public TeamsListFragment() {
-    }
+    /**
+     * Default constructor
+     */
+    public TeamsListFragment() { }
 
     @SuppressWarnings("unused")
+    /**
+     *
+     * @param columnCount the number of columns in the list
+     * @return the fragment
+     */
     public static TeamsListFragment newInstance(int columnCount) {
         TeamsListFragment fragment = new TeamsListFragment();
         Bundle args = new Bundle();
@@ -35,6 +48,10 @@ public class TeamsListFragment extends Fragment{
         return fragment;
     }
 
+    /**
+     * Creates the layout and initializes the fragment
+     * @param savedInstanceState the Instance state
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +60,12 @@ public class TeamsListFragment extends Fragment{
         }
     }
 
-
+    /**
+     * @param inflater
+     * @param container
+     * @param savedInstanceState the Instance state
+     * @return the view
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_teams_list, container, false);
@@ -63,8 +85,10 @@ public class TeamsListFragment extends Fragment{
         return view;
     }
 
-
-
+    /**
+     * When the fragment attaches on an activity
+     * @param context the context of the activity
+     */
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -76,16 +100,27 @@ public class TeamsListFragment extends Fragment{
         }
     }
 
+    /**
+     * When the fragment detaches from the activity
+     */
     @Override
     public void onDetach() {
         super.onDetach();
         mListener = null;
     }
 
+    /**
+     * Every activity that contains this fragment must implement this interface, so
+     * that the activity or the other fragments, can interact with the fragment.
+     */
     public interface OnListFragmentInteractionListener {
 
         void onListFragmentInteraction(Team item);
 
+        /**
+         * get the teams that participate in this tournament
+         * @return the ArrayList of teams
+         */
         ArrayList<Team> getTeamsList();
     }
 

@@ -13,19 +13,30 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.domain.Player;
-
 import java.util.ArrayList;
 
+/**
+ * This fragment represents a list of players
+ * Every activity that contains this fragment must
+ * implement the {@link OnListFragmentInteractionListener} interface
+ */
 public class PlayersListFragment extends Fragment {
 
     private static final String ARG_COLUMN_COUNT = "column-count";
     private int mColumnCount = 4;
     private OnListFragmentInteractionListener mListener;
 
-    public PlayersListFragment() {
-    }
+    /**
+     * Default constructor
+     */
+    public PlayersListFragment() { }
 
     @SuppressWarnings("unused")
+    /**
+     *
+     * @param columnCount  the number of columns in the list
+     * @return the fragment
+     */
     public static PlayersListFragment newInstance(int columnCount) {
         PlayersListFragment fragment = new PlayersListFragment();
         Bundle args = new Bundle();
@@ -34,6 +45,10 @@ public class PlayersListFragment extends Fragment {
         return fragment;
     }
 
+    /**
+     * Creates the layout and initializes the fragment
+     * @param savedInstanceState the Instance state
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,14 +58,17 @@ public class PlayersListFragment extends Fragment {
         }
     }
 
+    /**
+     * @param inflater
+     * @param container
+     * @param savedInstanceState the Instance state
+     * @return the view
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_tournaments_list, container, false);
 
         ArrayList<Player> playerList = mListener.getPlayerList();
-//        Log.d("TournamentListFragment", "Found " + tournamentList.size() + " tournaments");
-
-        // Set the adapter
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
             RecyclerView recyclerView = (RecyclerView) view;
@@ -64,6 +82,10 @@ public class PlayersListFragment extends Fragment {
         return view;
     }
 
+    /**
+     * When the fragment attaches on an activity
+     * @param context the context of the activity
+     */
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -75,16 +97,31 @@ public class PlayersListFragment extends Fragment {
         }
     }
 
-
+    /**
+     * When the fragment detaches from the activity
+     */
     @Override
     public void onDetach() {
         super.onDetach();
         mListener = null;
     }
 
+
+    /**
+     * Every activity that contains this fragment must implement this interface, so
+     * that the activity or the other fragments, can interact with the fragment.
+     */
     public interface OnListFragmentInteractionListener {
+        /**
+         * when an item is selected
+         * @param item the player that is selected
+         */
         void onListFragmentInteraction(Player item);
 
+        /**
+         * get the players that the team can invite
+         * @return the ArrayList of players
+         */
         ArrayList<Player> getPlayerList();
     }
 

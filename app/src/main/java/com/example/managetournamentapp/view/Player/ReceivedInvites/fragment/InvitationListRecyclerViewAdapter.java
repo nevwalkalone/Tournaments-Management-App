@@ -21,12 +21,22 @@ public class InvitationListRecyclerViewAdapter extends RecyclerView.Adapter<Invi
     private final ArrayList<Invitation> mValues;
     private final OnListFragmentInteractionListener mListener;
 
-
+    /**
+     * the constructor
+     * @param items the list of tournaments
+     * @param listener the listener for a invitation selection
+     */
     public InvitationListRecyclerViewAdapter(ArrayList<Invitation> items, OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
 
+    /**
+     *
+     * @param parent the view parent
+     * @param viewType the view type
+     * @return
+     */
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
@@ -34,6 +44,11 @@ public class InvitationListRecyclerViewAdapter extends RecyclerView.Adapter<Invi
         return new ViewHolder(view);
     }
 
+    /**
+     *
+     * @param holder the holder
+     * @param position the index of the item
+     */
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         Invitation currentInvitation = mValues.get(position);
@@ -52,7 +67,10 @@ public class InvitationListRecyclerViewAdapter extends RecyclerView.Adapter<Invi
         });
     }
 
-
+    /**
+     * get the number of tournaments in the list
+     * @return the number of tournaments
+     */
     @Override
     public int getItemCount() {
         return mValues.size();
@@ -64,6 +82,10 @@ public class InvitationListRecyclerViewAdapter extends RecyclerView.Adapter<Invi
         public final ImageButton btnSelect;
         public Invitation mItem;
 
+        /**
+         *  constructor
+         * @param view the view
+         */
         public ViewHolder(View view) {
             super(view);
             mView = view;
@@ -71,6 +93,10 @@ public class InvitationListRecyclerViewAdapter extends RecyclerView.Adapter<Invi
             btnSelect = view.findViewById(R.id.btn_select_team);
         }
 
+        /**
+         * represents the basic info of the view holder as a string
+         * @return the string representation of the view holder contents
+         */
         @Override
         public String toString() {
             return super.toString() + " '" + txtTeamTitle.getText() + "'";
