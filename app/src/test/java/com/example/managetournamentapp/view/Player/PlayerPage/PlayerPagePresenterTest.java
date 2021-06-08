@@ -18,6 +18,10 @@ public class PlayerPagePresenterTest {
     private PlayerPagePresenter presenter;
     private PlayerPageView view;
 
+    /**
+     * setUp the view and presenter for testing Presenter Methods
+     * @throws Exception if setup fail
+     */
     @Before
     public void setUp() throws Exception {
 
@@ -30,6 +34,9 @@ public class PlayerPagePresenterTest {
         presenter.setView(view);
     }
 
+    /**
+     * Test if presenter finds the user properly
+     */
     @Test
     public void findPlayerInfo() {
         presenter.findAccess("tommy0");
@@ -37,6 +44,9 @@ public class PlayerPagePresenterTest {
         Assert.assertEquals("tomtom", presenter.getPlayerName());
     }
 
+    /**
+     * Test user's actions on different cases
+     */
     @Test
     public void testActions() {
 

@@ -19,6 +19,10 @@ public class OrganizerInfoPresenterTest {
     private OrganizerInfoPresenter presenter;
     private OrganizerInfoView view;
 
+    /**
+     * setUp the view and presenter for testing Presenter Methods
+     * @throws Exception if setup fail
+     */
     @Before
     public void setUp() throws Exception {
 
@@ -32,7 +36,9 @@ public class OrganizerInfoPresenterTest {
         presenter.setView(view);
     }
 
-
+    /**
+     * Test the deletion of an Organizer on different cases
+     */
     @Test
     public void deleteOrganizer() {
         presenter.findOrganizerInfo();
@@ -46,6 +52,9 @@ public class OrganizerInfoPresenterTest {
         Assert.assertTrue(((OrganizerInfoViewStub) view).onDelete);
     }
 
+    /**
+     * Test the edit of an Organizer
+     */
     @Test
     public void editOrganizer() {
         presenter.findOrganizerInfo();

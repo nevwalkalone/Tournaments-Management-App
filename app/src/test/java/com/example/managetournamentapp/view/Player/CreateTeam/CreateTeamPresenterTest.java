@@ -20,10 +20,15 @@ import static org.junit.Assert.*;
 
 public class CreateTeamPresenterTest {
 
+
     private CreateTeamPresenter presenter;
     private CreateTeamView view;
     private Player captain;
 
+    /**
+     * setUp the view and presenter for testing Presenter Methods
+     * @throws Exception if setup fail
+     */
     @Before
     public void setUp() throws Exception {
 
@@ -40,6 +45,9 @@ public class CreateTeamPresenterTest {
         presenter.setView(view);
     }
 
+    /**
+     * Test the creation of a nea team
+     */
     @Test
     public void createNew() {
 
@@ -53,6 +61,9 @@ public class CreateTeamPresenterTest {
 
     }
 
+    /**
+     * Test the edit of an existing Team
+     */
     @Test
     public void changeExisting() {
         String teamName = "Celtic10";
@@ -66,6 +77,9 @@ public class CreateTeamPresenterTest {
         Assert.assertEquals("Bulls", newName);
     }
 
+    /**
+     * Test user's actions on clicks
+     */
     @Test
     public void testAction() {
         presenter.onHomePage();

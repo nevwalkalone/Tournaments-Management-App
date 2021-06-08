@@ -20,6 +20,10 @@ public class JoinedTeamsPresenterTest {
     private JoinedTeamsPresenter presenter;
     private JoinedTeamsView view;
 
+    /**
+     * setUp the view and presenter for testing Presenter Methods
+     * @throws Exception if setup fail
+     */
     @Before
     public void setUp() throws Exception {
 
@@ -34,6 +38,9 @@ public class JoinedTeamsPresenterTest {
         presenter.setView(view);
     }
 
+    /**
+     * Test user's actions on different clicks
+     */
     @Test
     public void changePage() {
 
@@ -46,6 +53,9 @@ public class JoinedTeamsPresenterTest {
 
     }
 
+    /**
+     * Test if presenter finds the specific teams of a user from DAO
+     */
     @Test
     public void findJoinedTeams() {
 

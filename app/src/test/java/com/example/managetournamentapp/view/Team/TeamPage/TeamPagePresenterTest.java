@@ -16,6 +16,10 @@ public class TeamPagePresenterTest {
     private TeamPageView view;
     private Team team;
 
+    /**
+     * setUp the view and presenter for testing Presenter Methods
+     * @throws Exception if setup fail
+     */
     @Before
     public void setUp() {
         new MemoryInitializer().prepareData();
@@ -28,6 +32,9 @@ public class TeamPagePresenterTest {
         presenter.setView(view);
     }
 
+    /**
+     * Test onTeamPage
+     */
     @Test
     public void teamPage(){
         team = new TeamDAOMemory().find("Celtic1");
@@ -37,6 +44,9 @@ public class TeamPagePresenterTest {
 
     }
 
+    /**
+     * Test user's actions.
+     */
     @Test
     public void testAction(){
         new MemoryLoggedInUser().setUser(new PlayerDAOMemory().find("tommy0"));

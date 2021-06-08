@@ -22,6 +22,10 @@ public class TournamentRoundsPresenterTest {
     private TournamentRoundsPresenter presenter;
     private TournamentRoundsView view;
 
+    /**
+     * setUp the view and presenter for testing Presenter Methods
+     * @throws Exception if setup fail
+     */
     @Before
     public void setUp() throws Exception {
 
@@ -33,6 +37,9 @@ public class TournamentRoundsPresenterTest {
         presenter.setView(view);
     }
 
+    /**
+     * Test presenter onGroup
+     */
     @Test
     public void testGroup() {
         presenter.findTournamentInfo("TOURNOUA1");
@@ -41,6 +48,9 @@ public class TournamentRoundsPresenterTest {
 
     }
 
+    /**
+     * Test presenter on8
+     */
     @Test
     public void test8() {
         presenter.findTournamentInfo("TOURNOUA1");
@@ -48,7 +58,9 @@ public class TournamentRoundsPresenterTest {
         Assert.assertTrue(((TournamentRoundsViewStub) view).onRound);
 
     }
-
+    /**
+     * Test presenter on16
+     */
     @Test
     public void test16() {
         presenter.findTournamentInfo("TOURNOUA1");
@@ -56,14 +68,18 @@ public class TournamentRoundsPresenterTest {
         Assert.assertTrue(((TournamentRoundsViewStub) view).onRound);
 
     }
-
+    /**
+     * Test presenter onSemiFinals
+     */
     @Test
     public void testSemiFinals() {
         presenter.findTournamentInfo("TOURNOUA1");
         presenter.onSemifinals();
         Assert.assertTrue(((TournamentRoundsViewStub) view).onRound);
     }
-
+    /**
+     * Test presenter onFinal
+     */
     @Test
     public void testFinal() {
         presenter.findTournamentInfo("TOURNOUA1");
@@ -71,6 +87,9 @@ public class TournamentRoundsPresenterTest {
         Assert.assertTrue(((TournamentRoundsViewStub) view).onRound);
     }
 
+    /**
+     * Test if presenter gives the access properly
+     */
     @Test
     public void findAccess() {
         presenter.findTournamentInfo("TOURNOUA1");
@@ -79,6 +98,9 @@ public class TournamentRoundsPresenterTest {
 
     }
 
+    /**
+     * Test user's actions.
+     */
     @Test
     public void testAction(){
         new MemoryLoggedInUser().setUser(new OrganizerDAOMemory().findByTitle("ESKA"));

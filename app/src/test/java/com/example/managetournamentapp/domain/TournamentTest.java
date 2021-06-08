@@ -23,6 +23,9 @@ public class TournamentTest {
     private ArrayList<LocalDate> dates;
     private ArrayList<LocalDate> dates2;
 
+    /**
+     *setup some initial variables before attempting each test
+     */
     @Before
     public void setUp() throws Exception {
         dates = new ArrayList<>();
@@ -48,7 +51,9 @@ public class TournamentTest {
 
     }
 
-
+    /**
+     * test the toString method
+     */
     @Test
     public void testPrint() {
 
@@ -56,6 +61,9 @@ public class TournamentTest {
 
     }
 
+    /**
+     * test the equality between to instances
+     */
     @Test
     public void testEquals() {
 
@@ -71,6 +79,9 @@ public class TournamentTest {
 
     }
 
+    /**
+     * test the inequality between to instances
+     */
     @Test
     public void testNotEquals() {
 
@@ -95,31 +106,39 @@ public class TournamentTest {
 
     }
 
-    // Tester Getters and Setters
+    /**
+     * test the max teams number
+     */
     @Test
     public void testGetMAX_TEAMS_NUMBER() {
 
         Assert.assertEquals(tournament2.getMAX_TEAMS_NUMBER(), tournament.getMAX_TEAMS_NUMBER());
-
     }
 
+    /**
+     * test the initialization of the rounds
+     */
     @Test
     public void testInitRounds() {
 
         Assert.assertEquals(tournament2.getRounds(), tournament.getRounds());
-
     }
 
+    /**
+     * test if the game is running
+     */
     @Test
     public void testIsRunning() {
 
         tournament.setStartDate(LocalDate.parse("2030-06-02"));
         tournament.setFinishDate(LocalDate.parse("2030-06-30"));
         Assert.assertFalse(tournament.isRunning());
-
-
     }
 
+
+    /**
+     * test if the tournament is full
+     */
     @Test
     public void testIsFull() {
 
@@ -249,7 +268,6 @@ public class TournamentTest {
         LocalDate newFinishDate = LocalDate.parse("2021-08-10");
         tournament.setFinishDate(newFinishDate);
         Assert.assertEquals(newFinishDate, tournament.getFinishDate());
-
 
     }
 

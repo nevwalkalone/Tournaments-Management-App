@@ -20,6 +20,10 @@ public class TeamInfoPresenterTest {
     private TeamInfoView view;
     private Team team;
 
+    /**
+     * setUp the view and presenter for testing Presenter Methods
+     * @throws Exception if setup fail
+     */
     @Before
     public void setUp() {
         new MemoryInitializer().prepareData();
@@ -34,6 +38,10 @@ public class TeamInfoPresenterTest {
         team = new TeamDAOMemory().find("Celtic8");
     }
 
+    /**
+     * Test user's action with different cases
+     * and captain removing players from a team
+     */
     @Test
     public void teamInfoEditable(){
 
@@ -54,6 +62,9 @@ public class TeamInfoPresenterTest {
     }
 
 
+    /**
+     * Test if user has access ( so he could edit team info )
+     */
     @Test
     public void teamInfoUneditable(){
         new MemoryInitializer().prepareData();
@@ -77,6 +88,9 @@ public class TeamInfoPresenterTest {
         Assert.assertEquals( number1, new TeamDAOMemory().findAll().size());
     }
 
+    /**
+     * Test user's actions
+     */
     @Test
     public void testAction(){
         new MemoryLoggedInUser().setUser(new PlayerDAOMemory().find("tommy0"));

@@ -16,6 +16,10 @@ public class GroupTest {
     Game game;
     Player player;
     LocalDate date;
+
+    /**
+     *setup some initial variables before attempting each test
+     */
     @Before
     public void setUp() throws Exception {
         Credentials credentials = new Credentials("sakis7","123");
@@ -29,7 +33,9 @@ public class GroupTest {
         game = new Game("Oaka", teamA , teamB, date );
     }
 
-
+    /**
+     * test adding teams
+     */
     @Test
     public void addTeams()  {
         group.addTeam(teamA);
@@ -44,6 +50,9 @@ public class GroupTest {
 
     }
 
+    /**
+     * test adding games
+     */
     @Test
     public void addGames()  {
         group.addGame(null);
@@ -60,7 +69,9 @@ public class GroupTest {
 
     }
 
-
+    /**
+     * test the rankings
+     */
     @Test
     public void testRankings()  {
         game.setScoreA(2);
@@ -81,12 +92,20 @@ public class GroupTest {
         Assert.assertEquals(group.getTeamRanking(teamB) , 0);
     }
 
+
+    /**
+     * test the equalities
+     */
     @Test
     public void testEquals()  {
         groupB = new Group(true, dates);
         Assert.assertTrue(group.equals(groupB));
     }
 
+
+    /**
+     * test the setup of a group
+     */
     @Test
     public void setupTest(){
         Team teamC = new Team("Osfp", new Sport("Volleyball3v3"), AgeDivision.K100 ,player,"green" );

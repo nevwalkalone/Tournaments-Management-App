@@ -31,6 +31,10 @@ public class GroupRankingsPresenterTest {
     private GroupRankingsPresenter presenter;
     private GroupRankingsView view;
 
+    /**
+     * setUp the view and presenter for testing Presenter Methods
+     * @throws Exception if setup fail
+     */
     @Before
     public void setUp() throws Exception {
         new MemoryInitializer().prepareData();
@@ -41,6 +45,9 @@ public class GroupRankingsPresenterTest {
 
     }
 
+    /**
+     * Test if presenter finds teams properly from DAO
+     */
     @Test
     public void testFindTeams() {
         presenter.findTeams("TOURNOUA1", 0);
@@ -49,6 +56,9 @@ public class GroupRankingsPresenterTest {
 
     }
 
+    /**
+     * Test user's actions
+     */
     @Test
     public void testAction(){
         new MemoryLoggedInUser().setUser(new OrganizerDAOMemory().findByTitle("ESKA"));
