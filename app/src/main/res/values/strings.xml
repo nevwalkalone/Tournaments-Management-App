@@ -58,6 +58,13 @@
     <string name="account_Details">Organizer Info</string>
     <string name="tournament_info">Tournament Info</string>
     <string name="create_tournament">Create Tournament</string>
+    <string name="set_dates">Set Dates Tournament</string>
+    <string name="groups">Round Groups</string>
+    <string name="on16">Tournament 16</string>
+    <string name="on8">Tournament 8</string>
+    <string name="rounds">Tournament Rounds</string>
+    <string name="semifinal">Tournament SemiFinal</string>
+    <string name="finalRound">Tournament Final</string>
     <string name="team_details">Team Info</string>
     <string name="join_tournament">Join Tournament</string>
     <string name="register_player">Player Registration</string>

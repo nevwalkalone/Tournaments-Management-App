@@ -124,27 +124,27 @@
         <activity
             android:name=".view.Organizer.SetDates.SetDatesActivity"
             android:exported="true"
-            android:label="@string/create_tournament"
+            android:label="@string/set_dates"
             android:theme="@style/SecondaryTheme" />
         <activity
             android:name=".view.Tournament.TournamentRounds.TournamentRoundsActivity"
             android:exported="true"
-            android:label="@string/create_tournament"
+            android:label="@string/rounds"
             android:theme="@style/SecondaryTheme" />
         <activity
             android:name=".view.Tournament.RoundGames.RoundGamesActivity"
             android:exported="true"
-            android:label="@string/create_tournament"
+            android:label="@string/games"
             android:theme="@style/SecondaryTheme" />
         <activity
             android:name=".view.Tournament.TournamentGroups.TournamentGroupsActivity"
             android:exported="true"
-            android:label="@string/create_tournament"
+            android:label="@string/groups"
             android:theme="@style/SecondaryTheme" />
         <activity
             android:name=".view.Tournament.GroupRankings.GroupRankingsActivity"
             android:exported="true"
-            android:label="@string/create_tournament"
+            android:label="@string/rankings"
             android:theme="@style/SecondaryTheme" />
     </application>
 

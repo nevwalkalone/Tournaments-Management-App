@@ -10,6 +10,7 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -31,6 +32,7 @@ public class CreateTeamActivity extends AppCompatActivity implements CreateTeamV
 
     /**
      * Creates the layout and initializes the activity
+     *
      * @param savedInstanceState the Instance state
      */
     @Override
@@ -40,6 +42,14 @@ public class CreateTeamActivity extends AppCompatActivity implements CreateTeamV
         setContentView(R.layout.activity_create_team);
 
         teamName = this.getIntent().getStringExtra(TEAM_NAME_EXTRA);
+
+        if (teamName != null) {
+            ActionBar actionBar = getSupportActionBar();
+            if (actionBar != null) {
+                actionBar.setTitle("Team Edit");
+            }
+        }
+
         viewModel = new ViewModelProvider(this).get(CreateTeamViewModel.class);
         viewModel.getPresenter().setView(this);
 
@@ -161,9 +171,9 @@ public class CreateTeamActivity extends AppCompatActivity implements CreateTeamV
      * @param name is the name of a player
      */
     @Override
-    public void backToHomePage( String name) {
+    public void backToHomePage(String name) {
         Intent intent = new Intent(this, PlayerPageActivity.class);
-        intent.putExtra(PLAYER_USERNAME_EXTRA,name);
+        intent.putExtra(PLAYER_USERNAME_EXTRA, name);
         startActivity(intent);
     }
 

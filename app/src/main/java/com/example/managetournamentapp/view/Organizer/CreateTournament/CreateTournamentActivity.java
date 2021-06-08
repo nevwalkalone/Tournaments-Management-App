@@ -10,6 +10,7 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -49,6 +50,15 @@ public class CreateTournamentActivity extends AppCompatActivity implements Creat
         setContentView(R.layout.activity_create_tournament);
 
         tournamentTitle = this.getIntent().getStringExtra(TOURNAMENT_TITLE_EXTRA);
+
+        if(tournamentTitle != null){
+            ActionBar actionBar = getSupportActionBar();
+            if(actionBar != null)
+            {
+                actionBar.setTitle("Tournament Edit");
+            }
+        }
+
         viewModel = new ViewModelProvider(this).get(CreateTournamentViewModel.class);
         viewModel.getPresenter().setView(this);
 
