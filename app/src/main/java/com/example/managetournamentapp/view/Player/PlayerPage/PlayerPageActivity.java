@@ -20,7 +20,6 @@ import com.example.managetournamentapp.view.User.Login.LoginActivity;
 
 public class PlayerPageActivity extends AppCompatActivity implements PlayerPageView {
 
-    //public static final String TEAM_NAME_EXTRA = "team_name_extra";
     private boolean sameAsLogged = true;
     private static final String PLAYER_USERNAME_EXTRA = "player_username_extra";
     private PlayerPageViewModel viewModel;
@@ -38,7 +37,6 @@ public class PlayerPageActivity extends AppCompatActivity implements PlayerPageV
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player_page);
@@ -64,25 +62,42 @@ public class PlayerPageActivity extends AppCompatActivity implements PlayerPageV
 
     }
 
+    /**
+     * when the "info" button is pressed
+     * the player info activity starts
+     * @param playerUsername the player's username
+     */
     public void toPlayerInfo(String playerUsername) {
         Intent intent = new Intent(PlayerPageActivity.this, PlayerInfoActivity.class);
         intent.putExtra(PLAYER_USERNAME_EXTRA, playerUsername);
         startActivity(intent);
     }
 
+    /**
+     * when the "teams" button is pressed
+     * the joined teams activity starts
+     * @param playerUsername the player's username
+     */
     public void toPlayerTeams(String playerUsername) {
         Intent intent = new Intent(PlayerPageActivity.this, JoinedTeamsActivity.class);
         intent.putExtra(PLAYER_USERNAME_EXTRA, playerUsername);
         startActivity(intent);
     }
 
-
+    /**
+     * when the "invites" button is pressed
+     * the invites activity starts
+     * @param playerUsername the player's username
+     */
     public void toPlayerInvites(String playerUsername) {
         Intent intent = new Intent(PlayerPageActivity.this, ReceivedInvitesActivity.class);
         intent.putExtra(PLAYER_USERNAME_EXTRA, playerUsername);
         startActivity(intent);
     }
 
+    /**
+     * log out from the current account
+     */
     public void logOut(){
         Toast.makeText(this,
                 "LOGGED OUT",
@@ -92,17 +107,35 @@ public class PlayerPageActivity extends AppCompatActivity implements PlayerPageV
         startActivity(intent);
     }
 
+    /**
+     * display a popup
+     * @param layout the layout of the popup
+     * @param msg the message of the popup
+     * @param btn1 the first button
+     * @param btn2 the second button
+     */
     @Override
     public void displayPopUpAction(int layout, String msg, int btn1, int btn2) {
         POPUP_ACTION = showPopUp(layout, msg, btn1, btn2);
         POPUP_ACTION.show();
     }
 
+    /**
+     * close the popup
+     */
     @Override
     public void dismissPopUpAction() {
         POPUP_ACTION.dismiss();
     }
 
+    /**
+     * create a popup
+     * @param layoutId the layout of the popup
+     * @param msg the message of the popup
+     * @param btn1 the first button
+     * @param btn2 the second button
+     * @return the AlertDialog that will be shown
+     */
     @Override
     public AlertDialog showPopUp(int layoutId, String msg, int btn1, int btn2) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -122,23 +155,35 @@ public class PlayerPageActivity extends AppCompatActivity implements PlayerPageV
         return dialog;
     }
 
+    /**
+     * confirm that the player wants to log out
+     */
     @Override
     public void logOutConfirmation() {
         POPUP_ACTION = showPopUp(R.layout.tournament_delete_popup, "Do you really want to log out?", R.id.no_delete, R.id.yes_delete);
-
         POPUP_ACTION.show();
     }
 
+    /**
+     * if the player doesn't want to log out
+     */
     @Override
     public void noLogOut() {
         POPUP_ACTION.dismiss();
     }
 
+    /**
+     * the invites can be seen only by the player
+     * who owns the account
+     */
     public void changesOfAccess() {
         sameAsLogged = false;
         btnPlayerInvites.setVisibility(View.GONE);
     }
 
+    /**
+     * when the back button is pressed
+     */
     @Override
     public void onBackPressed() {
         if(sameAsLogged){

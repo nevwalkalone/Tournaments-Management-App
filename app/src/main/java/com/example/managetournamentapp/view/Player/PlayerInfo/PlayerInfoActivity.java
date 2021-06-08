@@ -50,14 +50,13 @@ public class PlayerInfoActivity extends AppCompatActivity implements PlayerInfoV
         viewModel.getPresenter().findAccess();
     }
 
-//    @Override
-//    public void onBackPressed(){
-//        super.onBackPressed();
-//        Intent intent = new Intent(PlayerInfoActivity.this, RegisterPlayerActivity.class);
-//        intent.putExtra(PLAYER_USERNAME_EXTRA , playerUsername);
-//        startActivity(intent);
-//    }
-
+    /**
+     * show the possible actions popup
+     * @param layoutId the layout of the popup
+     * @param msg the message of the popup
+     * @param btn1 the first button
+     * @param btn2 the second button
+     */
     @Override
     public AlertDialog showPopUp(int layoutId, String msg, int btn1, int btn2) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -80,46 +79,82 @@ public class PlayerInfoActivity extends AppCompatActivity implements PlayerInfoV
         return dialog;
     }
 
+    /**
+     * set the contents in the username edit text
+     * @param username the new username
+     */
     @Override
     public void setUsername(String username) {
         ((TextView) findViewById(R.id.text_username)).setText(username);
     }
 
+    /**
+     * set the contents in the password edit text
+     * @param password the new password
+     */
     @Override
     public void setPassword(String password) {
         ((TextView) findViewById(R.id.text_password)).setText(password);
     }
 
+    /**
+     * set the contents in the name edit text
+     * @param name the new name
+     */
     @Override
     public void setName(String name) {
         ((TextView) findViewById(R.id.text_name)).setText(name);
     }
 
+    /**
+     * set the contents in the surname edit text
+     * @param surname the new surname
+     */
     @Override
     public void setSurname(String surname) {
         ((TextView) findViewById(R.id.text_surname)).setText(surname);
     }
 
+    /**
+     * set the contents in the phone number edit text
+     * @param phone the new phone number
+     */
     @Override
     public void setPhone(String phone) {
         ((TextView) findViewById(R.id.text_phone)).setText(phone);
     }
 
+    /**
+     * set the contents in the email edit text
+     * @param email the new email
+     */
     @Override
     public void setEmail(String email) {
         ((TextView) findViewById(R.id.text_email)).setText(email);
     }
 
+    /**
+     * set the contents in the location edit text
+     * @param location the new location
+     */
     @Override
     public void setLocation(String location) {
         ((TextView) findViewById(R.id.text_location)).setText(location);
     }
 
+    /**
+     * set the contents in the birth date edit text
+     * @param date the new birth date
+     */
     @Override
     public void setBirthDate(String date) {
         ((TextView) findViewById(R.id.text_birth_date)).setText(date);
     }
 
+    /**
+     * when the player decides to edit his account
+     * the register player activity is started
+     */
     @Override
     public void startEditPlayer() {
         Intent intent = new Intent(PlayerInfoActivity.this, RegisterPlayerActivity.class);
@@ -127,6 +162,9 @@ public class PlayerInfoActivity extends AppCompatActivity implements PlayerInfoV
         startActivity(intent);
     }
 
+    /**
+     * when the player decides to delete his account
+     */
     @Override
     public void startDeletePlayer() {
         Toast.makeText(this, "USER HAS BEEN DELETED. BACK TO HOME PAGE.", Toast.LENGTH_SHORT).show();
@@ -134,11 +172,18 @@ public class PlayerInfoActivity extends AppCompatActivity implements PlayerInfoV
         startActivity(intent);
     }
 
+    /**
+     * show a toast when the player can't delete the account
+     */
     @Override
     public void showCantDelete() {
         Toast.makeText(this, "YOU CAN'T DELETE YOUR ACCOUNT. REASON: PARTICIPATING IN A TEAM", Toast.LENGTH_SHORT).show();
     }
 
+    /**
+     * the account can be edited or deleted only by the player
+     * who owns it
+     */
     @Override
     public void changesOfAccess() {
         btnEditPlayer.setVisibility(View.GONE);
@@ -146,12 +191,22 @@ public class PlayerInfoActivity extends AppCompatActivity implements PlayerInfoV
         (findViewById(R.id.password_row)).setVisibility(View.GONE);
     }
 
+    /**
+     * show the deletion popup
+     * @param layout the layout of the popup
+     * @param msg the message of the popup
+     * @param btn1 the first button
+     * @param btn2 the second button
+     */
     @Override
     public void displayPopUp(int layout, String msg, int btn1, int btn2) {
         POPUP_DELETION = showPopUp(layout, msg, btn1, btn2);
         POPUP_DELETION.show();
     }
 
+    /**
+     * close the deletion popup
+     */
     @Override
     public void dismissPopUp() {
         POPUP_DELETION.dismiss();

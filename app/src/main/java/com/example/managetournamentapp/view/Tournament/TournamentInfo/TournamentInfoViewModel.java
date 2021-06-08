@@ -17,8 +17,8 @@ public class TournamentInfoViewModel extends ViewModel {
         presenter.setTournamentDAO(new TournamentDAOMemory());
     }
 
-    /**
-     * @return the presenter instance
+    /** get the presenter
+     * @return the TournamentInfoPresenter instance
      */
     public TournamentInfoPresenter getPresenter(){
         return presenter;

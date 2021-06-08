@@ -9,11 +9,6 @@ public class JoinedTeamsViewStub implements JoinedTeamsView {
     }
 
     @Override
-    public void changesOfAccess() {
-        onChange = true;
-    }
-
-    @Override
     public void backToHomePage() {
         onHome = true;
     }

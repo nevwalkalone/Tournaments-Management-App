@@ -2,7 +2,6 @@ package com.example.managetournamentapp.view.Tournament.RoundGames;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,11 +14,9 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.domain.Game;
-import com.example.managetournamentapp.domain.Participation;
 import com.example.managetournamentapp.view.Organizer.OrganizerPage.OrganizerPageActivity;
 import com.example.managetournamentapp.view.Player.PlayerPage.PlayerPageActivity;
 import com.example.managetournamentapp.view.Tournament.RoundGames.fragment.GamesListFragment;
-
 import java.util.ArrayList;
 
 public class RoundGamesActivity extends AppCompatActivity implements GamesListFragment.OnListFragmentInteractionListener, RoundGamesView {

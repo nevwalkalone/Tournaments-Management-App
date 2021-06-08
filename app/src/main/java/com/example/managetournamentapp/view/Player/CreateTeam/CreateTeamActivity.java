@@ -13,18 +13,9 @@ import android.widget.TextView;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
-
 import com.example.managetournamentapp.R;
-import com.example.managetournamentapp.domain.Player;
-import com.example.managetournamentapp.domain.Team;
-import com.example.managetournamentapp.domain.TournamentType;
-import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
-import com.example.managetournamentapp.memoryDao.TeamDAOMemory;
-import com.example.managetournamentapp.view.Organizer.OrganizerPage.OrganizerPageActivity;
 import com.example.managetournamentapp.view.Player.JoinedTeams.JoinedTeamsActivity;
 import com.example.managetournamentapp.view.Player.PlayerPage.PlayerPageActivity;
-import com.example.managetournamentapp.view.Team.TeamPage.TeamPageActivity;
-import com.example.managetournamentapp.view.User.RegisterPlayer.RegisterPlayerView;
 
 import java.util.ArrayList;
 
@@ -49,7 +40,6 @@ public class CreateTeamActivity extends AppCompatActivity implements CreateTeamV
         setContentView(R.layout.activity_create_team);
 
         teamName = this.getIntent().getStringExtra(TEAM_NAME_EXTRA);
-
         viewModel = new ViewModelProvider(this).get(CreateTeamViewModel.class);
         viewModel.getPresenter().setView(this);
 
@@ -62,9 +52,13 @@ public class CreateTeamActivity extends AppCompatActivity implements CreateTeamV
         btnHome = findViewById(R.id.imageButton);
         saveBtn.setOnClickListener(v -> viewModel.getPresenter().onSaveTeam());
         btnHome.setOnClickListener(v -> viewModel.getPresenter().onHomePage());
-
     }
 
+    /**
+     * show the player's page activity
+     * after the team has been saved
+     * @param userName the username of the captain
+     */
     @Override
     public void startSaveTeam(String userName) {
         Intent intent = new Intent(CreateTeamActivity.this, JoinedTeamsActivity.class);
@@ -72,48 +66,83 @@ public class CreateTeamActivity extends AppCompatActivity implements CreateTeamV
         startActivity(intent);
     }
 
+    /**
+     * get the colors of the team
+     * @return the name of the team
+     */
     @Override
     public String getTeamName() {
         return ((EditText) findViewById(R.id.team_name)).getText().toString();
     }
 
+    /**
+     * get the colors of the team
+     * @return the colors
+     */
     @Override
     public String getTeamColors() {
         return ((EditText) findViewById(R.id.team_colors)).getText().toString();
     }
 
+    /**
+     * set the contents of the spinner
+     */
     @Override
     public int getSportType() {
         return spinner.getSelectedItemPosition();
     }
 
+    /**
+     * set the contents in the name edit text
+     * @param name the new name
+     */
     @Override
     public void setTeamName(String name) {
         ((EditText) findViewById(R.id.team_name)).setText(name);
     }
 
+    /**
+     * set the contents in the colors edit text
+     * @param colors the new colors
+     */
     @Override
     public void setTeamColors(String colors) {
         ((EditText) findViewById(R.id.team_colors)).setText(colors);
 
     }
 
+    /**
+     * set the contents of the spinner
+     * @param position the index of the sport type
+     */
     @Override
     public void setSportType(int position) {
         spinner.setSelection(position);
     }
 
+    /**
+     * freeze the sport type spinner
+     */
     @Override
     public void lockSportType() {
         spinner.setEnabled(false);
     }
 
+    /**
+     * set the choices of the sport type spinner
+     * @param list
+     */
     public void setSpinnerList(ArrayList<String> list) {
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, list);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
     }
 
+    /**
+     *show a popup on the screen
+     * @param view the view of the popup
+     * @param msg the message that will be shown
+     */
     @Override
     public void showPopUp(CreateTeamView view, String msg) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -127,6 +156,10 @@ public class CreateTeamActivity extends AppCompatActivity implements CreateTeamV
         dialog.show();
     }
 
+    /**
+     * what happens when the homepage button is pressed
+     * @param name is the name of a player
+     */
     @Override
     public void backToHomePage( String name) {
         Intent intent = new Intent(this, PlayerPageActivity.class);

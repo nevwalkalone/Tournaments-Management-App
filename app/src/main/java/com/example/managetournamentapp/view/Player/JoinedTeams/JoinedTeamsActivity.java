@@ -42,8 +42,6 @@ public class JoinedTeamsActivity extends AppCompatActivity implements JoinedTeam
         viewModel = new ViewModelProvider(this).get(JoinedTeamsViewModel.class);
         viewModel.getPresenter().setView(this);
 
-
-
         btnHome = findViewById(R.id.imageButton);
         btnHome.setOnClickListener(v -> viewModel.getPresenter().onHomePage());
 
@@ -55,18 +53,19 @@ public class JoinedTeamsActivity extends AppCompatActivity implements JoinedTeam
             if (savedInstanceState != null){
                 return;
             }
-
             viewModel.getPresenter().findJoinedTeams(playerUsername);
-
 
             TeamsListFragment teamsListFragment = TeamsListFragment.newInstance(1);
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.fragment_container, teamsListFragment)
                     .commit();
         }
-       // viewModel.getPresenter().findAccess();
     }
 
+    /**
+     * what happens when a team is selected
+     * @param item the team
+     */
     @Override
     public void onListFragmentInteraction(Team item) {
         Intent intent = new Intent(JoinedTeamsActivity.this, TeamPageActivity.class);
@@ -74,26 +73,33 @@ public class JoinedTeamsActivity extends AppCompatActivity implements JoinedTeam
         startActivity(intent);
     }
 
+    /**
+     * get the teams that the player has joined
+     * @return the ArrayList of teams
+     */
     @Override
     public ArrayList<Team> getTeamsList() {
         return viewModel.getPresenter().getResults();
     }
 
-
+    /**
+     * show the page of a team creation
+     */
     @Override
     public void startAddTeam() {
         Intent intent = new Intent(JoinedTeamsActivity.this, CreateTeamActivity.class);
         intent.putExtra(PLAYER_USERNAME_EXTRA , playerUsername);
         startActivity(intent);
     }
+
+    /**
+     * what happens when the homepage button is pressed
+     */
     @Override
     public void backToHomePage(){
         Intent intent = new Intent(this, PlayerPageActivity.class);
         intent.putExtra(PLAYER_USERNAME_EXTRA,playerUsername);
         startActivity(intent);
-    }
-    public void changesOfAccess(){
-        addBtn.setVisibility(View.GONE);
     }
 
 }

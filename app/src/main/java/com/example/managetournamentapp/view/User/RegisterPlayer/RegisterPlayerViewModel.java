@@ -13,7 +13,6 @@ import com.example.managetournamentapp.memoryDao.PlayerDAOMemory;
  */
 
 public class RegisterPlayerViewModel extends ViewModel {
-
     RegisterPlayerPresenter presenter;
 
     /**

@@ -24,8 +24,7 @@ public class JoinedPlayersPresenter {
     /**
      * default constructor
      */
-    public JoinedPlayersPresenter() {
-    }
+    public JoinedPlayersPresenter() { }
 
     /**
      * find the players that have joined the team

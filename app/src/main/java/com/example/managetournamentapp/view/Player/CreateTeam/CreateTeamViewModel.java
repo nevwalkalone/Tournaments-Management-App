@@ -11,7 +11,9 @@ import com.example.managetournamentapp.memoryDao.TeamDAOMemory;
 public class CreateTeamViewModel extends ViewModel {
     CreateTeamPresenter presenter;
 
-
+    /**
+     * the default constructor
+     */
     public CreateTeamViewModel() {
         presenter = new CreateTeamPresenter();
         presenter.setTeamDAO( new TeamDAOMemory());
@@ -19,10 +21,16 @@ public class CreateTeamViewModel extends ViewModel {
         presenter.setPlayerDAO( new PlayerDAOMemory());
     }
 
+    /** get the presenter
+     * @return the CreateTeamPresenter instance
+     */
     public CreateTeamPresenter getPresenter() {
         return presenter;
     }
 
+    /**
+     * clear the view of the presenter
+     */
     @Override
     protected void onCleared() {
         super.onCleared();

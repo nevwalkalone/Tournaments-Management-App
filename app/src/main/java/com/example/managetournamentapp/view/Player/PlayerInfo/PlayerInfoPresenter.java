@@ -14,9 +14,15 @@ public class PlayerInfoPresenter {
     private PlayerDAO playerDAO;
     private LoggedInUser loggedInUser;
 
-    public PlayerInfoPresenter() {
-    }
+    /**
+     * default constructor
+     */
+    public PlayerInfoPresenter() { }
 
+    /**
+     * find the info of the player
+     * @param playerUsername the username of the player
+     */
     public void findPlayerInfo(String playerUsername) {
         if (playerUsername == null)
             return;
@@ -34,6 +40,10 @@ public class PlayerInfoPresenter {
         view.setBirthDate(player.getBirthDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")).replace("-", "/"));
     }
 
+    /**
+     * the account can be edited or deleted only by the player
+     * how owns it
+     */
     public void findAccess() {
         if (loggedInUser.getUser() != null)
             if (loggedInUser.getUser() instanceof Player)
@@ -42,10 +52,18 @@ public class PlayerInfoPresenter {
         view.changesOfAccess();
     }
 
+    /**
+     * when the player decides to edit his account
+     * the register player activity is started
+     */
     public void onEditPlayer() {
         view.startEditPlayer();
     }
 
+
+    /**
+     * when the player decides to delete his account
+     */
     public void onDeletePlayer() {
         if (player.getTeamsJoined().size() > 0) {
             view.showCantDelete();
@@ -55,26 +73,47 @@ public class PlayerInfoPresenter {
 
     }
 
+    /**
+     * set the playerDAO
+     * @param playerDAO the new PlayerDAO
+     */
     public void setPlayerDAO(PlayerDAO playerDAO) {
         this.playerDAO = playerDAO;
     }
 
+    /**
+     * set the logged in user
+     * @param loggedInUser the logged in user
+     */
     public void setLoggedInUser(LoggedInUser loggedInUser) {
         this.loggedInUser = loggedInUser;
     }
 
+    /**
+     * set a new view
+     * @param view the new view
+     */
     public void setView(PlayerInfoView view) {
         this.view = view;
     }
 
+    /**
+     * clear the view
+     */
     public void clearView() {
         this.view = null;
     }
 
+    /**
+     * when the player doesn't verify the deletion
+     */
     public void onNoDeletePlayer() {
         view.dismissPopUp();
     }
 
+    /**
+     * when the player verifies the deletion
+     */
     public void onYesDeletePlayer() {
         playerDAO.delete(player);
         (new MemoryLoggedInUser()).clear();
@@ -82,6 +121,9 @@ public class PlayerInfoPresenter {
         view.startDeletePlayer();
     }
 
+    /**
+     * close the deletion popup
+     */
     public void displayPopUp(int layout, String msg, int btn1, int btn2) {
         view.displayPopUp(layout, msg, btn1, btn2);
     }

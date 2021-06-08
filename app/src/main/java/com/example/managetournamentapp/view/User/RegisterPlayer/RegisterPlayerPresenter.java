@@ -23,7 +23,6 @@ import java.util.regex.Pattern;
  * Athens University of Economics and Business
  * 2020-2021
  */
-
 public class RegisterPlayerPresenter {
 
     private RegisterPlayerView view;
@@ -32,10 +31,15 @@ public class RegisterPlayerPresenter {
     private Player connectedPlayer = null;
     private LoggedInUser loggedInUser;
 
+    /**
+     * default constructor
+     */
+    public RegisterPlayerPresenter() {}
 
-    public RegisterPlayerPresenter() {
-    }
-
+    /**
+     * show the previous info of the player, if we are on edit mode
+     * @param playerUsername the username of the player
+     */
     public void showPreviousInfo(String playerUsername) {
         if (playerUsername == null)
             return;
@@ -169,7 +173,7 @@ public class RegisterPlayerPresenter {
 
     /**
      * @param birthdate the email we want to check if it's valid.
-     * @return true if the birthd ate is valid, else false.
+     * @return true if the birth date is valid, else false.
      */
     public boolean validateBirthdate(String birthdate) {
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");

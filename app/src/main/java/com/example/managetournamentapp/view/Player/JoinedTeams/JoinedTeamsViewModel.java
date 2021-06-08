@@ -8,6 +8,9 @@ import com.example.managetournamentapp.memoryDao.TeamDAOMemory;
 public class JoinedTeamsViewModel extends ViewModel{
     JoinedTeamsPresenter presenter;
 
+    /**
+     * the constructor
+     */
     public JoinedTeamsViewModel() {
         super();
         presenter = new JoinedTeamsPresenter();
@@ -16,10 +19,16 @@ public class JoinedTeamsViewModel extends ViewModel{
         presenter.setLoggedInUser( new MemoryLoggedInUser() );
     }
 
+    /** get the presenter
+     * @return the JoinedTeamsPresenter instance
+     */
     public JoinedTeamsPresenter getPresenter() {
         return presenter;
     }
 
+    /**
+     * clear the view of the presenter
+     */
     @Override
     protected void onCleared() {
         super.onCleared();
