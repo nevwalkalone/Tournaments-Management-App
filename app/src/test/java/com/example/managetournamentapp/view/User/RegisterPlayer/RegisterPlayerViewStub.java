@@ -111,4 +111,9 @@ public class RegisterPlayerViewStub implements RegisterPlayerView {
 
     }
 
+    @Override
+    public void lockFields() {
+
+    }
+
 }

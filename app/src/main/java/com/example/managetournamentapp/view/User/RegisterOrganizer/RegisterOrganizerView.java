@@ -117,4 +117,8 @@ public interface RegisterOrganizerView {
      */
     void startOrganizerPage(String title);
 
+    /**
+     * some fields can't be changed
+     */
+    void lockFields();
 }

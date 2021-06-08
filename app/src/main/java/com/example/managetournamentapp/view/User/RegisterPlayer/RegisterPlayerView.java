@@ -134,5 +134,9 @@ public interface RegisterPlayerView {
      */
     void startPlayerPage(String username);
 
+    /**
+     * some fields can't be changed
+     */
+    void lockFields();
 
 }

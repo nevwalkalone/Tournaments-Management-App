@@ -93,6 +93,14 @@ public class RegisterOrganizerActivity extends AppCompatActivity implements Regi
     }
 
     /**
+     * some fields can't be changed
+     */
+    @Override
+    public void lockFields() {
+        findViewById(R.id.birthdate).setEnabled(false);
+    }
+
+    /**
      * get the contents of the edit text
      * @return the given username
      */
@@ -159,7 +167,7 @@ public class RegisterOrganizerActivity extends AppCompatActivity implements Regi
     @Override
     public String getBirthDate() {
         EditText BIRTHDATE = (EditText) findViewById(R.id.birthdate);
-        return BIRTHDATE.getText().toString();      //
+        return BIRTHDATE.getText().toString();
     }
 
     /**

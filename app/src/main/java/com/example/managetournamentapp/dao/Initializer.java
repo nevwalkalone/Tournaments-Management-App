@@ -62,6 +62,8 @@ public abstract class Initializer {
             teamDAO.save(current);
             j++;
         }
+
+        //extra team
         Team testTeam = new Team("Celtic" + 10, (new Sport("Basketball3v3")), AgeDivision.K100, players.get(0), "green");
         testTeam.addPlayer(players.get(1));
         testTeam.addPlayer(players.get(2));
@@ -93,7 +95,11 @@ public abstract class Initializer {
             round.setup(emptyTeams);
         }
 
-        Tournament tour3 = new Tournament("NBA", LocalDate.parse("2030-05-10"), LocalDate.parse("2030-05-29"), "ATHENS", (new Sport("Basketball3v3")), 8, AgeDivision.K100, dates);
+        ArrayList<LocalDate> dates2 = new ArrayList<>();
+        for (int i = 1; i < 16; i++) {
+            dates2.add(LocalDate.parse("2050-05-15"));
+        }
+        Tournament tour3 = new Tournament("NBA", LocalDate.parse("2040-05-10"), LocalDate.parse("2040-05-29"), "ATHENS", (new Sport("Basketball3v3")), 8, AgeDivision.K100, dates2);
         tournamentDAO.save(tour3);
         organizerDAO.findByTitle("ESKA").addTournament(tour3);
         for (Round round : tour3.getRounds()){
@@ -104,7 +110,7 @@ public abstract class Initializer {
         }
 
 
-
+        // 7 or 8 teams in for
         //add teams to tournament1
         for ( int i=0;i<8;i++ ){
             Team current = teamDAO.find("Celtic"+i);

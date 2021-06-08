@@ -94,4 +94,9 @@ public class RegisterOrganizerViewStub implements RegisterOrganizerView{
 
     }
 
+    @Override
+    public void lockFields() {
+
+    }
+
 }

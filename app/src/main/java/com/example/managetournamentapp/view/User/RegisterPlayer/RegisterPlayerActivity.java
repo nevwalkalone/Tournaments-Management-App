@@ -121,6 +121,11 @@ public class RegisterPlayerActivity extends AppCompatActivity implements Registe
         startActivity(intent);
     }
 
+    @Override
+    public void lockFields() {
+        findViewById(R.id.birthdate).setEnabled(false);
+    }
+
     /**
      * get the contents of the edit text
      *

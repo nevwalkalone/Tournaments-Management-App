@@ -58,6 +58,7 @@ public class RegisterOrganizerPresenter {
             view.setEmail(connectedOrganizer.getEmail());
             view.setBirthdate(connectedOrganizer.getBirthDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")).replace("-", "/"));
             view.setTitle(connectedOrganizer.getTitle());
+            view.lockFields();
         }
     }
 

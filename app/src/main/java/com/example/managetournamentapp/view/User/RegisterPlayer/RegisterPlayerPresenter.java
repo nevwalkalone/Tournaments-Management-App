@@ -59,6 +59,7 @@ public class RegisterPlayerPresenter {
         view.setBirthdate(connectedPlayer.getBirthDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")).replace("-", "/"));
         view.setLocation(connectedPlayer.getLocation());
         view.setSportsInterest(connectedPlayer.getSportsInterested());
+        view.lockFields();
     }
 
     /**
