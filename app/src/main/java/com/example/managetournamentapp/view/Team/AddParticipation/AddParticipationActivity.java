@@ -38,9 +38,7 @@ public class AddParticipationActivity  extends AppCompatActivity implements  Add
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         teamName =  this.getIntent().getStringExtra(TEAM_NAME_EXTRA);
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_participation);
         viewModel = new ViewModelProvider(this).get(AddParticipationViewModel.class);
@@ -49,13 +47,11 @@ public class AddParticipationActivity  extends AppCompatActivity implements  Add
         btnHome.setOnClickListener(v -> viewModel.getPresenter().onHomePage());
 
         if (findViewById(R.id.fragment_container) != null){
-
             if (savedInstanceState != null){
                 return;
             }
 
             viewModel.getPresenter().findTournaments( teamName  );
-
             TournamentListFragment tournamentListFragment = TournamentListFragment.newInstance(1);
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.fragment_container, tournamentListFragment)
@@ -63,6 +59,10 @@ public class AddParticipationActivity  extends AppCompatActivity implements  Add
         }
     }
 
+    /**
+     * what happens when a button is pressed
+     * @param v the current view
+     */
     @Override
     public void onClick(View v) {
         Button b = (Button) v;
@@ -85,13 +85,20 @@ public class AddParticipationActivity  extends AppCompatActivity implements  Add
 
     }
 
+    /**
+     * @param layoutId the layout of the popup
+     * @param msg the message of the popup
+     * @param btn1 the first button
+     * @param btn2 the second button
+     * @param changePopup true if the second version of the popup will be shown
+     * @return the AlertDialog that will be shown
+     */
     @Override
     public AlertDialog showPopUp(int layoutId, String msg, int btn1, int btn2, boolean changePopup) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         View customLayout = getLayoutInflater().inflate(layoutId, null);
         builder.setView(customLayout);
         AlertDialog dialog = builder.create();
-
         TextView textMsg = (TextView) customLayout.findViewById(R.id.action_message);
         textMsg.setText(msg);
 
@@ -99,7 +106,6 @@ public class AddParticipationActivity  extends AppCompatActivity implements  Add
         firstButton.setText("JOIN");
 
         Button secondButton = (Button) customLayout.findViewById(btn2);
-
         if(changePopup){
             firstButton.setText("OK");
             secondButton.setVisibility(View.GONE);
@@ -109,20 +115,31 @@ public class AddParticipationActivity  extends AppCompatActivity implements  Add
         return dialog;
     }
 
-    //TODO FIXING
+    /**
+     *  what happens when a tournament is selected
+     * @param item the tournament
+     */
     @Override
     public void onListFragmentInteraction(Tournament item) {
        tournamentName = item.getTitle();
        POPUP_ACTION = showPopUp((R.layout.invite_player_popup), "Do you want to join "+item.getTitle()+"?",R.id.invite_player_popup, R.id.account_player_popup,false);
        POPUP_ACTION.show();
-
     }
 
+    /**
+     *  get the tournaments that the team can participate in
+     * @return the ArrayList of tournaments
+     */
     @Override
     public ArrayList<Tournament> getTournamentList() {
         return viewModel.getPresenter().getResults();
     }
 
+
+    /**
+     * show the page of the tournament
+     * @param tournament the tournament
+     */
     @Override
     public void startTournamentPage(Tournament tournament){
         Intent intent = new Intent(this, TournamentPageActivity.class);
@@ -130,6 +147,10 @@ public class AddParticipationActivity  extends AppCompatActivity implements  Add
         startActivity(intent);
     }
 
+    /**
+     * show the page of the player
+     * @param userName the player's username
+     */
     @Override
     public void startPlayerPage(String userName) {
         Intent intent = new Intent(this, PlayerPageActivity.class);
@@ -137,6 +158,10 @@ public class AddParticipationActivity  extends AppCompatActivity implements  Add
         startActivity(intent);
     }
 
+    /**
+     * what happens when the homepage button is pressed
+     * @param name is the name of a player. or the title of an organizer
+     */
     @Override
     public void backToHomePage(String name) {
         Intent intent = new Intent(this, PlayerPageActivity.class);

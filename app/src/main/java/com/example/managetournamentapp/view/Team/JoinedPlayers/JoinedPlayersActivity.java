@@ -36,7 +36,6 @@ public class JoinedPlayersActivity extends AppCompatActivity implements PlayersL
     JoinedPlayersViewModel viewModel;
     private static final String PLAYER_USERNAME_EXTRA = "player_username_extra";
     private static final String ORGANIZER_TITLE_EXTRA = "organizer_title_extra";
-    public static final String PASSWORD_SHOWN_EXTRA = "password_extra";
     public static final String TEAM_NAME_EXTRA = "team_name_extra";
     private static boolean removeActionPopup = false;
     private static AlertDialog POPUP_ACTION;
@@ -71,23 +70,22 @@ public class JoinedPlayersActivity extends AppCompatActivity implements PlayersL
         viewModel.getPresenter().findAccess();
 
         if (findViewById(R.id.fragment_container) != null) {
-
-            // Activity is recreated, do not add fragment twice
             if (savedInstanceState != null) {
                 return;
             }
-
 
             PlayersListFragment playersListFragment = PlayersListFragment.newInstance(1);
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.fragment_container, playersListFragment)
                     .commit();
         }
-
-
     }
 
 
+    /**
+     * what happens when the user presses on a player
+     * @param item the player
+     */
     @Override
     public void onListFragmentInteraction(Player item) {
         playerSelected = item;
@@ -103,20 +101,26 @@ public class JoinedPlayersActivity extends AppCompatActivity implements PlayersL
         }
     }
 
+    /**
+     * get the players that have joined the team
+     * @return the ArrayList of players
+     */
     @Override
     public ArrayList<Player> getPlayerList() {
         return viewModel.getPresenter().getResults();
     }
 
+    /**
+     * what happens when a button is pressed
+     * @param v the current view
+     */
     @Override
     public void onClick(View v) {
-
         if (removeActionPopup) {
             if (v.getId() == R.id.no_delete) {
                 removeActionPopup = false;
                 dismissPopUpDeletion();
                 dismissPopUpAction();
-
             } else if (v.getId() == R.id.yes_delete) {
                 viewModel.getPresenter().removePlayer(teamName, playerSelected);
                 dismissPopUpDeletion();
@@ -125,23 +129,23 @@ public class JoinedPlayersActivity extends AppCompatActivity implements PlayersL
                 restartActivity();
             }
         }
-
         if (v.getId() == R.id.remove_player_popup) {
             removeActionPopup = true;
             displayPopUpDeletion(R.layout.player_delete_popup, "Do you really want to delete this player?", R.id.no_delete, R.id.yes_delete);
         }
-
         if (v.getId() == R.id.account_player_popup) {
             startPlayerInfo();
         }
-
         if (v.getId() == R.id.invite_new_players_button) {
             startInvitePlayerPage();
         }
-
     }
 
-
+    /**
+     * show the invite and delete buttons only to the captain
+     * @param captain true if the logged in user is the captain of the team
+     * @param player true if the player has joined the team
+     */
     @Override
     public void changesOfAccess(boolean captain, boolean player) {
         this.captain = captain;
@@ -151,6 +155,13 @@ public class JoinedPlayersActivity extends AppCompatActivity implements PlayersL
         }
     }
 
+    /**
+     * @param layoutId the layout of the popup
+     * @param msg the message of the popup
+     * @param btn1 the first button
+     * @param btn2 the second button
+     * @return the AlertDialog that will be shown
+     */
     @Override
     public AlertDialog showPopUp(int layoutId, String msg, int btn1, int btn2) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -161,23 +172,26 @@ public class JoinedPlayersActivity extends AppCompatActivity implements PlayersL
         TextView textMsg = (TextView) customLayout.findViewById(R.id.action_message);
         Button firstButton = (Button) customLayout.findViewById(btn1);
         Button secondButton = (Button) customLayout.findViewById(btn2);
-
         textMsg.setText(msg);
-
         firstButton.setOnClickListener(this);
         secondButton.setOnClickListener(this);
         return dialog;
     }
 
+    /**
+     * show the info page of the player
+     */
     @Override
     public void startPlayerInfo() {
         Intent intent = new Intent(this, PlayerInfoActivity.class);
         intent.putExtra(PLAYER_USERNAME_EXTRA, playerSelected.getCredentials().getUsername());
-        intent.putExtra(PASSWORD_SHOWN_EXTRA, "1");
         startActivity(intent);
 
     }
 
+    /**
+     * show the page where invites are sent
+     */
     @Override
     public void startInvitePlayerPage() {
         Intent intent = new Intent(this, InvitePlayersActivity.class);
@@ -185,37 +199,62 @@ public class JoinedPlayersActivity extends AppCompatActivity implements PlayersL
         startActivity(intent);
     }
 
+    /**
+     * show the possible actions popup
+     * @param layout the layout of the popup
+     * @param msg the message of the popup
+     * @param btn1 the first button
+     * @param btn2 the second button
+     */
     @Override
     public void displayPopUpAction(int layout, String msg, int btn1, int btn2) {
         POPUP_ACTION = showPopUp(layout, msg, btn1, btn2);
         POPUP_ACTION.show();
     }
 
+    /**
+     * show the deletion popup
+     * @param layout the layout of the popup
+     * @param msg the message of the popup
+     * @param btn1 the first button
+     * @param btn2 the second button
+     */
     @Override
     public void displayPopUpDeletion(int layout, String msg, int btn1, int btn2) {
         POPUP_DELETION = showPopUp(layout, msg, btn1, btn2);
         POPUP_DELETION.show();
-
     }
 
+    /**
+     * close the possible actions popup
+     */
     @Override
     public void dismissPopUpAction() {
         POPUP_ACTION.dismiss();
     }
 
+    /**
+     * close the deletion popup
+     */
     @Override
     public void dismissPopUpDeletion() {
         POPUP_DELETION.dismiss();
     }
 
+    /**
+     * reset the popups of this activity
+     */
     @Override
     public void resetPopUps() {
         POPUP_DELETION = null;
         POPUP_ACTION = null;
-
-
     }
 
+    /**
+     * what happens when the homepage button is pressed
+     * @param isPlayer true if the logged in user is a player
+     * @param name is the name of a player. or the title of an organizer
+     */
     @Override
     public void backToHomePage(boolean isPlayer, String name) {
         if (isPlayer){
@@ -230,8 +269,20 @@ public class JoinedPlayersActivity extends AppCompatActivity implements PlayersL
         }
     }
 
+    /**
+     * refresh the current activity
+     */
     @Override
     public void restartActivity() {
         this.recreate();
+    }
+
+    /**
+     * show a toast on the screen
+     * @param txt the message of the toast
+     */
+    @Override
+    public void showToast(String txt) {
+        Toast.makeText(this,txt, Toast.LENGTH_SHORT).show();
     }
 }

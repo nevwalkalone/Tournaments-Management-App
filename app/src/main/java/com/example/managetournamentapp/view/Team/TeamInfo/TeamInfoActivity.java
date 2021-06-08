@@ -54,26 +54,46 @@ public class TeamInfoActivity  extends AppCompatActivity implements TeamInfoView
         viewModel.getPresenter().findAccess();
     }
 
+    /**
+     * set the contents in the name edit text
+     * @param name name of the team
+     */
     @Override
     public void setTeamName(String name) {
         ((TextView)findViewById(R.id.team_name)).setText(name);
     }
 
+    /**
+     * set the contents in the colors edit text
+     * @param colors colors of the team
+     */
     @Override
     public void setColors(String colors) {
         ((TextView)findViewById(R.id.team_colors)).setText(colors);
     }
 
+    /**
+     * set the contents in the division edit text
+     * @param division division of the team
+     */
     @Override
     public void setAgeDivision(String division) {
         ((TextView)findViewById(R.id.age_division)).setText(division);
     }
 
+    /**
+     * set the contents in the sport edit text
+     * @param sport sport of the team
+     */
     @Override
     public void setSport(String sport) {
         ((TextView)findViewById(R.id.sport_type)).setText(sport);
     }
 
+    /**
+     * when the captain decides to edit this team
+     * the create team activity is started
+     */
     @Override
     public void startEditTeam() {
         Intent intent = new Intent(TeamInfoActivity.this, CreateTeamActivity.class);
@@ -81,6 +101,10 @@ public class TeamInfoActivity  extends AppCompatActivity implements TeamInfoView
         startActivity(intent);
     }
 
+    /**
+     * when the captain decides to delete this team
+     * @param playerUsername the player's username
+     */
     @Override
     public void startDeleteTeam(String playerUsername) {
         Intent intent = new Intent(TeamInfoActivity.this, PlayerPageActivity.class);
@@ -88,18 +112,30 @@ public class TeamInfoActivity  extends AppCompatActivity implements TeamInfoView
         startActivity(intent);
     }
 
+    /**
+     * show a toast on the screen
+     * @param txt the message of the toast
+     */
     @Override
     public void showToast(String txt) {
 
         Toast.makeText(this,txt, Toast.LENGTH_SHORT).show();
     }
 
+    /**
+     * only the captain can edit and delete the team
+     */
     @Override
     public void changesOfAccess() {
         btnEditTeam.setVisibility(View.GONE);
         btnDeleteTeam.setVisibility(View.GONE);
     }
 
+    /**
+     * what happens when the homepage button is pressed
+     * @param isPlayer true if the logged in user is a player
+     * @param name is the name of a player. or the title of an organizer
+     */
     @Override
     public void backToHomePage(boolean isPlayer, String name) {
         if (isPlayer){

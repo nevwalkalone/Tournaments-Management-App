@@ -20,7 +20,7 @@ public class TournamentInfoPresenter {
     public TournamentInfoPresenter(){}
 
     /**
-     * show the previous info of the tournament, if we are on edit mode
+     * show the info of the tournament
      * @param tournamentTitle the title of the tournament
      */
     public void findTournamentInfo(String tournamentTitle){

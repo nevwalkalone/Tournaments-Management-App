@@ -9,6 +9,9 @@ import com.example.managetournamentapp.memoryDao.TournamentDAOMemory;
 public class ParticipatingTournamentsViewModel extends ViewModel {
     ParticipatingTournamentsPresenter presenter;
 
+    /**
+     * the constructor
+     */
     public ParticipatingTournamentsViewModel() {
         presenter = new ParticipatingTournamentsPresenter();
         presenter.setTournamentDAO( new TournamentDAOMemory());
@@ -17,15 +20,20 @@ public class ParticipatingTournamentsViewModel extends ViewModel {
 
     }
 
+    /** get the presenter
+     * @return the ParticipatingTournamentsPresenter instance
+     */
     public ParticipatingTournamentsPresenter getPresenter() {
         return presenter;
     }
 
+    /**
+     * clear the view of the presenter
+     */
     @Override
     protected void onCleared() {
         super.onCleared();
         presenter.clearView();
     }
-
 
 }

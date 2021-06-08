@@ -28,7 +28,6 @@ public class ParticipatingTournamentsActivity extends AppCompatActivity implemen
     private FloatingActionButton addBtn;
     ImageButton btnHome;
 
-
     /**
      * Creates the layout and initializes the activity
      * @param savedInstanceState the Instance state
@@ -48,11 +47,9 @@ public class ParticipatingTournamentsActivity extends AppCompatActivity implemen
         btnHome.setOnClickListener(v -> viewModel.getPresenter().onHomePage());
 
         if (findViewById(R.id.fragment_container) != null){
-
             if (savedInstanceState != null){
                 return;
             }
-
             viewModel.getPresenter().findParticipatingTournaments(teamName);
             viewModel.getPresenter().findAccess();
 
@@ -63,11 +60,19 @@ public class ParticipatingTournamentsActivity extends AppCompatActivity implemen
         }
     }
 
+    /**
+     * get the tournaments that the team participates in
+     * @return the ArrayList of tournaments
+     */
     @Override
     public ArrayList<Tournament> getTournamentList() {
         return viewModel.getPresenter().getResults();
     }
 
+    /**
+     * what happens when a tournament is selected
+     * @param item the tournament
+     */
     @Override
     public void onListFragmentInteraction(Tournament item) {
         Intent intent = new Intent(ParticipatingTournamentsActivity.this, TournamentPageActivity.class);
@@ -75,6 +80,9 @@ public class ParticipatingTournamentsActivity extends AppCompatActivity implemen
         startActivity(intent);
     }
 
+    /**
+     * show the page where participations are created
+     */
     @Override
     public void startAddParticipation(){
         Intent intent = new Intent(ParticipatingTournamentsActivity.this, AddParticipationActivity.class);
@@ -82,11 +90,17 @@ public class ParticipatingTournamentsActivity extends AppCompatActivity implemen
         startActivity(intent);
     }
 
+    /**
+     * only the captain can create a new participation
+     */
     public void changesOfAccess(){
         addBtn.setVisibility(View.GONE);
     }
 
-
+    /**
+     * what happens when the homepage button is pressed
+     * @param name is the name of a player. or the title of an organizer
+     */
     @Override
     public void backToHomePage(String name) {
             Intent intent = new Intent(this, PlayerPageActivity.class);

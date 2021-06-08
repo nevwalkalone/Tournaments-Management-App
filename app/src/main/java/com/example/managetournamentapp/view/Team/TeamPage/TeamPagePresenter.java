@@ -15,9 +15,15 @@ public class TeamPagePresenter {
     private TeamDAO teamDAO;
     private LoggedInUser loggedInUser;
 
-
+    /**
+     * default constructor
+     */
     public TeamPagePresenter(){}
 
+    /**
+     * find the team
+     * @param teamName the name of the team
+     */
     public void findTeamInfo(String teamName){
         if (teamName==null)
             return;
@@ -26,6 +32,10 @@ public class TeamPagePresenter {
             return;
     }
 
+    /**
+     *only the players of this team can see
+     * the participations of this team
+     */
     public void findAccess(){
         if ( loggedInUser.getUser() != null )
             if (loggedInUser.getUser() instanceof Player)
@@ -34,22 +44,40 @@ public class TeamPagePresenter {
         view.changesOfAccess();
     }
 
+    /**
+     * set the teamDAO
+     * @param teamDAO the new TeamDAO
+     */
     public void setTeamDAO(TeamDAO teamDAO) {
         this.teamDAO = teamDAO;
     }
 
+    /**
+     * set the logged in user
+     * @param loggedInUser the logged in user
+     */
     public void setLoggedInUser(LoggedInUser loggedInUser) {
         this.loggedInUser = loggedInUser;
     }
 
+    /**
+     * set a new view
+     * @param view the new view
+     */
     public void setView(TeamPageView view) {
         this.view = view;
     }
 
+    /**
+     * clear the view
+     */
     public void clearView(){
         this.view = null;
     }
 
+    /**
+     * what happens when the homepage button is pressed
+     */
     public void onHomePage(){
         User user = loggedInUser.getUser();
         if (loggedInUser.getUser() instanceof Player){

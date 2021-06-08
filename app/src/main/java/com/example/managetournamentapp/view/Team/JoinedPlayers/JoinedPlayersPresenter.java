@@ -4,6 +4,7 @@ import com.example.managetournamentapp.dao.LoggedInUser;
 import com.example.managetournamentapp.dao.PlayerDAO;
 import com.example.managetournamentapp.dao.TeamDAO;
 import com.example.managetournamentapp.domain.Organizer;
+import com.example.managetournamentapp.domain.Participation;
 import com.example.managetournamentapp.domain.Player;
 import com.example.managetournamentapp.domain.Team;
 import com.example.managetournamentapp.domain.User;
@@ -20,26 +21,46 @@ public class JoinedPlayersPresenter {
     private ArrayList<Player> results = new ArrayList<>();
     private LoggedInUser loggedInUser;
 
+    /**
+     * default constructor
+     */
     public JoinedPlayersPresenter() {
     }
 
+    /**
+     * find the players that have joined the team
+     * @param teamName the name of the team
+     */
     public void findPlayers(String teamName) {
         this.teamName = teamName;
         results.clear();
         results = teamDAO.find(teamName).getPlayers();
     }
 
+    /**
+     * remove a player of the team, if there are no arranged participations
+     * @param teamName the name of the team
+     * @param player the player
+     */
     public void removePlayer(String teamName, Player player) {
+        Team team = teamDAO.find(teamName);
+
+        for (Participation part : team.getParticipations()){
+            if (!part.isPast()){
+                view.showToast("CAN'T DELETE : THIS TEAM HAS ARRANGED PARTICIPATIONS");
+                return;
+            }
+        }
         results.clear();
-        //not remove if has undone participation
-        teamDAO.find(teamName).removePlayer(player);
+        team.removePlayer(player);
         results = teamDAO.find(teamName).getPlayers();
     }
 
+    /**
+     * show the invite and delete buttons only to the captain
+     */
     public void findAccess() {
-        System.out.println();
         Team team = teamDAO.find(teamName);
-
         boolean captain = false;
         boolean player = false;
         if (loggedInUser.getUser() != null) {
@@ -55,30 +76,56 @@ public class JoinedPlayersPresenter {
     }
 
 
+    /**
+     * get the players that have joined the team
+     * @return the ArrayList of players
+     */
     public ArrayList<Player> getResults() {
         return results;
     }
 
+    /**
+     * set the logged in user
+     * @param loggedInUser the logged in user
+     */
     public void setLoggedInUser(LoggedInUser loggedInUser) {
         this.loggedInUser = loggedInUser;
     }
 
+    /**
+     * set the playerDAO
+     * @param playerDAO the new PlayerDAO
+     */
     public void setPlayerDAO(PlayerDAO playerDAO) {
         this.playerDAO = playerDAO;
     }
 
+    /**
+     * set the teamDAO
+     * @param teamDAO the new TeamDAO
+     */
     public void setTeamDAO(TeamDAO teamDAO) {
         this.teamDAO = teamDAO;
     }
 
+    /**
+     * set a new view
+     * @param view the new view
+     */
     public void setView(JoinedPlayersView view) {
         this.view = view;
     }
 
+    /**
+     * clear the view
+     */
     public void clearView() {
         this.view = null;
     }
 
+    /**
+     * what happens when the homepage button is pressed
+     */
     public void onHomePage(){
         loggedInUser = new MemoryLoggedInUser();
         User user = loggedInUser.getUser();

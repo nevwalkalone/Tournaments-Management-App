@@ -14,8 +14,8 @@ public class GroupRankingsViewModel extends ViewModel {
         presenter.setTournamentDAO(new TournamentDAOMemory());
     }
 
-    /**
-     * @return the presenter instance
+    /** get the presenter
+     * @return the GroupRankingsPresenter instance
      */
     public GroupRankingsPresenter getPresenter() {
         return presenter;

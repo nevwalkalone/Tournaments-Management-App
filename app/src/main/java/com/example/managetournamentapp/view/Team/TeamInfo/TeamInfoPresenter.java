@@ -15,8 +15,15 @@ public class TeamInfoPresenter {
     private TeamDAO teamDAO;
     private LoggedInUser loggedInUser;
 
+    /**
+     * default constructor
+     */
     public TeamInfoPresenter(){}
 
+    /**
+     * show the info of the team
+     * @param teamName the name of the team
+     */
     public void findTeamInfo(String teamName) {
         if (teamName==null)
             return;
@@ -30,6 +37,11 @@ public class TeamInfoPresenter {
         view.setAgeDivision(team.getAgeDivision().toString());
     }
 
+    /**
+     * hide the edit and delete buttons
+     * if the user viewing the page is not
+     * the captain of the team
+     */
     public void findAccess(){
         if ( loggedInUser.getUser() != null )
             if (loggedInUser.getUser() instanceof  Player)
@@ -38,6 +50,10 @@ public class TeamInfoPresenter {
         view.changesOfAccess();
     }
 
+    /**
+     * when the captain chooses to edit this team
+     * the create team activity is started
+     */
     public void onEditTeam(){
         for (Participation part : team.getParticipations()){
             if (!part.isPast()){
@@ -48,41 +64,61 @@ public class TeamInfoPresenter {
         view.startEditTeam();
     }
 
+    /**
+     * when the captain tries to delete the team
+     * we check if this team can be deleted
+     */
     public void onDeleteTeam(){
-        //todo more
         for (Participation part : team.getParticipations()){
             if (!part.isPast()){
                 view.showToast("CAN'T DELETE : THIS TEAM HAS ARRANGED PARTICIPATIONS");
                 return;
             }
         }
-
         if (team.getPlayers().size()>1){
             view.showToast("CAN'T DELETE : YOU HAVE TO REMOVE ALL THE OTHER PLAYERS");
             return;
         }
-
         team.removePlayer(team.getCaptain());
         teamDAO.delete(team);
         view.startDeleteTeam(((Player)loggedInUser.getUser()).getCredentials().getUsername() );
     }
 
+
+    /**
+     * set the teamDAO
+     * @param teamDAO the new TeamDAO
+     */
     public void setTeamDAO(TeamDAO teamDAO) {
         this.teamDAO = teamDAO;
     }
 
+    /**
+     * set the logged in user
+     * @param loggedInUser the logged in user
+     */
     public void setLoggedInUser(LoggedInUser loggedInUser) {
         this.loggedInUser = loggedInUser;
     }
 
+    /**
+     * set a new view
+     * @param view the new view
+     */
     public void setView(TeamInfoView view) {
         this.view = view;
     }
 
+    /**
+     * clear the view
+     */
     public void clearView(){
         this.view = null;
     }
 
+    /**
+     * what happens when the homepage button is pressed
+     */
     public void onHomePage(){
         loggedInUser = new MemoryLoggedInUser();
         User user = loggedInUser.getUser();

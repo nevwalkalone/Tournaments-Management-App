@@ -40,7 +40,6 @@ public class InvitePlayersActivity extends AppCompatActivity implements PlayersL
         super.onCreate(savedInstanceState);
         teamName = this.getIntent().getStringExtra(TEAM_NAME_EXTRA);
         setContentView(R.layout.activity_invite_players);
-
         viewModel = new ViewModelProvider(this).get(InvitePlayersViewModel.class);
         viewModel.getPresenter().setView(this);
         viewModel.getPresenter().findPlayers(teamName);
@@ -54,16 +53,17 @@ public class InvitePlayersActivity extends AppCompatActivity implements PlayersL
             if (savedInstanceState != null) {
                 return;
             }
-
             PlayersListFragment playersListFragment = PlayersListFragment.newInstance(1);
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.fragment_container, playersListFragment)
                     .commit();
         }
-
     }
 
-
+    /**
+     * what happens when the user presses on a player
+     * @param item the player
+     */
     @Override
     public void onListFragmentInteraction(Player item) {
         playerSelected = item;
@@ -71,11 +71,19 @@ public class InvitePlayersActivity extends AppCompatActivity implements PlayersL
 
     }
 
+    /**
+     * get the players that the team can invite
+     * @return the ArrayList of players
+     */
     @Override
     public ArrayList<Player> getPlayerList() {
         return viewModel.getPresenter().getResults();
     }
 
+    /**
+     * what happens when a button is pressed
+     * @param v the current view
+     */
     @Override
     public void onClick(View v) {
         Button b = (Button) v;
@@ -95,17 +103,23 @@ public class InvitePlayersActivity extends AppCompatActivity implements PlayersL
 
     }
 
+    /**
+     * @param layoutId the layout of the popup
+     * @param msg the message of the popup
+     * @param btn1 the first button
+     * @param btn2 the second button
+     * @param changePopup true if the second version of the popup will be shown
+     * @return the AlertDialog that will be shown
+     */
     @Override
     public AlertDialog showPopUp(int layoutId, String msg, int btn1, int btn2, boolean changePopup) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         View customLayout = getLayoutInflater().inflate(layoutId, null);
         builder.setView(customLayout);
         AlertDialog dialog = builder.create();
-
         TextView textMsg = (TextView) customLayout.findViewById(R.id.action_message);
         Button firstButton = (Button) customLayout.findViewById(btn1);
         Button secondButton = (Button) customLayout.findViewById(btn2);
-
         textMsg.setText(msg);
 
         if (changePopup) {
@@ -118,6 +132,10 @@ public class InvitePlayersActivity extends AppCompatActivity implements PlayersL
         return dialog;
     }
 
+    /**
+     * show the page of the player
+     * @param player the player
+     */
     @Override
     public void startPlayerPage(Player player) {
         Intent intent = new Intent(this, PlayerInfoActivity.class);
@@ -125,31 +143,49 @@ public class InvitePlayersActivity extends AppCompatActivity implements PlayersL
         startActivity(intent);
     }
 
-
+    /**
+     * show the popup
+     * @param layout the layout of the popup
+     * @param msg the message of the popup
+     * @param btn1 the first button
+     * @param btn2 the second button
+     * @param invited true if the second version of the popup will be shown
+     * @return the AlertDialog that will be shown
+     */
     @Override
     public void displayPopUpAction(int layout, String msg, int btn1, int btn2, boolean invited) {
         POPUP_ACTION = showPopUp(layout, msg, btn1, btn2, invited);
         POPUP_ACTION.show();
     }
 
-
+    /**
+     * close the popup
+     */
     @Override
     public void dismissPopUpAction() {
         POPUP_ACTION.dismiss();
     }
 
-
+    /**
+     * reset the popups of this activity
+     */
     @Override
     public void resetPopUps() {
         POPUP_ACTION = null;
     }
 
+    /**
+     * refresh the current activity
+     */
     @Override
     public void restartActivity() {
         this.recreate();
     }
 
-
+    /**
+     * what happens when the homepage button is pressed
+     * @param name is the name of a player. or the title of an organizer
+     */
     @Override
     public void backToHomePage( String name) {
         Intent intent = new Intent(this, PlayerPageActivity.class);

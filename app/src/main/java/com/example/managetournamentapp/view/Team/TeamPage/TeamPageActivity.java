@@ -64,7 +64,10 @@ public class TeamPageActivity extends AppCompatActivity implements TeamPageView 
        viewModel.getPresenter().findAccess();
     }
 
-
+    /**
+     * when the "info" button is pressed
+     * the team info activity starts
+     */
     @Override
     public void startTeamInfo() {
         Intent intent = new Intent(TeamPageActivity.this, TeamInfoActivity.class);
@@ -72,6 +75,10 @@ public class TeamPageActivity extends AppCompatActivity implements TeamPageView 
         startActivity(intent);
     }
 
+    /**
+     * when the "players" button is pressed
+     * the participating players activity starts
+     */
     @Override
     public void startTeamPlayers() {
         Intent intent = new Intent(TeamPageActivity.this, JoinedPlayersActivity.class);
@@ -79,6 +86,10 @@ public class TeamPageActivity extends AppCompatActivity implements TeamPageView 
         startActivity(intent);
     }
 
+    /**
+     * when the "participations" button is pressed
+     * the participations activity starts
+     */
     @Override
     public void startTeamParticipations() {
         Intent intent = new Intent(TeamPageActivity.this, ParticipatingTournamentsActivity.class);
@@ -86,13 +97,21 @@ public class TeamPageActivity extends AppCompatActivity implements TeamPageView 
         startActivity(intent);
     }
 
+    /**
+     *only the players of this team can see
+     * the participations of this team
+     */
     @Override
     public void changesOfAccess() {
-
         btnTeamParticipations.setVisibility(View.GONE);
         changeOfAccess = true;
     }
 
+    /**
+     * what happens when the homepage button is pressed
+     * @param isPlayer is true if the logged in user is a player
+     * @param name is the name of a player. or the title of an organizer
+     */
     @Override
    public void backToHomePage(boolean isPlayer, String name) {
         if (isPlayer){
