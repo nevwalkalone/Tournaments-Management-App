@@ -3,8 +3,6 @@ package com.example.managetournamentapp.view.User.RegisterOrganizer;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
-
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -15,7 +13,11 @@ import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.view.Organizer.OrganizerPage.OrganizerPageActivity;
 
 
-import org.w3c.dom.Text;
+/**
+ * Developed for the purposes of University Lesson "Software Engineering" at AUEB
+ * Athens University of Economics and Business
+ * 2020-2021
+ */
 
 public class RegisterOrganizerActivity extends AppCompatActivity implements RegisterOrganizerView, View.OnClickListener {
 

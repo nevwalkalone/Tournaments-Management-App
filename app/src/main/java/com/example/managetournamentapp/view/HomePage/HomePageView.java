@@ -1,25 +1,48 @@
 package com.example.managetournamentapp.view.HomePage;
 
+/**
+ * Developed for the purposes of University Lesson "Software Engineering" at AUEB
+ * Athens University of Economics and Business
+ * 2020-2021
+ */
 public interface HomePageView {
 
     /**
-     * When app user clicks on Connect Button,
-     * the app redirects the user to the ConnectActivity
+     * If the user is on the Home Page
+     * and clicks on the connect button
      */
     void connectAction();
 
     /**
-     * When app user clicks on any team, on the browsing list,
-     * the app redirects the user to the TeamPageActivity
+     * If the user is on the Home Page
+     * and clicks on the browse button
      */
     void browseAction();
 
+    /**
+     * If the user is on the Home Page
+     * and clicks on the Log In button
+     */
     void loginAction();
 
+    /**
+     * If the user is on the Home Page
+     * and clicks on the Register button
+     */
     void registerAction();
 
+    /**
+     * If the user is on the Home Page
+     * and clicks on the Register button
+     * and then chooses the organizer button
+     */
     void organizerRegisterAction();
 
+    /**
+     * If the user is on the Home Page
+     * and clicks on the Register button
+     * and then chooses the organizer button
+     */
     void playerRegisterAction();
 
 

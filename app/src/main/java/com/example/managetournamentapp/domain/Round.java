@@ -1,9 +1,14 @@
 package com.example.managetournamentapp.domain;
 
-import android.util.Log;
-
 import java.time.LocalDate;
 import java.util.*;
+
+/**
+ * Developed for the purposes of University Lesson "Software Engineering" at AUEB
+ * Athens University of Economics and Business
+ * 2020-2021
+ */
+
 public class Round {
 
     private int teamsNumber,teamsPerGroup;

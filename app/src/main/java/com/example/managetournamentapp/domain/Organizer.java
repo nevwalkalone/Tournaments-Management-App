@@ -4,6 +4,12 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+/**
+ * Developed for the purposes of University Lesson "Software Engineering" at AUEB
+ * Athens University of Economics and Business
+ * 2020-2021
+ */
+
 public class Organizer extends User {
 
     private String title;

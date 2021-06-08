@@ -2,19 +2,21 @@ package com.example.managetournamentapp.view.User.Browsing;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
-
 import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.domain.Tournament;
-import com.example.managetournamentapp.memoryDao.MemoryInitializer;
-import com.example.managetournamentapp.memoryDao.TournamentDAOMemory;
 import com.example.managetournamentapp.view.Organizer.OrganizerTournaments.fragment.TournamentListFragment;
-import com.example.managetournamentapp.view.Team.ParticipatingTournaments.ParticipatingTournamentsViewModel;
 import com.example.managetournamentapp.view.Tournament.TournamentPage.TournamentPageActivity;
 
 import java.util.ArrayList;
+
+/**
+ * Developed for the purposes of University Lesson "Software Engineering" at AUEB
+ * Athens University of Economics and Business
+ * 2020-2021
+ */
 
 public class BrowsingActivity extends AppCompatActivity implements BrowsingView, TournamentListFragment.OnListFragmentInteractionListener {
 

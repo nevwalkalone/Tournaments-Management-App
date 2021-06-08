@@ -5,7 +5,8 @@ import com.example.managetournamentapp.domain.Round;
 
 /**
  * Developed for the purposes of University Lesson "Software Engineering" at AUEB
- * -Athens University of Economics and Business
+ * Athens University of Economics and Business
+ * 2020-2021
  */
 
 public interface RoundDAO {

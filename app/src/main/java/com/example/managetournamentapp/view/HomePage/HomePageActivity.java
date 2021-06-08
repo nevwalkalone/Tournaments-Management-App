@@ -19,6 +19,12 @@ import com.example.managetournamentapp.view.User.RegisterOrganizer.RegisterOrgan
 import com.example.managetournamentapp.view.User.RegisterPlayer.RegisterPlayerActivity;
 
 
+/**
+ * Developed for the purposes of University Lesson "Software Engineering" at AUEB
+ * Athens University of Economics and Business
+ * 2020-2021
+ */
+
 public class HomePageActivity extends AppCompatActivity implements HomePageView {
 
     private Button connectBtn;
@@ -44,16 +50,20 @@ public class HomePageActivity extends AppCompatActivity implements HomePageView 
         viewModel = new ViewModelProvider(this).get(HomePageViewModel.class);
         viewModel.getPresenter().setView(this);
 
-
         connectBtn = (Button) findViewById(R.id.connect_button);
         browseBtn = (Button) findViewById(R.id.browse_button);
         connectBtn.setOnClickListener(v -> viewModel.getPresenter().onConnectAction());
         browseBtn.setOnClickListener(v -> viewModel.getPresenter().onBrowseAction());
-
     }
 
 
-
+    /**
+     * Shows pop up message with two buttons
+     * @param layoutId layouf of the popup message
+     * @param btn1 id of the first button
+     * @param btn2 if of the second button
+     * @param firstPopup boolean variable to inform us if this is the second popup we want to show
+     */
     public void showPopUp(int layoutId, int btn1, int btn2, boolean firstPopup) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         View customLayout = getLayoutInflater().inflate(layoutId, null);
@@ -75,11 +85,20 @@ public class HomePageActivity extends AppCompatActivity implements HomePageView 
         dialog.show();
     }
 
+    /**
+     * Shows a pop up that prompts the user
+     * to press appropriate buttons (register, login, etc)
+     */
     @Override
     public void connectAction() {
         showPopUp(R.layout.register_login, R.id.login_button, R.id.register_button, true);
     }
 
+    /**
+     * Starts the login activity.
+     * This method is called when the user
+     * clicks on the login button
+     */
     @Override
     public void loginAction() {
         Intent intent = new Intent(this, LoginActivity.class);
@@ -87,7 +106,12 @@ public class HomePageActivity extends AppCompatActivity implements HomePageView 
 
     }
 
-
+    /**
+     This method is called when the user presses
+     the register button. It is used to show a pop up
+     from which the user chooses to register either as
+     a player or an organizer
+     */
     @Override
     public void registerAction() {
         Toast.makeText(this,
@@ -97,6 +121,11 @@ public class HomePageActivity extends AppCompatActivity implements HomePageView 
         showPopUp(R.layout.register_selection, R.id.organizer_register, R.id.player_register, false);
     }
 
+    /**
+     * Starts the organizer registration activity.
+     * This method is called when the user
+     * clicks on the register (organizer) button
+     */
     @Override
     public void organizerRegisterAction() {
         Toast.makeText(this,
@@ -107,6 +136,11 @@ public class HomePageActivity extends AppCompatActivity implements HomePageView 
         startActivity(intent);
     }
 
+    /**
+     * Starts the player registration activity.
+     * This method is called when the user
+     * clicks on the register (player) button
+     */
     @Override
     public void playerRegisterAction() {
         Toast.makeText(this,
@@ -117,14 +151,21 @@ public class HomePageActivity extends AppCompatActivity implements HomePageView 
         startActivity(intent);
     }
 
-
+    /**
+     * Starts the Browse Activity
+     * This method is called when the user
+     * clicks on the browse button
+     */
     @Override
     public void browseAction() {
         Intent intent = new Intent(this, BrowsingActivity.class);
         startActivity(intent);
-
     }
 
+    /**
+     * Overrides the back button and throws a pop up message
+     * asking for confirmation of wanted action
+     */
     @Override
     public void onBackPressed() {
         AlertDialog.Builder builder = new AlertDialog.Builder(HomePageActivity.this);

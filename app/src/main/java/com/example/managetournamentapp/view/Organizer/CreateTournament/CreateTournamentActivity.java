@@ -21,6 +21,12 @@ import com.example.managetournamentapp.view.Organizer.SetDates.SetDatesActivity;
 import java.util.ArrayList;
 
 
+/**
+ * Developed for the purposes of University Lesson "Software Engineering" at AUEB
+ * Athens University of Economics and Business
+ * 2020-2021
+ */
+
 public class CreateTournamentActivity extends AppCompatActivity implements CreateTournamentView {
     private static final String BASIC_INFO_EXTRA = "basic_info_extra";
     public static final String TOURNAMENT_TITLE_EXTRA = "tournament_title_extra";
@@ -62,7 +68,12 @@ public class CreateTournamentActivity extends AppCompatActivity implements Creat
         saveBtn.setOnClickListener(v -> viewModel.getPresenter().onSaveTournament());
         btnHome.setOnClickListener(v -> viewModel.getPresenter().onHomePage());
     }
-
+    /**
+     * Starts the organizer page activity-screen.
+     * This method is called when the user
+     * clicks on the save button, so that he returns
+     * to his personal page.
+     */
     @Override
     public void startSaveTournament(String organizerTitle) {
         Intent intent = new Intent(CreateTournamentActivity.this, OrganizerPageActivity.class);

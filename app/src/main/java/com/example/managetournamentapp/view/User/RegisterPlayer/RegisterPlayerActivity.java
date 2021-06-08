@@ -3,27 +3,26 @@ package com.example.managetournamentapp.view.User.RegisterPlayer;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
-
-import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-
 import android.widget.TextView;
 
 import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.domain.AgeDivision;
-import com.example.managetournamentapp.domain.Credentials;
 import com.example.managetournamentapp.domain.Sport;
-import com.example.managetournamentapp.view.HomePage.HomePageActivity;
 import com.example.managetournamentapp.view.Player.PlayerPage.PlayerPageActivity;
 
-
 import java.util.ArrayList;
+
+/**
+ * Developed for the purposes of University Lesson "Software Engineering" at AUEB
+ * Athens University of Economics and Business
+ * 2020-2021
+ */
 
 public class RegisterPlayerActivity extends AppCompatActivity implements RegisterPlayerView, View.OnClickListener {
 

@@ -14,9 +14,10 @@ import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-
 /**
- * Helper Class that is responsible for initialing data in our database.
+ * Developed for the purposes of University Lesson "Software Engineering" at AUEB
+ * Athens University of Economics and Business
+ * 2020-2021
  */
 
 public abstract class Initializer {

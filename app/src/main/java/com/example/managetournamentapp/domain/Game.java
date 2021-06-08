@@ -4,6 +4,13 @@ import java.time.LocalDate;
 import java.util.*;
 import java.time.LocalDateTime;
 
+
+/**
+ * Developed for the purposes of University Lesson "Software Engineering" at AUEB
+ * Athens University of Economics and Business
+ * 2020-2021
+ */
+
 public class Game {
 
     private String arena;

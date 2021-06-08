@@ -15,6 +15,11 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Developed for the purposes of University Lesson "Software Engineering" at AUEB
+ * Athens University of Economics and Business
+ * 2020-2021
+ */
 
 public class RegisterPlayerPresenter {
 
@@ -100,7 +105,6 @@ public class RegisterPlayerPresenter {
             view.startPlayerPage();
         }
     }
-
 
     /**
      * @param emailToCheck the email we want to check if it's valid.

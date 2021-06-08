@@ -11,6 +11,12 @@ import com.example.managetournamentapp.dao.RoundDAO;
 import com.example.managetournamentapp.dao.TeamDAO;
 import com.example.managetournamentapp.dao.TournamentDAO;
 
+/**
+ * Developed for the purposes of University Lesson "Software Engineering" at AUEB
+ * Athens University of Economics and Business
+ * 2020-2021
+ */
+
 public class MemoryInitializer extends Initializer {
 
     /**

@@ -7,9 +7,9 @@ import java.util.ArrayList;
 
 /**
  * Developed for the purposes of University Lesson "Software Engineering" at AUEB
- * -Athens University of Economics and Business
+ * Athens University of Economics and Business
+ * 2020-2021
  */
-
 public class OrganizerDAOMemory implements OrganizerDAO {
     protected static ArrayList<Organizer> entities = new ArrayList<>();
 

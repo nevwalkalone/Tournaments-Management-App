@@ -10,6 +10,13 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+
+/**
+ * Developed for the purposes of University Lesson "Software Engineering" at AUEB
+ * Athens University of Economics and Business
+ * 2020-2021
+ */
+
 public class Group {
     private final boolean isKnockout;
     private final int groupSize;
