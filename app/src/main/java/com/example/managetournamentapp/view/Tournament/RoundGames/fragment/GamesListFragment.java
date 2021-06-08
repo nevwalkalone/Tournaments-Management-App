@@ -71,7 +71,6 @@ public class GamesListFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_games_list, container, false);
 
         ArrayList<Game> gamesList = mListener.getGamesList();
-        Log.wtf("gamessss", gamesList.toString());
         // Set the adapter
         if (view instanceof RecyclerView) {
             Context context = view.getContext();

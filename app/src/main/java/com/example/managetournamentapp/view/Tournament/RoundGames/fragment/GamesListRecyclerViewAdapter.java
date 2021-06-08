@@ -15,6 +15,7 @@ import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.domain.Game;
 import com.example.managetournamentapp.view.Tournament.RoundGames.fragment.GamesListFragment.OnListFragmentInteractionListener;
 
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 
@@ -71,7 +72,7 @@ public class GamesListRecyclerViewAdapter extends RecyclerView.Adapter<GamesList
             holder.scoreB.setText(" ");
         }
 
-        holder.date.setText(currentGame.getDate().toString());
+        holder.date.setText(currentGame.getDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")).replace("-","/") );
 
         holder.btnSelect.setOnClickListener(v -> {
             if (null != mListener) {
