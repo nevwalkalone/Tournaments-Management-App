@@ -7,6 +7,12 @@ import com.example.managetournamentapp.domain.Tournament;
 
 import java.util.ArrayList;
 
+/**
+ * Developed for the purposes of the Course "Software Engineering" at AUEB
+ * Athens University of Economics and Business
+ * 2020-2021
+ */
+
 public class OrganizerTournamentsPresenter {
     private OrganizerTournamentsView view;
     private TournamentDAO tournamentDAO;

@@ -14,10 +14,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.managetournamentapp.R;
-import com.example.managetournamentapp.view.Organizer.CreateTournament.CreateTournamentView;
 import com.example.managetournamentapp.view.Organizer.OrganizerPage.OrganizerPageActivity;
 import com.example.managetournamentapp.view.Player.PlayerPage.PlayerPageActivity;
-import com.example.managetournamentapp.view.Tournament.TournamentPage.TournamentPageActivity;
 
 import java.util.ArrayList;
 

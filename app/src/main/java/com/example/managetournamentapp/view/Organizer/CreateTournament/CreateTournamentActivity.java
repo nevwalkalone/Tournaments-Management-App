@@ -78,11 +78,12 @@ public class CreateTournamentActivity extends AppCompatActivity implements Creat
         saveBtn.setOnClickListener(v -> viewModel.getPresenter().onSaveTournament());
         btnHome.setOnClickListener(v -> viewModel.getPresenter().onHomePage());
     }
+
     /**
-     * Starts the organizer page activity-screen.
-     * This method is called when the user
-     * clicks on the save button, so that he returns
-     * to his personal page.
+     * Goes back to organizer profile
+     * if the user edits account and
+     * presses the save button
+     * @param organizerTitle organizer title that is passed as an extra to the next activity
      */
     @Override
     public void startSaveTournament(String organizerTitle) {
@@ -91,6 +92,10 @@ public class CreateTournamentActivity extends AppCompatActivity implements Creat
         startActivity(intent);
     }
 
+    /**
+     * If user saves the initial info of the new tournament
+     * @param basicInfo arraylist containing the basic info of the newly created tournament, passed as an extra
+     */
     @Override
     public void startSetDates(ArrayList<String> basicInfo) {
         Intent intent = new Intent(CreateTournamentActivity.this, SetDatesActivity.class);
@@ -98,95 +103,177 @@ public class CreateTournamentActivity extends AppCompatActivity implements Creat
         startActivity(intent);
     }
 
+    /**
+     * Returns the organizer title of the related field in the current layout
+     * @return the organizer title found in the related field
+     */
     @Override
     public String getTournamentTitle() {
         return ((EditText) findViewById(R.id.tournament_title)).getText().toString();
 
     }
 
+    /**
+     * Returns the tournament description of the related field in the current layout
+     * @return the tournament description found in the related field
+     */
     @Override
     public String getDescription() {
         return ((EditText) findViewById(R.id.tournament_description)).getText().toString();
 
     }
 
+    /**
+     * Returns the tournament location of the related field in the current layout
+     * @return the organizer title found in the related field
+     */
     @Override
     public String getLocation() {
         return ((EditText) findViewById(R.id.tournament_location)).getText().toString();
     }
 
+    /**
+     * Returns the tournament start date of the related field in the current layout
+     * @return the tournament start date found in the related field
+     */
     @Override
     public String getStartDate() {
         return ((EditText) findViewById(R.id.tournament_start_date)).getText().toString();
 
     }
 
+    /**
+     * Returns the tournament finish date of the related field in the current layout
+     * @return the tournament finish date found in the related field
+     */
     @Override
     public String getFinishDate() {
         return ((EditText) findViewById(R.id.tournament_finish_Date)).getText().toString();
 
     }
 
+    /**
+     * Returns the tournament age division of the related field in the current layout
+     * @return the tournament age division found in the related field
+     */
     @Override
     public int getAgeDivision() {
         return ageDivisionSpinner.getSelectedItemPosition();
     }
 
+    /**
+     * Returns the tournament teams number of the related field in the current layout
+     * @return the tournament teams number found in the related field
+     */
     @Override
     public int getTeamsNumber() {
         return teamsNumberSpinner.getSelectedItemPosition();
 
     }
 
+    /**
+     * Returns the tournament sport type of the related field in the current layout
+     * @return the tournament sport type found in the related field
+     */
     @Override
     public int getSportType() {
         return sportTypeSpinner.getSelectedItemPosition();
     }
 
+    /**
+     * Method used
+     * to set the tournament title field of activity's layout
+     * screen to the tournament title that user has typed in
+     * @param title title of tournament to be set
+     */
     @Override
     public void setTournamentTitle(String title) {
         ((EditText) findViewById(R.id.tournament_title)).setText(title);
 
     }
 
+    /**
+     * Method used
+     * to set the tournament description field of activity's layout
+     * screen to the tournament description that user has typed in
+     * @param description description of tournament to be set
+     */
     @Override
     public void setDescription(String description) {
         ((EditText) findViewById(R.id.tournament_description)).setText(description);
 
     }
 
+    /**
+     * Method used
+     * to set the tournament location field of activity's layout
+     * screen to the tournament location that user has typed in
+     * @param location location of tournament to be set
+     */
     @Override
     public void setLocation(String location) {
         ((EditText) findViewById(R.id.tournament_location)).setText(location);
     }
 
+    /**
+     * Method used
+     * to set the tournament start date field of activity's layout
+     * screen to the tournament start date that user has typed in
+     * @param date start date of tournament to be set
+     */
     @Override
     public void setStartDate(String date) {
         ((EditText) findViewById(R.id.tournament_start_date)).setText(date);
     }
 
+    /**
+     * Method used
+     * to set the tournament finish date of activity's layout
+     * screen to the tournament finish date that user has typed in
+     * @param date  finish date of tournament to be set
+     */
     @Override
     public void setFinishDate(String date) {
         ((EditText) findViewById(R.id.tournament_finish_Date)).setText(date);
     }
 
-
+    /**
+     * Method used
+     * to set the tournament age division of activity's layout
+     * screen to the tournament age division that user has typed in
+     * @param position position of spinner that must be set
+     */
     @Override
     public void setAgeDivision(int position) {
         ageDivisionSpinner.setSelection(position);
     }
 
+    /**
+     * Method used
+     * to set the tournament teams number of activity's layout
+     * screen to the tournament teams number that user has typed in
+     * @param position position of spinner that must be set
+     */
     @Override
     public void setTeamsNumber(int position) {
         teamsNumberSpinner.setSelection(position);
     }
 
+    /**
+     * Method used
+     * to set the tournament sport type of activity's layout
+     * screen to the tournament sport type that user has typed in
+     * @param position position of spinner that must be set
+     */
     @Override
     public void setSportType(int position) {
         sportTypeSpinner.setSelection(position);
 
     }
 
+    /**
+     * Locks the fields so they can't be changed
+     */
     @Override
     public void lockPrevious() {
         findViewById(R.id.tournament_start_date).setEnabled(false);
@@ -194,6 +281,11 @@ public class CreateTournamentActivity extends AppCompatActivity implements Creat
         teamsNumberSpinner.setEnabled(false);
     }
 
+    /**
+     * Shows a pop up message
+     * @param view of the current layout
+     * @param msg message that the pop up shows
+     */
     @Override
     public void showPopUp(CreateTournamentView view, String msg) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -207,27 +299,46 @@ public class CreateTournamentActivity extends AppCompatActivity implements Creat
         dialog.show();
     }
 
-
+    /**
+     * Method used
+     * to set the tournament sport type of activity's layout
+     * screen to the current tournament sport type
+     * @param list the content of the spinner to be set
+     */
     public void setSportTypeSpinner(ArrayList<String> list){
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, list);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sportTypeSpinner.setAdapter(adapter);
     }
 
-
+    /**
+     * Method used
+     * to set the tournament age division of activity's layout
+     * screen to the current tournament age division
+     * @param list the content of the spinner to be set
+     */
     public void setAgeDivisionSpinner(ArrayList<String> list){
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, list);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         ageDivisionSpinner.setAdapter(adapter);
     }
 
+    /**
+     * Method used
+     * to set the tournament teams number of activity's layout
+     * screen to the current tournament teams number
+     * @param list the content of the spinner to be set
+     */
     public void setTeamsNumberSpinner(ArrayList<String> list){
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, list);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         teamsNumberSpinner.setAdapter(adapter);
     }
 
-
+    /**
+     * Goes back to organizer profile
+     * @param name organizer name that is passed as an extra in the organizer page activity
+     */
     @Override
     public void backToHomePage(String name) {
 

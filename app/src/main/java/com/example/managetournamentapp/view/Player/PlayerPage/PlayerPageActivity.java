@@ -18,6 +18,12 @@ import com.example.managetournamentapp.view.Player.PlayerInfo.PlayerInfoActivity
 import com.example.managetournamentapp.view.Player.ReceivedInvites.ReceivedInvitesActivity;
 import com.example.managetournamentapp.view.User.Login.LoginActivity;
 
+/**
+ * Developed for the purposes of the Course "Software Engineering" at AUEB
+ * Athens University of Economics and Business
+ * 2020-2021
+ */
+
 public class PlayerPageActivity extends AppCompatActivity implements PlayerPageView {
 
     private boolean sameAsLogged = true;

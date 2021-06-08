@@ -2,13 +2,10 @@ package com.example.managetournamentapp.view.Player.JoinedTeams;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageButton;
-import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.lifecycle.ViewModelProvider;
+
 import com.example.managetournamentapp.R;
 import com.example.managetournamentapp.domain.Team;
 import com.example.managetournamentapp.view.Player.CreateTeam.CreateTeamActivity;

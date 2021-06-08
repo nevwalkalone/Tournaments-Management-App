@@ -4,6 +4,12 @@ import com.example.managetournamentapp.dao.LoggedInUser;
 import com.example.managetournamentapp.dao.PlayerDAO;
 import com.example.managetournamentapp.domain.Player;
 
+/**
+ * Developed for the purposes of the Course "Software Engineering" at AUEB
+ * Athens University of Economics and Business
+ * 2020-2021
+ */
+
 public class PlayerPagePresenter {
     private PlayerPageView view;
     private LoggedInUser loggedInUser;
@@ -64,7 +70,7 @@ public class PlayerPagePresenter {
     }
 
     /**
-     * when the "info" button is pressed
+     * when the "account" button is pressed
      * the player info activity starts
      */
     public void onPlayerAccount() {

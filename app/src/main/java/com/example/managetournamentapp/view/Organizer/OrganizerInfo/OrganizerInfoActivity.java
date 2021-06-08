@@ -53,7 +53,7 @@ public class OrganizerInfoActivity extends AppCompatActivity implements Organize
      * Method used
      * to set the username field of activity's layout
      * screen to the username of the organizer that is logged in
-     * @param username username of organizer
+     * @param username username of organizer to be set
      */
     @Override
     public void setUsername(String username) {
@@ -137,8 +137,8 @@ public class OrganizerInfoActivity extends AppCompatActivity implements Organize
     }
 
     /**
-     * Starts the Register Organizer Actitity
-     * so that the user can modify account
+     * Starts the register organizer activity so that the user can modify account
+     * @param organizerTitle title of organizer to be passed as an extra
      */
     @Override
     public void startEditOrganizer(String organizerTitle) {
