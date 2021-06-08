@@ -38,7 +38,6 @@ public class InvitePlayersPresenter {
             if (player.canJoin(team) && !alreadyInvitedForTheTeam)
                 results.add(player);
         }
-
     }
 
     /**

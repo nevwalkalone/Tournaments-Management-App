@@ -12,6 +12,9 @@ public class InvitationTest {
     Player player;
     Team team;
 
+    /**
+     *setup some initial variables before attempting each test
+     */
     @Before
     public void setUp() throws Exception {
         Credentials credentials = new Credentials("sakis7","123");
@@ -20,6 +23,9 @@ public class InvitationTest {
         invitation = new Invitation(team);
     }
 
+    /**
+     * test the basic methods
+     */
     @Test
     public void basicTests() {
         Team team2 = new Team("Celtic2", (new Sport("Basketball3v3")), AgeDivision.K15, player, "green");
@@ -31,6 +37,9 @@ public class InvitationTest {
         Assert.assertTrue(invitation.getDate().equals(LocalDate.now()));
     }
 
+    /**
+     * test the equality between to instances
+     */
     @Test
     public void equalTest() {
         Assert.assertEquals(invitation, new Invitation(team));

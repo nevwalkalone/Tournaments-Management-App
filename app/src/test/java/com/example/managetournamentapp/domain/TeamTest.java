@@ -16,6 +16,9 @@ public class TeamTest {
     private ArrayList<LocalDate> dates = new ArrayList<>();
     private Participation participationTemp,participationTemp2;
 
+    /**
+     *setup some initial variables before attempting each test
+     */
     @Before
     public void setUp() throws Exception {
         for (int i = 1; i < 64; i++) {
@@ -47,6 +50,9 @@ public class TeamTest {
 
     }
 
+    /**
+     * test adding players to the team
+     */
     @Test
     public void testAddPlayers()  {
         team.addPlayer(null);
@@ -62,6 +68,9 @@ public class TeamTest {
         Assert.assertTrue(team.getPlayers().contains(player3));
     }
 
+    /**
+     * test removing players from the team
+     */
     @Test
     public void testRemovePlayers()  {
         team.removePlayer(null);
@@ -73,6 +82,10 @@ public class TeamTest {
         Assert.assertFalse(team.getPlayers().contains(player2));
     }
 
+
+    /**
+     * test adding participations
+     */
     @Test
     public void testTournamentParticipations(){
         Assert.assertFalse(team.hasAnyActivePart());
@@ -105,6 +118,10 @@ public class TeamTest {
         Assert.assertEquals(0,team.getParticipations().size());
     }
 
+
+    /**
+     * test the basic methods
+     */
     @Test
     public void basicTests(){
         //default constructor, so team name is null
@@ -135,6 +152,10 @@ public class TeamTest {
                                                 '}');
     }
 
+
+    /**
+     * test if a participation can happen
+     */
     @Test
     public void canParticipateTest(){
        //not enough players
@@ -151,6 +172,9 @@ public class TeamTest {
 
     }
 
+    /**
+     * test the equality between to instances
+     */
     @Test
     public void testEquals(){
         team3.setName("Celtic");
@@ -162,6 +186,9 @@ public class TeamTest {
         Assert.assertEquals(team,team3);
     }
 
+    /**
+     * test the inequality between to instances
+     */
     @Test
     public void testNotEquals(){
         team3.setName("Celtic");

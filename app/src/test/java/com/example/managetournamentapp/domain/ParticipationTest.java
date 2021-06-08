@@ -20,6 +20,9 @@ public class ParticipationTest {
     private ArrayList<LocalDate> dates2;
 
 
+    /**
+     *setup some initial variables before attempting each test
+     */
     @Before
     public void setUp() throws Exception {
         credentials = new Credentials("sakis7", "123");
@@ -61,9 +64,12 @@ public class ParticipationTest {
         participation6 = null;
         participation7 = new Participation();
         participation8 = participation;
-
     }
 
+
+    /**
+     * test if two participations are in the same tournament
+     */
     @Test
     public void inSameTournamentTest() {
         Assert.assertTrue(participation.inSameTournament(participation2));
@@ -72,6 +78,9 @@ public class ParticipationTest {
 
     }
 
+    /**
+     * test if two participations are simultaneous
+     */
     @Test
     public void isSimultaneousTest(){
         Assert.assertTrue(participation3.isSimultaneous(participation4));
@@ -80,6 +89,10 @@ public class ParticipationTest {
 
     }
 
+
+    /**
+     * test if the participations are currently happening
+     */
     @Test
     public void isRunningTest(){
         Assert.assertFalse(participation3.isRunning());
@@ -88,12 +101,18 @@ public class ParticipationTest {
         Assert.assertFalse(participation5.isRunning());
     }
 
+    /**
+     * test if the participations have finished
+     */
     @Test
     public void isPastTest(){
         Assert.assertFalse(participation2.isPast());
         Assert.assertFalse(participation.isPast());
     }
 
+    /**
+     * test the getters
+     */
     @Test
     public void gettersTest(){
         Assert.assertTrue(participation.getTeam() == participation3.getTeam());
@@ -103,6 +122,9 @@ public class ParticipationTest {
         Assert.assertNull(participation7.getFinishDate());
     }
 
+    /**
+     * test the getters
+     */
     @Test
     public void settersTest(){
         participation3.setStartDate(LocalDate.parse("2021-05-10"));
@@ -115,6 +137,9 @@ public class ParticipationTest {
         Assert.assertNotEquals(team,participation3.getTeam());
     }
 
+    /**
+     * test the toString method
+     */
     @Test
     public void toStringTest(){
         Assert.assertEquals(participation.toString(),"Participation{" +
@@ -123,6 +148,9 @@ public class ParticipationTest {
                 '}');
     }
 
+    /**
+     * test the equality between to instances
+     */
     @Test
     public void testEquals(){
         Assert.assertEquals(participation, participation8);
@@ -133,6 +161,9 @@ public class ParticipationTest {
         Assert.assertEquals(participation,participation4);
     }
 
+    /**
+     * test the inequality between to instances
+     */
     @Test
     public void testNotEquals(){
         Assert.assertNotEquals(participation,participation2);
