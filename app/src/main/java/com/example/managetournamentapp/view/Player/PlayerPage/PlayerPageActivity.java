@@ -43,7 +43,7 @@ public class PlayerPageActivity extends AppCompatActivity implements PlayerPageV
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
+        //new MemoryInitializer().prepareData();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player_page);
         playerUsername = this.getIntent().getStringExtra(PLAYER_USERNAME_EXTRA);
