@@ -56,5 +56,5 @@
 
 ## Συγγραφείς
 * [zaaachos](https://github.com/zaaachos)
-* [ChristoforosTrakas](https://github.com/ChristoforosTrakas)
+* [ChristoforosTrakas](https://github.com/Christoforos00)
 * [nevwalkalone](https://github.com/nevwalkalone)
